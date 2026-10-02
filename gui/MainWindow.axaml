@@ -17,10 +17,69 @@
           <MenuItem Header="English" Click="English_Click" />
           <MenuItem Header="简体中文" Click="Chinese_Click" />
         </MenuItem>
+        <MenuItem Header="{DynamicResource Tools}">
+          <MenuItem Header="{DynamicResource Main}" Click="Main_Click" />
+          <MenuItem Header="{DynamicResource Inspector}" Click="Inspector_Click" />
+        </MenuItem>
       </Menu>
-      <TextBlock Grid.Column="1" Text="{DynamicResource Inspector}" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="SemiBold" />
+      <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="24">
+        <TextBlock Name="PageTitle" Text="{DynamicResource Main}" VerticalAlignment="Center" FontWeight="SemiBold" />
+        <Button Name="ApplyMainButton" Content="{DynamicResource ApplyChanges}" Click="ApplyMain_Click" IsEnabled="False" />
+      </StackPanel>
     </Grid>
-    <Grid Grid.Row="1" ColumnDefinitions="260,*" ColumnSpacing="16">
+    <Grid Name="MainPanel" Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="24">
+      <suki:GlassCard Padding="28">
+        <ScrollViewer>
+          <StackPanel Spacing="24" MaxWidth="480" HorizontalAlignment="Stretch">
+            <TextBlock Text="{DynamicResource GameSettings}" FontWeight="SemiBold" />
+            <StackPanel Name="SettingsInputs" IsEnabled="False" Spacing="20">
+              <StackPanel Spacing="8">
+                <TextBlock Text="{DynamicResource Difficulty}" />
+                <ComboBox Name="DifficultyInput" Height="42" Margin="0" HorizontalAlignment="Stretch" />
+              </StackPanel>
+              <StackPanel Spacing="8">
+                <TextBlock Text="{DynamicResource GameMode}" />
+                <ComboBox Name="ModeInput" Height="42" Margin="0" HorizontalAlignment="Stretch" />
+              </StackPanel>
+              <StackPanel Spacing="8">
+                <TextBlock Text="{DynamicResource SommieName}" />
+                <TextBox Name="SommieNameInput" Height="42" />
+              </StackPanel>
+            </StackPanel>
+          </StackPanel>
+        </ScrollViewer>
+      </suki:GlassCard>
+      <suki:GlassCard Grid.Column="1" Padding="28">
+        <ScrollViewer>
+          <StackPanel Spacing="24" MaxWidth="480" HorizontalAlignment="Stretch">
+            <TextBlock Text="{DynamicResource Resources}" FontWeight="SemiBold" />
+            <StackPanel Name="ResourceInputs" IsEnabled="False" Spacing="20">
+              <StackPanel Spacing="8">
+                <TextBlock Text="{DynamicResource Money}" />
+                <NumericUpDown Name="MoneyInput" Minimum="0" Maximum="2147483647" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+              </StackPanel>
+              <StackPanel Spacing="8">
+                <TextBlock Text="{DynamicResource BondFragments}" />
+                <NumericUpDown Name="BondFragmentsInput" Minimum="0" Maximum="2147483647" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+              </StackPanel>
+              <StackPanel Spacing="8">
+                <TextBlock Text="{DynamicResource IronIngots}" />
+                <NumericUpDown Name="IronIngotsInput" Minimum="0" Maximum="2147483647" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+              </StackPanel>
+              <StackPanel Spacing="8">
+                <TextBlock Text="{DynamicResource SteelIngots}" />
+                <NumericUpDown Name="SteelIngotsInput" Minimum="0" Maximum="2147483647" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+              </StackPanel>
+              <StackPanel Spacing="8">
+                <TextBlock Text="{DynamicResource SilverIngots}" />
+                <NumericUpDown Name="SilverIngotsInput" Minimum="0" Maximum="2147483647" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+              </StackPanel>
+            </StackPanel>
+          </StackPanel>
+        </ScrollViewer>
+      </suki:GlassCard>
+    </Grid>
+    <Grid Name="InspectorPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="260,*" ColumnSpacing="16">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,*" RowSpacing="16">
           <TextBlock Text="{DynamicResource Sections}" FontWeight="SemiBold" />

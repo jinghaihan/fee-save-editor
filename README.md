@@ -1,13 +1,18 @@
 # Fire Emblem Engage Save Editor
 
 A desktop save editor and CLI for Fire Emblem Engage, under development.
-There is no release yet. Gameplay editing is not implemented yet.
+There is no release yet. The Main panel is the first editable panel; other
+gameplay panels are still under development.
 
 ## Features
 
-- Desktop application using the same SukiUI controls as [FETH Save Editor](https://github.com/jinghaihan/feth-save-editor).
+- Main panel: edit money, bond fragments, iron/steel/silver ingots, difficulty,
+  game mode and Sommie's name. Difficulty and mode update both the save summary
+  and the actual gameplay fields.
+- Save a verified edited copy; opening or editing never overwrites the input file.
+- Desktop application using SukiUI controls.
 - English UI by default, with live switching to Simplified Chinese.
-- Two-panel save inspector with section search and file information.
+- Save inspector under Tools, with section search and file information.
 - CLI with a shared save-processing core.
 - Read game saves (`Manual0`, `Auto`) and global saves (`Global`), validate
   CRC32 and section boundaries, and inspect their sections.
@@ -16,11 +21,14 @@ There is no release yet. Gameplay editing is not implemented yet.
 ```sh
 dotnet run --project cli/Cli.csproj -- inspect /path/to/Manual0 --json
 dotnet run --project cli/Cli.csproj -- copy /path/to/Manual0 /path/to/Manual0-copy
+dotnet run --project cli/Cli.csproj -- main show /path/to/Manual0 --json
+dotnet run --project cli/Cli.csproj -- main set /path/to/Manual0 /path/to/Manual0-edited --money 5000 --iron 100
 ```
 
 The container reader has been checked against game-format version 9 saves.
-This does not yet establish support for editing all gameplay fields or for
-loading modified saves in the game. Test fixtures contain synthetic data only.
+Main edits have been checked through serialization and exact restoration on
+manual and automatic saves. Modified saves have not yet been verified by loading
+them in the game. Test fixtures committed to the repository contain synthetic data only.
 See [save format notes](docs/save-format.md) for the verified container layout
 and the limits of the current implementation.
 

@@ -103,6 +103,19 @@ public sealed class EngageSave
 
     public byte[] Serialize() => (byte[])_bytes.Clone();
 
+    public MainValues ReadMainValues() => MainLayout.Read(this, _bytes).Values;
+
+    public EngageSave WithMainValues(MainValues values)
+    {
+        var layout = MainLayout.Read(this, _bytes);
+        if (layout.Values == values)
+            return this;
+        var edited = Parse(layout.Edit(_bytes, values));
+        if (edited.ReadMainValues() != values)
+            throw new InvalidDataException("The edited Main values did not survive serialization.");
+        return edited;
+    }
+
     /// <summary>Creates a new, verified copy. Never overwrites an existing file.</summary>
     public void WriteCopy(string destination)
     {

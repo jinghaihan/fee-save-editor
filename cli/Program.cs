@@ -16,7 +16,14 @@ if (args.Length == 0 || args is ["--help"])
         Usage:
           FeeEditor.Cli inspect <save> [--json]
           FeeEditor.Cli copy <save> <new-file>
+          FeeEditor.Cli main show <save> [--json]
+          FeeEditor.Cli main set <save> <new-file> [options]
           FeeEditor.Cli --version
+        Main options:
+          --money <amount> --bond-fragments <amount>
+          --iron <amount> --steel <amount> --silver <amount>
+          --difficulty normal|hard|maddening --mode casual|classic
+          --sommie-name <name>
         """);
     return 0;
 }
@@ -41,6 +48,15 @@ try
             EngageSave.Load(source).WriteCopy(destination);
             Console.WriteLine(Path.GetFullPath(destination));
             return 0;
+        case ["main", "show", var source, .. var options] when options is [] or ["--json"]:
+            Console.WriteLine(JsonSerializer.Serialize(EngageSave.Load(source).ReadMainValues(),
+                new JsonSerializerOptions { WriteIndented = true, Converters = { new JsonStringEnumConverter() } }));
+            return 0;
+        case ["main", "set", var source, var destination, .. var options]:
+            var current = EngageSave.Load(source);
+            current.WithMainValues(PatchMain(current.ReadMainValues(), options)).WriteCopy(destination);
+            Console.WriteLine(Path.GetFullPath(destination));
+            return 0;
         default:
             Console.Error.WriteLine("Unknown command. Run --help for usage.");
             return 1;
@@ -50,4 +66,47 @@ catch (Exception error) when (error is IOException or InvalidDataException or Un
 {
     Console.Error.WriteLine(error.Message);
     return 1;
+}
+
+static MainValues PatchMain(MainValues values, string[] options)
+{
+    if (options.Length == 0 || options.Length % 2 != 0)
+        throw new ArgumentException("Provide at least one Main option and its value.");
+    var seen = new HashSet<string>(StringComparer.Ordinal);
+    for (int index = 0; index < options.Length; index += 2)
+    {
+        string key = options[index];
+        string value = options[index + 1];
+        if (!seen.Add(key))
+            throw new ArgumentException($"Duplicate option: {key}");
+        values = key switch
+        {
+            "--money" => values with { Money = Amount(value) },
+            "--bond-fragments" => values with { BondFragments = Amount(value) },
+            "--iron" => values with { IronIngots = Amount(value) },
+            "--steel" => values with { SteelIngots = Amount(value) },
+            "--silver" => values with { SilverIngots = Amount(value) },
+            "--difficulty" => values with { Difficulty = value.ToLowerInvariant() switch
+                {
+                    "normal" => Difficulty.Normal, "hard" => Difficulty.Hard,
+                    "maddening" => Difficulty.Maddening,
+                    _ => throw new ArgumentException("Difficulty must be normal, hard or maddening.")
+                } },
+            "--mode" => values with { GameMode = value.ToLowerInvariant() switch
+                {
+                    "casual" => GameMode.Casual, "classic" => GameMode.Classic,
+                    _ => throw new ArgumentException("Mode must be casual or classic.")
+                } },
+            "--sommie-name" => values with { SommieName = value },
+            _ => throw new ArgumentException($"Unknown Main option: {key}")
+        };
+    }
+    return values;
+}
+
+static int Amount(string value)
+{
+    if (!int.TryParse(value, out int amount) || amount < 0)
+        throw new ArgumentException("Amounts must be integers between 0 and 2147483647.");
+    return amount;
 }

@@ -48,9 +48,44 @@ Private saves are not committed. Automated tests construct synthetic game and
 global containers, and test truncation, incorrect CRCs, invalid sizes, malformed
 indices, destination conflicts, search, and repeated language switching.
 
-Gameplay field offsets and legal ranges need separate verification before
-editing is enabled. A valid outer checksum alone does not prove a gameplay
-edit is safe or that the game accepts it.
+The Main fields below have separate typed-layout tests. Other gameplay fields
+remain uneditable. A valid outer checksum alone does not prove that the game
+accepts a gameplay edit.
+
+## Main fields (USER version 20)
+
+Main editing currently requires game format 9, USER version 20 and the verified
+hashed chapter encoding in the summary. The USER payload starts with a version
+word and 28 padding bytes. Its settings follow the user-status word and sequence
+byte. The game-variable block is then parsed by its own size, version, record
+count, UTF-16LE key lengths and typed integer/string values; values are not
+located by searching for substrings or assuming a fixed absolute file offset.
+
+Money follows that variable block. After four counters and a length-prefixed
+world-map string come spendable bond fragments, lifetime bond fragments and
+Sommie's length-prefixed name. Iron, steel and silver amounts are the integer
+variables `G_所持_IID_てつの晶石`, `G_所持_IID_はがねの晶石` and
+`G_所持_IID_ぎんの晶石` respectively. Missing, duplicated or wrongly typed
+material records prevent Main editing without preventing container inspection.
+
+Difficulty and mode are written both to USER and the summary bytes at `0x17`
+and `0x19`. A unique valid IEEE CRC32 prefix in the 128-byte summary identifies
+the summary checksum word; unsupported or ambiguous summaries are not edited.
+Both the summary checksum and the whole-file checksum are updated. The separate
+original-difficulty flag and lifetime bond-fragment total are preserved.
+
+Changing Sommie's name resizes its own string, adjusts the USER size and every
+subsequent section-index offset, and preserves unknown USER fields and later
+section payloads. Core edits are immutable and are reparsed before being returned.
+GUI Save Copy applies pending valid Main inputs automatically; invalid inputs
+produce no output. Global saves remain inspection/copy-only.
+
+Amounts accept the nonnegative signed-32-bit storage range, not a claimed game
+cap. Serialized strings have a defensive 4096-byte limit; the game's actual
+Sommie name-entry limit has not been established. Synthetic tests and local
+manual/automatic-save tests cover no-op preservation, byte-diff allowlists,
+Unicode name resizing, exact edit reversal, malformed inputs and language switching.
+In-game loading of edited saves is still to be tested.
 
 ## Resource inputs
 

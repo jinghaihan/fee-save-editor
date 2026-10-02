@@ -18,6 +18,8 @@ Check(UiLanguage.Current == "en", "The default UI language is not English.");
 Check(UiLanguage.Read("en").Keys.Order().SequenceEqual(UiLanguage.Read("zh-Hans").Keys.Order()),
     "English and Chinese resource keys differ.");
 Check(!window.FindControl<MenuItem>("SaveCopyMenu")!.IsEnabled, "Copy is enabled without a save.");
+Check(window.FindControl<Grid>("MainPanel")!.IsVisible && !window.FindControl<StackPanel>("SettingsInputs")!.IsEnabled,
+    "Main controls must be visible but disabled before a save is loaded.");
 
 string temporary = Path.Combine(Path.GetTempPath(), $"fee-gui-test-{Guid.NewGuid():N}");
 Directory.CreateDirectory(temporary);
@@ -27,6 +29,7 @@ try
     string source = Path.Combine(temporary, "Manual0");
     File.WriteAllBytes(source, original);
     Check(window.LoadSave(source), "The GUI could not open a valid save.");
+    Check(!window.CanEditMain, "A container without the verified Main schema was editable.");
     Check(window.Save!.Serialize().AsSpan().SequenceEqual(original), "Opening a save changed its bytes.");
     var clone = window.Save.Serialize();
     clone[0] = 0xff;
@@ -67,18 +70,44 @@ try
     Check(window.Save.Serialize().AsSpan().SequenceEqual(original), "An invalid load replaced the current save.");
     Check(!Directory.EnumerateFiles(temporary, ".fee-*.tmp").Any(), "Temporary save files were left behind.");
 
-    if (args is ["--save-directory", var directory])
+    MainTests.Run(window, temporary);
+
+    if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
         {
             string path = Path.Combine(directory, name);
             byte[] before = File.ReadAllBytes(path);
             Check(window.LoadSave(path), $"The GUI could not open {name}.");
+            Check(window.CanEditMain == (name != "Global"), $"{name}: Main edit availability is incorrect.");
             string destination = Path.Combine(temporary, name + "-copy");
             Check(window.SaveCopy(destination), $"The GUI could not copy {name}.");
             Check(File.ReadAllBytes(destination).AsSpan().SequenceEqual(before), $"{name} copy differs.");
             Check(File.ReadAllBytes(path).AsSpan().SequenceEqual(before), $"{name} was modified.");
             Console.WriteLine($"{name}: GUI read and lossless copy passed.");
+            if (name != "Global")
+            {
+                var loaded = window.Save!;
+                var current = loaded.ReadMainValues();
+                var updated = current with { Money = 12345, BondFragments = 6789, IronIngots = 111,
+                    SteelIngots = 222, SilverIngots = 333, Difficulty = Difficulty.Normal,
+                    GameMode = GameMode.Casual, SommieName = "Sommie round-trip 索拉" };
+                var edited = loaded.WithMainValues(updated);
+                Check(edited.ReadMainValues() == updated, $"{name}: Main edit failed.");
+                Check(edited.WithMainValues(current).Serialize().AsSpan().SequenceEqual(before), $"{name}: unknown bytes changed.");
+                Console.WriteLine($"{name}: Main edit and exact restoration passed.");
+            }
         }
+    if (args is ["--save-directory", var screenshotDirectory, "--screenshot", var screenshot])
+    {
+        Check(window.LoadSave(Path.Combine(screenshotDirectory, "Manual0")), "Could not load screenshot save.");
+        window.SetLanguage("en");
+        Dispatcher.UIThread.RunJobs();
+        Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(screenshot))!);
+        using var rendered = window.CaptureRenderedFrame();
+        Check(rendered is not null, "Screenshot capture failed.");
+        rendered!.Save(screenshot, Avalonia.Media.Imaging.PngBitmapEncoderOptions.Default);
+        Console.WriteLine($"Main screenshot: {Path.GetFullPath(screenshot)}");
+    }
 }
 finally
 {

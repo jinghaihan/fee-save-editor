@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Test the CLI without distributing private save files."""
 
+from __future__ import annotations
+
 import argparse
 import json
 import struct
@@ -27,6 +29,141 @@ def fixture(global_save: bool = False) -> bytes:
 
 def with_checksum(body: bytes) -> bytes:
     return body[:-4] + struct.pack("<I", zlib.crc32(body[:-4]))
+
+
+def wide(value: str) -> bytes:
+    encoded = value.encode("utf-16-le")
+    return struct.pack("<I", len(encoded)) + encoded
+
+
+def main_fixture() -> bytes:
+    keys = ("G_所持_IID_てつの晶石", "G_所持_IID_はがねの晶石", "G_所持_IID_ぎんの晶石")
+    records = b"".join(wide(key) + b"\x00" + struct.pack("<i", value) for key, value in zip(keys, (12, 8, 3)))
+    records += wide("unrelated") + b"\x01" + wide("preserve this text")
+    variables = struct.pack("<I", 0) + bytes(28) + struct.pack("<I", 4) + records
+    variables = struct.pack("<I", len(variables) + 4) + variables
+    user = struct.pack("<I", 20) + bytes(28) + struct.pack("<I5BII", 3, 1, 1, 1, 2, 2, 0x12345678, 7)
+    user += variables + struct.pack("<5I", 5000, 1, 2, 3, 4) + wide("M001")
+    user += struct.pack("<ii", 1200, 999) + wide("Sommie") + b"unknown-tail!"
+    section = b"RESU" + struct.pack("<I", len(user) + 4) + user
+    opaque = b"PMAP" + struct.pack("<I", 12) + bytes(range(8))
+    header = bytearray(128)
+    struct.pack_into("<II", header, 0, 9, 0x130)
+    header[12] = header[17] = 2
+    header[23] = header[25] = 1
+    struct.pack_into("<I", header, 60, zlib.crc32(header[:60]))
+    index = b"EDNI" + struct.pack("<32I", 260, 260 + len(section), 260 + len(section) + len(opaque), *([0] * 29))
+    body = header + index + section + opaque + b"LVRC"
+    return body + struct.pack("<I", zlib.crc32(body))
+
+
+def main_offsets(data: bytes) -> dict[str, int]:
+    """Locate editable scalar fields independently of the C# implementation."""
+    user = struct.unpack_from("<I", data, 132)[0]
+    position = user + 57
+    end = position + struct.unpack_from("<I", data, position)[0]
+    position += 36
+    count = struct.unpack_from("<I", data, position)[0]
+    position += 4
+    result = {"Mode": user + 45, "Difficulty": user + 46}
+    material = {"G_所持_IID_てつの晶石": "IronIngots", "G_所持_IID_はがねの晶石": "SteelIngots",
+                "G_所持_IID_ぎんの晶石": "SilverIngots"}
+    for _ in range(count):
+        length = struct.unpack_from("<I", data, position)[0]
+        position += 4
+        key = data[position:position + length].decode("utf-16-le")
+        position += length
+        kind = data[position]
+        position += 1
+        if key in material:
+            result[material[key]] = position
+        if kind == 0:
+            position += 4
+        elif kind == 1:
+            length = struct.unpack_from("<I", data, position)[0]
+            position += 4 + length
+        else:
+            raise AssertionError("Unexpected variable kind in fixture")
+    assert position == end
+    result["Money"] = position
+    position += 20
+    length = struct.unpack_from("<I", data, position)[0]
+    position += 4 + length
+    result["BondFragments"] = position
+    result["SommieName"] = position + 8
+    return result
+
+
+def check_main(command: list[str], real_directory: Path | None) -> None:
+    cases = [("synthetic", main_fixture())]
+    if real_directory:
+        cases += [(name, (real_directory / name).read_bytes()) for name in ("Auto", "Manual0")]
+    with tempfile.TemporaryDirectory(prefix="fee-main-test-") as directory:
+        root = Path(directory)
+        source, output, restored = (root / name for name in ("source", "edited", "restored"))
+        for name, original in cases:
+            source.write_bytes(original)
+            current = json.loads(subprocess.check_output([*command, "main", "show", str(source), "--json"], text=True))
+            offsets = main_offsets(original)
+            for key in ("Money", "BondFragments", "IronIngots", "SteelIngots", "SilverIngots"):
+                assert current[key] == struct.unpack_from("<i", original, offsets[key])[0]
+            target_name = "S" * len(current["SommieName"])
+            options = ["--money", "123", "--bond-fragments", "456", "--iron", "7", "--steel", "9", "--silver", "11",
+                       "--difficulty", "normal", "--mode", "casual", "--sommie-name", target_name]
+            subprocess.run([*command, "main", "set", str(source), str(output), *options], check=True, capture_output=True)
+            edited = output.read_bytes()
+            assert len(edited) == len(original)
+            assert zlib.crc32(edited[:-4]) == struct.unpack_from("<I", edited, len(edited) - 4)[0]
+            allowed = {23, 25, offsets["Mode"], offsets["Difficulty"]}
+            for offset in offsets.values():
+                allowed.update(range(offset, offset + 4))
+            allowed.update(range(offsets["SommieName"], offsets["SommieName"] + 4 + len(target_name.encode("utf-16-le"))))
+            checksums = [offset for offset in range(26, 125) if zlib.crc32(original[:offset]) == struct.unpack_from("<I", original, offset)[0]]
+            assert len(checksums) == 1
+            allowed.update(range(checksums[0], checksums[0] + 4))
+            allowed.update(range(len(original) - 4, len(original)))
+            changed = {index for index, (before, after) in enumerate(zip(original, edited)) if before != after}
+            assert changed <= allowed, (name, changed - allowed)
+            reverted_options = []
+            for option, key in (("money", "Money"), ("bond-fragments", "BondFragments"), ("iron", "IronIngots"),
+                                ("steel", "SteelIngots"), ("silver", "SilverIngots"), ("difficulty", "Difficulty"),
+                                ("mode", "GameMode"), ("sommie-name", "SommieName")):
+                reverted_options += [f"--{option}", str(current[key])]
+            subprocess.run([*command, "main", "set", str(output), str(restored), *reverted_options], check=True, capture_output=True)
+            assert restored.read_bytes() == original
+            assert source.read_bytes() == original
+            output.unlink()
+            restored.unlink()
+            # Rebuild with a different-length Unicode name and verify every downstream section.
+            subprocess.run([*command, "main", "set", str(source), str(output), "--sommie-name", "索拉 round-trip 🐾"],
+                           check=True, capture_output=True)
+            inspected = json.loads(subprocess.check_output([*command, "inspect", str(output), "--json"], text=True))
+            original_sections = json.loads(subprocess.check_output([*command, "inspect", str(source), "--json"], text=True))["Sections"]
+            resized = output.read_bytes()
+            for before, after in zip(original_sections[1:], inspected["Sections"][1:]):
+                assert original[before["Offset"]:before["Offset"] + before["Length"] + 8] == resized[after["Offset"]:after["Offset"] + after["Length"] + 8]
+            subprocess.run([*command, "main", "set", str(output), str(restored), "--sommie-name", current["SommieName"]],
+                           check=True, capture_output=True)
+            assert restored.read_bytes() == original
+            output.unlink()
+            restored.unlink()
+            print(f"{name}: Main edits, independent byte-diff check and Unicode resizing passed.")
+
+        source.write_bytes(main_fixture())
+        for options in ([], ["--money"], ["--money", "-1"], ["--money", "1.5"], ["--money", "2147483648"],
+                        ["--money", "1", "--money", "2"], ["--unknown", "1"], ["--difficulty", "3"],
+                        ["--mode", "invalid"], ["--sommie-name", ""], ["--sommie-name", "bad\nname"]):
+            failure = subprocess.run([*command, "main", "set", str(source), str(output), *options], capture_output=True, text=True)
+            assert failure.returncode == 1 and "Unhandled exception" not in failure.stderr, failure
+            assert not output.exists()
+        for unsupported in (fixture(), fixture(True)):
+            source.write_bytes(unsupported)
+            assert subprocess.run([*command, "main", "show", str(source)], capture_output=True).returncode == 1
+            assert subprocess.run([*command, "main", "set", str(source), str(output), "--money", "10"], capture_output=True).returncode == 1
+            assert not output.exists()
+    if real_directory:
+        for name, original in cases[1:]:
+            assert (real_directory / name).read_bytes() == original
 
 
 def check_saves(command: list[str]) -> None:
@@ -72,6 +209,7 @@ def check_saves(command: list[str]) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cli", required=True, type=Path)
+    parser.add_argument("--save-directory", type=Path, help="Optional local game saves, never modified")
     args = parser.parse_args()
     command = cli_command(args.cli)
     version = (Path(__file__).resolve().parents[1] / "VERSION").read_text().strip()
@@ -80,6 +218,7 @@ def main() -> None:
     subprocess.run([*command, "--help"], check=True, capture_output=True)
     assert subprocess.run([*command, "unknown"], capture_output=True).returncode != 0
     check_saves(command)
+    check_main(command, args.save_directory)
     print("CLI tests passed.")
 
 

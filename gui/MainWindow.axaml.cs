@@ -11,7 +11,11 @@ public partial class MainWindow : Window
     public EngageSave? Save { get; private set; }
     private string? _path;
 
-    public MainWindow() => InitializeComponent();
+    public MainWindow()
+    {
+        InitializeComponent();
+        RefreshOptions();
+    }
 
     public bool LoadSave(string path)
     {
@@ -26,6 +30,7 @@ public partial class MainWindow : Window
             RefreshSections();
             SaveCopyMenu.IsEnabled = true;
             Message.IsVisible = false;
+            LoadMainValues();
             return true;
         }
         catch (Exception error) when (IsFileError(error))
@@ -41,6 +46,8 @@ public partial class MainWindow : Window
             return false;
         try
         {
+            if (CanEditMain && !ApplyMainValues())
+                return false;
             Save.WriteCopy(path);
             ShowMessage("CopySaved", Path.GetFullPath(path));
             return true;
@@ -55,7 +62,9 @@ public partial class MainWindow : Window
     public void SetLanguage(string language)
     {
         UiLanguage.Apply(language);
+        RefreshOptions();
         RefreshOverview();
+        RefreshPageTitle();
         Message.IsVisible = false;
     }
 
@@ -153,6 +162,9 @@ public partial class MainWindow : Window
         error is IOException or InvalidDataException or UnauthorizedAccessException or ArgumentException;
 
     private void Exit_Click(object? sender, RoutedEventArgs e) => Close();
+    private void Main_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: false);
+    private void Inspector_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: true);
+    private void ApplyMain_Click(object? sender, RoutedEventArgs e) => ApplyMainValues();
     private void English_Click(object? sender, RoutedEventArgs e) => SetLanguage("en");
     private void Chinese_Click(object? sender, RoutedEventArgs e) => SetLanguage("zh-Hans");
     private void SectionSearch_Changed(object? sender, TextChangedEventArgs e) => RefreshSections();
