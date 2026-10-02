@@ -325,7 +325,7 @@ Batch maximum applies to all existing known character bonds for the chosen Emble
 not just search results. Unknown characters and unrecognized special levels are
 preserved. Changes are returned as one immutable result so a failed relationship
 validation cannot partially apply a batch. GUI controls use levels by default,
-with raw EXP in a collapsed advanced section; Alear EXP is read-only.
+with a linked EXP input directly below the level selector; Alear EXP is read-only.
 
 For the 12 base Emblems, cap-variable IDs come from the pinned `God.xml` table.
 Setting a bond above 10 sets that integer to 1, adding the typed variable if absent

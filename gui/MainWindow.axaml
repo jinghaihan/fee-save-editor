@@ -337,12 +337,10 @@
                   <TextBlock Text="{DynamicResource BondLevel}" />
                   <ComboBox Name="EmblemBondLevelInput" Height="42" HorizontalAlignment="Stretch" SelectionChanged="EmblemBondLevel_Changed" />
                 </StackPanel>
-                <Expander Header="{DynamicResource Advanced}" HorizontalAlignment="Stretch" IsExpanded="False">
-                  <StackPanel Spacing="8">
+                <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Experience}" />
                   <NumericUpDown Name="EmblemBondExpInput" Minimum="0" Maximum="208" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
-                  </StackPanel>
-                </Expander>
+                </StackPanel>
                 <Button Name="MaxEmblemBondButton" Content="{DynamicResource MaxBond}" HorizontalAlignment="Stretch" Click="MaxEmblemBond_Click" />
                 <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyEmblem_Click" />
               </StackPanel>

@@ -39,7 +39,7 @@ are still under development.
   changed by maximizing attributes. Batch actions ignore search filters.
 - Desktop application using SukiUI controls.
 - Emblems panel: select a base-game or DLC Emblem and edit character bond levels
-  through a dropdown. EXP is mapped automatically, with optional advanced input
+  through a dropdown above a linked EXP input. Either input updates the other
   for ordinary bonds. Maximize one bond or every known character bond for the
   selected Emblem, independently of search filters, with a completion count.
   Alear uses support-derived levels and synchronizes existing support records;

@@ -27,8 +27,8 @@ internal static class EmblemGuiTests
             "The Emblem form did not show the saved values.");
         Check(window.FindControl<StackPanel>("EmblemBondForm")!.Width == 340,
             "The Emblem form is not aligned with existing editor forms.");
-        var advanced = window.FindControl<NumericUpDown>("EmblemBondExpInput")!.Parent!.Parent as Expander;
-        Check(advanced is not null && !advanced.IsExpanded, "Raw bond EXP is not collapsed by default.");
+        Check(exp.Parent is StackPanel { Parent: StackPanel } && levels.Parent?.Parent == exp.Parent.Parent,
+            "Bond level and EXP must be stacked directly in the same form, without a disclosure.");
         levels.SelectedItem = 10;
         Check(exp.Text == "99", "Changing bond level did not update EXP.");
         exp.Text = "108";
