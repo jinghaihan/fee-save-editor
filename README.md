@@ -36,4 +36,4 @@ For scripted edits, see the [CLI guide](CLI.md).
 
 ## License
 
-[MIT](./LICENSE) License © [jinghaihan](https://github.com/jinghaihan) for my original contributions. Game assets and third-party dependencies retain their respective rights.
+[MIT](./LICENSE) License © [jinghaihan](https://github.com/jinghaihan)
