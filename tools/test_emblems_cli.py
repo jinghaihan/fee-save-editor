@@ -114,6 +114,15 @@ def check_emblems(command: list[str], real_directory: Path | None, base: bytes) 
     catalog = json.loads(run("catalog", "--json", "--language", "zh-Hans"))
     assert len(catalog["Emblems"]) == 20 and len(catalog["Rings"]) == 483
     assert catalog["Emblems"][0]["Name"] == "马尔斯"
+    for language in ("en", "zh-Hans", "zh-Hant", "ja", "ko", "de", "fr", "es", "it"):
+        translated = json.loads(run("catalog", "--json", "--language", language))
+        assert len([ring for ring in translated["Rings"] if ring["Skills"]]) == 28
+        olwen = next(ring for ring in translated["Rings"] if ring["Id"] == "RNID_トラキア_オルエン_S")
+        assert {row["Stat"]: row["Value"] for row in olwen["StatBonuses"]} == {"Speed": 2, "Luck": 1, "Magic": 1}
+        assert all(skill["Name"] and skill["Description"] and r"\n" not in skill["Description"]
+                   for ring in translated["Rings"] for skill in ring["Skills"])
+        if language == "en":
+            assert olwen["Skills"][0]["Name"] == "Dire Thunder" and "Excludes Elthunder" in olwen["Skills"][0]["Description"]
     for options in (("--language", "xx"), ("--json", "--json"), ("--language",)):
         run("catalog", *options, valid=False)
     cases = [("synthetic", fixture(base))]

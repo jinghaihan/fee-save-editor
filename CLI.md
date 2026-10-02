@@ -160,6 +160,8 @@ FeeEditor.Cli emblems ring-meld Manual0 Manual0-edited --instance 100
 ```
 
 Use saved instance IDs from the lists; the example numbers are placeholders.
+`catalog` includes each Bond Ring's nonzero `StatBonuses` and localized skill
+names/descriptions, including S-rank effects and the three Heroes bonus rings.
 `missing` lists absent normal Emblems; `add` takes a catalog GID instead of an
 instance ID. All 12 base-game rings and 7 DLC Bracelets are supported. An
 already-owned Emblem is a no-op, including reserved or escaping story records.

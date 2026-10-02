@@ -401,6 +401,13 @@ instance is therefore constrained to exactly one. `IsSingleRank` affects rank
 variants, not the common-ring stock limit. Pool capacity is 750 records, not 750
 total copies. Existing stock edits preserve pool membership.
 
+Ring previews import the native `Ring.xml` `Enhance.*` fields in the same stat
+order as the roster (Sight is absent and therefore zero), and resolve `EquipSids`
+through the pinned `Skill.xml` name/help keys. All 483 playable definitions have
+stat bonuses; 28 S-rank definitions carry a skill, including the three Heroes
+bonus rings. Skill names and descriptions use all nine game-text languages.
+These are read-only equipment effects, not edits to personal stats or inheritance.
+
 The S-ring fill and meld operations can resize the ordinary ring pool. Native
 `SingletonPool.OnDeserialize` at `0x3207330` reconstructs its free-ID queue from
 unused IDs 1 through capacity; it does not save a next-ID counter in the header.

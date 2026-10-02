@@ -208,6 +208,7 @@ public partial class MainWindow
             ? Save!.MaximumBondRingStock(ring.InstanceId) : 99;
         BondRingStockInput.Text = ring?.StockCount.ToString() ?? "";
         RefreshBondRingOwner(ring);
+        RefreshBondRingEffects(ring);
     }
 
     private bool HasPendingEmblemValues()
@@ -261,6 +262,7 @@ public partial class MainWindow
         RefreshEmblemRecords(preserveEditor: true);
         RefreshMissingEmblems();
         RefreshBondRingOwner(_emblemPage == EmblemPage.BondRings ? SelectedBondRing : null);
+        RefreshBondRingEffects(_emblemPage == EmblemPage.BondRings ? SelectedBondRing : null);
     }
 
     private void RefreshMissingEmblems()

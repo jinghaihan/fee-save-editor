@@ -23,6 +23,13 @@
   </Window.Styles>
   <Window.Resources>
     <ItemsPanelTemplate x:Key="EngravingEffectsPanel"><UniformGrid Columns="3" /></ItemsPanelTemplate>
+    <ItemsPanelTemplate x:Key="BondRingEffectsPanel"><UniformGrid Columns="2" /></ItemsPanelTemplate>
+    <DataTemplate x:Key="BondRingSkillTemplate" DataType="x:Object" x:CompileBindings="False">
+      <StackPanel Spacing="8" Margin="0,0,0,8">
+        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextWrapping="Wrap" />
+        <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
+      </StackPanel>
+    </DataTemplate>
     <DataTemplate x:Key="EngravingEffectTemplate" DataType="x:Object" x:CompileBindings="False">
       <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8" Margin="0,0,12,4">
         <TextBlock Text="{Binding Label}" TextWrapping="Wrap" />
@@ -560,6 +567,15 @@
               <StackPanel Name="BondRingMeldForm" Spacing="8" IsVisible="False">
                 <TextBlock Name="BondRingMeldCost" TextWrapping="Wrap" />
                 <Button Name="MeldBondRingButton" HorizontalAlignment="Stretch" Click="MeldBondRing_Click" IsEnabled="False" />
+              </StackPanel>
+              <StackPanel Name="BondRingEffects" Spacing="12" IsVisible="False">
+                <TextBlock Text="{DynamicResource Stats}" FontWeight="SemiBold" />
+                <ItemsControl Name="BondRingStatBonuses" ItemsPanel="{StaticResource BondRingEffectsPanel}"
+                              ItemTemplate="{StaticResource EngravingEffectTemplate}" />
+                <StackPanel Name="BondRingSkillEffects" Spacing="8" IsVisible="False">
+                  <TextBlock Text="{DynamicResource Skills}" FontWeight="SemiBold" />
+                  <ItemsControl Name="BondRingSkills" ItemTemplate="{StaticResource BondRingSkillTemplate}" />
+                </StackPanel>
               </StackPanel>
             </StackPanel>
           </ScrollViewer>

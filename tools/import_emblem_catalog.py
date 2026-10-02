@@ -6,7 +6,7 @@ import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from import_roster_catalog import TEXT_REVISION, VANILLA_REVISION, fetch, load_texts
+from import_roster_catalog import STATS, TEXT_REVISION, VANILLA_REVISION, fetch, load_texts
 
 DLC = {
     "GID_エーデルガルト": "MGID_Edelgard", "GID_チキ": "MGID_Tiki",
@@ -20,16 +20,25 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    texts = load_texts(("Person", "BondsRing", "Patch0", "Patch1", "Patch2", "Patch3"))
+    texts = load_texts(("Person", "BondsRing", "Skill", "Patch0", "Patch1", "Patch2", "Patch3"))
 
     def names(key: str) -> dict:
-        result = {language: values[key] for language, values in texts.items()}
+        result = {language: values[key].replace(r"\n", "\n") for language, values in texts.items()}
         if any(not value.strip() for value in result.values()):
             raise ValueError(f"Empty translation: {key}")
         return result
 
     god = ET.fromstring(fetch("laqieer/FE17-DOC", VANILLA_REVISION, "fe_assets_gamedata/God.xml"))
     rings = ET.fromstring(fetch("laqieer/FE17-DOC", VANILLA_REVISION, "fe_assets_gamedata/Ring.xml"))
+    skills = ET.fromstring(fetch("laqieer/FE17-DOC", VANILLA_REVISION, "fe_assets_gamedata/Skill.xml"))
+    skill_rows = {row.get("Sid"): row for row in skills.findall("./Sheet/Data/Param")}
+
+    def ring_skills(row: ET.Element) -> list[dict]:
+        result = []
+        for sid in filter(None, row.get("EquipSids", "").split(";")):
+            skill = skill_rows[sid]
+            result.append({"Id": sid, "Names": names(skill.get("Name")), "Descriptions": names(skill.get("Help"))})
+        return result
     rows = god.find("./Sheet[@Name='神将']/Data").findall("Param")
     playable = {"GID_" + name for name in ("マルス", "シグルド", "セリカ", "ミカヤ", "ロイ", "リーフ",
                 "ルキナ", "リン", "アイク", "ベレト", "カムイ", "エイリーク", "リュール")}
@@ -40,7 +49,8 @@ def main() -> None:
                    for gid, key in DLC.items())
     ring_rows = rings.findall("./Sheet/Data/Param")
     ring_data = [{"Id": row.get("Rnid"), "Names": names(row.get("Name")), "EmblemId": row.get("Gid"),
-                  "Rank": int(row.get("Rank")), "SingleRank": row.get("IsSingleRank").lower() == "true"}
+                  "Rank": int(row.get("Rank")), "SingleRank": row.get("IsSingleRank").lower() == "true",
+                  "StatBonuses": [int(row.get("Enhance." + stat, "0")) for stat in STATS], "Skills": ring_skills(row)}
                  for row in ring_rows if row.get("Rnid") and all(row.get("Name") in values for values in texts.values())]
     levels = god.find("./Sheet[@Name='絆レベル']/Data").findall("Param")
     thresholds = [int(row.get("Exp")) for row in levels if 1 <= int(row.get("Level")) <= 20]

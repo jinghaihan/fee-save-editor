@@ -8,7 +8,14 @@ public sealed record EmblemDefinition(string Id, IReadOnlyDictionary<string, str
     public string Name(string language) => Names.GetValueOrDefault(language) ?? Names["en"];
 }
 
-public sealed record BondRingDefinition(string Id, IReadOnlyDictionary<string, string> Names, string EmblemId, int Rank, bool SingleRank)
+public sealed record BondRingSkill(string Id, IReadOnlyDictionary<string, string> Names, IReadOnlyDictionary<string, string> Descriptions)
+{
+    public string Name(string language) => Names.GetValueOrDefault(language) ?? Names["en"];
+    public string Description(string language) => Descriptions.GetValueOrDefault(language) ?? Descriptions["en"];
+}
+
+public sealed record BondRingDefinition(string Id, IReadOnlyDictionary<string, string> Names, string EmblemId, int Rank, bool SingleRank,
+    IReadOnlyList<int> StatBonuses, IReadOnlyList<BondRingSkill> Skills)
 {
     public uint Hash => ItemCatalog.Hash(Id);
     public int MaxStock => 99;
@@ -66,10 +73,18 @@ public static class EmblemCatalog
             || data.BondExperience.Zip(data.BondExperience.Skip(1)).Any(pair => pair.First >= pair.Second)
             || data.Emblems.Any(row => !ValidNames(row.Names))
             || data.Rings.Any(row => row.Rank is < 0 or > 3 || !ValidNames(row.Names)
+                || row.StatBonuses is null || row.StatBonuses.Count != Enum.GetValues<RosterStat>().Length
+                || row.StatBonuses.Any(value => value < 0) || row.Skills is null
+                || row.Skills.Any(skill => string.IsNullOrWhiteSpace(skill.Id) || !ValidNames(skill.Names) || !ValidNames(skill.Descriptions))
                 || !row.Id.StartsWith("RNID_", StringComparison.Ordinal) || !row.Id.EndsWith("_" + row.RankName, StringComparison.Ordinal)))
             throw new InvalidDataException("The Emblem catalog has invalid names or limits.");
         return new(data.Emblems.Select(row => row with { Names = Freeze(row.Names) }).ToArray(),
-            data.Rings.Select(row => row with { Names = Freeze(row.Names) }).ToArray(), data.BondExperience);
+            data.Rings.Select(row => row with
+            {
+                Names = Freeze(row.Names), StatBonuses = Array.AsReadOnly(row.StatBonuses.ToArray()),
+                Skills = Array.AsReadOnly(row.Skills.Select(skill => skill with
+                { Names = Freeze(skill.Names), Descriptions = Freeze(skill.Descriptions) }).ToArray())
+            }).ToArray(), data.BondExperience);
     }
 
     private static bool ValidNames(IReadOnlyDictionary<string, string> names) => LanguageCatalog.Codes

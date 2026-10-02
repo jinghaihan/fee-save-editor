@@ -137,6 +137,7 @@ try
     EmblemGuiTests.Run(window, temporary);
     EmblemCreationTests.Run(window, temporary);
     BondRingGuiTests.Run(window, temporary);
+    BondRingEffectsTests.Run(window, temporary);
     EmblemNavigationTests.Run(window, temporary);
     SupportTests.Run();
     SupportGuiTests.Run(window, temporary);

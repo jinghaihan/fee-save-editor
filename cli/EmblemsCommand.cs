@@ -15,6 +15,9 @@ internal static class EmblemsCommand
                 Emblems = EmblemCatalog.Emblems.Select(row => new { row.Id, Name = row.Name(language), row.Dlc,
                     CanAdd = EmblemCreationCatalog.Emblems.Any(candidate => candidate.Id == row.Id) }),
                 Rings = EmblemCatalog.Rings.Select(row => new { row.Id, Name = row.Name(language), Rank = row.RankName, row.MaxStock,
+                    StatBonuses = row.StatBonuses.Select((value, index) => new { Stat = ((RosterStat)index).ToString(), Value = value })
+                        .Where(bonus => bonus.Value != 0),
+                    Skills = row.Skills.Select(skill => new { skill.Id, Name = skill.Name(language), Description = skill.Description(language) }),
                     Melding = BondRingCatalog.Melding(row.Hash) is { } meld
                         ? new { ResultId = meld.Result.Id, ResultRank = meld.Result.RankName, meld.RequiredRings, meld.BondFragments } : null })
             });
