@@ -95,6 +95,7 @@ try
     EmblemTests.Run();
     BondRingTests.Run();
     EmblemGuiTests.Run(window, temporary);
+    BondRingGuiTests.Run(window, temporary);
     SupportTests.Run();
     SupportGuiTests.Run(window, temporary);
     EngravingTests.Run();
@@ -151,10 +152,18 @@ try
         }
         else if (captureOptions is ["--page", "support"])
             window.ShowSupports();
-        else if (captureOptions is ["--page", "emblems"] or ["--page", "rings"])
+        else if (captureOptions is ["--page", "emblems"] or ["--page", "rings"] or ["--page", "ring-meld"])
         {
             window.ShowEmblems();
-            window.FindControl<TabStrip>("EmblemTabs")!.SelectedIndex = captureOptions[1] == "rings" ? 1 : 0;
+            window.FindControl<TabStrip>("EmblemTabs")!.SelectedIndex = captureOptions[1] == "emblems" ? 0 : 1;
+            if (captureOptions[1] == "ring-meld")
+            {
+                var rings = window.Save!.ReadBondRings();
+                var list = window.FindControl<ListBox>("EmblemRecordList")!;
+                list.SelectedItem = list.Items.Cast<MainWindow.EmblemRow>().First(row =>
+                    rings.Any(ring => ring.InstanceId.ToString() == row.Key
+                        && !ring.OwnerIndex.HasValue && BondRingCatalog.Melding(ring.RingHash) is not null));
+            }
         }
         else if (captureOptions is ["--page", var page] && page.StartsWith("roster", StringComparison.Ordinal))
         {

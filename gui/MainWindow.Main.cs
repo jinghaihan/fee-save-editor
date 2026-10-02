@@ -15,11 +15,7 @@ public partial class MainWindow
             return false;
         try
         {
-            var values = new MainValues(Amount(MoneyInput), Amount(BondFragmentsInput),
-                Amount(IronIngotsInput), Amount(SteelIngotsInput), Amount(SilverIngotsInput),
-                (Difficulty)DifficultyInput.SelectedIndex, (GameMode)ModeInput.SelectedIndex,
-                SommieNameInput.Text ?? "");
-            Save = Save.WithMainValues(values);
+            Save = Save.WithMainValues(ReadMainInputs());
             RefreshOverview();
             RefreshSections();
             Message.IsVisible = false;
@@ -31,6 +27,10 @@ public partial class MainWindow
             return false;
         }
     }
+
+    private MainValues ReadMainInputs() => new(Amount(MoneyInput), Amount(BondFragmentsInput),
+        Amount(IronIngotsInput), Amount(SteelIngotsInput), Amount(SilverIngotsInput),
+        (Difficulty)DifficultyInput.SelectedIndex, (GameMode)ModeInput.SelectedIndex, SommieNameInput.Text ?? "");
 
     private static int Amount(NumericUpDown input)
     {

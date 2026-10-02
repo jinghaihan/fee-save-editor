@@ -342,6 +342,7 @@
           </ListBox>
           <StackPanel Grid.Row="4" Spacing="16">
             <Button Name="MaxAllEmblemBondsButton" Content="{DynamicResource MaxAllBonds}" HorizontalAlignment="Stretch" Click="MaxAllEmblemBonds_Click" IsEnabled="False" />
+            <Button Name="FillSBondRingsButton" Content="{DynamicResource FillSBondRings}" HorizontalAlignment="Stretch" Click="FillSBondRings_Click" IsEnabled="False" IsVisible="False" />
             <TextBlock Name="EmblemListAvailability" IsVisible="False" />
           </StackPanel>
         </Grid>
@@ -376,6 +377,10 @@
                   <TextBlock Name="BondRingOwnerValue" Text="{DynamicResource None}" TextWrapping="Wrap" />
                 </StackPanel>
                 <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyEmblem_Click" />
+                <StackPanel Name="BondRingMeldForm" Spacing="8" IsVisible="False">
+                  <TextBlock Name="BondRingMeldCost" TextWrapping="Wrap" />
+                  <Button Name="MeldBondRingButton" HorizontalAlignment="Stretch" Click="MeldBondRing_Click" IsEnabled="False" />
+                </StackPanel>
               </StackPanel>
             </StackPanel>
           </ScrollViewer>

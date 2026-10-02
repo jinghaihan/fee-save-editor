@@ -100,7 +100,16 @@ public partial class MainWindow
         var emblem = _emblemTab == 0 ? SelectedEmblem : null;
         MaxAllEmblemBondsButton.IsVisible = _emblemTab == 0;
         MaxAllEmblemBondsButton.IsEnabled = emblem is not null && EmblemCatalog.Emblem(emblem.EmblemId) is not null;
+        FillSBondRingsButton.IsVisible = _emblemTab == 1;
+        FillSBondRingsButton.IsEnabled = CanEditBondRings;
         EmblemCompletion.Text = "";
+        if (_emblemTab == 1 && CanEditBondRings && Save is not null)
+        {
+            var owned = Save.ReadBondRings().Where(ring => ring.StockCount > 0).Select(ring => ring.RingHash).ToHashSet();
+            int complete = BondRingCatalog.SRings.Count(ring => owned.Contains(ring.Hash));
+            EmblemCompletion.Text = $"S: {complete}/{BondRingCatalog.SRings.Count}";
+            FillSBondRingsButton.IsEnabled = complete < BondRingCatalog.SRings.Count;
+        }
         if (emblem is not null)
         {
             var knownBonds = emblem.Bonds.Where(bond => RosterCatalog.Person(ItemCatalog.Hash(bond.PersonId)) is not null).ToArray();
@@ -130,6 +139,7 @@ public partial class MainWindow
             LoadEmblemEditor();
         }
         _refreshingEmblems = false;
+        RefreshBondRingMeld();
     }
 
     private void LoadEmblemEditor()
@@ -209,6 +219,62 @@ public partial class MainWindow
     {
         var owner = ring?.OwnerIndex is int index ? Save!.ReadRoster().First(row => row.Index == index) : null;
         BondRingOwnerValue.Text = owner is null ? UiLanguage.Get("None") : owner.Progress.CustomName ?? CharacterName(owner);
+    }
+
+    private void RefreshBondRingMeld()
+    {
+        if (MeldBondRingButton is null) return;
+        var ring = _emblemTab == 1 ? SelectedBondRing : null;
+        var meld = ring is not null ? BondRingCatalog.Melding(ring.RingHash) : null;
+        BondRingMeldForm.IsVisible = meld is not null;
+        MeldBondRingButton.IsEnabled = false;
+        if (meld is null || ring is null || Save is null) return;
+        MeldBondRingButton.Content = string.Format(UiLanguage.Get("MeldBondRing"), meld.Result.RankName);
+        BondRingMeldCost.Text = string.Format(System.Globalization.CultureInfo.InvariantCulture,
+            UiLanguage.Get("BondRingMeldCost"), meld.RequiredRings, meld.Source.RankName, meld.BondFragments);
+        if (ring.OwnerIndex.HasValue || !CanEditMain
+            || !int.TryParse(BondRingStockInput.Text, out int stock) || stock is < 0 or > 99
+            || !int.TryParse(BondFragmentsInput.Text, out int fragments) || fragments < meld.BondFragments) return;
+        var rings = Save.ReadBondRings();
+        int materials = stock + rings.Where(row => row.InstanceId != ring.InstanceId
+            && row.RingHash == ring.RingHash && !row.OwnerIndex.HasValue).Sum(row => row.StockCount);
+        MeldBondRingButton.IsEnabled = materials >= meld.RequiredRings
+            && rings.Where(row => row.RingHash == meld.Result.Hash).Sum(row => row.StockCount) < meld.Result.MaxStock;
+    }
+
+    private void FillSBondRings_Click(object? sender, RoutedEventArgs e) => ManageBondRings(meld: false);
+    private void MeldBondRing_Click(object? sender, RoutedEventArgs e) => ManageBondRings(meld: true);
+
+    public bool ManageBondRings(bool meld)
+    {
+        if (Save is null || !CanEditBondRings || _emblemTab != 1) return false;
+        try
+        {
+            var edited = Save;
+            var selected = SelectedBondRing;
+            if (selected is not null && HasPendingEmblemValues())
+                edited = edited.WithBondRingStock(selected.InstanceId, Amount(BondRingStockInput));
+            if (meld)
+            {
+                if (selected is null) throw new ArgumentException("Select an existing bond ring.");
+                edited = edited.WithMainValues(ReadMainInputs()).WithMeldedBondRing(selected.InstanceId);
+                var result = BondRingCatalog.Melding(selected.RingHash)!.Result;
+                _selectedEmblemRecord = edited.ReadBondRings().First(ring => ring.RingHash == result.Hash && !ring.OwnerIndex.HasValue).InstanceId.ToString();
+            }
+            else edited = edited.WithMissingSBondRings();
+            Save = edited;
+            if (meld) BondFragmentsInput.Value = edited.ReadMainValues().BondFragments;
+            RefreshOverview();
+            RefreshSections();
+            Message.IsVisible = false;
+            RefreshEmblemRecords(preserveEditor: false);
+            return true;
+        }
+        catch (Exception error) when (IsFileError(error))
+        {
+            ShowMessage("EditFailed", error.Message);
+            return false;
+        }
     }
 
     private void EmblemChoice_Changed(object? sender, SelectionChangedEventArgs e)

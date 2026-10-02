@@ -49,8 +49,11 @@ are still under development.
   only the existing Pact partner can reach level 21. Purchased inherited skills,
   equipment and unrelated relationships are preserved. Inspect common bond rings
   and edit stock from 0–99; equipped ring instances remain at one. Unknown rings
-  remain visible and unchanged. Equipment reassignment and adding/deleting ring
-  records are not yet supported.
+  remain visible and unchanged. Fill Missing S Rings adds one missing copy of each
+  of the 123 S-rank rings, without duplicating owned/equipped rings. Meld same-rank
+  unequipped duplicates to the next rank with the game's material/fragment costs
+  shown beside the action. Equipped rings and Emblem equipment links are preserved;
+  equipment reassignment and arbitrary ring deletion are not offered.
 - Sommie application icon.
 - Support panel: search the 231 base-game/DLC character pairings and edit their
   unlocked rank and saved points using vertically linked controls. Rank choices

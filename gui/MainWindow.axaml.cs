@@ -22,6 +22,11 @@ public partial class MainWindow : Window
         {
             if (change.Property == NumericUpDown.TextProperty) UpdateSupportRank();
         };
+        foreach (var input in new[] { BondRingStockInput, BondFragmentsInput })
+            input.PropertyChanged += (_, change) =>
+            {
+                if (change.Property == NumericUpDown.TextProperty && !_refreshingEmblems) RefreshBondRingMeld();
+            };
         MoneyInput.Maximum = MainLimits.MaxMoney;
         BondFragmentsInput.Maximum = MainLimits.MaxBondFragments;
         IronIngotsInput.Maximum = SteelIngotsInput.Maximum = SilverIngotsInput.Maximum = MainLimits.MaxIngots;
@@ -37,6 +42,7 @@ public partial class MainWindow : Window
             // Validate first. An invalid file must not replace the loaded save.
             var save = EngageSave.Load(path);
             Save = save;
+            CanEditEmblems = CanEditBondRings = false;
             _path = Path.GetFullPath(path);
             SectionSearch.Clear();
             RefreshOverview();
