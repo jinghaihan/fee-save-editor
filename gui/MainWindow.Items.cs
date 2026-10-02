@@ -20,6 +20,7 @@ public partial class MainWindow
         ItemsPanel.IsVisible = true;
         RosterPanel.IsVisible = false;
         EmblemsPanel.IsVisible = false;
+        SupportsPanel.IsVisible = false;
         ApplyMainButton.IsVisible = false;
         MainNavigation.SelectedIndex = 1;
         RefreshPageTitle();

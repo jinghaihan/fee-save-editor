@@ -18,6 +18,10 @@ public partial class MainWindow : Window
         {
             if (change.Property == NumericUpDown.TextProperty) UpdateEmblemBondLevel();
         };
+        SupportPointsInput.PropertyChanged += (_, change) =>
+        {
+            if (change.Property == NumericUpDown.TextProperty) UpdateSupportRank();
+        };
         MoneyInput.Maximum = MainLimits.MaxMoney;
         BondFragmentsInput.Maximum = MainLimits.MaxBondFragments;
         IronIngotsInput.Maximum = SteelIngotsInput.Maximum = SilverIngotsInput.Maximum = MainLimits.MaxIngots;
@@ -43,6 +47,7 @@ public partial class MainWindow : Window
             LoadInventory();
             LoadRoster();
             LoadEmblems();
+            LoadSupports();
             return true;
         }
         catch (Exception error) when (IsFileError(error))
@@ -66,6 +71,8 @@ public partial class MainWindow : Window
                 return false;
             if (HasPendingEmblemValues() && !ApplyEmblemValues())
                 return false;
+            if (HasPendingSupportValues() && !ApplySupportValues())
+                return false;
             Save.WriteCopy(path);
             ShowMessage("CopySaved", Path.GetFullPath(path));
             return true;
@@ -84,6 +91,7 @@ public partial class MainWindow : Window
         RefreshInventoryLanguage();
         RefreshRosterLanguage();
         RefreshEmblemLanguage();
+        RefreshSupportLanguage();
         RefreshOverview();
         RefreshPageTitle();
         Message.IsVisible = false;
@@ -187,7 +195,7 @@ public partial class MainWindow : Window
     private void Inspector_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: true);
     private void Navigation_Changed(object? sender, SelectionChangedEventArgs e)
     {
-        if (MainPanel is null || ItemsPanel is null || RosterPanel is null || EmblemsPanel is null)
+        if (MainPanel is null || ItemsPanel is null || RosterPanel is null || EmblemsPanel is null || SupportsPanel is null)
             return;
         switch (MainNavigation.SelectedIndex)
         {
@@ -202,6 +210,9 @@ public partial class MainWindow : Window
                 break;
             case 3 when !EmblemsPanel.IsVisible:
                 ShowEmblems();
+                break;
+            case 4 when !SupportsPanel.IsVisible:
+                ShowSupports();
                 break;
         }
     }

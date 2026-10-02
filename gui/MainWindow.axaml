@@ -31,6 +31,7 @@
           <TabStripItem Content="{DynamicResource Items}" />
           <TabStripItem Content="{DynamicResource Roster}" />
           <TabStripItem Content="{DynamicResource Emblems}" />
+          <TabStripItem Content="{DynamicResource Support}" />
         </TabStrip>
       </Grid>
     </Grid>
@@ -358,6 +359,40 @@
             </StackPanel>
           </ScrollViewer>
         </Grid>
+      </suki:GlassCard>
+    </Grid>
+    <Grid Name="SupportsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+      <suki:GlassCard Padding="20">
+        <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="16">
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <TextBlock Text="{DynamicResource SupportList}" FontWeight="SemiBold" />
+            <TextBlock Name="SupportCompletion" Grid.Column="1" />
+          </Grid>
+          <TextBox Name="SupportSearch" Grid.Row="1" PlaceholderText="{DynamicResource Search}" TextChanged="SupportSearch_Changed" />
+          <ListBox Name="SupportList" Grid.Row="2" SelectionChanged="SupportList_Changed">
+            <ListBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" TextWrapping="Wrap" /></DataTemplate></ListBox.ItemTemplate>
+          </ListBox>
+          <Button Name="MaxAllSupportsButton" Grid.Row="3" Content="{DynamicResource MaxAllSupports}" HorizontalAlignment="Stretch" Click="MaxAllSupports_Click" IsEnabled="False" />
+        </Grid>
+      </suki:GlassCard>
+      <suki:GlassCard Grid.Column="1" Padding="20">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+          <StackPanel Name="SupportForm" Spacing="16" Width="340" HorizontalAlignment="Left" IsEnabled="False">
+            <TextBlock Text="{DynamicResource SupportEditor}" FontWeight="SemiBold" />
+            <StackPanel Spacing="8">
+              <TextBlock Text="{DynamicResource Rank}" />
+              <ComboBox Name="SupportRankInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="SupportRank_Changed">
+                <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
+              </ComboBox>
+            </StackPanel>
+            <StackPanel Spacing="8">
+              <TextBlock Text="{DynamicResource Points}" />
+              <NumericUpDown Name="SupportPointsInput" Minimum="0" Maximum="99" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+            </StackPanel>
+            <Button Name="MaxSupportButton" Content="{DynamicResource MaxSupport}" HorizontalAlignment="Stretch" Click="MaxSupport_Click" />
+            <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplySupport_Click" />
+          </StackPanel>
+        </ScrollViewer>
       </suki:GlassCard>
     </Grid>
     <Grid Name="InspectorPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="260,*" ColumnSpacing="16">

@@ -23,6 +23,7 @@ public partial class MainWindow
     public void ShowRoster()
     {
         MainPanel.IsVisible = ItemsPanel.IsVisible = InspectorPanel.IsVisible = EmblemsPanel.IsVisible = false;
+        SupportsPanel.IsVisible = false;
         RosterPanel.IsVisible = true;
         ApplyMainButton.IsVisible = false;
         MainNavigation.SelectedIndex = 2;

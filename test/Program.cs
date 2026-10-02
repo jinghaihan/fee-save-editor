@@ -30,6 +30,9 @@ Check(window.FindControl<Grid>("ItemsPanel")!.IsVisible && !window.FindControl<S
 window.ShowEmblems();
 Check(window.FindControl<Grid>("EmblemsPanel")!.IsVisible && !window.FindControl<StackPanel>("EmblemBondForm")!.IsEnabled,
     "Emblem controls must be visible but disabled before a save is loaded.");
+window.ShowSupports();
+Check(window.FindControl<Grid>("SupportsPanel")!.IsVisible && !window.FindControl<StackPanel>("SupportForm")!.IsEnabled,
+    "Support controls must be visible but disabled before a save is loaded.");
 window.FindControl<TabStrip>("MainNavigation")!.SelectedIndex = 0;
 Check(window.FindControl<Grid>("MainPanel")!.IsVisible, "The native tab strip did not switch pages.");
 
@@ -92,6 +95,7 @@ try
     EmblemTests.Run();
     EmblemGuiTests.Run(window, temporary);
     SupportTests.Run();
+    SupportGuiTests.Run(window, temporary);
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -132,6 +136,8 @@ try
         window.SetLanguage("en");
         if (captureOptions is ["--page", "items"])
             window.ShowItems();
+        else if (captureOptions is ["--page", "support"])
+            window.ShowSupports();
         else if (captureOptions is ["--page", "emblems"] or ["--page", "rings"])
         {
             window.ShowEmblems();

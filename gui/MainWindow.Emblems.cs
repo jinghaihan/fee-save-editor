@@ -18,10 +18,17 @@ public partial class MainWindow
 
     public void ShowEmblems()
     {
+        if (HasPendingSupportValues() && !ApplySupportValues())
+        {
+            MainNavigation.SelectedIndex = 4;
+            return;
+        }
         MainPanel.IsVisible = ItemsPanel.IsVisible = RosterPanel.IsVisible = InspectorPanel.IsVisible = false;
+        SupportsPanel.IsVisible = false;
         EmblemsPanel.IsVisible = true;
         ApplyMainButton.IsVisible = false;
         MainNavigation.SelectedIndex = 3;
+        RefreshSupportRecords(preserveEditor: false);
         RefreshPageTitle();
     }
 
@@ -181,6 +188,7 @@ public partial class MainWindow
             RefreshSections();
             Message.IsVisible = false;
             RefreshEmblemRecords(preserveEditor: false);
+            RefreshSupportRecords(preserveEditor: false);
             return true;
         }
         catch (Exception error) when (IsFileError(error))
@@ -268,6 +276,7 @@ public partial class MainWindow
             RefreshSections();
             Message.IsVisible = false;
             RefreshEmblemRecords(preserveEditor: false);
+            RefreshSupportRecords(preserveEditor: false);
             return true;
         }
         catch (Exception error) when (IsFileError(error))

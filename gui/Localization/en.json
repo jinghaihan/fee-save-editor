@@ -124,5 +124,14 @@
   "Amount": "Amount",
   "EquippedBy": "Equipped By",
   "UnknownRing": "Unknown ring",
-  "EmblemsUnavailable": "Could not read Emblems:"
+  "EmblemsUnavailable": "Could not read Emblems:",
+  "Support": "Support",
+  "SupportList": "Support List",
+  "SupportEditor": "Support Editor",
+  "Rank": "Rank",
+  "Points": "Points",
+  "MaxSupport": "Max Support",
+  "MaxAllSupports": "Max All Supports",
+  "SelectSupport": "Select a support pair.",
+  "SupportsUnavailable": "Could not read supports:"
 }

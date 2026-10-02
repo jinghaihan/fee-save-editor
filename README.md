@@ -1,7 +1,7 @@
 # Fire Emblem Engage Save Editor
 
 A desktop save editor and CLI for Fire Emblem Engage, under development.
-There is no release yet. Main, Items and Roster are editable; other gameplay panels
+There is no release yet. Main, Items, Roster, Emblems and Support are editable; other gameplay panels
 are still under development.
 
 ## Features
@@ -49,6 +49,14 @@ are still under development.
   remain visible and unchanged. Equipment reassignment and adding/deleting ring
   records are not yet supported.
 - Sommie application icon.
+- Support panel: search the 231 base-game/DLC character pairings and edit their
+  unlocked rank and saved points using vertically linked controls. Rank choices
+  map to each pair's game-data thresholds; changing points selects the corresponding
+  ordinary rank. Existing saved ranks are not inferred or downgraded on load, even
+  when their points are below a threshold. Maximize one pair or all existing known
+  pairs independently of search filters. Preserve an existing Pact partner's A+
+  rank without creating or replacing the partner. Alear support-rank changes also
+  synchronize existing Alear Emblem bonds. Unknown pairs remain visible and unchanged.
 - English UI by default, with live switching to Simplified Chinese, including
   character, class, skill and item names. The character catalog includes all 41 playable
   characters, including DLC. Names fall back to English, or a visible hash for
@@ -111,6 +119,17 @@ equipment ownership. Both accept `--language en|zh-Hans`.
 for that Emblem. Alear edits synchronize existing character supports and cannot
 invent or replace a Pact partner. `emblems ring-set` accepts `--instance` and
 `--amount` with ownership-aware limits. Every command writes a new file.
+
+`supports catalog` lists the legal base/DLC pairs and their C/B/A point thresholds.
+`supports list <save> --json` includes the saved rank, points, map score and legal
+maximum for each pair; both commands accept `--language en|zh-Hans`.
+Use `supports set <save> <new-file> --pair <key> --rank C|B|A|A+|None`
+to choose a rank, or `--points <value>` to map points to an ordinary rank.
+Providing both edits the two saved fields explicitly, within the game's rank-specific
+point limit. `supports max <save> <new-file> --pair <key>` maximizes one pair;
+`--all` maximizes every existing verified pair. Already-maxed pairs keep their
+saved points. Pact partners cannot be invented, replaced or downgraded. No command
+adds missing relationships or edits the separate global conversation gallery.
 
 The container reader has been checked against game-format version 9 saves.
 Main, convoy and roster edits have been checked through serialization and exact restoration on
