@@ -21,8 +21,10 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli main set <save> <new-file> [options]
           FeeEditor.Cli items catalog [--json]
           FeeEditor.Cli items list <save> [--json]
-          FeeEditor.Cli items set <save> <new-file> --slot <index> [--item <IID>] [--uses <value>] [--refine <level>]
-          FeeEditor.Cli items add <save> <new-file> --item <IID> [--uses <value>] [--refine <level>]
+          FeeEditor.Cli items engravings [--json]
+          FeeEditor.Cli items set <save> <new-file> --slot <index> [--item <IID>] [--uses <value>] [--refine <level>] [--engraving <GID|none>]
+          FeeEditor.Cli items add <save> <new-file> --item <IID> [--uses <value>] [--refine <level>] [--engraving <GID|none>]
+          FeeEditor.Cli items engrave <save> <new-file> --slot <index> --engraving <GID|none>
           FeeEditor.Cli items delete <save> <new-file> --slot <index>
           FeeEditor.Cli items restore <save> <new-file> --all|--slot <index>
           FeeEditor.Cli roster list <save> [--json] [--language en|zh-Hans]
@@ -32,7 +34,8 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli roster stat <save> <new-file> --character <index> --stat <name> --value <value>
           FeeEditor.Cli roster personal-stat <save> <new-file> --character <index> --stat <name> --value <value>
           FeeEditor.Cli roster stats-max <save> <new-file> --all|--character <index>
-          FeeEditor.Cli roster item-set <save> <new-file> --character <index> --slot <index> [--item <IID>] [--uses <value>] [--refine <level>]
+          FeeEditor.Cli roster item-set <save> <new-file> --character <index> --slot <index> [--item <IID>] [--uses <value>] [--refine <level>] [--engraving <GID|none>]
+          FeeEditor.Cli roster item-engrave <save> <new-file> --character <index> --slot <index> --engraving <GID|none>
           FeeEditor.Cli roster item-delete <save> <new-file> --character <index> --slot <index>
           FeeEditor.Cli roster restore <save> <new-file> --character <index>
           FeeEditor.Cli roster condition <save> <new-file> --character <index> [--internal-level <value>] [--hp <value>]

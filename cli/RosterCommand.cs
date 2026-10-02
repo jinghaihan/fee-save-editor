@@ -41,7 +41,9 @@ internal static class RosterCommand
                     slot.Slot, Id = ItemCatalog.Find(slot.Item?.ItemHash ?? 0)?.Id,
                     Name = slot.Item is null ? null : ItemCatalog.Find(slot.Item.ItemHash)?.Name(language)
                         ?? RosterCatalog.Item(slot.Item.ItemHash)?.Name(language) ?? $"Unknown item (0x{slot.Item.ItemHash:X8})",
-                    slot.Item
+                    slot.Item,
+                    EngravingId = slot.Item?.EngravingHash is uint hash ? EngravingCatalog.Find(hash)?.Id : null,
+                    Engraving = slot.Item?.EngravingHash is uint engraving ? EngravingCatalog.Find(engraving)?.Name(language) ?? $"0x{engraving:X8}" : null
                 })
             }), new JsonSerializerOptions { WriteIndented = true, Converters = { new JsonStringEnumConverter() } }));
             return 0;
@@ -91,7 +93,8 @@ internal static class RosterCommand
             "class-skill" => ["--character", "--unlocked"],
             "proficiencies" => ["--character", "--weapons"],
             "stat" or "personal-stat" => ["--character", "--stat", "--value"],
-            "item-set" => ["--character", "--slot", "--item", "--uses", "--refine"],
+            "item-set" => ["--character", "--slot", "--item", "--uses", "--refine", "--engraving"],
+            "item-engrave" => ["--character", "--slot", "--engraving"],
             "item-delete" => ["--character", "--slot"],
             "restore" => ["--character"],
             _ => throw new ArgumentException("Unknown roster command. Run --help for usage.")
@@ -174,6 +177,8 @@ internal static class RosterCommand
         if (verb == "restore")
             return save.RestoreRosterUses(index);
         int slot = Number(Required(values, "--slot"));
+        if (verb == "item-engrave")
+            return save.WithRosterEngraving(index, slot, ItemsCommand.EngravingId(Required(values, "--engraving")));
         if (verb == "item-delete")
             return save.DeleteRosterItem(index, slot);
         if (slot >= character.Items.Count)
@@ -194,7 +199,9 @@ internal static class RosterCommand
             uses = Number(remaining);
         if (values.TryGetValue("--refine", out string? refinement))
             refine = Number(refinement);
-        return save.WithRosterItem(index, slot, id, uses, refine);
+        return values.TryGetValue("--engraving", out string? selected)
+            ? save.WithRosterItem(index, slot, id, uses, refine, ItemsCommand.EngravingId(selected))
+            : save.WithRosterItem(index, slot, id, uses, refine);
     }
 
     private static Dictionary<string, string> Options(string[] options, string[] allowed)

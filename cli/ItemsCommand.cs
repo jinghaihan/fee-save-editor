@@ -15,6 +15,11 @@ internal static class ItemsCommand
                     item.Id, item.English, item.MaxUses, item.MaxRefine, item.UnlimitedUses
                 }));
                 return 0;
+            case ["engravings", .. var options] when options is [] or ["--json"]:
+                Print(EngravingCatalog.Engravings.Select(row => new
+                { row.Id, English = row.Name("en"), Chinese = row.Name("zh-Hans"), row.Power, row.Weight,
+                    row.Hit, row.Critical, row.Avoid, row.Secure }));
+                return 0;
             case ["list", var source, .. var options] when options is [] or ["--json"]:
                 var slots = EngageSave.Load(source).ReadInventory();
                 Print(new
@@ -29,7 +34,9 @@ internal static class ItemsCommand
                         {
                             slot.Slot, Id = definition?.Id,
                             Name = definition?.English ?? $"Unknown item (0x{item.ItemHash:X8})",
-                            item.ItemHash, item.Uses, item.RefineLevel, item.Flags, item.EngravingHash
+                            item.ItemHash, item.Uses, item.RefineLevel, item.Flags, item.EngravingHash,
+                            EngravingId = item.EngravingHash is uint hash ? EngravingCatalog.Find(hash)?.Id : null,
+                            Engraving = item.EngravingHash is uint value ? EngravingCatalog.Find(value)?.Name("en") ?? $"0x{value:X8}" : null
                         };
                     })
                 });
@@ -50,8 +57,9 @@ internal static class ItemsCommand
             return save.RestoreInventoryUses();
         string[] allowed = verb switch
         {
-            "set" => ["--slot", "--item", "--uses", "--refine"],
-            "add" => ["--item", "--uses", "--refine"],
+            "set" => ["--slot", "--item", "--uses", "--refine", "--engraving"],
+            "add" => ["--item", "--uses", "--refine", "--engraving"],
+            "engrave" => ["--slot", "--engraving"],
             "delete" or "restore" => ["--slot"],
             _ => throw new ArgumentException("Unknown items command. Run --help for usage.")
         };
@@ -60,9 +68,14 @@ internal static class ItemsCommand
         {
             int? addedUses = values.TryGetValue("--uses", out string? text) ? Number(text) : null;
             int addedRefine = values.TryGetValue("--refine", out string? level) ? Number(level) : 0;
-            return save.AddInventoryItem(Required(values, "--item"), addedUses, addedRefine);
+            var added = save.AddInventoryItem(Required(values, "--item"), addedUses, addedRefine);
+            if (!values.TryGetValue("--engraving", out string? engraving)) return added;
+            int addedSlot = save.ReadInventory().First(row => row.Item is null).Slot;
+            return added.WithInventoryEngraving(addedSlot, EngravingId(engraving));
         }
         int slot = Number(Required(values, "--slot"));
+        if (verb == "engrave")
+            return save.WithInventoryEngraving(slot, EngravingId(Required(values, "--engraving")));
         if (verb == "delete")
             return save.DeleteInventoryItem(slot);
         if (verb == "restore")
@@ -81,8 +94,12 @@ internal static class ItemsCommand
             uses = Number(usesText);
         if (values.TryGetValue("--refine", out string? refineText))
             refine = Number(refineText);
-        return save.WithInventoryItem(slot, id, uses, refine);
+        return values.TryGetValue("--engraving", out string? selected)
+            ? save.WithInventoryItem(slot, id, uses, refine, EngravingId(selected))
+            : save.WithInventoryItem(slot, id, uses, refine);
     }
+
+    internal static string? EngravingId(string value) => value.Equals("none", StringComparison.OrdinalIgnoreCase) ? null : value;
 
     private static Dictionary<string, string> Options(string[] options, string[] allowed)
     {

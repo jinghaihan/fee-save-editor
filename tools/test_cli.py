@@ -373,6 +373,8 @@ def main() -> None:
     check_emblems(command, args.save_directory, main_fixture())
     from test_supports_cli import check_supports
     check_supports(command, args.save_directory, main_fixture())
+    from test_engravings_cli import check_engravings
+    check_engravings(command, args.save_directory, main_fixture())
     print("CLI tests passed.")
 
 
