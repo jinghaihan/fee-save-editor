@@ -5,10 +5,10 @@ public enum UnitForce { Player, Enemy, Ally, Absent, Dead, Lost, Temporary }
 public sealed record RosterValue(int Level, int Experience, int SkillPoints);
 public sealed record CharacterStat(RosterStat Stat, int Value, int? Maximum);
 public sealed record RosterCharacter(int Index, UnitForce Force, uint PersonHash, uint ClassHash, RosterValue Values,
-    IReadOnlyList<CharacterStat> Stats, IReadOnlyList<InventorySlot> Items);
+    IReadOnlyList<CharacterStat> Stats, IReadOnlyList<InventorySlot> Items, RosterProgress Progress);
 
 internal sealed record CharacterLayout(RosterCharacter Character, int Start, int End, int BaseStatsOffset,
-    int LevelOffset, int[] ItemStarts, int[] ItemEnds);
+    int LevelOffset, int[] ItemStarts, int[] ItemEnds, RosterProgressLayout Progress);
 
 internal sealed class RosterLayout
 {
@@ -67,7 +67,8 @@ internal sealed class RosterLayout
                 int levelOffset = unit.Position;
                 int level = unit.Byte();
                 int experience = unit.Byte();
-                unit.Skip(1 + 4 + 4);
+                int currentHP = unit.Byte();
+                unit.Skip(4 + 4);
                 byte hasTarget = unit.Byte();
                 if (hasTarget > 1)
                     throw new InvalidDataException("Invalid optional target presence flag.");
@@ -96,13 +97,14 @@ internal sealed class RosterLayout
                     items[slot] = new InventorySlot(slot, item);
                     ends[slot] = unit.Position;
                 }
+                var progress = RosterProgressLayout.Read(unit, currentHP);
                 if (unit.Remaining < 10)
                     throw new InvalidDataException("The character trailer is truncated.");
                 var tail = new SaveReader(bytes, end - 8, end);
                 int sp = (short)tail.UInt16();
                 var character = new RosterCharacter(result.Count, (UnitForce)force, person, job,
-                    new RosterValue(level, experience, sp), CharacterStats(person, job, baseStats), Array.AsReadOnly(items));
-                result.Add(new CharacterLayout(character, start, end, baseOffset, levelOffset, starts, ends));
+                    new RosterValue(level, experience, sp), CharacterStats(person, job, baseStats), Array.AsReadOnly(items), progress.Values);
+                result.Add(new CharacterLayout(character, start, end, baseOffset, levelOffset, starts, ends, progress));
                 reader.Skip(end - reader.Position);
             }
         }

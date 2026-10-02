@@ -19,7 +19,7 @@ internal static class RosterCommand
                 Name = RosterCatalog.Person(character.PersonHash)?.Name(language) ?? $"Unknown character (0x{character.PersonHash:X8})",
                 ClassId = RosterCatalog.Class(character.ClassHash)?.Id,
                 Class = RosterCatalog.Class(character.ClassHash)?.Name(language) ?? $"Unknown class (0x{character.ClassHash:X8})",
-                character.Values, character.Stats,
+                character.Values, character.Stats, character.Progress,
                 Items = character.Items.Select(slot => new
                 {
                     slot.Slot, Id = ItemCatalog.Find(slot.Item?.ItemHash ?? 0)?.Id,

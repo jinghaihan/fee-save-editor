@@ -24,6 +24,10 @@ internal static class RosterTests
         byte[] original = Fixture();
         var save = EngageSave.Parse(original);
         var characters = save.ReadRoster();
+        Check(characters[0].Progress is { CurrentHP: 20, InternalLevel: 4, OriginalProficiencies: 2,
+            Proficiencies: 510, SelectedWeapons: 2, ClassSkill: null }
+            && characters[0].Progress.EquippedSkills.Count == 0 && characters[0].Progress.InheritedSkills.Count == 0,
+            "The character progression blocks did not decode.");
         Check(characters.Count == 2 && characters[0].Force == UnitForce.Absent && characters[0].Values == new RosterValue(5, 12, 400),
             "The independent roster fixture did not decode.");
         Check(characters[0].Items.Select(slot => slot.Item).SequenceEqual(new[] { Staff, Weapon, Unknown, null, null, null, null, null }),
@@ -260,6 +264,19 @@ internal static class RosterTests
             writer.Write((byte)item.Uses); writer.Write((byte)item.RefineLevel); writer.Write(item.Flags);
             Reference(writer, item.EngravingHash);
         }
+        writer.Write(0u);
+        for (int index = 0; index < 4; index++) Reference(writer, null);
+        writer.Write(0);
+        for (int index = 0; index < 3; index++) { writer.Write(1u); writer.Write(0); }
+        writer.Write(false);
+        writer.Write(2u); writer.Write(510u); writer.Write(2u);
+        writer.Write(6u);
+        for (int index = 0; index < 4; index++)
+        {
+            if (index == 3) writer.Write(1u);
+            writer.Write(1u); writer.Write(11u); writer.Write(new byte[44]);
+        }
+        writer.Write((sbyte)4);
         writer.Write(Enumerable.Range(1, 48).Select(value => (byte)value).ToArray());
         writer.Write((byte)1); writer.Write((byte)2); writer.Write((short)400); writer.Write(0x87654321u);
         writer.Write((sbyte)-1); writer.Write((sbyte)-1);

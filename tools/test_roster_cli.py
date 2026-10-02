@@ -32,6 +32,10 @@ def unit(person: str, job: str, has_target: bool) -> bytes:
     body += struct.pack("<IIB", 0, 2, 8)
     body += struct.pack("<IB", 5, 1) + reference("IID_リカバー") + struct.pack("<BBIH", 4, 0, 0xdeadbeef, 0xccdb)
     body += struct.pack("<IB", 5, 0) * 7
+    body += struct.pack("<I4Hi", 0, 0xccdb, 0xccdb, 0xccdb, 0xccdb, 0)
+    body += struct.pack("<II", 1, 0) * 3 + struct.pack("<BIIII", 0, 2, 510, 2, 6)
+    capability = struct.pack("<II11i", 1, 11, *([0] * 11))
+    body += capability * 3 + struct.pack("<I", 1) + capability + struct.pack("<b", 4)
     body += bytes(range(48)) + struct.pack("<BBhIbb", 1, 2, 400, 0x87654321, -1, -1)
     return struct.pack("<I", len(body) + 4) + body
 

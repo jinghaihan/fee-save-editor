@@ -219,6 +219,23 @@ byte-exact reversal and relocation. Real manual/automatic copies are tested
 without modifying the source. GUI tests include repeated live language switching
 and preservation of pending edits across tabs. In-game loading remains unverified.
 
+### Additional character progression blocks
+
+After the eight carried items, unit version 40 contains accessory-list version 0
+(four nullable references), ExtraSight, and three skill arrays: equipped, private,
+and inherited/purchased. Skill-array version 1 stores a 32-bit count followed by
+hash-reference/32-bit-age/32-bit-category entries. The inherited slots use category
+11; unrelated private entries and all existing entry metadata are preserved.
+An optional learned class-skill reference follows, then three 32-bit weapon masks
+(original proficiency, current proficiency, selected class weapons).
+
+EnhanceFactors version 6 contains three capability arrays; EnhanceCalculator
+version 1 contains another. Each capability is version 1, count 11, and eleven
+32-bit values. The next signed byte is InternalLevel. The parser checks every
+version/count and leaves subsequent AI, customization, Emblem and battle state
+untouched. This layout was checked against all characters in both supplied manual
+and automatic saves, including DLC, optional targets and equipped skills.
+
 ## Resource inputs
 
 The executable dump is useful for analyzing serialization and game logic.
