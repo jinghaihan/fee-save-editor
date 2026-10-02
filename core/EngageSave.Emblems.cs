@@ -83,6 +83,24 @@ public sealed partial class EngageSave
         return edited;
     }
 
+    public int MaximumBondRingStock(uint instanceId)
+    {
+        var rings = ReadBondRings();
+        var ring = rings.FirstOrDefault(row => row.InstanceId == instanceId)
+            ?? throw new ArgumentException("Select an existing bond ring instance.");
+        return MaximumBondRingStock(ring, rings);
+    }
+
+    private static int MaximumBondRingStock(BondRing ring, IEnumerable<BondRing> rings)
+    {
+        var definition = EmblemCatalog.Ring(ring.RingHash)
+            ?? throw new ArgumentException("Unknown bond ring limits cannot be guessed.");
+        if (ring.OwnerIndex.HasValue) return 1;
+        int otherCopies = rings.Where(row => row.RingHash == ring.RingHash && row.InstanceId != ring.InstanceId)
+            .Sum(row => row.StockCount);
+        return Math.Max(0, definition.MaxStock - otherCopies);
+    }
+
     public EngageSave WithBondRingStock(uint instanceId, int stock)
     {
         var layout = BondRingLayout.Read(this, _bytes);
@@ -96,6 +114,9 @@ public sealed partial class EngageSave
         if (stock < minimum || stock > maximum)
             throw new ArgumentOutOfRangeException(nameof(stock), $"Ring stock must be {minimum}–{maximum}.");
         if (stock == ring.StockCount) return this;
+        maximum = MaximumBondRingStock(ring, layout.Entries.Select(entry => entry.Ring));
+        if (stock > maximum)
+            throw new ArgumentOutOfRangeException(nameof(stock), $"This stack can hold at most {maximum} copies; identical rings, including equipped copies, share a {definition.MaxStock}-copy limit.");
         byte[] payload = _bytes.AsSpan(layout.Section.PayloadOffset, layout.Section.Length).ToArray();
         payload[location.StockOffset - layout.Section.PayloadOffset] = (byte)stock;
         return ReplaceSection(layout.Section, payload);

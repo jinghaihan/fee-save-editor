@@ -60,6 +60,10 @@ FeeEditor.Cli items delete Manual0 Manual0-edited --slot 0
 FeeEditor.Cli items restore Manual0 Manual0-edited --all
 FeeEditor.Cli items engravings --json
 FeeEditor.Cli items engrave Manual0 Manual0-edited --slot 0 --engraving GID_マルス
+FeeEditor.Cli items quantity-catalog --json --language en
+FeeEditor.Cli items quantities Manual0 --json --language en
+FeeEditor.Cli items quantity-set Manual0 Manual0-edited --item IID_マスタープルフ --amount 999
+FeeEditor.Cli items quantity-fill Manual0 Manual0-edited --category ReclassItems
 ```
 
 Obtain item IDs from `items catalog` and zero-based slot indices from `items list`.
@@ -67,6 +71,14 @@ Obtain item IDs from `items catalog` and zero-based slot indices from `items lis
 `restore --slot <index>` changes one item. Uses and refinement follow each item's
 limits; weapons have unlimited uses. Engravings transfer from their previous
 player-owned weapon. Omitting an engraving preserves the existing one.
+
+Quantity items use separate saved counters, not convoy slots. `quantity-catalog`
+lists all 105 IDs, categories and individual `Maximum` counts. `quantities`
+includes saved counts. Normal counters accept 0–999; iron, steel and silver
+ingots accept 0–9,999 and share their values with Main. `quantity-fill` accepts
+`ReclassItems`, `Materials`, `Ingredients` or `Gifts` and fills only that category.
+Key items remain individually editable; these operations do not unlock chapters
+or change story flags. Weapons are managed through the convoy or Roster instead.
 
 ## Roster
 
@@ -161,7 +173,10 @@ Bond levels map to the game's EXP thresholds. `bond-set` also accepts
 `--experience`; both fields must agree when supplied together. Alear bonds
 synchronize existing supports and do not create or replace a Pact partner.
 
-Ring stock accepts 0–99, but equipped instances stay at one. `rings-fill-s`
+Identical rings of the same rank share a 99-copy limit across all stacks,
+including equipped copies. `rings` reports each stack's `MaximumStock`; equipped
+instances stay at one. Unchanged existing excess stock is preserved when copying
+a save, but new edits must fit the shared limit. `rings-fill-s`
 adds one missing copy of each of the 123 S-rank rings without duplicating owned
 or equipped copies. Melding consumes only unequipped duplicates of the same
 character and rank: 2 C + 100 fragments → B, 3 B + 1,000 → A, or 4 A + 10,000 → S.

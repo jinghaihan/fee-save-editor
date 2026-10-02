@@ -42,7 +42,8 @@ internal static class EmblemsCommand
                 {
                     row.InstanceId, row.RingHash, Id = EmblemCatalog.Ring(row.RingHash)?.Id,
                     Name = EmblemCatalog.Ring(row.RingHash)?.Name(language) ?? $"Unknown ring (0x{row.RingHash:X8})",
-                    Rank = EmblemCatalog.Ring(row.RingHash)?.RankName, row.StockCount, row.OwnerIndex
+                    Rank = EmblemCatalog.Ring(row.RingHash)?.RankName, row.StockCount, row.OwnerIndex,
+                    MaximumStock = EmblemCatalog.Ring(row.RingHash) is null ? (int?)null : save.MaximumBondRingStock(row.InstanceId)
                 }));
             return 0;
         }

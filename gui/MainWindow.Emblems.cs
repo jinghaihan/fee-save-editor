@@ -204,8 +204,9 @@ public partial class MainWindow
         EmblemBondExpInput.Value = bond?.Experience;
         BondRingForm.IsEnabled = ring is not null && EmblemCatalog.Ring(ring.RingHash) is not null;
         BondRingStockInput.Minimum = ring?.OwnerIndex.HasValue == true ? 1 : 0;
-        BondRingStockInput.Maximum = ring?.OwnerIndex.HasValue == true ? 1 : 99;
-        BondRingStockInput.Value = ring?.StockCount;
+        BondRingStockInput.Maximum = ring is not null && EmblemCatalog.Ring(ring.RingHash) is not null
+            ? Save!.MaximumBondRingStock(ring.InstanceId) : 99;
+        BondRingStockInput.Text = ring?.StockCount.ToString() ?? "";
         RefreshBondRingOwner(ring);
     }
 
@@ -337,6 +338,7 @@ public partial class MainWindow
             || !int.TryParse(BondRingStockInput.Text, out int stock) || stock is < 0 or > 99
             || !int.TryParse(BondFragmentsInput.Text, out int fragments) || fragments < meld.BondFragments) return;
         var rings = Save.ReadBondRings();
+        if (stock > Save.MaximumBondRingStock(ring.InstanceId)) return;
         int materials = stock + rings.Where(row => row.InstanceId != ring.InstanceId
             && row.RingHash == ring.RingHash && !row.OwnerIndex.HasValue).Sum(row => row.StockCount);
         MeldBondRingButton.IsEnabled = materials >= meld.RequiredRings

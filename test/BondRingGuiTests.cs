@@ -90,6 +90,26 @@ internal static class BondRingGuiTests
         Check(meld.IsEnabled && window.ManageBondRings(meld: true)
             && window.Save!.ReadCharacterRingLinks().SequenceEqual(equipped.ReadCharacterRingLinks()), "GUI melding changed ring equipment links.");
         Check(File.ReadAllBytes(source).AsSpan().SequenceEqual(original), "GUI ring management overwrote its original save.");
+        var stacked = BondRingTests.Fixture([new(10, caeda, 1, null), new(11, caeda, 20, null)],
+            RosterTests.Fixture(validEquipment: true));
+        string stackedPath = Path.Combine(temporary, "bond-ring-stock-cap");
+        stacked.WriteCopy(stackedPath);
+        window.LoadSave(stackedPath); window.ShowBondRings(); list.SelectedIndex = 1;
+        Check(stock.Maximum == 98, "The stock input ignored an equipped copy of the same ring.");
+        stock.Text = "99";
+        Check(!window.ApplyEmblemValues() && window.Save!.Serialize().AsSpan().SequenceEqual(stacked.Serialize()),
+            "Excess combined stock was silently clamped or saved.");
+        stock.Text = "98";
+        Check(window.ApplyEmblemValues() && window.Save!.ReadBondRings().Sum(row => row.StockCount) == 99,
+            "Valid combined stock was rejected.");
+        var excess = BondRingTests.Fixture([new(10, caeda, 90, null), new(11, caeda, 20, null)]);
+        string excessPath = Path.Combine(temporary, "bond-ring-existing-excess");
+        excess.WriteCopy(excessPath);
+        window.LoadSave(excessPath); window.ShowBondRings();
+        Check(stock.Maximum == 79 && stock.Text == "90", "Opening a save silently normalized excess stock.");
+        string excessCopy = Path.Combine(temporary, "bond-ring-existing-excess-copy");
+        Check(window.SaveCopy(excessCopy) && File.ReadAllBytes(excessCopy).AsSpan().SequenceEqual(excess.Serialize()),
+            "Copying unchanged excess stock altered the save.");
         window.ShowEmblems();
         Console.WriteLine("Bond ring GUI: batch scope, costs, equipped protection, pending inputs, save copies and live translations passed.");
     }

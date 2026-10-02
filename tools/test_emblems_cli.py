@@ -181,15 +181,24 @@ def check_emblems(command: list[str], real_directory: Path | None, base: bytes) 
                     assert not invalid.exists()
             ring = next(row for row in rings if row["OwnerIndex"] is None)
             stock_path = root / (name + "-stock")
-            run("ring-set", str(source), str(stock_path), "--instance", str(ring["InstanceId"]), "--amount", "99")
+            run("ring-set", str(source), str(stock_path), "--instance", str(ring["InstanceId"]), "--amount", str(ring["MaximumStock"]))
             stocks = json.loads(run("rings", str(stock_path)))
-            assert next(row for row in stocks if row["InstanceId"] == ring["InstanceId"])["StockCount"] == 99
+            assert next(row for row in stocks if row["InstanceId"] == ring["InstanceId"])["StockCount"] == ring["MaximumStock"]
             for value in ("100", "-1", "1.5"):
                 invalid = root / "invalid-stock"
                 run("ring-set", str(source), str(invalid), "--instance", str(ring["InstanceId"]), "--amount", value, valid=False)
                 assert not invalid.exists()
             run("ring-set", str(source), str(source), "--instance", str(ring["InstanceId"]), "--amount", "1", valid=False)
             assert source.read_bytes() == original
+        stacked_source = root / "stacked-source"
+        stacked_source.write_bytes(fixture(base, [(10, "RNID_紋章_シーダ_C", 40), (11, "RNID_紋章_シーダ_C", 50)]))
+        assert json.loads(run("rings", str(stacked_source)))[0]["MaximumStock"] == 49
+        invalid_stock = root / "invalid-combined-stock"
+        run("ring-set", str(stacked_source), str(invalid_stock), "--instance", "10", "--amount", "50", valid=False)
+        assert not invalid_stock.exists()
+        combined_stock = root / "combined-stock"
+        run("ring-set", str(stacked_source), str(combined_stock), "--instance", "10", "--amount", "49")
+        assert [row[2] for row in ring_records(combined_stock.read_bytes())] == [49, 50]
         pact_source = root / "synthetic-source"
         for rank, target, required, cost in (("C", "B", 2, 100), ("B", "A", 3, 1000), ("A", "S", 4, 10000)):
             ring_source = root / f"meld-{rank}-source"

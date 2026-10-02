@@ -407,7 +407,10 @@ unused IDs 1 through capacity; it does not save a next-ID counter in the header.
 New records use the lowest unused ID in 1–750. Existing IDs and the 32-byte pool
 header are preserved, with limits of 700 unequipped and 50 equipped instances.
 Native `UnitRingPool.Add` at `0x1c5d420` caps total copies of one ring definition
-at 99, including equipped copies. New stock follows this aggregate limit.
+at 99, including equipped copies. Both new stock and edits to existing stacks
+follow this aggregate limit. The maximum for an unequipped stack is 99 minus
+all other copies of the same ring hash. An unchanged pre-existing excess is
+preserved, not silently normalized when opening or copying a save.
 
 Fill S creates one missing copy of each of the 123 named S rings (120 normal
 families and the three Heroes bonus rings). Existing positive stock, including

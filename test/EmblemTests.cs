@@ -95,6 +95,20 @@ internal static class EmblemTests
         Reject(() => save.WithBondRingStock(10, -1));
         Reject(() => save.WithBondRingStock(10, 100));
         Reject(() => save.WithBondRingStock(99, 1));
+        uint caedaHash = ItemCatalog.Hash(Caeda);
+        var stacked = BondRingTests.Fixture([new(10, caedaHash, 40, null), new(11, caedaHash, 50, null)]);
+        Check(stacked.MaximumBondRingStock(10) == 49 && stacked.WithBondRingStock(10, 49).ReadBondRings()[1].StockCount == 50,
+            "Identical ring stacks must share the 99-copy limit without changing other stacks.");
+        Reject(() => stacked.WithBondRingStock(10, 50));
+        var wornStack = BondRingTests.Fixture([new(10, caedaHash, 1, null), new(11, caedaHash, 20, null)],
+            RosterTests.Fixture(validEquipment: true));
+        Check(wornStack.MaximumBondRingStock(11) == 98 && wornStack.WithBondRingStock(11, 98).ReadBondRings()[0].OwnerIndex == 0,
+            "Equipped copies were not counted or their ownership changed.");
+        Reject(() => wornStack.WithBondRingStock(11, 99));
+        var overstocked = BondRingTests.Fixture([new(10, caedaHash, 90, null), new(11, caedaHash, 20, null)]);
+        Check(ReferenceEquals(overstocked, overstocked.WithBondRingStock(10, 90)), "Preserving pre-existing excess stock rewrote the save.");
+        Reject(() => overstocked.WithBondRingStock(10, 80));
+        Check(overstocked.WithBondRingStock(10, 79).ReadBondRings()[0].StockCount == 79, "Excess stock cannot be corrected.");
         var equippedSave = EngageSave.Parse(Container(Bonds(), Rings(1), RosterTests.Fixture(validEquipment: true)));
         Check(equippedSave.ReadBondRings()[0].OwnerIndex == 0 && equippedSave.ReadCharacterRingLinks()[0].EmblemInstance == 1,
             "Variable-length unit battle data did not resolve ring ownership.");
@@ -148,7 +162,7 @@ internal static class EmblemTests
                 Exact(save, restored, "Restoring a real bond changed another field.");
         }
         var ring = rings.First(row => !row.OwnerIndex.HasValue && row.StockCount > 0);
-        Exact(save, save.WithBondRingStock(ring.InstanceId, 99).WithBondRingStock(ring.InstanceId, ring.StockCount),
+        Exact(save, save.WithBondRingStock(ring.InstanceId, save.MaximumBondRingStock(ring.InstanceId)).WithBondRingStock(ring.InstanceId, ring.StockCount),
             "Real ring stock did not restore exactly.");
         foreach (var equipped in rings.Where(row => row.OwnerIndex.HasValue))
         {
