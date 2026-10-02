@@ -61,6 +61,9 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli supports list <save> [--json] [--language en|zh-Hans]
           FeeEditor.Cli supports set <save> <new-file> --pair <key> [--rank None|C|B|A|A+] [--points <0-99>]
           FeeEditor.Cli supports max <save> <new-file> --all|--pair <key>
+          FeeEditor.Cli achievements catalog [--json] [--language en|zh-Hans]
+          FeeEditor.Cli achievements list <save> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli achievements unlock <save> <new-file> --all|--achievement <AID>
           FeeEditor.Cli --version
         Main options:
           --money <amount> --bond-fragments <amount>
@@ -85,6 +88,8 @@ try
             return EmblemsCommand.Run(options);
         case ["supports", .. var options]:
             return SupportsCommand.Run(options);
+        case ["achievements", .. var options]:
+            return AchievementsCommand.Run(options);
         case ["inspect", var source, .. var options] when options is [] or ["--json"]:
             var save = EngageSave.Load(source);
             Console.WriteLine(JsonSerializer.Serialize(new
