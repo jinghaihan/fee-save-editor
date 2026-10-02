@@ -1,0 +1,66 @@
+{
+  "DataRevision": "86b8be7b9820e1bb3bce87d2a9a805ead85d92ab",
+  "TextRevision": "810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b",
+  "Countries": [
+    {
+      "Id": "NID_フィレネ",
+      "Key": "G_投資_フィレネ",
+      "Names": {
+        "en": "Firene",
+        "zh-Hans": "费列聂"
+      },
+      "Thresholds": [
+        0,
+        5000,
+        15000,
+        40000,
+        90000
+      ]
+    },
+    {
+      "Id": "NID_ブロディア",
+      "Key": "G_投資_ブロディア",
+      "Names": {
+        "en": "Brodia",
+        "zh-Hans": "布罗帝亚"
+      },
+      "Thresholds": [
+        0,
+        5000,
+        15000,
+        40000,
+        90000
+      ]
+    },
+    {
+      "Id": "NID_イルシオン",
+      "Key": "G_投資_イルシオン",
+      "Names": {
+        "en": "Elusia",
+        "zh-Hans": "伊尔席翁"
+      },
+      "Thresholds": [
+        0,
+        5000,
+        15000,
+        40000,
+        90000
+      ]
+    },
+    {
+      "Id": "NID_ソルム",
+      "Key": "G_投資_ソルム",
+      "Names": {
+        "en": "Solm",
+        "zh-Hans": "索尔姆"
+      },
+      "Thresholds": [
+        0,
+        5000,
+        15000,
+        40000,
+        90000
+      ]
+    }
+  ]
+}

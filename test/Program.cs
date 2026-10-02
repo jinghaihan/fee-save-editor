@@ -86,6 +86,7 @@ try
     Check(!Directory.EnumerateFiles(temporary, ".fee-*.tmp").Any(), "Temporary save files were left behind.");
 
     MainTests.Run(window, temporary);
+    DonationTests.Run();
     InventoryTests.Run(window, temporary);
     RosterTests.Run(window, temporary);
     RosterClassTests.Run(window, temporary);
@@ -116,6 +117,7 @@ try
             if (name != "Global")
             {
                 var loaded = window.Save!;
+                DonationTests.CheckReal(loaded);
                 InventoryTests.CheckReal(loaded);
                 RosterTests.CheckReal(loaded);
                 RosterClassTests.CheckReal(loaded);
