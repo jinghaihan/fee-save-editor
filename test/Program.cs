@@ -84,6 +84,7 @@ try
     RosterTests.Run(window, temporary);
     RosterClassTests.Run(window, temporary);
     RosterSkillTests.Run(window, temporary);
+    RosterStatTests.Run();
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -104,6 +105,7 @@ try
                 RosterTests.CheckReal(loaded);
                 RosterClassTests.CheckReal(loaded);
                 RosterSkillTests.CheckReal(loaded);
+                RosterStatTests.CheckReal(loaded);
                 var current = loaded.ReadMainValues();
                 var updated = current with { Money = 12345, BondFragments = 6789, IronIngots = 111,
                     SteelIngots = 222, SilverIngots = 333, Difficulty = Difficulty.Normal,

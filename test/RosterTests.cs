@@ -32,7 +32,7 @@ internal static class RosterTests
             "The independent roster fixture did not decode.");
         Check(characters[0].Items.Select(slot => slot.Item).SequenceEqual(new[] { Staff, Weapon, Unknown, null, null, null, null, null }),
             "Character items were decoded incorrectly.");
-        Check(characters[0].Stats[(int)RosterStat.Strength] == new CharacterStat(RosterStat.Strength, 9, 42),
+        Check(characters[0].Stats[(int)RosterStat.Strength] == new CharacterStat(RosterStat.Strength, 9, 42, 3),
             "Class bases or personal stat modifiers were applied incorrectly.");
         var values = new RosterValue(20, 0, 9999);
         var edited = save.WithRosterValues(0, values);
@@ -205,15 +205,15 @@ internal static class RosterTests
         Console.WriteLine("Real roster: 41 characters and classes recognized; SP and equipment edits restored byte-for-byte.");
     }
 
-    public static byte[] Fixture(int baseStrength = 3, Action<byte[]>? mutate = null)
+    public static byte[] Fixture(int baseStrength = 3, Action<byte[]>? mutate = null, UnitForce force = UnitForce.Absent)
     {
         using var output = new MemoryStream();
         using (var writer = new BinaryWriter(output, Encoding.UTF8, leaveOpen: true))
         {
             writer.Write(0u); writer.Write(0xcdcdcdcdu); writer.Write(new byte[24]);
-            writer.Write((byte)3); writer.Write((byte)2);
-            writer.Write(Character("PID_リュール", "JID_神竜ノ子", baseStrength, optionalTarget: false));
-            writer.Write(Character("PID_ユナカ", "JID_シーフ", 3, optionalTarget: true));
+            writer.Write((byte)force); writer.Write((byte)2);
+            writer.Write(Character("PID_リュール", "JID_神竜ノ子", baseStrength, optionalTarget: false, force));
+            writer.Write(Character("PID_ユナカ", "JID_シーフ", 3, optionalTarget: true, force));
             writer.Write((byte)255);
         }
         byte[] payload = output.ToArray();
@@ -241,7 +241,7 @@ internal static class RosterTests
         return result;
     }
 
-    private static byte[] Character(string person, string job, int baseStrength, bool optionalTarget)
+    private static byte[] Character(string person, string job, int baseStrength, bool optionalTarget, UnitForce force)
     {
         using var output = new MemoryStream();
         using var writer = new BinaryWriter(output, Encoding.UTF8, leaveOpen: true);
@@ -277,6 +277,13 @@ internal static class RosterTests
             writer.Write(1u); writer.Write(11u); writer.Write(new byte[44]);
         }
         writer.Write((sbyte)4);
+        if (force <= UnitForce.Ally)
+        {
+            writer.Write(7u); writer.Write(new byte[17]); writer.Write(uint.MaxValue);
+            writer.Write(0u); writer.Write(new byte[7]);
+            for (int index = 0; index < 4; index++) writer.Write(uint.MaxValue);
+            for (int index = 0; index < 16; index++) { writer.Write(0u); writer.Write((ushort)0); }
+        }
         writer.Write((byte)2); writer.Write(false);
         writer.Write(Enumerable.Range(1, 48).Select(value => (byte)value).ToArray());
         writer.Write((byte)1); writer.Write((byte)2); writer.Write((short)400); writer.Write(0x87654321u);

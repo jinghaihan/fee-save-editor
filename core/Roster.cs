@@ -3,7 +3,7 @@ namespace FeeEditor.Core;
 public enum RosterStat { HP, Strength, Dexterity, Speed, Luck, Defense, Magic, Resistance, Build, Sight, Movement }
 public enum UnitForce { Player, Enemy, Ally, Absent, Dead, Lost, Temporary }
 public sealed record RosterValue(int Level, int Experience, int SkillPoints);
-public sealed record CharacterStat(RosterStat Stat, int Value, int? Maximum);
+public sealed record CharacterStat(RosterStat Stat, int Value, int? Maximum, int PersonalValue);
 public sealed record RosterCharacter(int Index, UnitForce Force, uint PersonHash, uint ClassHash, RosterValue Values,
     IReadOnlyList<CharacterStat> Stats, IReadOnlyList<InventorySlot> Items, RosterProgress Progress);
 
@@ -113,21 +113,7 @@ internal sealed class RosterLayout
         return new RosterLayout { Section = section, Characters = result.AsReadOnly() };
     }
 
-    private static IReadOnlyList<CharacterStat> CharacterStats(uint person, uint job, int[] stored)
-    {
-        var definition = RosterCatalog.Class(job);
-        var owner = RosterCatalog.Person(person);
-        var stats = Enumerable.Range(0, 11).Select(stat =>
-        {
-            int? maximum = definition is not null && owner is not null
-                ? Math.Clamp(definition.Limits[stat] + owner.LimitModifiers[stat], 0, 255) : null;
-            if (stat == (int)RosterStat.Movement && definition is not null)
-                maximum = definition.BaseStats[stat] + 2;
-            int value = stored[stat];
-            if (definition is not null && maximum.HasValue)
-                value = Math.Clamp(value + definition.BaseStats[stat], stat == 0 ? 1 : 0, maximum.Value);
-            return new CharacterStat((RosterStat)stat, value, maximum);
-        }).ToArray();
-        return Array.AsReadOnly(stats);
-    }
+    private static IReadOnlyList<CharacterStat> CharacterStats(uint person, uint job, int[] stored) =>
+        Array.AsReadOnly(Enumerable.Range(0, 11).Select(stat => RosterStats.Calculate((RosterStat)stat,
+            stored[stat], RosterCatalog.Class(job), RosterCatalog.Person(person))).ToArray());
 }

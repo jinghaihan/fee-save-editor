@@ -59,6 +59,72 @@ public sealed partial class EngageSave
         return ReplaceSection(layout.Section, payload);
     }
 
+    public EngageSave WithRosterPersonalStat(int index, RosterStat stat, int value)
+    {
+        if (!Enum.IsDefined(stat) || stat == RosterStat.Sight)
+            throw new ArgumentException("Select an editable personal stat.", nameof(stat));
+        var layout = RosterLayout.Read(this, _bytes);
+        var entry = GetCharacter(layout, index);
+        var current = entry.Character.Stats[(int)stat];
+        if (current.PersonalValue == value)
+            return this;
+        var job = RosterCatalog.Class(entry.Character.ClassHash);
+        var person = RosterCatalog.Person(entry.Character.PersonHash);
+        if (job is null || person is null)
+            throw new ArgumentException("This character or class has no verified stat limits.");
+        var range = RosterStats.PersonalRange(stat, job);
+        if (value < range.Minimum || value > range.Maximum)
+            throw new ArgumentOutOfRangeException(nameof(value), $"Personal {stat} must be between {range.Minimum} and {range.Maximum}.");
+        byte[] payload = _bytes.AsSpan(layout.Section.PayloadOffset, layout.Section.Length).ToArray();
+        payload[entry.BaseStatsOffset + (int)stat - layout.Section.PayloadOffset] = unchecked((byte)(sbyte)value);
+        if (stat == RosterStat.HP)
+        {
+            int hp = entry.LevelOffset + 2 - layout.Section.PayloadOffset;
+            int maximumHP = Math.Clamp(RosterStats.Calculate(stat, value, job, person).Value + entry.Progress.HPBonus, 1, 255);
+            payload[hp] = (byte)Math.Min(payload[hp], maximumHP);
+        }
+        return ReplaceSection(layout.Section, payload);
+    }
+
+    public EngageSave MaximizeRosterStats(int index)
+    {
+        var layout = RosterLayout.Read(this, _bytes);
+        var entry = GetCharacter(layout, index);
+        if (!CanMaximizeStats(entry.Character))
+            throw new ArgumentException("Select a known playable roster character.", nameof(index));
+        return MaximizeStats(layout, [entry]);
+    }
+
+    public EngageSave MaximizeAllRosterStats()
+    {
+        var layout = RosterLayout.Read(this, _bytes);
+        return MaximizeStats(layout, layout.Characters.Where(entry => CanMaximizeStats(entry.Character)));
+    }
+
+    private static bool CanMaximizeStats(RosterCharacter character) =>
+        character.Force is not UnitForce.Enemy and not UnitForce.Temporary
+        && RosterCatalog.Person(character.PersonHash) is not null;
+
+    private EngageSave MaximizeStats(RosterLayout layout, IEnumerable<CharacterLayout> entries)
+    {
+        byte[] payload = _bytes.AsSpan(layout.Section.PayloadOffset, layout.Section.Length).ToArray();
+        bool changed = false;
+        foreach (var entry in entries)
+        {
+            var character = entry.Character;
+            var maxima = RosterStats.MaximumPersonalValues(character.PersonHash, character.Progress.Gender);
+            for (int stat = 0; stat < maxima.Count; stat++)
+            {
+                int previous = character.Stats[stat].PersonalValue;
+                if (previous >= maxima[stat])
+                    continue;
+                payload[entry.BaseStatsOffset + stat - layout.Section.PayloadOffset] = unchecked((byte)(sbyte)maxima[stat]);
+                changed = true;
+            }
+        }
+        return changed ? ReplaceSection(layout.Section, payload) : this;
+    }
+
     public EngageSave WithRosterItem(int index, int slot, string itemId, int uses, int refineLevel)
     {
         var layout = RosterLayout.Read(this, _bytes);
