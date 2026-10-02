@@ -85,6 +85,7 @@ try
     RosterClassTests.Run(window, temporary);
     RosterSkillTests.Run(window, temporary);
     RosterStatTests.Run();
+    RosterStatGuiTests.Run(window, temporary);
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })

@@ -145,7 +145,7 @@
     </Grid>
     <Grid Name="RosterPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
-        <Grid RowDefinitions="Auto,Auto,*" RowSpacing="16">
+        <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="16">
           <TextBlock Text="{DynamicResource CharacterList}" FontWeight="SemiBold" />
           <TextBox Name="RosterSearch" Grid.Row="1" PlaceholderText="{DynamicResource Search}" TextChanged="RosterSearch_Changed" />
           <ListBox Name="RosterList" Grid.Row="2" SelectionChanged="RosterList_Changed">
@@ -155,17 +155,21 @@
               </DataTemplate>
             </ListBox.ItemTemplate>
           </ListBox>
+          <Button Name="MaximizeAllRosterStatsButton" Grid.Row="3" Content="{DynamicResource MaximizeAllStats}" HorizontalAlignment="Stretch" IsEnabled="False" Click="MaximizeAllRosterStats_Click" />
         </Grid>
       </suki:GlassCard>
       <suki:GlassCard Grid.Column="1" Padding="20">
         <Grid RowDefinitions="Auto,*" RowSpacing="24">
-          <TabStrip Name="RosterTabs" SelectedIndex="0" SelectionChanged="RosterTabs_Changed">
-            <TabStripItem Content="{DynamicResource General}" />
-            <TabStripItem Content="{DynamicResource Stats}" />
-            <TabStripItem Content="{DynamicResource Items}" />
-            <TabStripItem Content="{DynamicResource Skills}" />
-            <TabStripItem Content="{DynamicResource Proficiencies}" />
-          </TabStrip>
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+            <TabStrip Name="RosterTabs" SelectedIndex="0" SelectionChanged="RosterTabs_Changed">
+              <TabStripItem Content="{DynamicResource General}" />
+              <TabStripItem Content="{DynamicResource Stats}" />
+              <TabStripItem Content="{DynamicResource Items}" />
+              <TabStripItem Content="{DynamicResource Skills}" />
+              <TabStripItem Content="{DynamicResource Proficiencies}" />
+            </TabStrip>
+            <Button Name="MaximizeRosterStatsButton" Grid.Column="1" Content="{DynamicResource MaximizeStats}" IsVisible="False" IsEnabled="False" VerticalAlignment="Center" Click="MaximizeRosterStats_Click" />
+          </Grid>
           <ScrollViewer Grid.Row="1">
             <Grid>
               <Grid Name="RosterGeneralForm" MaxWidth="712" ColumnDefinitions="*,*" ColumnSpacing="32" HorizontalAlignment="Stretch" IsEnabled="False">
@@ -212,7 +216,7 @@
                 <Button Name="ApplyRosterValuesButton" Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterValues_Click" />
                 </StackPanel>
               </Grid>
-              <StackPanel Name="RosterStatsForm" MaxWidth="712" HorizontalAlignment="Stretch" Spacing="12" IsVisible="False" IsEnabled="False">
+              <StackPanel Name="RosterStatsForm" MaxWidth="712" HorizontalAlignment="Stretch" Spacing="8" IsVisible="False" IsEnabled="False">
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="32">
                   <StackPanel Spacing="8">
                     <TextBlock Text="{DynamicResource CurrentHP}" />
@@ -220,6 +224,7 @@
                   </StackPanel>
                   <Button Grid.Column="1" Content="{DynamicResource RestoreHP}" Height="42" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Click="RestoreRosterHP_Click" />
                 </Grid>
+                <TextBlock Text="{DynamicResource PersonalStats}" FontWeight="SemiBold" />
                 <Grid Name="RosterStatsInputs" ColumnDefinitions="*,*" ColumnSpacing="32" RowSpacing="8" />
                 <Button Name="ApplyRosterStatsButton" Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterStats_Click" />
               </StackPanel>

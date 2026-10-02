@@ -16,7 +16,7 @@ public partial class MainWindow
     private int? _selectedCharacter;
     private int? _selectedCharacterItem;
     private bool _refreshingRoster;
-    private readonly Dictionary<RosterStat, (TextBlock Label, NumericUpDown Input)> _rosterStats = new();
+    private readonly Dictionary<RosterStat, (TextBlock Label, NumericUpDown Input, TextBlock Preview)> _rosterStats = new();
     private RosterCharacter? SelectedCharacter => CanEditRoster && Save is not null
         ? Save.ReadRoster().FirstOrDefault(character => character.Index == _selectedCharacter) : null;
 
@@ -32,6 +32,7 @@ public partial class MainWindow
     private void LoadRoster()
     {
         CanEditRoster = false;
+        MaximizeAllRosterStatsButton.IsEnabled = MaximizeRosterStatsButton.IsEnabled = false;
         _selectedCharacter = null;
         _selectedCharacterItem = null;
         RosterGeneralForm.IsEnabled = RosterStatsForm.IsEnabled = RosterItemsForm.IsEnabled = false;
@@ -72,7 +73,10 @@ public partial class MainWindow
         if (!CanEditRoster || Save is null)
             return;
         string query = RosterSearch.Text?.Trim() ?? "";
-        var rows = Save.ReadRoster().Where(character => character.Force is not UnitForce.Enemy and not UnitForce.Temporary)
+        var roster = Save.ReadRoster();
+        MaximizeAllRosterStatsButton.IsEnabled = roster.Any(character => character.Force is not UnitForce.Enemy and not UnitForce.Temporary
+            && RosterCatalog.Person(character.PersonHash) is not null);
+        var rows = roster.Where(character => character.Force is not UnitForce.Enemy and not UnitForce.Temporary)
             .Select(character => new RosterRow(character.Index, $"{CharacterName(character)} · Lv. {character.Values.Level}"))
             .Where(row => row.Label.Contains(query, StringComparison.OrdinalIgnoreCase)).ToArray();
         _refreshingRoster = true;
@@ -89,6 +93,9 @@ public partial class MainWindow
     private void SelectCharacter()
     {
         var character = SelectedCharacter;
+        MaximizeRosterStatsButton.IsEnabled = character is not null
+            && character.Force is not UnitForce.Enemy and not UnitForce.Temporary
+            && RosterCatalog.Person(character.PersonHash) is not null;
         RosterGeneralForm.IsEnabled = RosterStatsForm.IsEnabled = RosterItemsForm.IsEnabled = character is not null;
         RosterSkillsForm.IsEnabled = RosterProficienciesForm.IsEnabled = character is not null;
         if (character is null)
@@ -123,20 +130,33 @@ public partial class MainWindow
         foreach (var stat in character.Stats.Where(stat => stat.Stat != RosterStat.Sight))
         {
             var label = new TextBlock { Text = UiLanguage.Get(stat.Stat.ToString()) };
-            var input = new NumericUpDown { Minimum = stat.Stat == RosterStat.HP ? 1 : 0,
-                Maximum = stat.Maximum ?? 255, Increment = 1, FormatString = "0", Height = 42,
-                HorizontalAlignment = HorizontalAlignment.Stretch, IsEnabled = stat.Maximum.HasValue, Value = stat.Value };
-            input.Text = stat.Value.ToString();
+            var range = job is null ? (Minimum: (int)sbyte.MinValue, Maximum: (int)sbyte.MaxValue) : RosterStats.PersonalRange(stat.Stat, job);
+            var input = new NumericUpDown { Minimum = Math.Min(range.Minimum, stat.PersonalValue),
+                Maximum = Math.Max(range.Maximum, stat.PersonalValue), Increment = 1, FormatString = "0", Height = 42,
+                Name = $"RosterPersonal{stat.Stat}", HorizontalAlignment = HorizontalAlignment.Stretch,
+                IsEnabled = job is not null && RosterCatalog.Person(character.PersonHash) is not null, Value = stat.PersonalValue };
+            input.Text = stat.PersonalValue.ToString();
+            var preview = new TextBlock { Name = $"RosterPreview{stat.Stat}", HorizontalAlignment = HorizontalAlignment.Right };
+            var heading = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto"), ColumnSpacing = 8 };
+            Grid.SetColumn(preview, 1);
+            heading.Children.Add(label);
+            heading.Children.Add(preview);
             var field = new StackPanel { Spacing = 8 };
-            field.Children.Add(label);
+            field.Children.Add(heading);
             field.Children.Add(input);
             int index = RosterStatsInputs.Children.Count;
             if (index % 2 == 0) RosterStatsInputs.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
             Grid.SetColumn(field, index % 2);
             Grid.SetRow(field, index / 2);
             RosterStatsInputs.Children.Add(field);
-            _rosterStats.Add(stat.Stat, (label, input));
+            _rosterStats.Add(stat.Stat, (label, input, preview));
+            input.PropertyChanged += (_, e) =>
+            {
+                if (!_refreshingRoster && e.Property == NumericUpDown.TextProperty)
+                    RefreshRosterStatPreviews();
+            };
         }
+        RefreshRosterStatPreviews();
         _selectedCharacterItem = null;
         RefreshCharacterItems(selectEditor: true);
         _refreshingRoster = false;
@@ -170,6 +190,7 @@ public partial class MainWindow
         RefreshCharacterNames(character);
         foreach (var (stat, field) in _rosterStats)
             field.Label.Text = UiLanguage.Get(stat.ToString());
+        RefreshRosterStatPreviews();
         RefreshCharacterItems(selectEditor: false);
         RefreshCharacterItemChoices((RosterItemType.SelectedItem as ItemChoice)?.Definition.Hash);
         RefreshRosterSkills(character, preserveEdits: true);
@@ -188,13 +209,42 @@ public partial class MainWindow
     {
         var character = SelectedCharacter ?? throw new ArgumentException("Select a character.");
         foreach (var (stat, field) in _rosterStats.Where(pair => pair.Value.Input.IsEnabled))
-            save = save.WithRosterStat(character.Index, stat, Amount(field.Input));
+            save = save.WithRosterPersonalStat(character.Index, stat, Amount(field.Input));
         return PendingRosterCondition(save, character);
     }, refresh: true);
 
-    private bool EditRoster(Func<EngageSave, EngageSave> edit, bool refresh)
+    public bool MaximizeSelectedRosterStats() => EditRoster(save => PendingCharacterValues(save)
+        .MaximizeRosterStats(_selectedCharacter!.Value), refresh: true);
+
+    public bool MaximizeAllRosterStats() => EditRoster(save =>
     {
-        if (!CanEditRoster || Save is null || SelectedCharacter is null)
+        if (SelectedCharacter is not null)
+            save = PendingCharacterValues(save);
+        return save.MaximizeAllRosterStats();
+    }, refresh: true, requireCharacter: false);
+
+    private void RefreshRosterStatPreviews()
+    {
+        if (SelectedCharacter is not { } character)
+            return;
+        var job = (RosterClass.SelectedItem as ClassChoice)?.Definition ?? RosterCatalog.Class(character.ClassHash);
+        var person = RosterCatalog.Person(character.PersonHash);
+        foreach (var (stat, field) in _rosterStats)
+        {
+            if (job is null || person is null || !int.TryParse(field.Input.Text, out int value)
+                || value < field.Input.Minimum || value > field.Input.Maximum)
+            {
+                field.Preview.Text = "—";
+                continue;
+            }
+            var preview = RosterStats.Calculate(stat, value, job, person);
+            field.Preview.Text = string.Format(UiLanguage.Get("CurrentClassStat"), preview.Value, preview.Maximum);
+        }
+    }
+
+    private bool EditRoster(Func<EngageSave, EngageSave> edit, bool refresh, bool requireCharacter = true)
+    {
+        if (!CanEditRoster || Save is null || requireCharacter && SelectedCharacter is null)
             return false;
         try
         {
@@ -296,8 +346,8 @@ public partial class MainWindow
         var character = SelectedCharacter ?? throw new ArgumentException("Select a character.");
         save = PendingGeneralValues(save, character);
         foreach (var (stat, field) in _rosterStats.Where(pair => pair.Value.Input.IsEnabled))
-            if (field.Input.Text != character.Stats[(int)stat].Value.ToString())
-                save = save.WithRosterStat(character.Index, stat, Amount(field.Input));
+            if (field.Input.Text != character.Stats[(int)stat].PersonalValue.ToString())
+                save = save.WithRosterPersonalStat(character.Index, stat, Amount(field.Input));
         save = PendingRosterCondition(save, character);
         return PendingRosterSkills(save, character);
     }
@@ -347,7 +397,10 @@ public partial class MainWindow
     private void RosterClass_Changed(object? sender, SelectionChangedEventArgs e)
     {
         if (!_refreshingRoster && SelectedCharacter is { } character)
+        {
             RefreshWeaponVariants(character);
+            RefreshRosterStatPreviews();
+        }
     }
 
     private void RosterSearch_Changed(object? sender, TextChangedEventArgs e) => RefreshRoster(selectEditor: false);
@@ -364,6 +417,7 @@ public partial class MainWindow
             return;
         RosterGeneralForm.IsVisible = RosterTabs.SelectedIndex == 0;
         RosterStatsForm.IsVisible = RosterTabs.SelectedIndex == 1;
+        MaximizeRosterStatsButton.IsVisible = RosterTabs.SelectedIndex == 1;
         RosterItemsForm.IsVisible = RosterTabs.SelectedIndex == 2;
         RosterSkillsForm.IsVisible = RosterTabs.SelectedIndex == 3;
         RosterProficienciesForm.IsVisible = RosterTabs.SelectedIndex == 4;
@@ -393,6 +447,8 @@ public partial class MainWindow
     }
     private void ApplyRosterValues_Click(object? sender, RoutedEventArgs e) => ApplyRosterValues();
     private void ApplyRosterStats_Click(object? sender, RoutedEventArgs e) => ApplyRosterStats();
+    private void MaximizeRosterStats_Click(object? sender, RoutedEventArgs e) => MaximizeSelectedRosterStats();
+    private void MaximizeAllRosterStats_Click(object? sender, RoutedEventArgs e) => MaximizeAllRosterStats();
     private void ApplyRosterItem_Click(object? sender, RoutedEventArgs e) => ApplyRosterItem();
     private void DeleteRosterItem_Click(object? sender, RoutedEventArgs e) =>
         EditRoster(save => PendingCharacterValues(save).DeleteRosterItem(_selectedCharacter!.Value, _selectedCharacterItem!.Value), refresh: true);
