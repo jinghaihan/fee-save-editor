@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="core/Core.csproj" />
+  <Project Path="cli/Cli.csproj" />
+  <Project Path="gui/FeeEditor.Gui.csproj" />
+  <Project Path="test/Gui.Smoke.csproj" />
+</Solution>

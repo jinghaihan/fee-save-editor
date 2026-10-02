@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>FeeEditor.Test</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../gui/FeeEditor.Gui.csproj" />
+    <PackageReference Include="Avalonia.Headless" Version="12.1.3" />
+  </ItemGroup>
+</Project>

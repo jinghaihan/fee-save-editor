@@ -1,0 +1,131 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gui:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2025
+            rid: win-x64
+          - os: macos-15
+            rid: osx-arm64
+          - os: macos-15-intel
+            rid: osx-x64
+          - os: ubuntu-24.04
+            rid: linux-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Build GUI
+        run: dotnet build gui/FeeEditor.Gui.csproj -c Release --nologo
+
+      - name: Render GUI smoke test
+        run: dotnet run --project test/Gui.Smoke.csproj -c Release
+
+      - name: Publish self-contained GUI
+        run: dotnet publish gui/FeeEditor.Gui.csproj -c Release -r ${{ matrix.rid }} --self-contained true -p:PublishSingleFile=false -o dist/gui/${{ matrix.rid }}
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: fee-gui-${{ matrix.rid }}
+          path: dist/gui/${{ matrix.rid }}/
+          if-no-files-found: error
+          retention-days: 14
+
+  cli:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2025
+            rid: win-x64
+            executable: FeeEditor.Cli.exe
+          - os: macos-15
+            rid: osx-arm64
+            executable: FeeEditor.Cli
+          - os: macos-15-intel
+            rid: osx-x64
+            executable: FeeEditor.Cli
+          - os: ubuntu-24.04
+            rid: linux-x64
+            executable: FeeEditor.Cli
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Build CLI
+        run: dotnet build cli/Cli.csproj -c Release --nologo
+
+      - name: Verify save editing
+        run: python tools/test_cli.py --cli cli/bin/Release/net10.0/${{ matrix.executable }}
+
+      - name: Publish self-contained CLI
+        run: dotnet publish cli/Cli.csproj -c Release -r ${{ matrix.rid }} --self-contained true -p:PublishSingleFile=false -o dist/${{ matrix.rid }}
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: fee-cli-${{ matrix.rid }}
+          path: dist/${{ matrix.rid }}/
+          if-no-files-found: error
+          retention-days: 14
+
+  package:
+    needs: [gui, cli]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2025
+            rid: win-x64
+          - os: macos-15
+            rid: osx-arm64
+          - os: macos-15-intel
+            rid: osx-x64
+          - os: ubuntu-24.04
+            rid: linux-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: fee-gui-${{ matrix.rid }}
+          path: dist/gui/${{ matrix.rid }}
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: fee-cli-${{ matrix.rid }}
+          path: dist/cli/${{ matrix.rid }}
+
+      - name: Package shared runtime
+        run: python tools/package_release.py ${{ matrix.rid }}
+
+      - name: Test extracted release ZIP
+        run: python tools/test_release_package.py ${{ matrix.rid }}

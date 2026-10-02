@@ -1,0 +1,16 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:suki="https://github.com/kikipoulet/SukiUI"
+        x:Class="FeeEditor.Gui.MainWindow"
+        Title="Fire Emblem Engage Save Editor"
+        Width="1100" Height="740" MinWidth="800" MinHeight="540">
+  <Grid RowDefinitions="Auto,*" Margin="24" RowSpacing="24">
+    <TextBlock Text="Fire Emblem Engage Save Editor" FontSize="20" FontWeight="SemiBold" />
+    <suki:GlassCard Grid.Row="1" Padding="24">
+      <StackPanel Spacing="16">
+        <TextBlock Text="Save Inspector" FontSize="18" FontWeight="SemiBold" />
+        <TextBlock Text="Open an Engage save to inspect its structure." />
+      </StackPanel>
+    </suki:GlassCard>
+  </Grid>
+</Window>
