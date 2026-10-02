@@ -202,9 +202,10 @@ continues to accept a displayed current-class value for compatibility.
 Maximum attributes use, for each of the nine HP-through-Build fields,
 `max(class limit + personal cap modifier - class base)` across that owner's
 available classes and customization gender. This covers generic, exclusive and
-DLC classes, including low-tier classes. Existing values above that threshold
-are not reduced. Single/batch maximum writes only those nine bytes per selected
-known playable unit plus the outer CRC32; level, EXP, SP, growth accumulators,
+DLC classes, including low-tier classes. Each personal value is set to that exact
+threshold, including values already above it. Single/batch maximum writes only
+those nine bytes per selected known playable unit plus the outer CRC32; level,
+EXP, SP, growth accumulators,
 current HP, Sight, Movement, carried items and other unit fields are preserved.
 Enemy, temporary and unknown units are excluded from batch maximum.
 

@@ -54,7 +54,9 @@ internal static class RosterStatGuiTests
         }
         Check(window.LoadSave(source), "Could not reset the maximum-button fixture.");
         single.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-        Check(window.Save!.ReadRoster()[0].Stats[1].PersonalValue == 100
+        var first = window.Save!.ReadRoster()[0];
+        int strengthTarget = RosterStats.MaximumPersonalValues(first.PersonHash, first.Progress.Gender)[1];
+        Check(first.Stats[1].PersonalValue == strengthTarget && strengthTarget < 100
             && window.Save.ReadRoster()[1].Stats[1].PersonalValue == 3, "The single maximum changed the wrong scope.");
         var classChoice = window.FindControl<ComboBox>("RosterClass")!;
         classChoice.SelectedItem = classChoice.Items.OfType<MainWindow.ClassChoice>().Single(choice => choice.Definition.Id == "JID_ソードマスター");
@@ -70,7 +72,7 @@ internal static class RosterStatGuiTests
             "The global maximum depended on the visible search results.");
         search.Clear();
         Dispatcher.UIThread.RunJobs();
-        Check(Input(window, RosterStat.Strength).Value == 100, "Refreshing after maximum flattened existing overflow.");
+        Check(Input(window, RosterStat.Strength).Value == strengthTarget, "Refreshing after maximum lost the exact target.");
         Check(File.ReadAllBytes(source).AsSpan().SequenceEqual(original), "The GUI overwrote the original save.");
         Check(window.LoadSave(source), "Could not restore the GUI fixture.");
         Console.WriteLine("Personal stats GUI: live previews, signed input, class/language switching, pending saves and maximum scopes passed.");

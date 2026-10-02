@@ -34,8 +34,9 @@ are still under development.
   Maximize nine base attributes for one character or every existing playable roster
   character. The required personal values are calculated across each character's
   available classes, including exclusive and DLC classes, so reclassing stays capped.
-  Higher existing personal values are preserved; level, movement, equipment and
-  current HP are not changed by maximizing attributes. Batch actions ignore search filters.
+  Each personal value is set to the exact all-class target, replacing higher values
+  as well as raising lower ones. Level, movement, equipment and current HP are not
+  changed by maximizing attributes. Batch actions ignore search filters.
 - Desktop application using SukiUI controls.
 - Sommie application icon.
 - English UI by default, with live switching to Simplified Chinese, including

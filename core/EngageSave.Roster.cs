@@ -116,7 +116,7 @@ public sealed partial class EngageSave
             for (int stat = 0; stat < maxima.Count; stat++)
             {
                 int previous = character.Stats[stat].PersonalValue;
-                if (previous >= maxima[stat])
+                if (previous == maxima[stat])
                     continue;
                 payload[entry.BaseStatsOffset + stat - layout.Section.PayloadOffset] = unchecked((byte)(sbyte)maxima[stat]);
                 changed = true;

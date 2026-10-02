@@ -23,7 +23,9 @@ internal static class RosterStatTests
         Reject(() => save.MaximizeRosterStats(-1));
         Reject(() => save.MaximizeRosterStats(2));
         var max = save.MaximizeRosterStats(0);
-        Check(max.ReadRoster()[0].Stats[1].PersonalValue == 100, "Maximizing lowered existing overflow.");
+        int strengthTarget = RosterStats.MaximumPersonalValues(first.PersonHash, first.Progress.Gender)[1];
+        Check(max.ReadRoster()[0].Stats[1].PersonalValue == strengthTarget && strengthTarget < 100,
+            "Maximizing did not replace higher values with the exact all-class target.");
         Check(max.ReadRoster()[1].Stats.SequenceEqual(save.ReadRoster()[1].Stats), "Single maximum modified another character.");
         Check(max.ReadRoster()[0].Progress.CurrentHP == first.Progress.CurrentHP && max.ReadRoster()[0].Values == first.Values,
             "Maximizing changed HP, level or progression.");
@@ -78,6 +80,9 @@ internal static class RosterStatTests
     private static void AssertAllClasses(RosterCharacter character)
     {
         var person = RosterCatalog.Person(character.PersonHash)!;
+        var targets = RosterStats.MaximumPersonalValues(person.Hash, character.Progress.Gender);
+        Check(character.Stats.Take(9).Select(stat => stat.PersonalValue).SequenceEqual(targets),
+            "Maximum attributes do not match the exact all-class targets.");
         foreach (var job in RosterCatalog.ClassesFor(person.Hash, character.Progress.Gender))
             foreach (var stat in character.Stats.Take(9))
             {

@@ -145,7 +145,7 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
                          and (not job["Flags"] & 4 or before["Progress"]["Gender"] == 2)]
                 for stat in range(9):
                     required = max(job["Limits"][stat] + person["LimitModifiers"][stat] - job["BaseStats"][stat] for job in legal)
-                    assert after["Stats"][stat]["PersonalValue"] == max(before["Stats"][stat]["PersonalValue"], required)
+                    assert after["Stats"][stat]["PersonalValue"] == required
                     for job in legal:
                         assert after["Stats"][stat]["PersonalValue"] + job["BaseStats"][stat] >= job["Limits"][stat] + person["LimitModifiers"][stat]
             assert run("stats-max", str(output), str(restored), "--all").returncode == 0 and restored.read_bytes() == edited
@@ -215,6 +215,19 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
         info = json.loads(run("list", str(output), "--json").stdout)
         assert all(stat["Value"] == stat["Maximum"] for stat in info[0]["Stats"][:9])
         assert info[1]["Stats"][1]["PersonalValue"] == 3
+        output.unlink()
+        assert run("personal-stat", str(source), str(output), "--character", "0", "--stat", "Strength", "--value", "100").returncode == 0
+        for scope in (("--character", "0"), ("--all",)):
+            assert run("stats-max", str(output), str(restored), *scope).returncode == 0
+            info = json.loads(run("list", str(restored), "--json").stdout)[0]
+            person = people[info["PersonId"]]
+            birth = jobs[person["BirthClass"]]
+            legal = [job for job in jobs.values() if job["Flags"] & 1
+                     and (job["Flags"] & 2 or job["Id"] in (person["BirthClass"], birth["Promotion"]))
+                     and (not job["Flags"] & 4 or info["Progress"]["Gender"] == 2)]
+            expected = max(job["Limits"][1] + person["LimitModifiers"][1] - job["BaseStats"][1] for job in legal)
+            assert info["Stats"][1]["PersonalValue"] == expected < 100
+            restored.unlink()
         output.unlink()
         assert run("item-set", str(source), str(output), "--character", "0", "--slot", "1", "--item", "IID_リカバー").returncode == 0
         assert len(output.read_bytes()) == len(original) + 14
