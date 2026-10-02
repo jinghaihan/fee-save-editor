@@ -15,7 +15,7 @@ def main() -> None:
     parser.add_argument("rid", choices=("win-x64", "osx-arm64", "osx-x64", "linux-x64"))
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
-    version = (root / "VERSION").read_text().strip()
+    version = (root / "VERSION").read_text(encoding="utf-8").strip()
     archive = root / "dist" / f"fee-save-editor-v{version}-{args.rid}.zip"
     with tempfile.TemporaryDirectory(prefix="fee-package-test-") as directory:
         target = Path(directory)

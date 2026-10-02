@@ -130,7 +130,7 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
             allowed = {offset for start in positions for offset in range(start + 60, start + 69)} | set(range(len(data) - 4, len(data)))
             assert len(edited) == len(data) and {i for i, pair in enumerate(zip(data, edited)) if pair[0] != pair[1]} <= allowed
             assert zlib.crc32(edited[:-4]) == struct.unpack_from("<I", edited, len(edited) - 4)[0]
-            catalog = json.loads((Path(__file__).resolve().parents[1] / "core/Data/roster.json").read_text())
+            catalog = json.loads((Path(__file__).resolve().parents[1] / "core/Data/roster.json").read_text(encoding="utf-8"))
             people = {person["Id"]: person for person in catalog["Persons"]}
             jobs = {job["Id"]: job for job in catalog["Classes"]}
             maximal_roster = json.loads(run("list", str(output), "--json").stdout)
