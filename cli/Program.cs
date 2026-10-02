@@ -41,6 +41,13 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli roster skills-max <save> <new-file> --character <index>
           FeeEditor.Cli roster class-skill <save> <new-file> --character <index> --unlocked true|false
           FeeEditor.Cli roster proficiencies <save> <new-file> --character <index> --weapons Sword,Lance
+          FeeEditor.Cli emblems catalog [--json] [--language en|zh-Hans]
+          FeeEditor.Cli emblems list <save> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli emblems rings <save> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli emblems bond-set <save> <new-file> --instance <id> --person <PID> [--level <1-20>] [--experience <0-208>]
+          FeeEditor.Cli emblems bond-max <save> <new-file> --instance <id> --person <PID>
+          FeeEditor.Cli emblems bonds-max <save> <new-file> --instance <id>
+          FeeEditor.Cli emblems ring-set <save> <new-file> --instance <id> --amount <0-99>
           FeeEditor.Cli --version
         Main options:
           --money <amount> --bond-fragments <amount>
@@ -59,6 +66,8 @@ try
             return ItemsCommand.Run(options);
         case ["roster", .. var options]:
             return RosterCommand.Run(options);
+        case ["emblems", .. var options]:
+            return EmblemsCommand.Run(options);
         case ["inspect", var source, .. var options] when options is [] or ["--json"]:
             var save = EngageSave.Load(source);
             Console.WriteLine(JsonSerializer.Serialize(new

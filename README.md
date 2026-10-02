@@ -38,6 +38,16 @@ are still under development.
   as well as raising lower ones. Level, movement, equipment and current HP are not
   changed by maximizing attributes. Batch actions ignore search filters.
 - Desktop application using SukiUI controls.
+- Emblems panel: select a base-game or DLC Emblem and edit character bond levels
+  through a dropdown. EXP is mapped automatically, with optional advanced input
+  for ordinary bonds. Maximize one bond or every known character bond for the
+  selected Emblem, independently of search filters, with a completion count.
+  Alear uses support-derived levels and synchronizes existing support records;
+  only the existing Pact partner can reach level 21. Purchased inherited skills,
+  equipment and unrelated relationships are preserved. Inspect common bond rings
+  and edit stock from 0–99; equipped ring instances remain at one. Unknown rings
+  remain visible and unchanged. Equipment reassignment and adding/deleting ring
+  records are not yet supported.
 - Sommie application icon.
 - English UI by default, with live switching to Simplified Chinese, including
   character, class, skill and item names. The character catalog includes all 41 playable
@@ -89,6 +99,18 @@ class skill. `proficiencies --weapons Sword,Lance` edits weapon proficiencies;
 `PersonalValue` and the class-dependent `Value`/`Maximum` for every attribute.
 `stats-max --character <index>` maximizes one character; `stats-max --all`
 maximizes all existing known playable characters, excluding enemy/temporary units.
+
+`emblems catalog` lists all 20 base/DLC Emblems and 483 named common rings.
+`emblems list <save>` includes character bonds, saved EXP, purchased skills and
+the character-specific `MaximumLevel`; `emblems rings <save>` includes stock and
+equipment ownership. Both accept `--language en|zh-Hans`.
+`emblems bond-set <save> <new-file> --instance <id> --person <PID>` accepts
+`--level` and/or `--experience`, which must agree with the game thresholds.
+`emblems bond-max` uses the same two selectors to maximize one character bond;
+`emblems bonds-max --instance <id>` maximizes all known saved character bonds
+for that Emblem. Alear edits synchronize existing character supports and cannot
+invent or replace a Pact partner. `emblems ring-set` accepts `--instance` and
+`--amount` with ownership-aware limits. Every command writes a new file.
 
 The container reader has been checked against game-format version 9 saves.
 Main, convoy and roster edits have been checked through serialization and exact restoration on
