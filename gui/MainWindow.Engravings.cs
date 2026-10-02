@@ -1,3 +1,4 @@
+using System.Globalization;
 using Avalonia.Controls;
 using FeeEditor.Core;
 using FeeEditor.Gui.Localization;
@@ -7,6 +8,28 @@ namespace FeeEditor.Gui;
 public partial class MainWindow
 {
     public sealed record EngravingChoice(uint? Hash, string Label);
+    public sealed record EngravingEffect(string Label, string Value);
+
+    private void Engraving_Changed(object? sender, SelectionChangedEventArgs e)
+    {
+        var preview = ReferenceEquals(sender, ItemEngravingInput) ? ItemEngravingEffects : RosterItemEngravingEffects;
+        if (preview is null) return;
+        var choice = (sender as ComboBox)?.SelectedItem as EngravingChoice;
+        var engraving = choice?.Hash is uint hash ? EngravingCatalog.Find(hash) : null;
+        preview.IsVisible = engraving is not null;
+        if (engraving is null)
+        {
+            preview.ItemsSource = Array.Empty<EngravingEffect>();
+            return;
+        }
+        var modifiers = new (string Key, int Value)[]
+        {
+            ("Might", engraving.Power), ("Weight", engraving.Weight), ("Hit", engraving.Hit),
+            ("Critical", engraving.Critical), ("Avoid", engraving.Avoid), ("Dodge", engraving.Secure)
+        };
+        preview.ItemsSource = modifiers.Select(modifier => new EngravingEffect(UiLanguage.Get(modifier.Key),
+            modifier.Value.ToString("+0;-0;0", CultureInfo.InvariantCulture))).ToArray();
+    }
 
     private static void RefreshEngravingChoices(ComboBox input, uint? itemHash, uint? selected)
     {

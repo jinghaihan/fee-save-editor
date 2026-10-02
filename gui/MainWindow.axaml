@@ -5,6 +5,15 @@
         Title="{DynamicResource AppTitle}"
         Icon="/Assets/app-icon.ico"
         Width="1120" Height="780" MinWidth="860" MinHeight="600">
+  <Window.Resources>
+    <ItemsPanelTemplate x:Key="EngravingEffectsPanel"><UniformGrid Columns="3" /></ItemsPanelTemplate>
+    <DataTemplate x:Key="EngravingEffectTemplate" DataType="x:Object" x:CompileBindings="False">
+      <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8" Margin="0,0,12,4">
+        <TextBlock Text="{Binding Label}" TextWrapping="Wrap" />
+        <TextBlock Grid.Column="1" Text="{Binding Value}" />
+      </Grid>
+    </DataTemplate>
+  </Window.Resources>
   <Grid RowDefinitions="Auto,*,Auto" Margin="24" RowSpacing="24">
     <Grid ColumnDefinitions="Auto,*">
       <Menu VerticalAlignment="Center">
@@ -134,9 +143,11 @@
             </StackPanel>
             <StackPanel Spacing="8">
               <TextBlock Text="{DynamicResource Engraving}" />
-              <ComboBox Name="ItemEngravingInput" Height="42" Margin="0" HorizontalAlignment="Stretch">
+              <ComboBox Name="ItemEngravingInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="Engraving_Changed">
                 <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
               </ComboBox>
+              <ItemsControl Name="ItemEngravingEffects" IsVisible="False" ItemsPanel="{StaticResource EngravingEffectsPanel}"
+                            ItemTemplate="{StaticResource EngravingEffectTemplate}" />
             </StackPanel>
             <Button Name="ApplyItemButton" Height="42" Content="{DynamicResource ApplyChanges}" Click="ApplyItem_Click" HorizontalAlignment="Stretch" />
             <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
@@ -266,9 +277,11 @@
                 </StackPanel>
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Engraving}" />
-                  <ComboBox Name="RosterItemEngraving" Height="42" Margin="0" HorizontalAlignment="Stretch">
+                  <ComboBox Name="RosterItemEngraving" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="Engraving_Changed">
                     <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
                   </ComboBox>
+                  <ItemsControl Name="RosterItemEngravingEffects" IsVisible="False" ItemsPanel="{StaticResource EngravingEffectsPanel}"
+                                ItemTemplate="{StaticResource EngravingEffectTemplate}" />
                 </StackPanel>
                 <Button Name="ApplyRosterItemButton" Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterItem_Click" />
                 <Button Name="DeleteRosterItemButton" Content="{DynamicResource DeleteItem}" HorizontalAlignment="Stretch" Click="DeleteRosterItem_Click" />

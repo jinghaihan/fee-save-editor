@@ -17,6 +17,7 @@ are still under development.
   item's data; additions use empty slots within the saved convoy capacity.
   Assign or clear any of the 20 base-game/DLC Emblem engravings. Assigning an
   already-used engraving transfers it from the previous convoy or carried weapon.
+  Preview might, weight, hit, critical, avoid and dodge modifiers before applying.
   Item flags and unrelated engravings are preserved; unknown references remain visible.
 - Save a verified edited copy; opening or editing never overwrites the input file.
 - Roster panel: search characters, edit level, EXP and SP, edit personal stat

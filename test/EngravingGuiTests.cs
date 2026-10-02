@@ -16,11 +16,16 @@ internal static class EngravingGuiTests
         window.ShowItems();
         var inventory = window.FindControl<ListBox>("InventoryList")!;
         var input = window.FindControl<ComboBox>("ItemEngravingInput")!;
+        var effects = window.FindControl<ItemsControl>("ItemEngravingEffects")!;
         var refine = window.FindControl<NumericUpDown>("ItemRefineInput")!;
         SelectItem(inventory, 1);
         Check(input.IsEnabled && input.ItemCount == 22 && (input.SelectedItem as MainWindow.EngravingChoice)?.Label == "0x00123ABC",
             "Unknown engravings were hidden or replaced on load.");
+        Check(!effects.IsVisible && effects.ItemCount == 0, "An unknown engraving displayed guessed effects.");
+        CheckEffects(window, input, effects);
         SelectEngraving(input, EngravingTests.Marth);
+        Check(effects.Items.Cast<MainWindow.EngravingEffect>().Select(row => row.Label)
+            .SequenceEqual(new[] { "Might", "Weight", "Hit", "Critical", "Avoid", "Dodge" }), "English effect labels are incorrect.");
         refine.Text = "4";
         for (int pass = 0; pass < 3; pass++)
         {
@@ -28,14 +33,19 @@ internal static class EngravingGuiTests
             Dispatcher.UIThread.RunJobs();
             Check((input.SelectedItem as MainWindow.EngravingChoice)?.Label == EngravingCatalog.Get(EngravingTests.Marth).Name("zh-Hans"),
                 "The pending engraving did not translate.");
+            Check(effects.Items.Cast<MainWindow.EngravingEffect>().Select(row => row.Label)
+                .SequenceEqual(new[] { "威力", "重量", "命中", "必杀", "回避", "必杀回避" }), "Effect labels did not translate.");
             window.SetLanguage("en");
             Dispatcher.UIThread.RunJobs();
             Check((input.SelectedItem as MainWindow.EngravingChoice)?.Label == "Marth" && refine.Text == "4",
                 "Language switching lost the pending engraving or refinement.");
+            Check(effects.Items.Cast<MainWindow.EngravingEffect>().Select(row => row.Label)
+                .SequenceEqual(new[] { "Might", "Weight", "Hit", "Critical", "Avoid", "Dodge" }), "Chinese effect labels remained in English mode.");
         }
         Check(window.ApplyItemValues() && window.Save!.ReadInventory()[1].Item is { RefineLevel: 4 }
             && window.Save.ReadInventory()[2].Item!.EngravingHash is null, "The GUI did not transfer the engraving.");
         SelectEngraving(input, null);
+        Check(!effects.IsVisible && effects.ItemCount == 0, "Clearing an engraving left stale effects visible.");
         Check(window.ApplyItemValues() && window.Save!.ReadInventory()[1].Item!.EngravingHash is null,
             "The GUI could not clear an engraving.");
         SelectItem(inventory, 0);
@@ -54,6 +64,7 @@ internal static class EngravingGuiTests
         var equipment = window.FindControl<ListBox>("RosterItemsList")!;
         var carriedInput = window.FindControl<ComboBox>("RosterItemEngraving")!;
         SelectItem(equipment, 1);
+        CheckEffects(window, carriedInput, window.FindControl<ItemsControl>("RosterItemEngravingEffects")!);
         SelectEngraving(carriedInput, EngravingTests.Marth);
         Check(window.ApplyRosterItem() && window.Save!.ReadInventory()[2].Item!.EngravingHash is null,
             "The carried-item GUI did not clear the convoy's old owner.");
@@ -134,6 +145,22 @@ internal static class EngravingGuiTests
     {
         uint? hash = id is null ? null : EngravingCatalog.Get(id).Hash;
         input.SelectedItem = input.Items.Cast<MainWindow.EngravingChoice>().First(row => row.Hash == hash);
+    }
+    private static void CheckEffects(MainWindow window, ComboBox input, ItemsControl effects)
+    {
+        byte[] original = window.Save!.Serialize();
+        foreach (var engraving in EngravingCatalog.Engravings)
+        {
+            SelectEngraving(input, engraving.Id);
+            Dispatcher.UIThread.RunJobs();
+            var values = effects.Items.Cast<MainWindow.EngravingEffect>().Select(row => row.Value).ToArray();
+            int[] expected = { engraving.Power, engraving.Weight, engraving.Hit, engraving.Critical, engraving.Avoid, engraving.Secure };
+            Check(effects.IsVisible && values.Length == 6, "A selected engraving did not show all six effects.");
+            Check(values.Select(value => int.Parse(value, System.Globalization.CultureInfo.InvariantCulture)).SequenceEqual(expected)
+                && values.Zip(expected).All(pair => pair.Second <= 0 || pair.First.StartsWith('+')),
+                "An engraving preview has incorrect modifiers or signs.");
+        }
+        Check(window.Save.Serialize().AsSpan().SequenceEqual(original), "Previewing effects changed save bytes.");
     }
     private static void Check(bool condition, string message) { if (!condition) throw new Exception(message); }
 }
