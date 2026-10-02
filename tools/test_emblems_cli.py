@@ -163,7 +163,7 @@ def check_emblems(command: list[str], real_directory: Path | None, base: bytes) 
         assert pact["level"] == 21 and pact["exp"] == 209
         supports = sections(pact_max.read_bytes())[b"LERU"]
         rank_offset = 36 + 4 + struct.unpack_from("<I", supports, 36)[0] + 4
-        assert supports[rank_offset:rank_offset+3] == bytes((4, 0, 2))
+        assert supports[rank_offset:rank_offset+3] == bytes((4, 99, 2))
         run("bond-set", str(pact_source), str(root / "pact-overwrite"), "--instance", "3", "--person", "PID_ユナカ", "--level", "20", valid=False)
         bulk_pact = root / "pact-bulk"
         run("bonds-max", str(pact_source), str(bulk_pact), "--instance", "3")

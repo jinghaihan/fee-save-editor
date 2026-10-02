@@ -317,8 +317,10 @@ than fabricated. Alear's own record has no self-support pair. `UREL` pool versio
 1 contains a count and concatenated PID-pair UTF-16 keys, followed by record
 version 1, byte rank and signed-byte EXP/score. This matches
 `UnitRelianceData.Serialize` at `0x1c5b470` and the pool serializer loop at
-`0x1c5b3b0`. Changing rank resets only its partial EXP; score, other pairs and
-opaque bytes are preserved. An already matching support retains its partial EXP.
+`0x1c5b3b0`. Changing rank writes its pair-specific cumulative threshold; score,
+other pairs and opaque bytes are preserved. An already matching support retains
+its saved points. Earlier notes described the EXP as partial and reset it to zero;
+that interpretation was corrected after checking the native level-up function.
 
 Single and batch maximum actions share the same character/Emblem limit resolver.
 Batch maximum applies to all existing known character bonds for the chosen Emblem,
@@ -357,6 +359,35 @@ links in the manual save and 52 in the automatic save (including non-roster unit
 Each has 231 character-support records, all at rank A, including all 40 Alear/ally
 pairs; the Alear Pact-partner field is empty. These private inputs are not bundled.
 Tests use synthetic fixtures and temporary copies; in-game loading is not yet verified.
+
+## Character supports
+
+The pinned [complete support table](https://github.com/Xzonn/FireEmblemEngageData/blob/86b8be7b9820e1bb3bce87d2a9a805ead85d92ab/data/xml/Reliance.xml)
+contains 41 playable characters and 231 base/DLC pairs. A nonzero `ExpType` selects
+one of the table's C/B/A cumulative threshold patterns; zero denotes no support.
+Only those pairs are editable, and only when a corresponding UREL record already
+exists. Either ordering of a PID-pair key resolves to the same catalog pair;
+duplicate/reversed duplicates, unsupported versions and trailing data are rejected.
+
+Rank is saved separately as None/C/B/A/APlus (0–4). The native `CanLevelUp` at
+`0x1c5a8a0` checks points against the next threshold minus one. `LevelUp` at
+`0x1c5aa20` increments both rank and points by one, rather than clearing points.
+The setter at `0x1c5c4d0` clamps points to 0 through the next rank's threshold minus
+one; A and APlus use the game's 100-point boundary (0–99). The native APlus setter
+at `0x1c5af50` writes rank 4 and 99 points. Rank selection uses the corresponding
+C/B/A threshold, or 99 for the existing Pact partner. Point-only selection maps
+through those thresholds but does not convert ordinary pairs to APlus.
+
+Existing unlocked ranks with low points are valid to preserve: opening, copying
+and maximizing an already-maxed pair never infer a lower rank or rewrite points.
+The user's Manual0 and Auto contain all 231 pairs at A, with differing saved points.
+Support edits preserve the map score byte and every unrelated section. Changing
+Alear's rank updates an existing Alear Emblem bond to 1/5/10/20/21, while preserving
+purchased skills and unrelated flags; missing Emblems/bonds are not fabricated.
+Pact changes are restricted to the saved GDBD partner and never create or replace
+that partner. All-rank maximum returns an immutable result and leaves unknown
+pairs and unmatched existing special ranks unchanged. The global conversation
+gallery is a separate record and is not modified by this panel.
 
 ## Resource inputs
 
