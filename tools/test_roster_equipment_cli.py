@@ -53,7 +53,7 @@ def check_roster_equipment(command: list[str], real_directory: Path | None, base
         root = Path(directory)
 
         def run(*args: str, valid: bool = True) -> str:
-            result = subprocess.run([*command, "roster", *args], capture_output=True, text=True)
+            result = subprocess.run([*command, "roster", *args], capture_output=True, text=True, encoding="utf-8")
             assert (result.returncode == 0) == valid, (args, result.stderr)
             return result.stdout
 

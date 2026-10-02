@@ -85,7 +85,7 @@ def without_tiki(data: bytes, remove_holder: bool = False) -> bytes:
 
 
 def check_emblem_creation(command: list[str], real_directory: Path | None, base: bytes) -> None:
-    catalog = json.loads((Path(__file__).resolve().parents[1] / "core/Data/emblem-creation.json").read_text())
+    catalog = json.loads((Path(__file__).resolve().parents[1] / "core/Data/emblem-creation.json").read_text(encoding="utf-8"))
     expected_weapons = {row["Id"]: row["Weapons"] for row in catalog["Emblems"]}
     original = fixture(base)
     cases = [("synthetic-reuse", without_tiki(original), False, False),
@@ -102,7 +102,7 @@ def check_emblem_creation(command: list[str], real_directory: Path | None, base:
         root = Path(directory)
 
         def run(*args: str, valid: bool = True) -> str:
-            result = subprocess.run([*command, "emblems", *args], capture_output=True, text=True)
+            result = subprocess.run([*command, "emblems", *args], capture_output=True, text=True, encoding="utf-8")
             assert (result.returncode == 0) == valid, (args, result.stderr)
             return result.stdout
 
@@ -112,13 +112,13 @@ def check_emblem_creation(command: list[str], real_directory: Path | None, base:
                 pristine = root / f"{name}-pristine"
                 pristine.write_bytes(source_data)
                 inspection = subprocess.run([*command, "roster", "equipment", str(pristine), "--character", "0", "--json"],
-                                            capture_output=True, text=True)
+                                            capture_output=True, text=True, encoding="utf-8")
                 assert inspection.returncode == 0, inspection.stderr
                 tiki = next(row for row in json.loads(inspection.stdout)["Options"] if row["EmblemId"] == "GID_チキ")
                 if tiki["OwnerIndex"] is not None:
                     unequipped = root / f"{name}-unequipped"
                     result = subprocess.run([*command, "roster", "equipment-set", str(pristine), str(unequipped),
-                                             "--character", str(tiki["OwnerIndex"]), "--none", "true"], capture_output=True, text=True)
+                                             "--character", str(tiki["OwnerIndex"]), "--none", "true"], capture_output=True, text=True, encoding="utf-8")
                     assert result.returncode == 0, result.stderr
                     source_data = unequipped.read_bytes()
                 source_data = without_tiki(source_data, remove_holder=fresh)

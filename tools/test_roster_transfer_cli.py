@@ -22,7 +22,7 @@ def check_roster_transfers(command: list[str], real_directory: Path | None, base
         source, snapshot, edited, restored = [root / name for name in ("source", "character.json", "edited", "restored")]
 
         def run(*args: str) -> subprocess.CompletedProcess:
-            return subprocess.run([*command, "roster", *args], capture_output=True, text=True)
+            return subprocess.run([*command, "roster", *args], capture_output=True, text=True, encoding="utf-8")
 
         for name, original in cases:
             source.write_bytes(original)

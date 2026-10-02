@@ -12,7 +12,7 @@ from pathlib import Path
 
 def check_achievements(command: list[str], real_directory: Path | None, fixture: bytes) -> None:
     def run(*args: str, success: bool = True) -> str:
-        result = subprocess.run([*command, "achievements", *args], capture_output=True, text=True)
+        result = subprocess.run([*command, "achievements", *args], capture_output=True, text=True, encoding="utf-8")
         assert (result.returncode == 0) == success, result.stderr
         return result.stdout
 

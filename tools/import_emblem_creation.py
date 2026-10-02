@@ -17,7 +17,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    catalog = json.loads((Path(__file__).resolve().parents[1] / "core/Data/emblems.json").read_text())
+    catalog = json.loads((Path(__file__).resolve().parents[1] / "core/Data/emblems.json").read_text(encoding="utf-8"))
     normal = {row["Id"] for row in catalog["Emblems"] if row["Id"] != "GID_リュール"}
     god = ET.fromstring(fetch("Xzonn/FireEmblemEngageData", REVISION, "data/xml/God.xml"))
     groups = {}
