@@ -96,6 +96,7 @@ try
     EmblemGuiTests.Run(window, temporary);
     SupportTests.Run();
     SupportGuiTests.Run(window, temporary);
+    EngravingTests.Run();
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -119,6 +120,7 @@ try
                 RosterStatTests.CheckReal(loaded);
                 EmblemTests.CheckReal(loaded);
                 SupportTests.CheckReal(loaded);
+                EngravingTests.CheckReal(loaded);
                 var current = loaded.ReadMainValues();
                 var updated = current with { Money = 12345, BondFragments = 6789, IronIngots = 111,
                     SteelIngots = 222, SilverIngots = 333, Difficulty = Difficulty.Normal,

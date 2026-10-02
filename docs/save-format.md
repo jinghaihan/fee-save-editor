@@ -148,13 +148,39 @@ restoration rejects an empty or unknown slot. Existing unusual values are readab
 without mutation, but new out-of-range edits are rejected.
 
 Item replacement preserves the slot's flags and engraving reference; adding an
-item initializes these fields to zero and no engraving. An engraved weapon cannot
-be replaced by a non-forgeable item. Engraving changes remain unimplemented pending
-ownership checks across convoy and unit equipment. Save Copy applies pending valid
-item inputs when the Items panel is active. The inventory editor does not alter
-equipped unit items; these are handled by the Roster panel. Tests cover empty/unknown/engraved entries, 999-slot capacity,
+item initializes these fields to zero and no engraving unless explicitly assigned.
+An engraved weapon cannot be replaced by an ineligible item without explicitly
+clearing its engraving. Save Copy applies pending valid item inputs even after
+switching pages. Tests cover empty/unknown/engraved entries, 999-slot capacity,
 invalid ranges and encodings, exact reversal, untouched other sections and live
 language switching. In-game loading remains unverified.
+
+### Weapon engravings
+
+The pinned complete [God table](https://github.com/Xzonn/FireEmblemEngageData/blob/86b8be7b9820e1bb3bce87d2a9a805ead85d92ab/data/xml/God.xml)
+provides the 20 playable base/DLC engraving identities and six modifiers. Save
+references are GID hashes, not engraving-name message IDs. Dimitri and Claude's
+alternate references share Edelgard's engraving identity; they are not extra
+independent engravings. Names reuse the localized Emblem catalog.
+
+Weapon eligibility comes from the same revision's [Item table](https://github.com/Xzonn/FireEmblemEngageData/blob/86b8be7b9820e1bb3bce87d2a9a805ead85d92ab/data/xml/Item.xml):
+kinds 1–6, 8 and 9, excluding Engage weapons and the no-engraving flag
+`0x08000000`. This yields 299 weapon IDs, including DLC. The supplied executable's
+`UnitItem.CanEngrave` / `SetEngrave` at RVAs `0x1fb0050` / `0x1fb0080` check the
+weapon predicate and this exclusion flag. The native serializer at `0x1fb2220`
+writes the GodData engraving reference after the other UnitItem fields.
+
+Assigning an engraving first validates both TRAN and UNIT, then clears the same
+engraving from other owned convoy/carried weapons, excluding Enemy and Temporary
+forces. Shared aliases count as the same engraving. A missing or unsupported
+ownership section rejects assignment instead of risking duplicates. Clearing a
+selected engraving needs only its own section. An unknown engraving is visible
+and preserved unless the user explicitly clears or replaces it. Engraving-only
+edits preserve raw uses, refinement and flags, including verified DLC weapons
+outside the bounded replacement catalog. No unverified limits are fabricated.
+Length-changing references update section offsets, Unit lengths and CRC32.
+Tests cover transfers in all directions, CLI/GUI behavior, pending edits across
+pages and language switches, and exact clear/restore on real equipped weapons.
 
 ## Roster (UNIT version 0, Unit version 40)
 

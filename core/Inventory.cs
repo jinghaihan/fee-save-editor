@@ -57,11 +57,11 @@ internal sealed class InventoryLayout
         return new InventoryLayout { Section = section, Slots = Array.AsReadOnly(slots), Starts = starts, Ends = ends };
     }
 
-    public byte[] Replace(byte[] bytes, int slot, InventoryItem? item)
+    public byte[] Replace(byte[] bytes, int slot, InventoryItem? item, bool validate = true)
     {
         if (slot < 0 || slot >= Slots.Count)
             throw new ArgumentOutOfRangeException(nameof(slot), "The convoy slot is outside the saved capacity.");
-        if (item is not null)
+        if (validate && item is not null)
             Validate(item);
         using var output = new MemoryStream();
         output.Write(bytes.AsSpan(Section.PayloadOffset, Starts[slot] - Section.PayloadOffset));
@@ -82,8 +82,8 @@ internal sealed class InventoryLayout
             throw new ArgumentOutOfRangeException(nameof(item.Uses), $"Invalid remaining uses for {definition.English}.");
         if (item.RefineLevel < 0 || item.RefineLevel > definition.MaxRefine)
             throw new ArgumentOutOfRangeException(nameof(item.RefineLevel), $"Refine level must be between 0 and {definition.MaxRefine}.");
-        if (item.EngravingHash.HasValue && definition.MaxRefine == 0)
-            throw new ArgumentException("An engraved weapon cannot be replaced with an item that cannot be forged.");
+        if (item.EngravingHash.HasValue && !EngravingCatalog.CanEngrave(item.ItemHash))
+            throw new ArgumentException("This item cannot carry a weapon engraving. Clear the engraving before replacing it.");
     }
 
     internal static void WriteItem(BinaryWriter writer, InventoryItem? item)
