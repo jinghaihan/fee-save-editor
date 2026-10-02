@@ -44,7 +44,7 @@
         </TabStrip>
       </Grid>
     </Grid>
-    <Grid Name="MainPanel" Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="24">
+    <Grid Name="MainPanel" Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="24">
       <suki:GlassCard Padding="28">
         <ScrollViewer>
           <StackPanel Spacing="20" MaxWidth="480" HorizontalAlignment="Stretch">
@@ -63,11 +63,13 @@
                 <TextBox Name="SommieNameInput" Height="42" />
               </StackPanel>
             </StackPanel>
-            <StackPanel Spacing="12">
-              <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
-                <TextBlock Text="{DynamicResource Donations}" FontWeight="SemiBold" VerticalAlignment="Center" />
-                <Button Name="MaxAllDonationsButton" Grid.Column="1" Content="{DynamicResource MaxAllLevels}" Click="MaxAllDonations_Click" IsEnabled="False" />
-              </Grid>
+          </StackPanel>
+        </ScrollViewer>
+      </suki:GlassCard>
+      <suki:GlassCard Grid.Column="2" Padding="28">
+        <ScrollViewer>
+          <StackPanel Spacing="20">
+              <TextBlock Text="{DynamicResource Donations}" FontWeight="SemiBold" />
               <StackPanel Name="DonationInputs" Spacing="12" IsEnabled="False">
                 <ComboBox Name="DonationCountryInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="DonationCountry_Changed"
                           AutomationProperties.Name="{DynamicResource Country}">
@@ -85,7 +87,7 @@
                   <NumericUpDown Name="DonationAmountInput" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
                 </StackPanel>
               </StackPanel>
-            </StackPanel>
+              <Button Name="MaxAllDonationsButton" Content="{DynamicResource MaxAllLevels}" HorizontalAlignment="Stretch" Click="MaxAllDonations_Click" IsEnabled="False" />
           </StackPanel>
         </ScrollViewer>
       </suki:GlassCard>
