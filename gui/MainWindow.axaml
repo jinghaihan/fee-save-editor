@@ -21,9 +21,9 @@
       </Grid>
     </DataTemplate>
   </Window.Resources>
-  <Grid RowDefinitions="Auto,*,Auto" Margin="24" RowSpacing="24">
-    <Grid ColumnDefinitions="Auto,*">
-      <Menu VerticalAlignment="Center">
+  <Grid Name="WindowLayout" RowDefinitions="Auto,*,Auto" Margin="0,0,0,24" RowSpacing="24">
+    <Grid Name="Header" ColumnDefinitions="Auto,*">
+      <Menu FontSize="13" VerticalAlignment="Center">
         <MenuItem Header="{DynamicResource File}">
           <MenuItem Header="{DynamicResource OpenSave}" Click="OpenSave_Click" />
           <MenuItem Name="SaveCopyMenu" Header="{DynamicResource SaveCopy}" Click="SaveCopy_Click" IsEnabled="False" />
@@ -42,7 +42,7 @@
       <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
         <Grid ColumnDefinitions="Auto,Auto" HorizontalAlignment="Right" ColumnSpacing="16">
           <TextBlock Name="PageTitle" Text="{DynamicResource Main}" VerticalAlignment="Center" FontWeight="SemiBold" />
-          <TabStrip Grid.Column="1" Name="MainNavigation" SelectedIndex="0" SelectionChanged="Navigation_Changed">
+          <TabStrip Grid.Column="1" Name="MainNavigation" FontSize="13" SelectedIndex="0" SelectionChanged="Navigation_Changed">
             <TabStripItem Content="{DynamicResource Main}" />
             <TabStripItem Content="{DynamicResource Items}" />
             <TabStripItem Content="{DynamicResource Roster}" />
@@ -54,7 +54,7 @@
         </Grid>
       </ScrollViewer>
     </Grid>
-    <ScrollViewer Name="MainScroll" Grid.Row="1" IsVisible="{Binding IsVisible, ElementName=MainPanel}" HorizontalScrollBarVisibility="Disabled">
+    <ScrollViewer Name="MainScroll" Grid.Row="1" Margin="24,0" IsVisible="{Binding IsVisible, ElementName=MainPanel}" HorizontalScrollBarVisibility="Disabled">
       <Grid Name="MainPanel" ColumnDefinitions="*,*" ColumnSpacing="24" VerticalAlignment="Top">
         <StackPanel Spacing="24">
           <suki:GlassCard Name="SettingsCard" Padding="20">
@@ -166,7 +166,7 @@
         </StackPanel>
       </Grid>
     </ScrollViewer>
-    <Grid Name="ItemsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+    <Grid Name="ItemsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="16">
           <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
@@ -228,7 +228,7 @@
         </ScrollViewer>
       </suki:GlassCard>
     </Grid>
-    <Grid Name="RosterPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+    <Grid Name="RosterPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" RowSpacing="16">
           <TextBlock Text="{DynamicResource CharacterList}" FontWeight="SemiBold" />
@@ -423,7 +423,7 @@
         </Grid>
       </suki:GlassCard>
     </Grid>
-    <Grid Name="EmblemsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+    <Grid Name="EmblemsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="16">
           <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
@@ -480,7 +480,7 @@
         </Grid>
       </suki:GlassCard>
     </Grid>
-    <Grid Name="BondRingsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+    <Grid Name="BondRingsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="16">
           <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
@@ -520,7 +520,7 @@
         </Grid>
       </suki:GlassCard>
     </Grid>
-    <Grid Name="SupportsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+    <Grid Name="SupportsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="16">
           <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
@@ -554,7 +554,7 @@
         </ScrollViewer>
       </suki:GlassCard>
     </Grid>
-    <Grid Name="AchievementsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+    <Grid Name="AchievementsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto" RowSpacing="16">
           <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
@@ -600,7 +600,7 @@
         </ScrollViewer>
       </suki:GlassCard>
     </Grid>
-    <Grid Name="InspectorPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="260,*" ColumnSpacing="16">
+    <Grid Name="InspectorPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="260,*" ColumnSpacing="16">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,*" RowSpacing="16">
           <TextBlock Text="{DynamicResource Sections}" FontWeight="SemiBold" />
@@ -634,6 +634,6 @@
         </ScrollViewer>
       </suki:GlassCard>
     </Grid>
-    <TextBlock Grid.Row="2" Name="Message" IsVisible="False" TextWrapping="Wrap" />
+    <TextBlock Grid.Row="2" Name="Message" Margin="24,0" IsVisible="False" TextWrapping="Wrap" />
   </Grid>
 </Window>

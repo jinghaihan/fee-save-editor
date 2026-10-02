@@ -17,6 +17,7 @@ window.Show();
 Dispatcher.UIThread.RunJobs();
 Check(UiLanguage.Current == "en", "The default UI language is not English.");
 Check(window.Icon is not null, "The Sommie window icon is missing.");
+HeaderLayoutTests.Run(window);
 Check(window.FindControl<Image>("AppLogo") is null,
     "The menu must not contain a separate avatar, matching the FETH template.");
 Check(window.FindControl<Control>("RosterName") is TextBlock
