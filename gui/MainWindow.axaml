@@ -2,15 +2,58 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:suki="https://github.com/kikipoulet/SukiUI"
         x:Class="FeeEditor.Gui.MainWindow"
-        Title="Fire Emblem Engage Save Editor"
+        Title="{DynamicResource AppTitle}"
         Width="1100" Height="740" MinWidth="800" MinHeight="540">
-  <Grid RowDefinitions="Auto,*" Margin="24" RowSpacing="24">
-    <TextBlock Text="Fire Emblem Engage Save Editor" FontSize="20" FontWeight="SemiBold" />
-    <suki:GlassCard Grid.Row="1" Padding="24">
-      <StackPanel Spacing="16">
-        <TextBlock Text="Save Inspector" FontSize="18" FontWeight="SemiBold" />
-        <TextBlock Text="Open an Engage save to inspect its structure." />
-      </StackPanel>
-    </suki:GlassCard>
+  <Grid RowDefinitions="Auto,*,Auto" Margin="24" RowSpacing="24">
+    <Grid ColumnDefinitions="Auto,*">
+      <Menu>
+        <MenuItem Header="{DynamicResource File}">
+          <MenuItem Header="{DynamicResource OpenSave}" Click="OpenSave_Click" />
+          <MenuItem Name="SaveCopyMenu" Header="{DynamicResource SaveCopy}" Click="SaveCopy_Click" IsEnabled="False" />
+          <Separator />
+          <MenuItem Header="{DynamicResource Exit}" Click="Exit_Click" />
+        </MenuItem>
+        <MenuItem Header="{DynamicResource Language}">
+          <MenuItem Header="English" Click="English_Click" />
+          <MenuItem Header="简体中文" Click="Chinese_Click" />
+        </MenuItem>
+      </Menu>
+      <TextBlock Grid.Column="1" Text="{DynamicResource Inspector}" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="SemiBold" />
+    </Grid>
+    <Grid Grid.Row="1" ColumnDefinitions="260,*" ColumnSpacing="16">
+      <suki:GlassCard Padding="20">
+        <Grid RowDefinitions="Auto,Auto,*" RowSpacing="16">
+          <TextBlock Text="{DynamicResource Sections}" FontWeight="SemiBold" />
+          <TextBox Grid.Row="1" Name="SectionSearch" PlaceholderText="{DynamicResource Search}" TextChanged="SectionSearch_Changed" />
+          <ListBox Grid.Row="2" Name="SectionList" SelectionChanged="SectionList_Changed" />
+        </Grid>
+      </suki:GlassCard>
+      <suki:GlassCard Grid.Column="1" Padding="24">
+        <ScrollViewer>
+          <StackPanel Spacing="24">
+            <TextBlock Text="{DynamicResource Overview}" FontWeight="SemiBold" />
+            <TextBlock Name="EmptyState" Text="{DynamicResource NoSave}" />
+            <Grid Name="OverviewFields" IsVisible="False" ColumnDefinitions="200,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="16" ColumnSpacing="16">
+              <TextBlock Text="{DynamicResource FileName}" /><TextBlock Name="FileNameValue" Grid.Column="1" TextWrapping="Wrap" />
+              <TextBlock Grid.Row="1" Text="{DynamicResource Kind}" /><TextBlock Name="KindValue" Grid.Row="1" Grid.Column="1" />
+              <TextBlock Grid.Row="2" Text="{DynamicResource FileSize}" /><TextBlock Name="FileSizeValue" Grid.Row="2" Grid.Column="1" />
+              <TextBlock Grid.Row="3" Text="{DynamicResource FormatVersion}" /><TextBlock Name="FormatValue" Grid.Row="3" Grid.Column="1" />
+              <TextBlock Grid.Row="4" Text="{DynamicResource GameVersion}" /><TextBlock Name="GameVersionValue" Grid.Row="4" Grid.Column="1" />
+              <TextBlock Grid.Row="5" Text="{DynamicResource Checksum}" /><TextBlock Name="ChecksumValue" Grid.Row="5" Grid.Column="1" />
+              <TextBlock Grid.Row="6" Text="{DynamicResource SectionCount}" /><TextBlock Name="SectionCountValue" Grid.Row="6" Grid.Column="1" />
+            </Grid>
+            <StackPanel Name="SectionFields" IsVisible="False" Spacing="16">
+              <TextBlock Text="{DynamicResource SelectedSection}" FontWeight="SemiBold" />
+              <Grid ColumnDefinitions="200,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="16" ColumnSpacing="16">
+                <TextBlock Text="{DynamicResource SectionName}" /><TextBlock Name="SectionNameValue" Grid.Column="1" />
+                <TextBlock Grid.Row="1" Text="{DynamicResource Offset}" /><TextBlock Name="OffsetValue" Grid.Row="1" Grid.Column="1" />
+                <TextBlock Grid.Row="2" Text="{DynamicResource PayloadSize}" /><TextBlock Name="PayloadSizeValue" Grid.Row="2" Grid.Column="1" />
+              </Grid>
+            </StackPanel>
+          </StackPanel>
+        </ScrollViewer>
+      </suki:GlassCard>
+    </Grid>
+    <TextBlock Grid.Row="2" Name="Message" IsVisible="False" TextWrapping="Wrap" />
   </Grid>
 </Window>

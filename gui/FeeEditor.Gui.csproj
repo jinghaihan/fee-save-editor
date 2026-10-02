@@ -12,4 +12,7 @@
     <PackageReference Include="SukiUI" Version="7.0.1" />
     <ProjectReference Include="../core/Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization/*.json" WithCulture="false" />
+  </ItemGroup>
 </Project>

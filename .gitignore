@@ -7,4 +7,6 @@ dist/
 .vscode/
 *.user
 *.log
-
+# Local analysis inputs are never distributed.
+analysis/
+private-data/
