@@ -9,6 +9,10 @@ are still under development.
 - Main panel: edit money, bond fragments, iron/steel/silver ingots, difficulty,
   game mode and Sommie's name. Difficulty and mode update both the save summary
   and the actual gameplay fields.
+- Main donations: select Firene, Brodia, Elusia or Solm; link level 1–5 to the
+  exact cumulative donated amount, or maximize one/all countries. Level five is
+  90,000 gold; raw amounts allow 0–9,999,999. Edits do not spend money, replay
+  one-time rewards, change achievement records or unlock chapters.
 - Validated resource ranges: money and bond fragments up to 9,999,999;
   each ingot type up to 9,999. GUI and CLI edits share the same validation.
 - Items panel: search the convoy, replace/add/delete individual items, edit
@@ -78,6 +82,9 @@ dotnet run --project cli/Cli.csproj -- inspect /path/to/Manual0 --json
 dotnet run --project cli/Cli.csproj -- copy /path/to/Manual0 /path/to/Manual0-copy
 dotnet run --project cli/Cli.csproj -- main show /path/to/Manual0 --json
 dotnet run --project cli/Cli.csproj -- main set /path/to/Manual0 /path/to/Manual0-edited --money 5000 --iron 100
+dotnet run --project cli/Cli.csproj -- main donations /path/to/Manual0 --json
+dotnet run --project cli/Cli.csproj -- main donation-set /path/to/Manual0 /path/to/Manual0-edited --country Firene --level 5
+dotnet run --project cli/Cli.csproj -- main donations-max /path/to/Manual0 /path/to/Manual0-max --all
 dotnet run --project cli/Cli.csproj -- items list /path/to/Manual0 --json
 dotnet run --project cli/Cli.csproj -- items catalog --json
 dotnet run --project cli/Cli.csproj -- items set /path/to/Manual0 /path/to/Manual0-edited --slot 0 --uses 1

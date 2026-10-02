@@ -19,6 +19,10 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli copy <save> <new-file>
           FeeEditor.Cli main show <save> [--json]
           FeeEditor.Cli main set <save> <new-file> [options]
+          FeeEditor.Cli main donation-catalog [--json] [--language en|zh-Hans]
+          FeeEditor.Cli main donations <save> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli main donation-set <save> <new-file> --country <Firene|Brodia|Elusia|Solm> [--level <1-5>] [--amount <0-9999999>]
+          FeeEditor.Cli main donations-max <save> <new-file> --all|--country <name>
           FeeEditor.Cli items catalog [--json]
           FeeEditor.Cli items list <save> [--json]
           FeeEditor.Cli items engravings [--json]
@@ -71,6 +75,8 @@ try
 {
     switch (args)
     {
+        case ["main", var verb, ..] when verb is "donations" or "donation-catalog" or "donation-set" or "donations-max":
+            return DonationsCommand.Run(args[1..]);
         case ["items", .. var options]:
             return ItemsCommand.Run(options);
         case ["roster", .. var options]:

@@ -366,6 +366,8 @@ def main() -> None:
     assert subprocess.run([*command, "unknown"], capture_output=True).returncode != 0
     check_saves(command)
     check_main(command, args.save_directory)
+    from test_donations_cli import check_donations
+    check_donations(command, args.save_directory, main_fixture())
     check_inventory(command, args.save_directory)
     from test_roster_cli import check_roster
     check_roster(command, args.save_directory, main_fixture())
