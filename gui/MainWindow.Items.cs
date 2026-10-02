@@ -18,6 +18,7 @@ public partial class MainWindow
         MainPanel.IsVisible = false;
         InspectorPanel.IsVisible = false;
         ItemsPanel.IsVisible = true;
+        RosterPanel.IsVisible = false;
         ApplyMainButton.IsVisible = false;
         MainNavigation.SelectedIndex = 1;
         RefreshPageTitle();
@@ -72,7 +73,8 @@ public partial class MainWindow
     private static string ItemLabel(InventoryItem item)
     {
         var definition = ItemCatalog.Find(item.ItemHash);
-        string name = definition?.Name(UiLanguage.Current) ?? $"{UiLanguage.Get("UnknownItem")} (0x{item.ItemHash:X8})";
+        string name = definition?.Name(UiLanguage.Current) ?? RosterCatalog.Item(item.ItemHash)?.Name(UiLanguage.Current)
+            ?? $"{UiLanguage.Get("UnknownItem")} (0x{item.ItemHash:X8})";
         if (item.RefineLevel != 0)
             name += $" +{item.RefineLevel}";
         if (definition is { UnlimitedUses: false })

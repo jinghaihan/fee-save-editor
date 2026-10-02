@@ -5,5 +5,6 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data/items.json" LogicalName="FeeEditor.Core.Data.items.json" />
+    <EmbeddedResource Include="Data/roster.json" LogicalName="FeeEditor.Core.Data.roster.json" />
   </ItemGroup>
 </Project>

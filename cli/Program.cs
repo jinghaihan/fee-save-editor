@@ -25,6 +25,12 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli items add <save> <new-file> --item <IID> [--uses <value>] [--refine <level>]
           FeeEditor.Cli items delete <save> <new-file> --slot <index>
           FeeEditor.Cli items restore <save> <new-file> --all|--slot <index>
+          FeeEditor.Cli roster list <save> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli roster set <save> <new-file> --character <index> [--level <value>] [--experience <value>] [--sp <value>]
+          FeeEditor.Cli roster stat <save> <new-file> --character <index> --stat <name> --value <value>
+          FeeEditor.Cli roster item-set <save> <new-file> --character <index> --slot <index> [--item <IID>] [--uses <value>] [--refine <level>]
+          FeeEditor.Cli roster item-delete <save> <new-file> --character <index> --slot <index>
+          FeeEditor.Cli roster restore <save> <new-file> --character <index>
           FeeEditor.Cli --version
         Main options:
           --money <amount> --bond-fragments <amount>
@@ -41,6 +47,8 @@ try
     {
         case ["items", .. var options]:
             return ItemsCommand.Run(options);
+        case ["roster", .. var options]:
+            return RosterCommand.Run(options);
         case ["inspect", var source, .. var options] when options is [] or ["--json"]:
             var save = EngageSave.Load(source);
             Console.WriteLine(JsonSerializer.Serialize(new

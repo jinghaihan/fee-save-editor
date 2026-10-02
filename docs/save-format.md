@@ -48,7 +48,7 @@ Private saves are not committed. Automated tests construct synthetic game and
 global containers, and test truncation, incorrect CRCs, invalid sizes, malformed
 indices, destination conflicts, search, and repeated language switching.
 
-The Main and convoy fields below have separate typed-layout tests. Other gameplay
+The Main, convoy and roster fields below have separate typed-layout tests. Other gameplay
 fields remain uneditable. A valid outer checksum alone does not prove that the game
 accepts a gameplay edit.
 
@@ -152,9 +152,72 @@ item initializes these fields to zero and no engraving. An engraved weapon canno
 be replaced by a non-forgeable item. Engraving changes remain unimplemented pending
 ownership checks across convoy and unit equipment. Save Copy applies pending valid
 item inputs when the Items panel is active. The inventory editor does not alter
-equipped unit items. Tests cover empty/unknown/engraved entries, 999-slot capacity,
+equipped unit items; these are handled by the Roster panel. Tests cover empty/unknown/engraved entries, 999-slot capacity,
 invalid ranges and encodings, exact reversal, untouched other sections and live
 language switching. In-game loading remains unverified.
+
+## Roster (UNIT version 0, Unit version 40)
+
+The UNIT payload has version `0`, marker `0xcdcdcdcd` and 24 preserved bytes.
+It contains ascending force groups, each with a force byte, a count byte and
+that many length-prefixed Unit records. Byte `0xff` ends the pool. The supplied
+manual save contains 41 characters in the Absent force; the automatic save also
+contains active player and enemy groups. No field
+is located by guessing a fixed absolute file offset or scanning for a character name.
+
+Each Unit record starts with its length, version `40`, marker and 24 reserved
+bytes. Then follow status (UInt64), person/class hashed references, three
+version-0 capability blocks (11 bytes each), two UInt32 seeds, byte level/EXP/HP,
+four signed position bytes and a float angle. An optional target person uses a
+**presence byte**, followed by a hashed reference only when present, then a
+force mask. This differs from the two-byte null marker used for item engravings.
+The item list is version `2`, with eight version-5 UnitItem records. UnitItem
+encoding is shared with the convoy but has no Transporter.Data wrapper.
+
+The remainder contains skills, accessories, enhancements, AI and actor data.
+These are preserved opaquely. The final ten bytes contain two indices, Int16 SP,
+an owner integer and two signed target coordinates. Variable-length item changes
+update the Unit record length, UNIT section size, subsequent section offsets
+and the outer checksum. Other characters and sections remain unchanged.
+
+The supplied executable confirms Unit serialization at `0x1a500e0`, UnitPool at
+`0x1c556a0` and UnitItemList at `0x1fb89e0`. These addresses apply only to the
+build ID documented above. Its unenhanced-stat function at `0x1a30d10` combines
+class base + signed saved base, clamped to class cap + person cap modifier.
+HP is at least one. Movement editing allows class base + up to two permanent
+points, matching `CanCapabilityGrow` at `0x1a5d980`. Sight is not editable.
+These fields do not include equipment, Emblem or temporary battle bonuses.
+Existing values already above a displayed cap are preserved on inspection/no-op
+copy; explicitly changing a stat validates and writes only its signed base.
+Reducing HP clamps current HP down but does not heal it.
+
+Level/EXP award logic at `0x1a39d40` uses the current job's MaxLevel and resets
+EXP at maximum level. New edits enforce level `1..MaxLevel`, EXP `0..99` (zero
+at maximum), and SP `0..9999` as in the setter at `0x1a39db0`. Level editing
+does not run the game's growth code, and class-ID-only replacement is not offered
+as a substitute for verified reclassing.
+
+`tools/import_roster_catalog.py` generates minimal facts and English/Chinese
+names, including DLC, from pinned
+[data tables](https://github.com/LordMewtwo73/feEngage-randomizer/tree/8a64328fc9a4df7649852ec2ac8b7d5beaedbc58/assets/VanillaFiles)
+and [localized messages](https://github.com/delvier/Iron19_L10n/tree/810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b).
+Only the 41 canonical playable person IDs are imported, not custom appended
+dragon-form rows. These tables are not claimed to be wholly unmodified vanilla
+data: the importer uses names, bases/caps and MaxLevel, not altered job flags to
+decide reclassing eligibility. Full source dumps are not bundled. Display-only
+item names do not expand the verified editable convoy-item catalog.
+
+Engage items (item-data flag 128), including `IID_エンゲージ枠`, occupy entries
+throughout the same eight-slot list, not a fixed last-three-slot range.
+`PutEngageItem` at `0x1fb84c0` manages them; they are shown but cannot be replaced
+or deleted through ordinary carried-item editing. Known finite-use items can be
+restored in bulk, while unknown and unlimited-use entries are preserved.
+
+Synthetic fixtures cover optional targets, malformed record lengths and versions,
+class-specific limits, personal caps, existing overflow, engraved/unknown items,
+byte-exact reversal and relocation. Real manual/automatic copies are tested
+without modifying the source. GUI tests include repeated live language switching
+and preservation of pending edits across tabs. In-game loading remains unverified.
 
 ## Resource inputs
 

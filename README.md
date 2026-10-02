@@ -1,7 +1,7 @@
 # Fire Emblem Engage Save Editor
 
 A desktop save editor and CLI for Fire Emblem Engage, under development.
-There is no release yet. Main and Items are editable; other gameplay panels
+There is no release yet. Main, Items and Roster are editable; other gameplay panels
 are still under development.
 
 ## Features
@@ -18,8 +18,18 @@ are still under development.
   Existing engravings and flags are preserved. Changing engravings is not yet
   supported; unknown item references remain visible and are never discarded.
 - Save a verified edited copy; opening or editing never overwrites the input file.
+- Roster panel: search characters, edit level, EXP and SP, edit unenhanced stats
+  within current-class and personal caps, and replace/add/delete carried items
+  or restore their remaining uses. Item flags and engravings are preserved.
+  Level limits follow the current class (20 or 40); EXP is 0–99, or 0 at maximum
+  level, and SP is 0–9,999. Changing level does not simulate growth rolls.
+  Current class is displayed; reclassing is not implemented yet. Engage weapons
+  and reserved Engage slots are displayed but not replaced/deleted as normal items.
 - Desktop application using SukiUI controls.
-- English UI by default, with live switching to Simplified Chinese.
+- English UI by default, with live switching to Simplified Chinese, including
+  character, class and item names. The character catalog includes all 41 playable
+  characters, including DLC. Names fall back to English, or a visible hash for
+  unrecognized records, rather than showing blank entries.
 - Save inspector under Tools, with section search and file information.
 - CLI with a shared save-processing core.
 - Read game saves (`Manual0`, `Auto`) and global saves (`Global`), validate
@@ -35,14 +45,24 @@ dotnet run --project cli/Cli.csproj -- items list /path/to/Manual0 --json
 dotnet run --project cli/Cli.csproj -- items catalog --json
 dotnet run --project cli/Cli.csproj -- items set /path/to/Manual0 /path/to/Manual0-edited --slot 0 --uses 1
 dotnet run --project cli/Cli.csproj -- items restore /path/to/Manual0 /path/to/Manual0-restored --all
+dotnet run --project cli/Cli.csproj -- roster list /path/to/Manual0 --json --language en
+dotnet run --project cli/Cli.csproj -- roster set /path/to/Manual0 /path/to/Manual0-edited --character 0 --sp 9999
+dotnet run --project cli/Cli.csproj -- roster stat /path/to/Manual0 /path/to/Manual0-edited --character 0 --stat Strength --value 30
+dotnet run --project cli/Cli.csproj -- roster restore /path/to/Manual0 /path/to/Manual0-restored --character 0
 ```
 
 The Items CLI also supports `add --item <IID>`, `delete --slot <index>`,
 and `set --item <IID> --refine <level>`. Obtain item IDs with `items catalog`;
 slot indices from `items list` are zero-based. Every edit writes a new file.
 
+Roster commands use the zero-based character index from `roster list` and the
+saved item slot from that character's `Items`. `roster item-set` accepts
+`--character`, `--slot`, `--item`, `--uses` and `--refine`;
+`roster item-delete` accepts `--character` and `--slot`.
+Use `--language zh-Hans` to inspect translated character/class/equipment names.
+
 The container reader has been checked against game-format version 9 saves.
-Main and convoy edits have been checked through serialization and exact restoration on
+Main, convoy and roster edits have been checked through serialization and exact restoration on
 manual and automatic saves. Modified saves have not yet been verified by loading
 them in the game. Test fixtures committed to the repository contain synthetic data only.
 See [save format notes](docs/save-format.md) for the verified container layout

@@ -93,6 +93,7 @@ public partial class MainWindow
     {
         MainPanel.IsVisible = !inspector;
         ItemsPanel.IsVisible = false;
+        RosterPanel.IsVisible = false;
         InspectorPanel.IsVisible = inspector;
         ApplyMainButton.IsVisible = !inspector;
         MainNavigation.SelectedIndex = inspector ? -1 : 0;

@@ -78,6 +78,7 @@ try
 
     MainTests.Run(window, temporary);
     InventoryTests.Run(window, temporary);
+    RosterTests.Run(window, temporary);
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -95,6 +96,7 @@ try
             {
                 var loaded = window.Save!;
                 InventoryTests.CheckReal(loaded);
+                RosterTests.CheckReal(loaded);
                 var current = loaded.ReadMainValues();
                 var updated = current with { Money = 12345, BondFragments = 6789, IronIngots = 111,
                     SteelIngots = 222, SilverIngots = 333, Difficulty = Difficulty.Normal,
@@ -112,6 +114,15 @@ try
         window.SetLanguage("en");
         if (captureOptions is ["--page", "items"])
             window.ShowItems();
+        else if (captureOptions is ["--page", var page] && page.StartsWith("roster", StringComparison.Ordinal))
+        {
+            window.ShowRoster();
+            window.FindControl<TabStrip>("RosterTabs")!.SelectedIndex = page switch
+            {
+                "roster" => 0, "roster-stats" => 1, "roster-items" => 2,
+                _ => throw new ArgumentException("Unknown roster screenshot tab.")
+            };
+        }
         else
             Check(captureOptions.Length == 0, "Unknown screenshot page.");
         Dispatcher.UIThread.RunJobs();

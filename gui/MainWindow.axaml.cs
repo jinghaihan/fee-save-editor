@@ -37,6 +37,7 @@ public partial class MainWindow : Window
             Message.IsVisible = false;
             LoadMainValues();
             LoadInventory();
+            LoadRoster();
             return true;
         }
         catch (Exception error) when (IsFileError(error))
@@ -56,6 +57,8 @@ public partial class MainWindow : Window
                 return false;
             if (ItemsPanel.IsVisible && HasPendingItemValues() && !ApplyItemValues())
                 return false;
+            if (CanEditRoster && !ApplyPendingRoster())
+                return false;
             Save.WriteCopy(path);
             ShowMessage("CopySaved", Path.GetFullPath(path));
             return true;
@@ -72,6 +75,7 @@ public partial class MainWindow : Window
         UiLanguage.Apply(language);
         RefreshOptions();
         RefreshInventoryLanguage();
+        RefreshRosterLanguage();
         RefreshOverview();
         RefreshPageTitle();
         Message.IsVisible = false;
@@ -175,7 +179,7 @@ public partial class MainWindow : Window
     private void Inspector_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: true);
     private void Navigation_Changed(object? sender, SelectionChangedEventArgs e)
     {
-        if (MainPanel is null || ItemsPanel is null)
+        if (MainPanel is null || ItemsPanel is null || RosterPanel is null)
             return;
         switch (MainNavigation.SelectedIndex)
         {
@@ -184,6 +188,9 @@ public partial class MainWindow : Window
                 break;
             case 1 when !ItemsPanel.IsVisible:
                 ShowItems();
+                break;
+            case 2 when !RosterPanel.IsVisible:
+                ShowRoster();
                 break;
         }
     }

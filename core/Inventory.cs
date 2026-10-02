@@ -68,22 +68,13 @@ internal sealed class InventoryLayout
         using (var writer = new BinaryWriter(output, System.Text.Encoding.UTF8, leaveOpen: true))
         {
             writer.Write(1u);
-            writer.Write(5u);
-            writer.Write(item is not null);
-            if (item is not null)
-            {
-                Reference(writer, item.ItemHash);
-                writer.Write((byte)item.Uses);
-                writer.Write((byte)item.RefineLevel);
-                writer.Write(item.Flags);
-                Reference(writer, item.EngravingHash);
-            }
+            WriteItem(writer, item);
         }
         output.Write(bytes.AsSpan(Ends[slot], Section.PayloadOffset + Section.Length - Ends[slot]));
         return output.ToArray();
     }
 
-    private static void Validate(InventoryItem item)
+    internal static void Validate(InventoryItem item)
     {
         var definition = ItemCatalog.Find(item.ItemHash)
             ?? throw new ArgumentException("This item is not in the verified convoy catalog.");
@@ -93,6 +84,19 @@ internal sealed class InventoryLayout
             throw new ArgumentOutOfRangeException(nameof(item.RefineLevel), $"Refine level must be between 0 and {definition.MaxRefine}.");
         if (item.EngravingHash.HasValue && definition.MaxRefine == 0)
             throw new ArgumentException("An engraved weapon cannot be replaced with an item that cannot be forged.");
+    }
+
+    internal static void WriteItem(BinaryWriter writer, InventoryItem? item)
+    {
+        writer.Write(5u);
+        writer.Write(item is not null);
+        if (item is null)
+            return;
+        Reference(writer, item.ItemHash);
+        writer.Write((byte)item.Uses);
+        writer.Write((byte)item.RefineLevel);
+        writer.Write(item.Flags);
+        Reference(writer, item.EngravingHash);
     }
 
     private static void Reference(BinaryWriter writer, uint? hash)

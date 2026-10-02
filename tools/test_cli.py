@@ -367,6 +367,8 @@ def main() -> None:
     check_saves(command)
     check_main(command, args.save_directory)
     check_inventory(command, args.save_directory)
+    from test_roster_cli import check_roster
+    check_roster(command, args.save_directory, main_fixture())
     print("CLI tests passed.")
 
 
