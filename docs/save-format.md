@@ -80,11 +80,26 @@ section payloads. Core edits are immutable and are reparsed before being returne
 GUI Save Copy applies pending valid Main inputs automatically; invalid inputs
 produce no output. Global saves remain inspection/copy-only.
 
-Amounts accept the nonnegative signed-32-bit storage range, not a claimed game
-cap. Serialized strings have a defensive 4096-byte limit; the game's actual
+Resource amounts are limited to the game's ranges: money and spendable bond
+fragments are `0..9,999,999`; iron, steel and silver are `0..9,999`. These limits
+are shared by the GUI and core writer, so CLI edits cannot bypass them. Validation
+rejects out-of-range edits instead of silently clamping values. Existing over-limit
+saves can still be inspected and copied byte-for-byte, but the Main form is not
+populated with silently truncated values.
+
+The constants are present in
+[GameUserData in the published executable dump](https://github.com/laqieer/FE17-DOC/blob/main/il2cpp/dump.cs#L743691).
+They were also checked against the supplied executable (build ID
+`8c08b9719e085f91847b5e0f935d948800000000000000000000000000000000000`):
+gold uses `0x98967f` at `0x250e450`, bond fragments at `0x250ecc0`, and the three
+material setters use `0x270f` at `0x250e640`, `0x250e8a0` and `0x250eb00`.
+The executable and save files are not distributed with the project.
+
+Serialized strings have a defensive 4096-byte limit; the game's actual
 Sommie name-entry limit has not been established. Synthetic tests and local
 manual/automatic-save tests cover no-op preservation, byte-diff allowlists,
-Unicode name resizing, exact edit reversal, malformed inputs and language switching.
+Unicode name resizing, exact edit reversal, malformed inputs, zero/maximum/over-limit
+resource amounts and language switching.
 In-game loading of edited saves is still to be tested.
 
 ## Resource inputs

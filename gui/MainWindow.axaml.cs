@@ -14,6 +14,9 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        MoneyInput.Maximum = MainLimits.MaxMoney;
+        BondFragmentsInput.Maximum = MainLimits.MaxBondFragments;
+        IronIngotsInput.Maximum = SteelIngotsInput.Maximum = SilverIngotsInput.Maximum = MainLimits.MaxIngots;
         RefreshOptions();
     }
 

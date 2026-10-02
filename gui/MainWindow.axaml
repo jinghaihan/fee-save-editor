@@ -56,23 +56,23 @@
             <StackPanel Name="ResourceInputs" IsEnabled="False" Spacing="20">
               <StackPanel Spacing="8">
                 <TextBlock Text="{DynamicResource Money}" />
-                <NumericUpDown Name="MoneyInput" Minimum="0" Maximum="2147483647" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+                <NumericUpDown Name="MoneyInput" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
               </StackPanel>
               <StackPanel Spacing="8">
                 <TextBlock Text="{DynamicResource BondFragments}" />
-                <NumericUpDown Name="BondFragmentsInput" Minimum="0" Maximum="2147483647" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+                <NumericUpDown Name="BondFragmentsInput" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
               </StackPanel>
               <StackPanel Spacing="8">
                 <TextBlock Text="{DynamicResource IronIngots}" />
-                <NumericUpDown Name="IronIngotsInput" Minimum="0" Maximum="2147483647" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+                <NumericUpDown Name="IronIngotsInput" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
               </StackPanel>
               <StackPanel Spacing="8">
                 <TextBlock Text="{DynamicResource SteelIngots}" />
-                <NumericUpDown Name="SteelIngotsInput" Minimum="0" Maximum="2147483647" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+                <NumericUpDown Name="SteelIngotsInput" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
               </StackPanel>
               <StackPanel Spacing="8">
                 <TextBlock Text="{DynamicResource SilverIngots}" />
-                <NumericUpDown Name="SilverIngotsInput" Minimum="0" Maximum="2147483647" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+                <NumericUpDown Name="SilverIngotsInput" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
               </StackPanel>
             </StackPanel>
           </StackPanel>

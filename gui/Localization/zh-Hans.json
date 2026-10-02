@@ -28,7 +28,7 @@
   "NoSave": "打开存档后查看内容。",
   "LocalFilesOnly": "请选择本地文件。",
   "Tools": "工具",
-  "InvalidAmount": "请输入 0 至 2147483647 之间的整数。",
+  "InvalidAmount": "请输入允许范围内的整数。",
   "Main": "主页",
   "ApplyChanges": "应用修改",
   "GameSettings": "游戏设置",

@@ -107,6 +107,6 @@ static MainValues PatchMain(MainValues values, string[] options)
 static int Amount(string value)
 {
     if (!int.TryParse(value, out int amount) || amount < 0)
-        throw new ArgumentException("Amounts must be integers between 0 and 2147483647.");
+        throw new ArgumentException("Resource amounts must be nonnegative whole numbers within their game limits.");
     return amount;
 }

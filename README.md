@@ -9,6 +9,8 @@ gameplay panels are still under development.
 - Main panel: edit money, bond fragments, iron/steel/silver ingots, difficulty,
   game mode and Sommie's name. Difficulty and mode update both the save summary
   and the actual gameplay fields.
+- Validated resource ranges: money and bond fragments up to 9,999,999;
+  each ingot type up to 9,999. GUI and CLI edits share the same validation.
 - Save a verified edited copy; opening or editing never overwrites the input file.
 - Desktop application using SukiUI controls.
 - English UI by default, with live switching to Simplified Chinese.

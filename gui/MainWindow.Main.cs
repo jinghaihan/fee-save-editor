@@ -34,7 +34,8 @@ public partial class MainWindow
 
     private static int Amount(NumericUpDown input)
     {
-        if (!int.TryParse(input.Text, NumberStyles.Integer, input.NumberFormat, out int value) || value < 0)
+        if (!int.TryParse(input.Text, NumberStyles.Integer, input.NumberFormat, out int value)
+            || value < input.Minimum || value > input.Maximum)
             throw new ArgumentException(UiLanguage.Get("InvalidAmount"));
         return value;
     }
@@ -55,6 +56,7 @@ public partial class MainWindow
         try
         {
             var values = Save.ReadMainValues();
+            MainLimits.ValidateAmounts(values);
             MoneyInput.Value = values.Money;
             BondFragmentsInput.Value = values.BondFragments;
             IronIngotsInput.Value = values.IronIngots;
@@ -69,7 +71,7 @@ public partial class MainWindow
             ApplyMainButton.IsEnabled = true;
             ShowPage(inspector: false);
         }
-        catch (InvalidDataException error)
+        catch (Exception error) when (IsFileError(error))
         {
             ShowPage(inspector: true);
             if (Save.Kind == SaveKind.Game)

@@ -48,9 +48,16 @@ internal static class MainTests
             values with { SommieName = "\ud800" }, values with { SommieName = new string('x', 2049) } })
             Reject(() => save.WithMainValues(invalid), "Invalid Main values were accepted.");
 
-        var maximum = values with { Money = int.MaxValue, BondFragments = int.MaxValue,
-            IronIngots = int.MaxValue, SteelIngots = int.MaxValue, SilverIngots = int.MaxValue };
-        Check(save.WithMainValues(maximum).ReadMainValues() == maximum, "The supported integer range is inconsistent.");
+        var maximum = values with { Money = MainLimits.MaxMoney, BondFragments = MainLimits.MaxBondFragments,
+            IronIngots = MainLimits.MaxIngots, SteelIngots = MainLimits.MaxIngots, SilverIngots = MainLimits.MaxIngots };
+        Check(save.WithMainValues(maximum).ReadMainValues() == maximum, "A game resource limit was rejected.");
+        var zero = values with { Money = 0, BondFragments = 0, IronIngots = 0, SteelIngots = 0, SilverIngots = 0 };
+        Check(save.WithMainValues(zero).ReadMainValues() == zero, "Zero resource amounts were rejected.");
+        foreach (var invalid in new[] { values with { Money = MainLimits.MaxMoney + 1 },
+            values with { BondFragments = MainLimits.MaxBondFragments + 1 },
+            values with { IronIngots = MainLimits.MaxIngots + 1 }, values with { SteelIngots = MainLimits.MaxIngots + 1 },
+            values with { SilverIngots = MainLimits.MaxIngots + 1 }, values with { Money = int.MaxValue } })
+            Reject(() => save.WithMainValues(invalid), "An amount above the game's limit was accepted.");
 
         foreach (byte[] invalid in new[] { Fixture(userVersion: 19), Fixture(variableVersion: 1), Fixture(duplicateMaterial: true),
             Fixture(missingMaterial: true), Fixture(materialString: true), Fixture(unknownType: true) })
@@ -83,6 +90,20 @@ internal static class MainTests
         var difficulty = window.FindControl<ComboBox>("DifficultyInput")!;
         var nameInput = window.FindControl<TextBox>("SommieNameInput")!;
         Check(money.Value == 5000 && difficulty.SelectedIndex == 1 && nameInput.Text == "Sommie", "GUI values are empty or incorrect.");
+        foreach ((string name, int maximumValue) in new[] { ("MoneyInput", MainLimits.MaxMoney),
+            ("BondFragmentsInput", MainLimits.MaxBondFragments), ("IronIngotsInput", MainLimits.MaxIngots),
+            ("SteelIngotsInput", MainLimits.MaxIngots), ("SilverIngotsInput", MainLimits.MaxIngots) })
+        {
+            var input = window.FindControl<NumericUpDown>(name)!;
+            Check(input.Minimum == 0 && input.Maximum == maximumValue, "A GUI resource range differs from the core.");
+            input.Text = (maximumValue + 1).ToString();
+            Check(!window.ApplyMainValues(), "The GUI accepted an amount above its resource limit.");
+            Check(window.Save!.Serialize().AsSpan().SequenceEqual(original), "A rejected range changed the loaded save.");
+            Check(window.LoadSave(source), "Could not restore the valid GUI fixture.");
+            input.Text = maximumValue.ToString();
+            Check(window.ApplyMainValues(), "The GUI rejected an amount at its limit.");
+            Check(window.LoadSave(source), "Could not restore the valid GUI fixture.");
+        }
         money.Value = 777;
         difficulty.SelectedIndex = 0;
         nameInput.Text = "索拉";
@@ -102,7 +123,7 @@ internal static class MainTests
         Check(EngageSave.Load(copy).ReadMainValues() == values with { Money = 777, Difficulty = Difficulty.Normal, SommieName = "索拉" },
             "The GUI wrote different values than requested.");
         byte[] beforeInvalid = window.Save!.Serialize();
-        foreach (string invalidAmount in new[] { "", "abc", "-1", "1.5", "2147483648" })
+        foreach (string invalidAmount in new[] { "", "abc", "-1", "1.5", "10000000", "2147483648" })
         {
             money.Text = invalidAmount;
             Check(!window.ApplyMainValues(), "An invalid amount silently saved its previous value.");
@@ -115,6 +136,20 @@ internal static class MainTests
         Check(!window.SaveCopy(rejected) && !File.Exists(rejected), "An invalid form created an output file.");
         Check(window.Save.Serialize().AsSpan().SequenceEqual(beforeInvalid), "An invalid form changed the loaded save.");
         Check(File.ReadAllBytes(source).AsSpan().SequenceEqual(original), "The original save was overwritten.");
+        byte[] aboveLimit = (byte[])original.Clone();
+        Write32(aboveLimit, firstAmount, MainLimits.MaxIngots + 1u);
+        Seal(aboveLimit);
+        var unusualSave = EngageSave.Parse(aboveLimit);
+        Check(unusualSave.ReadMainValues().IronIngots == MainLimits.MaxIngots + 1,
+            "Reading an existing over-limit value silently clamped it.");
+        Reject(() => unusualSave.WithMainValues(unusualSave.ReadMainValues()), "A no-op bypassed range validation.");
+        string unusualSource = Path.Combine(temporary, "main-above-limit");
+        File.WriteAllBytes(unusualSource, aboveLimit);
+        Check(window.LoadSave(unusualSource) && !window.CanEditMain, "An over-limit save enabled bounded form controls.");
+        Check(window.FindControl<NumericUpDown>("IronIngotsInput")!.Value is null, "An over-limit save was clamped into the form.");
+        string unusualCopy = Path.Combine(temporary, "main-above-limit-copy");
+        Check(window.SaveCopy(unusualCopy) && File.ReadAllBytes(unusualCopy).AsSpan().SequenceEqual(aboveLimit),
+            "An existing over-limit save could not be copied without changing its bytes.");
         Console.WriteLine("Main core, preservation, malformed-input and GUI tests passed.");
     }
 

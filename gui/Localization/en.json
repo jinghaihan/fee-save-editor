@@ -28,7 +28,7 @@
   "NoSave": "Open a save to inspect its contents.",
   "LocalFilesOnly": "Select a local file.",
   "Tools": "Tools",
-  "InvalidAmount": "Enter a whole-number amount between 0 and 2147483647.",
+  "InvalidAmount": "Enter a whole-number amount within the allowed range.",
   "Main": "Main",
   "ApplyChanges": "Apply Changes",
   "GameSettings": "Game Settings",

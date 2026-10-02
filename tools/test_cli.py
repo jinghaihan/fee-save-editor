@@ -150,6 +150,31 @@ def check_main(command: list[str], real_directory: Path | None) -> None:
             print(f"{name}: Main edits, independent byte-diff check and Unicode resizing passed.")
 
         source.write_bytes(main_fixture())
+        limits = (("money", "Money", 9_999_999), ("bond-fragments", "BondFragments", 9_999_999),
+                  ("iron", "IronIngots", 9_999), ("steel", "SteelIngots", 9_999), ("silver", "SilverIngots", 9_999))
+        for option, key, maximum in limits:
+            for valid in (0, maximum):
+                subprocess.run([*command, "main", "set", str(source), str(output), f"--{option}", str(valid)],
+                               check=True, capture_output=True)
+                actual = json.loads(subprocess.check_output([*command, "main", "show", str(output), "--json"], text=True))
+                assert actual[key] == valid
+                output.unlink()
+            for invalid in (-1, maximum + 1, 2_147_483_647):
+                failure = subprocess.run([*command, "main", "set", str(source), str(output), f"--{option}", str(invalid)],
+                                         capture_output=True, text=True)
+                assert failure.returncode == 1 and "Unhandled exception" not in failure.stderr, failure
+                assert not output.exists()
+                assert source.read_bytes() == main_fixture()
+        above_limit = bytearray(main_fixture())
+        struct.pack_into("<i", above_limit, main_offsets(above_limit)["IronIngots"], 10_000)
+        source.write_bytes(with_checksum(above_limit))
+        assert json.loads(subprocess.check_output([*command, "main", "show", str(source), "--json"], text=True))["IronIngots"] == 10_000
+        subprocess.run([*command, "copy", str(source), str(output)], check=True, capture_output=True)
+        assert output.read_bytes() == source.read_bytes()
+        output.unlink()
+        assert subprocess.run([*command, "main", "set", str(source), str(output), "--money", "10"], capture_output=True).returncode == 1
+        assert not output.exists()
+        source.write_bytes(main_fixture())
         for options in ([], ["--money"], ["--money", "-1"], ["--money", "1.5"], ["--money", "2147483648"],
                         ["--money", "1", "--money", "2"], ["--unknown", "1"], ["--difficulty", "3"],
                         ["--mode", "invalid"], ["--sommie-name", ""], ["--sommie-name", "bad\nname"]):

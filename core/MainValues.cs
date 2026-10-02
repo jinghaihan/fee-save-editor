@@ -118,8 +118,7 @@ internal sealed class MainLayout
     public byte[] Edit(byte[] bytes, MainValues values)
     {
         ArgumentNullException.ThrowIfNull(values);
-        if (HasNegativeAmount(values))
-            throw new ArgumentException("Resource amounts cannot be negative.");
+        MainLimits.ValidateAmounts(values);
         if (!Enum.IsDefined(values.Difficulty) || !Enum.IsDefined(values.GameMode))
             throw new ArgumentException("Select a valid difficulty and game mode.");
         if (string.IsNullOrWhiteSpace(values.SommieName) || values.SommieName.Any(char.IsControl))

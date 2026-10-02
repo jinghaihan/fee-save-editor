@@ -100,8 +100,17 @@ try
     if (args is ["--save-directory", var screenshotDirectory, "--screenshot", var screenshot])
     {
         Check(window.LoadSave(Path.Combine(screenshotDirectory, "Manual0")), "Could not load screenshot save.");
+        Check(window.FindControl<Button>("ApplyMainButton")!.IsEnabled, "The screenshot's Main action is disabled.");
         window.SetLanguage("en");
         Dispatcher.UIThread.RunJobs();
+        // Allow theme transitions to settle before capturing the final state.
+        var rendering = System.Diagnostics.Stopwatch.StartNew();
+        while (rendering.ElapsedMilliseconds < 500)
+        {
+            AvaloniaHeadlessPlatform.ForceRenderTimerTick();
+            Dispatcher.UIThread.RunJobs();
+            Thread.Sleep(10);
+        }
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(screenshot))!);
         using var rendered = window.CaptureRenderedFrame();
         Check(rendered is not null, "Screenshot capture failed.");

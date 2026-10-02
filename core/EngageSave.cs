@@ -107,6 +107,7 @@ public sealed class EngageSave
 
     public EngageSave WithMainValues(MainValues values)
     {
+        MainLimits.ValidateAmounts(values);
         var layout = MainLayout.Read(this, _bytes);
         if (layout.Values == values)
             return this;
