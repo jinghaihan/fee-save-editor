@@ -134,7 +134,9 @@
             </StackPanel>
             <StackPanel Spacing="8">
               <TextBlock Text="{DynamicResource Engraving}" />
-              <TextBlock Name="ItemEngravingValue" />
+              <ComboBox Name="ItemEngravingInput" Height="42" Margin="0" HorizontalAlignment="Stretch">
+                <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
+              </ComboBox>
             </StackPanel>
             <Button Name="ApplyItemButton" Height="42" Content="{DynamicResource ApplyChanges}" Click="ApplyItem_Click" HorizontalAlignment="Stretch" />
             <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
@@ -261,6 +263,12 @@
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource RefineLevel}" />
                   <NumericUpDown Name="RosterItemRefine" Minimum="0" Maximum="5" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+                </StackPanel>
+                <StackPanel Spacing="8">
+                  <TextBlock Text="{DynamicResource Engraving}" />
+                  <ComboBox Name="RosterItemEngraving" Height="42" Margin="0" HorizontalAlignment="Stretch">
+                    <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
+                  </ComboBox>
                 </StackPanel>
                 <Button Name="ApplyRosterItemButton" Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterItem_Click" />
                 <Button Name="DeleteRosterItemButton" Content="{DynamicResource DeleteItem}" HorizontalAlignment="Stretch" Click="DeleteRosterItem_Click" />

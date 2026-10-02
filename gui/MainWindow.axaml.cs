@@ -65,7 +65,7 @@ public partial class MainWindow : Window
         {
             if (CanEditMain && !ApplyMainValues())
                 return false;
-            if (ItemsPanel.IsVisible && HasPendingItemValues() && !ApplyItemValues())
+            if (HasPendingItemValues() && !ApplyItemValues())
                 return false;
             if (CanEditRoster && !ApplyPendingRoster())
                 return false;

@@ -97,6 +97,7 @@ try
     SupportTests.Run();
     SupportGuiTests.Run(window, temporary);
     EngravingTests.Run();
+    EngravingGuiTests.Run(window, temporary);
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -136,8 +137,16 @@ try
         Check(window.LoadSave(Path.Combine(screenshotDirectory, "Manual0")), "Could not load screenshot save.");
         Check(window.FindControl<Button>("ApplyMainButton")!.IsEnabled, "The screenshot's Main action is disabled.");
         window.SetLanguage("en");
-        if (captureOptions is ["--page", "items"])
+        if (captureOptions is ["--page", "items"] or ["--page", "items-engraving"])
+        {
             window.ShowItems();
+            if (captureOptions[1] == "items-engraving")
+            {
+                var items = window.FindControl<ListBox>("InventoryList")!;
+                items.SelectedItem = items.Items.Cast<MainWindow.InventoryRow>().First(row =>
+                    window.Save!.ReadInventory()[row.Slot].Item is { } item && EngravingCatalog.CanEngrave(item.ItemHash));
+            }
+        }
         else if (captureOptions is ["--page", "support"])
             window.ShowSupports();
         else if (captureOptions is ["--page", "emblems"] or ["--page", "rings"])

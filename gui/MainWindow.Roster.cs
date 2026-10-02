@@ -16,6 +16,7 @@ public partial class MainWindow
     private int? _selectedCharacter;
     private int? _selectedCharacterItem;
     private bool _refreshingRoster;
+    private InventoryItem? _rosterItemBaseline;
     private readonly Dictionary<RosterStat, (TextBlock Label, NumericUpDown Input, TextBlock Preview)> _rosterStats = new();
     private RosterCharacter? SelectedCharacter => CanEditRoster && Save is not null
         ? Save.ReadRoster().FirstOrDefault(character => character.Index == _selectedCharacter) : null;
@@ -36,6 +37,8 @@ public partial class MainWindow
         MaximizeAllRosterStatsButton.IsEnabled = MaximizeRosterStatsButton.IsEnabled = false;
         _selectedCharacter = null;
         _selectedCharacterItem = null;
+        _rosterItemBaseline = null;
+        RosterItemEngraving.ItemsSource = Array.Empty<EngravingChoice>();
         RosterGeneralForm.IsEnabled = RosterStatsForm.IsEnabled = RosterItemsForm.IsEnabled = false;
         RosterSkillsForm.IsEnabled = RosterProficienciesForm.IsEnabled = false;
         ClearRosterSkills();
@@ -193,7 +196,9 @@ public partial class MainWindow
             field.Label.Text = UiLanguage.Get(stat.ToString());
         RefreshRosterStatPreviews();
         RefreshCharacterItems(selectEditor: false);
-        RefreshCharacterItemChoices((RosterItemType.SelectedItem as ItemChoice)?.Definition.Hash);
+        RefreshCharacterItemChoices((RosterItemType.SelectedItem as ItemChoice)?.Definition.Hash ?? _rosterItemBaseline?.ItemHash);
+        RefreshEngravingChoices(RosterItemEngraving, (RosterItemType.SelectedItem as ItemChoice)?.Definition.Hash ?? _rosterItemBaseline?.ItemHash,
+            (RosterItemEngraving.SelectedItem as EngravingChoice)?.Hash);
         RefreshRosterSkills(character, preserveEdits: true);
     }
 
@@ -251,6 +256,7 @@ public partial class MainWindow
         {
             Save = edit(Save);
             RefreshRoster(selectEditor: refresh);
+            RefreshInventory(selectEditor: !HasPendingItemValues());
             RefreshOverview();
             RefreshSections();
             Message.IsVisible = false;
@@ -287,11 +293,17 @@ public partial class MainWindow
         SetCharacterItemRanges(ItemCatalog.Find(item?.ItemHash ?? 0));
         RosterItemUses.Text = (item?.Uses ?? 1).ToString();
         RosterItemRefine.Text = (item?.RefineLevel ?? 0).ToString();
+        _rosterItemBaseline = item;
+        RefreshEngravingChoices(RosterItemEngraving, item?.ItemHash, item?.EngravingHash);
+        if (item is not null && EngravingCatalog.CanEngrave(item.ItemHash)) ApplyRosterItemButton.IsEnabled = true;
         bool reserved = item is not null && RosterCatalog.Item(item.ItemHash) is { EngageOnly: true };
         RosterItemType.IsEnabled = RosterItemSearch.IsEnabled = !reserved;
         DeleteRosterItemButton.IsEnabled = item is not null && !reserved;
         if (reserved)
+        {
             ApplyRosterItemButton.IsEnabled = false;
+            RosterItemEngraving.IsEnabled = false;
+        }
     }
 
     private void RefreshCharacterItemChoices(uint? selectedHash)
@@ -302,6 +314,7 @@ public partial class MainWindow
             .OrderBy(choice => choice.Name, StringComparer.CurrentCultureIgnoreCase).ToArray();
         bool refreshing = _refreshingRoster;
         _refreshingRoster = true;
+        RosterItemType.PlaceholderText = selectedHash is uint hash && ItemCatalog.Find(hash) is null ? ItemName(hash) : null;
         RosterItemType.ItemsSource = choices;
         RosterItemType.SelectedItem = choices.FirstOrDefault(choice => choice.Definition.Hash == selectedHash);
         _refreshingRoster = refreshing;
@@ -310,6 +323,7 @@ public partial class MainWindow
     private void SetCharacterItemRanges(ItemDefinition? item)
     {
         RosterItemUses.Maximum = item?.MaxUses ?? 255;
+        RosterItemUses.IsEnabled = item is not null;
         RosterItemUses.IsVisible = item is not { UnlimitedUses: true };
         RosterUnlimitedUses.IsVisible = item is { UnlimitedUses: true };
         RosterItemRefine.Maximum = item?.MaxRefine ?? 0;
@@ -317,12 +331,39 @@ public partial class MainWindow
         ApplyRosterItemButton.IsEnabled = item is not null && _selectedCharacterItem.HasValue;
     }
 
-    public bool ApplyRosterItem() => EditRoster(save =>
+    public bool ApplyRosterItem()
     {
-        var choice = RosterItemType.SelectedItem as ItemChoice ?? throw new ArgumentException(UiLanguage.Get("SelectItem"));
-        return save.WithRosterItem(_selectedCharacter!.Value, _selectedCharacterItem!.Value, choice.Definition.Id,
-            choice.Definition.UnlimitedUses ? 255 : Amount(RosterItemUses), Amount(RosterItemRefine));
-    }, refresh: false);
+        bool applied = EditRoster(EditedCharacterItem, refresh: false);
+        if (applied) RefreshCharacterItems(selectEditor: true);
+        return applied;
+    }
+
+    private EngageSave EditedCharacterItem(EngageSave save)
+    {
+        if (RosterItemType.SelectedItem is not ItemChoice choice)
+        {
+            if (!HasPendingRosterItemValues()) return save;
+            return save.WithRosterEngraving(_selectedCharacter!.Value, _selectedCharacterItem!.Value, SelectedEngravingId(RosterItemEngraving));
+        }
+        int uses = choice.Definition.UnlimitedUses ? 255 : Amount(RosterItemUses);
+        int refine = Amount(RosterItemRefine);
+        return EngravingChanged(RosterItemEngraving, _rosterItemBaseline)
+            ? save.WithRosterItem(_selectedCharacter!.Value, _selectedCharacterItem!.Value, choice.Definition.Id,
+                uses, refine, SelectedEngravingId(RosterItemEngraving))
+            : save.WithRosterItem(_selectedCharacter!.Value, _selectedCharacterItem!.Value, choice.Definition.Id,
+                uses, refine);
+    }
+
+    private bool HasPendingRosterItemValues()
+    {
+        if (!CanEditRoster || SelectedCharacter is null || !_selectedCharacterItem.HasValue) return false;
+        var old = _rosterItemBaseline;
+        if (RosterItemType.SelectedItem is not ItemChoice choice)
+            return old is not null && EngravingCatalog.CanEngrave(old.ItemHash) && EngravingChanged(RosterItemEngraving, old);
+        return old is null || old.ItemHash != choice.Definition.Hash
+            || !choice.Definition.UnlimitedUses && RosterItemUses.Text != old.Uses.ToString()
+            || RosterItemRefine.Text != old.RefineLevel.ToString() || EngravingChanged(RosterItemEngraving, old);
+    }
 
     private bool ApplyPendingRoster()
     {
@@ -331,14 +372,7 @@ public partial class MainWindow
         return EditRoster(save =>
         {
             save = PendingCharacterValues(save);
-            if (RosterItemType.SelectedItem is not ItemChoice choice || !_selectedCharacterItem.HasValue)
-                return save;
-            var old = SelectedCharacter.Items[_selectedCharacterItem.Value].Item;
-            if (old?.ItemHash == choice.Definition.Hash && RosterItemUses.Text == old.Uses.ToString()
-                && RosterItemRefine.Text == old.RefineLevel.ToString())
-                return save;
-            return save.WithRosterItem(_selectedCharacter!.Value, _selectedCharacterItem.Value, choice.Definition.Id,
-                choice.Definition.UnlimitedUses ? 255 : Amount(RosterItemUses), Amount(RosterItemRefine));
+            return HasPendingRosterItemValues() ? EditedCharacterItem(save) : save;
         }, refresh: true);
     }
 
@@ -443,6 +477,7 @@ public partial class MainWindow
             return;
         var item = (RosterItemType.SelectedItem as ItemChoice)?.Definition;
         SetCharacterItemRanges(item);
+        RefreshEngravingChoices(RosterItemEngraving, item?.Hash, (RosterItemEngraving.SelectedItem as EngravingChoice)?.Hash);
         RosterItemUses.Text = (item?.MaxUses ?? 1).ToString();
         RosterItemRefine.Text = "0";
     }

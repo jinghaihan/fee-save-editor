@@ -12,6 +12,7 @@ public partial class MainWindow
     public bool CanEditInventory { get; private set; }
     private int? _selectedSlot;
     private bool _refreshingItems;
+    private InventoryItem? _itemEditorBaseline;
 
     public void ShowItems()
     {
@@ -32,6 +33,8 @@ public partial class MainWindow
         ItemEditorInputs.IsEnabled = false;
         RestoreAllUsesButton.IsEnabled = false;
         _selectedSlot = null;
+        _itemEditorBaseline = null;
+        ItemEngravingInput.ItemsSource = Array.Empty<EngravingChoice>();
         InventoryList.ItemsSource = Array.Empty<InventoryRow>();
         ConvoyCount.Text = "";
         ItemSearch.Clear();
@@ -75,14 +78,16 @@ public partial class MainWindow
     private static string ItemLabel(InventoryItem item)
     {
         var definition = ItemCatalog.Find(item.ItemHash);
-        string name = definition?.Name(UiLanguage.Current) ?? RosterCatalog.Item(item.ItemHash)?.Name(UiLanguage.Current)
-            ?? $"{UiLanguage.Get("UnknownItem")} (0x{item.ItemHash:X8})";
+        string name = ItemName(item.ItemHash);
         if (item.RefineLevel != 0)
             name += $" +{item.RefineLevel}";
         if (definition is { UnlimitedUses: false })
             name += $" · {item.Uses}/{definition.MaxUses}";
         return name;
     }
+
+    private static string ItemName(uint hash) => ItemCatalog.Find(hash)?.Name(UiLanguage.Current)
+        ?? RosterCatalog.Item(hash)?.Name(UiLanguage.Current) ?? $"{UiLanguage.Get("UnknownItem")} (0x{hash:X8})";
 
     private void RefreshItemChoices(uint? selectedHash = null, bool selectFirst = true)
     {
@@ -92,6 +97,7 @@ public partial class MainWindow
             .Where(item => item.Name.Contains(query, StringComparison.OrdinalIgnoreCase) || item.Definition.Hash == selectedHash)
             .OrderBy(item => item.Name, StringComparer.CurrentCultureIgnoreCase).ToArray();
         _refreshingItems = true;
+        ItemTypeInput.PlaceholderText = selectedHash is uint hash && ItemCatalog.Find(hash) is null ? ItemName(hash) : null;
         ItemTypeInput.ItemsSource = choices;
         ItemTypeInput.SelectedItem = choices.FirstOrDefault(item => item.Definition.Hash == selectedHash);
         if (ItemTypeInput.SelectedItem is null && selectFirst)
@@ -115,8 +121,9 @@ public partial class MainWindow
         SetItemRanges(definition);
         ItemUsesInput.Text = (item?.Uses ?? definition?.MaxUses ?? 1).ToString();
         ItemRefineInput.Text = (item?.RefineLevel ?? 0).ToString();
-        ItemEngravingValue.Text = item?.EngravingHash is uint hash ? $"0x{hash:X8}" : UiLanguage.Get("None");
-        ApplyItemButton.IsEnabled = item is not null && definition is not null;
+        _itemEditorBaseline = item;
+        RefreshEngravingChoices(ItemEngravingInput, item?.ItemHash ?? definition?.Hash, item?.EngravingHash);
+        ApplyItemButton.IsEnabled = item is not null && (definition is not null || EngravingCatalog.CanEngrave(item.ItemHash));
         DeleteItemButton.IsEnabled = item is not null;
         AddItemButton.IsEnabled = definition is not null;
     }
@@ -124,6 +131,7 @@ public partial class MainWindow
     private void SetItemRanges(ItemDefinition? definition)
     {
         ItemUsesInput.Maximum = definition?.MaxUses ?? 255;
+        ItemUsesInput.IsEnabled = definition is not null;
         ItemUsesInput.IsVisible = definition is not { UnlimitedUses: true };
         UnlimitedUsesLabel.IsVisible = definition is { UnlimitedUses: true };
         RestoreUsesButton.IsEnabled = definition is { UnlimitedUses: false };
@@ -133,13 +141,14 @@ public partial class MainWindow
 
     private bool HasPendingItemValues()
     {
-        if (!CanEditInventory || Save is null || !_selectedSlot.HasValue
-            || ItemTypeInput.SelectedItem is not ItemChoice choice)
+        if (!CanEditInventory || Save is null || !_selectedSlot.HasValue)
             return false;
-        var item = Save.ReadInventory()[_selectedSlot.Value].Item;
+        var item = _itemEditorBaseline;
+        if (ItemTypeInput.SelectedItem is not ItemChoice choice)
+            return item is not null && EngravingCatalog.CanEngrave(item.ItemHash) && EngravingChanged(ItemEngravingInput, item);
         return item is not null && (item.ItemHash != choice.Definition.Hash
             || (!choice.Definition.UnlimitedUses && ItemUsesInput.Text != item.Uses.ToString())
-            || ItemRefineInput.Text != item.RefineLevel.ToString());
+            || ItemRefineInput.Text != item.RefineLevel.ToString() || EngravingChanged(ItemEngravingInput, item));
     }
 
     public bool ApplyItemValues()
@@ -148,10 +157,16 @@ public partial class MainWindow
             return false;
         return EditInventory(() =>
         {
-            var choice = ItemTypeInput.SelectedItem as ItemChoice ?? throw new ArgumentException(UiLanguage.Get("SelectItem"));
+            if (ItemTypeInput.SelectedItem is not ItemChoice choice)
+            {
+                if (!HasPendingItemValues()) return Save;
+                return Save.WithInventoryEngraving(_selectedSlot.Value, SelectedEngravingId(ItemEngravingInput));
+            }
             int uses = choice.Definition.UnlimitedUses ? 255 : Amount(ItemUsesInput);
             int refine = Amount(ItemRefineInput);
-            return Save.WithInventoryItem(_selectedSlot.Value, choice.Definition.Id, uses, refine);
+            return EngravingChanged(ItemEngravingInput, _itemEditorBaseline)
+                ? Save.WithInventoryItem(_selectedSlot.Value, choice.Definition.Id, uses, refine, SelectedEngravingId(ItemEngravingInput))
+                : Save.WithInventoryItem(_selectedSlot.Value, choice.Definition.Id, uses, refine);
         });
     }
 
@@ -163,6 +178,8 @@ public partial class MainWindow
         int refine = Amount(ItemRefineInput);
         int? empty = Save!.ReadInventory().FirstOrDefault(slot => slot.Item is null)?.Slot;
         var edited = Save.AddInventoryItem(choice.Definition.Id, uses, refine);
+        if ((ItemEngravingInput.SelectedItem as EngravingChoice)?.Hash is not null)
+            edited = edited.WithInventoryEngraving(empty!.Value, SelectedEngravingId(ItemEngravingInput));
         ItemSearch.Clear();
         _selectedSlot = empty;
         return edited;
@@ -183,6 +200,7 @@ public partial class MainWindow
             RefreshOverview();
             RefreshSections();
             RefreshInventory(selectEditor: true);
+            RefreshCharacterItems(selectEditor: !HasPendingRosterItemValues());
             Message.IsVisible = false;
             return true;
         }
@@ -195,13 +213,13 @@ public partial class MainWindow
 
     private void RefreshInventoryLanguage()
     {
-        RefreshItemChoices(selectFirst: false);
+        RefreshItemChoices((ItemTypeInput.SelectedItem as ItemChoice)?.Definition.Hash ?? _itemEditorBaseline?.ItemHash, selectFirst: false);
         int? selected = _selectedSlot;
         RefreshInventory(selectEditor: false);
         if (selected != _selectedSlot)
             SelectInventoryItem();
-        if (_selectedSlot.HasValue && Save?.ReadInventory()[_selectedSlot.Value].Item?.EngravingHash is null)
-            ItemEngravingValue.Text = UiLanguage.Get("None");
+        RefreshEngravingChoices(ItemEngravingInput, (ItemTypeInput.SelectedItem as ItemChoice)?.Definition.Hash ?? _itemEditorBaseline?.ItemHash,
+            (ItemEngravingInput.SelectedItem as EngravingChoice)?.Hash);
     }
 
     private void ItemSearch_Changed(object? sender, TextChangedEventArgs e)
@@ -225,6 +243,7 @@ public partial class MainWindow
             return;
         var definition = (ItemTypeInput.SelectedItem as ItemChoice)?.Definition;
         SetItemRanges(definition);
+        RefreshEngravingChoices(ItemEngravingInput, definition?.Hash, (ItemEngravingInput.SelectedItem as EngravingChoice)?.Hash);
         ItemUsesInput.Text = (definition?.MaxUses ?? 1).ToString();
         ItemRefineInput.Text = "0";
         AddItemButton.IsEnabled = definition is not null;

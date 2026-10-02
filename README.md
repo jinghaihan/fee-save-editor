@@ -15,12 +15,14 @@ are still under development.
   remaining staff/item uses and weapon refinement, or restore all remaining uses.
   Weapons have unlimited uses, not FETH-style durability. Ranges follow each
   item's data; additions use empty slots within the saved convoy capacity.
-  Existing engravings and flags are preserved. Changing engravings is not yet
-  supported; unknown item references remain visible and are never discarded.
+  Assign or clear any of the 20 base-game/DLC Emblem engravings. Assigning an
+  already-used engraving transfers it from the previous convoy or carried weapon.
+  Item flags and unrelated engravings are preserved; unknown references remain visible.
 - Save a verified edited copy; opening or editing never overwrites the input file.
 - Roster panel: search characters, edit level, EXP and SP, edit personal stat
   values with live current-class value/cap previews, and replace/add/delete carried items
-  or restore their remaining uses. Item flags and engravings are preserved.
+  or restore their remaining uses. Edit weapon engravings with the same selector
+  and transfer rules as the convoy. Item flags are preserved.
   Level limits follow the current class (20 or 40); EXP is 0–99, or 0 at maximum
   level, and SP is 0–9,999. Changing level does not simulate growth rolls.
   Reclass through a class dropdown with character/gender restrictions and weapon
@@ -88,10 +90,22 @@ The Items CLI also supports `add --item <IID>`, `delete --slot <index>`,
 and `set --item <IID> --refine <level>`. Obtain item IDs with `items catalog`;
 slot indices from `items list` are zero-based. Every edit writes a new file.
 
+`items engravings --json` lists all 20 engraving IDs, translated names and modifiers.
+`items engrave <save> <new-file> --slot <index> --engraving <GID|none>` assigns or
+clears an engraving without changing refinement, uses or flags. `items set` and
+`items add` also accept `--engraving`. Omitting it preserves an existing engraving.
+Assigning an engraving transfers it from any previous player-owned weapon, including
+carried weapons; enemy and temporary units are not edited.
+
 Roster commands use the zero-based character index from `roster list` and the
 saved item slot from that character's `Items`. `roster item-set` accepts
-`--character`, `--slot`, `--item`, `--uses` and `--refine`;
+`--character`, `--slot`, `--item`, `--uses`, `--refine` and `--engraving`;
 `roster item-delete` accepts `--character` and `--slot`.
+`roster item-engrave <save> <new-file> --character <index> --slot <index>
+--engraving <GID|none>` edits only the engraving. Verified DLC weapons missing
+from the older item-replacement catalog support engraving-only edits, with their
+other fields preserved rather than assigning guessed limits. Staffs and Engage
+weapons cannot receive engravings.
 Use `--language zh-Hans` to inspect translated character/class/equipment names.
 `roster class` accepts `--character`, `--class <JID>` and an optional
 `--weapons Sword,Lance` branch. Level, EXP, learned class skill and internal level
@@ -142,7 +156,8 @@ The minimal item catalog is generated from a pinned
 [FE17-DOC revision](https://github.com/laqieer/FE17-DOC/tree/99677e4cad22b636bee4af5a3052003bed17c443),
 not a bundled game resource dump. This catalog is not claimed to cover every DLC
 item or future game-data revision. An unrecognized item is shown with its hash
-and preserved unchanged unless explicitly deleted or replaced.
+and preserved unchanged unless explicitly deleted or replaced, or its engraving
+is edited using the separately verified weapon-eligibility catalog.
 
 ## Development
 
