@@ -96,6 +96,7 @@ public partial class MainWindow
         ItemsPanel.IsVisible = false;
         RosterPanel.IsVisible = false;
         EmblemsPanel.IsVisible = false;
+        BondRingsPanel.IsVisible = false;
         SupportsPanel.IsVisible = false;
         AchievementsPanel.IsVisible = false;
         InspectorPanel.IsVisible = inspector;

@@ -39,6 +39,12 @@ if (args is ["--about-screenshot", var aboutScreenshot])
     return;
 }
 AboutTests.Run(window);
+if (args is ["--review-screenshots", var reviewDirectory, var reviewOutput])
+{
+    ReviewScreenshots.Run(window, reviewDirectory, reviewOutput);
+    window.Close();
+    return;
+}
 Check(!window.FindControl<MenuItem>("SaveCopyMenu")!.IsEnabled, "Copy is enabled without a save.");
 Check(window.FindControl<Button>("ApplyMainButton") is null, "Main must save through File, without a toolbar Apply button.");
 Check(!window.FindControl<Button>("ExportRosterCharacterButton")!.IsEnabled
@@ -128,10 +134,12 @@ try
     EmblemGuiTests.Run(window, temporary);
     EmblemCreationTests.Run(window, temporary);
     BondRingGuiTests.Run(window, temporary);
+    EmblemNavigationTests.Run(window, temporary);
     SupportTests.Run();
     SupportGuiTests.Run(window, temporary);
     EngravingTests.Run();
     EngravingGuiTests.Run(window, temporary);
+    LanguageTests.Run(window, temporary);
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -201,8 +209,8 @@ try
         {
             if (captureOptions[1] == "emblem-add")
                 Check(window.LoadSave(Path.Combine(temporary, "emblem-add-source")), "Could not load the missing-Emblem screenshot fixture.");
-            window.ShowEmblems();
-            window.FindControl<TabStrip>("EmblemTabs")!.SelectedIndex = captureOptions[1] is "emblems" or "emblem-add" ? 0 : 1;
+            if (captureOptions[1] is "emblems" or "emblem-add") window.ShowEmblems();
+            else window.ShowBondRings();
             if (captureOptions[1] == "emblem-add")
             {
                 Dispatcher.UIThread.RunJobs();
@@ -214,7 +222,7 @@ try
             if (captureOptions[1] == "ring-meld")
             {
                 var rings = window.Save!.ReadBondRings();
-                var list = window.FindControl<ListBox>("EmblemRecordList")!;
+                var list = window.FindControl<ListBox>("BondRingList")!;
                 list.SelectedItem = list.Items.Cast<MainWindow.EmblemRow>().First(row =>
                     rings.Any(ring => ring.InstanceId.ToString() == row.Key
                         && !ring.OwnerIndex.HasValue && BondRingCatalog.Melding(ring.RingHash) is not null));

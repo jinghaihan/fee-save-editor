@@ -14,6 +14,12 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        foreach (var language in LanguageCatalog.Languages)
+        {
+            var item = new MenuItem { Header = language.NativeName, Tag = language.Code };
+            item.Click += Language_Click;
+            LanguageMenu.Items.Add(item);
+        }
         DonationAmountInput.Maximum = DonationCatalog.MaximumAmount;
         DonationAmountInput.PropertyChanged += (_, change) =>
         {
@@ -218,7 +224,8 @@ public partial class MainWindow : Window
     private void Inspector_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: true);
     private void Navigation_Changed(object? sender, SelectionChangedEventArgs e)
     {
-        if (MainPanel is null || ItemsPanel is null || RosterPanel is null || EmblemsPanel is null || SupportsPanel is null || AchievementsPanel is null)
+        if (MainPanel is null || ItemsPanel is null || RosterPanel is null || EmblemsPanel is null
+            || BondRingsPanel is null || SupportsPanel is null || AchievementsPanel is null)
             return;
         switch (MainNavigation.SelectedIndex)
         {
@@ -234,16 +241,21 @@ public partial class MainWindow : Window
             case 3 when !EmblemsPanel.IsVisible:
                 ShowEmblems();
                 break;
-            case 4 when !SupportsPanel.IsVisible:
+            case 4 when !BondRingsPanel.IsVisible:
+                ShowBondRings();
+                break;
+            case 5 when !SupportsPanel.IsVisible:
                 ShowSupports();
                 break;
-            case 5 when !AchievementsPanel.IsVisible:
+            case 6 when !AchievementsPanel.IsVisible:
                 ShowAchievements();
                 break;
         }
     }
-    private void English_Click(object? sender, RoutedEventArgs e) => SetLanguage("en");
-    private void Chinese_Click(object? sender, RoutedEventArgs e) => SetLanguage("zh-Hans");
+    private void Language_Click(object? sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem { Tag: string language }) SetLanguage(language);
+    }
     private void SectionSearch_Changed(object? sender, TextChangedEventArgs e) => RefreshSections();
     private void SectionList_Changed(object? sender, SelectionChangedEventArgs e) => RefreshSelectedSection();
 }

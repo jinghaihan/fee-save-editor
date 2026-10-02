@@ -22,7 +22,6 @@ internal static class EmblemGuiTests
         var search = window.FindControl<TextBox>("EmblemSearch")!;
         var levels = window.FindControl<ComboBox>("EmblemBondLevelInput")!;
         var exp = window.FindControl<NumericUpDown>("EmblemBondExpInput")!;
-        var tabs = window.FindControl<TabStrip>("EmblemTabs")!;
         Check(choices.ItemCount == 3 && list.ItemCount == 2 && (int)levels.SelectedItem! == 1 && exp.Value == 0,
             "The Emblem form did not show the saved values.");
         Check(window.FindControl<StackPanel>("EmblemBondForm")!.Width == 340,
@@ -72,17 +71,18 @@ internal static class EmblemGuiTests
         Check(list.ItemCount == 0, "Bond search did not filter.");
         search.Clear();
         Dispatcher.UIThread.RunJobs();
-        tabs.SelectedIndex = 1;
+        window.ShowBondRings();
+        var ringList = window.FindControl<ListBox>("BondRingList")!;
         var stock = window.FindControl<NumericUpDown>("BondRingStockInput")!;
-        Check(list.ItemCount == 2 && stock.Value == 7 && !choices.IsVisible
+        Check(ringList.ItemCount == 2 && stock.Value == 7 && !window.FindControl<Grid>("EmblemsPanel")!.IsVisible
             && window.FindControl<StackPanel>("BondRingForm")!.IsVisible, "Ring tab did not show stock.");
         stock.Text = "99";
         for (int pass = 0; pass < 2; pass++)
         {
             window.SetLanguage("zh-Hans"); Dispatcher.UIThread.RunJobs();
-            Check(((MainWindow.EmblemRow)list.Items[0]!).Label.Contains("希达"), "Chinese ring names did not apply.");
+            Check(((MainWindow.EmblemRow)ringList.Items[0]!).Label.Contains("希达"), "Chinese ring names did not apply.");
             window.SetLanguage("en"); Dispatcher.UIThread.RunJobs();
-            Check(((MainWindow.EmblemRow)list.Items[0]!).Label.Contains("Caeda") && stock.Text == "99",
+            Check(((MainWindow.EmblemRow)ringList.Items[0]!).Label.Contains("Caeda") && stock.Text == "99",
                 "English ring names or pending stock were lost.");
         }
         Check(window.ApplyEmblemValues() && window.Save!.ReadBondRings()[0].StockCount == 99, "Ring stock edit failed.");
@@ -92,8 +92,8 @@ internal static class EmblemGuiTests
         string ringCopy = Path.Combine(temporary, "emblem-ring-copy");
         Check(window.SaveCopy(ringCopy) && EngageSave.Load(ringCopy).ReadBondRings()[0].StockCount == 3,
             "Saving omitted pending ring stock.");
-        Check(!window.FindControl<Button>("MaxAllEmblemBondsButton")!.IsVisible, "Bond batch action appeared in ring stock.");
-        tabs.SelectedIndex = 0;
+        Check(!window.FindControl<Grid>("EmblemsPanel")!.IsVisible, "Bond batch action appeared in ring stock.");
+        window.ShowEmblems();
         choices.SelectedIndex = 0;
         Check(window.MaximizeEmblemBonds(all: false), "Single maximum failed.");
         Check(window.Save!.ReadEmblems()[0].Bonds[0].Level == 20 && window.Save.ReadEmblems()[0].Bonds[1].Level == 1,

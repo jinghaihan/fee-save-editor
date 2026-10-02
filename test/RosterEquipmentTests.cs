@@ -135,9 +135,7 @@ internal static class RosterEquipmentTests
             "File Save Copy ignored hidden pending equipment.");
 
         Check(window.LoadSave(source), "Could not reload equipment for pending stock tests.");
-        window.ShowEmblems();
-        var emblemTabs = window.FindControl<TabStrip>("EmblemTabs")!;
-        emblemTabs.SelectedIndex = 1;
+        window.ShowBondRings();
         var stock = window.FindControl<NumericUpDown>("BondRingStockInput")!;
         stock.Text = "9";
         window.ShowRoster();
@@ -148,12 +146,12 @@ internal static class RosterEquipmentTests
             "Equipment discarded or double-applied pending ring stock.");
         Check(window.FindControl<TextBlock>("BondRingOwnerValue")!.Text == "None" && stock.Text == "8",
             "The stock editor kept a stale value after splitting an equipped copy.");
-        window.ShowEmblems();
+        window.ShowBondRings();
         Check(window.ApplyEmblemValues() && window.UnequipRosterEquipment()
             && window.Save!.ReadBondRings().Single(ring => ring.InstanceId == 10).StockCount == 9,
             "The refreshed stock editor changed the conserved ring quantity.");
         Check(window.LoadSave(source), "Could not reload for atomic equipment tests.");
-        window.ShowEmblems();
+        window.ShowBondRings();
         stock.Text = "100";
         window.ShowRoster();
         type.SelectedItem = type.Items.Cast<MainWindow.EquipmentKindChoice>().Single(item => item.Kind == RosterEquipmentKind.BondRing);
@@ -161,12 +159,12 @@ internal static class RosterEquipmentTests
         Check(!window.ApplyRosterEquipment() && window.Save!.Serialize().AsSpan().SequenceEqual(original),
             "Invalid pending stock partially committed equipment or character values.");
         stock.Text = "7";
-        window.ShowEmblems();
+        window.ShowBondRings();
         Check(window.ManageBondRings(meld: true), "Could not meld a ring while testing available equipment refresh.");
         window.ShowRoster();
         Check(choice.Items.Cast<MainWindow.EquipmentChoice>().Any(item => item.Option.RingHash == BondRingCatalog.Melding(Caeda)!.Result.Hash),
             "Returning from the ring editor did not refresh equipment choices.");
-        emblemTabs.SelectedIndex = 0;
+        window.ShowEmblems();
         Check(File.ReadAllBytes(source).AsSpan().SequenceEqual(original), "GUI equipment overwrote the source.");
         Console.WriteLine("Roster equipment: Emblem/DLC transfers, ring splitting/merging, stock conservation, invalid ownership and GUI save/language passed.");
     }

@@ -73,8 +73,7 @@ internal static class RosterRecoveryTests
         var status = window.FindControl<TextBlock>("RosterStatusValue")!;
         Check(button.IsEnabled && status.Text == "Dead", "The recovery controls did not reflect the selected character.");
         window.FindControl<NumericUpDown>("RosterItemUses")!.Value = 9;
-        window.ShowEmblems();
-        window.FindControl<Avalonia.Controls.Primitives.TabStrip>("EmblemTabs")!.SelectedIndex = 1;
+        window.ShowBondRings();
         window.FindControl<NumericUpDown>("BondRingStockInput")!.Value = 6;
         window.ShowRoster();
         window.FindControl<NumericUpDown>("RosterSkillPoints")!.Value = 789;
@@ -98,7 +97,7 @@ internal static class RosterRecoveryTests
         byte[] blocked = window.Save!.Serialize();
         Check(!window.RestoreSelectedRosterCharacter() && window.Save!.Serialize().AsSpan().SequenceEqual(blocked),
             "A blocked GUI recovery partially modified the save.");
-        window.FindControl<Avalonia.Controls.Primitives.TabStrip>("EmblemTabs")!.SelectedIndex = 0;
+        window.ShowEmblems();
         Console.WriteLine("Roster recovery: dead/lost pools, death flags, HP, exact preservation, protected units, contexts, selection, localization and GUI save passed.");
     }
 

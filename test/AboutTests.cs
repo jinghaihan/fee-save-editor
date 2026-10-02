@@ -3,6 +3,8 @@ using Avalonia.Headless;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using FeeEditor.Gui;
+using FeeEditor.Core;
+using FeeEditor.Gui.Localization;
 
 internal static class AboutTests
 {
@@ -22,16 +24,13 @@ internal static class AboutTests
             "The About dialog did not display the application version.");
         Check(Equals(about.FindControl<Button>("ProjectLink")!.Content, "github.com/jinghaihan/fee-save-editor"),
             "The About project link is incorrect.");
-        foreach (var (language, title, header, versionLabel) in new[]
-        {
-            ("en", "About", "Help", "Version:"), ("zh-Hans", "关于", "帮助", "版本："),
-            ("en", "About", "Help", "Version:")
-        })
+        foreach (string language in LanguageCatalog.Codes.Append("en"))
         {
             window.SetLanguage(language);
             Dispatcher.UIThread.RunJobs();
-            Check(about.Title == title && Equals(menu.Header, title) && Equals(help.Header, header)
-                && about.FindControl<TextBlock>("VersionLabel")!.Text == versionLabel,
+            Check(about.Title == UiLanguage.Get("About") && Equals(menu.Header, UiLanguage.Get("About"))
+                && Equals(help.Header, UiLanguage.Get("Help"))
+                && about.FindControl<TextBlock>("VersionLabel")!.Text == UiLanguage.Get("Version"),
                 "About did not follow the interface language.");
         }
         if (screenshot is not null)

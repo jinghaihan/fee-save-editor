@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Threading;
+using Avalonia.LogicalTree;
 using FeeEditor.Core;
 using FeeEditor.Gui;
 
@@ -12,12 +13,10 @@ internal static class BondRingGuiTests
         byte[] original = EmblemTests.Fixture();
         File.WriteAllBytes(source, original);
         Check(window.LoadSave(source), "Could not load ring management fixture.");
-        window.ShowEmblems();
-        var tabs = window.FindControl<TabStrip>("EmblemTabs")!;
-        tabs.SelectedIndex = 1;
+        window.ShowBondRings();
         Dispatcher.UIThread.RunJobs();
-        var list = window.FindControl<ListBox>("EmblemRecordList")!;
-        var search = window.FindControl<TextBox>("EmblemSearch")!;
+        var list = window.FindControl<ListBox>("BondRingList")!;
+        var search = window.FindControl<TextBox>("BondRingSearch")!;
         var stock = window.FindControl<NumericUpDown>("BondRingStockInput")!;
         var fragments = window.FindControl<NumericUpDown>("BondFragmentsInput")!;
         var fill = window.FindControl<Button>("FillSBondRingsButton")!;
@@ -26,7 +25,8 @@ internal static class BondRingGuiTests
         Check(fill.IsVisible && fill.IsEnabled && Equals(fill.Content, "Fill Missing S Rings")
             && fill.HorizontalAlignment == Avalonia.Layout.HorizontalAlignment.Stretch,
             "The full-width S-ring action is not present at the bottom of the list.");
-        Check(Grid.GetRow((Control)fill.Parent!) == 4 && fill.Parent == window.FindControl<Button>("MaxAllEmblemBondsButton")!.Parent,
+        Check(Grid.GetRow((Control)fill.Parent!) == 3
+            && fill.GetLogicalAncestors().Contains(window.FindControl<Grid>("BondRingsPanel")!),
             "Ring fill was not aligned with the existing bottom batch action.");
         Check(meld.IsEnabled && Equals(meld.Content, "Meld to B") && cost.Text == "2 × C + 100 Bond Fragments",
             "Melding preview does not show the game costs.");
@@ -50,7 +50,7 @@ internal static class BondRingGuiTests
         Check(window.SaveCopy(copy) && EngageSave.Load(copy).ReadMainValues().BondFragments == 1100,
             "Saving restored the fragments spent on melding from stale Main controls.");
 
-        window.LoadSave(source); window.ShowEmblems(); tabs.SelectedIndex = 1;
+        window.LoadSave(source); window.ShowBondRings();
         stock.Text = "1";
         Check(!meld.IsEnabled, "Melding remained enabled with too few copies.");
         byte[] before = window.Save!.Serialize();
@@ -65,18 +65,18 @@ internal static class BondRingGuiTests
         stock.Text = "7";
         search.Text = "no-match"; Dispatcher.UIThread.RunJobs();
         Check(list.ItemCount == 0 && window.ManageBondRings(meld: false), "Search incorrectly limited the S-ring fill scope.");
-        Check(window.FindControl<TextBlock>("EmblemCompletion")!.Text == "S: 123/123" && !fill.IsEnabled,
+        Check(window.FindControl<TextBlock>("BondRingCompletion")!.Text == "S: 123/123" && !fill.IsEnabled,
             "S-ring completion did not refresh after fill.");
         search.Clear(); Dispatcher.UIThread.RunJobs();
         list.SelectedIndex = 1;
         Check(!window.FindControl<StackPanel>("BondRingMeldForm")!.IsVisible, "An S ring offered an invalid next rank.");
-        tabs.SelectedIndex = 0;
-        Check(!fill.IsVisible && !window.ManageBondRings(meld: false), "Ring actions appeared in character bonds.");
+        window.ShowEmblems();
+        Check(!window.FindControl<Grid>("BondRingsPanel")!.IsVisible && !window.ManageBondRings(meld: false), "Ring actions appeared in character bonds.");
 
         var empty = BondRingTests.Fixture([]);
         string emptyPath = Path.Combine(temporary, "bond-ring-management-empty");
         empty.WriteCopy(emptyPath);
-        window.LoadSave(emptyPath); window.ShowEmblems(); tabs.SelectedIndex = 1;
+        window.LoadSave(emptyPath); window.ShowBondRings();
         Check(!window.FindControl<StackPanel>("BondRingForm")!.IsEnabled && fill.IsEnabled
             && window.ManageBondRings(meld: false) && window.Save!.ReadBondRings().Count == 123,
             "An empty ring pool required a selected ring before fill.");
@@ -84,13 +84,13 @@ internal static class BondRingGuiTests
         var equipped = BondRingTests.Fixture([new(10, caeda, 1, null), new(11, caeda, 2, null)], RosterTests.Fixture(validEquipment: true));
         string equippedPath = Path.Combine(temporary, "bond-ring-management-equipped");
         equipped.WriteCopy(equippedPath);
-        window.LoadSave(equippedPath); window.ShowEmblems(); tabs.SelectedIndex = 1;
+        window.LoadSave(equippedPath); window.ShowBondRings();
         Check(!meld.IsEnabled && !window.ManageBondRings(meld: true), "GUI allowed a worn ring to be melded.");
         list.SelectedIndex = 1;
         Check(meld.IsEnabled && window.ManageBondRings(meld: true)
             && window.Save!.ReadCharacterRingLinks().SequenceEqual(equipped.ReadCharacterRingLinks()), "GUI melding changed ring equipment links.");
         Check(File.ReadAllBytes(source).AsSpan().SequenceEqual(original), "GUI ring management overwrote its original save.");
-        tabs.SelectedIndex = 0;
+        window.ShowEmblems();
         Console.WriteLine("Bond ring GUI: batch scope, costs, equipped protection, pending inputs, save copies and live translations passed.");
     }
 

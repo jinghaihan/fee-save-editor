@@ -1,4 +1,6 @@
 using Avalonia.Controls;
+using Avalonia;
+using Avalonia.LogicalTree;
 using Avalonia.Threading;
 using FeeEditor.Core;
 using FeeEditor.Gui;
@@ -21,9 +23,14 @@ internal static class MinigameGuiTests
         var cards = new[] { "SettingsCard", "ResourcesCard", "MinigamesCard", "DonationsCard" }
             .Select(name => window.FindControl<GlassCard>(name)!).ToArray();
         var main = window.FindControl<Grid>("MainPanel")!;
-        Check(main.ColumnDefinitions.Count == 2 && main.RowDefinitions.Count == 2, "Main is not a two-by-two grid.");
-        Check(cards.Select(Grid.GetColumn).SequenceEqual(new[] { 0, 1, 0, 1 })
-            && cards.Select(Grid.GetRow).SequenceEqual(new[] { 0, 0, 1, 1 }), "Main cards are in the wrong positions.");
+        Check(main.ColumnDefinitions.Count == 2 && main.Children.OfType<StackPanel>().Count() == 2,
+            "Main must have two naturally sized columns.");
+        Check(cards[0].Parent == cards[2].Parent && cards[1].Parent == cards[3].Parent
+            && Grid.GetColumn((Control)cards[1].Parent!) == 1,
+            "Main must place Settings/Minigames on the left and Resources/Donations on the right.");
+        Check(cards.All(card => !card.GetLogicalDescendants().OfType<ScrollViewer>().Any())
+            && main.Parent == window.FindControl<ScrollViewer>("MainScroll"),
+            "Main must scroll as a page, not inside individual cards.");
         foreach (var group in MinigameCatalog.Groups)
         {
             picker.SelectedItem = picker.Items.Cast<MainWindow.MinigameChoice>().Single(row => row.Id == group.Id);
@@ -50,11 +57,28 @@ internal static class MinigameGuiTests
         {
             window.Width = size.Item1; window.Height = size.Item2; Dispatcher.UIThread.RunJobs();
             Check(cards.All(card => card.Bounds.Width > 0 && card.Bounds.Height > 0), "A Main card collapsed.");
-            Check(cards.All(card => Math.Abs(card.Bounds.Width - cards[0].Bounds.Width) <= 1
-                && Math.Abs(card.Bounds.Height - cards[0].Bounds.Height) <= 1), "Main cards have unequal dimensions.");
-            Check(cards[0].Bounds.Top == cards[1].Bounds.Top && cards[2].Bounds.Top == cards[3].Bounds.Top
-                && cards[2].Bounds.Top > cards[0].Bounds.Bottom && cards[1].Bounds.Left > cards[0].Bounds.Right,
-                "Main cards overlap or are not aligned.");
+            Check(cards.All(card => Math.Abs(card.Bounds.Width - cards[0].Bounds.Width) <= 1),
+                "Main cards have unequal column widths.");
+            var positions = cards.Select(card => card.TranslatePoint(new Point(), main)!.Value).ToArray();
+            Check(positions[0].Y == positions[1].Y
+                && positions[2].Y >= positions[0].Y + cards[0].Bounds.Height + 24
+                && positions[3].Y >= positions[1].Y + cards[1].Bounds.Height + 24
+                && positions[1].X >= positions[0].X + cards[0].Bounds.Width + 24,
+                "Naturally sized Main cards overlap or lose their column spacing.");
+            foreach (var (left, right) in new[]
+            {
+                ("MinigameInput", "MinigameRecordInput"), ("MinigameValueInput", "MinigameSizeInput"),
+                ("MoneyInput", "BondFragmentsInput"), ("IronIngotsInput", "SteelIngotsInput"),
+                ("DonationLevelInput", "DonationAmountInput")
+            })
+            {
+                var first = window.FindControl<Control>(left)!;
+                var second = window.FindControl<Control>(right)!;
+                var firstPosition = first.TranslatePoint(new Point(), main)!.Value;
+                var secondPosition = second.TranslatePoint(new Point(), main)!.Value;
+                Check(secondPosition.X >= firstPosition.X + first.Bounds.Width + 24,
+                    $"{left}/{right}: two-column fields overlap or lose their spacing.");
+            }
         }
         window.Width = width; window.Height = height; Dispatcher.UIThread.RunJobs();
         string output = Path.Combine(temporary, "minigame-gui-copy");

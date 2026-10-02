@@ -13,31 +13,55 @@ public partial class MainWindow
     public bool CanEditEmblems { get; private set; }
     public bool CanEditBondRings { get; private set; }
     private uint? _selectedEmblem;
-    private string? _selectedEmblemRecord;
-    private int _emblemTab;
+    private enum EmblemPage { Bonds, BondRings }
+    private EmblemPage _emblemPage;
+    private string? _selectedBondRecord;
+    private string? _selectedRingRecord;
+    private string? SelectedEmblemRecordKey
+    {
+        get => _emblemPage == EmblemPage.Bonds ? _selectedBondRecord : _selectedRingRecord;
+        set
+        {
+            if (_emblemPage == EmblemPage.Bonds) _selectedBondRecord = value;
+            else _selectedRingRecord = value;
+        }
+    }
+    private ListBox ActiveEmblemList => _emblemPage == EmblemPage.Bonds ? EmblemRecordList : BondRingList;
+    private TextBox ActiveEmblemSearch => _emblemPage == EmblemPage.Bonds ? EmblemSearch : BondRingSearch;
     private bool _refreshingEmblems;
 
-    public void ShowEmblems()
+    public void ShowEmblems() => ShowEmblemPage(EmblemPage.Bonds);
+    public void ShowBondRings() => ShowEmblemPage(EmblemPage.BondRings);
+
+    private void ShowEmblemPage(EmblemPage page)
     {
         if (HasPendingSupportValues() && !ApplySupportValues())
         {
-            MainNavigation.SelectedIndex = 4;
+            MainNavigation.SelectedIndex = 5;
             return;
         }
+        if (_emblemPage != page && HasPendingEmblemValues() && !ApplyEmblemValues())
+        {
+            MainNavigation.SelectedIndex = _emblemPage == EmblemPage.Bonds ? 3 : 4;
+            return;
+        }
+        bool preserveEditor = _emblemPage == page && HasPendingEmblemValues();
+        _emblemPage = page;
         MainPanel.IsVisible = ItemsPanel.IsVisible = RosterPanel.IsVisible = InspectorPanel.IsVisible = false;
-        SupportsPanel.IsVisible = false;
-        AchievementsPanel.IsVisible = false;
-        EmblemsPanel.IsVisible = true;
-        MainNavigation.SelectedIndex = 3;
+        SupportsPanel.IsVisible = AchievementsPanel.IsVisible = false;
+        EmblemsPanel.IsVisible = page == EmblemPage.Bonds;
+        BondRingsPanel.IsVisible = page == EmblemPage.BondRings;
+        MainNavigation.SelectedIndex = page == EmblemPage.Bonds ? 3 : 4;
+        RefreshEmblemRecords(preserveEditor);
         RefreshSupportRecords(preserveEditor: false);
         RefreshPageTitle();
     }
 
     private EmblemBond? SelectedBond => CanEditEmblems && Save is not null
         ? Save.ReadEmblems().FirstOrDefault(row => row.InstanceId == _selectedEmblem)?.Bonds
-            .FirstOrDefault(row => row.PersonId == _selectedEmblemRecord) : null;
+            .FirstOrDefault(row => row.PersonId == SelectedEmblemRecordKey) : null;
     private BondRing? SelectedBondRing => CanEditBondRings && Save is not null
-        ? Save.ReadBondRings().FirstOrDefault(row => row.InstanceId.ToString() == _selectedEmblemRecord) : null;
+        ? Save.ReadBondRings().FirstOrDefault(row => row.InstanceId.ToString() == SelectedEmblemRecordKey) : null;
     private SavedEmblem? SelectedEmblem => CanEditEmblems && Save is not null
         ? Save.ReadEmblems().FirstOrDefault(row => row.InstanceId == _selectedEmblem) : null;
 
@@ -46,10 +70,12 @@ public partial class MainWindow
         _refreshingEmblems = true;
         CanEditEmblems = CanEditBondRings = false;
         _selectedEmblem = null;
-        _selectedEmblemRecord = null;
+        _selectedBondRecord = _selectedRingRecord = null;
         EmblemChoiceInput.ItemsSource = Array.Empty<EmblemChoice>();
         EmblemRecordList.ItemsSource = Array.Empty<EmblemRow>();
+        BondRingList.ItemsSource = Array.Empty<EmblemRow>();
         EmblemSearch.Clear();
+        BondRingSearch.Clear();
         EmblemBondLevelInput.ItemsSource = Enumerable.Range(1, 20).ToArray();
         EmblemBondExpInput.Value = BondRingStockInput.Value = null;
         _refreshingEmblems = false;
@@ -93,24 +119,21 @@ public partial class MainWindow
 
     private void RefreshEmblemRecords(bool preserveEditor)
     {
-        if (EmblemRecordList is null) return;
+        if (ActiveEmblemList is null) return;
         _refreshingEmblems = true;
-        EmblemBondForm.IsVisible = EmblemChoiceInput.IsVisible = _emblemTab == 0;
-        BondRingForm.IsVisible = _emblemTab == 1;
-        EmblemListTitle.Text = UiLanguage.Get(_emblemTab == 0 ? "CharacterList" : "BondRings");
-        bool available = _emblemTab == 0 ? CanEditEmblems : CanEditBondRings;
-        var emblem = _emblemTab == 0 ? SelectedEmblem : null;
-        MaxAllEmblemBondsButton.IsVisible = _emblemTab == 0;
-        AddEmblemButton.IsVisible = _emblemTab == 0;
+
+        bool available = _emblemPage == EmblemPage.Bonds ? CanEditEmblems : CanEditBondRings;
+        var emblem = _emblemPage == EmblemPage.Bonds ? SelectedEmblem : null;
         MaxAllEmblemBondsButton.IsEnabled = emblem is not null && EmblemCatalog.Emblem(emblem.EmblemId) is not null;
-        FillSBondRingsButton.IsVisible = _emblemTab == 1;
         FillSBondRingsButton.IsEnabled = CanEditBondRings;
-        EmblemCompletion.Text = "";
-        if (_emblemTab == 1 && CanEditBondRings && Save is not null)
+        var completion = _emblemPage == EmblemPage.Bonds ? EmblemCompletion : BondRingCompletion;
+        var availability = _emblemPage == EmblemPage.Bonds ? EmblemListAvailability : BondRingAvailability;
+        completion.Text = "";
+        if (_emblemPage == EmblemPage.BondRings && CanEditBondRings && Save is not null)
         {
             var owned = Save.ReadBondRings().Where(ring => ring.StockCount > 0).Select(ring => ring.RingHash).ToHashSet();
             int complete = BondRingCatalog.SRings.Count(ring => owned.Contains(ring.Hash));
-            EmblemCompletion.Text = $"S: {complete}/{BondRingCatalog.SRings.Count}";
+            completion.Text = $"S: {complete}/{BondRingCatalog.SRings.Count}";
             FillSBondRingsButton.IsEnabled = complete < BondRingCatalog.SRings.Count;
         }
         if (emblem is not null)
@@ -118,27 +141,27 @@ public partial class MainWindow
             var knownBonds = emblem.Bonds.Where(bond => RosterCatalog.Person(ItemCatalog.Hash(bond.PersonId)) is not null).ToArray();
             int complete = knownBonds.Count(bond => bond.Level == EmblemCatalog.MaximumLevel(emblem, bond.PersonId)
                 && bond.Experience == EmblemCatalog.ExperienceForLevel(emblem, bond.PersonId, bond.Level));
-            EmblemCompletion.Text = $"{complete}/{knownBonds.Length}";
+            completion.Text = $"{complete}/{knownBonds.Length}";
         }
-        EmblemListAvailability.Text = available || Save is null ? "" : UiLanguage.Get("Unavailable");
-        EmblemListAvailability.IsVisible = !string.IsNullOrEmpty(EmblemListAvailability.Text);
+        availability.Text = available || Save is null ? "" : UiLanguage.Get("Unavailable");
+        availability.IsVisible = !string.IsNullOrEmpty(availability.Text);
         IEnumerable<EmblemRow> rows = Array.Empty<EmblemRow>();
         if (Save is not null && available)
         {
-            if (_emblemTab == 0)
+            if (_emblemPage == EmblemPage.Bonds)
                 rows = (Save.ReadEmblems().FirstOrDefault(row => row.InstanceId == _selectedEmblem)?.Bonds ?? [])
                     .Select(row => new EmblemRow(row.PersonId, $"{BondPersonName(row.PersonId)} · Lv. {row.Level}"));
             else
                 rows = Save.ReadBondRings().Select(row => new EmblemRow(row.InstanceId.ToString(), $"{BondRingName(row)} · ×{row.StockCount}"));
         }
-        string query = EmblemSearch.Text?.Trim() ?? "";
+        string query = ActiveEmblemSearch.Text?.Trim() ?? "";
         var filtered = rows.Where(row => row.Label.Contains(query, StringComparison.OrdinalIgnoreCase)).ToArray();
-        EmblemRecordList.ItemsSource = filtered;
-        EmblemRecordList.SelectedItem = filtered.FirstOrDefault(row => row.Key == _selectedEmblemRecord);
+        ActiveEmblemList.ItemsSource = filtered;
+        ActiveEmblemList.SelectedItem = filtered.FirstOrDefault(row => row.Key == SelectedEmblemRecordKey);
         if (!preserveEditor)
         {
-            EmblemRecordList.SelectedItem ??= filtered.FirstOrDefault();
-            _selectedEmblemRecord = (EmblemRecordList.SelectedItem as EmblemRow)?.Key;
+            ActiveEmblemList.SelectedItem ??= filtered.FirstOrDefault();
+            SelectedEmblemRecordKey = (ActiveEmblemList.SelectedItem as EmblemRow)?.Key;
             LoadEmblemEditor();
         }
         _refreshingEmblems = false;
@@ -147,8 +170,8 @@ public partial class MainWindow
 
     private void LoadEmblemEditor()
     {
-        var bond = _emblemTab == 0 ? SelectedBond : null;
-        var ring = _emblemTab == 1 ? SelectedBondRing : null;
+        var bond = _emblemPage == EmblemPage.Bonds ? SelectedBond : null;
+        var ring = _emblemPage == EmblemPage.BondRings ? SelectedBondRing : null;
         var emblem = SelectedEmblem;
         bool knownEmblem = emblem is not null && EmblemCatalog.Emblem(emblem.EmblemId) is not null;
         EmblemBondForm.IsEnabled = bond is not null && knownEmblem
@@ -170,7 +193,7 @@ public partial class MainWindow
 
     private bool HasPendingEmblemValues()
     {
-        if (_emblemTab == 0)
+        if (_emblemPage == EmblemPage.Bonds)
         {
             var bond = SelectedBond;
             return bond is not null && (EmblemBondLevelInput.SelectedItem is not int level || level != bond.Level
@@ -203,7 +226,7 @@ public partial class MainWindow
     private EngageSave PendingEmblemValues(EngageSave save)
     {
         if (!HasPendingEmblemValues()) return save;
-        if (_emblemTab == 0)
+        if (_emblemPage == EmblemPage.Bonds)
         {
             var bond = SelectedBond ?? throw new ArgumentException("Select an existing character bond.");
             int level = EmblemBondLevelInput.SelectedItem is int selected ? selected : throw new ArgumentException(UiLanguage.Get("InvalidAmount"));
@@ -218,7 +241,7 @@ public partial class MainWindow
         RefreshEmblemChoices();
         RefreshEmblemRecords(preserveEditor: true);
         RefreshMissingEmblems();
-        RefreshBondRingOwner(_emblemTab == 1 ? SelectedBondRing : null);
+        RefreshBondRingOwner(_emblemPage == EmblemPage.BondRings ? SelectedBondRing : null);
     }
 
     private void RefreshMissingEmblems()
@@ -243,13 +266,13 @@ public partial class MainWindow
 
     public bool AddEmblem(string emblemId)
     {
-        if (Save is null || !CanEditEmblems || _emblemTab != 0) return false;
+        if (Save is null || !CanEditEmblems || _emblemPage != EmblemPage.Bonds) return false;
         try
         {
             var edited = PendingEmblemValues(Save).WithAddedEmblem(emblemId);
             Save = edited;
             _selectedEmblem = edited.ReadEmblems().Single(row => row.EmblemId == emblemId).InstanceId;
-            _selectedEmblemRecord = null;
+            SelectedEmblemRecordKey = null;
             RefreshOverview();
             RefreshSections();
             Message.IsVisible = false;
@@ -284,7 +307,7 @@ public partial class MainWindow
     private void RefreshBondRingMeld()
     {
         if (MeldBondRingButton is null) return;
-        var ring = _emblemTab == 1 ? SelectedBondRing : null;
+        var ring = _emblemPage == EmblemPage.BondRings ? SelectedBondRing : null;
         var meld = ring is not null ? BondRingCatalog.Melding(ring.RingHash) : null;
         BondRingMeldForm.IsVisible = meld is not null;
         MeldBondRingButton.IsEnabled = false;
@@ -307,7 +330,7 @@ public partial class MainWindow
 
     public bool ManageBondRings(bool meld)
     {
-        if (Save is null || !CanEditBondRings || _emblemTab != 1) return false;
+        if (Save is null || !CanEditBondRings || _emblemPage != EmblemPage.BondRings) return false;
         try
         {
             var edited = Save;
@@ -319,7 +342,7 @@ public partial class MainWindow
                 if (selected is null) throw new ArgumentException("Select an existing bond ring.");
                 edited = edited.WithMainValues(ReadMainInputs()).WithMeldedBondRing(selected.InstanceId);
                 var result = BondRingCatalog.Melding(selected.RingHash)!.Result;
-                _selectedEmblemRecord = edited.ReadBondRings().First(ring => ring.RingHash == result.Hash && !ring.OwnerIndex.HasValue).InstanceId.ToString();
+                SelectedEmblemRecordKey = edited.ReadBondRings().First(ring => ring.RingHash == result.Hash && !ring.OwnerIndex.HasValue).InstanceId.ToString();
             }
             else edited = edited.WithMissingSBondRings();
             Save = edited;
@@ -342,29 +365,16 @@ public partial class MainWindow
         if (_refreshingEmblems || EmblemChoiceInput.SelectedItem is not EmblemChoice choice) return;
         if (HasPendingEmblemValues() && !ApplyEmblemValues()) { RefreshEmblemChoices(); return; }
         _selectedEmblem = choice.Instance;
-        _selectedEmblemRecord = null;
+        SelectedEmblemRecordKey = null;
         RefreshEmblemRecords(preserveEditor: false);
     }
 
     private void EmblemRecord_Changed(object? sender, SelectionChangedEventArgs e)
     {
-        if (_refreshingEmblems || EmblemRecordList.SelectedItem is not EmblemRow row) return;
-        if (row.Key == _selectedEmblemRecord) return;
+        if (_refreshingEmblems || sender != ActiveEmblemList || ActiveEmblemList.SelectedItem is not EmblemRow row) return;
+        if (row.Key == SelectedEmblemRecordKey) return;
         if (HasPendingEmblemValues() && !ApplyEmblemValues()) { RefreshEmblemRecords(preserveEditor: true); return; }
-        _selectedEmblemRecord = row.Key;
-        RefreshEmblemRecords(preserveEditor: false);
-    }
-
-    private void EmblemTabs_Changed(object? sender, SelectionChangedEventArgs e)
-    {
-        if (_refreshingEmblems || EmblemRecordList is null || EmblemTabs.SelectedIndex == _emblemTab) return;
-        if (HasPendingEmblemValues() && !ApplyEmblemValues())
-        {
-            _refreshingEmblems = true; EmblemTabs.SelectedIndex = _emblemTab; _refreshingEmblems = false; return;
-        }
-        _emblemTab = EmblemTabs.SelectedIndex;
-        _selectedEmblemRecord = null;
-        _refreshingEmblems = true; EmblemSearch.Clear(); _refreshingEmblems = false;
+        SelectedEmblemRecordKey = row.Key;
         RefreshEmblemRecords(preserveEditor: false);
     }
 
@@ -391,7 +401,7 @@ public partial class MainWindow
     { MaximizeEmblemBonds(all: true); }
     public bool MaximizeEmblemBonds(bool all)
     {
-        if (Save is null || _selectedEmblem is not uint instance || _emblemTab != 0) return false;
+        if (Save is null || _selectedEmblem is not uint instance || _emblemPage != EmblemPage.Bonds) return false;
         try
         {
             string? personId = null;
@@ -413,5 +423,5 @@ public partial class MainWindow
     }
     private void ApplyEmblem_Click(object? sender, RoutedEventArgs e) => ApplyEmblemValues();
     private void EmblemSearch_Changed(object? sender, TextChangedEventArgs e)
-    { if (!_refreshingEmblems) RefreshEmblemRecords(preserveEditor: true); }
+    { if (!_refreshingEmblems && sender == ActiveEmblemSearch) RefreshEmblemRecords(preserveEditor: true); }
 }

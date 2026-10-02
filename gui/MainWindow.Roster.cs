@@ -24,6 +24,7 @@ public partial class MainWindow
     public void ShowRoster()
     {
         MainPanel.IsVisible = ItemsPanel.IsVisible = InspectorPanel.IsVisible = EmblemsPanel.IsVisible = false;
+        BondRingsPanel.IsVisible = false;
         SupportsPanel.IsVisible = false;
         AchievementsPanel.IsVisible = false;
         RosterPanel.IsVisible = true;

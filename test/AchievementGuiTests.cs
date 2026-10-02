@@ -77,7 +77,7 @@ internal static class AchievementGuiTests
             && !window.FindControl<Button>("UnlockAllAchievementsButton")!.IsEnabled, "Completion and batch state are stale.");
         string output = Path.Combine(temporary, "achievement-gui-copy");
         Check(window.SaveCopy(output) && EngageSave.Load(output).ReadAchievements().All(row => row.Achieved), "Save Copy lost achievement edits.");
-        foreach (var show in new Action[] { window.ShowItems, window.ShowRoster, window.ShowEmblems, window.ShowSupports })
+        foreach (var show in new Action[] { window.ShowItems, window.ShowRoster, window.ShowEmblems, window.ShowBondRings, window.ShowSupports })
         {
             show();
             Check(!panel.IsVisible, "Achievement panel overlaps another page.");

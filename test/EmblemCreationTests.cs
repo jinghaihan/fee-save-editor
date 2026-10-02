@@ -79,8 +79,7 @@ internal static class EmblemCreationTests
         File.WriteAllBytes(source, original);
         Check(window.LoadSave(source), "Could not load the missing-Emblem GUI fixture.");
         window.ShowEmblems();
-        var tabs = window.FindControl<TabStrip>("EmblemTabs")!;
-        tabs.SelectedIndex = 0;
+        window.ShowEmblems();
         var button = window.FindControl<Button>("AddEmblemButton")!;
         var missing = window.FindControl<ComboBox>("MissingEmblemInput")!;
         Check(button.IsEnabled && missing.ItemCount == 18, "The add control did not show missing Emblems.");
@@ -113,9 +112,9 @@ internal static class EmblemCreationTests
         experience.Text = "0";
         Check(window.AddEmblem(Sigurd) && (window.FindControl<ComboBox>("EmblemChoiceInput")!.SelectedItem as MainWindow.EmblemChoice)?.Instance == 4,
             "The add operation did not select its new bond holder.");
-        tabs.SelectedIndex = 1;
-        Check(!button.IsVisible && !window.AddEmblem("GID_セリカ"), "The add operation appeared in the Bond Ring tab.");
-        tabs.SelectedIndex = 0;
+        window.ShowBondRings();
+        Check(!window.FindControl<Grid>("EmblemsPanel")!.IsVisible && !window.AddEmblem("GID_セリカ"), "The add operation appeared in the Bond Ring tab.");
+        window.ShowEmblems();
         string output = Path.Combine(temporary, "emblem-add-copy");
         Check(window.SaveCopy(output) && EngageSave.Load(output).ReadMissingEmblems().Count == 16, "Global save omitted added Emblems.");
         Check(File.ReadAllBytes(source).AsSpan().SequenceEqual(original), "Emblem GUI tests overwrote the source save.");

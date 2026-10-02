@@ -12,7 +12,7 @@ internal static class SupportGuiTests
         byte[] original = SupportTests.Fixture();
         File.WriteAllBytes(source, original);
         Check(window.LoadSave(source) && window.CanEditSupports, "Support editing was unavailable for valid records.");
-        window.FindControl<TabStrip>("MainNavigation")!.SelectedIndex = 4;
+        window.FindControl<TabStrip>("MainNavigation")!.SelectedIndex = 5;
         Dispatcher.UIThread.RunJobs();
         Check(window.FindControl<Grid>("SupportsPanel")!.IsVisible && !window.FindControl<Grid>("EmblemsPanel")!.IsVisible,
             "Support navigation did not hide other panels.");
@@ -76,7 +76,7 @@ internal static class SupportGuiTests
         points.Text = "abc";
         window.ShowEmblems();
         Check(window.FindControl<Grid>("SupportsPanel")!.IsVisible
-            && window.FindControl<TabStrip>("MainNavigation")!.SelectedIndex == 4,
+            && window.FindControl<TabStrip>("MainNavigation")!.SelectedIndex == 5,
             "Invalid support input did not retain the editing page and navigation.");
         points.Text = "0";
         Check(window.MaximizeSupports(all: true), "Reloaded batch maximum failed.");
