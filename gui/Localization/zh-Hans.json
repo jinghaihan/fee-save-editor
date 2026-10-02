@@ -1,4 +1,10 @@
 {
+  "FillAll": "全部补满",
+  "ReclassItems": "转职道具",
+  "Materials": "材料",
+  "Ingredients": "食材",
+  "Gifts": "礼物",
+  "KeyItems": "重要道具",
   "RestoreCharacter": "恢复角色",
   "RosterAvailable": "可用",
   "RosterDead": "死亡",

@@ -1,4 +1,10 @@
 {
+  "FillAll": "Fill All",
+  "ReclassItems": "Reclass Items",
+  "Materials": "Materials",
+  "Ingredients": "Ingredients",
+  "Gifts": "Gifts",
+  "KeyItems": "Key Items",
   "RestoreCharacter": "Restore Character",
   "RosterAvailable": "Available",
   "RosterDead": "Dead",

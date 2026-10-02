@@ -18,6 +18,7 @@ internal static class ReviewScreenshots
         {
             ("main", "en", () => window.FindControl<Avalonia.Controls.Primitives.TabStrip>("MainNavigation")!.SelectedIndex = 0),
             ("roster", "en", window.ShowRoster), ("emblems", "en", window.ShowEmblems),
+            ("quantity-items", "en", window.ShowItems),
             ("bond-rings", "en", window.ShowBondRings), ("achievements", "en", window.ShowAchievements),
             ("roster", "ja", window.ShowRoster), ("achievements", "ko", window.ShowAchievements),
             ("main", "zh-Hans", () => window.FindControl<Avalonia.Controls.Primitives.TabStrip>("MainNavigation")!.SelectedIndex = 0)
@@ -25,6 +26,10 @@ internal static class ReviewScreenshots
         {
             window.SetLanguage(language);
             show();
+            if (page == "quantity-items")
+            {
+                window.FindControl<Avalonia.Controls.Primitives.TabStrip>("ItemPages")!.SelectedIndex = 1;
+            }
             if (page == "roster") window.FindControl<Avalonia.Controls.Primitives.TabStrip>("RosterTabs")!.SelectedIndex = 0;
             if (page == "achievements") window.FindControl<ComboBox>("AchievementStatusFilter")!.SelectedIndex = 1;
             var timer = System.Diagnostics.Stopwatch.StartNew();

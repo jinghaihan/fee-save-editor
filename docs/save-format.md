@@ -130,15 +130,12 @@ index offsets and updates the outer CRC without changing other section payloads.
 The saved capacity itself is never changed. One slot represents one item;
 remaining uses are not an inventory quantity.
 
-`core/Data/items.json` contains minimal item facts and two-language names, generated
-with `tools/import_item_catalog.py` from FE17-DOC commit
-`99677e4cad22b636bee4af5a3052003bed17c443`:
-[item table](https://github.com/laqieer/FE17-DOC/blob/99677e4cad22b636bee4af5a3052003bed17c443/fe_assets_gamedata/Item.xml)
-and [names](https://github.com/laqieer/FE17-DOC/blob/99677e4cad22b636bee4af5a3052003bed17c443/translations/Item.csv).
-The importer includes convoy item kinds 1–10 and excludes entries marked
-chapter-only, enemy-only, Engage-only, unpublished or not entrustable. Forging
-ranges come from the refinement rows rather than assuming every item allows +5.
-The catalog is a bounded snapshot, not a claim of complete DLC coverage.
+`core/Data/items.json` contains 364 base/DLC convoy definitions with names in
+all nine supported languages. `tools/import_item_catalog.py` uses the pinned
+complete [Item table](https://github.com/Xzonn/FireEmblemEngageData/blob/86b8be7b9820e1bb3bce87d2a9a805ead85d92ab/data/xml/Item.xml).
+The importer includes convoy kinds 1–10 and excludes quantity-based items and
+entries marked chapter-only, enemy-only, Engage-only, unpublished or not
+entrustable. Forging ranges come from refinement rows, not a universal +5.
 
 Edits accept `1..MaxUses` for finite-use items, the unlimited-use sentinel `255`
 for weapons, and `0..MaxRefine` for each known item. Unknown existing items can be
@@ -154,6 +151,42 @@ clearing its engraving. Save Copy applies pending valid item inputs even after
 switching pages. Tests cover empty/unknown/engraved entries, 999-slot capacity,
 invalid ranges and encodings, exact reversal, untouched other sections and live
 language switching. In-game loading remains unverified.
+
+### Quantity-based items (USER version 20)
+
+Seals, ingredients, gifts and materials are not UnitItems in TRAN. They are
+typed integer variables named `G_所持_<IID>` in USER. The same importer produces
+`core/Data/quantity-items.json`: 105 entries comprising four reclass items
+(including DLC Mystic Satchel and Mage Cannon), 17 materials, 33 ingredients,
+45 gifts and six key items/fishing rods. These definitions are excluded from
+convoy and carried-item replacement selectors. Existing raw entries are never
+deleted merely because their ID is not in an editable catalog.
+
+The supplied version-304 executable (build prefix `8C08B971`) verifies
+`ItemData.GetMaxInventory` at `0x27b1a10`: kinds 14–16 have a maximum of 9999;
+other quantity items have a maximum of 999. `SetInventory` at `0x27b1a30` clamps
+to those bounds before writing the game variable. Editor writes instead reject
+invalid values without mutation. Absent variables read as zero; nonzero edits
+insert one correctly typed record and update the variable block/section sizes,
+later section offsets and CRC. Duplicate/noninteger variables are rejected.
+Existing positive out-of-range cheat values are preserved on read/copy and when
+editing another item. A quantity edit does not grant associated chapter/event
+flags or change recruitment, Pact Ring partner data, outfits or gold/fragments.
+
+The GUI puts Convoy, Reclass Items, Materials, Ingredients, Gifts and Key Items
+tabs above both cards, with separate convoy/quantity editors. Quantity tabs have
+search, saved item name and amount input, not durability/refinement/engraving
+fields. All definitions remain visible at zero. Iron/steel/silver inputs synchronize with Main without discarding
+unrelated pending inputs. Save Copy applies pending edits from either item editor.
+Fill All sets every item in the selected category to its native maximum,
+regardless of search. Key Items is excluded from bulk filling; no chapter/event
+flags are changed. Emblems uses the same page-level tab layout for Bonds and
+Bond Rings.
+CLI parity is provided by `items quantity-catalog`, `items quantities` (both
+accept `--language <code>`), `items quantity-set --item <IID> --amount <value>`,
+and `items quantity-fill --category <ReclassItems|Materials|Ingredients|Gifts>`.
+Tests cover every item boundary, missing-variable insertion, exact target-only
+changes/reversal, untouched TRAN/UNIT and shared-field synchronization.
 
 ### Weapon engravings
 
@@ -176,8 +209,8 @@ forces. Shared aliases count as the same engraving. A missing or unsupported
 ownership section rejects assignment instead of risking duplicates. Clearing a
 selected engraving needs only its own section. An unknown engraving is visible
 and preserved unless the user explicitly clears or replaces it. Engraving-only
-edits preserve raw uses, refinement and flags, including verified DLC weapons
-outside the bounded replacement catalog. No unverified limits are fabricated.
+edits preserve raw uses, refinement and flags, including existing unusual values
+on newly supported DLC weapons. No unverified limits are fabricated.
 Length-changing references update section offsets, Unit lengths and CRC32.
 Tests cover transfers in all directions, CLI/GUI behavior, pending edits across
 pages and language switches, and exact clear/restore on real equipped weapons.

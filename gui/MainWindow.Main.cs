@@ -19,6 +19,7 @@ public partial class MainWindow
             if (CanEditDonations) edited = edited.WithDonations(ReadDonationInputs());
             if (CanEditMinigames) edited = edited.WithMinigameRecords(ReadMinigameInputs());
             Save = edited;
+            RefreshQuantityItems(selectEditor: !HasPendingQuantityItemValues());
             RefreshOverview();
             RefreshSections();
             Message.IsVisible = false;
@@ -96,6 +97,7 @@ public partial class MainWindow
         ItemsPanel.IsVisible = false;
         RosterPanel.IsVisible = false;
         EmblemsPanel.IsVisible = false;
+        EmblemPagesPanel.IsVisible = false;
         BondRingsPanel.IsVisible = false;
         SupportsPanel.IsVisible = false;
         AchievementsPanel.IsVisible = false;
@@ -106,6 +108,7 @@ public partial class MainWindow
 
     private void RefreshPageTitle()
     {
+        WindowLayout.RowSpacing = ItemsPanel.IsVisible || EmblemPagesPanel.IsVisible ? 8 : 24;
         PageTitle.Text = UiLanguage.Get("Inspector");
         PageTitle.IsVisible = InspectorPanel.IsVisible;
     }

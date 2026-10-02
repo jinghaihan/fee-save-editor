@@ -46,6 +46,7 @@ public partial class MainWindow : Window
         IronIngotsInput.Maximum = SteelIngotsInput.Maximum = SilverIngotsInput.Maximum = MainLimits.MaxIngots;
         RefreshOptions();
         RefreshItemChoices();
+        RefreshQuantityItemLanguage();
         RefreshPageTitle();
     }
 
@@ -68,6 +69,7 @@ public partial class MainWindow : Window
             LoadMinigames();
             LoadAchievements();
             LoadInventory();
+            LoadQuantityItems();
             LoadRoster();
             LoadEmblems();
             LoadSupports();
@@ -89,6 +91,8 @@ public partial class MainWindow : Window
             if (CanEditMain && !ApplyMainValues())
                 return false;
             if (HasPendingItemValues() && !ApplyItemValues())
+                return false;
+            if (HasPendingQuantityItemValues() && !ApplyQuantityItemValues())
                 return false;
             if (CanEditRoster && !ApplyPendingRoster())
                 return false;
@@ -112,6 +116,7 @@ public partial class MainWindow : Window
         UiLanguage.Apply(language);
         RefreshOptions();
         RefreshInventoryLanguage();
+        RefreshQuantityItemLanguage();
         RefreshDonationLanguage();
         RefreshMinigameLanguage();
         RefreshAchievementLanguage();
@@ -225,7 +230,7 @@ public partial class MainWindow : Window
     private void Navigation_Changed(object? sender, SelectionChangedEventArgs e)
     {
         if (MainPanel is null || ItemsPanel is null || RosterPanel is null || EmblemsPanel is null
-            || BondRingsPanel is null || SupportsPanel is null || AchievementsPanel is null)
+            || EmblemPagesPanel is null || BondRingsPanel is null || SupportsPanel is null || AchievementsPanel is null)
             return;
         switch (MainNavigation.SelectedIndex)
         {
@@ -238,16 +243,13 @@ public partial class MainWindow : Window
             case 2 when !RosterPanel.IsVisible:
                 ShowRoster();
                 break;
-            case 3 when !EmblemsPanel.IsVisible:
-                ShowEmblems();
+            case 3 when !EmblemPagesPanel.IsVisible:
+                ShowEmblemPage(_emblemPage);
                 break;
-            case 4 when !BondRingsPanel.IsVisible:
-                ShowBondRings();
-                break;
-            case 5 when !SupportsPanel.IsVisible:
+            case 4 when !SupportsPanel.IsVisible:
                 ShowSupports();
                 break;
-            case 6 when !AchievementsPanel.IsVisible:
+            case 5 when !AchievementsPanel.IsVisible:
                 ShowAchievements();
                 break;
         }

@@ -373,6 +373,8 @@ def main() -> None:
     from test_achievements_cli import check_achievements
     check_achievements(command, args.save_directory, main_fixture())
     check_inventory(command, args.save_directory)
+    from test_quantity_items_cli import check_quantities
+    check_quantities(command, args.save_directory, main_fixture())
     from test_roster_cli import check_roster
     check_roster(command, args.save_directory, main_fixture())
     from test_roster_transfer_cli import check_roster_transfers

@@ -1,4 +1,10 @@
 {
+  "FillAll": "Riempi tutto",
+  "ReclassItems": "Cambio di classe",
+  "Materials": "Materiali",
+  "Ingredients": "Ingredienti",
+  "Gifts": "Regali",
+  "KeyItems": "Oggetti chiave",
   "RestoreCharacter": "Ripristina personaggio",
   "RosterAvailable": "Disponibile",
   "RosterDead": "Morto",

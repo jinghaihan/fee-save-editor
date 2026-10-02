@@ -19,8 +19,9 @@ public partial class MainWindow
     {
         MainPanel.IsVisible = ItemsPanel.IsVisible = RosterPanel.IsVisible = EmblemsPanel.IsVisible = SupportsPanel.IsVisible = InspectorPanel.IsVisible = false;
         BondRingsPanel.IsVisible = false;
+        EmblemPagesPanel.IsVisible = false;
         AchievementsPanel.IsVisible = true;
-        MainNavigation.SelectedIndex = 6;
+        MainNavigation.SelectedIndex = 5;
         RefreshAchievementRecords();
         RefreshPageTitle();
     }

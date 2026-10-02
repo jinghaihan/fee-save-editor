@@ -104,14 +104,13 @@ internal static class EngravingGuiTests
         string dlcSource = Path.Combine(temporary, "dlc-engraving-fixture");
         File.WriteAllBytes(dlcSource, EngravingTests.Fixture(items: new InventoryItem?[]
             { new(dlcHash, 7, 200, 0x55, null) }));
-        Check(ItemCatalog.Find(dlcHash) is null && window.LoadSave(dlcSource), "Could not test engraving-only DLC editing.");
+        Check(ItemCatalog.Find(dlcHash) is not null && window.LoadSave(dlcSource), "Could not test the completed DLC catalog.");
         window.ShowItems();
-        Check(window.FindControl<ComboBox>("ItemTypeInput")!.PlaceholderText == "Représailles"
-            && !window.FindControl<NumericUpDown>("ItemUsesInput")!.IsEnabled
-            && input.IsEnabled, "A verified DLC weapon was blank or exposed unverified scalar editing.");
+        Check((window.FindControl<ComboBox>("ItemTypeInput")!.SelectedItem as MainWindow.ItemChoice)?.Name == "Représailles"
+            && input.IsEnabled, "A completed DLC weapon was blank or lost engraving editing.");
         SelectEngraving(input, EngravingTests.Marth);
         window.SetLanguage("zh-Hans");
-        Check(window.FindControl<ComboBox>("ItemTypeInput")!.PlaceholderText == RosterCatalog.Item(dlcHash)!.Name("zh-Hans"),
+        Check((window.FindControl<ComboBox>("ItemTypeInput")!.SelectedItem as MainWindow.ItemChoice)?.Name == RosterCatalog.Item(dlcHash)!.Name("zh-Hans"),
             "The engraving-only weapon name did not translate.");
         window.SetLanguage("en");
         Check(window.ApplyItemValues() && window.Save!.ReadInventory()[0].Item is { Uses: 7, RefineLevel: 200, Flags: 0x55 }
@@ -125,8 +124,8 @@ internal static class EngravingGuiTests
         window.ShowRoster();
         window.FindControl<TabStrip>("RosterTabs")!.SelectedIndex = 2;
         SelectItem(equipment, 1);
-        Check(window.FindControl<ComboBox>("RosterItemType")!.PlaceholderText == "Représailles"
-            && !window.FindControl<NumericUpDown>("RosterItemUses")!.IsEnabled && carriedInput.IsEnabled,
+        Check((window.FindControl<ComboBox>("RosterItemType")!.SelectedItem as MainWindow.ItemChoice)?.Name == "Représailles"
+            && carriedInput.IsEnabled,
             "A carried DLC weapon lost engraving-only access or its visible name.");
         SelectEngraving(carriedInput, EngravingTests.Sigurd);
         Check(window.ApplyRosterItem() && window.Save!.ReadRoster()[0].Items[1].Item is { Uses: 255, RefineLevel: 3, Flags: 0x55 }

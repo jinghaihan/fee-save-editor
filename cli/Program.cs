@@ -27,6 +27,10 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli main donations-max <save> <new-file> --all|--country <name>
           FeeEditor.Cli items catalog [--json]
           FeeEditor.Cli items list <save> [--json]
+          FeeEditor.Cli items quantity-catalog [--language <code>] [--json]
+          FeeEditor.Cli items quantities <save> [--language <code>] [--json]
+          FeeEditor.Cli items quantity-set <save> <new-file> --item <IID> --amount <value>
+          FeeEditor.Cli items quantity-fill <save> <new-file> --category <ReclassItems|Materials|Ingredients|Gifts>
           FeeEditor.Cli items engravings [--json]
           FeeEditor.Cli items set <save> <new-file> --slot <index> [--item <IID>] [--uses <value>] [--refine <level>] [--engraving <GID|none>]
           FeeEditor.Cli items add <save> <new-file> --item <IID> [--uses <value>] [--refine <level>] [--engraving <GID|none>]

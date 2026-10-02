@@ -9,6 +9,21 @@ internal static class ItemsCommand
     {
         switch (args)
         {
+            case ["quantities", var source, .. var options]:
+                string language = QuantityLanguage(options);
+                Print(EngageSave.Load(source).ReadQuantityItems().Select(row => new
+                {
+                    row.Definition.Id, Name = row.Definition.Name(language),
+                    Category = row.Definition.Category.ToString(), row.Amount, row.Definition.Maximum
+                }));
+                return 0;
+            case ["quantity-catalog", .. var options]:
+                string catalogLanguage = QuantityLanguage(options);
+                Print(QuantityItemCatalog.Items.Select(row => new
+                {
+                    row.Id, Name = row.Name(catalogLanguage), Category = row.Category.ToString(), row.Maximum
+                }));
+                return 0;
             case ["catalog", .. var options] when options is [] or ["--json"]:
                 Print(ItemCatalog.Items.Select(item => new
                 {
@@ -55,8 +70,15 @@ internal static class ItemsCommand
     {
         if (verb == "restore" && options is ["--all"])
             return save.RestoreInventoryUses();
+        if (verb == "quantity-fill" && options is ["--category", var category])
+        {
+            if (!Enum.TryParse<QuantityItemCategory>(category, ignoreCase: true, out var selectedCategory))
+                throw new ArgumentException("Unknown quantity item category.");
+            return save.FillQuantityItems(selectedCategory);
+        }
         string[] allowed = verb switch
         {
+            "quantity-set" => ["--item", "--amount"],
             "set" => ["--slot", "--item", "--uses", "--refine", "--engraving"],
             "add" => ["--item", "--uses", "--refine", "--engraving"],
             "engrave" => ["--slot", "--engraving"],
@@ -64,6 +86,8 @@ internal static class ItemsCommand
             _ => throw new ArgumentException("Unknown items command. Run --help for usage.")
         };
         var values = Options(options, allowed);
+        if (verb == "quantity-set")
+            return save.WithQuantityItem(Required(values, "--item"), Number(Required(values, "--amount")));
         if (verb == "add")
         {
             int? addedUses = values.TryGetValue("--uses", out string? text) ? Number(text) : null;
@@ -100,6 +124,19 @@ internal static class ItemsCommand
     }
 
     internal static string? EngravingId(string value) => value.Equals("none", StringComparison.OrdinalIgnoreCase) ? null : value;
+
+    private static string QuantityLanguage(string[] options)
+    {
+        var args = options.Where(value => value != "--json").ToArray();
+        string language = args switch
+        {
+            [] => "en",
+            ["--language", var code] => code,
+            _ => throw new ArgumentException("Use --language <code> and/or --json.")
+        };
+        if (!LanguageCatalog.Codes.Contains(language)) throw new ArgumentException("Unsupported item language.");
+        return language;
+    }
 
     private static Dictionary<string, string> Options(string[] options, string[] allowed)
     {

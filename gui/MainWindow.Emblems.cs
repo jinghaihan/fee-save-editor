@@ -29,6 +29,7 @@ public partial class MainWindow
     private ListBox ActiveEmblemList => _emblemPage == EmblemPage.Bonds ? EmblemRecordList : BondRingList;
     private TextBox ActiveEmblemSearch => _emblemPage == EmblemPage.Bonds ? EmblemSearch : BondRingSearch;
     private bool _refreshingEmblems;
+    private bool _refreshingEmblemPages;
 
     public void ShowEmblems() => ShowEmblemPage(EmblemPage.Bonds);
     public void ShowBondRings() => ShowEmblemPage(EmblemPage.BondRings);
@@ -37,24 +38,41 @@ public partial class MainWindow
     {
         if (HasPendingSupportValues() && !ApplySupportValues())
         {
-            MainNavigation.SelectedIndex = 5;
+            SelectEmblemPageTab(_emblemPage);
+            MainNavigation.SelectedIndex = 4;
             return;
         }
         if (_emblemPage != page && HasPendingEmblemValues() && !ApplyEmblemValues())
         {
-            MainNavigation.SelectedIndex = _emblemPage == EmblemPage.Bonds ? 3 : 4;
+            SelectEmblemPageTab(_emblemPage);
+            MainNavigation.SelectedIndex = 3;
             return;
         }
         bool preserveEditor = _emblemPage == page && HasPendingEmblemValues();
         _emblemPage = page;
         MainPanel.IsVisible = ItemsPanel.IsVisible = RosterPanel.IsVisible = InspectorPanel.IsVisible = false;
         SupportsPanel.IsVisible = AchievementsPanel.IsVisible = false;
+        EmblemPagesPanel.IsVisible = true;
         EmblemsPanel.IsVisible = page == EmblemPage.Bonds;
         BondRingsPanel.IsVisible = page == EmblemPage.BondRings;
-        MainNavigation.SelectedIndex = page == EmblemPage.Bonds ? 3 : 4;
+        SelectEmblemPageTab(page);
+        MainNavigation.SelectedIndex = 3;
         RefreshEmblemRecords(preserveEditor);
         RefreshSupportRecords(preserveEditor: false);
         RefreshPageTitle();
+    }
+
+    private void EmblemPages_Changed(object? sender, SelectionChangedEventArgs e)
+    {
+        if (_refreshingEmblemPages || EmblemPagesPanel is null || BondRingsPanel is null) return;
+        ShowEmblemPage((EmblemPage)EmblemPages.SelectedIndex);
+    }
+
+    private void SelectEmblemPageTab(EmblemPage page)
+    {
+        _refreshingEmblemPages = true;
+        EmblemPages.SelectedIndex = (int)page;
+        _refreshingEmblemPages = false;
     }
 
     private EmblemBond? SelectedBond => CanEditEmblems && Save is not null

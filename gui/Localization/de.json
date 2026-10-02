@@ -1,4 +1,10 @@
 {
+  "FillAll": "Alles auffüllen",
+  "ReclassItems": "Klassenwechsel",
+  "Materials": "Materialien",
+  "Ingredients": "Zutaten",
+  "Gifts": "Geschenke",
+  "KeyItems": "Schlüsselitems",
   "RestoreCharacter": "Charakter wiederherstellen",
   "RosterAvailable": "Verfügbar",
   "RosterDead": "Tot",

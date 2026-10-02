@@ -122,6 +122,8 @@ try
     AchievementGuiTests.Run(window, temporary);
     DonationGuiTests.Run(window, temporary);
     InventoryTests.Run(window, temporary);
+    QuantityItemTests.Run();
+    QuantityItemGuiTests.Run(window, temporary);
     RosterTests.Run(window, temporary);
     RosterClassTests.Run(window, temporary);
     RosterSkillTests.Run(window, temporary);
@@ -159,6 +161,7 @@ try
             Console.WriteLine($"{name}: GUI read and lossless copy passed.");
             if (name != "Global")
             {
+                QuantityItemTests.CheckReal(window.Save!);
                 var loaded = window.Save!;
                 DonationTests.CheckReal(loaded);
                 MinigameTests.CheckReal(loaded);

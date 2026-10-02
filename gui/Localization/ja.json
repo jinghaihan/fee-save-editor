@@ -1,4 +1,10 @@
 {
+  "FillAll": "すべて補充",
+  "ReclassItems": "クラスチェンジアイテム",
+  "Materials": "素材",
+  "Ingredients": "食材",
+  "Gifts": "贈り物",
+  "KeyItems": "大事なもの",
   "RestoreCharacter": "ユニットを復帰",
   "RosterAvailable": "使用可能",
   "RosterDead": "死亡",

@@ -1,4 +1,10 @@
 {
+  "FillAll": "모두 채우기",
+  "ReclassItems": "전직 아이템",
+  "Materials": "재료",
+  "Ingredients": "식재료",
+  "Gifts": "선물",
+  "KeyItems": "중요 아이템",
   "RestoreCharacter": "캐릭터 복구",
   "RosterAvailable": "사용 가능",
   "RosterDead": "사망",

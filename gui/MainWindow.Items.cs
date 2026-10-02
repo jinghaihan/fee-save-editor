@@ -21,6 +21,7 @@ public partial class MainWindow
         ItemsPanel.IsVisible = true;
         RosterPanel.IsVisible = false;
         EmblemsPanel.IsVisible = false;
+        EmblemPagesPanel.IsVisible = false;
         BondRingsPanel.IsVisible = false;
         SupportsPanel.IsVisible = false;
         AchievementsPanel.IsVisible = false;
@@ -163,6 +164,10 @@ public partial class MainWindow
                 if (!HasPendingItemValues()) return Save;
                 return Save.WithInventoryEngraving(_selectedSlot.Value, SelectedEngravingId(ItemEngravingInput));
             }
+            if (_itemEditorBaseline is { } old && choice.Definition.Hash == old.ItemHash
+                && ItemUsesInput.Text == old.Uses.ToString() && ItemRefineInput.Text == old.RefineLevel.ToString()
+                && EngravingChanged(ItemEngravingInput, old))
+                return Save.WithInventoryEngraving(_selectedSlot.Value, SelectedEngravingId(ItemEngravingInput));
             int uses = choice.Definition.UnlimitedUses ? 255 : Amount(ItemUsesInput);
             int refine = Amount(ItemRefineInput);
             return EngravingChanged(ItemEngravingInput, _itemEditorBaseline)

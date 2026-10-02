@@ -19,14 +19,15 @@ public partial class MainWindow
     {
         if (HasPendingEmblemValues() && !ApplyEmblemValues())
         {
-            MainNavigation.SelectedIndex = _emblemPage == EmblemPage.Bonds ? 3 : 4;
+            MainNavigation.SelectedIndex = 3;
             return;
         }
         MainPanel.IsVisible = ItemsPanel.IsVisible = RosterPanel.IsVisible = EmblemsPanel.IsVisible = InspectorPanel.IsVisible = false;
         BondRingsPanel.IsVisible = false;
+        EmblemPagesPanel.IsVisible = false;
         SupportsPanel.IsVisible = true;
         AchievementsPanel.IsVisible = false;
-        MainNavigation.SelectedIndex = 5;
+        MainNavigation.SelectedIndex = 4;
         RefreshSupportRecords(preserveEditor: HasPendingSupportValues());
         RefreshPageTitle();
     }

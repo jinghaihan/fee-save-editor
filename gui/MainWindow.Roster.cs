@@ -25,6 +25,7 @@ public partial class MainWindow
     {
         MainPanel.IsVisible = ItemsPanel.IsVisible = InspectorPanel.IsVisible = EmblemsPanel.IsVisible = false;
         BondRingsPanel.IsVisible = false;
+        EmblemPagesPanel.IsVisible = false;
         SupportsPanel.IsVisible = false;
         AchievementsPanel.IsVisible = false;
         RosterPanel.IsVisible = true;
@@ -390,6 +391,10 @@ public partial class MainWindow
             if (!HasPendingRosterItemValues()) return save;
             return save.WithRosterEngraving(_selectedCharacter!.Value, _selectedCharacterItem!.Value, SelectedEngravingId(RosterItemEngraving));
         }
+        if (_rosterItemBaseline is { } old && choice.Definition.Hash == old.ItemHash
+            && RosterItemUses.Text == old.Uses.ToString() && RosterItemRefine.Text == old.RefineLevel.ToString()
+            && EngravingChanged(RosterItemEngraving, old))
+            return save.WithRosterEngraving(_selectedCharacter!.Value, _selectedCharacterItem!.Value, SelectedEngravingId(RosterItemEngraving));
         int uses = choice.Definition.UnlimitedUses ? 255 : Amount(RosterItemUses);
         int refine = Amount(RosterItemRefine);
         return EngravingChanged(RosterItemEngraving, _rosterItemBaseline)

@@ -6,6 +6,15 @@
         Icon="/Assets/app-icon.ico"
         Width="1120" Height="780" MinWidth="860" MinHeight="600">
   <Window.Styles>
+    <Style Selector="TabStrip.page-tabs">
+      <Setter Property="FontSize" Value="13" />
+      <Setter Property="Margin" Value="0" />
+    </Style>
+    <Style Selector="TabStrip.page-tabs > TabStripItem">
+      <Setter Property="Padding" Value="12,6" />
+      <Setter Property="MinHeight" Value="32" />
+      <Setter Property="Margin" Value="0" />
+    </Style>
     <Style Selector="ListBox">
       <Setter Property="ItemsPanel">
         <ItemsPanelTemplate><VirtualizingStackPanel CacheLength="1" /></ItemsPanelTemplate>
@@ -47,7 +56,6 @@
             <TabStripItem Content="{DynamicResource Items}" />
             <TabStripItem Content="{DynamicResource Roster}" />
             <TabStripItem Content="{DynamicResource Emblems}" />
-            <TabStripItem Content="{DynamicResource BondRings}" />
             <TabStripItem Content="{DynamicResource Support}" />
             <TabStripItem Content="{DynamicResource Achievements}" />
           </TabStrip>
@@ -166,7 +174,16 @@
         </StackPanel>
       </Grid>
     </ScrollViewer>
-    <Grid Name="ItemsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+    <Grid Name="ItemsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" RowDefinitions="Auto,*" RowSpacing="12">
+      <TabStrip Name="ItemPages" Classes="page-tabs" SelectedIndex="0" SelectionChanged="ItemPages_Changed">
+        <TabStripItem Content="{DynamicResource Convoy}" />
+        <TabStripItem Content="{DynamicResource ReclassItems}" />
+        <TabStripItem Content="{DynamicResource Materials}" />
+        <TabStripItem Content="{DynamicResource Ingredients}" />
+        <TabStripItem Content="{DynamicResource Gifts}" />
+        <TabStripItem Content="{DynamicResource KeyItems}" />
+      </TabStrip>
+      <Grid Name="ConvoyPanel" Grid.Row="1" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="16">
           <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
@@ -227,6 +244,30 @@
           </StackPanel>
         </ScrollViewer>
       </suki:GlassCard>
+      </Grid>
+      <Grid Name="QuantityItemsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+        <suki:GlassCard Padding="20">
+          <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="16">
+            <TextBlock Name="QuantityListTitle" FontWeight="SemiBold" />
+            <TextBox Name="QuantitySearch" Grid.Row="1" PlaceholderText="{DynamicResource Search}" TextChanged="QuantitySearch_Changed" />
+            <ListBox Name="QuantityItemList" Grid.Row="2" SelectionChanged="QuantityItemList_Changed">
+              <ListBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" TextWrapping="Wrap" /></DataTemplate></ListBox.ItemTemplate>
+            </ListBox>
+            <Button Name="FillQuantityCategoryButton" Grid.Row="3" Content="{DynamicResource FillAll}" Click="FillQuantityCategory_Click" HorizontalAlignment="Stretch" IsEnabled="False" />
+          </Grid>
+        </suki:GlassCard>
+        <suki:GlassCard Grid.Column="1" Padding="20">
+          <StackPanel Name="QuantityItemForm" IsEnabled="False" Width="340" HorizontalAlignment="Left" Spacing="16">
+            <TextBlock Text="{DynamicResource ItemEditor}" FontWeight="SemiBold" />
+            <TextBlock Name="QuantityItemName" TextWrapping="Wrap" />
+            <StackPanel Spacing="8">
+              <TextBlock Text="{DynamicResource Amount}" />
+              <NumericUpDown Name="QuantityAmountInput" Minimum="0" Maximum="999" Increment="1" FormatString="0" HorizontalAlignment="Stretch" Height="42" />
+            </StackPanel>
+            <Button Name="ApplyQuantityItemButton" Content="{DynamicResource ApplyChanges}" Click="ApplyQuantityItem_Click" HorizontalAlignment="Stretch" />
+          </StackPanel>
+        </suki:GlassCard>
+      </Grid>
     </Grid>
     <Grid Name="RosterPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
@@ -423,7 +464,12 @@
         </Grid>
       </suki:GlassCard>
     </Grid>
-    <Grid Name="EmblemsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+    <Grid Name="EmblemPagesPanel" Grid.Row="1" Margin="24,0" IsVisible="False" RowDefinitions="Auto,*" RowSpacing="12">
+      <TabStrip Name="EmblemPages" Classes="page-tabs" SelectedIndex="0" SelectionChanged="EmblemPages_Changed">
+        <TabStripItem Content="{DynamicResource Bonds}" />
+        <TabStripItem Content="{DynamicResource BondRings}" />
+      </TabStrip>
+    <Grid Name="EmblemsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="16">
           <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
@@ -480,7 +526,7 @@
         </Grid>
       </suki:GlassCard>
     </Grid>
-    <Grid Name="BondRingsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+    <Grid Name="BondRingsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="16">
           <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
@@ -519,6 +565,7 @@
           </ScrollViewer>
         </Grid>
       </suki:GlassCard>
+    </Grid>
     </Grid>
     <Grid Name="SupportsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">

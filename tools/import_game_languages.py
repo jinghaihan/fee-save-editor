@@ -61,6 +61,11 @@ def main():
                 raise ValueError(f"Convoy item name changed: {item['Id']}")
             item["Names"] = names
         outputs[item_path] = items
+        quantity_path = ROOT / "core/Data/quantity-items.json"
+        quantities = json.loads(quantity_path.read_text(encoding="utf-8"))
+        for item in quantities["Items"]:
+            item["Names"] = lookup[item["Id"]]
+        outputs[quantity_path] = quantities
 
     # Write only after every catalog has passed validation.
     for path, data in outputs.items():
