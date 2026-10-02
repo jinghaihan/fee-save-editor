@@ -7,6 +7,18 @@ There is no release yet. Gameplay editing is not implemented yet.
 
 - Desktop application using the same SukiUI controls as [FETH Save Editor](https://github.com/jinghaihan/feth-save-editor).
 - CLI with a shared save-processing core.
+- Read game saves (`Manual0`, `Auto`) and global saves (`Global`), validate
+  CRC32 and section boundaries, and inspect their sections.
+- Create a verified, byte-identical copy without overwriting existing files.
+
+```sh
+dotnet run --project cli/Cli.csproj -- inspect /path/to/Manual0 --json
+dotnet run --project cli/Cli.csproj -- copy /path/to/Manual0 /path/to/Manual0-copy
+```
+
+The container reader has been checked against game-format version 9 saves.
+This does not yet establish support for editing all gameplay fields or for
+loading modified saves in the game. Test fixtures contain synthetic data only.
 
 ## Development
 
