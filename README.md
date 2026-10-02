@@ -18,8 +18,8 @@ are still under development.
   Existing engravings and flags are preserved. Changing engravings is not yet
   supported; unknown item references remain visible and are never discarded.
 - Save a verified edited copy; opening or editing never overwrites the input file.
-- Roster panel: search characters, edit level, EXP and SP, edit unenhanced stats
-  within current-class and personal caps, and replace/add/delete carried items
+- Roster panel: search characters, edit level, EXP and SP, edit personal stat
+  values with live current-class value/cap previews, and replace/add/delete carried items
   or restore their remaining uses. Item flags and engravings are preserved.
   Level limits follow the current class (20 or 40); EXP is 0–99, or 0 at maximum
   level, and SP is 0–9,999. Changing level does not simulate growth rolls.
@@ -31,6 +31,11 @@ are still under development.
   highest tier of every inheritance skill family, including DLC. Toggle learned
   class skills at their required level. Edit weapon proficiencies without removing
   innate/current-class requirements. Edit internal level and current HP, or restore HP.
+  Maximize nine base attributes for one character or every existing playable roster
+  character. The required personal values are calculated across each character's
+  available classes, including exclusive and DLC classes, so reclassing stays capped.
+  Higher existing personal values are preserved; level, movement, equipment and
+  current HP are not changed by maximizing attributes. Batch actions ignore search filters.
 - Desktop application using SukiUI controls.
 - Sommie application icon.
 - English UI by default, with live switching to Simplified Chinese, including
@@ -55,6 +60,8 @@ dotnet run --project cli/Cli.csproj -- items restore /path/to/Manual0 /path/to/M
 dotnet run --project cli/Cli.csproj -- roster list /path/to/Manual0 --json --language en
 dotnet run --project cli/Cli.csproj -- roster set /path/to/Manual0 /path/to/Manual0-edited --character 0 --sp 9999
 dotnet run --project cli/Cli.csproj -- roster stat /path/to/Manual0 /path/to/Manual0-edited --character 0 --stat Strength --value 30
+dotnet run --project cli/Cli.csproj -- roster personal-stat /path/to/Manual0 /path/to/Manual0-edited --character 0 --stat Strength --value 41
+dotnet run --project cli/Cli.csproj -- roster stats-max /path/to/Manual0 /path/to/Manual0-max --all
 dotnet run --project cli/Cli.csproj -- roster restore /path/to/Manual0 /path/to/Manual0-restored --character 0
 ```
 
@@ -76,6 +83,11 @@ of each family for one character. `skills-equip` accepts `--first <SID|none>`
 and/or `--second <SID|none>`. `class-skill --unlocked true|false` edits the learned
 class skill. `proficiencies --weapons Sword,Lance` edits weapon proficiencies;
 `condition --internal-level <value> --hp <value>` edits either or both fields.
+`personal-stat` edits the signed personal value shown in the GUI; the existing
+`stat` command still edits the current-class result. `roster list` includes both
+`PersonalValue` and the class-dependent `Value`/`Maximum` for every attribute.
+`stats-max --character <index>` maximizes one character; `stats-max --all`
+maximizes all existing known playable characters, excluding enemy/temporary units.
 
 The container reader has been checked against game-format version 9 saves.
 Main, convoy and roster edits have been checked through serialization and exact restoration on

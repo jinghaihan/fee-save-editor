@@ -78,17 +78,19 @@ internal static class RosterCommand
 
     private static EngageSave Edit(EngageSave save, string verb, string[] options)
     {
+        if (verb == "stats-max" && options is ["--all"])
+            return save.MaximizeAllRosterStats();
         string[] allowed = verb switch
         {
             "set" => ["--character", "--level", "--experience", "--sp"],
             "class" => ["--character", "--class", "--weapons"],
             "condition" => ["--character", "--internal-level", "--hp"],
             "skill-unlock" or "skill-remove" => ["--character", "--skill"],
-            "skills-max" => ["--character"],
+            "skills-max" or "stats-max" => ["--character"],
             "skills-equip" => ["--character", "--first", "--second"],
             "class-skill" => ["--character", "--unlocked"],
             "proficiencies" => ["--character", "--weapons"],
-            "stat" => ["--character", "--stat", "--value"],
+            "stat" or "personal-stat" => ["--character", "--stat", "--value"],
             "item-set" => ["--character", "--slot", "--item", "--uses", "--refine"],
             "item-delete" => ["--character", "--slot"],
             "restore" => ["--character"],
@@ -100,6 +102,7 @@ internal static class RosterCommand
         if (index >= characters.Count)
             throw new ArgumentOutOfRangeException(nameof(index));
         var character = characters[index];
+        if (verb == "stats-max") return save.MaximizeRosterStats(index);
         if (verb == "skills-max") return save.UnlockAllRosterSkills(index);
         if (verb == "condition")
         {
@@ -154,12 +157,19 @@ internal static class RosterCommand
                 updated = updated with { SkillPoints = Number(sp) };
             return save.WithRosterValues(index, updated);
         }
-        if (verb == "stat")
+        if (verb is "stat" or "personal-stat")
         {
             string name = Required(values, "--stat");
             if (!Enum.TryParse<RosterStat>(name, ignoreCase: true, out var stat) || int.TryParse(name, out _))
                 throw new ArgumentException("Use a character stat name, such as Strength or HP.");
-            return save.WithRosterStat(index, stat, Number(Required(values, "--value")));
+            string text = Required(values, "--value");
+            if (verb == "personal-stat")
+            {
+                if (!int.TryParse(text, out int value))
+                    throw new ArgumentException("Personal stats must be whole numbers within their storage limits.");
+                return save.WithRosterPersonalStat(index, stat, value);
+            }
+            return save.WithRosterStat(index, stat, Number(text));
         }
         if (verb == "restore")
             return save.RestoreRosterUses(index);

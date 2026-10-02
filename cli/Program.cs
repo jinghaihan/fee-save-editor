@@ -30,6 +30,8 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli roster class <save> <new-file> --character <index> --class <JID> [--weapons Sword,Lance]
           FeeEditor.Cli roster set <save> <new-file> --character <index> [--level <value>] [--experience <value>] [--sp <value>]
           FeeEditor.Cli roster stat <save> <new-file> --character <index> --stat <name> --value <value>
+          FeeEditor.Cli roster personal-stat <save> <new-file> --character <index> --stat <name> --value <value>
+          FeeEditor.Cli roster stats-max <save> <new-file> --all|--character <index>
           FeeEditor.Cli roster item-set <save> <new-file> --character <index> --slot <index> [--item <IID>] [--uses <value>] [--refine <level>]
           FeeEditor.Cli roster item-delete <save> <new-file> --character <index> --slot <index>
           FeeEditor.Cli roster restore <save> <new-file> --character <index>

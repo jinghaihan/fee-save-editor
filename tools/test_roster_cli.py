@@ -98,6 +98,7 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
                 end = start + struct.unpack_from("<I", data, start)[0]
                 assert character["Values"] == dict(Level=data[start + 109], Experience=data[start + 110],
                                                    SkillPoints=struct.unpack_from("<h", data, end - 8)[0])
+                assert [stat["PersonalValue"] for stat in character["Stats"]] == list(struct.unpack_from("<11b", data, start + 60))
             chinese = run("list", str(source), "--language", "zh-Hans", "--json")
             assert chinese.returncode == 0 and json.loads(chinese.stdout)[0]["Name"] == "琉尔"
             old = roster[0]["Values"]["SkillPoints"]
@@ -111,6 +112,43 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
             assert zlib.crc32(edited[:-4]) == struct.unpack_from("<I", edited, len(edited) - 4)[0]
             assert run("set", str(output), str(restored), "--character", "0", "--sp", str(old)).returncode == 0
             assert restored.read_bytes() == data and source.read_bytes() == data
+            output.unlink()
+            restored.unlink()
+            old_personal = roster[0]["Stats"][1]["PersonalValue"]
+            success = run("personal-stat", str(source), str(output), "--character", "0", "--stat", "Strength", "--value", str(old_personal + 1))
+            assert success.returncode == 0, success.stderr
+            edited = output.read_bytes()
+            allowed = {positions[0] + 61, *range(len(data) - 4, len(data))}
+            assert {i for i, pair in enumerate(zip(data, edited)) if pair[0] != pair[1]} <= allowed
+            assert run("personal-stat", str(output), str(restored), "--character", "0", "--stat", "Strength", "--value", str(old_personal)).returncode == 0
+            assert restored.read_bytes() == data
+            output.unlink()
+            restored.unlink()
+            success = run("stats-max", str(source), str(output), "--all")
+            assert success.returncode == 0, success.stderr
+            edited = output.read_bytes()
+            allowed = {offset for start in positions for offset in range(start + 60, start + 69)} | set(range(len(data) - 4, len(data)))
+            assert len(edited) == len(data) and {i for i, pair in enumerate(zip(data, edited)) if pair[0] != pair[1]} <= allowed
+            assert zlib.crc32(edited[:-4]) == struct.unpack_from("<I", edited, len(edited) - 4)[0]
+            catalog = json.loads((Path(__file__).resolve().parents[1] / "core/Data/roster.json").read_text())
+            people = {person["Id"]: person for person in catalog["Persons"]}
+            jobs = {job["Id"]: job for job in catalog["Classes"]}
+            maximal_roster = json.loads(run("list", str(output), "--json").stdout)
+            for before, after in zip(roster, maximal_roster):
+                if before["Force"] in ("Enemy", "Temporary") or before["PersonId"] not in people:
+                    assert before == after
+                    continue
+                person = people[before["PersonId"]]
+                birth = jobs[person["BirthClass"]]
+                legal = [job for job in jobs.values() if job["Flags"] & 1
+                         and (job["Flags"] & 2 or job["Id"] in (person["BirthClass"], birth["Promotion"]))
+                         and (not job["Flags"] & 4 or before["Progress"]["Gender"] == 2)]
+                for stat in range(9):
+                    required = max(job["Limits"][stat] + person["LimitModifiers"][stat] - job["BaseStats"][stat] for job in legal)
+                    assert after["Stats"][stat]["PersonalValue"] == max(before["Stats"][stat]["PersonalValue"], required)
+                    for job in legal:
+                        assert after["Stats"][stat]["PersonalValue"] + job["BaseStats"][stat] >= job["Limits"][stat] + person["LimitModifiers"][stat]
+            assert run("stats-max", str(output), str(restored), "--all").returncode == 0 and restored.read_bytes() == edited
             output.unlink()
             restored.unlink()
             print(f"{name}: roster independent scalar decoding, translation and byte-diff preservation passed.")
@@ -169,6 +207,15 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
         assert run("stat", str(source), str(output), "--character", "0", "--stat", "Strength", "--value", "42").returncode == 0
         assert output.read_bytes()[records(original)[0] + 61] == 36
         output.unlink()
+        assert run("personal-stat", str(source), str(output), "--character", "0", "--stat", "Strength", "--value", "-6").returncode == 0
+        info = json.loads(run("list", str(output), "--json").stdout)[0]
+        assert info["Stats"][1] == dict(Stat="Strength", Value=0, Maximum=42, PersonalValue=-6)
+        output.unlink()
+        assert run("stats-max", str(source), str(output), "--character", "0").returncode == 0
+        info = json.loads(run("list", str(output), "--json").stdout)
+        assert all(stat["Value"] == stat["Maximum"] for stat in info[0]["Stats"][:9])
+        assert info[1]["Stats"][1]["PersonalValue"] == 3
+        output.unlink()
         assert run("item-set", str(source), str(output), "--character", "0", "--slot", "1", "--item", "IID_リカバー").returncode == 0
         assert len(output.read_bytes()) == len(original) + 14
         assert run("item-delete", str(output), str(restored), "--character", "0", "--slot", "1").returncode == 0
@@ -180,6 +227,14 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
         assert output.read_bytes()[first_item_uses] == 10
         output.unlink()
         failures = [
+            ("personal-stat", "--character", "0", "--stat", "Strength", "--value", "128"),
+            ("personal-stat", "--character", "0", "--stat", "Strength", "--value", "-7"),
+            ("personal-stat", "--character", "0", "--stat", "Strength", "--value", "1.5"),
+            ("personal-stat", "--character", "0", "--stat", "Sight", "--value", "3"),
+            ("stats-max", "--all", "--character", "0"),
+            ("stats-max", "--character", "-1"),
+            ("stats-max", "--character", "2"),
+            ("stats-max",),
             ("condition", "--character", "0", "--internal-level", "101"),
             ("condition", "--character", "0", "--hp", "255"),
             ("condition", "--character", "0"),

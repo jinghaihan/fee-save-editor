@@ -192,6 +192,22 @@ Existing values already above a displayed cap are preserved on inspection/no-op
 copy; explicitly changing a stat validates and writes only its signed base.
 Reducing HP clamps current HP down but does not heal it.
 
+The Stats GUI edits the signed personal bytes directly and previews the
+class-dependent result/cap without changing the stored overflow. Personal edits
+use the signed-byte storage range; their minimum keeps the current class's
+unenhanced value nonnegative (HP at least one). Movement retains the verified
+two-point limit. The CLI's `personal-stat` has the same validation; `stat`
+continues to accept a displayed current-class value for compatibility.
+
+Maximum attributes use, for each of the nine HP-through-Build fields,
+`max(class limit + personal cap modifier - class base)` across that owner's
+available classes and customization gender. This covers generic, exclusive and
+DLC classes, including low-tier classes. Existing values above that threshold
+are not reduced. Single/batch maximum writes only those nine bytes per selected
+known playable unit plus the outer CRC32; level, EXP, SP, growth accumulators,
+current HP, Sight, Movement, carried items and other unit fields are preserved.
+Enemy, temporary and unknown units are excluded from batch maximum.
+
 Level/EXP award logic at `0x1a39d40` uses the current job's MaxLevel and resets
 EXP at maximum level. New edits enforce level `1..MaxLevel`, EXP `0..99` (zero
 at maximum), and SP `0..9999` as in the setter at `0x1a39db0`. Level editing
