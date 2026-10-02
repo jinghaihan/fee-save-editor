@@ -211,6 +211,9 @@ public partial class MainWindow : Window
         error is IOException or InvalidDataException or UnauthorizedAccessException or ArgumentException;
 
     private void Exit_Click(object? sender, RoutedEventArgs e) => Close();
+    private async void About_Click(object? sender, RoutedEventArgs e) =>
+        await new AboutWindow().ShowDialog(this);
+
     private void Main_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: false);
     private void Inspector_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: true);
     private void Navigation_Changed(object? sender, SelectionChangedEventArgs e)

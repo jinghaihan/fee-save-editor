@@ -1,0 +1,16 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="FeeEditor.Gui.AboutWindow"
+        Title="{DynamicResource About}" Width="440" SizeToContent="Height"
+        Icon="/Assets/app-icon.ico"
+        CanResize="False" WindowStartupLocation="CenterOwner">
+  <StackPanel Margin="24" Spacing="16">
+    <TextBlock Text="FEE Save Editor" FontWeight="SemiBold" />
+    <StackPanel Orientation="Horizontal" Spacing="8">
+      <TextBlock Name="VersionLabel" Text="{DynamicResource Version}" />
+      <TextBlock Name="VersionValue" />
+    </StackPanel>
+    <Button Name="ProjectLink" Content="github.com/jinghaihan/fee-save-editor"
+            HorizontalAlignment="Left" Click="OpenProject_Click" />
+  </StackPanel>
+</Window>

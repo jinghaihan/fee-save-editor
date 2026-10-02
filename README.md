@@ -14,6 +14,8 @@ Edit Fire Emblem Engage saves, including DLC characters, Emblems and Bond Rings.
 - **Achievements:** Browse 765 named achievements by category or search. Check whether an achievement is unfulfilled, has an available reward or has already been claimed. Unlock one or all achievements without resetting claimed rewards or changing bond fragments, activity counters or story progress.
 - **Inspector:** Look up save-file information and search its sections from the Tools menu.
 
+Open **Help → About** to view the application version and visit its GitHub repository.
+
 English is the default language. Switch to Simplified Chinese from the top menu; interface text and game-data names change together, including characters, classes, skills, items, rings and achievements.
 
 ## Get started

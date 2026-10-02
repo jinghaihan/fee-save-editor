@@ -31,6 +31,9 @@
           <MenuItem Header="{DynamicResource Main}" Click="Main_Click" />
           <MenuItem Header="{DynamicResource Inspector}" Click="Inspector_Click" />
         </MenuItem>
+        <MenuItem Name="HelpMenu" Header="{DynamicResource Help}">
+          <MenuItem Name="AboutMenu" Header="{DynamicResource About}" Click="About_Click" />
+        </MenuItem>
       </Menu>
       <Grid Grid.Column="1" ColumnDefinitions="Auto,Auto" HorizontalAlignment="Right" ColumnSpacing="16">
         <TextBlock Name="PageTitle" Text="{DynamicResource Main}" VerticalAlignment="Center" FontWeight="SemiBold" />

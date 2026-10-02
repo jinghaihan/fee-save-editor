@@ -21,6 +21,14 @@ Check(window.FindControl<Image>("AppLogo") is null,
     "The menu must not contain a separate avatar, matching the FETH template.");
 Check(UiLanguage.Read("en").Keys.Order().SequenceEqual(UiLanguage.Read("zh-Hans").Keys.Order()),
     "English and Chinese resource keys differ.");
+if (args is ["--about-screenshot", var aboutScreenshot])
+{
+    AboutTests.Run(window, aboutScreenshot);
+    window.Close();
+    Console.WriteLine($"Screenshot: {Path.GetFullPath(aboutScreenshot)}");
+    return;
+}
+AboutTests.Run(window);
 Check(!window.FindControl<MenuItem>("SaveCopyMenu")!.IsEnabled, "Copy is enabled without a save.");
 Check(window.FindControl<Button>("ApplyMainButton") is null, "Main must save through File, without a toolbar Apply button.");
 Check(!window.FindControl<Button>("ExportRosterCharacterButton")!.IsEnabled
