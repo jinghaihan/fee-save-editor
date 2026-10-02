@@ -12,14 +12,15 @@ internal static class EmblemsCommand
             string language = Language(catalogOptions);
             Print(new
             {
-                Emblems = EmblemCatalog.Emblems.Select(row => new { row.Id, Name = row.Name(language), row.Dlc }),
+                Emblems = EmblemCatalog.Emblems.Select(row => new { row.Id, Name = row.Name(language), row.Dlc,
+                    CanAdd = EmblemCreationCatalog.Emblems.Any(candidate => candidate.Id == row.Id) }),
                 Rings = EmblemCatalog.Rings.Select(row => new { row.Id, Name = row.Name(language), Rank = row.RankName, row.MaxStock,
                     Melding = BondRingCatalog.Melding(row.Hash) is { } meld
                         ? new { ResultId = meld.Result.Id, ResultRank = meld.Result.RankName, meld.RequiredRings, meld.BondFragments } : null })
             });
             return 0;
         }
-        if (args is [var read, var source, .. var readOptions] && read is "list" or "rings")
+        if (args is [var read, var source, .. var readOptions] && read is "list" or "rings" or "missing")
         {
             string language = Language(readOptions);
             var save = EngageSave.Load(source);
@@ -34,6 +35,8 @@ internal static class EmblemsCommand
                         MaximumLevel = EmblemCatalog.Emblem(row.EmblemId) is null ? (int?)null : EmblemCatalog.MaximumLevel(row, bond.PersonId)
                     })
                 }));
+            else if (read == "missing")
+                Print(save.ReadMissingEmblems().Select(row => new { row.Id, Name = row.Name(language), row.Dlc }));
             else
                 Print(save.ReadBondRings().Select(row => new
                 {
@@ -44,13 +47,15 @@ internal static class EmblemsCommand
             return 0;
         }
         if (args is not [var verb, var input, var output, .. var options]
-            || verb is not ("bond-set" or "bond-max" or "bonds-max" or "ring-set" or "rings-fill-s" or "ring-meld"))
+            || verb is not ("add" or "bond-set" or "bond-max" or "bonds-max" or "ring-set" or "rings-fill-s" or "ring-meld"))
             throw new ArgumentException("Unknown Emblems command. Run --help for usage.");
         var values = Options(options, verb);
         var current = EngageSave.Load(input);
-        uint instance = verb == "rings-fill-s" ? 0 : checked((uint)Number(Required(values, "--instance")));
+        uint instance = verb is "add" or "rings-fill-s" ? 0 : checked((uint)Number(Required(values, "--instance")));
         EngageSave edited;
-        if (verb == "rings-fill-s")
+        if (verb == "add")
+            edited = current.WithAddedEmblem(Required(values, "--emblem"));
+        else if (verb == "rings-fill-s")
             edited = current.WithMissingSBondRings();
         else if (verb == "ring-meld")
             edited = current.WithMeldedBondRing(instance);
@@ -94,6 +99,7 @@ internal static class EmblemsCommand
     {
         string[] allowed = verb switch
         {
+            "add" => ["--emblem"],
             "bond-set" => ["--instance", "--person", "--level", "--experience"],
             "bond-max" => ["--instance", "--person"],
             "bonds-max" => ["--instance"],

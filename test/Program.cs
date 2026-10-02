@@ -107,6 +107,7 @@ try
     EmblemTests.Run();
     BondRingTests.Run();
     EmblemGuiTests.Run(window, temporary);
+    EmblemCreationTests.Run(window, temporary);
     BondRingGuiTests.Run(window, temporary);
     SupportTests.Run();
     SupportGuiTests.Run(window, temporary);
@@ -176,10 +177,20 @@ try
             window.ShowAchievements();
         else if (captureOptions is ["--page", "minigame-fishing"] or ["--page", "minigame-wyvern"])
             window.FindControl<ComboBox>("MinigameInput")!.SelectedIndex = captureOptions[1] == "minigame-fishing" ? 4 : 3;
-        else if (captureOptions is ["--page", "emblems"] or ["--page", "rings"] or ["--page", "ring-meld"])
+        else if (captureOptions is ["--page", "emblems"] or ["--page", "rings"] or ["--page", "ring-meld"] or ["--page", "emblem-add"])
         {
+            if (captureOptions[1] == "emblem-add")
+                Check(window.LoadSave(Path.Combine(temporary, "emblem-add-source")), "Could not load the missing-Emblem screenshot fixture.");
             window.ShowEmblems();
-            window.FindControl<TabStrip>("EmblemTabs")!.SelectedIndex = captureOptions[1] == "emblems" ? 0 : 1;
+            window.FindControl<TabStrip>("EmblemTabs")!.SelectedIndex = captureOptions[1] is "emblems" or "emblem-add" ? 0 : 1;
+            if (captureOptions[1] == "emblem-add")
+            {
+                Dispatcher.UIThread.RunJobs();
+                var choice = window.FindControl<ComboBox>("MissingEmblemInput")!;
+                choice.SelectedItem = choice.Items.Cast<MainWindow.MissingEmblemChoice>().Single(row => row.Id == EmblemTests.Tiki);
+                var button = window.FindControl<Button>("AddEmblemButton")!;
+                button.Flyout!.ShowAt(button);
+            }
             if (captureOptions[1] == "ring-meld")
             {
                 var rings = window.Save!.ReadBondRings();

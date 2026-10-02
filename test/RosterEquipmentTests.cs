@@ -201,7 +201,7 @@ internal static class RosterEquipmentTests
 
     internal static EngageSave Fixture(int stock = 7, UnitForce force = UnitForce.Absent, int godFlag = -1,
         uint partner = 0, uint secondEmblem = 0, bool missingGod = false, BondRing[]? extraRings = null,
-        bool engaged = false, Action<byte[]>? mutateGod = null)
+        bool engaged = false, Action<byte[]>? mutateGod = null, uint[]? godInstances = null)
     {
         byte[] roster = RosterTests.Fixture(force: force, validEquipment: true, mutate: payload =>
         {
@@ -227,10 +227,11 @@ internal static class RosterEquipmentTests
         });
         var save = BondRingTests.Fixture([new(10, Caeda, stock, null), new(11, ItemCatalog.Hash("RNID_紋章_シーダ_S"), 1, null), .. extraRings ?? []], roster);
         using var pool = new MemoryStream();
+        uint[] instances = godInstances ?? (missingGod ? [2, 3] : [1, 2, 3]);
         using (var writer = new BinaryWriter(pool, Encoding.UTF8, leaveOpen: true))
         {
-            writer.Write(8u); writer.Write(0xcdcdcdcdu); writer.Write(new byte[24]); writer.Write(missingGod ? 2u : 3u);
-            foreach (uint instance in missingGod ? new uint[] { 2, 3 } : new uint[] { 1, 2, 3 })
+            writer.Write(8u); writer.Write(0xcdcdcdcdu); writer.Write(new byte[24]); writer.Write((uint)instances.Length);
+            foreach (uint instance in instances)
             {
                 string gid = instance switch { 1 => EmblemTests.Marth, 2 => EmblemTests.Tiki, _ => EmblemCatalog.AlearEmblemId };
                 writer.Write(instance); writer.Write((ushort)0xefcd); writer.Write(ItemCatalog.Hash(gid)); writer.Write(instance);

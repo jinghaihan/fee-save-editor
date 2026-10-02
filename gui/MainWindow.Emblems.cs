@@ -9,6 +9,7 @@ public partial class MainWindow
 {
     public sealed record EmblemChoice(uint Instance, string Label);
     public sealed record EmblemRow(string Key, string Label);
+    public sealed record MissingEmblemChoice(string Id, string Label);
     public bool CanEditEmblems { get; private set; }
     public bool CanEditBondRings { get; private set; }
     private uint? _selectedEmblem;
@@ -67,6 +68,7 @@ public partial class MainWindow
         }
         RefreshEmblemChoices();
         RefreshEmblemRecords(preserveEditor: false);
+        RefreshMissingEmblems();
     }
 
     private static string BondPersonName(string pid) => RosterCatalog.Person(ItemCatalog.Hash(pid))?.Name(UiLanguage.Current) ?? pid;
@@ -99,6 +101,7 @@ public partial class MainWindow
         bool available = _emblemTab == 0 ? CanEditEmblems : CanEditBondRings;
         var emblem = _emblemTab == 0 ? SelectedEmblem : null;
         MaxAllEmblemBondsButton.IsVisible = _emblemTab == 0;
+        AddEmblemButton.IsVisible = _emblemTab == 0;
         MaxAllEmblemBondsButton.IsEnabled = emblem is not null && EmblemCatalog.Emblem(emblem.EmblemId) is not null;
         FillSBondRingsButton.IsVisible = _emblemTab == 1;
         FillSBondRingsButton.IsEnabled = CanEditBondRings;
@@ -214,8 +217,63 @@ public partial class MainWindow
     {
         RefreshEmblemChoices();
         RefreshEmblemRecords(preserveEditor: true);
+        RefreshMissingEmblems();
         RefreshBondRingOwner(_emblemTab == 1 ? SelectedBondRing : null);
     }
+
+    private void RefreshMissingEmblems()
+    {
+        string? selected = (MissingEmblemInput.SelectedItem as MissingEmblemChoice)?.Id;
+        MissingEmblemChoice[] choices = [];
+        if (Save is not null && CanEditEmblems)
+        {
+            try
+            {
+                choices = Save.ReadMissingEmblems().Select(row => new MissingEmblemChoice(row.Id, row.Name(UiLanguage.Current))).ToArray();
+            }
+            catch (Exception error) when (IsFileError(error))
+            {
+                if (Save.Sections.Any(section => section.Name == "GOD")) ShowMessage("EmblemsUnavailable", error.Message);
+            }
+        }
+        MissingEmblemInput.ItemsSource = choices;
+        MissingEmblemInput.SelectedItem = choices.FirstOrDefault(row => row.Id == selected) ?? choices.FirstOrDefault();
+        AddEmblemButton.IsEnabled = AddEmblemConfirmButton.IsEnabled = choices.Length > 0;
+    }
+
+    public bool AddEmblem(string emblemId)
+    {
+        if (Save is null || !CanEditEmblems || _emblemTab != 0) return false;
+        try
+        {
+            var edited = PendingEmblemValues(Save).WithAddedEmblem(emblemId);
+            Save = edited;
+            _selectedEmblem = edited.ReadEmblems().Single(row => row.EmblemId == emblemId).InstanceId;
+            _selectedEmblemRecord = null;
+            RefreshOverview();
+            RefreshSections();
+            Message.IsVisible = false;
+            RefreshEmblemChoices();
+            RefreshEmblemRecords(preserveEditor: false);
+            RefreshMissingEmblems();
+            RefreshRosterEquipment(preserveEdits: true);
+            return true;
+        }
+        catch (Exception error) when (IsFileError(error))
+        {
+            ShowMessage("EditFailed", error.Message);
+            return false;
+        }
+    }
+
+    private void AddEmblem_Click(object? sender, RoutedEventArgs e)
+    {
+        if (MissingEmblemInput.SelectedItem is MissingEmblemChoice choice && AddEmblem(choice.Id))
+            AddEmblemButton.Flyout?.Hide();
+    }
+
+    private void MissingEmblem_Changed(object? sender, SelectionChangedEventArgs e) =>
+        AddEmblemConfirmButton.IsEnabled = MissingEmblemInput.SelectedItem is MissingEmblemChoice;
 
     private void RefreshBondRingOwner(BondRing? ring)
     {

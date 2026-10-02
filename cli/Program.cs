@@ -56,6 +56,8 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli roster proficiencies <save> <new-file> --character <index> --weapons Sword,Lance
           FeeEditor.Cli emblems catalog [--json] [--language en|zh-Hans]
           FeeEditor.Cli emblems list <save> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli emblems missing <save> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli emblems add <save> <new-file> --emblem <GID>
           FeeEditor.Cli emblems rings <save> [--json] [--language en|zh-Hans]
           FeeEditor.Cli emblems bond-set <save> <new-file> --instance <id> --person <PID> [--level <1-20>] [--experience <0-208>]
           FeeEditor.Cli emblems bond-max <save> <new-file> --instance <id> --person <PID>

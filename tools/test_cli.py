@@ -381,6 +381,8 @@ def main() -> None:
     check_roster_equipment(command, args.save_directory, main_fixture())
     from test_emblems_cli import check_emblems
     check_emblems(command, args.save_directory, main_fixture())
+    from test_emblem_creation_cli import check_emblem_creation
+    check_emblem_creation(command, args.save_directory, main_fixture())
     from test_supports_cli import check_supports
     check_supports(command, args.save_directory, main_fixture())
     from test_engravings_cli import check_engravings

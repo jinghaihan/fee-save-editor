@@ -127,6 +127,8 @@ Unavailable story Emblems and active Engage+ links cannot be reassigned.
 ```sh
 FeeEditor.Cli emblems catalog --json
 FeeEditor.Cli emblems list Manual0 --json
+FeeEditor.Cli emblems missing Manual0 --json
+FeeEditor.Cli emblems add Manual0 Manual0-edited --emblem GID_チキ
 FeeEditor.Cli emblems rings Manual0 --json
 FeeEditor.Cli emblems bond-set Manual0 Manual0-edited --instance 1 --person PID_ヴァンドレ --level 20
 FeeEditor.Cli emblems bond-max Manual0 Manual0-edited --instance 1 --person PID_ヴァンドレ
@@ -137,6 +139,15 @@ FeeEditor.Cli emblems ring-meld Manual0 Manual0-edited --instance 100
 ```
 
 Use saved instance IDs from the lists; the example numbers are placeholders.
+`missing` lists absent normal Emblems; `add` takes a catalog GID instead of an
+instance ID. All 12 base-game rings and 7 DLC Bracelets are supported. An
+already-owned Emblem is a no-op, including reserved or escaping story records.
+Existing bonds and purchased skills are preserved. First-time acquisition creates
+level-1 bonds with 0 EXP for saved playable units and initializes unrefined Engage
+weapons. The new ring is unequipped; equip it through Roster. Adding a DLC Bracelet
+does not install or grant DLC. Engage+ Alear and story-completion flags are not
+created, and no Emblem removal command is provided.
+
 Bond levels map to the game's EXP thresholds. `bond-set` also accepts
 `--experience`; both fields must agree when supplied together. Alear bonds
 synchronize existing supports and do not create or replace a Pact partner.

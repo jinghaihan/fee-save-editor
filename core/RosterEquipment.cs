@@ -52,7 +52,7 @@ internal static class OwnedEmblemLayout
         var section = EmblemLayout.GetSection(save, "GOD");
         var reader = EmblemLayout.PoolReader(section, bytes, 8);
         uint count = reader.UInt32();
-        if (count > 100) throw new InvalidDataException("Invalid owned Emblem count.");
+        if (count > EmblemCreationCatalog.MaxOwnedInstances) throw new InvalidDataException("Invalid owned Emblem count.");
         var result = new List<OwnedEmblem>();
         var instances = new HashSet<uint>();
         for (uint index = 0; index < count; index++)

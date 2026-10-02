@@ -17,7 +17,7 @@ internal sealed class EmblemLayout
         var section = GetSection(save, "GDBD");
         var reader = PoolReader(section, bytes, 2);
         uint count = reader.UInt32();
-        if (count > 100 || count > reader.Remaining / 11)
+        if (count > EmblemCreationCatalog.MaxBondHolders || count > reader.Remaining / 11)
             throw new InvalidDataException("Invalid Emblem bond holder count.");
         var emblems = new List<SavedEmblem>();
         var locations = new List<BondLocation>();

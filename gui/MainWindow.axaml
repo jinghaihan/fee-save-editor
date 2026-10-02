@@ -426,6 +426,21 @@
           </ListBox>
           <StackPanel Grid.Row="4" Spacing="16">
             <Button Name="MaxAllEmblemBondsButton" Content="{DynamicResource MaxAllBonds}" HorizontalAlignment="Stretch" Click="MaxAllEmblemBonds_Click" IsEnabled="False" />
+            <Button Name="AddEmblemButton" Content="{DynamicResource AddEmblem}" HorizontalAlignment="Stretch" IsEnabled="False">
+              <Button.Flyout>
+                <Flyout>
+                  <suki:GlassCard Name="AddEmblemCard" Padding="20" Width="320" IsOpaque="True">
+                    <StackPanel Spacing="16">
+                      <TextBlock Text="{DynamicResource AddEmblem}" FontWeight="SemiBold" />
+                      <ComboBox Name="MissingEmblemInput" Height="42" HorizontalAlignment="Stretch" SelectionChanged="MissingEmblem_Changed">
+                        <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
+                      </ComboBox>
+                      <Button Name="AddEmblemConfirmButton" Content="{DynamicResource Add}" HorizontalAlignment="Stretch" Click="AddEmblem_Click" IsEnabled="False" />
+                    </StackPanel>
+                  </suki:GlassCard>
+                </Flyout>
+              </Button.Flyout>
+            </Button>
             <Button Name="FillSBondRingsButton" Content="{DynamicResource FillSBondRings}" HorizontalAlignment="Stretch" Click="FillSBondRings_Click" IsEnabled="False" IsVisible="False" />
             <TextBlock Name="EmblemListAvailability" IsVisible="False" />
           </StackPanel>

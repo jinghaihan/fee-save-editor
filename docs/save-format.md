@@ -435,6 +435,44 @@ cover synthetic pools and temporary copies of both private saves. In-game loadin
 of edited equipment has not yet been verified. Addresses refer to the supplied
 game-version-304 NSO with build prefix `8C08B971`.
 
+### Adding missing Emblems
+
+The add operation supports 12 normal base-game Emblems and all 7 DLC Bracelets,
+not Alear's special Engage+ record. Ownership is checked in `GOD`, not inferred
+from the surviving `GDBD` bond holder. Existing dark, reserved or escaping records
+are not duplicated or reactivated. Existing holder bytes, purchased skills and
+Pact associations are retained exactly. When a holder is absent, saved known
+playable units in Player/Absent/Dead/Lost forces receive level 1, EXP 0, an empty
+version-2 inherited-skill set and zero conversation flags. Enemy/Ally/Temporary
+units are not added. Native holder initialization visits those same four forces.
+
+Native `GodPool.Create` at `0x23349c0` calls `GodUnit.Build` at `0x2334b50`, which
+reuses or creates the bond holder, clears temporary state and initializes Engage
+weapon refinement. `GodBond.Build` at `0x2b4d040` confirms the initial bond values.
+`GodUnit.InitGodWeaponRefine` at `0x233e890` and its constructor at `0x2343a70`
+initialize each weapon with capacity 0, nine refinement levels of 1 and no skill.
+The weapon list includes all nine style-specific fields of the growth table,
+matching `GetGodWeaponList` at `0x2343620`. Tiki has seven entries and Byleth ten,
+rather than the usual three.
+
+The `GOD` constructor at `0x2334500` allocates 128 instances; the `GDBD` constructor
+at `0x2b50f00` allocates 64 holders, each with a 48-bond pool. New GOD and GDBD IDs
+are independently allocated from their free native ranges and linked explicitly.
+Malformed ownership, duplicate hashes, dangling links and exhausted pools reject
+the operation. Existing pool records are retained byte-for-byte; only the required
+pool counts and appended records change. Section sizes, index offsets and CRC32
+are rebuilt. No UNIT equipment, USER resources, level-cap or story flags change.
+The native procurement call goes to runtime recording at `0x2718eb0`; it is not a
+story-unlock variable and is not synthesized here.
+
+`tools/import_emblem_creation.py` derives the minimal weapon list from the complete
+base/DLC `God.xml` at FireEmblemEngageData revision
+`86b8be7b9820e1bb3bce87d2a9a805ead85d92ab`. Synthetic tests cover every supported
+Emblem, reuse/new-holder paths, equipment, capacity and no-op handling. Independent
+CLI decoding verifies flags, references, weapon initialization, preserved sections
+and edits of temporary copies of the supplied saves. Gameplay after acquisition
+has not yet been tested.
+
 `tools/import_emblem_catalog.py` imports minimal identifiers, names and thresholds
 from FE17-DOC revision `99677e4cad22b636bee4af5a3052003bed17c443` and Iron19_L10n
 revision `810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b`. It includes all 20 saved main/DLC
