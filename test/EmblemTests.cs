@@ -56,6 +56,35 @@ internal static class EmblemTests
         Reject(() => save.WithEmblemBond(99, Alear, 5));
         Reject(() => save.WithEmblemBond(1, "PID_missing", 5));
         Reject(() => save.WithEmblemBond(3, "PID_ユナカ", 20));
+        var maximum = save.WithMaximumEmblemBonds(1);
+        Check(maximum.ReadEmblems()[0].Bonds.All(bond => bond.Level == 20 && bond.Experience == 208), "Batch bonds did not reach maximum.");
+        Unrelated(save, maximum, "GDBD", "USER");
+        Check(ReferenceEquals(maximum, maximum.WithMaximumEmblemBonds(1)), "Repeating maximum bonds was not a no-op.");
+        var one = save.WithMaximumEmblemBonds(1, Alear);
+        Check(one.ReadEmblems()[0].Bonds[0].Level == 20 && one.ReadEmblems()[0].Bonds[1].Level == 1, "Single maximum edited other characters.");
+        Check(save.WithMaximumEmblemBonds(2).ReadEmblems()[1].Bonds.All(bond => bond.Level == 20), "DLC batch maximum failed.");
+        var pactMaximum = save.WithMaximumEmblemBonds(3);
+        Check(pactMaximum.ReadEmblems()[2].Bonds[1].Level == 21 && pactMaximum.ReadEmblems()[2].Bonds[1].Experience == 209,
+            "Batch maximum downgraded the Pact partner.");
+        Check(EmblemCatalog.MaximumLevel(emblems[2], Alear) == 20 && EmblemCatalog.MaximumLevel(emblems[2], "PID_ユナカ") == 21,
+            "Pact maximum was applied to other characters.");
+        var noPact = EngageSave.Parse(Container(Bonds(pactPartner: false), Rings()));
+        var noPactMaximum = noPact.WithMaximumEmblemBonds(3);
+        Check(noPactMaximum.ReadEmblems()[2].Bonds.All(bond => bond.Level == 20 && bond.Experience == 208), "Alear normal maximum failed.");
+        Check(SupportRank(noPactMaximum) == 3 && SupportRank(noPact) == 1, "Alear support was not synchronized or the source mutated.");
+        Unrelated(noPact, noPactMaximum, "GDBD", "UREL");
+        Check(ReferenceEquals(noPactMaximum, noPactMaximum.WithMaximumEmblemBonds(3)), "Alear maximum was not idempotent.");
+        Reject(() => noPact.WithEmblemBond(3, "PID_ユナカ", 21, 209));
+        Reject(() => noPact.WithEmblemBond(3, "PID_ユナカ", 19));
+        Reject(() => noPact.WithMaximumEmblemBonds(99));
+        var missingSupport = EngageSave.Parse(Container(Bonds(pactPartner: false), Rings(), supportKey: "PID_unknownPID_unknown"));
+        byte[] missingOriginal = missingSupport.Serialize();
+        Reject(() => missingSupport.WithMaximumEmblemBonds(3));
+        Check(missingSupport.Serialize().AsSpan().SequenceEqual(missingOriginal), "A failed batch partially modified the save.");
+        var unsupportedSupport = EngageSave.Parse(Container(Bonds(pactPartner: false), Rings(), supportVersion: 2));
+        Reject(() => unsupportedSupport.WithMaximumEmblemBonds(3));
+        var oldPactSupport = EngageSave.Parse(Container(Bonds(pactPartner: false), Rings(), supportRank: 4));
+        Reject(() => oldPactSupport.WithMaximumEmblemBonds(3));
         for (int stock = 0; stock <= 99; stock++)
         {
             var edited = save.WithBondRingStock(10, stock);
@@ -97,6 +126,14 @@ internal static class EmblemTests
             "The real save's ring stock was not fully recognized.");
         foreach (var emblem in emblems)
         {
+            if (emblem.EmblemId == EmblemCatalog.AlearEmblemId)
+            {
+                var maximumAlear = save.WithMaximumEmblemBonds(emblem.InstanceId);
+                Check(maximumAlear.ReadEmblems().First(row => row.InstanceId == emblem.InstanceId).Bonds.All(bond => bond.Level == 20),
+                    "Real Alear maximum failed.");
+                Unrelated(save, maximumAlear, "GDBD", "UREL");
+                continue;
+            }
             var bond = emblem.Bonds.FirstOrDefault(row => row.TalkFlags == 14) ?? emblem.Bonds[0];
             var edited = save.WithEmblemBond(emblem.InstanceId, bond.PersonId, 19);
             Check(edited.ReadEmblems().First(row => row.InstanceId == emblem.InstanceId).Bonds
@@ -124,7 +161,7 @@ internal static class EmblemTests
 
     public static byte[] Fixture() => Container(Bonds(), Rings());
 
-    private static byte[] Bonds()
+    private static byte[] Bonds(bool pactPartner = true)
     {
         using var output = new MemoryStream();
         using var writer = new BinaryWriter(output, Encoding.UTF8, leaveOpen: true);
@@ -132,11 +169,11 @@ internal static class EmblemTests
         foreach ((uint id, string gid) in new[] { (1u, Marth), (2u, Tiki), (3u, "GID_リュール") })
         {
             writer.Write(id); Wide(writer, gid); writer.Write(id == 3);
-            if (id == 3) { writer.Write(0u); Wide(writer, "PID_ユナカ"); }
+            if (id == 3) { writer.Write(0u); Wide(writer, pactPartner ? "PID_ユナカ" : ""); }
             writer.Write((ushort)2);
             foreach (string pid in new[] { Alear, "PID_ユナカ" })
             {
-                bool pact = id == 3 && pid == "PID_ユナカ";
+                bool pact = pactPartner && id == 3 && pid == "PID_ユナカ";
                 Wide(writer, pid); writer.Write(3u); writer.Write((byte)(pact ? 21 : 1)); writer.Write((ushort)(pact ? 209 : 0));
                 writer.Write(2u); writer.Write(2u); writer.Write(0x12345678u); writer.Write(0x87654321u);
                 writer.Write((byte)(pact ? 46 : 32));
@@ -159,12 +196,19 @@ internal static class EmblemTests
     { writer.Write(version); writer.Write(0xcdcdcdcdu); writer.Write(new byte[24]); }
     private static void Wide(BinaryWriter writer, string value)
     { byte[] bytes = Encoding.Unicode.GetBytes(value); writer.Write((uint)bytes.Length); writer.Write(bytes); }
-    private static byte[] Container(byte[] bonds, byte[] rings, byte[]? original = null)
+    private static byte[] Container(byte[] bonds, byte[] rings, byte[]? original = null,
+        string? supportKey = null, uint supportVersion = 1, byte supportRank = 1)
     {
         original ??= MainTests.Fixture();
         var save = EngageSave.Parse(original);
         var sections = save.Sections.Select(row => original.AsSpan(row.Offset, row.Length + 8).ToArray()).ToList();
-        foreach ((string tag, byte[] payload) in new[] { ("DBDG", bonds), ("GNIR", rings) })
+        using var support = new MemoryStream();
+        using (var writer = new BinaryWriter(support, Encoding.UTF8, leaveOpen: true))
+        {
+            Header(writer, 1); writer.Write(1u); Wide(writer, supportKey ?? Alear + "PID_ユナカ");
+            writer.Write(supportVersion); writer.Write(supportRank); writer.Write((byte)7); writer.Write((byte)2);
+        }
+        foreach ((string tag, byte[] payload) in new[] { ("DBDG", bonds), ("GNIR", rings), ("LERU", support.ToArray()) })
         {
             byte[] section = new byte[payload.Length + 8];
             Encoding.ASCII.GetBytes(tag).CopyTo(section, 0);
@@ -180,6 +224,14 @@ internal static class EmblemTests
         Write32(result, 132 + sections.Count * 4, (uint)offset); "LVRC"u8.CopyTo(result.AsSpan(offset));
         Write32(result, offset + 4, Checksum(result.AsSpan(0, offset + 4)));
         return result;
+    }
+
+    private static int SupportRank(EngageSave save)
+    {
+        byte[] bytes = save.Serialize();
+        var section = save.Sections.Single(row => row.Name == "UREL");
+        int start = section.PayloadOffset + 36;
+        return bytes[start + 4 + (int)BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(start)) + 4];
     }
 
     private static void Unrelated(EngageSave before, EngageSave after, params string[] changed)

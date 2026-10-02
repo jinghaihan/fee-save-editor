@@ -25,6 +25,9 @@ public static class EmblemCatalog
     public static IReadOnlyList<EmblemDefinition> Emblems { get; } = Array.AsReadOnly(Data.Emblems);
     public static IReadOnlyList<BondRingDefinition> Rings { get; } = Array.AsReadOnly(Data.Rings);
     public const int MaxBondLevel = 20;
+    public const string AlearEmblemId = "GID_リュール";
+    public const string AlearPersonId = "PID_リュール";
+    public const int PactBondLevel = MaxBondLevel + 1;
     public static int MaxBondExperience => Data.BondExperience[^1];
     public static EmblemDefinition? Emblem(string id) => Gods.GetValueOrDefault(id);
     public static BondRingDefinition? Ring(uint hash) => RingHashes.GetValueOrDefault(hash);
@@ -35,6 +38,20 @@ public static class EmblemCatalog
         if (experience < 0 || experience > MaxBondExperience)
             throw new ArgumentOutOfRangeException(nameof(experience), "Bond EXP must be 0–208.");
         return Array.FindLastIndex(Data.BondExperience, threshold => threshold <= experience) + 1;
+    }
+    public static int MaximumLevel(SavedEmblem emblem, string personId) =>
+        emblem.EmblemId == AlearEmblemId && !string.IsNullOrEmpty(emblem.PactPartner) && emblem.PactPartner == personId
+            ? PactBondLevel : MaxBondLevel;
+    public static int[] SelectableLevels(SavedEmblem emblem, string personId)
+    {
+        if (emblem.EmblemId != AlearEmblemId) return Enumerable.Range(1, MaxBondLevel).ToArray();
+        return MaximumLevel(emblem, personId) == PactBondLevel ? [1, 5, 10, 20, 21] : [1, 5, 10, 20];
+    }
+    public static int ExperienceForLevel(SavedEmblem emblem, string personId, int level)
+    {
+        if (!SelectableLevels(emblem, personId).Contains(level))
+            throw new ArgumentException("This bond level is not available for the selected character and Emblem.");
+        return level == PactBondLevel ? MaxBondExperience + 1 : ExperienceForLevel(level);
     }
 
     private static CatalogData Load()

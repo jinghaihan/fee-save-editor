@@ -40,9 +40,6 @@ public sealed partial class EngageSave
     {
         if (RosterCatalog.Person(ItemCatalog.Hash(personId)) is null)
             throw new ArgumentException("Select a known playable character bond.");
-        int exp = experience ?? EmblemCatalog.ExperienceForLevel(level);
-        if (EmblemCatalog.LevelForExperience(exp) != level)
-            throw new ArgumentException("Bond level and EXP do not match the game's thresholds.");
         var layout = EmblemLayout.Read(this, _bytes);
         var emblem = layout.Emblems.FirstOrDefault(row => row.InstanceId == instanceId)
             ?? throw new ArgumentException("Select an existing Emblem instance.");
@@ -50,9 +47,22 @@ public sealed partial class EngageSave
             ?? throw new ArgumentException("The selected Emblem is not in the verified catalog.");
         var location = layout.Bonds.FirstOrDefault(row => row.EmblemInstance == instanceId && row.Bond.PersonId == personId)
             ?? throw new ArgumentException("The selected character has no saved bond with this Emblem.");
-        if (location.Bond.Level > 20)
+        int threshold = EmblemCatalog.ExperienceForLevel(emblem, personId, level);
+        int exp = experience ?? threshold;
+        if (level == EmblemCatalog.PactBondLevel ? exp != threshold : EmblemCatalog.LevelForExperience(exp) != level)
+            throw new ArgumentException("Bond level and EXP do not match the game's thresholds.");
+        if (location.Bond.Level > EmblemCatalog.MaxBondLevel && level != EmblemCatalog.PactBondLevel)
             throw new ArgumentException("A special Pact Ring bond cannot be replaced with a normal bond level.");
-        if (location.Bond.Level == level && location.Bond.Experience == exp) return this;
+        if (location.Bond.Level > EmblemCatalog.PactBondLevel)
+            throw new ArgumentException("An unrecognized special bond cannot be edited.");
+        bool bondChanged = location.Bond.Level != level || location.Bond.Experience != exp;
+        if (!bondChanged)
+        {
+            var unchanged = this;
+            if (level >= 11 && definition.LevelCapVariable is string capKey)
+                unchanged = unchanged.WithEmblemCapVariable(capKey);
+            return emblem.EmblemId == EmblemCatalog.AlearEmblemId ? unchanged.WithAlearBondSupport(personId, level) : unchanged;
+        }
         byte[] payload = _bytes.AsSpan(layout.Section.PayloadOffset, layout.Section.Length).ToArray();
         int offset = location.ValuesOffset - layout.Section.PayloadOffset;
         payload[offset] = (byte)level;
@@ -60,12 +70,42 @@ public sealed partial class EngageSave
         if (location.Bond.Level != level)
         {
             int flags = location.FlagsOffset - layout.Section.PayloadOffset;
-            int talkFlags = (level >= 5 ? 2 : 0) | (level >= 10 ? 4 : 0) | (level >= 20 ? 8 : 0);
+            int talkFlags = (level >= 5 ? 2 : 0) | (level >= 10 ? 4 : 0) | (level >= EmblemCatalog.MaxBondLevel ? 8 : 0);
             payload[flags] = (byte)((payload[flags] & ~14) | talkFlags);
         }
         var edited = ReplaceSection(layout.Section, payload);
         if (level >= 11 && definition.LevelCapVariable is string key)
             edited = edited.WithEmblemCapVariable(key);
+        if (emblem.EmblemId == EmblemCatalog.AlearEmblemId)
+            edited = edited.WithAlearBondSupport(personId, level);
+        return edited;
+    }
+
+    public EngageSave WithMaximumEmblemBonds(uint instanceId, string? personId = null)
+    {
+        var emblem = ReadEmblems().FirstOrDefault(row => row.InstanceId == instanceId)
+            ?? throw new ArgumentException("Select an existing Emblem instance.");
+        if (EmblemCatalog.Emblem(emblem.EmblemId) is null)
+            throw new ArgumentException("Unknown Emblem limits cannot be guessed.");
+        var bonds = emblem.Bonds.Where(bond => personId is null || bond.PersonId == personId).ToArray();
+        if (personId is not null && bonds.Length != 1)
+            throw new ArgumentException("Select an existing character bond.");
+        var edited = this;
+        foreach (var bond in bonds)
+        {
+            if (RosterCatalog.Person(ItemCatalog.Hash(bond.PersonId)) is null || bond.Level > EmblemCatalog.PactBondLevel)
+            {
+                if (personId is not null) throw new ArgumentException("Unknown character or special bond limits cannot be guessed.");
+                continue;
+            }
+            int maximum = EmblemCatalog.MaximumLevel(emblem, bond.PersonId);
+            if (bond.Level > maximum)
+            {
+                if (personId is not null) throw new ArgumentException("The saved special bond does not match the verified Pact partner.");
+                continue;
+            }
+            edited = edited.WithEmblemBond(instanceId, bond.PersonId, maximum);
+        }
         return edited;
     }
 

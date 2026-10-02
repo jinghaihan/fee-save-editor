@@ -305,8 +305,27 @@ conversation bits 2/4/8 at levels 5/10/20 and unlocks a defined global level-cap
 variable above 10. The editor follows those flags and preserves other bits and
 already purchased inherited skills. Unlike the native debug setter, it does not
 clear the purchased-skill dictionary. A level-21 Pact Ring bond is preserved and
-cannot be replaced by a normal level-20 edit. Story ownership and Pact partners
-are not invented by editing bond progress.
+cannot be replaced by a normal level-20 edit. Only the existing Alear Pact partner
+can reach 21 / 209 EXP; ordinary bonds reach 20 / 208 EXP. Story ownership and
+Pact partners are not invented by editing bond progress.
+
+Alear bonds use support-derived levels `1,5,10,20,21`, rather than the full
+normal 1–20 progression. `GodBond.SetLevelFromUnitReliance` at `0x2b4e2b0`
+maps None/C/B/A/APlus to those levels. Editing an Alear bond synchronizes the
+existing corresponding `UREL` support record; a missing pair is rejected rather
+than fabricated. Alear's own record has no self-support pair. `UREL` pool version
+1 contains a count and concatenated PID-pair UTF-16 keys, followed by record
+version 1, byte rank and signed-byte EXP/score. This matches
+`UnitRelianceData.Serialize` at `0x1c5b470` and the pool serializer loop at
+`0x1c5b3b0`. Changing rank resets only its partial EXP; score, other pairs and
+opaque bytes are preserved. An already matching support retains its partial EXP.
+
+Single and batch maximum actions share the same character/Emblem limit resolver.
+Batch maximum applies to all existing known character bonds for the chosen Emblem,
+not just search results. Unknown characters and unrecognized special levels are
+preserved. Changes are returned as one immutable result so a failed relationship
+validation cannot partially apply a batch. GUI controls use levels by default,
+with raw EXP in a collapsed advanced section; Alear EXP is read-only.
 
 For the 12 base Emblems, cap-variable IDs come from the pinned `God.xml` table.
 Setting a bond above 10 sets that integer to 1, adding the typed variable if absent
@@ -335,6 +354,8 @@ Emblems and 483 named common rings. Four untranslated color/debug table entries
 are not editable catalog entries; unknown saved records remain visible by hash.
 Both supplied saves parse completely: 820 bonds and 374 rings each, with 41 unit
 links in the manual save and 52 in the automatic save (including non-roster units).
+Each has 231 character-support records, all at rank A, including all 40 Alear/ally
+pairs; the Alear Pact-partner field is empty. These private inputs are not bundled.
 Tests use synthetic fixtures and temporary copies; in-game loading is not yet verified.
 
 ## Resource inputs
