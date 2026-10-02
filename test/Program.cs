@@ -27,6 +27,9 @@ Check(window.FindControl<Grid>("MainPanel")!.IsVisible && !window.FindControl<St
 window.ShowItems();
 Check(window.FindControl<Grid>("ItemsPanel")!.IsVisible && !window.FindControl<StackPanel>("ItemEditorInputs")!.IsEnabled,
     "Item controls must be visible but disabled before a save is loaded.");
+window.ShowEmblems();
+Check(window.FindControl<Grid>("EmblemsPanel")!.IsVisible && !window.FindControl<StackPanel>("EmblemBondForm")!.IsEnabled,
+    "Emblem controls must be visible but disabled before a save is loaded.");
 window.FindControl<TabStrip>("MainNavigation")!.SelectedIndex = 0;
 Check(window.FindControl<Grid>("MainPanel")!.IsVisible, "The native tab strip did not switch pages.");
 
@@ -87,6 +90,7 @@ try
     RosterStatTests.Run();
     RosterStatGuiTests.Run(window, temporary);
     EmblemTests.Run();
+    EmblemGuiTests.Run(window, temporary);
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -126,6 +130,11 @@ try
         window.SetLanguage("en");
         if (captureOptions is ["--page", "items"])
             window.ShowItems();
+        else if (captureOptions is ["--page", "emblems"] or ["--page", "rings"])
+        {
+            window.ShowEmblems();
+            window.FindControl<TabStrip>("EmblemTabs")!.SelectedIndex = captureOptions[1] == "rings" ? 1 : 0;
+        }
         else if (captureOptions is ["--page", var page] && page.StartsWith("roster", StringComparison.Ordinal))
         {
             window.ShowRoster();

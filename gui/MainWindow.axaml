@@ -30,6 +30,7 @@
           <TabStripItem Content="{DynamicResource Main}" />
           <TabStripItem Content="{DynamicResource Items}" />
           <TabStripItem Content="{DynamicResource Roster}" />
+          <TabStripItem Content="{DynamicResource Emblems}" />
         </TabStrip>
       </Grid>
     </Grid>
@@ -299,6 +300,64 @@
                 <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterProficiencies_Click" />
               </StackPanel>
             </Grid>
+          </ScrollViewer>
+        </Grid>
+      </suki:GlassCard>
+    </Grid>
+    <Grid Name="EmblemsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+      <suki:GlassCard Padding="20">
+        <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="16">
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <TextBlock Name="EmblemListTitle" Text="{DynamicResource CharacterList}" FontWeight="SemiBold" />
+            <TextBlock Name="EmblemCompletion" Grid.Column="1" />
+          </Grid>
+          <ComboBox Name="EmblemChoiceInput" Grid.Row="1" Height="42" HorizontalAlignment="Stretch" SelectionChanged="EmblemChoice_Changed">
+            <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
+          </ComboBox>
+          <TextBox Name="EmblemSearch" Grid.Row="2" PlaceholderText="{DynamicResource Search}" TextChanged="EmblemSearch_Changed" />
+          <ListBox Name="EmblemRecordList" Grid.Row="3" SelectionChanged="EmblemRecord_Changed">
+            <ListBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" TextWrapping="Wrap" /></DataTemplate></ListBox.ItemTemplate>
+          </ListBox>
+          <StackPanel Grid.Row="4" Spacing="16">
+            <Button Name="MaxAllEmblemBondsButton" Content="{DynamicResource MaxAllBonds}" HorizontalAlignment="Stretch" Click="MaxAllEmblemBonds_Click" IsEnabled="False" />
+            <TextBlock Name="EmblemListAvailability" IsVisible="False" />
+          </StackPanel>
+        </Grid>
+      </suki:GlassCard>
+      <suki:GlassCard Grid.Column="1" Padding="20">
+        <Grid RowDefinitions="Auto,*" RowSpacing="24">
+          <TabStrip Name="EmblemTabs" SelectedIndex="0" SelectionChanged="EmblemTabs_Changed">
+            <TabStripItem Content="{DynamicResource Bonds}" />
+            <TabStripItem Content="{DynamicResource BondRings}" />
+          </TabStrip>
+          <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Spacing="24">
+              <StackPanel Name="EmblemBondForm" Spacing="16" Width="340" HorizontalAlignment="Left" IsEnabled="False">
+                <StackPanel Spacing="8">
+                  <TextBlock Text="{DynamicResource BondLevel}" />
+                  <ComboBox Name="EmblemBondLevelInput" Height="42" HorizontalAlignment="Stretch" SelectionChanged="EmblemBondLevel_Changed" />
+                </StackPanel>
+                <Expander Header="{DynamicResource Advanced}" HorizontalAlignment="Stretch" IsExpanded="False">
+                  <StackPanel Spacing="8">
+                  <TextBlock Text="{DynamicResource Experience}" />
+                  <NumericUpDown Name="EmblemBondExpInput" Minimum="0" Maximum="208" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+                  </StackPanel>
+                </Expander>
+                <Button Name="MaxEmblemBondButton" Content="{DynamicResource MaxBond}" HorizontalAlignment="Stretch" Click="MaxEmblemBond_Click" />
+                <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyEmblem_Click" />
+              </StackPanel>
+              <StackPanel Name="BondRingForm" IsVisible="False" Spacing="16" Width="340" HorizontalAlignment="Left" IsEnabled="False">
+                <StackPanel Spacing="8">
+                  <TextBlock Text="{DynamicResource Amount}" />
+                  <NumericUpDown Name="BondRingStockInput" Minimum="0" Maximum="99" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+                </StackPanel>
+                <StackPanel Spacing="8">
+                  <TextBlock Text="{DynamicResource EquippedBy}" />
+                  <TextBlock Name="BondRingOwnerValue" Text="{DynamicResource None}" TextWrapping="Wrap" />
+                </StackPanel>
+                <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyEmblem_Click" />
+              </StackPanel>
+            </StackPanel>
           </ScrollViewer>
         </Grid>
       </suki:GlassCard>

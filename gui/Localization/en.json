@@ -114,5 +114,16 @@
   "RemoveSkill": "Remove Skill",
   "UnlockAll": "Unlock All",
   "UnknownSkill": "Unknown skill",
-  "SelectSkill": "Select a skill."
+  "SelectSkill": "Select a skill.",
+  "Emblems": "Emblems",
+  "Bonds": "Bonds",
+  "BondRings": "Bond Rings",
+  "BondLevel": "Bond Level",
+  "MaxBond": "Max Bond",
+  "MaxAllBonds": "Max All Bonds",
+  "Advanced": "Advanced",
+  "Amount": "Amount",
+  "EquippedBy": "Equipped By",
+  "UnknownRing": "Unknown ring",
+  "EmblemsUnavailable": "Could not read Emblems:"
 }

@@ -114,5 +114,16 @@
   "RemoveSkill": "移除技能",
   "UnlockAll": "全部解锁",
   "UnknownSkill": "未知技能",
-  "SelectSkill": "请选择技能。"
+  "SelectSkill": "请选择技能。",
+  "Emblems": "纹章士",
+  "Bonds": "羁绊",
+  "BondRings": "羁绊戒指",
+  "BondLevel": "羁绊等级",
+  "MaxBond": "羁绊满级",
+  "MaxAllBonds": "全部羁绊满级",
+  "Advanced": "高级编辑",
+  "Amount": "数量",
+  "EquippedBy": "装备角色",
+  "UnknownRing": "未知戒指",
+  "EmblemsUnavailable": "无法读取纹章士："
 }
