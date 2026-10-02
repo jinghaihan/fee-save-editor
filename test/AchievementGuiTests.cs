@@ -24,9 +24,9 @@ internal static class AchievementGuiTests
         var list = window.FindControl<ListBox>("AchievementList")!;
         var search = window.FindControl<TextBox>("AchievementSearch")!;
         var category = window.FindControl<ComboBox>("AchievementCategoryInput")!;
-        var status = window.FindControl<TextBox>("AchievementStatusValue")!;
+        var status = window.FindControl<TextBlock>("AchievementStatusValue")!;
         Check(list.ItemCount == 765 && category.ItemCount == 6 && status.Text == "Not Achieved", "Achievement controls are incomplete.");
-        Check(window.FindControl<TextBox>("AchievementRewardValue")!.Text == "30", "Reward preview differs from the catalog.");
+        Check(window.FindControl<TextBlock>("AchievementRewardValue")!.Text == "30", "Reward preview differs from the catalog.");
         Check(window.UnlockAchievements(false) && window.Save!.ReadAchievements()[0].RewardAvailable, "Single achievement unlock failed.");
         Check(status.Text == "Reward Available" && !window.FindControl<Button>("UnlockAchievementButton")!.IsEnabled,
             "Achieved item remained unlockable.");

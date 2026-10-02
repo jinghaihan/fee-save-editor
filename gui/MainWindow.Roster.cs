@@ -36,7 +36,7 @@ public partial class MainWindow
     {
         CanEditRoster = false;
         RestoreRosterCharacterButton.IsEnabled = false;
-        RosterStatusInput.Clear();
+        RosterStatusValue.Text = "";
         ExportRosterCharacterButton.IsEnabled = ImportRosterCharacterButton.IsEnabled = false;
         MaximizeAllRosterStatsButton.IsEnabled = MaximizeRosterStatsButton.IsEnabled = false;
         _selectedCharacter = null;
@@ -50,7 +50,7 @@ public partial class MainWindow
         ClearRosterSkills();
         RosterList.ItemsSource = Array.Empty<RosterRow>();
         RosterItemsList.ItemsSource = Array.Empty<InventoryRow>();
-        RosterName.Clear();
+        RosterName.Text = "";
         RosterClass.ItemsSource = Array.Empty<ClassChoice>();
         RosterLevel.Value = RosterExperience.Value = RosterSkillPoints.Value = null;
         RosterInternalLevel.Value = RosterCurrentHP.Value = null;
@@ -112,10 +112,10 @@ public partial class MainWindow
         RosterSkillsForm.IsEnabled = RosterProficienciesForm.IsEnabled = character is not null;
         if (character is null)
         {
-            RosterStatusInput.Clear();
+            RosterStatusValue.Text = "";
             RestoreRosterCharacterButton.IsEnabled = false;
             RefreshRosterEquipment(preserveEdits: false);
-            RosterName.Clear();
+            RosterName.Text = "";
             RosterClass.ItemsSource = Array.Empty<ClassChoice>();
             RosterLevel.Value = RosterExperience.Value = RosterSkillPoints.Value = null;
             RosterInternalLevel.Value = RosterCurrentHP.Value = null;
@@ -189,7 +189,7 @@ public partial class MainWindow
     private void RefreshCharacterNames(RosterCharacter character)
     {
         RosterName.Text = character.Progress.CustomName ?? CharacterName(character);
-        RosterStatusInput.Text = UiLanguage.Get("Roster" + character.Availability);
+        RosterStatusValue.Text = UiLanguage.Get("Roster" + character.Availability);
         RestoreRosterCharacterButton.IsEnabled = Save!.CanRestoreRosterCharacter(character.Index);
         uint selected = (RosterClass.SelectedItem as ClassChoice)?.Definition.Hash ?? character.ClassHash;
         bool refreshing = _refreshingRoster;

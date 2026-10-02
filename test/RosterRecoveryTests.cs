@@ -70,7 +70,7 @@ internal static class RosterRecoveryTests
         list.SelectedItem = list.Items.Cast<MainWindow.RosterRow>().Single(row => row.Index == 1);
         Dispatcher.UIThread.RunJobs();
         var button = window.FindControl<Button>("RestoreRosterCharacterButton")!;
-        var status = window.FindControl<TextBox>("RosterStatusInput")!;
+        var status = window.FindControl<TextBlock>("RosterStatusValue")!;
         Check(button.IsEnabled && status.Text == "Dead", "The recovery controls did not reflect the selected character.");
         window.FindControl<NumericUpDown>("RosterItemUses")!.Value = 9;
         window.ShowEmblems();

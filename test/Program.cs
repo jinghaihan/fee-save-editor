@@ -19,6 +19,16 @@ Check(UiLanguage.Current == "en", "The default UI language is not English.");
 Check(window.Icon is not null, "The Sommie window icon is missing.");
 Check(window.FindControl<Image>("AppLogo") is null,
     "The menu must not contain a separate avatar, matching the FETH template.");
+Check(window.FindControl<Control>("RosterName") is TextBlock
+    && window.FindControl<Control>("RosterStatusValue") is TextBlock
+    && window.FindControl<Control>("RosterStatusInput") is null,
+    "Character names and availability must be plain text, not input controls.");
+foreach (string name in new[] { "AchievementCategoryValue", "AchievementStatusValue", "AchievementRewardValue" })
+    Check(window.FindControl<Control>(name) is TextBlock,
+        $"{name}: read-only achievement information must be plain text.");
+foreach (var list in window.GetLogicalDescendants().OfType<ListBox>())
+    Check(list.ItemsPanel.Build() is VirtualizingStackPanel { CacheLength: 1 },
+        $"{list.Name}: the virtual list is missing the FETH rendering buffer.");
 Check(UiLanguage.Read("en").Keys.Order().SequenceEqual(UiLanguage.Read("zh-Hans").Keys.Order()),
     "English and Chinese resource keys differ.");
 if (args is ["--about-screenshot", var aboutScreenshot])

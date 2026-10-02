@@ -5,6 +5,13 @@
         Title="{DynamicResource AppTitle}"
         Icon="/Assets/app-icon.ico"
         Width="1120" Height="780" MinWidth="860" MinHeight="600">
+  <Window.Styles>
+    <Style Selector="ListBox">
+      <Setter Property="ItemsPanel">
+        <ItemsPanelTemplate><VirtualizingStackPanel CacheLength="1" /></ItemsPanelTemplate>
+      </Setter>
+    </Style>
+  </Window.Styles>
   <Window.Resources>
     <ItemsPanelTemplate x:Key="EngravingEffectsPanel"><UniformGrid Columns="3" /></ItemsPanelTemplate>
     <DataTemplate x:Key="EngravingEffectTemplate" DataType="x:Object" x:CompileBindings="False">
@@ -261,11 +268,11 @@
                 <StackPanel Spacing="16">
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Name}" />
-                  <TextBox Name="RosterName" IsReadOnly="True" Height="42" />
+                  <TextBlock Name="RosterName" MinHeight="42" VerticalAlignment="Center" TextWrapping="Wrap" />
                 </StackPanel>
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Status}" />
-                  <TextBox Name="RosterStatusInput" IsReadOnly="True" Height="42" />
+                  <TextBlock Name="RosterStatusValue" MinHeight="42" VerticalAlignment="Center" TextWrapping="Wrap" />
                   <Button Name="RestoreRosterCharacterButton" Content="{DynamicResource RestoreCharacter}" HorizontalAlignment="Stretch" IsEnabled="False" Click="RestoreRosterCharacter_Click" />
                 </StackPanel>
                 <StackPanel Spacing="8">
@@ -554,15 +561,15 @@
             <TextBlock Name="AchievementNameValue" TextWrapping="Wrap" />
             <StackPanel Spacing="8">
               <TextBlock Text="{DynamicResource Category}" />
-              <TextBox Name="AchievementCategoryValue" IsReadOnly="True" Height="42" />
+              <TextBlock Name="AchievementCategoryValue" MinHeight="42" TextWrapping="Wrap" />
             </StackPanel>
             <StackPanel Spacing="8">
               <TextBlock Text="{DynamicResource Status}" />
-              <TextBox Name="AchievementStatusValue" IsReadOnly="True" Height="42" />
+              <TextBlock Name="AchievementStatusValue" MinHeight="42" TextWrapping="Wrap" />
             </StackPanel>
             <StackPanel Spacing="8">
               <TextBlock Text="{DynamicResource BondFragments}" />
-              <TextBox Name="AchievementRewardValue" IsReadOnly="True" Height="42" />
+              <TextBlock Name="AchievementRewardValue" MinHeight="42" TextWrapping="Wrap" />
             </StackPanel>
             <Button Name="UnlockAchievementButton" Content="{DynamicResource UnlockAchievement}" HorizontalAlignment="Stretch"
                     IsEnabled="False" Click="UnlockAchievement_Click" />
