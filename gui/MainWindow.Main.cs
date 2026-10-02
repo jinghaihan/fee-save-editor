@@ -48,7 +48,6 @@ public partial class MainWindow
         CanEditMain = false;
         SettingsInputs.IsEnabled = false;
         ResourceInputs.IsEnabled = false;
-        ApplyMainButton.IsEnabled = false;
         DifficultyInput.SelectedIndex = -1;
         ModeInput.SelectedIndex = -1;
         SommieNameInput.Clear();
@@ -71,7 +70,6 @@ public partial class MainWindow
             CanEditMain = true;
             SettingsInputs.IsEnabled = true;
             ResourceInputs.IsEnabled = true;
-            ApplyMainButton.IsEnabled = true;
             ShowPage(inspector: false);
         }
         catch (Exception error) when (IsFileError(error))
@@ -101,7 +99,6 @@ public partial class MainWindow
         SupportsPanel.IsVisible = false;
         AchievementsPanel.IsVisible = false;
         InspectorPanel.IsVisible = inspector;
-        ApplyMainButton.IsVisible = !inspector;
         MainNavigation.SelectedIndex = inspector ? -1 : 0;
         RefreshPageTitle();
     }

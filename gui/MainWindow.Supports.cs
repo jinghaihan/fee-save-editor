@@ -25,7 +25,6 @@ public partial class MainWindow
         MainPanel.IsVisible = ItemsPanel.IsVisible = RosterPanel.IsVisible = EmblemsPanel.IsVisible = InspectorPanel.IsVisible = false;
         SupportsPanel.IsVisible = true;
         AchievementsPanel.IsVisible = false;
-        ApplyMainButton.IsVisible = false;
         MainNavigation.SelectedIndex = 4;
         RefreshSupportRecords(preserveEditor: HasPendingSupportValues());
         RefreshPageTitle();

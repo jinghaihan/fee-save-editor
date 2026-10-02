@@ -239,7 +239,6 @@ public partial class MainWindow : Window
                 break;
         }
     }
-    private void ApplyMain_Click(object? sender, RoutedEventArgs e) => ApplyMainValues();
     private void English_Click(object? sender, RoutedEventArgs e) => SetLanguage("en");
     private void Chinese_Click(object? sender, RoutedEventArgs e) => SetLanguage("zh-Hans");
     private void SectionSearch_Changed(object? sender, TextChangedEventArgs e) => RefreshSections();

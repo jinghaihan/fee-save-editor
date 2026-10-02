@@ -23,7 +23,6 @@ public partial class MainWindow
         EmblemsPanel.IsVisible = false;
         SupportsPanel.IsVisible = false;
         AchievementsPanel.IsVisible = false;
-        ApplyMainButton.IsVisible = false;
         MainNavigation.SelectedIndex = 1;
         RefreshPageTitle();
     }

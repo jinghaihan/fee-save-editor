@@ -27,7 +27,6 @@ public partial class MainWindow
         SupportsPanel.IsVisible = false;
         AchievementsPanel.IsVisible = false;
         EmblemsPanel.IsVisible = true;
-        ApplyMainButton.IsVisible = false;
         MainNavigation.SelectedIndex = 3;
         RefreshSupportRecords(preserveEditor: false);
         RefreshPageTitle();

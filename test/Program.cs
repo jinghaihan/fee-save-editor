@@ -22,6 +22,7 @@ Check(window.FindControl<Image>("AppLogo") is null,
 Check(UiLanguage.Read("en").Keys.Order().SequenceEqual(UiLanguage.Read("zh-Hans").Keys.Order()),
     "English and Chinese resource keys differ.");
 Check(!window.FindControl<MenuItem>("SaveCopyMenu")!.IsEnabled, "Copy is enabled without a save.");
+Check(window.FindControl<Button>("ApplyMainButton") is null, "Main must save through File, without a toolbar Apply button.");
 Check(window.FindControl<Grid>("MainPanel")!.IsVisible && !window.FindControl<StackPanel>("SettingsInputs")!.IsEnabled,
     "Main controls must be visible but disabled before a save is loaded.");
 window.ShowItems();
@@ -150,7 +151,7 @@ try
     if (args is ["--save-directory", var screenshotDirectory, "--screenshot", var screenshot, .. var captureOptions])
     {
         Check(window.LoadSave(Path.Combine(screenshotDirectory, "Manual0")), "Could not load screenshot save.");
-        Check(window.FindControl<Button>("ApplyMainButton")!.IsEnabled, "The screenshot's Main action is disabled.");
+        Check(window.FindControl<MenuItem>("SaveCopyMenu")!.IsEnabled, "The screenshot's File save action is disabled.");
         window.SetLanguage("en");
         if (captureOptions is ["--page", "items"] or ["--page", "items-engraving"])
         {

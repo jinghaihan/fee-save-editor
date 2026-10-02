@@ -32,10 +32,9 @@
           <MenuItem Header="{DynamicResource Inspector}" Click="Inspector_Click" />
         </MenuItem>
       </Menu>
-      <Grid Grid.Column="1" ColumnDefinitions="Auto,Auto,Auto" HorizontalAlignment="Right" ColumnSpacing="16">
+      <Grid Grid.Column="1" ColumnDefinitions="Auto,Auto" HorizontalAlignment="Right" ColumnSpacing="16">
         <TextBlock Name="PageTitle" Text="{DynamicResource Main}" VerticalAlignment="Center" FontWeight="SemiBold" />
-        <Button Grid.Column="1" Name="ApplyMainButton" Content="{DynamicResource ApplyChanges}" Click="ApplyMain_Click" IsEnabled="False" VerticalAlignment="Center" />
-        <TabStrip Grid.Column="2" Name="MainNavigation" SelectedIndex="0" SelectionChanged="Navigation_Changed">
+        <TabStrip Grid.Column="1" Name="MainNavigation" SelectedIndex="0" SelectionChanged="Navigation_Changed">
           <TabStripItem Content="{DynamicResource Main}" />
           <TabStripItem Content="{DynamicResource Items}" />
           <TabStripItem Content="{DynamicResource Roster}" />
