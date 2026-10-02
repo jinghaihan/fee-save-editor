@@ -537,7 +537,7 @@
     </Grid>
     <Grid Name="AchievementsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
-        <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="16">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto" RowSpacing="16">
           <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
             <TextBlock Text="{DynamicResource Achievements}" FontWeight="SemiBold" />
             <TextBlock Name="AchievementCompletion" Grid.Column="1" />
@@ -546,11 +546,15 @@
                     AutomationProperties.Name="{DynamicResource Category}" SelectionChanged="AchievementFilter_Changed">
             <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
           </ComboBox>
-          <TextBox Name="AchievementSearch" Grid.Row="2" PlaceholderText="{DynamicResource Search}" TextChanged="AchievementSearch_Changed" />
-          <ListBox Name="AchievementList" Grid.Row="3" SelectionChanged="AchievementList_Changed">
+          <ComboBox Name="AchievementStatusFilter" Grid.Row="2" Margin="0" Height="42" HorizontalAlignment="Stretch"
+                    AutomationProperties.Name="{DynamicResource Status}" SelectionChanged="AchievementFilter_Changed">
+            <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
+          </ComboBox>
+          <TextBox Name="AchievementSearch" Grid.Row="3" PlaceholderText="{DynamicResource Search}" TextChanged="AchievementSearch_Changed" />
+          <ListBox Name="AchievementList" Grid.Row="4" SelectionChanged="AchievementList_Changed">
             <ListBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" TextWrapping="Wrap" /></DataTemplate></ListBox.ItemTemplate>
           </ListBox>
-          <Button Name="UnlockAllAchievementsButton" Grid.Row="4" Content="{DynamicResource UnlockAll}" HorizontalAlignment="Stretch"
+          <Button Name="UnlockAllAchievementsButton" Grid.Row="5" Content="{DynamicResource UnlockAll}" HorizontalAlignment="Stretch"
                   IsEnabled="False" Click="UnlockAllAchievements_Click" />
         </Grid>
       </suki:GlassCard>

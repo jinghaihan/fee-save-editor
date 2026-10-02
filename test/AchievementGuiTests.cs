@@ -25,7 +25,19 @@ internal static class AchievementGuiTests
         var search = window.FindControl<TextBox>("AchievementSearch")!;
         var category = window.FindControl<ComboBox>("AchievementCategoryInput")!;
         var status = window.FindControl<TextBlock>("AchievementStatusValue")!;
+        var statusFilter = window.FindControl<ComboBox>("AchievementStatusFilter")!;
         Check(list.ItemCount == 765 && category.ItemCount == 6 && status.Text == "Not Achieved", "Achievement controls are incomplete.");
+        Check(statusFilter.ItemCount == 4 && list.Items.Cast<MainWindow.AchievementRow>()
+            .All(row => row.Label == AchievementCatalog.Achievements.Single(value => value.Id == row.Id).Name("en")),
+            "Achievement rows still repeat status text or lack the status filter.");
+        statusFilter.SelectedIndex = 1;
+        Check(list.ItemCount == 762 && status.Text == "Not Achieved", "Unfulfilled status filter is incorrect.");
+        statusFilter.SelectedIndex = 2;
+        Check(list.ItemCount == 2 && status.Text == "Reward Available", "Pending rewards must include both Cleared and Showed.");
+        statusFilter.SelectedIndex = 3;
+        Check(list.ItemCount == 1 && status.Text == "Reward Claimed", "Claimed status filter is incorrect.");
+        statusFilter.SelectedIndex = 0;
+        list.SelectedIndex = 0;
         Check(window.FindControl<TextBlock>("AchievementRewardValue")!.Text == "30", "Reward preview differs from the catalog.");
         Check(window.UnlockAchievements(false) && window.Save!.ReadAchievements()[0].RewardAvailable, "Single achievement unlock failed.");
         Check(status.Text == "Reward Available" && !window.FindControl<Button>("UnlockAchievementButton")!.IsEnabled,
@@ -38,18 +50,21 @@ internal static class AchievementGuiTests
         search.Clear();
         Dispatcher.UIThread.RunJobs();
         string selected = ((MainWindow.AchievementRow)list.SelectedItem!).Id;
+        statusFilter.SelectedIndex = 2;
         for (int pass = 0; pass < 3; pass++)
         {
             window.SetLanguage("zh-Hans"); Dispatcher.UIThread.RunJobs();
             Check(((MainWindow.AchievementRow)list.SelectedItem!).Id == selected && status.Text == "奖励待领取"
                 && window.FindControl<TextBlock>("AchievementNameValue")!.Text!.Contains("凡德雷"), "Achievement fields did not translate together.");
             window.SetLanguage("en"); Dispatcher.UIThread.RunJobs();
-            Check(status.Text == "Reward Available" && category.SelectedIndex == 1
+            Check(status.Text == "Reward Available" && category.SelectedIndex == 1 && statusFilter.SelectedIndex == 2
                 && window.FindControl<TextBlock>("AchievementNameValue")!.Text!.Contains("Vander"), "English or category selection did not recover.");
         }
+        statusFilter.SelectedIndex = 0;
         category.SelectedIndex = 2;
         Check(list.ItemCount == 167, "Category filter returned the wrong entries.");
         search.Text = "no-match";
+        statusFilter.SelectedIndex = 1;
         Dispatcher.UIThread.RunJobs();
         Check(list.ItemCount == 0 && !window.FindControl<StackPanel>("AchievementForm")!.IsEnabled,
             "Empty search left a stale achievement editable.");
@@ -75,7 +90,8 @@ internal static class AchievementGuiTests
         File.WriteAllBytes(malformed, AchievementTests.Fixture("overflow"));
         Check(window.LoadSave(malformed) && !window.CanEditAchievements && window.CanEditMain,
             "Malformed achievements disabled unrelated Main fields.");
-        Check(list.ItemCount == 0 && status.Text == "" && !window.UnlockAchievements(true), "Malformed achievements left stale state.");
+        Check(list.ItemCount == 0 && status.Text == "" && statusFilter.SelectedIndex == 0
+            && !window.UnlockAchievements(true), "Malformed achievements left stale state or filters.");
         Check(File.ReadAllBytes(source).AsSpan().SequenceEqual(original), "Achievement UI overwrote the source.");
         Console.WriteLine("Achievement GUI: categories/search, single/batch scopes, translations, cards/navigation and reward-safe copies passed.");
     }

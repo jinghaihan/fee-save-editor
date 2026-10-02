@@ -9,6 +9,7 @@ public partial class MainWindow
 {
     public sealed record AchievementRow(string Id, string Label);
     public sealed record AchievementCategoryChoice(AchievementCategory? Category, string Label);
+    public sealed record AchievementStatusChoice(AchievementStatus? Status, string Label);
     public bool CanEditAchievements { get; private set; }
     private IReadOnlyList<AchievementProgress> _achievements = [];
     private string? _selectedAchievement;
@@ -31,6 +32,7 @@ public partial class MainWindow
         _selectedAchievement = null;
         AchievementSearch.Clear();
         AchievementCategoryInput.SelectedIndex = 0;
+        AchievementStatusFilter.SelectedIndex = 0;
         if (Save is not null && Save.Kind == SaveKind.Game && Save.Sections.Any(row => row.Name == "USER"))
         {
             try { _achievements = Save.ReadAchievements(); CanEditAchievements = true; }
@@ -57,6 +59,12 @@ public partial class MainWindow
             .. Enum.GetValues<AchievementCategory>().Select(value => new AchievementCategoryChoice(value, AchievementCategoryName(value)))];
         AchievementCategoryInput.ItemsSource = choices;
         AchievementCategoryInput.SelectedItem = choices.Single(row => row.Category == category);
+        var status = (AchievementStatusFilter.SelectedItem as AchievementStatusChoice)?.Status;
+        AchievementStatusChoice[] statuses = [new(null, UiLanguage.Get("AllStatuses")),
+            .. new[] { AchievementStatus.None, AchievementStatus.Cleared, AchievementStatus.Completed }
+                .Select(value => new AchievementStatusChoice(value, AchievementStatusName(value)))];
+        AchievementStatusFilter.ItemsSource = statuses;
+        AchievementStatusFilter.SelectedItem = statuses.Single(row => row.Status == status);
         _refreshingAchievements = false;
         RefreshAchievementRecords();
     }
@@ -69,8 +77,15 @@ public partial class MainWindow
         UnlockAllAchievementsButton.IsEnabled = CanEditAchievements && _achievements.Any(row => !row.Achieved);
         string query = AchievementSearch.Text?.Trim() ?? "";
         var category = (AchievementCategoryInput.SelectedItem as AchievementCategoryChoice)?.Category;
+        var status = (AchievementStatusFilter.SelectedItem as AchievementStatusChoice)?.Status;
         var rows = _achievements.Where(row => category is null || row.Definition.Category == category)
-            .Select(row => new AchievementRow(row.Definition.Id, $"{row.Definition.Name(UiLanguage.Current)} · {AchievementStatusName(row.Status)}"))
+            .Where(row => status switch
+            {
+                null => true,
+                AchievementStatus.Cleared => row.RewardAvailable,
+                _ => row.Status == status
+            })
+            .Select(row => new AchievementRow(row.Definition.Id, row.Definition.Name(UiLanguage.Current)))
             .Where(row => row.Label.Contains(query, StringComparison.OrdinalIgnoreCase)).ToArray();
         AchievementList.ItemsSource = rows;
         AchievementList.SelectedItem = rows.FirstOrDefault(row => row.Id == _selectedAchievement) ?? rows.FirstOrDefault();
