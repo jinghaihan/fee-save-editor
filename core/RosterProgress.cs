@@ -8,7 +8,7 @@ public sealed record RosterProgress(int CurrentHP, int InternalLevel, uint Origi
 
 internal sealed record RosterProgressLayout(RosterProgress Values, int EquippedStart, int EquippedEnd,
     int PoolStart, int PoolEnd, int ClassSkillStart, int ClassSkillEnd, int MasksOffset, int InternalLevelOffset,
-    int HPBonus)
+    int HPBonus, int TailStart)
 {
     public static RosterProgressLayout Read(SaveReader reader, int currentHP, UnitForce force, uint person)
     {
@@ -58,7 +58,7 @@ internal sealed record RosterProgressLayout(RosterProgress Values, int EquippedS
         }
         var values = new RosterProgress(currentHP, internalLevel, original, aptitude, weapons, classSkill, equipped, pool, name, gender);
         return new(values, equippedStart, equippedEnd, poolStart, poolEnd, classSkillStart, classSkillEnd,
-            masksOffset, internalOffset, hpBonus);
+            masksOffset, internalOffset, hpBonus, reader.Position);
     }
 
     private static void SkipAI(SaveReader reader)

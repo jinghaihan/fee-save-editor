@@ -86,6 +86,7 @@ try
     RosterSkillTests.Run(window, temporary);
     RosterStatTests.Run();
     RosterStatGuiTests.Run(window, temporary);
+    EmblemTests.Run();
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -107,6 +108,7 @@ try
                 RosterClassTests.CheckReal(loaded);
                 RosterSkillTests.CheckReal(loaded);
                 RosterStatTests.CheckReal(loaded);
+                EmblemTests.CheckReal(loaded);
                 var current = loaded.ReadMainValues();
                 var updated = current with { Money = 12345, BondFragments = 6789, IronIngots = 111,
                     SteelIngots = 222, SilverIngots = 333, Difficulty = Difficulty.Normal,

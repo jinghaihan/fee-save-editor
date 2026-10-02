@@ -205,15 +205,16 @@ internal static class RosterTests
         Console.WriteLine("Real roster: 41 characters and classes recognized; SP and equipment edits restored byte-for-byte.");
     }
 
-    public static byte[] Fixture(int baseStrength = 3, Action<byte[]>? mutate = null, UnitForce force = UnitForce.Absent)
+    public static byte[] Fixture(int baseStrength = 3, Action<byte[]>? mutate = null, UnitForce force = UnitForce.Absent,
+        bool validEquipment = false)
     {
         using var output = new MemoryStream();
         using (var writer = new BinaryWriter(output, Encoding.UTF8, leaveOpen: true))
         {
             writer.Write(0u); writer.Write(0xcdcdcdcdu); writer.Write(new byte[24]);
             writer.Write((byte)force); writer.Write((byte)2);
-            writer.Write(Character("PID_リュール", "JID_神竜ノ子", baseStrength, optionalTarget: false, force));
-            writer.Write(Character("PID_ユナカ", "JID_シーフ", 3, optionalTarget: true, force));
+            writer.Write(Character("PID_リュール", "JID_神竜ノ子", baseStrength, optionalTarget: false, force, validEquipment));
+            writer.Write(Character("PID_ユナカ", "JID_シーフ", 3, optionalTarget: true, force, validEquipment));
             writer.Write((byte)255);
         }
         byte[] payload = output.ToArray();
@@ -241,7 +242,7 @@ internal static class RosterTests
         return result;
     }
 
-    private static byte[] Character(string person, string job, int baseStrength, bool optionalTarget, UnitForce force)
+    private static byte[] Character(string person, string job, int baseStrength, bool optionalTarget, UnitForce force, bool validEquipment)
     {
         using var output = new MemoryStream();
         using var writer = new BinaryWriter(output, Encoding.UTF8, leaveOpen: true);
@@ -285,7 +286,17 @@ internal static class RosterTests
             for (int index = 0; index < 16; index++) { writer.Write(0u); writer.Write((ushort)0); }
         }
         writer.Write((byte)2); writer.Write(false);
-        writer.Write(Enumerable.Range(1, 48).Select(value => (byte)value).ToArray());
+        if (validEquipment)
+        {
+            writer.Write((ushort)0); writer.Write((byte)4); writer.Write((byte)2);
+            writer.Write(1u); writer.Write(20u); writer.Write(2u); writer.Write(30u);
+            writer.Write((ushort)0); writer.Write((byte)10); writer.Write(new byte[10]); writer.Write((ushort)0);
+            writer.Write(optionalTarget ? 0u : 1u); writer.Write(0u); writer.Write(optionalTarget ? 0u : 10u);
+            writer.Write(0u); writer.Write(optionalTarget);
+            if (optionalTarget) Reference(writer, ItemCatalog.Hash("PID_ヴァンドレ"));
+            writer.Write(0u);
+        }
+        else writer.Write(Enumerable.Range(1, 48).Select(value => (byte)value).ToArray());
         writer.Write((byte)1); writer.Write((byte)2); writer.Write((short)400); writer.Write(0x87654321u);
         writer.Write((sbyte)-1); writer.Write((sbyte)-1);
         byte[] result = output.ToArray();

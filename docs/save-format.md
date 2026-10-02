@@ -288,6 +288,55 @@ the editor accepts -100 through 100, matching the native setter's bounds.
 Changing it or the displayed level does not simulate growth. Skill and class-skill
 changes relocate the containing record/section and preserve subsequent sections.
 
+## Emblem bonds and ring stock
+
+`GDBD` pool version 2 has a 32-byte header and a 32-bit holder count.
+Each holder saves its instance ID, UTF-16 GID, an optional version-0 Pact Ring
+partner record, and a 16-bit character-bond count. A bond saves a UTF-16 PID,
+version 3, byte level, 16-bit cumulative EXP, inherited-skill version 2 with
+32-bit count/hash entries, then one byte of bond-conversation notification flags.
+This is verified against `GodBond.OnSerialize` at `0x2b4ed10` and
+`GodBondHolder.OnSerialize` at `0x2b4fe30` in the supplied version-304 executable.
+
+Normal levels 1–20 use EXP thresholds
+`0,11,22,33,44,55,66,77,88,99,109,120,131,142,153,164,175,186,197,208`.
+Level/EXP edits must agree. Native `GodBond.SetLevel` at `0x2b4d760` sets
+conversation bits 2/4/8 at levels 5/10/20 and unlocks a defined global level-cap
+variable above 10. The editor follows those flags and preserves other bits and
+already purchased inherited skills. Unlike the native debug setter, it does not
+clear the purchased-skill dictionary. A level-21 Pact Ring bond is preserved and
+cannot be replaced by a normal level-20 edit. Story ownership and Pact partners
+are not invented by editing bond progress.
+
+For the 12 base Emblems, cap-variable IDs come from the pinned `God.xml` table.
+Setting a bond above 10 sets that integer to 1, adding the typed variable if absent
+and resizing the USER block/section/index with CRC32 recomputation. Alear has no
+cap variable; DLC bonds are edited without fabricating paralogue-completion keys.
+
+`RING` pool version 3 saves a 32-bit count and fixed 11-byte records: instance ID,
+nullable hash-reference encoding (occupied entries require a hash), and byte stock.
+`UnitRing.OnSerialize` is at `0x1c5c9d0`; the stock setter at `0x1c5c8b0` limits
+unowned common rings to 0–99 and refuses stock edits on owned rings. An equipped
+instance is therefore constrained to exactly one. `IsSingleRank` affects rank
+variants, not the common-ring stock limit. Pool capacity is 750 records, not 750
+total copies. This editor changes existing common-ring stock, not pool membership.
+
+Owners are resolved from the UNIT trailer after AI/customization: two bytes,
+battle-data version 4 and sparse count/pairs, two bytes, weapon-rank count/bytes,
+two bytes, and three 32-bit instance links (Emblem, partner Emblem, bond ring).
+The parser verifies the rest of the variable-length trailer and rejects duplicate
+ring owners or references to missing ring instances. Emblem equipment links are
+currently read, not reassigned; changing them also requires GOD ownership updates.
+
+`tools/import_emblem_catalog.py` imports minimal identifiers, names and thresholds
+from FE17-DOC revision `99677e4cad22b636bee4af5a3052003bed17c443` and Iron19_L10n
+revision `810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b`. It includes all 20 saved main/DLC
+Emblems and 483 named common rings. Four untranslated color/debug table entries
+are not editable catalog entries; unknown saved records remain visible by hash.
+Both supplied saves parse completely: 820 bonds and 374 rings each, with 41 unit
+links in the manual save and 52 in the automatic save (including non-roster units).
+Tests use synthetic fixtures and temporary copies; in-game loading is not yet verified.
+
 ## Resource inputs
 
 The executable dump is useful for analyzing serialization and game logic.

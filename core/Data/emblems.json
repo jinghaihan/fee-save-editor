@@ -1,0 +1,5040 @@
+{
+  "DataRevision": "99677e4cad22b636bee4af5a3052003bed17c443",
+  "TextRevision": "810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b",
+  "Emblems": [
+    {
+      "Id": "GID_マルス",
+      "Names": {
+        "en": "Marth",
+        "zh-Hans": "马尔斯"
+      },
+      "LevelCapVariable": "G_マルスレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_シグルド",
+      "Names": {
+        "en": "Sigurd",
+        "zh-Hans": "西格尔特"
+      },
+      "LevelCapVariable": "G_シグルドレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_セリカ",
+      "Names": {
+        "en": "Celica",
+        "zh-Hans": "赛莉卡"
+      },
+      "LevelCapVariable": "G_セリカレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_ミカヤ",
+      "Names": {
+        "en": "Micaiah",
+        "zh-Hans": "米卡雅"
+      },
+      "LevelCapVariable": "G_ミカヤレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_ロイ",
+      "Names": {
+        "en": "Roy",
+        "zh-Hans": "罗伊"
+      },
+      "LevelCapVariable": "G_ロイレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_リーフ",
+      "Names": {
+        "en": "Leif",
+        "zh-Hans": "里弗"
+      },
+      "LevelCapVariable": "G_リーフレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_ルキナ",
+      "Names": {
+        "en": "Lucina",
+        "zh-Hans": "露琪娜"
+      },
+      "LevelCapVariable": "G_ルキナレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_リン",
+      "Names": {
+        "en": "Lyn",
+        "zh-Hans": "琳"
+      },
+      "LevelCapVariable": "G_リンレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_アイク",
+      "Names": {
+        "en": "Ike",
+        "zh-Hans": "艾克"
+      },
+      "LevelCapVariable": "G_アイクレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_ベレト",
+      "Names": {
+        "en": "Byleth",
+        "zh-Hans": "贝雷特"
+      },
+      "LevelCapVariable": "G_ベレトレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_カムイ",
+      "Names": {
+        "en": "Corrin",
+        "zh-Hans": "神威"
+      },
+      "LevelCapVariable": "G_カムイレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_エイリーク",
+      "Names": {
+        "en": "Eirika",
+        "zh-Hans": "艾莉可"
+      },
+      "LevelCapVariable": "G_エイリークレベルキャップ解放",
+      "Dlc": false
+    },
+    {
+      "Id": "GID_リュール",
+      "Names": {
+        "en": "Alear",
+        "zh-Hans": "琉尔"
+      },
+      "LevelCapVariable": null,
+      "Dlc": false
+    },
+    {
+      "Id": "GID_エーデルガルト",
+      "Names": {
+        "en": "Edelgard",
+        "zh-Hans": "艾黛尔贾特"
+      },
+      "LevelCapVariable": null,
+      "Dlc": true
+    },
+    {
+      "Id": "GID_チキ",
+      "Names": {
+        "en": "Tiki",
+        "zh-Hans": "琪姬"
+      },
+      "LevelCapVariable": null,
+      "Dlc": true
+    },
+    {
+      "Id": "GID_ヘクトル",
+      "Names": {
+        "en": "Hector",
+        "zh-Hans": "海克托尔"
+      },
+      "LevelCapVariable": null,
+      "Dlc": true
+    },
+    {
+      "Id": "GID_セネリオ",
+      "Names": {
+        "en": "Soren",
+        "zh-Hans": "塞涅里欧"
+      },
+      "LevelCapVariable": null,
+      "Dlc": true
+    },
+    {
+      "Id": "GID_カミラ",
+      "Names": {
+        "en": "Camilla",
+        "zh-Hans": "卡美拉"
+      },
+      "LevelCapVariable": null,
+      "Dlc": true
+    },
+    {
+      "Id": "GID_クロム",
+      "Names": {
+        "en": "Chrom",
+        "zh-Hans": "库洛武"
+      },
+      "LevelCapVariable": null,
+      "Dlc": true
+    },
+    {
+      "Id": "GID_ヴェロニカ",
+      "Names": {
+        "en": "Veronica",
+        "zh-Hans": "维洛妮卡"
+      },
+      "LevelCapVariable": null,
+      "Dlc": true
+    }
+  ],
+  "Rings": [
+    {
+      "Id": "RNID_紋章_シーダ_C",
+      "Names": {
+        "en": "Caeda",
+        "zh-Hans": "希达"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_シーダ_B",
+      "Names": {
+        "en": "Caeda",
+        "zh-Hans": "希达"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_シーダ_A",
+      "Names": {
+        "en": "Caeda",
+        "zh-Hans": "希达"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_シーダ_S",
+      "Names": {
+        "en": "Caeda",
+        "zh-Hans": "希达"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_オグマ_C",
+      "Names": {
+        "en": "Ogma",
+        "zh-Hans": "奥古马"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_オグマ_B",
+      "Names": {
+        "en": "Ogma",
+        "zh-Hans": "奥古马"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_オグマ_A",
+      "Names": {
+        "en": "Ogma",
+        "zh-Hans": "奥古马"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_オグマ_S",
+      "Names": {
+        "en": "Ogma",
+        "zh-Hans": "奥古马"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ナバール_C",
+      "Names": {
+        "en": "Navarre",
+        "zh-Hans": "拿巴尔"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ナバール_B",
+      "Names": {
+        "en": "Navarre",
+        "zh-Hans": "拿巴尔"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ナバール_A",
+      "Names": {
+        "en": "Navarre",
+        "zh-Hans": "拿巴尔"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ナバール_S",
+      "Names": {
+        "en": "Navarre",
+        "zh-Hans": "拿巴尔"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_マリク_C",
+      "Names": {
+        "en": "Merric",
+        "zh-Hans": "马利克"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_マリク_B",
+      "Names": {
+        "en": "Merric",
+        "zh-Hans": "马利克"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_マリク_A",
+      "Names": {
+        "en": "Merric",
+        "zh-Hans": "马利克"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_マリク_S",
+      "Names": {
+        "en": "Merric",
+        "zh-Hans": "马利克"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ミネルバ_C",
+      "Names": {
+        "en": "Minerva",
+        "zh-Hans": "米奈娃"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ミネルバ_B",
+      "Names": {
+        "en": "Minerva",
+        "zh-Hans": "米奈娃"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ミネルバ_A",
+      "Names": {
+        "en": "Minerva",
+        "zh-Hans": "米奈娃"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ミネルバ_S",
+      "Names": {
+        "en": "Minerva",
+        "zh-Hans": "米奈娃"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_リンダ_C",
+      "Names": {
+        "en": "Linde",
+        "zh-Hans": "琳达"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_リンダ_B",
+      "Names": {
+        "en": "Linde",
+        "zh-Hans": "琳达"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_リンダ_A",
+      "Names": {
+        "en": "Linde",
+        "zh-Hans": "琳达"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_リンダ_S",
+      "Names": {
+        "en": "Linde",
+        "zh-Hans": "琳达"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_チキ_C",
+      "Names": {
+        "en": "Tiki",
+        "zh-Hans": "琪姬"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_チキ_B",
+      "Names": {
+        "en": "Tiki",
+        "zh-Hans": "琪姬"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_チキ_A",
+      "Names": {
+        "en": "Tiki",
+        "zh-Hans": "琪姬"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_チキ_S",
+      "Names": {
+        "en": "Tiki",
+        "zh-Hans": "琪姬"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_クリス_C",
+      "Names": {
+        "en": "Kris",
+        "zh-Hans": "克里斯"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_クリス_B",
+      "Names": {
+        "en": "Kris",
+        "zh-Hans": "克里斯"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_クリス_A",
+      "Names": {
+        "en": "Kris",
+        "zh-Hans": "克里斯"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_クリス_S",
+      "Names": {
+        "en": "Kris",
+        "zh-Hans": "克里斯"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_カタリナ_C",
+      "Names": {
+        "en": "Katarina",
+        "zh-Hans": "卡达丽娜"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_カタリナ_B",
+      "Names": {
+        "en": "Katarina",
+        "zh-Hans": "卡达丽娜"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_カタリナ_A",
+      "Names": {
+        "en": "Katarina",
+        "zh-Hans": "卡达丽娜"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_カタリナ_S",
+      "Names": {
+        "en": "Katarina",
+        "zh-Hans": "卡达丽娜"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ローロー_C",
+      "Names": {
+        "en": "Legion",
+        "zh-Hans": "罗罗"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ローロー_B",
+      "Names": {
+        "en": "Legion",
+        "zh-Hans": "罗罗"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ローロー_A",
+      "Names": {
+        "en": "Legion",
+        "zh-Hans": "罗罗"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_紋章_ローロー_S",
+      "Names": {
+        "en": "Legion",
+        "zh-Hans": "罗罗"
+      },
+      "EmblemId": "GID_マルス",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_ディアドラ_C",
+      "Names": {
+        "en": "Deirdre",
+        "zh-Hans": "迪雅朵拉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_ディアドラ_B",
+      "Names": {
+        "en": "Deirdre",
+        "zh-Hans": "迪雅朵拉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_ディアドラ_A",
+      "Names": {
+        "en": "Deirdre",
+        "zh-Hans": "迪雅朵拉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_ディアドラ_S",
+      "Names": {
+        "en": "Deirdre",
+        "zh-Hans": "迪雅朵拉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アーダン_C",
+      "Names": {
+        "en": "Arden",
+        "zh-Hans": "亚丹"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アーダン_B",
+      "Names": {
+        "en": "Arden",
+        "zh-Hans": "亚丹"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アーダン_A",
+      "Names": {
+        "en": "Arden",
+        "zh-Hans": "亚丹"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アーダン_S",
+      "Names": {
+        "en": "Arden",
+        "zh-Hans": "亚丹"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アゼル_C",
+      "Names": {
+        "en": "Azelle",
+        "zh-Hans": "艾泽尔"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アゼル_B",
+      "Names": {
+        "en": "Azelle",
+        "zh-Hans": "艾泽尔"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アゼル_A",
+      "Names": {
+        "en": "Azelle",
+        "zh-Hans": "艾泽尔"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アゼル_S",
+      "Names": {
+        "en": "Azelle",
+        "zh-Hans": "艾泽尔"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_キュアン_C",
+      "Names": {
+        "en": "Quan",
+        "zh-Hans": "乔安"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_キュアン_B",
+      "Names": {
+        "en": "Quan",
+        "zh-Hans": "乔安"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_キュアン_A",
+      "Names": {
+        "en": "Quan",
+        "zh-Hans": "乔安"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_キュアン_S",
+      "Names": {
+        "en": "Quan",
+        "zh-Hans": "乔安"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_エスリン_C",
+      "Names": {
+        "en": "Ethlyn",
+        "zh-Hans": "艾丝琳"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_エスリン_B",
+      "Names": {
+        "en": "Ethlyn",
+        "zh-Hans": "艾丝琳"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_エスリン_A",
+      "Names": {
+        "en": "Ethlyn",
+        "zh-Hans": "艾丝琳"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_エスリン_S",
+      "Names": {
+        "en": "Ethlyn",
+        "zh-Hans": "艾丝琳"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アイラ_C",
+      "Names": {
+        "en": "Ayra",
+        "zh-Hans": "艾伊拉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アイラ_B",
+      "Names": {
+        "en": "Ayra",
+        "zh-Hans": "艾伊拉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アイラ_A",
+      "Names": {
+        "en": "Ayra",
+        "zh-Hans": "艾伊拉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_アイラ_S",
+      "Names": {
+        "en": "Ayra",
+        "zh-Hans": "艾伊拉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_ラケシス_C",
+      "Names": {
+        "en": "Lachesis",
+        "zh-Hans": "拉克西丝"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_ラケシス_B",
+      "Names": {
+        "en": "Lachesis",
+        "zh-Hans": "拉克西丝"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_ラケシス_A",
+      "Names": {
+        "en": "Lachesis",
+        "zh-Hans": "拉克西丝"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_ラケシス_S",
+      "Names": {
+        "en": "Lachesis",
+        "zh-Hans": "拉克西丝"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_レヴィン_C",
+      "Names": {
+        "en": "Lewyn",
+        "zh-Hans": "雷文"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_レヴィン_B",
+      "Names": {
+        "en": "Lewyn",
+        "zh-Hans": "雷文"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_レヴィン_A",
+      "Names": {
+        "en": "Lewyn",
+        "zh-Hans": "雷文"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_レヴィン_S",
+      "Names": {
+        "en": "Lewyn",
+        "zh-Hans": "雷文"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_フュリー_C",
+      "Names": {
+        "en": "Erinys",
+        "zh-Hans": "菲莉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_フュリー_B",
+      "Names": {
+        "en": "Erinys",
+        "zh-Hans": "菲莉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_フュリー_A",
+      "Names": {
+        "en": "Erinys",
+        "zh-Hans": "菲莉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_フュリー_S",
+      "Names": {
+        "en": "Erinys",
+        "zh-Hans": "菲莉"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_セリス_C",
+      "Names": {
+        "en": "Seliph",
+        "zh-Hans": "赛列斯"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_セリス_B",
+      "Names": {
+        "en": "Seliph",
+        "zh-Hans": "赛列斯"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_セリス_A",
+      "Names": {
+        "en": "Seliph",
+        "zh-Hans": "赛列斯"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖戦_セリス_S",
+      "Names": {
+        "en": "Seliph",
+        "zh-Hans": "赛列斯"
+      },
+      "EmblemId": "GID_シグルド",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_アルム_C",
+      "Names": {
+        "en": "Alm",
+        "zh-Hans": "阿雷武"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_アルム_B",
+      "Names": {
+        "en": "Alm",
+        "zh-Hans": "阿雷武"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_アルム_A",
+      "Names": {
+        "en": "Alm",
+        "zh-Hans": "阿雷武"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_アルム_S",
+      "Names": {
+        "en": "Alm",
+        "zh-Hans": "阿雷武"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_エフィ_C",
+      "Names": {
+        "en": "Faye",
+        "zh-Hans": "艾菲"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_エフィ_B",
+      "Names": {
+        "en": "Faye",
+        "zh-Hans": "艾菲"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_エフィ_A",
+      "Names": {
+        "en": "Faye",
+        "zh-Hans": "艾菲"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_エフィ_S",
+      "Names": {
+        "en": "Faye",
+        "zh-Hans": "艾菲"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_ルカ_C",
+      "Names": {
+        "en": "Lukas",
+        "zh-Hans": "卢卡"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_ルカ_B",
+      "Names": {
+        "en": "Lukas",
+        "zh-Hans": "卢卡"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_ルカ_A",
+      "Names": {
+        "en": "Lukas",
+        "zh-Hans": "卢卡"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_ルカ_S",
+      "Names": {
+        "en": "Lukas",
+        "zh-Hans": "卢卡"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_シルク_C",
+      "Names": {
+        "en": "Silque",
+        "zh-Hans": "希尔科"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_シルク_B",
+      "Names": {
+        "en": "Silque",
+        "zh-Hans": "希尔科"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_シルク_A",
+      "Names": {
+        "en": "Silque",
+        "zh-Hans": "希尔科"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_シルク_S",
+      "Names": {
+        "en": "Silque",
+        "zh-Hans": "希尔科"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_デューテ_C",
+      "Names": {
+        "en": "Delthea",
+        "zh-Hans": "迪优特"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_デューテ_B",
+      "Names": {
+        "en": "Delthea",
+        "zh-Hans": "迪优特"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_デューテ_A",
+      "Names": {
+        "en": "Delthea",
+        "zh-Hans": "迪优特"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_デューテ_S",
+      "Names": {
+        "en": "Delthea",
+        "zh-Hans": "迪优特"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_メイ_C",
+      "Names": {
+        "en": "Mae",
+        "zh-Hans": "梅伊"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_メイ_B",
+      "Names": {
+        "en": "Mae",
+        "zh-Hans": "梅伊"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_メイ_A",
+      "Names": {
+        "en": "Mae",
+        "zh-Hans": "梅伊"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_メイ_S",
+      "Names": {
+        "en": "Mae",
+        "zh-Hans": "梅伊"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_ジェニー_C",
+      "Names": {
+        "en": "Genny",
+        "zh-Hans": "杰妮"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_ジェニー_B",
+      "Names": {
+        "en": "Genny",
+        "zh-Hans": "杰妮"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_ジェニー_A",
+      "Names": {
+        "en": "Genny",
+        "zh-Hans": "杰妮"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_ジェニー_S",
+      "Names": {
+        "en": "Genny",
+        "zh-Hans": "杰妮"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_セーバー_C",
+      "Names": {
+        "en": "Saber",
+        "zh-Hans": "赛巴"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_セーバー_B",
+      "Names": {
+        "en": "Saber",
+        "zh-Hans": "赛巴"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_セーバー_A",
+      "Names": {
+        "en": "Saber",
+        "zh-Hans": "赛巴"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_セーバー_S",
+      "Names": {
+        "en": "Saber",
+        "zh-Hans": "赛巴"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_バルボ_C",
+      "Names": {
+        "en": "Valbar",
+        "zh-Hans": "巴尔博"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_バルボ_B",
+      "Names": {
+        "en": "Valbar",
+        "zh-Hans": "巴尔博"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_バルボ_A",
+      "Names": {
+        "en": "Valbar",
+        "zh-Hans": "巴尔博"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_バルボ_S",
+      "Names": {
+        "en": "Valbar",
+        "zh-Hans": "巴尔博"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_コンラート_C",
+      "Names": {
+        "en": "Conrad",
+        "zh-Hans": "孔拉特"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_コンラート_B",
+      "Names": {
+        "en": "Conrad",
+        "zh-Hans": "孔拉特"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_コンラート_A",
+      "Names": {
+        "en": "Conrad",
+        "zh-Hans": "孔拉特"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_外伝_コンラート_S",
+      "Names": {
+        "en": "Conrad",
+        "zh-Hans": "孔拉特"
+      },
+      "EmblemId": "GID_セリカ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_サザ_C",
+      "Names": {
+        "en": "Sothe",
+        "zh-Hans": "萨札"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_サザ_B",
+      "Names": {
+        "en": "Sothe",
+        "zh-Hans": "萨札"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_サザ_A",
+      "Names": {
+        "en": "Sothe",
+        "zh-Hans": "萨札"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_サザ_S",
+      "Names": {
+        "en": "Sothe",
+        "zh-Hans": "萨札"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ニケ_C",
+      "Names": {
+        "en": "Nailah",
+        "zh-Hans": "妮凯"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ニケ_B",
+      "Names": {
+        "en": "Nailah",
+        "zh-Hans": "妮凯"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ニケ_A",
+      "Names": {
+        "en": "Nailah",
+        "zh-Hans": "妮凯"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ニケ_S",
+      "Names": {
+        "en": "Nailah",
+        "zh-Hans": "妮凯"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_エリンシア_C",
+      "Names": {
+        "en": "Elincia",
+        "zh-Hans": "艾琳西亚"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_エリンシア_B",
+      "Names": {
+        "en": "Elincia",
+        "zh-Hans": "艾琳西亚"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_エリンシア_A",
+      "Names": {
+        "en": "Elincia",
+        "zh-Hans": "艾琳西亚"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_エリンシア_S",
+      "Names": {
+        "en": "Elincia",
+        "zh-Hans": "艾琳西亚"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_リアーネ_C",
+      "Names": {
+        "en": "Leanne",
+        "zh-Hans": "莉娅妮"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_リアーネ_B",
+      "Names": {
+        "en": "Leanne",
+        "zh-Hans": "莉娅妮"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_リアーネ_A",
+      "Names": {
+        "en": "Leanne",
+        "zh-Hans": "莉娅妮"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_リアーネ_S",
+      "Names": {
+        "en": "Leanne",
+        "zh-Hans": "莉娅妮"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ネフェニー_C",
+      "Names": {
+        "en": "Nephenee",
+        "zh-Hans": "涅菲妮"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ネフェニー_B",
+      "Names": {
+        "en": "Nephenee",
+        "zh-Hans": "涅菲妮"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ネフェニー_A",
+      "Names": {
+        "en": "Nephenee",
+        "zh-Hans": "涅菲妮"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ネフェニー_S",
+      "Names": {
+        "en": "Nephenee",
+        "zh-Hans": "涅菲妮"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_サナキ_C",
+      "Names": {
+        "en": "Sanaki",
+        "zh-Hans": "莎娜琪"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_サナキ_B",
+      "Names": {
+        "en": "Sanaki",
+        "zh-Hans": "莎娜琪"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_サナキ_A",
+      "Names": {
+        "en": "Sanaki",
+        "zh-Hans": "莎娜琪"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_サナキ_S",
+      "Names": {
+        "en": "Sanaki",
+        "zh-Hans": "莎娜琪"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ネサラ_C",
+      "Names": {
+        "en": "Naesala",
+        "zh-Hans": "涅沙罗"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ネサラ_B",
+      "Names": {
+        "en": "Naesala",
+        "zh-Hans": "涅沙罗"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ネサラ_A",
+      "Names": {
+        "en": "Naesala",
+        "zh-Hans": "涅沙罗"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ネサラ_S",
+      "Names": {
+        "en": "Naesala",
+        "zh-Hans": "涅沙罗"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ティバーン_C",
+      "Names": {
+        "en": "Tibarn",
+        "zh-Hans": "狄邦"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ティバーン_B",
+      "Names": {
+        "en": "Tibarn",
+        "zh-Hans": "狄邦"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ティバーン_A",
+      "Names": {
+        "en": "Tibarn",
+        "zh-Hans": "狄邦"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_ティバーン_S",
+      "Names": {
+        "en": "Tibarn",
+        "zh-Hans": "狄邦"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_カイネギス_C",
+      "Names": {
+        "en": "Caineghis",
+        "zh-Hans": "凯内基斯"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_カイネギス_B",
+      "Names": {
+        "en": "Caineghis",
+        "zh-Hans": "凯内基斯"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_カイネギス_A",
+      "Names": {
+        "en": "Caineghis",
+        "zh-Hans": "凯内基斯"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_カイネギス_S",
+      "Names": {
+        "en": "Caineghis",
+        "zh-Hans": "凯内基斯"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_漆黒の騎士_C",
+      "Names": {
+        "en": "Black Knight",
+        "zh-Hans": "漆黑骑士"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_漆黒の騎士_B",
+      "Names": {
+        "en": "Black Knight",
+        "zh-Hans": "漆黑骑士"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_漆黒の騎士_A",
+      "Names": {
+        "en": "Black Knight",
+        "zh-Hans": "漆黑骑士"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_暁_漆黒の騎士_S",
+      "Names": {
+        "en": "Black Knight",
+        "zh-Hans": "漆黑骑士"
+      },
+      "EmblemId": "GID_ミカヤ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_リリーナ_C",
+      "Names": {
+        "en": "Lilina",
+        "zh-Hans": "莉莉娜"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_リリーナ_B",
+      "Names": {
+        "en": "Lilina",
+        "zh-Hans": "莉莉娜"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_リリーナ_A",
+      "Names": {
+        "en": "Lilina",
+        "zh-Hans": "莉莉娜"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_リリーナ_S",
+      "Names": {
+        "en": "Lilina",
+        "zh-Hans": "莉莉娜"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ウォルト_C",
+      "Names": {
+        "en": "Wolt",
+        "zh-Hans": "伍尔特"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ウォルト_B",
+      "Names": {
+        "en": "Wolt",
+        "zh-Hans": "伍尔特"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ウォルト_A",
+      "Names": {
+        "en": "Wolt",
+        "zh-Hans": "伍尔特"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ウォルト_S",
+      "Names": {
+        "en": "Wolt",
+        "zh-Hans": "伍尔特"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ディーク_C",
+      "Names": {
+        "en": "Dieck",
+        "zh-Hans": "迪克"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ディーク_B",
+      "Names": {
+        "en": "Dieck",
+        "zh-Hans": "迪克"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ディーク_A",
+      "Names": {
+        "en": "Dieck",
+        "zh-Hans": "迪克"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ディーク_S",
+      "Names": {
+        "en": "Dieck",
+        "zh-Hans": "迪克"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ルゥ_C",
+      "Names": {
+        "en": "Lugh",
+        "zh-Hans": "鲁格"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ルゥ_B",
+      "Names": {
+        "en": "Lugh",
+        "zh-Hans": "鲁格"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ルゥ_A",
+      "Names": {
+        "en": "Lugh",
+        "zh-Hans": "鲁格"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ルゥ_S",
+      "Names": {
+        "en": "Lugh",
+        "zh-Hans": "鲁格"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ルトガー_C",
+      "Names": {
+        "en": "Rutger",
+        "zh-Hans": "路特加"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ルトガー_B",
+      "Names": {
+        "en": "Rutger",
+        "zh-Hans": "路特加"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ルトガー_A",
+      "Names": {
+        "en": "Rutger",
+        "zh-Hans": "路特加"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ルトガー_S",
+      "Names": {
+        "en": "Rutger",
+        "zh-Hans": "路特加"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_フィル_C",
+      "Names": {
+        "en": "Fir",
+        "zh-Hans": "菲尔"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_フィル_B",
+      "Names": {
+        "en": "Fir",
+        "zh-Hans": "菲尔"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_フィル_A",
+      "Names": {
+        "en": "Fir",
+        "zh-Hans": "菲尔"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_フィル_S",
+      "Names": {
+        "en": "Fir",
+        "zh-Hans": "菲尔"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_レイ_C",
+      "Names": {
+        "en": "Raigh",
+        "zh-Hans": "雷伊"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_レイ_B",
+      "Names": {
+        "en": "Raigh",
+        "zh-Hans": "雷伊"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_レイ_A",
+      "Names": {
+        "en": "Raigh",
+        "zh-Hans": "雷伊"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_レイ_S",
+      "Names": {
+        "en": "Raigh",
+        "zh-Hans": "雷伊"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_セシリア_C",
+      "Names": {
+        "en": "Cecilia",
+        "zh-Hans": "瑟西莉亚"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_セシリア_B",
+      "Names": {
+        "en": "Cecilia",
+        "zh-Hans": "瑟西莉亚"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_セシリア_A",
+      "Names": {
+        "en": "Cecilia",
+        "zh-Hans": "瑟西莉亚"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_セシリア_S",
+      "Names": {
+        "en": "Cecilia",
+        "zh-Hans": "瑟西莉亚"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ソフィーヤ_C",
+      "Names": {
+        "en": "Sophia",
+        "zh-Hans": "苏菲亚"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ソフィーヤ_B",
+      "Names": {
+        "en": "Sophia",
+        "zh-Hans": "苏菲亚"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ソフィーヤ_A",
+      "Names": {
+        "en": "Sophia",
+        "zh-Hans": "苏菲亚"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ソフィーヤ_S",
+      "Names": {
+        "en": "Sophia",
+        "zh-Hans": "苏菲亚"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ファ_C",
+      "Names": {
+        "en": "Fae",
+        "zh-Hans": "法"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ファ_B",
+      "Names": {
+        "en": "Fae",
+        "zh-Hans": "法"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ファ_A",
+      "Names": {
+        "en": "Fae",
+        "zh-Hans": "法"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_封印_ファ_S",
+      "Names": {
+        "en": "Fae",
+        "zh-Hans": "法"
+      },
+      "EmblemId": "GID_ロイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_ナンナ_C",
+      "Names": {
+        "en": "Nanna",
+        "zh-Hans": "南娜"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_ナンナ_B",
+      "Names": {
+        "en": "Nanna",
+        "zh-Hans": "南娜"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_ナンナ_A",
+      "Names": {
+        "en": "Nanna",
+        "zh-Hans": "南娜"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_ナンナ_S",
+      "Names": {
+        "en": "Nanna",
+        "zh-Hans": "南娜"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_フィン_C",
+      "Names": {
+        "en": "Finn",
+        "zh-Hans": "芬恩"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_フィン_B",
+      "Names": {
+        "en": "Finn",
+        "zh-Hans": "芬恩"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_フィン_A",
+      "Names": {
+        "en": "Finn",
+        "zh-Hans": "芬恩"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_フィン_S",
+      "Names": {
+        "en": "Finn",
+        "zh-Hans": "芬恩"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_オーシン_C",
+      "Names": {
+        "en": "Osian",
+        "zh-Hans": "奥辛"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_オーシン_B",
+      "Names": {
+        "en": "Osian",
+        "zh-Hans": "奥辛"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_オーシン_A",
+      "Names": {
+        "en": "Osian",
+        "zh-Hans": "奥辛"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_オーシン_S",
+      "Names": {
+        "en": "Osian",
+        "zh-Hans": "奥辛"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_アスベル_C",
+      "Names": {
+        "en": "Asbel",
+        "zh-Hans": "亚斯贝尔"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_アスベル_B",
+      "Names": {
+        "en": "Asbel",
+        "zh-Hans": "亚斯贝尔"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_アスベル_A",
+      "Names": {
+        "en": "Asbel",
+        "zh-Hans": "亚斯贝尔"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_アスベル_S",
+      "Names": {
+        "en": "Asbel",
+        "zh-Hans": "亚斯贝尔"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_シヴァ_C",
+      "Names": {
+        "en": "Shiva",
+        "zh-Hans": "席巴"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_シヴァ_B",
+      "Names": {
+        "en": "Shiva",
+        "zh-Hans": "席巴"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_シヴァ_A",
+      "Names": {
+        "en": "Shiva",
+        "zh-Hans": "席巴"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_シヴァ_S",
+      "Names": {
+        "en": "Shiva",
+        "zh-Hans": "席巴"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_オルエン_C",
+      "Names": {
+        "en": "Olwen",
+        "zh-Hans": "欧尔玟"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_オルエン_B",
+      "Names": {
+        "en": "Olwen",
+        "zh-Hans": "欧尔玟"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_オルエン_A",
+      "Names": {
+        "en": "Olwen",
+        "zh-Hans": "欧尔玟"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_オルエン_S",
+      "Names": {
+        "en": "Olwen",
+        "zh-Hans": "欧尔玟"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_マリータ_C",
+      "Names": {
+        "en": "Mareeta",
+        "zh-Hans": "玛丽塔"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_マリータ_B",
+      "Names": {
+        "en": "Mareeta",
+        "zh-Hans": "玛丽塔"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_マリータ_A",
+      "Names": {
+        "en": "Mareeta",
+        "zh-Hans": "玛丽塔"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_マリータ_S",
+      "Names": {
+        "en": "Mareeta",
+        "zh-Hans": "玛丽塔"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_リノアン_C",
+      "Names": {
+        "en": "Linoan",
+        "zh-Hans": "莉诺安"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_リノアン_B",
+      "Names": {
+        "en": "Linoan",
+        "zh-Hans": "莉诺安"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_リノアン_A",
+      "Names": {
+        "en": "Linoan",
+        "zh-Hans": "莉诺安"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_リノアン_S",
+      "Names": {
+        "en": "Linoan",
+        "zh-Hans": "莉诺安"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_サラ_C",
+      "Names": {
+        "en": "Sara",
+        "zh-Hans": "莎拉"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_サラ_B",
+      "Names": {
+        "en": "Sara",
+        "zh-Hans": "莎拉"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_サラ_A",
+      "Names": {
+        "en": "Sara",
+        "zh-Hans": "莎拉"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_サラ_S",
+      "Names": {
+        "en": "Sara",
+        "zh-Hans": "莎拉"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_セティ_C",
+      "Names": {
+        "en": "Ced",
+        "zh-Hans": "赛提"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_セティ_B",
+      "Names": {
+        "en": "Ced",
+        "zh-Hans": "赛提"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_セティ_A",
+      "Names": {
+        "en": "Ced",
+        "zh-Hans": "赛提"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_トラキア_セティ_S",
+      "Names": {
+        "en": "Ced",
+        "zh-Hans": "赛提"
+      },
+      "EmblemId": "GID_リーフ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_クロム_C",
+      "Names": {
+        "en": "Chrom",
+        "zh-Hans": "库洛武"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_クロム_B",
+      "Names": {
+        "en": "Chrom",
+        "zh-Hans": "库洛武"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_クロム_A",
+      "Names": {
+        "en": "Chrom",
+        "zh-Hans": "库洛武"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_クロム_S",
+      "Names": {
+        "en": "Chrom",
+        "zh-Hans": "库洛武"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_リズ_C",
+      "Names": {
+        "en": "Lissa",
+        "zh-Hans": "莉兹"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_リズ_B",
+      "Names": {
+        "en": "Lissa",
+        "zh-Hans": "莉兹"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_リズ_A",
+      "Names": {
+        "en": "Lissa",
+        "zh-Hans": "莉兹"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_リズ_S",
+      "Names": {
+        "en": "Lissa",
+        "zh-Hans": "莉兹"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ガイア_C",
+      "Names": {
+        "en": "Gaius",
+        "zh-Hans": "盖亚"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ガイア_B",
+      "Names": {
+        "en": "Gaius",
+        "zh-Hans": "盖亚"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ガイア_A",
+      "Names": {
+        "en": "Gaius",
+        "zh-Hans": "盖亚"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ガイア_S",
+      "Names": {
+        "en": "Gaius",
+        "zh-Hans": "盖亚"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ティアモ_C",
+      "Names": {
+        "en": "Cordelia",
+        "zh-Hans": "蒂亚莫"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ティアモ_B",
+      "Names": {
+        "en": "Cordelia",
+        "zh-Hans": "蒂亚莫"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ティアモ_A",
+      "Names": {
+        "en": "Cordelia",
+        "zh-Hans": "蒂亚莫"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ティアモ_S",
+      "Names": {
+        "en": "Cordelia",
+        "zh-Hans": "蒂亚莫"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ノノ_C",
+      "Names": {
+        "en": "Nowi",
+        "zh-Hans": "侬侬"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ノノ_B",
+      "Names": {
+        "en": "Nowi",
+        "zh-Hans": "侬侬"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ノノ_A",
+      "Names": {
+        "en": "Nowi",
+        "zh-Hans": "侬侬"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ノノ_S",
+      "Names": {
+        "en": "Nowi",
+        "zh-Hans": "侬侬"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_サーリャ_C",
+      "Names": {
+        "en": "Tharja",
+        "zh-Hans": "撒拉"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_サーリャ_B",
+      "Names": {
+        "en": "Tharja",
+        "zh-Hans": "撒拉"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_サーリャ_A",
+      "Names": {
+        "en": "Tharja",
+        "zh-Hans": "撒拉"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_サーリャ_S",
+      "Names": {
+        "en": "Tharja",
+        "zh-Hans": "撒拉"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ウード_C",
+      "Names": {
+        "en": "Owain",
+        "zh-Hans": "伍德"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ウード_B",
+      "Names": {
+        "en": "Owain",
+        "zh-Hans": "伍德"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ウード_A",
+      "Names": {
+        "en": "Owain",
+        "zh-Hans": "伍德"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_ウード_S",
+      "Names": {
+        "en": "Owain",
+        "zh-Hans": "伍德"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_アズール_C",
+      "Names": {
+        "en": "Inigo",
+        "zh-Hans": "阿兹尔"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_アズール_B",
+      "Names": {
+        "en": "Inigo",
+        "zh-Hans": "阿兹尔"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_アズール_A",
+      "Names": {
+        "en": "Inigo",
+        "zh-Hans": "阿兹尔"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_アズール_S",
+      "Names": {
+        "en": "Inigo",
+        "zh-Hans": "阿兹尔"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_セレナ_C",
+      "Names": {
+        "en": "Severa",
+        "zh-Hans": "瑟琳娜"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_セレナ_B",
+      "Names": {
+        "en": "Severa",
+        "zh-Hans": "瑟琳娜"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_セレナ_A",
+      "Names": {
+        "en": "Severa",
+        "zh-Hans": "瑟琳娜"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_セレナ_S",
+      "Names": {
+        "en": "Severa",
+        "zh-Hans": "瑟琳娜"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_マーク_C",
+      "Names": {
+        "en": "Morgan",
+        "zh-Hans": "马可"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_マーク_B",
+      "Names": {
+        "en": "Morgan",
+        "zh-Hans": "马可"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_マーク_A",
+      "Names": {
+        "en": "Morgan",
+        "zh-Hans": "马可"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_覚醒_マーク_S",
+      "Names": {
+        "en": "Morgan",
+        "zh-Hans": "马可"
+      },
+      "EmblemId": "GID_ルキナ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_エリウッド_C",
+      "Names": {
+        "en": "Eliwood",
+        "zh-Hans": "艾利乌德"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_エリウッド_B",
+      "Names": {
+        "en": "Eliwood",
+        "zh-Hans": "艾利乌德"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_エリウッド_A",
+      "Names": {
+        "en": "Eliwood",
+        "zh-Hans": "艾利乌德"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_エリウッド_S",
+      "Names": {
+        "en": "Eliwood",
+        "zh-Hans": "艾利乌德"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ヘクトル_C",
+      "Names": {
+        "en": "Hector",
+        "zh-Hans": "海克托尔"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ヘクトル_B",
+      "Names": {
+        "en": "Hector",
+        "zh-Hans": "海克托尔"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ヘクトル_A",
+      "Names": {
+        "en": "Hector",
+        "zh-Hans": "海克托尔"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ヘクトル_S",
+      "Names": {
+        "en": "Hector",
+        "zh-Hans": "海克托尔"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_フロリーナ_C",
+      "Names": {
+        "en": "Florina",
+        "zh-Hans": "芙罗利娜"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_フロリーナ_B",
+      "Names": {
+        "en": "Florina",
+        "zh-Hans": "芙罗利娜"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_フロリーナ_A",
+      "Names": {
+        "en": "Florina",
+        "zh-Hans": "芙罗利娜"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_フロリーナ_S",
+      "Names": {
+        "en": "Florina",
+        "zh-Hans": "芙罗利娜"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ドルカス_C",
+      "Names": {
+        "en": "Dorcas",
+        "zh-Hans": "多尔卡斯"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ドルカス_B",
+      "Names": {
+        "en": "Dorcas",
+        "zh-Hans": "多尔卡斯"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ドルカス_A",
+      "Names": {
+        "en": "Dorcas",
+        "zh-Hans": "多尔卡斯"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ドルカス_S",
+      "Names": {
+        "en": "Dorcas",
+        "zh-Hans": "多尔卡斯"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_セーラ_C",
+      "Names": {
+        "en": "Serra",
+        "zh-Hans": "赛拉"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_セーラ_B",
+      "Names": {
+        "en": "Serra",
+        "zh-Hans": "赛拉"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_セーラ_A",
+      "Names": {
+        "en": "Serra",
+        "zh-Hans": "赛拉"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_セーラ_S",
+      "Names": {
+        "en": "Serra",
+        "zh-Hans": "赛拉"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_マシュー_C",
+      "Names": {
+        "en": "Matthew",
+        "zh-Hans": "马修"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_マシュー_B",
+      "Names": {
+        "en": "Matthew",
+        "zh-Hans": "马修"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_マシュー_A",
+      "Names": {
+        "en": "Matthew",
+        "zh-Hans": "马修"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_マシュー_S",
+      "Names": {
+        "en": "Matthew",
+        "zh-Hans": "马修"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_レベッカ_C",
+      "Names": {
+        "en": "Rebecca",
+        "zh-Hans": "蕾贝卡"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_レベッカ_B",
+      "Names": {
+        "en": "Rebecca",
+        "zh-Hans": "蕾贝卡"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_レベッカ_A",
+      "Names": {
+        "en": "Rebecca",
+        "zh-Hans": "蕾贝卡"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_レベッカ_S",
+      "Names": {
+        "en": "Rebecca",
+        "zh-Hans": "蕾贝卡"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ニニアン_C",
+      "Names": {
+        "en": "Ninian",
+        "zh-Hans": "尼尼安"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ニニアン_B",
+      "Names": {
+        "en": "Ninian",
+        "zh-Hans": "尼尼安"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ニニアン_A",
+      "Names": {
+        "en": "Ninian",
+        "zh-Hans": "尼尼安"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ニニアン_S",
+      "Names": {
+        "en": "Ninian",
+        "zh-Hans": "尼尼安"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ニノ_C",
+      "Names": {
+        "en": "Nino",
+        "zh-Hans": "妮诺"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ニノ_B",
+      "Names": {
+        "en": "Nino",
+        "zh-Hans": "妮诺"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ニノ_A",
+      "Names": {
+        "en": "Nino",
+        "zh-Hans": "妮诺"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ニノ_S",
+      "Names": {
+        "en": "Nino",
+        "zh-Hans": "妮诺"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ジャファル_C",
+      "Names": {
+        "en": "Jaffar",
+        "zh-Hans": "贾法尔"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ジャファル_B",
+      "Names": {
+        "en": "Jaffar",
+        "zh-Hans": "贾法尔"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ジャファル_A",
+      "Names": {
+        "en": "Jaffar",
+        "zh-Hans": "贾法尔"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_烈火_ジャファル_S",
+      "Names": {
+        "en": "Jaffar",
+        "zh-Hans": "贾法尔"
+      },
+      "EmblemId": "GID_リン",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ミスト_C",
+      "Names": {
+        "en": "Mist",
+        "zh-Hans": "密丝特"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ミスト_B",
+      "Names": {
+        "en": "Mist",
+        "zh-Hans": "密丝特"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ミスト_A",
+      "Names": {
+        "en": "Mist",
+        "zh-Hans": "密丝特"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ミスト_S",
+      "Names": {
+        "en": "Mist",
+        "zh-Hans": "密丝特"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ティアマト_C",
+      "Names": {
+        "en": "Titania",
+        "zh-Hans": "狄亚马特"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ティアマト_B",
+      "Names": {
+        "en": "Titania",
+        "zh-Hans": "狄亚马特"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ティアマト_A",
+      "Names": {
+        "en": "Titania",
+        "zh-Hans": "狄亚马特"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ティアマト_S",
+      "Names": {
+        "en": "Titania",
+        "zh-Hans": "狄亚马特"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_シノン_C",
+      "Names": {
+        "en": "Shinon",
+        "zh-Hans": "席诺"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_シノン_B",
+      "Names": {
+        "en": "Shinon",
+        "zh-Hans": "席诺"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_シノン_A",
+      "Names": {
+        "en": "Shinon",
+        "zh-Hans": "席诺"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_シノン_S",
+      "Names": {
+        "en": "Shinon",
+        "zh-Hans": "席诺"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ガトリー_C",
+      "Names": {
+        "en": "Gatrie",
+        "zh-Hans": "嘉德列"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ガトリー_B",
+      "Names": {
+        "en": "Gatrie",
+        "zh-Hans": "嘉德列"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ガトリー_A",
+      "Names": {
+        "en": "Gatrie",
+        "zh-Hans": "嘉德列"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ガトリー_S",
+      "Names": {
+        "en": "Gatrie",
+        "zh-Hans": "嘉德列"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_セネリオ_C",
+      "Names": {
+        "en": "Soren",
+        "zh-Hans": "塞涅里欧"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_セネリオ_B",
+      "Names": {
+        "en": "Soren",
+        "zh-Hans": "塞涅里欧"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_セネリオ_A",
+      "Names": {
+        "en": "Soren",
+        "zh-Hans": "塞涅里欧"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_セネリオ_S",
+      "Names": {
+        "en": "Soren",
+        "zh-Hans": "塞涅里欧"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ワユ_C",
+      "Names": {
+        "en": "Mia",
+        "zh-Hans": "瓦育"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ワユ_B",
+      "Names": {
+        "en": "Mia",
+        "zh-Hans": "瓦育"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ワユ_A",
+      "Names": {
+        "en": "Mia",
+        "zh-Hans": "瓦育"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ワユ_S",
+      "Names": {
+        "en": "Mia",
+        "zh-Hans": "瓦育"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_イレース_C",
+      "Names": {
+        "en": "Ilyana",
+        "zh-Hans": "伊蕾思"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_イレース_B",
+      "Names": {
+        "en": "Ilyana",
+        "zh-Hans": "伊蕾思"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_イレース_A",
+      "Names": {
+        "en": "Ilyana",
+        "zh-Hans": "伊蕾思"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_イレース_S",
+      "Names": {
+        "en": "Ilyana",
+        "zh-Hans": "伊蕾思"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_レテ_C",
+      "Names": {
+        "en": "Lethe",
+        "zh-Hans": "蕾媞"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_レテ_B",
+      "Names": {
+        "en": "Lethe",
+        "zh-Hans": "蕾媞"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_レテ_A",
+      "Names": {
+        "en": "Lethe",
+        "zh-Hans": "蕾媞"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_レテ_S",
+      "Names": {
+        "en": "Lethe",
+        "zh-Hans": "蕾媞"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ライ_C",
+      "Names": {
+        "en": "Ranulf",
+        "zh-Hans": "莱伊"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ライ_B",
+      "Names": {
+        "en": "Ranulf",
+        "zh-Hans": "莱伊"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ライ_A",
+      "Names": {
+        "en": "Ranulf",
+        "zh-Hans": "莱伊"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_ライ_S",
+      "Names": {
+        "en": "Ranulf",
+        "zh-Hans": "莱伊"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_グレイル_C",
+      "Names": {
+        "en": "Greil",
+        "zh-Hans": "格莱尔"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_グレイル_B",
+      "Names": {
+        "en": "Greil",
+        "zh-Hans": "格莱尔"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_グレイル_A",
+      "Names": {
+        "en": "Greil",
+        "zh-Hans": "格莱尔"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_蒼炎_グレイル_S",
+      "Names": {
+        "en": "Greil",
+        "zh-Hans": "格莱尔"
+      },
+      "EmblemId": "GID_アイク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_エーデルガルト_C",
+      "Names": {
+        "en": "Edelgard",
+        "zh-Hans": "艾黛尔贾特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_エーデルガルト_B",
+      "Names": {
+        "en": "Edelgard",
+        "zh-Hans": "艾黛尔贾特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_エーデルガルト_A",
+      "Names": {
+        "en": "Edelgard",
+        "zh-Hans": "艾黛尔贾特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_エーデルガルト_S",
+      "Names": {
+        "en": "Edelgard",
+        "zh-Hans": "艾黛尔贾特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フェルディナント_C",
+      "Names": {
+        "en": "Ferdinand",
+        "zh-Hans": "菲尔迪南特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フェルディナント_B",
+      "Names": {
+        "en": "Ferdinand",
+        "zh-Hans": "菲尔迪南特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フェルディナント_A",
+      "Names": {
+        "en": "Ferdinand",
+        "zh-Hans": "菲尔迪南特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フェルディナント_S",
+      "Names": {
+        "en": "Ferdinand",
+        "zh-Hans": "菲尔迪南特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ベルナデッタ_C",
+      "Names": {
+        "en": "Bernadetta",
+        "zh-Hans": "贝尔娜提塔"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ベルナデッタ_B",
+      "Names": {
+        "en": "Bernadetta",
+        "zh-Hans": "贝尔娜提塔"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ベルナデッタ_A",
+      "Names": {
+        "en": "Bernadetta",
+        "zh-Hans": "贝尔娜提塔"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ベルナデッタ_S",
+      "Names": {
+        "en": "Bernadetta",
+        "zh-Hans": "贝尔娜提塔"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ディミトリ_C",
+      "Names": {
+        "en": "Dimitri",
+        "zh-Hans": "帝弥托利"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ディミトリ_B",
+      "Names": {
+        "en": "Dimitri",
+        "zh-Hans": "帝弥托利"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ディミトリ_A",
+      "Names": {
+        "en": "Dimitri",
+        "zh-Hans": "帝弥托利"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ディミトリ_S",
+      "Names": {
+        "en": "Dimitri",
+        "zh-Hans": "帝弥托利"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フェリクス_C",
+      "Names": {
+        "en": "Felix",
+        "zh-Hans": "菲力克斯"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フェリクス_B",
+      "Names": {
+        "en": "Felix",
+        "zh-Hans": "菲力克斯"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フェリクス_A",
+      "Names": {
+        "en": "Felix",
+        "zh-Hans": "菲力克斯"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フェリクス_S",
+      "Names": {
+        "en": "Felix",
+        "zh-Hans": "菲力克斯"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_イングリット_C",
+      "Names": {
+        "en": "Ingrid",
+        "zh-Hans": "英谷莉特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_イングリット_B",
+      "Names": {
+        "en": "Ingrid",
+        "zh-Hans": "英谷莉特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_イングリット_A",
+      "Names": {
+        "en": "Ingrid",
+        "zh-Hans": "英谷莉特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_イングリット_S",
+      "Names": {
+        "en": "Ingrid",
+        "zh-Hans": "英谷莉特"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_クロード_C",
+      "Names": {
+        "en": "Claude",
+        "zh-Hans": "库罗德"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_クロード_B",
+      "Names": {
+        "en": "Claude",
+        "zh-Hans": "库罗德"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_クロード_A",
+      "Names": {
+        "en": "Claude",
+        "zh-Hans": "库罗德"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_クロード_S",
+      "Names": {
+        "en": "Claude",
+        "zh-Hans": "库罗德"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ラファエル_C",
+      "Names": {
+        "en": "Raphael",
+        "zh-Hans": "拉斐尔"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ラファエル_B",
+      "Names": {
+        "en": "Raphael",
+        "zh-Hans": "拉斐尔"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ラファエル_A",
+      "Names": {
+        "en": "Raphael",
+        "zh-Hans": "拉斐尔"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_ラファエル_S",
+      "Names": {
+        "en": "Raphael",
+        "zh-Hans": "拉斐尔"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_リシテア_C",
+      "Names": {
+        "en": "Lysithea",
+        "zh-Hans": "莉丝缇亚"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_リシテア_B",
+      "Names": {
+        "en": "Lysithea",
+        "zh-Hans": "莉丝缇亚"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_リシテア_A",
+      "Names": {
+        "en": "Lysithea",
+        "zh-Hans": "莉丝缇亚"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_リシテア_S",
+      "Names": {
+        "en": "Lysithea",
+        "zh-Hans": "莉丝缇亚"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フレン_C",
+      "Names": {
+        "en": "Flayn",
+        "zh-Hans": "芙莲"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フレン_B",
+      "Names": {
+        "en": "Flayn",
+        "zh-Hans": "芙莲"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フレン_A",
+      "Names": {
+        "en": "Flayn",
+        "zh-Hans": "芙莲"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_風花_フレン_S",
+      "Names": {
+        "en": "Flayn",
+        "zh-Hans": "芙莲"
+      },
+      "EmblemId": "GID_ベレト",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_アクア_C",
+      "Names": {
+        "en": "Azura",
+        "zh-Hans": "阿库娅"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_アクア_B",
+      "Names": {
+        "en": "Azura",
+        "zh-Hans": "阿库娅"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_アクア_A",
+      "Names": {
+        "en": "Azura",
+        "zh-Hans": "阿库娅"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_アクア_S",
+      "Names": {
+        "en": "Azura",
+        "zh-Hans": "阿库娅"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_リョウマ_C",
+      "Names": {
+        "en": "Ryoma",
+        "zh-Hans": "龙马"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_リョウマ_B",
+      "Names": {
+        "en": "Ryoma",
+        "zh-Hans": "龙马"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_リョウマ_A",
+      "Names": {
+        "en": "Ryoma",
+        "zh-Hans": "龙马"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_リョウマ_S",
+      "Names": {
+        "en": "Ryoma",
+        "zh-Hans": "龙马"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_ヒノカ_C",
+      "Names": {
+        "en": "Hinoka",
+        "zh-Hans": "火乃香"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_ヒノカ_B",
+      "Names": {
+        "en": "Hinoka",
+        "zh-Hans": "火乃香"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_ヒノカ_A",
+      "Names": {
+        "en": "Hinoka",
+        "zh-Hans": "火乃香"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_ヒノカ_S",
+      "Names": {
+        "en": "Hinoka",
+        "zh-Hans": "火乃香"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_タクミ_C",
+      "Names": {
+        "en": "Takumi",
+        "zh-Hans": "拓海"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_タクミ_B",
+      "Names": {
+        "en": "Takumi",
+        "zh-Hans": "拓海"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_タクミ_A",
+      "Names": {
+        "en": "Takumi",
+        "zh-Hans": "拓海"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_タクミ_S",
+      "Names": {
+        "en": "Takumi",
+        "zh-Hans": "拓海"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_サクラ_C",
+      "Names": {
+        "en": "Sakura",
+        "zh-Hans": "樱"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_サクラ_B",
+      "Names": {
+        "en": "Sakura",
+        "zh-Hans": "樱"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_サクラ_A",
+      "Names": {
+        "en": "Sakura",
+        "zh-Hans": "樱"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_サクラ_S",
+      "Names": {
+        "en": "Sakura",
+        "zh-Hans": "樱"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_マークス_C",
+      "Names": {
+        "en": "Xander",
+        "zh-Hans": "马克斯"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_マークス_B",
+      "Names": {
+        "en": "Xander",
+        "zh-Hans": "马克斯"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_マークス_A",
+      "Names": {
+        "en": "Xander",
+        "zh-Hans": "马克斯"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_マークス_S",
+      "Names": {
+        "en": "Xander",
+        "zh-Hans": "马克斯"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_カミラ_C",
+      "Names": {
+        "en": "Camilla",
+        "zh-Hans": "卡美拉"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_カミラ_B",
+      "Names": {
+        "en": "Camilla",
+        "zh-Hans": "卡美拉"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_カミラ_A",
+      "Names": {
+        "en": "Camilla",
+        "zh-Hans": "卡美拉"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_カミラ_S",
+      "Names": {
+        "en": "Camilla",
+        "zh-Hans": "卡美拉"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_レオン_C",
+      "Names": {
+        "en": "Leo",
+        "zh-Hans": "里昂"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_レオン_B",
+      "Names": {
+        "en": "Leo",
+        "zh-Hans": "里昂"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_レオン_A",
+      "Names": {
+        "en": "Leo",
+        "zh-Hans": "里昂"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_レオン_S",
+      "Names": {
+        "en": "Leo",
+        "zh-Hans": "里昂"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_エリーゼ_C",
+      "Names": {
+        "en": "Elise",
+        "zh-Hans": "艾丽泽"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_エリーゼ_B",
+      "Names": {
+        "en": "Elise",
+        "zh-Hans": "艾丽泽"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_エリーゼ_A",
+      "Names": {
+        "en": "Elise",
+        "zh-Hans": "艾丽泽"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_エリーゼ_S",
+      "Names": {
+        "en": "Elise",
+        "zh-Hans": "艾丽泽"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_ジョーカー_C",
+      "Names": {
+        "en": "Jakob",
+        "zh-Hans": "乔克"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_ジョーカー_B",
+      "Names": {
+        "en": "Jakob",
+        "zh-Hans": "乔克"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_ジョーカー_A",
+      "Names": {
+        "en": "Jakob",
+        "zh-Hans": "乔克"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_IF_ジョーカー_S",
+      "Names": {
+        "en": "Jakob",
+        "zh-Hans": "乔克"
+      },
+      "EmblemId": "GID_カムイ",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ゼト_C",
+      "Names": {
+        "en": "Seth",
+        "zh-Hans": "赛特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ゼト_B",
+      "Names": {
+        "en": "Seth",
+        "zh-Hans": "赛特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ゼト_A",
+      "Names": {
+        "en": "Seth",
+        "zh-Hans": "赛特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ゼト_S",
+      "Names": {
+        "en": "Seth",
+        "zh-Hans": "赛特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ロス_C",
+      "Names": {
+        "en": "Ross",
+        "zh-Hans": "罗斯"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ロス_B",
+      "Names": {
+        "en": "Ross",
+        "zh-Hans": "罗斯"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ロス_A",
+      "Names": {
+        "en": "Ross",
+        "zh-Hans": "罗斯"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ロス_S",
+      "Names": {
+        "en": "Ross",
+        "zh-Hans": "罗斯"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ルーテ_C",
+      "Names": {
+        "en": "Lute",
+        "zh-Hans": "卢特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ルーテ_B",
+      "Names": {
+        "en": "Lute",
+        "zh-Hans": "卢特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ルーテ_A",
+      "Names": {
+        "en": "Lute",
+        "zh-Hans": "卢特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ルーテ_S",
+      "Names": {
+        "en": "Lute",
+        "zh-Hans": "卢特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ヨシュア_C",
+      "Names": {
+        "en": "Joshua",
+        "zh-Hans": "约书亚"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ヨシュア_B",
+      "Names": {
+        "en": "Joshua",
+        "zh-Hans": "约书亚"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ヨシュア_A",
+      "Names": {
+        "en": "Joshua",
+        "zh-Hans": "约书亚"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ヨシュア_S",
+      "Names": {
+        "en": "Joshua",
+        "zh-Hans": "约书亚"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ターナ_C",
+      "Names": {
+        "en": "Tana",
+        "zh-Hans": "塔娜"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ターナ_B",
+      "Names": {
+        "en": "Tana",
+        "zh-Hans": "塔娜"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ターナ_A",
+      "Names": {
+        "en": "Tana",
+        "zh-Hans": "塔娜"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ターナ_S",
+      "Names": {
+        "en": "Tana",
+        "zh-Hans": "塔娜"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_アメリア_C",
+      "Names": {
+        "en": "Amelia",
+        "zh-Hans": "亚美利雅"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_アメリア_B",
+      "Names": {
+        "en": "Amelia",
+        "zh-Hans": "亚美利雅"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_アメリア_A",
+      "Names": {
+        "en": "Amelia",
+        "zh-Hans": "亚美利雅"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_アメリア_S",
+      "Names": {
+        "en": "Amelia",
+        "zh-Hans": "亚美利雅"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ヒーニアス_C",
+      "Names": {
+        "en": "Innes",
+        "zh-Hans": "西尼亚斯"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ヒーニアス_B",
+      "Names": {
+        "en": "Innes",
+        "zh-Hans": "西尼亚斯"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ヒーニアス_A",
+      "Names": {
+        "en": "Innes",
+        "zh-Hans": "西尼亚斯"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ヒーニアス_S",
+      "Names": {
+        "en": "Innes",
+        "zh-Hans": "西尼亚斯"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ジスト_C",
+      "Names": {
+        "en": "Gerik",
+        "zh-Hans": "吉斯特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ジスト_B",
+      "Names": {
+        "en": "Gerik",
+        "zh-Hans": "吉斯特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ジスト_A",
+      "Names": {
+        "en": "Gerik",
+        "zh-Hans": "吉斯特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ジスト_S",
+      "Names": {
+        "en": "Gerik",
+        "zh-Hans": "吉斯特"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_マリカ_C",
+      "Names": {
+        "en": "Marisa",
+        "zh-Hans": "玛莉卡"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_マリカ_B",
+      "Names": {
+        "en": "Marisa",
+        "zh-Hans": "玛莉卡"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_マリカ_A",
+      "Names": {
+        "en": "Marisa",
+        "zh-Hans": "玛莉卡"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_マリカ_S",
+      "Names": {
+        "en": "Marisa",
+        "zh-Hans": "玛莉卡"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ラーチェル_C",
+      "Names": {
+        "en": "L'Arachel",
+        "zh-Hans": "拉切尔"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 0,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ラーチェル_B",
+      "Names": {
+        "en": "L'Arachel",
+        "zh-Hans": "拉切尔"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 1,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ラーチェル_A",
+      "Names": {
+        "en": "L'Arachel",
+        "zh-Hans": "拉切尔"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 2,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_聖魔_ラーチェル_S",
+      "Names": {
+        "en": "L'Arachel",
+        "zh-Hans": "拉切尔"
+      },
+      "EmblemId": "GID_エイリーク",
+      "Rank": 3,
+      "SingleRank": false
+    },
+    {
+      "Id": "RNID_DLC1コモン_1_S",
+      "Names": {
+        "en": "Alfonse",
+        "zh-Hans": "阿尔冯斯"
+      },
+      "EmblemId": "",
+      "Rank": 3,
+      "SingleRank": true
+    },
+    {
+      "Id": "RNID_DLC1コモン_2_S",
+      "Names": {
+        "en": "Sharena",
+        "zh-Hans": "夏蓉"
+      },
+      "EmblemId": "",
+      "Rank": 3,
+      "SingleRank": true
+    },
+    {
+      "Id": "RNID_DLC1コモン_3_S",
+      "Names": {
+        "en": "Anna",
+        "zh-Hans": "安娜"
+      },
+      "EmblemId": "",
+      "Rank": 3,
+      "SingleRank": true
+    }
+  ],
+  "BondExperience": [
+    0,
+    11,
+    22,
+    33,
+    44,
+    55,
+    66,
+    77,
+    88,
+    99,
+    109,
+    120,
+    131,
+    142,
+    153,
+    164,
+    175,
+    186,
+    197,
+    208
+  ]
+}
