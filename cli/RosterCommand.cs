@@ -8,6 +8,12 @@ internal static class RosterCommand
 {
     public static int Run(string[] args)
     {
+        if (args is ["export", var exportSource, var exportPath, "--character", var exportIndex])
+        {
+            RosterTransfer.WriteNew(exportPath, EngageSave.Load(exportSource).ExportRosterCharacter(Number(exportIndex)));
+            Console.WriteLine(Path.GetFullPath(exportPath));
+            return 0;
+        }
         if (args is ["catalog", .. var catalogOptions])
         {
             string language = DisplayLanguage(catalogOptions);
@@ -97,6 +103,7 @@ internal static class RosterCommand
             "item-engrave" => ["--character", "--slot", "--engraving"],
             "item-delete" => ["--character", "--slot"],
             "restore" => ["--character"],
+            "import" => ["--character", "--file"],
             _ => throw new ArgumentException("Unknown roster command. Run --help for usage.")
         };
         var values = Options(options, allowed);
@@ -105,6 +112,13 @@ internal static class RosterCommand
         if (index >= characters.Count)
             throw new ArgumentOutOfRangeException(nameof(index));
         var character = characters[index];
+        if (verb == "import")
+        {
+            string path = Required(values, "--file");
+            if (new FileInfo(path).Length > RosterTransfer.MaximumFileSize)
+                throw new InvalidDataException("A character file must not exceed 1 MiB.");
+            return save.ImportRosterCharacter(index, File.ReadAllBytes(path));
+        }
         if (verb == "stats-max") return save.MaximizeRosterStats(index);
         if (verb == "skills-max") return save.UnlockAllRosterSkills(index);
         if (verb == "condition")

@@ -69,6 +69,15 @@ player-owned weapon. Omitting an engraving preserves the existing one.
 
 ## Roster
 
+Export a character's editable data, then import it into the same person and gender in a compatible save:
+
+```sh
+FeeEditor.Cli roster export Manual0 Alear.fee-character.json --character 0
+FeeEditor.Cli roster import Auto Auto-edited --character 0 --file Alear.fee-character.json
+```
+
+Transfers include class/progression, personal stats, inherited skills, proficiencies and carried items. They preserve the destination's recruitment, story and Emblem associations. Character and game versions must match; numeric limits and protected equipment are checked. Engravings already owned by another weapon reject the import. See [character transfer details](docs/roster-transfer.md).
+
 ```sh
 FeeEditor.Cli roster list Manual0 --json --language en
 FeeEditor.Cli roster catalog --json

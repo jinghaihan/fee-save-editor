@@ -178,5 +178,12 @@
   "RewardAvailable": "Reward Available",
   "RewardClaimed": "Reward Claimed",
   "UnlockAchievement": "Unlock Achievement",
-  "AchievementsUnavailable": "Could not read achievements:"
+  "AchievementsUnavailable": "Could not read achievements:",
+  "Export": "Export",
+  "Import": "Import",
+  "ExportCharacter": "Export Character",
+  "ImportCharacter": "Import Character",
+  "CharacterExported": "Character exported:",
+  "ExportFailed": "Could not export character:",
+  "ImportFailed": "Could not import character:"
 }

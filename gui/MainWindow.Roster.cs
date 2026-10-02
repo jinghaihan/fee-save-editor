@@ -34,6 +34,7 @@ public partial class MainWindow
     private void LoadRoster()
     {
         CanEditRoster = false;
+        ExportRosterCharacterButton.IsEnabled = ImportRosterCharacterButton.IsEnabled = false;
         MaximizeAllRosterStatsButton.IsEnabled = MaximizeRosterStatsButton.IsEnabled = false;
         _selectedCharacter = null;
         _selectedCharacterItem = null;
@@ -97,6 +98,8 @@ public partial class MainWindow
     private void SelectCharacter()
     {
         var character = SelectedCharacter;
+        ExportRosterCharacterButton.IsEnabled = ImportRosterCharacterButton.IsEnabled = character is not null
+            && RosterCatalog.Person(character.PersonHash) is not null;
         MaximizeRosterStatsButton.IsEnabled = character is not null
             && character.Force is not UnitForce.Enemy and not UnitForce.Temporary
             && RosterCatalog.Person(character.PersonHash) is not null;

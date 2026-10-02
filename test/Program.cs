@@ -23,6 +23,9 @@ Check(UiLanguage.Read("en").Keys.Order().SequenceEqual(UiLanguage.Read("zh-Hans"
     "English and Chinese resource keys differ.");
 Check(!window.FindControl<MenuItem>("SaveCopyMenu")!.IsEnabled, "Copy is enabled without a save.");
 Check(window.FindControl<Button>("ApplyMainButton") is null, "Main must save through File, without a toolbar Apply button.");
+Check(!window.FindControl<Button>("ExportRosterCharacterButton")!.IsEnabled
+    && !window.FindControl<Button>("ImportRosterCharacterButton")!.IsEnabled,
+    "Character transfer is enabled without a loaded character.");
 Check(window.FindControl<Grid>("MainPanel")!.IsVisible && !window.FindControl<StackPanel>("SettingsInputs")!.IsEnabled,
     "Main controls must be visible but disabled before a save is loaded.");
 window.ShowItems();
@@ -97,6 +100,7 @@ try
     RosterTests.Run(window, temporary);
     RosterClassTests.Run(window, temporary);
     RosterSkillTests.Run(window, temporary);
+    RosterTransferTests.Run(window, temporary);
     RosterStatTests.Run();
     RosterStatGuiTests.Run(window, temporary);
     EmblemTests.Run();
@@ -133,6 +137,7 @@ try
                 RosterTests.CheckReal(loaded);
                 RosterClassTests.CheckReal(loaded);
                 RosterSkillTests.CheckReal(loaded);
+                RosterTransferTests.CheckReal(loaded);
                 RosterStatTests.CheckReal(loaded);
                 EmblemTests.CheckReal(loaded);
                 BondRingTests.CheckReal(loaded);

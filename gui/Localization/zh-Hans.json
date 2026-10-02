@@ -178,5 +178,12 @@
   "RewardAvailable": "奖励待领取",
   "RewardClaimed": "奖励已领取",
   "UnlockAchievement": "解锁成就",
-  "AchievementsUnavailable": "无法读取成就："
+  "AchievementsUnavailable": "无法读取成就：",
+  "Export": "导出",
+  "Import": "导入",
+  "ExportCharacter": "导出角色",
+  "ImportCharacter": "导入角色",
+  "CharacterExported": "角色已导出：",
+  "ExportFailed": "无法导出角色：",
+  "ImportFailed": "无法导入角色："
 }

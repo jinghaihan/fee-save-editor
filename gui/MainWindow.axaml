@@ -222,7 +222,7 @@
     </Grid>
     <Grid Name="RosterPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
-        <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="16">
+        <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" RowSpacing="16">
           <TextBlock Text="{DynamicResource CharacterList}" FontWeight="SemiBold" />
           <TextBox Name="RosterSearch" Grid.Row="1" PlaceholderText="{DynamicResource Search}" TextChanged="RosterSearch_Changed" />
           <ListBox Name="RosterList" Grid.Row="2" SelectionChanged="RosterList_Changed">
@@ -233,6 +233,10 @@
             </ListBox.ItemTemplate>
           </ListBox>
           <Button Name="MaximizeAllRosterStatsButton" Grid.Row="3" Content="{DynamicResource MaximizeAllStats}" HorizontalAlignment="Stretch" IsEnabled="False" Click="MaximizeAllRosterStats_Click" />
+          <Grid Grid.Row="4" ColumnDefinitions="*,*" ColumnSpacing="12">
+            <Button Name="ExportRosterCharacterButton" Content="{DynamicResource Export}" HorizontalAlignment="Stretch" IsEnabled="False" Click="ExportRosterCharacter_Click" />
+            <Button Name="ImportRosterCharacterButton" Grid.Column="1" Content="{DynamicResource Import}" HorizontalAlignment="Stretch" IsEnabled="False" Click="ImportRosterCharacter_Click" />
+          </Grid>
         </Grid>
       </suki:GlassCard>
       <suki:GlassCard Grid.Column="1" Padding="20">
