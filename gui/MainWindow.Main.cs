@@ -15,7 +15,9 @@ public partial class MainWindow
             return false;
         try
         {
-            Save = Save.WithMainValues(ReadMainInputs());
+            var edited = Save.WithMainValues(ReadMainInputs());
+            if (CanEditDonations) edited = edited.WithDonations(ReadDonationInputs());
+            Save = edited;
             RefreshOverview();
             RefreshSections();
             Message.IsVisible = false;

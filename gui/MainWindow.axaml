@@ -47,9 +47,9 @@
     <Grid Name="MainPanel" Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="24">
       <suki:GlassCard Padding="28">
         <ScrollViewer>
-          <StackPanel Spacing="24" MaxWidth="480" HorizontalAlignment="Stretch">
+          <StackPanel Spacing="20" MaxWidth="480" HorizontalAlignment="Stretch">
             <TextBlock Text="{DynamicResource GameSettings}" FontWeight="SemiBold" />
-            <StackPanel Name="SettingsInputs" IsEnabled="False" Spacing="20">
+            <StackPanel Name="SettingsInputs" IsEnabled="False" Spacing="16">
               <StackPanel Spacing="8">
                 <TextBlock Text="{DynamicResource Difficulty}" />
                 <ComboBox Name="DifficultyInput" Height="42" Margin="0" HorizontalAlignment="Stretch" />
@@ -61,6 +61,29 @@
               <StackPanel Spacing="8">
                 <TextBlock Text="{DynamicResource SommieName}" />
                 <TextBox Name="SommieNameInput" Height="42" />
+              </StackPanel>
+            </StackPanel>
+            <StackPanel Spacing="12">
+              <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+                <TextBlock Text="{DynamicResource Donations}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                <Button Name="MaxAllDonationsButton" Grid.Column="1" Content="{DynamicResource MaxAllLevels}" Click="MaxAllDonations_Click" IsEnabled="False" />
+              </Grid>
+              <StackPanel Name="DonationInputs" Spacing="12" IsEnabled="False">
+                <ComboBox Name="DonationCountryInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="DonationCountry_Changed"
+                          AutomationProperties.Name="{DynamicResource Country}">
+                  <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Name}" /></DataTemplate></ComboBox.ItemTemplate>
+                </ComboBox>
+                <StackPanel Spacing="8">
+                  <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+                    <TextBlock Text="{DynamicResource Level}" VerticalAlignment="Center" />
+                    <Button Name="MaxDonationButton" Grid.Column="1" Content="{DynamicResource MaxLevel}" Click="MaxDonation_Click" />
+                  </Grid>
+                  <ComboBox Name="DonationLevelInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="DonationLevel_Changed" />
+                </StackPanel>
+                <StackPanel Spacing="8">
+                  <TextBlock Text="{DynamicResource DonatedGold}" />
+                  <NumericUpDown Name="DonationAmountInput" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+                </StackPanel>
               </StackPanel>
             </StackPanel>
           </StackPanel>

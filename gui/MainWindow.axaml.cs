@@ -14,6 +14,12 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        DonationAmountInput.Maximum = DonationCatalog.MaximumAmount;
+        DonationAmountInput.PropertyChanged += (_, change) =>
+        {
+            if (change.Property == NumericUpDown.TextProperty) UpdateDonationLevel();
+        };
+        RefreshDonationLanguage();
         EmblemBondExpInput.PropertyChanged += (_, change) =>
         {
             if (change.Property == NumericUpDown.TextProperty) UpdateEmblemBondLevel();
@@ -50,6 +56,7 @@ public partial class MainWindow : Window
             SaveCopyMenu.IsEnabled = true;
             Message.IsVisible = false;
             LoadMainValues();
+            LoadDonations();
             LoadInventory();
             LoadRoster();
             LoadEmblems();
@@ -95,6 +102,7 @@ public partial class MainWindow : Window
         UiLanguage.Apply(language);
         RefreshOptions();
         RefreshInventoryLanguage();
+        RefreshDonationLanguage();
         RefreshRosterLanguage();
         RefreshEmblemLanguage();
         RefreshSupportLanguage();

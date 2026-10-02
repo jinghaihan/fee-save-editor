@@ -87,6 +87,7 @@ try
 
     MainTests.Run(window, temporary);
     DonationTests.Run();
+    DonationGuiTests.Run(window, temporary);
     InventoryTests.Run(window, temporary);
     RosterTests.Run(window, temporary);
     RosterClassTests.Run(window, temporary);
@@ -109,6 +110,7 @@ try
             byte[] before = File.ReadAllBytes(path);
             Check(window.LoadSave(path), $"The GUI could not open {name}.");
             Check(window.CanEditMain == (name != "Global"), $"{name}: Main edit availability is incorrect.");
+            Check(window.CanEditDonations == (name != "Global"), $"{name}: Donation edit availability is incorrect.");
             string destination = Path.Combine(temporary, name + "-copy");
             Check(window.SaveCopy(destination), $"The GUI could not copy {name}.");
             Check(File.ReadAllBytes(destination).AsSpan().SequenceEqual(before), $"{name} copy differs.");
