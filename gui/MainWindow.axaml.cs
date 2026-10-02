@@ -20,6 +20,7 @@ public partial class MainWindow : Window
             if (change.Property == NumericUpDown.TextProperty) UpdateDonationLevel();
         };
         RefreshDonationLanguage();
+        RefreshMinigameLanguage();
         RefreshAchievementLanguage();
         EmblemBondExpInput.PropertyChanged += (_, change) =>
         {
@@ -58,6 +59,7 @@ public partial class MainWindow : Window
             Message.IsVisible = false;
             LoadMainValues();
             LoadDonations();
+            LoadMinigames();
             LoadAchievements();
             LoadInventory();
             LoadRoster();
@@ -105,6 +107,7 @@ public partial class MainWindow : Window
         RefreshOptions();
         RefreshInventoryLanguage();
         RefreshDonationLanguage();
+        RefreshMinigameLanguage();
         RefreshAchievementLanguage();
         RefreshRosterLanguage();
         RefreshEmblemLanguage();

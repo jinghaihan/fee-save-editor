@@ -1,0 +1,296 @@
+{
+  "DataRevision": "86b8be7b9820e1bb3bce87d2a9a805ead85d92ab",
+  "TextRevision": "810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b",
+  "Groups": [
+    {
+      "Id": "PushUps",
+      "Names": {
+        "en": "Push-Ups",
+        "zh-Hans": "俯卧撑"
+      },
+      "Records": [
+        {
+          "Key": "G_MusclePushUpBestNormal",
+          "Names": {
+            "en": "Normal",
+            "zh-Hans": "普通"
+          }
+        },
+        {
+          "Key": "G_MusclePushUpBestHard",
+          "Names": {
+            "en": "Hard",
+            "zh-Hans": "困难"
+          }
+        },
+        {
+          "Key": "G_MusclePushUpBestMaster",
+          "Names": {
+            "en": "Expert",
+            "zh-Hans": "专家"
+          }
+        },
+        {
+          "Key": "G_MusclePushUpBestEternal",
+          "Names": {
+            "en": "Iron Muscle",
+            "zh-Hans": "肌肉炸裂"
+          }
+        }
+      ]
+    },
+    {
+      "Id": "SitUps",
+      "Names": {
+        "en": "Sit-Ups",
+        "zh-Hans": "仰卧起坐"
+      },
+      "Records": [
+        {
+          "Key": "G_MuscleSitUpBestNormal",
+          "Names": {
+            "en": "Normal",
+            "zh-Hans": "普通"
+          }
+        },
+        {
+          "Key": "G_MuscleSitUpBestHard",
+          "Names": {
+            "en": "Hard",
+            "zh-Hans": "困难"
+          }
+        },
+        {
+          "Key": "G_MuscleSitUpBestMaster",
+          "Names": {
+            "en": "Expert",
+            "zh-Hans": "专家"
+          }
+        },
+        {
+          "Key": "G_MuscleSitUpBestEternal",
+          "Names": {
+            "en": "Iron Muscle",
+            "zh-Hans": "肌肉炸裂"
+          }
+        }
+      ]
+    },
+    {
+      "Id": "Squats",
+      "Names": {
+        "en": "Squats",
+        "zh-Hans": "深蹲"
+      },
+      "Records": [
+        {
+          "Key": "G_MuscleSquatBestNormal",
+          "Names": {
+            "en": "Normal",
+            "zh-Hans": "普通"
+          }
+        },
+        {
+          "Key": "G_MuscleSquatBestHard",
+          "Names": {
+            "en": "Hard",
+            "zh-Hans": "困难"
+          }
+        },
+        {
+          "Key": "G_MuscleSquatBestMaster",
+          "Names": {
+            "en": "Expert",
+            "zh-Hans": "专家"
+          }
+        },
+        {
+          "Key": "G_MuscleSquatBestEternal",
+          "Names": {
+            "en": "Iron Muscle",
+            "zh-Hans": "肌肉炸裂"
+          }
+        }
+      ]
+    },
+    {
+      "Id": "WyvernRide",
+      "Names": {
+        "en": "Wyvern Ride",
+        "zh-Hans": "飞龙射手"
+      },
+      "Records": [
+        {
+          "Key": "G_DragonRideNormalScore",
+          "Names": {
+            "en": "Normal",
+            "zh-Hans": "普通"
+          }
+        },
+        {
+          "Key": "G_DragonRideHardScore",
+          "Names": {
+            "en": "Hard",
+            "zh-Hans": "困难"
+          }
+        },
+        {
+          "Key": "G_DragonRideExpertScore",
+          "Names": {
+            "en": "Expert",
+            "zh-Hans": "专家"
+          }
+        }
+      ]
+    },
+    {
+      "Id": "Fishing",
+      "Names": {
+        "en": "Fishing",
+        "zh-Hans": "钓鱼"
+      },
+      "Records": [
+        {
+          "Key": "G_Fishing_イッカクイワナ_Count",
+          "Names": {
+            "en": "Charwhal",
+            "zh-Hans": "独角红点鲑"
+          }
+        },
+        {
+          "Key": "G_Fishing_バンガンニシン_Count",
+          "Names": {
+            "en": "Samian Herring",
+            "zh-Hans": "班岗鲱鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_オメメイワシ_Count",
+          "Names": {
+            "en": "Big-Eyed Sardine",
+            "zh-Hans": "欧梅梅沙丁鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_ポンヤマメ_Count",
+          "Names": {
+            "en": "Sint Trout",
+            "zh-Hans": "圆纹樱鳟"
+          }
+        },
+        {
+          "Key": "G_Fishing_テオテスクイッド_Count",
+          "Names": {
+            "en": "Paffo Squid",
+            "zh-Hans": "提欧特鱿鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_アビッドクラブ_Count",
+          "Names": {
+            "en": "Sammar Crab",
+            "zh-Hans": "阿比德蟹"
+          }
+        },
+        {
+          "Key": "G_Fishing_ヘルルコイ_Count",
+          "Names": {
+            "en": "Caria Carp",
+            "zh-Hans": "赫鲁鲁鲤鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_ブロスウナギ_Count",
+          "Names": {
+            "en": "Myceen Eel",
+            "zh-Hans": "布洛斯鳗鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_ムノンテイルアジ_Count",
+          "Names": {
+            "en": "Gela Tail Sierra",
+            "zh-Hans": "穆诺泰尔竹策鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_ラバナトロウト_Count",
+          "Names": {
+            "en": "Tieraden Trout",
+            "zh-Hans": "拉巴纳鳟鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_ロガーオクトパス_Count",
+          "Names": {
+            "en": "Matob Octopus",
+            "zh-Hans": "罗格章鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_ドスマレイ_Count",
+          "Names": {
+            "en": "Smash-Head Ray",
+            "zh-Hans": "多斯玛魟鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_レインボートロウト_Count",
+          "Names": {
+            "en": "Chromatic Trout",
+            "zh-Hans": "七彩鳟鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_スリットヒレサケ_Count",
+          "Names": {
+            "en": "Tipa Salmon",
+            "zh-Hans": "长鳍鲑鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_ヘッジヒゲナマズ_Count",
+          "Names": {
+            "en": "Mir Catfish",
+            "zh-Hans": "海吉长须鲶"
+          }
+        },
+        {
+          "Key": "G_Fishing_オニキバカタラ_Count",
+          "Names": {
+            "en": "Valcamonic Cod",
+            "zh-Hans": "鬼牙鳕鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_マンドコブバス_Count",
+          "Names": {
+            "en": "Monvill Bass",
+            "zh-Hans": "曼多柯布鲈鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_サリアイヌウツボ_Count",
+          "Names": {
+            "en": "Canisaria Eel",
+            "zh-Hans": "萨利艾奴虎鳗"
+          }
+        },
+        {
+          "Key": "G_Fishing_テフラカツオ_Count",
+          "Names": {
+            "en": "Bisot Tuna",
+            "zh-Hans": "特弗拉鲣鱼"
+          }
+        },
+        {
+          "Key": "G_Fishing_エンシャントカツオ_Count",
+          "Names": {
+            "en": "Enchan Tuna",
+            "zh-Hans": "艾恰托鲣鱼"
+          }
+        }
+      ]
+    }
+  ]
+}

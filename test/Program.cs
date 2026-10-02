@@ -86,6 +86,8 @@ try
     Check(!Directory.EnumerateFiles(temporary, ".fee-*.tmp").Any(), "Temporary save files were left behind.");
 
     MainTests.Run(window, temporary);
+    MinigameTests.Run();
+    MinigameGuiTests.Run(window, temporary);
     DonationTests.Run();
     AchievementTests.Run();
     AchievementGuiTests.Run(window, temporary);
@@ -113,6 +115,7 @@ try
             Check(window.LoadSave(path), $"The GUI could not open {name}.");
             Check(window.CanEditMain == (name != "Global"), $"{name}: Main edit availability is incorrect.");
             Check(window.CanEditDonations == (name != "Global"), $"{name}: Donation edit availability is incorrect.");
+            Check(window.CanReadMinigames == (name != "Global"), $"{name}: Minigame record availability is incorrect.");
             Check(window.CanEditAchievements == (name != "Global"), $"{name}: Achievement edit availability is incorrect.");
             string destination = Path.Combine(temporary, name + "-copy");
             Check(window.SaveCopy(destination), $"The GUI could not copy {name}.");
@@ -123,6 +126,7 @@ try
             {
                 var loaded = window.Save!;
                 DonationTests.CheckReal(loaded);
+                MinigameTests.CheckReal(loaded);
                 AchievementTests.CheckReal(loaded);
                 InventoryTests.CheckReal(loaded);
                 RosterTests.CheckReal(loaded);

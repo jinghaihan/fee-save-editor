@@ -20,6 +20,7 @@ FeeEditor.Cli main set Manual0 Manual0-edited --money 5000 --bond-fragments 1000
 FeeEditor.Cli main set Manual0 Manual0-edited --difficulty maddening --mode classic --sommie-name Sommie
 FeeEditor.Cli main donation-catalog --json
 FeeEditor.Cli main donations Manual0 --json
+FeeEditor.Cli main minigames Manual0 --json --language en
 FeeEditor.Cli main donation-set Manual0 Manual0-edited --country Firene --level 5
 FeeEditor.Cli main donations-max Manual0 Manual0-edited --all
 ```
@@ -30,6 +31,10 @@ Donation levels 1–5 map to cumulative amounts 0, 5,000, 15,000, 40,000 and
 level and amount are supplied they must agree. `donations-max` accepts
 `--country Firene|Brodia|Elusia|Solm` instead of `--all` to change one country.
 Donation edits do not spend money or replay rewards.
+
+`minigames` reads 15 strength-training/wyvern high scores and catch counts for
+20 fish species. These records are currently read-only; score/rank synchronization
+and unlock/reward rules are not yet exposed for editing.
 
 ## Items
 
