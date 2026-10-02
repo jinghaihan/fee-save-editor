@@ -7,7 +7,18 @@
       "Chinese": "？？？",
       "Kind": 10,
       "MaxUses": 255,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "???",
+        "zh-Hans": "？？？",
+        "zh-Hant": "？？？",
+        "ja": "？？？",
+        "ko": "???",
+        "de": "???",
+        "fr": "???",
+        "es": "(?)",
+        "it": "???"
+      }
     },
     {
       "Id": "IID_ほそみの剣",
@@ -15,7 +26,18 @@
       "Chinese": "细剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Slim Sword",
+        "zh-Hans": "细剑",
+        "zh-Hant": "細劍",
+        "ja": "ほそみの剣",
+        "ko": "가느다란 검",
+        "de": "Leichtschwert",
+        "fr": "Épée fine",
+        "es": "Espada delgada",
+        "it": "Spada sottile"
+      }
     },
     {
       "Id": "IID_鉄の剣",
@@ -23,7 +45,18 @@
       "Chinese": "铁剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Iron Sword",
+        "zh-Hans": "铁剑",
+        "zh-Hant": "鐵劍",
+        "ja": "てつの剣",
+        "ko": "철의 검",
+        "de": "Eisenschwert",
+        "fr": "Épée fer",
+        "es": "Espada hierro",
+        "it": "Spada di ferro"
+      }
     },
     {
       "Id": "IID_鋼の剣",
@@ -31,7 +64,18 @@
       "Chinese": "钢剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Steel Sword",
+        "zh-Hans": "钢剑",
+        "zh-Hant": "鋼劍",
+        "ja": "はがねの剣",
+        "ko": "강철의 검",
+        "de": "Stahlschwert",
+        "fr": "Épée acier",
+        "es": "Espada acero",
+        "it": "Spada d'acciaio"
+      }
     },
     {
       "Id": "IID_銀の剣",
@@ -39,7 +83,18 @@
       "Chinese": "银剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Silver Sword",
+        "zh-Hans": "银剑",
+        "zh-Hant": "銀劍",
+        "ja": "ぎんの剣",
+        "ko": "은의 검",
+        "de": "Silberschwert",
+        "fr": "Épée argent",
+        "es": "Espada plata",
+        "it": "Spada d'argento"
+      }
     },
     {
       "Id": "IID_アーマーキラー",
@@ -47,7 +102,18 @@
       "Chinese": "破甲剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Armorslayer",
+        "zh-Hans": "破甲剑",
+        "zh-Hant": "破甲劍",
+        "ja": "アーマーキラー",
+        "ko": "아머 킬러",
+        "de": "Panzerbrecher",
+        "fr": "Cuiracide",
+        "es": "Machacacorazas",
+        "it": "Frangicotta"
+      }
     },
     {
       "Id": "IID_キルソード",
@@ -55,7 +121,18 @@
       "Chinese": "必杀剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Killing Edge",
+        "zh-Hans": "必杀剑",
+        "zh-Hant": "必殺劍",
+        "ja": "キルソード",
+        "ko": "킬 소드",
+        "de": "Schnitter",
+        "fr": "Fer létal",
+        "es": "Espada letal",
+        "it": "Lama letale"
+      }
     },
     {
       "Id": "IID_いかづちの剣",
@@ -63,7 +140,18 @@
       "Chinese": "雷之剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Levin Sword",
+        "zh-Hans": "雷之剑",
+        "zh-Hant": "雷之劍",
+        "ja": "いかづちの剣",
+        "ko": "천둥의 검",
+        "de": "Donnerschwert",
+        "fr": "Épée orage",
+        "es": "Espada trueno",
+        "it": "Spada folgore"
+      }
     },
     {
       "Id": "IID_倭刀",
@@ -71,7 +159,18 @@
       "Chinese": "倭刀",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Wo Dao",
+        "zh-Hans": "倭刀",
+        "zh-Hant": "倭刀",
+        "ja": "倭刀",
+        "ko": "태도",
+        "de": "Wo Dao",
+        "fr": "Wo Dao",
+        "es": "Wo Dao",
+        "it": "Wo Dao"
+      }
     },
     {
       "Id": "IID_ドラゴンキラー",
@@ -79,7 +178,18 @@
       "Chinese": "屠龙剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Wyrmslayer",
+        "zh-Hans": "屠龙剑",
+        "zh-Hant": "屠龍劍",
+        "ja": "ドラゴンキラー",
+        "ko": "드래곤 킬러",
+        "de": "Wyrmtöter",
+        "fr": "Dracocide",
+        "es": "Machacawyrms",
+        "it": "Attaccawyrm"
+      }
     },
     {
       "Id": "IID_勇者の剣",
@@ -87,7 +197,18 @@
       "Chinese": "勇者之剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Brave Sword",
+        "zh-Hans": "勇者之剑",
+        "zh-Hant": "勇者之劍",
+        "ja": "勇者の剣",
+        "ko": "용사의 검",
+        "de": "Kriegerschwert",
+        "fr": "Épée héros",
+        "es": "Espada del valor",
+        "it": "Spada forte"
+      }
     },
     {
       "Id": "IID_リベラシオン",
@@ -95,7 +216,18 @@
       "Chinese": "里贝拉锡翁",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Libération",
+        "zh-Hans": "里贝拉锡翁",
+        "zh-Hant": "里貝拉錫翁",
+        "ja": "リベラシオン",
+        "ko": "리베라시옹",
+        "de": "Libération",
+        "fr": "Libération",
+        "es": "Libération",
+        "it": "Libération"
+      }
     },
     {
       "Id": "IID_ヴィレグランツ",
@@ -103,7 +235,18 @@
       "Chinese": "毕雷古兰兹",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Wille Glanz",
+        "zh-Hans": "毕雷古兰兹",
+        "zh-Hant": "畢雷古蘭茲",
+        "ja": "ヴィレグランツ",
+        "ko": "빌레그란츠",
+        "de": "Wille Glanz",
+        "fr": "Wille Glanz",
+        "es": "Wille Glanz",
+        "it": "Wille Glanz"
+      }
     },
     {
       "Id": "IID_クラドホルグ",
@@ -111,7 +254,18 @@
       "Chinese": "克拉德霍格",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Caladbolg",
+        "zh-Hans": "克拉德霍格",
+        "zh-Hant": "克拉德霍格",
+        "ja": "クラドホルグ",
+        "ko": "클라드홀그",
+        "de": "Caladbolg",
+        "fr": "Caladbolg",
+        "es": "Caladbolg",
+        "it": "Caladbolg"
+      }
     },
     {
       "Id": "IID_鉄の大剣",
@@ -119,7 +273,18 @@
       "Chinese": "铁大剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Iron Blade",
+        "zh-Hans": "铁大剑",
+        "zh-Hant": "鐵大劍",
+        "ja": "てつの大剣",
+        "ko": "철의 대검",
+        "de": "Eisenklinge",
+        "fr": "Lame fer",
+        "es": "Mandoble hierro",
+        "it": "Lama di ferro"
+      }
     },
     {
       "Id": "IID_鋼の大剣",
@@ -127,7 +292,18 @@
       "Chinese": "钢大剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Steel Blade",
+        "zh-Hans": "钢大剑",
+        "zh-Hant": "鋼大劍",
+        "ja": "はがねの大剣",
+        "ko": "강철의 대검",
+        "de": "Stahlklinge",
+        "fr": "Lame acier",
+        "es": "Mandoble acero",
+        "it": "Lama d'acciaio"
+      }
     },
     {
       "Id": "IID_銀の大剣",
@@ -135,7 +311,18 @@
       "Chinese": "银大剑",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Silver Blade",
+        "zh-Hans": "银大剑",
+        "zh-Hant": "銀大劍",
+        "ja": "ぎんの大剣",
+        "ko": "은의 대검",
+        "de": "Silberklinge",
+        "fr": "Lame argent",
+        "es": "Mandoble plata",
+        "it": "Lama d'argento"
+      }
     },
     {
       "Id": "IID_ゲオルギオス",
@@ -143,7 +330,18 @@
       "Chinese": "盖欧吉欧斯",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Georgios",
+        "zh-Hans": "盖欧吉欧斯",
+        "zh-Hant": "蓋歐吉歐斯",
+        "ja": "ゲオルギオス",
+        "ko": "게오르기오스",
+        "de": "Georgios",
+        "fr": "Georgios",
+        "es": "Georgios",
+        "it": "Georgios"
+      }
     },
     {
       "Id": "IID_フォルクヴァング",
@@ -151,7 +349,18 @@
       "Chinese": "弗尔克范格",
       "Kind": 1,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Fólkvangr",
+        "zh-Hans": "弗尔克范格",
+        "zh-Hant": "弗爾克范格",
+        "ja": "フォルクヴァング",
+        "ko": "폴크방",
+        "de": "Fólkvangr",
+        "fr": "Fólkvangr",
+        "es": "Fólkvangr",
+        "it": "Fólkvangr"
+      }
     },
     {
       "Id": "IID_ほそみの槍",
@@ -159,7 +368,18 @@
       "Chinese": "细枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Slim Lance",
+        "zh-Hans": "细枪",
+        "zh-Hant": "細槍",
+        "ja": "ほそみの槍",
+        "ko": "가느다란 창",
+        "de": "Leichtlanze",
+        "fr": "Lance fine",
+        "es": "Lanza delgada",
+        "it": "Lancia sottile"
+      }
     },
     {
       "Id": "IID_鉄の槍",
@@ -167,7 +387,18 @@
       "Chinese": "铁枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Iron Lance",
+        "zh-Hans": "铁枪",
+        "zh-Hant": "鐵槍",
+        "ja": "てつの槍",
+        "ko": "철의 창",
+        "de": "Eisenlanze",
+        "fr": "Lance fer",
+        "es": "Lanza hierro",
+        "it": "Lancia di ferro"
+      }
     },
     {
       "Id": "IID_鋼の槍",
@@ -175,7 +406,18 @@
       "Chinese": "钢枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Steel Lance",
+        "zh-Hans": "钢枪",
+        "zh-Hant": "鋼槍",
+        "ja": "はがねの槍",
+        "ko": "강철의 창",
+        "de": "Stahllanze",
+        "fr": "Lance acier",
+        "es": "Lanza acero",
+        "it": "Lancia d'acciaio"
+      }
     },
     {
       "Id": "IID_銀の槍",
@@ -183,7 +425,18 @@
       "Chinese": "银枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Silver Lance",
+        "zh-Hans": "银枪",
+        "zh-Hant": "銀槍",
+        "ja": "ぎんの槍",
+        "ko": "은의 창",
+        "de": "Silberlanze",
+        "fr": "Lance argent",
+        "es": "Lanza plata",
+        "it": "Lancia d'argento"
+      }
     },
     {
       "Id": "IID_手槍",
@@ -191,7 +444,18 @@
       "Chinese": "标枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Javelin",
+        "zh-Hans": "标枪",
+        "zh-Hant": "標槍",
+        "ja": "手槍",
+        "ko": "투척창",
+        "de": "Langspeer",
+        "fr": "Javelot",
+        "es": "Jabalina",
+        "it": "Giavellotto"
+      }
     },
     {
       "Id": "IID_ナイトキラー",
@@ -199,7 +463,18 @@
       "Chinese": "骑士杀手",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Ridersbane",
+        "zh-Hans": "骑士杀手",
+        "zh-Hant": "騎士殺手",
+        "ja": "ナイトキラー",
+        "ko": "나이트 킬러",
+        "de": "Rittertod",
+        "fr": "Caballucide",
+        "es": "Antijinetes",
+        "it": "Picca"
+      }
     },
     {
       "Id": "IID_キラーランス",
@@ -207,7 +482,18 @@
       "Chinese": "必杀枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Killer Lance",
+        "zh-Hans": "必杀枪",
+        "zh-Hant": "必殺槍",
+        "ja": "キラーランス",
+        "ko": "킬러 랜스",
+        "de": "Meisterlanze",
+        "fr": "Lance létale",
+        "es": "Lanza letal",
+        "it": "Lancia letale"
+      }
     },
     {
       "Id": "IID_ほのおの槍",
@@ -215,7 +501,18 @@
       "Chinese": "炎枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Flame Lance",
+        "zh-Hans": "炎枪",
+        "zh-Hant": "炎槍",
+        "ja": "炎の槍",
+        "ko": "불꽃의 창",
+        "de": "Feuerlanze",
+        "fr": "Pyrolance",
+        "es": "Lanza de fuego",
+        "it": "Lancia di fiamma"
+      }
     },
     {
       "Id": "IID_スレンドスピア",
@@ -223,7 +520,18 @@
       "Chinese": "投枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Spear",
+        "zh-Hans": "投枪",
+        "zh-Hant": "投槍",
+        "ja": "スレンドスピア",
+        "ko": "슬렌드 스피어",
+        "de": "Speer",
+        "fr": "Épieu",
+        "es": "Pica",
+        "it": "Asta"
+      }
     },
     {
       "Id": "IID_勇者の槍",
@@ -231,7 +539,18 @@
       "Chinese": "勇者之枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Brave Lance",
+        "zh-Hans": "勇者之枪",
+        "zh-Hant": "勇者之槍",
+        "ja": "勇者の槍",
+        "ko": "용사의 창",
+        "de": "Kriegerlanze",
+        "fr": "Lance héros",
+        "es": "Lanza del valor",
+        "it": "Lancia forte"
+      }
     },
     {
       "Id": "IID_ブリューナク",
@@ -239,7 +558,18 @@
       "Chinese": "布里欧奈克",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Brionac",
+        "zh-Hans": "布里欧奈克",
+        "zh-Hant": "布里歐奈克",
+        "ja": "ブリューナク",
+        "ko": "브류나크",
+        "de": "Brionac",
+        "fr": "Brionac",
+        "es": "Brionac",
+        "it": "Brionac"
+      }
     },
     {
       "Id": "IID_鉄の大槍",
@@ -247,7 +577,18 @@
       "Chinese": "铁大枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Iron Greatlance",
+        "zh-Hans": "铁大枪",
+        "zh-Hant": "鐵大槍",
+        "ja": "てつの大槍",
+        "ko": "철의 큰 창",
+        "de": "Eisen-Großlanze",
+        "fr": "Pique fer",
+        "es": "Espontón hierro",
+        "it": "Gran lancia ferro"
+      }
     },
     {
       "Id": "IID_鋼の大槍",
@@ -255,7 +596,18 @@
       "Chinese": "钢大枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Steel Greatlance",
+        "zh-Hans": "钢大枪",
+        "zh-Hant": "鋼大槍",
+        "ja": "はがねの大槍",
+        "ko": "강철의 큰 창",
+        "de": "Stahl-Großlanze",
+        "fr": "Pique acier",
+        "es": "Espontón acero",
+        "it": "Gran lancia acc."
+      }
     },
     {
       "Id": "IID_銀の大槍",
@@ -263,7 +615,18 @@
       "Chinese": "银大枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Silver Greatlance",
+        "zh-Hans": "银大枪",
+        "zh-Hant": "銀大槍",
+        "ja": "ぎんの大槍",
+        "ko": "은의 큰 창",
+        "de": "Silber-Großlanze",
+        "fr": "Pique argent",
+        "es": "Espontón plata",
+        "it": "Gran lancia arg."
+      }
     },
     {
       "Id": "IID_ヴェノマス",
@@ -271,7 +634,18 @@
       "Chinese": "恶毒枪",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Venomous",
+        "zh-Hans": "恶毒枪",
+        "zh-Hant": "惡毒槍",
+        "ja": "ヴェノマス",
+        "ko": "베너머스",
+        "de": "Giftzahn",
+        "fr": "Venimeuse",
+        "es": "Ponzoñosa",
+        "it": "Dente avvelenato"
+      }
     },
     {
       "Id": "IID_フェンサリル",
@@ -279,7 +653,18 @@
       "Chinese": "芬萨里尔",
       "Kind": 2,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Fensalir",
+        "zh-Hans": "芬萨里尔",
+        "zh-Hant": "芬薩里爾",
+        "ja": "フェンサリル",
+        "ko": "펜살리르",
+        "de": "Fensalir",
+        "fr": "Fensalir",
+        "es": "Fensalir",
+        "it": "Fensalir"
+      }
     },
     {
       "Id": "IID_ショートアクス",
@@ -287,7 +672,18 @@
       "Chinese": "短斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Compact Axe",
+        "zh-Hans": "短斧",
+        "zh-Hant": "短斧",
+        "ja": "ショートアクス",
+        "ko": "쇼트 액스",
+        "de": "Leichtaxt",
+        "fr": "Hache légère",
+        "es": "Hacha corta",
+        "it": "Ascia leggera"
+      }
     },
     {
       "Id": "IID_鉄の斧",
@@ -295,7 +691,18 @@
       "Chinese": "铁斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Iron Axe",
+        "zh-Hans": "铁斧",
+        "zh-Hant": "鐵斧",
+        "ja": "てつの斧",
+        "ko": "철의 도끼",
+        "de": "Eisenaxt",
+        "fr": "Hache fer",
+        "es": "Hacha hierro",
+        "it": "Ascia di ferro"
+      }
     },
     {
       "Id": "IID_鋼の斧",
@@ -303,7 +710,18 @@
       "Chinese": "钢斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Steel Axe",
+        "zh-Hans": "钢斧",
+        "zh-Hant": "鋼斧",
+        "ja": "はがねの斧",
+        "ko": "강철의 도끼",
+        "de": "Stahlaxt",
+        "fr": "Hache acier",
+        "es": "Hacha acero",
+        "it": "Ascia d'acciaio"
+      }
     },
     {
       "Id": "IID_銀の斧",
@@ -311,7 +729,18 @@
       "Chinese": "银斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Silver Axe",
+        "zh-Hans": "银斧",
+        "zh-Hant": "銀斧",
+        "ja": "ぎんの斧",
+        "ko": "은의 도끼",
+        "de": "Silberaxt",
+        "fr": "Hache argent",
+        "es": "Hacha plata",
+        "it": "Ascia d'argento"
+      }
     },
     {
       "Id": "IID_手斧",
@@ -319,7 +748,18 @@
       "Chinese": "手斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Hand Axe",
+        "zh-Hans": "手斧",
+        "zh-Hant": "手斧",
+        "ja": "手斧",
+        "ko": "투척도끼",
+        "de": "Wurfbeil",
+        "fr": "Hachette",
+        "es": "Hacha de mano",
+        "it": "Scure"
+      }
     },
     {
       "Id": "IID_ハンマー",
@@ -327,7 +767,18 @@
       "Chinese": "战锤",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Hammer",
+        "zh-Hans": "战锤",
+        "zh-Hant": "戰錘",
+        "ja": "ハンマー",
+        "ko": "해머",
+        "de": "Hammer",
+        "fr": "Marteau",
+        "es": "Martillo",
+        "it": "Martello"
+      }
     },
     {
       "Id": "IID_ポールアクス",
@@ -335,7 +786,18 @@
       "Chinese": "长斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Poleaxe",
+        "zh-Hans": "长斧",
+        "zh-Hant": "長斧",
+        "ja": "ポールアクス",
+        "ko": "폴액스",
+        "de": "Stabaxt",
+        "fr": "Hache polaire",
+        "es": "Alabarda",
+        "it": "Alabarda"
+      }
     },
     {
       "Id": "IID_キラーアクス",
@@ -343,7 +805,18 @@
       "Chinese": "必杀斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Killer Axe",
+        "zh-Hans": "必杀斧",
+        "zh-Hant": "必殺斧",
+        "ja": "キラーアクス",
+        "ko": "킬러 액스",
+        "de": "Meisteraxt",
+        "fr": "Hache létale",
+        "es": "Hacha letal",
+        "it": "Ascia letale"
+      }
     },
     {
       "Id": "IID_トマホーク",
@@ -351,7 +824,18 @@
       "Chinese": "投斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Tomahawk",
+        "zh-Hans": "投斧",
+        "zh-Hant": "投斧",
+        "ja": "トマホーク",
+        "ko": "토마호크",
+        "de": "Tomahawk",
+        "fr": "Tomahawk",
+        "es": "Tomahawk",
+        "it": "Tomahawk"
+      }
     },
     {
       "Id": "IID_勇者の斧",
@@ -359,7 +843,18 @@
       "Chinese": "勇者之斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Brave Axe",
+        "zh-Hans": "勇者之斧",
+        "zh-Hant": "勇者之斧",
+        "ja": "勇者の斧",
+        "ko": "용사의 도끼",
+        "de": "Kriegeraxt",
+        "fr": "Hache héros",
+        "es": "Hacha del valor",
+        "it": "Ascia forte"
+      }
     },
     {
       "Id": "IID_フラガラッハ",
@@ -367,7 +862,18 @@
       "Chinese": "佛拉格拉克",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Fragarach",
+        "zh-Hans": "佛拉格拉克",
+        "zh-Hant": "佛拉格拉克",
+        "ja": "フラガラッハ",
+        "ko": "프라가라흐",
+        "de": "Fragarach",
+        "fr": "Fragarach",
+        "es": "Fragarach",
+        "it": "Fragarach"
+      }
     },
     {
       "Id": "IID_鉄の大斧",
@@ -375,7 +881,18 @@
       "Chinese": "铁大斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Iron Greataxe",
+        "zh-Hans": "铁大斧",
+        "zh-Hant": "鐵大斧",
+        "ja": "てつの大斧",
+        "ko": "철의 큰 도끼",
+        "de": "Eisen-Großaxt",
+        "fr": "Gr. hache fer",
+        "es": "Archa hierro",
+        "it": "Grandascia ferro"
+      }
     },
     {
       "Id": "IID_鋼の大斧",
@@ -383,7 +900,18 @@
       "Chinese": "钢大斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Steel Greataxe",
+        "zh-Hans": "钢大斧",
+        "zh-Hant": "鋼大斧",
+        "ja": "はがねの大斧",
+        "ko": "강철의 큰 도끼",
+        "de": "Stahl-Großaxt",
+        "fr": "Gr. hache acier",
+        "es": "Archa acero",
+        "it": "Grandascia acc."
+      }
     },
     {
       "Id": "IID_銀の大斧",
@@ -391,7 +919,18 @@
       "Chinese": "银大斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Silver Greataxe",
+        "zh-Hans": "银大斧",
+        "zh-Hant": "銀大斧",
+        "ja": "ぎんの大斧",
+        "ko": "은의 큰 도끼",
+        "de": "Silber-Großaxt",
+        "fr": "Gr. hache argent",
+        "es": "Archa plata",
+        "it": "Grandascia arg."
+      }
     },
     {
       "Id": "IID_かぜの大斧",
@@ -399,7 +938,18 @@
       "Chinese": "风大斧",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Hurricane Axe",
+        "zh-Hans": "风大斧",
+        "zh-Hant": "風大斧",
+        "ja": "風の大斧",
+        "ko": "바람의 큰 도끼",
+        "de": "Orkanaxt",
+        "fr": "Hache tornade",
+        "es": "Hacha huracán",
+        "it": "Ascia uragano"
+      }
     },
     {
       "Id": "IID_ウコンバサラ",
@@ -407,7 +957,18 @@
       "Chinese": "乌哥巴萨拉",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Ukonvasara",
+        "zh-Hans": "乌哥巴萨拉",
+        "zh-Hant": "烏哥巴薩拉",
+        "ja": "ウコンバサラ",
+        "ko": "우콘바사라",
+        "de": "Ukonvasara-Axt",
+        "fr": "Ukonvasara",
+        "es": "Ukonvasara",
+        "it": "Ukonvasara"
+      }
     },
     {
       "Id": "IID_ノーアトゥーン",
@@ -415,7 +976,18 @@
       "Chinese": "诺欧通",
       "Kind": 3,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Nóatún",
+        "zh-Hans": "诺欧通",
+        "zh-Hant": "諾歐通",
+        "ja": "ノーアトゥーン",
+        "ko": "노아툰",
+        "de": "Nóatún",
+        "fr": "Nóatún",
+        "es": "Nóatún",
+        "it": "Nóatún"
+      }
     },
     {
       "Id": "IID_ショートボウ",
@@ -423,7 +995,18 @@
       "Chinese": "短弓",
       "Kind": 4,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Mini Bow",
+        "zh-Hans": "短弓",
+        "zh-Hant": "短弓",
+        "ja": "ショートボウ",
+        "ko": "쇼트 보우",
+        "de": "Miniaturbogen",
+        "fr": "Petit arc",
+        "es": "Miniarco",
+        "it": "Miniarco"
+      }
     },
     {
       "Id": "IID_鉄の弓",
@@ -431,7 +1014,18 @@
       "Chinese": "铁弓",
       "Kind": 4,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Iron Bow",
+        "zh-Hans": "铁弓",
+        "zh-Hant": "鐵弓",
+        "ja": "てつの弓",
+        "ko": "철의 활",
+        "de": "Eisenbogen",
+        "fr": "Arc fer",
+        "es": "Arco hierro",
+        "it": "Arco di ferro"
+      }
     },
     {
       "Id": "IID_鋼の弓",
@@ -439,7 +1033,18 @@
       "Chinese": "钢弓",
       "Kind": 4,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Steel Bow",
+        "zh-Hans": "钢弓",
+        "zh-Hant": "鋼弓",
+        "ja": "はがねの弓",
+        "ko": "강철의 활",
+        "de": "Stahlbogen",
+        "fr": "Arc acier",
+        "es": "Arco acero",
+        "it": "Arco d'acciaio"
+      }
     },
     {
       "Id": "IID_銀の弓",
@@ -447,7 +1052,18 @@
       "Chinese": "银弓",
       "Kind": 4,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Silver Bow",
+        "zh-Hans": "银弓",
+        "zh-Hant": "銀弓",
+        "ja": "ぎんの弓",
+        "ko": "은의 활",
+        "de": "Silberbogen",
+        "fr": "Arc argent",
+        "es": "Arco plata",
+        "it": "Arco d'argento"
+      }
     },
     {
       "Id": "IID_長弓",
@@ -455,7 +1071,18 @@
       "Chinese": "长弓",
       "Kind": 4,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Longbow",
+        "zh-Hans": "长弓",
+        "zh-Hant": "長弓",
+        "ja": "長弓",
+        "ko": "장궁",
+        "de": "Langbogen",
+        "fr": "Arc long",
+        "es": "Arco largo",
+        "it": "Arco lungo"
+      }
     },
     {
       "Id": "IID_キラーボウ",
@@ -463,7 +1090,18 @@
       "Chinese": "必杀弓",
       "Kind": 4,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Killer Bow",
+        "zh-Hans": "必杀弓",
+        "zh-Hant": "必殺弓",
+        "ja": "キラーボウ",
+        "ko": "킬러 보우",
+        "de": "Meisterbogen",
+        "fr": "Arc létal",
+        "es": "Arco letal",
+        "it": "Arco letale"
+      }
     },
     {
       "Id": "IID_光の弓",
@@ -471,7 +1109,18 @@
       "Chinese": "光之弓",
       "Kind": 4,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Radiant Bow",
+        "zh-Hans": "光之弓",
+        "zh-Hant": "光之弓",
+        "ja": "光の弓",
+        "ko": "빛의 활",
+        "de": "Sonnenbogen",
+        "fr": "Arc lumière",
+        "es": "Arco fulgor",
+        "it": "Arco di luce"
+      }
     },
     {
       "Id": "IID_勇者の弓",
@@ -479,7 +1128,18 @@
       "Chinese": "勇者之弓",
       "Kind": 4,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Brave Bow",
+        "zh-Hans": "勇者之弓",
+        "zh-Hant": "勇者之弓",
+        "ja": "勇者の弓",
+        "ko": "용사의 활",
+        "de": "Kriegerbogen",
+        "fr": "Arc héros",
+        "es": "Arco del valor",
+        "it": "Arco forte"
+      }
     },
     {
       "Id": "IID_レンダウィル",
@@ -487,7 +1147,18 @@
       "Chinese": "伦达威尔",
       "Kind": 4,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Lendabair",
+        "zh-Hans": "伦达威尔",
+        "zh-Hant": "倫達威爾",
+        "ja": "レンダウィル",
+        "ko": "렌다윌",
+        "de": "Lendabair",
+        "fr": "Lendabair",
+        "es": "Lendabair",
+        "it": "Lendabair"
+      }
     },
     {
       "Id": "IID_ショートナイフ",
@@ -495,7 +1166,18 @@
       "Chinese": "短刀",
       "Kind": 5,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Short Knife",
+        "zh-Hans": "短刀",
+        "zh-Hant": "短刀",
+        "ja": "ショートナイフ",
+        "ko": "쇼트 나이프",
+        "de": "Kurzmesser",
+        "fr": "Petite dague",
+        "es": "Daga corta",
+        "it": "Coltello corto"
+      }
     },
     {
       "Id": "IID_鉄のナイフ",
@@ -503,7 +1185,18 @@
       "Chinese": "铁刀",
       "Kind": 5,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Iron Dagger",
+        "zh-Hans": "铁刀",
+        "zh-Hant": "鐵刀",
+        "ja": "てつのナイフ",
+        "ko": "철의 나이프",
+        "de": "Eisendolch",
+        "fr": "Dague fer",
+        "es": "Daga hierro",
+        "it": "Coltello di ferro"
+      }
     },
     {
       "Id": "IID_鋼のナイフ",
@@ -511,7 +1204,18 @@
       "Chinese": "钢刀",
       "Kind": 5,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Steel Dagger",
+        "zh-Hans": "钢刀",
+        "zh-Hant": "鋼刀",
+        "ja": "はがねのナイフ",
+        "ko": "강철의 나이프",
+        "de": "Stahldolch",
+        "fr": "Dague acier",
+        "es": "Daga acero",
+        "it": "Coltello d'acciaio"
+      }
     },
     {
       "Id": "IID_銀のナイフ",
@@ -519,7 +1223,18 @@
       "Chinese": "银刀",
       "Kind": 5,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Silver Dagger",
+        "zh-Hans": "银刀",
+        "zh-Hant": "銀刀",
+        "ja": "ぎんのナイフ",
+        "ko": "은의 나이프",
+        "de": "Silberdolch",
+        "fr": "Dague argent",
+        "es": "Daga plata",
+        "it": "Coltello d'argento"
+      }
     },
     {
       "Id": "IID_カルド",
@@ -527,7 +1242,18 @@
       "Chinese": "卡尔德",
       "Kind": 5,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Kard",
+        "zh-Hans": "卡尔德",
+        "zh-Hant": "卡爾德",
+        "ja": "カルド",
+        "ko": "카드",
+        "de": "Kard",
+        "fr": "Dague fine",
+        "es": "Kard",
+        "it": "Kard"
+      }
     },
     {
       "Id": "IID_スティレット",
@@ -535,7 +1261,18 @@
       "Chinese": "史提列特",
       "Kind": 5,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Stiletto",
+        "zh-Hans": "史提列特",
+        "zh-Hant": "史提列特",
+        "ja": "スティレット",
+        "ko": "스틸레토",
+        "de": "Stilett",
+        "fr": "Stylet",
+        "es": "Estilete",
+        "it": "Stiletto"
+      }
     },
     {
       "Id": "IID_ペシュカド",
@@ -543,7 +1280,18 @@
       "Chinese": "佩修卡特",
       "Kind": 5,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Peshkatz",
+        "zh-Hans": "佩修卡特",
+        "zh-Hant": "佩修卡特",
+        "ja": "ペシュカド",
+        "ko": "페스카즈",
+        "de": "Peshkatz",
+        "fr": "Faucheur",
+        "es": "Peshkatz",
+        "it": "Peshkatz"
+      }
     },
     {
       "Id": "IID_ミセリコルデ",
@@ -551,7 +1299,18 @@
       "Chinese": "米谢利克德",
       "Kind": 5,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Misericorde",
+        "zh-Hans": "米谢利克德",
+        "zh-Hant": "米謝利克德",
+        "ja": "ミセリコルデ",
+        "ko": "미세리코르데",
+        "de": "Gnadengeber",
+        "fr": "Miséricorde",
+        "es": "Misericordia",
+        "it": "Misericordia"
+      }
     },
     {
       "Id": "IID_シンクエディア",
@@ -559,7 +1318,18 @@
       "Chinese": "辛克艾迪亚",
       "Kind": 5,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Cinquedea",
+        "zh-Hans": "辛克艾迪亚",
+        "zh-Hant": "辛克艾迪亞",
+        "ja": "シンクエディア",
+        "ko": "싱크에디아",
+        "de": "Cinquedea",
+        "fr": "Cinquedea",
+        "es": "Cinquedea",
+        "it": "Cinquedea"
+      }
     },
     {
       "Id": "IID_カルンウェナン",
@@ -567,7 +1337,18 @@
       "Chinese": "卡伦威南",
       "Kind": 5,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Carnwenhan",
+        "zh-Hans": "卡伦威南",
+        "zh-Hant": "卡倫威南",
+        "ja": "カルンウェナン",
+        "ko": "카른웨난",
+        "de": "Carnwennan",
+        "fr": "Carnwennan",
+        "es": "Carnwenhan",
+        "it": "Carnwenhan"
+      }
     },
     {
       "Id": "IID_サージ",
@@ -575,7 +1356,18 @@
       "Chinese": "浪涌",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Surge",
+        "zh-Hans": "浪涌",
+        "zh-Hant": "浪湧",
+        "ja": "サージ",
+        "ko": "서지",
+        "de": "Flut",
+        "fr": "Colère",
+        "es": "Aluvión",
+        "it": "Impeto"
+      }
     },
     {
       "Id": "IID_ファイアー",
@@ -583,7 +1375,18 @@
       "Chinese": "火焰",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Fire",
+        "zh-Hans": "火焰",
+        "zh-Hant": "火焰",
+        "ja": "ファイアー",
+        "ko": "파이어",
+        "de": "Feuer",
+        "fr": "Feu",
+        "es": "Fuego",
+        "it": "Fuoco"
+      }
     },
     {
       "Id": "IID_サンダー",
@@ -591,7 +1394,18 @@
       "Chinese": "雷电",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Thunder",
+        "zh-Hans": "雷电",
+        "zh-Hant": "雷電",
+        "ja": "サンダー",
+        "ko": "선더",
+        "de": "Donner",
+        "fr": "Foudre",
+        "es": "Trueno",
+        "it": "Tuono"
+      }
     },
     {
       "Id": "IID_ウィンド",
@@ -599,7 +1413,18 @@
       "Chinese": "烈风",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Wind",
+        "zh-Hans": "烈风",
+        "zh-Hant": "烈風",
+        "ja": "ウインド",
+        "ko": "윈드",
+        "de": "Wind",
+        "fr": "Vent",
+        "es": "Viento",
+        "it": "Vento"
+      }
     },
     {
       "Id": "IID_エルサージ",
@@ -607,7 +1432,18 @@
       "Chinese": "狂涌",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Elsurge",
+        "zh-Hans": "狂涌",
+        "zh-Hant": "狂湧",
+        "ja": "エルサージ",
+        "ko": "엘 서지",
+        "de": "Elfenflut",
+        "fr": "Rage",
+        "es": "Elsurge",
+        "it": "Impeto d'elfo"
+      }
     },
     {
       "Id": "IID_エルファイアー",
@@ -615,7 +1451,18 @@
       "Chinese": "狂焰",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Elfire",
+        "zh-Hans": "狂焰",
+        "zh-Hant": "狂焰",
+        "ja": "エルファイアー",
+        "ko": "엘 파이어",
+        "de": "Elfenlicht",
+        "fr": "Inferno",
+        "es": "Elfire",
+        "it": "Fuoco d'elfo"
+      }
     },
     {
       "Id": "IID_エルサンダー",
@@ -623,7 +1470,18 @@
       "Chinese": "狂雷",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Elthunder",
+        "zh-Hans": "狂雷",
+        "zh-Hant": "狂雷",
+        "ja": "エルサンダー",
+        "ko": "엘 선더",
+        "de": "Elfendonner",
+        "fr": "Éclair",
+        "es": "Elthunder",
+        "it": "Tuono d'elfo"
+      }
     },
     {
       "Id": "IID_エルウィンド",
@@ -631,7 +1489,18 @@
       "Chinese": "狂风",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Elwind",
+        "zh-Hans": "狂风",
+        "zh-Hant": "狂風",
+        "ja": "エルウインド",
+        "ko": "엘 윈드",
+        "de": "Elfenwind",
+        "fr": "Tempête",
+        "es": "Elwind",
+        "it": "Vento d'elfo"
+      }
     },
     {
       "Id": "IID_ボルガノン",
@@ -639,7 +1508,18 @@
       "Chinese": "火山爆焰",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Bolganone",
+        "zh-Hans": "火山爆焰",
+        "zh-Hant": "火山爆焰",
+        "ja": "ボルガノン",
+        "ko": "볼케논",
+        "de": "Bolganone",
+        "fr": "Bolganone",
+        "es": "Bolganone",
+        "it": "Bolganone"
+      }
     },
     {
       "Id": "IID_トロン",
@@ -647,7 +1527,18 @@
       "Chinese": "托隆",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Thoron",
+        "zh-Hans": "托隆",
+        "zh-Hant": "托隆",
+        "ja": "トロン",
+        "ko": "트론",
+        "de": "Thoron",
+        "fr": "Thoron",
+        "es": "Thoron",
+        "it": "Thoron"
+      }
     },
     {
       "Id": "IID_エクスカリバー",
@@ -655,7 +1546,18 @@
       "Chinese": "埃克斯卡利伯",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Excalibur",
+        "zh-Hans": "埃克斯卡利伯",
+        "zh-Hant": "埃克斯卡利伯",
+        "ja": "エクスカリバー",
+        "ko": "엑스칼리버",
+        "de": "Excalibur",
+        "fr": "Excalibur",
+        "es": "Excalibur",
+        "it": "Excalibur"
+      }
     },
     {
       "Id": "IID_ノヴァ",
@@ -663,7 +1565,18 @@
       "Chinese": "新星",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Nova",
+        "zh-Hans": "新星",
+        "zh-Hant": "新星",
+        "ja": "ノヴァ",
+        "ko": "노바",
+        "de": "Nova",
+        "fr": "Nova",
+        "es": "Nova",
+        "it": "Nova"
+      }
     },
     {
       "Id": "IID_オヴスキュリテ",
@@ -671,7 +1584,18 @@
       "Chinese": "暗黑无光",
       "Kind": 6,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Obscurité",
+        "zh-Hans": "暗黑无光",
+        "zh-Hant": "暗黑無光",
+        "ja": "オヴスキュリテ",
+        "ko": "옵스큐리테",
+        "de": "Obscurité",
+        "fr": "Obscurité",
+        "es": "Obscurité",
+        "it": "Obscurité"
+      }
     },
     {
       "Id": "IID_ライブ",
@@ -679,7 +1603,18 @@
       "Chinese": "圣疗",
       "Kind": 7,
       "MaxUses": 25,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Heal",
+        "zh-Hans": "圣疗",
+        "zh-Hant": "聖療",
+        "ja": "ライブ",
+        "ko": "라이브",
+        "de": "Heilung",
+        "fr": "Soin",
+        "es": "Curar",
+        "it": "Cura"
+      }
     },
     {
       "Id": "IID_リライブ",
@@ -687,7 +1622,18 @@
       "Chinese": "大圣疗",
       "Kind": 7,
       "MaxUses": 20,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Mend",
+        "zh-Hans": "大圣疗",
+        "zh-Hant": "大聖療",
+        "ja": "リライブ",
+        "ko": "리라이브",
+        "de": "Pflege",
+        "fr": "Cure",
+        "es": "Mejorar",
+        "it": "Rimedio"
+      }
     },
     {
       "Id": "IID_リブロー",
@@ -695,7 +1641,18 @@
       "Chinese": "远程圣疗",
       "Kind": 7,
       "MaxUses": 10,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Physic",
+        "zh-Hans": "远程圣疗",
+        "zh-Hant": "遠程聖療",
+        "ja": "リブロー",
+        "ko": "리브로",
+        "de": "Purgativ",
+        "fr": "Remède",
+        "es": "Sanar",
+        "it": "Lenimento"
+      }
     },
     {
       "Id": "IID_リカバー",
@@ -703,7 +1660,18 @@
       "Chinese": "圣愈",
       "Kind": 7,
       "MaxUses": 10,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Recover",
+        "zh-Hans": "圣愈",
+        "zh-Hant": "聖癒",
+        "ja": "リカバー",
+        "ko": "리커버",
+        "de": "Erholung",
+        "fr": "Restitution",
+        "es": "Recuperar",
+        "it": "Recupero"
+      }
     },
     {
       "Id": "IID_リザーブ",
@@ -711,7 +1679,18 @@
       "Chinese": "全体圣疗",
       "Kind": 7,
       "MaxUses": 5,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fortify",
+        "zh-Hans": "全体圣疗",
+        "zh-Hant": "全體聖療",
+        "ja": "リザーブ",
+        "ko": "리저브",
+        "de": "Stärkung",
+        "fr": "Halo",
+        "es": "Fortalecer",
+        "it": "Balsamo"
+      }
     },
     {
       "Id": "IID_レスト",
@@ -719,7 +1698,18 @@
       "Chinese": "休息",
       "Kind": 7,
       "MaxUses": 10,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Restore",
+        "zh-Hans": "休息",
+        "zh-Hant": "休息",
+        "ja": "レスト",
+        "ko": "레스트",
+        "de": "Erneuerung",
+        "fr": "Vitalis",
+        "es": "Restaurar",
+        "it": "Ripristino"
+      }
     },
     {
       "Id": "IID_ワープ",
@@ -727,7 +1717,18 @@
       "Chinese": "传送",
       "Kind": 7,
       "MaxUses": 5,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Warp",
+        "zh-Hans": "传送",
+        "zh-Hant": "傳送",
+        "ja": "ワープ",
+        "ko": "워프",
+        "de": "Teleport",
+        "fr": "Téléport",
+        "es": "Transportar",
+        "it": "Teletrasporto"
+      }
     },
     {
       "Id": "IID_リワープ",
@@ -735,7 +1736,18 @@
       "Chinese": "自我传送",
       "Kind": 7,
       "MaxUses": 5,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Rewarp",
+        "zh-Hans": "自我传送",
+        "zh-Hant": "自我傳送",
+        "ja": "リワープ",
+        "ko": "리워프",
+        "de": "Fortschritt",
+        "fr": "Téléportation",
+        "es": "Teletransportar",
+        "it": "Traslazione"
+      }
     },
     {
       "Id": "IID_レスキュー",
@@ -743,7 +1755,18 @@
       "Chinese": "救援",
       "Kind": 7,
       "MaxUses": 5,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Rescue",
+        "zh-Hans": "救援",
+        "zh-Hant": "救援",
+        "ja": "レスキュー",
+        "ko": "레스큐",
+        "de": "Rettung",
+        "fr": "Secours",
+        "es": "Rescatar",
+        "it": "Soccorso"
+      }
     },
     {
       "Id": "IID_ドロー",
@@ -751,7 +1774,18 @@
       "Chinese": "召敌",
       "Kind": 7,
       "MaxUses": 3,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Entrap",
+        "zh-Hans": "召敌",
+        "zh-Hant": "召敵",
+        "ja": "ドロー",
+        "ko": "드로우",
+        "de": "Falle",
+        "fr": "Piège",
+        "es": "Atrapar",
+        "it": "Trappola"
+      }
     },
     {
       "Id": "IID_トーチ",
@@ -759,7 +1793,18 @@
       "Chinese": "火炬",
       "Kind": 7,
       "MaxUses": 5,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Illume",
+        "zh-Hans": "火炬",
+        "zh-Hant": "火炬",
+        "ja": "トーチ",
+        "ko": "토치",
+        "de": "Illumnis",
+        "fr": "Illumna",
+        "es": "Iluminar",
+        "it": "Barlume"
+      }
     },
     {
       "Id": "IID_フリーズ",
@@ -767,7 +1812,18 @@
       "Chinese": "冰封",
       "Kind": 7,
       "MaxUses": 5,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Freeze",
+        "zh-Hans": "冰封",
+        "zh-Hant": "冰封",
+        "ja": "フリーズ",
+        "ko": "프리즈",
+        "de": "Einfrieren",
+        "fr": "Gel",
+        "es": "Congelar",
+        "it": "Gelo"
+      }
     },
     {
       "Id": "IID_サイレス",
@@ -775,7 +1831,18 @@
       "Chinese": "沉默",
       "Kind": 7,
       "MaxUses": 5,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Silence",
+        "zh-Hans": "沉默",
+        "zh-Hant": "沉默",
+        "ja": "サイレス",
+        "ko": "사일런스",
+        "de": "Schweigen",
+        "fr": "Silence",
+        "es": "Silenciar",
+        "it": "Silenzio"
+      }
     },
     {
       "Id": "IID_アイスロック",
@@ -783,7 +1850,18 @@
       "Chinese": "冰锁",
       "Kind": 7,
       "MaxUses": 10,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Obstruct",
+        "zh-Hans": "冰锁",
+        "zh-Hant": "冰鎖",
+        "ja": "アイスロック",
+        "ko": "아이스 록",
+        "de": "Blockieren",
+        "fr": "Barrage",
+        "es": "Obstrucción",
+        "it": "Ostruzione"
+      }
     },
     {
       "Id": "IID_コラプス",
@@ -791,7 +1869,18 @@
       "Chinese": "崩塌",
       "Kind": 7,
       "MaxUses": 10,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fracture",
+        "zh-Hans": "崩塌",
+        "zh-Hant": "崩塌",
+        "ja": "コラプス",
+        "ko": "컬랩스",
+        "de": "Fraktur",
+        "fr": "Fracture",
+        "es": "Fractura",
+        "it": "Frattura"
+      }
     },
     {
       "Id": "IID_ノードゥス",
@@ -799,7 +1888,18 @@
       "Chinese": "结节",
       "Kind": 7,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Nodus",
+        "zh-Hans": "结节",
+        "zh-Hant": "結節",
+        "ja": "ノードゥス",
+        "ko": "노두스",
+        "de": "Nodus",
+        "fr": "Nodus",
+        "es": "Nodus",
+        "it": "Nodus"
+      }
     },
     {
       "Id": "IID_初心の法",
@@ -807,7 +1907,18 @@
       "Chinese": "新手体术",
       "Kind": 8,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Initiate Art",
+        "zh-Hans": "新手体术",
+        "zh-Hant": "新手體術",
+        "ja": "見習の体術",
+        "ko": "입문 체술",
+        "de": "Erste Stufe",
+        "fr": "Art initié",
+        "es": "Arte iniciático",
+        "it": "Arte iniziatica"
+      }
     },
     {
       "Id": "IID_鉄身の法",
@@ -815,7 +1926,18 @@
       "Chinese": "基本体术",
       "Kind": 8,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Iron-Body Art",
+        "zh-Hans": "基本体术",
+        "zh-Hant": "基本體術",
+        "ja": "基本の体術",
+        "ko": "기본 체술",
+        "de": "Zweite Stufe",
+        "fr": "Art fer",
+        "es": "Mano férrea",
+        "it": "Arte di ferro"
+      }
     },
     {
       "Id": "IID_鋼身の法",
@@ -823,7 +1945,18 @@
       "Chinese": "高级体术",
       "Kind": 8,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Steel-Hand Art",
+        "zh-Hans": "高级体术",
+        "zh-Hant": "高級體術",
+        "ja": "上級の体術",
+        "ko": "상급 체술",
+        "de": "Dritte Stufe",
+        "fr": "Art acier",
+        "es": "Mano acerada",
+        "it": "Arte d'acciaio"
+      }
     },
     {
       "Id": "IID_銀身の法",
@@ -831,7 +1964,18 @@
       "Chinese": "专家体术",
       "Kind": 8,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Silver-Spirit Art",
+        "zh-Hans": "专家体术",
+        "zh-Hant": "專家體術",
+        "ja": "達人の体術",
+        "ko": "달인 체술",
+        "de": "Vierte Stufe",
+        "fr": "Art argent",
+        "es": "Mano argéntea",
+        "it": "Arte d'argento"
+      }
     },
     {
       "Id": "IID_護身の法",
@@ -839,7 +1983,18 @@
       "Chinese": "护身体术",
       "Kind": 8,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Shielding Art",
+        "zh-Hans": "护身体术",
+        "zh-Hant": "護身體術",
+        "ja": "護身の体術",
+        "ko": "호신 체술",
+        "de": "Abwehrhaltung",
+        "fr": "Art blindé",
+        "es": "Autodefensa",
+        "it": "Arte protettiva"
+      }
     },
     {
       "Id": "IID_閃進の法",
@@ -847,7 +2002,18 @@
       "Chinese": "闪进体术",
       "Kind": 8,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Flashing Fist Art",
+        "zh-Hans": "闪进体术",
+        "zh-Hant": "閃進體術",
+        "ja": "閃進の体術",
+        "ko": "섬진 체술",
+        "de": "Donnerfaust",
+        "fr": "Art aveuglant",
+        "es": "Puño veloz",
+        "it": "Arte lucente"
+      }
     },
     {
       "Id": "IID_覇神の法",
@@ -855,7 +2021,18 @@
       "Chinese": "霸神体术",
       "Kind": 8,
       "MaxUses": 255,
-      "MaxRefine": 5
+      "MaxRefine": 5,
+      "Names": {
+        "en": "Divine Fist Art",
+        "zh-Hans": "霸神体术",
+        "zh-Hant": "霸神體術",
+        "ja": "覇神の体術",
+        "ko": "패신 체술",
+        "de": "Götterfaust",
+        "fr": "Art divin",
+        "es": "Puño divino",
+        "it": "Arte divina"
+      }
     },
     {
       "Id": "IID_火のブレス",
@@ -863,7 +2040,18 @@
       "Chinese": "火之吐息",
       "Kind": 9,
       "MaxUses": 255,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fire Breath",
+        "zh-Hans": "火之吐息",
+        "zh-Hant": "火之吐息",
+        "ja": "火のブレス",
+        "ko": "불의 브레스",
+        "de": "Feueratem",
+        "fr": "Souffle de feu",
+        "es": "Soplo de fuego",
+        "it": "Soffio igneo"
+      }
     },
     {
       "Id": "IID_炎塊",
@@ -871,7 +2059,18 @@
       "Chinese": "炎块",
       "Kind": 9,
       "MaxUses": 255,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fireball",
+        "zh-Hans": "炎块",
+        "zh-Hant": "炎塊",
+        "ja": "炎塊",
+        "ko": "염괴",
+        "de": "Feuerball",
+        "fr": "Boule de feu",
+        "es": "Bola de fuego",
+        "it": "Palla di fuoco"
+      }
     },
     {
       "Id": "IID_ソンブル_物理攻撃",
@@ -879,7 +2078,18 @@
       "Chinese": "邪龙的强击",
       "Kind": 9,
       "MaxUses": 255,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fell Assault",
+        "zh-Hans": "邪龙的强击",
+        "zh-Hant": "邪龍的強擊",
+        "ja": "邪竜ノ強撃",
+        "ko": "사룡의 강격",
+        "de": "Dämonensturm",
+        "fr": "Assaut déchu",
+        "es": "Asalto Caído",
+        "it": "Assalto maligno"
+      }
     },
     {
       "Id": "IID_ソンブル_魔法攻撃",
@@ -887,7 +2097,18 @@
       "Chinese": "邪龙的波动",
       "Kind": 9,
       "MaxUses": 255,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fell Surge",
+        "zh-Hans": "邪龙的波动",
+        "zh-Hant": "邪龍的波動",
+        "ja": "邪竜ノ波動",
+        "ko": "사룡의 파동",
+        "de": "Dämonenwelle",
+        "fr": "Charge déchue",
+        "es": "Aluvión Caído",
+        "it": "Impeto maligno"
+      }
     },
     {
       "Id": "IID_ソンブル_回転アタック",
@@ -895,7 +2116,18 @@
       "Chinese": "邪龙旋转乱舞",
       "Kind": 9,
       "MaxUses": 255,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Whirling Death",
+        "zh-Hans": "邪龙旋转乱舞",
+        "zh-Hant": "邪龍旋轉亂舞",
+        "ja": "邪竜旋転乱舞",
+        "ko": "사룡 회전 난무",
+        "de": "Wirbeltod",
+        "fr": "Cyclone mortel",
+        "es": "Remolino mortal",
+        "it": "Morte turbinante"
+      }
     },
     {
       "Id": "IID_ソンブル_ビーム",
@@ -903,7 +2135,18 @@
       "Chinese": "邪龙吼叫炮",
       "Kind": 9,
       "MaxUses": 255,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Howling Beam",
+        "zh-Hans": "邪龙吼叫炮",
+        "zh-Hant": "邪龍吼叫炮",
+        "ja": "邪竜吼号砲",
+        "ko": "사룡 포효포",
+        "de": "Heulstrahl",
+        "fr": "Rayon hurlant",
+        "es": "Rayo atronador",
+        "it": "Raggio ruggente"
+      }
     },
     {
       "Id": "IID_ソンブル_エンゲージブレイク",
@@ -911,7 +2154,18 @@
       "Chinese": "结合破坏",
       "Kind": 9,
       "MaxUses": 255,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Disengage",
+        "zh-Hans": "结合破坏",
+        "zh-Hant": "結合破壞",
+        "ja": "エンゲージブレイク",
+        "ko": "인게이지 브레이크",
+        "de": "Bündnisbrecher",
+        "fr": "Dissociation",
+        "es": "Escisión",
+        "it": "Spezza unione"
+      }
     },
     {
       "Id": "IID_火炎砲台",
@@ -919,7 +2173,18 @@
       "Chinese": "火炎炮台",
       "Kind": 9,
       "MaxUses": 255,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Flame Cannon",
+        "zh-Hans": "火炎炮台",
+        "zh-Hant": "火炎炮台",
+        "ja": "火炎砲台",
+        "ko": "화염 포대",
+        "de": "Flammenkanone",
+        "fr": "Canon",
+        "es": "Cañón",
+        "it": "Cannone igneo"
+      }
     },
     {
       "Id": "IID_傷薬",
@@ -927,7 +2192,18 @@
       "Chinese": "伤药",
       "Kind": 10,
       "MaxUses": 3,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Vulnerary",
+        "zh-Hans": "伤药",
+        "zh-Hant": "傷藥",
+        "ja": "傷薬",
+        "ko": "상처약",
+        "de": "Heilmittel",
+        "fr": "Potion",
+        "es": "Poción",
+        "it": "Unguento"
+      }
     },
     {
       "Id": "IID_毒消し",
@@ -935,7 +2211,18 @@
       "Chinese": "解毒剂",
       "Kind": 10,
       "MaxUses": 3,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Antitoxin",
+        "zh-Hans": "解毒剂",
+        "zh-Hant": "解毒劑",
+        "ja": "毒消し薬",
+        "ko": "해독제",
+        "de": "Antidot",
+        "fr": "Antidote",
+        "es": "Antídoto",
+        "it": "Antitossina"
+      }
     },
     {
       "Id": "IID_特効薬",
@@ -943,7 +2230,18 @@
       "Chinese": "特效药",
       "Kind": 10,
       "MaxUses": 3,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Elixir",
+        "zh-Hans": "特效药",
+        "zh-Hant": "特效藥",
+        "ja": "特効薬",
+        "ko": "특효약",
+        "de": "Elixier",
+        "fr": "Élixir",
+        "es": "Elixir",
+        "it": "Elisir"
+      }
     },
     {
       "Id": "IID_聖水",
@@ -951,7 +2249,18 @@
       "Chinese": "圣水",
       "Kind": 10,
       "MaxUses": 3,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Pure Water",
+        "zh-Hans": "圣水",
+        "zh-Hant": "聖水",
+        "ja": "聖水",
+        "ko": "성수",
+        "de": "Weihwasser",
+        "fr": "Eau bénite",
+        "es": "Agua pura",
+        "it": "Acqua pura"
+      }
     },
     {
       "Id": "IID_たいまつ",
@@ -959,7 +2268,18 @@
       "Chinese": "火把",
       "Kind": 10,
       "MaxUses": 3,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Torch",
+        "zh-Hans": "火把",
+        "zh-Hant": "火把",
+        "ja": "たいまつ",
+        "ko": "횃불",
+        "de": "Fackel",
+        "fr": "Torche",
+        "es": "Antorcha",
+        "it": "Torcia"
+      }
     },
     {
       "Id": "IID_天使の衣",
@@ -967,7 +2287,18 @@
       "Chinese": "天使之衣",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Seraph Robe",
+        "zh-Hans": "天使之衣",
+        "zh-Hant": "天使之衣",
+        "ja": "天使の衣",
+        "ko": "천사의 옷",
+        "de": "Engelsrobe",
+        "fr": "Robe sainte",
+        "es": "Túnica angélica",
+        "it": "Veste angelica"
+      }
     },
     {
       "Id": "IID_力のしずく",
@@ -975,7 +2306,18 @@
       "Chinese": "力量水滴",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Energy Drop",
+        "zh-Hans": "力量水滴",
+        "zh-Hant": "力量水滴",
+        "ja": "力のしずく",
+        "ko": "힘의 물방울",
+        "de": "Energietropfen",
+        "fr": "Goutte",
+        "es": "Gota de energía",
+        "it": "Fluido energia"
+      }
     },
     {
       "Id": "IID_精霊の粉",
@@ -983,7 +2325,18 @@
       "Chinese": "精灵之粉",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Spirit Dust",
+        "zh-Hans": "精灵之粉",
+        "zh-Hant": "精靈之粉",
+        "ja": "精霊の粉",
+        "ko": "정령의 가루",
+        "de": "Geist",
+        "fr": "Poudre",
+        "es": "Polvo espiritual",
+        "it": "Polvere spirito"
+      }
     },
     {
       "Id": "IID_秘伝の書",
@@ -991,7 +2344,18 @@
       "Chinese": "秘传之书",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Secret Book",
+        "zh-Hans": "秘传之书",
+        "zh-Hant": "秘傳之書",
+        "ja": "秘伝の書",
+        "ko": "비전의 책",
+        "de": "Geheimbuch",
+        "fr": "Tome secret",
+        "es": "Libro secreto",
+        "it": "Tomo segreto"
+      }
     },
     {
       "Id": "IID_はやての羽",
@@ -999,7 +2363,18 @@
       "Chinese": "疾风羽毛",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Speedwing",
+        "zh-Hans": "疾风羽毛",
+        "zh-Hant": "疾風羽毛",
+        "ja": "はやての羽",
+        "ko": "질풍의 깃털",
+        "de": "Tempofeder",
+        "fr": "Aile éclair",
+        "es": "Alas veloces",
+        "it": "Ala rapida"
+      }
     },
     {
       "Id": "IID_女神の像",
@@ -1007,7 +2382,18 @@
       "Chinese": "女神像",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Goddess Icon",
+        "zh-Hans": "女神像",
+        "zh-Hant": "女神像",
+        "ja": "女神の像",
+        "ko": "여신상",
+        "de": "Göttinnenikone",
+        "fr": "Icône divine",
+        "es": "Ícono de diosa",
+        "it": "Icona divina"
+      }
     },
     {
       "Id": "IID_竜の盾",
@@ -1015,7 +2401,18 @@
       "Chinese": "龙盾",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Dracoshield",
+        "zh-Hans": "龙盾",
+        "zh-Hant": "龍盾",
+        "ja": "竜の盾",
+        "ko": "용의 방패",
+        "de": "Draco-Schild",
+        "fr": "Écu dragon",
+        "es": "Escudo dragón",
+        "it": "Dragoscudo"
+      }
     },
     {
       "Id": "IID_魔よけ",
@@ -1023,7 +2420,18 @@
       "Chinese": "避邪物",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Talisman",
+        "zh-Hans": "避邪物",
+        "zh-Hant": "避邪物",
+        "ja": "魔よけ",
+        "ko": "부적",
+        "de": "Talisman",
+        "fr": "Talisman",
+        "es": "Talismán",
+        "it": "Talismano"
+      }
     },
     {
       "Id": "IID_ブーツ",
@@ -1031,7 +2439,18 @@
       "Chinese": "靴子",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Boots",
+        "zh-Hans": "靴子",
+        "zh-Hant": "靴子",
+        "ja": "ブーツ",
+        "ko": "부츠",
+        "de": "Stiefel",
+        "fr": "Bottes",
+        "es": "Botas",
+        "it": "Stivali"
+      }
     },
     {
       "Id": "IID_スキルの書・守",
@@ -1039,7 +2458,18 @@
       "Chinese": "特技之书·守",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Novice Book",
+        "zh-Hans": "特技之书·守",
+        "zh-Hant": "特技之書・守",
+        "ja": "スキルの書・守",
+        "ko": "스킬의 책·수",
+        "de": "Novizenbuch",
+        "fr": "Manuel novice",
+        "es": "Libro básico",
+        "it": "Manuale novizi"
+      }
     },
     {
       "Id": "IID_スキルの書・破",
@@ -1047,7 +2477,18 @@
       "Chinese": "特技之书·破",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Adept Book",
+        "zh-Hans": "特技之书·破",
+        "zh-Hant": "特技之書・破",
+        "ja": "スキルの書・破",
+        "ko": "스킬의 책·파",
+        "de": "Adeptenbuch",
+        "fr": "Manuel initié",
+        "es": "Libro avanzado",
+        "it": "Manuale avanzato"
+      }
     },
     {
       "Id": "IID_スキルの書・離",
@@ -1055,7 +2496,18 @@
       "Chinese": "特技之书·离",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Expert Book",
+        "zh-Hans": "特技之书·离",
+        "zh-Hant": "特技之書・離",
+        "ja": "スキルの書・離",
+        "ko": "스킬의 책·리",
+        "de": "Expertenbuch",
+        "fr": "Manuel expert",
+        "es": "Libro magistral",
+        "it": "Manuale esperti"
+      }
     },
     {
       "Id": "IID_HPの薬",
@@ -1063,7 +2515,18 @@
       "Chinese": "HP药",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "HP Tonic",
+        "zh-Hans": "HP药",
+        "zh-Hant": "ＨＰ藥",
+        "ja": "ＨＰの薬",
+        "ko": "HP의 약",
+        "de": "Trank der KP",
+        "fr": "Tonique PV",
+        "es": "Tónico PV",
+        "it": "Tonico PS"
+      }
     },
     {
       "Id": "IID_力の薬",
@@ -1071,7 +2534,18 @@
       "Chinese": "力量药",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Strength Tonic",
+        "zh-Hans": "力量药",
+        "zh-Hant": "力量藥",
+        "ja": "力の薬",
+        "ko": "힘의 약",
+        "de": "Trank der Stä.",
+        "fr": "Tonique Frc",
+        "es": "Tónico Fue",
+        "it": "Tonico forza"
+      }
     },
     {
       "Id": "IID_技の薬",
@@ -1079,7 +2553,18 @@
       "Chinese": "技巧药",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Dexterity Tonic",
+        "zh-Hans": "技巧药",
+        "zh-Hant": "技巧藥",
+        "ja": "技の薬",
+        "ko": "기술의 약",
+        "de": "Trank der Beh.",
+        "fr": "Tonique Tec",
+        "es": "Tónico Hab",
+        "it": "Tonico destrezza"
+      }
     },
     {
       "Id": "IID_速さの薬",
@@ -1087,7 +2572,18 @@
       "Chinese": "速度药",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Speed Tonic",
+        "zh-Hans": "速度药",
+        "zh-Hant": "速度藥",
+        "ja": "速さの薬",
+        "ko": "속도의 약",
+        "de": "Trank der Ges.",
+        "fr": "Tonique Vit",
+        "es": "Tónico Vel",
+        "it": "Tonico velocità"
+      }
     },
     {
       "Id": "IID_幸運の薬",
@@ -1095,7 +2591,18 @@
       "Chinese": "幸运药",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Luck Tonic",
+        "zh-Hans": "幸运药",
+        "zh-Hant": "幸運藥",
+        "ja": "幸運の薬",
+        "ko": "행운의 약",
+        "de": "Trank des Glk.",
+        "fr": "Tonique Cha",
+        "es": "Tónico Sue",
+        "it": "Tonico fortuna"
+      }
     },
     {
       "Id": "IID_守備の薬",
@@ -1103,7 +2610,18 @@
       "Chinese": "防守药",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Defense Tonic",
+        "zh-Hans": "防守药",
+        "zh-Hant": "防守藥",
+        "ja": "守備の薬",
+        "ko": "수비의 약",
+        "de": "Trank der Ver.",
+        "fr": "Tonique Déf",
+        "es": "Tónico Def",
+        "it": "Tonico difesa"
+      }
     },
     {
       "Id": "IID_魔力の薬",
@@ -1111,7 +2629,18 @@
       "Chinese": "魔力药",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Magic Tonic",
+        "zh-Hans": "魔力药",
+        "zh-Hant": "魔力藥",
+        "ja": "魔力の薬",
+        "ko": "마력의 약",
+        "de": "Trank der Mag.",
+        "fr": "Tonique Mag",
+        "es": "Tónico Mag",
+        "it": "Tonico magia"
+      }
     },
     {
       "Id": "IID_魔防の薬",
@@ -1119,7 +2648,18 @@
       "Chinese": "魔防药",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Resistance Tonic",
+        "zh-Hans": "魔防药",
+        "zh-Hant": "魔防藥",
+        "ja": "魔防の薬",
+        "ko": "마방의 약",
+        "de": "Trank der Res.",
+        "fr": "Tonique Rés",
+        "es": "Tónico Res",
+        "it": "Tonico resistenza"
+      }
     },
     {
       "Id": "IID_マスタープルフ",
@@ -1127,7 +2667,18 @@
       "Chinese": "大师证",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Master Seal",
+        "zh-Hans": "大师证",
+        "zh-Hant": "大師證",
+        "ja": "マスタープルフ",
+        "ko": "마스터 프루프",
+        "de": "Meistersiegel",
+        "fr": "Magister",
+        "es": "Sello maestro",
+        "it": "Sigillo supremo"
+      }
     },
     {
       "Id": "IID_チェンジプルフ",
@@ -1135,7 +2686,18 @@
       "Chinese": "转职证",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Second Seal",
+        "zh-Hans": "转职证",
+        "zh-Hant": "轉職證",
+        "ja": "チェンジプルフ",
+        "ko": "체인지 프루프",
+        "de": "Zweitsiegel",
+        "fr": "Scolaris",
+        "es": "Segundo sello",
+        "it": "Sigillo speciale"
+      }
     },
     {
       "Id": "IID_ヴァンドレのお弁当",
@@ -1143,7 +2705,18 @@
       "Chinese": "凡德雷便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Vander's Meal",
+        "zh-Hans": "凡德雷便当",
+        "zh-Hant": "凡德雷便當",
+        "ja": "ヴァンドレ弁当",
+        "ko": "반드레의 도시락",
+        "de": "Vanders Ration",
+        "fr": "Repas de Vander",
+        "es": "Ración de Vander",
+        "it": "Pasto di Vander"
+      }
     },
     {
       "Id": "IID_クランのお弁当",
@@ -1151,7 +2724,18 @@
       "Chinese": "柯岚便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Clanne's Meal",
+        "zh-Hans": "柯岚便当",
+        "zh-Hant": "柯嵐便當",
+        "ja": "クラン弁当",
+        "ko": "클랜의 도시락",
+        "de": "Clannes Ration",
+        "fr": "Repas de Clanne",
+        "es": "Ración de Clanne",
+        "it": "Pasto di Clanne"
+      }
     },
     {
       "Id": "IID_フランのお弁当",
@@ -1159,7 +2743,18 @@
       "Chinese": "芙岚便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Framme's Meal",
+        "zh-Hans": "芙岚便当",
+        "zh-Hant": "芙嵐便當",
+        "ja": "フラン弁当",
+        "ko": "프랑의 도시락",
+        "de": "Frammes Ration",
+        "fr": "Repas de Framme",
+        "es": "Ración de Framme",
+        "it": "Pasto di Framme"
+      }
     },
     {
       "Id": "IID_アルフレッドのお弁当",
@@ -1167,7 +2762,18 @@
       "Chinese": "阿尔弗雷德便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Alfred's Meal",
+        "zh-Hans": "阿尔弗雷德便当",
+        "zh-Hant": "阿爾弗雷德便當",
+        "ja": "アルフレッド弁当",
+        "ko": "알프레드의 도시락",
+        "de": "Alfreds Ration",
+        "fr": "Repas d'Alfred",
+        "es": "Ración de Alfred",
+        "it": "Pasto di Alfred"
+      }
     },
     {
       "Id": "IID_ブシュロンのお弁当",
@@ -1175,7 +2781,18 @@
       "Chinese": "布修隆便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Boucheron's Meal",
+        "zh-Hans": "布修隆便当",
+        "zh-Hant": "布修隆便當",
+        "ja": "ブシュロン弁当",
+        "ko": "부셰론의 도시락",
+        "de": "Boucherons Ration",
+        "fr": "Repas de Boucheron",
+        "es": "Ración de Boucheron",
+        "it": "Pasto di Boucheron"
+      }
     },
     {
       "Id": "IID_エーティエのお弁当",
@@ -1183,7 +2800,18 @@
       "Chinese": "艾媞耶便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Etie's Meal",
+        "zh-Hans": "艾媞耶便当",
+        "zh-Hant": "艾媞耶便當",
+        "ja": "エーティエ弁当",
+        "ko": "에티에의 도시락",
+        "de": "Eties Ration",
+        "fr": "Repas d'Etie",
+        "es": "Ración de Etie",
+        "it": "Pasto di Etie"
+      }
     },
     {
       "Id": "IID_セリーヌのお弁当",
@@ -1191,7 +2819,18 @@
       "Chinese": "锡莉奴便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Céline's Meal",
+        "zh-Hans": "锡莉奴便当",
+        "zh-Hant": "錫莉奴便當",
+        "ja": "セリーヌ弁当",
+        "ko": "셀린의 도시락",
+        "de": "Célines Ration",
+        "fr": "Repas de Céline",
+        "es": "Ración de Céline",
+        "it": "Pasto di Céline"
+      }
     },
     {
       "Id": "IID_ルイのお弁当",
@@ -1199,7 +2838,18 @@
       "Chinese": "路易便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Louis's Meal",
+        "zh-Hans": "路易便当",
+        "zh-Hant": "路易便當",
+        "ja": "ルイ弁当",
+        "ko": "루이의 도시락",
+        "de": "Louis' Ration",
+        "fr": "Repas de Louis",
+        "es": "Ración de Louis",
+        "it": "Pasto di Louis"
+      }
     },
     {
       "Id": "IID_クロエのお弁当",
@@ -1207,7 +2857,18 @@
       "Chinese": "克萝艾便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Chloé's Meal",
+        "zh-Hans": "克萝艾便当",
+        "zh-Hant": "克蘿艾便當",
+        "ja": "クロエ弁当",
+        "ko": "클로에의 도시락",
+        "de": "Chloés Ration",
+        "fr": "Repas de Chloé",
+        "es": "Ración de Chloé",
+        "it": "Pasto di Chloé"
+      }
     },
     {
       "Id": "IID_ディアマンドのお弁当",
@@ -1215,7 +2876,18 @@
       "Chinese": "帝亚曼德便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Diamant's Meal",
+        "zh-Hans": "帝亚曼德便当",
+        "zh-Hant": "帝亞曼德便當",
+        "ja": "ディアマンド弁当",
+        "ko": "디아만드의 도시락",
+        "de": "Diamants Ration",
+        "fr": "Repas de Diamant",
+        "es": "Ración de Diamant",
+        "it": "Pasto di Diamant"
+      }
     },
     {
       "Id": "IID_アンバーのお弁当",
@@ -1223,7 +2895,18 @@
       "Chinese": "安巴便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Amber's Meal",
+        "zh-Hans": "安巴便当",
+        "zh-Hant": "安巴便當",
+        "ja": "アンバー弁当",
+        "ko": "앰버의 도시락",
+        "de": "Ambers Ration",
+        "fr": "Repas d'Amber",
+        "es": "Ración de Amber",
+        "it": "Pasto di Amber"
+      }
     },
     {
       "Id": "IID_ジェーデのお弁当",
@@ -1231,7 +2914,18 @@
       "Chinese": "洁德便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Jade's Meal",
+        "zh-Hans": "洁德便当",
+        "zh-Hant": "潔德便當",
+        "ja": "ジェーデ弁当",
+        "ko": "제이데의 도시락",
+        "de": "Jades Ration",
+        "fr": "Repas de Jade",
+        "es": "Ración de Jade",
+        "it": "Pasto di Jade"
+      }
     },
     {
       "Id": "IID_スタルークのお弁当",
@@ -1239,7 +2933,18 @@
       "Chinese": "史塔卢克便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Alcryst's Meal",
+        "zh-Hans": "史塔卢克便当",
+        "zh-Hant": "史塔盧克便當",
+        "ja": "スタルーク弁当",
+        "ko": "스타루크의 도시락",
+        "de": "Alcrysts Ration",
+        "fr": "Repas d'Alcryst",
+        "es": "Ración de Alcryst",
+        "it": "Pasto di Alcryst"
+      }
     },
     {
       "Id": "IID_ラピスのお弁当",
@@ -1247,7 +2952,18 @@
       "Chinese": "菈琵思便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Lapis's Meal",
+        "zh-Hans": "菈琵思便当",
+        "zh-Hant": "菈琵思便當",
+        "ja": "ラピス弁当",
+        "ko": "라피스의 도시락",
+        "de": "Lapis' Ration",
+        "fr": "Repas de Lapis",
+        "es": "Ración de Lapis",
+        "it": "Pasto di Lapis"
+      }
     },
     {
       "Id": "IID_シトリニカのお弁当",
@@ -1255,7 +2971,18 @@
       "Chinese": "希特丽妮卡便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Citrinne's Meal",
+        "zh-Hans": "希特丽妮卡便当",
+        "zh-Hant": "希特麗妮卡便當",
+        "ja": "シトリニカ弁当",
+        "ko": "시트리니카의 도시락",
+        "de": "Citrinnes Ration",
+        "fr": "Repas de Citrinne",
+        "es": "Ración de Citrinne",
+        "it": "Pasto di Citrinne"
+      }
     },
     {
       "Id": "IID_アイビーのお弁当",
@@ -1263,7 +2990,18 @@
       "Chinese": "艾比便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Ivy's Meal",
+        "zh-Hans": "艾比便当",
+        "zh-Hant": "艾比便當",
+        "ja": "アイビー弁当",
+        "ko": "아이비의 도시락",
+        "de": "Ivys Ration",
+        "fr": "Repas d'Ivy",
+        "es": "Ración de Ivy",
+        "it": "Pasto di Ivy"
+      }
     },
     {
       "Id": "IID_ゼルコバのお弁当",
@@ -1271,7 +3009,18 @@
       "Chinese": "杰尔科巴便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Zelkov's Meal",
+        "zh-Hans": "杰尔科巴便当",
+        "zh-Hant": "傑爾科巴便當",
+        "ja": "ゼルコバ弁当",
+        "ko": "젤코바의 도시락",
+        "de": "Zelkovs Ration",
+        "fr": "Repas de Zelkov",
+        "es": "Ración de Zelkov",
+        "it": "Pasto di Zelkov"
+      }
     },
     {
       "Id": "IID_カゲツのお弁当",
@@ -1279,7 +3028,18 @@
       "Chinese": "花月便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Kagetsu's Meal",
+        "zh-Hans": "花月便当",
+        "zh-Hant": "花月便當",
+        "ja": "カゲツ弁当",
+        "ko": "카게츠의 도시락",
+        "de": "Kagetsus Ration",
+        "fr": "Repas de Kagetsu",
+        "es": "Ración de Kagetsu",
+        "it": "Pasto di Kagetsu"
+      }
     },
     {
       "Id": "IID_オルテンシアのお弁当",
@@ -1287,7 +3047,18 @@
       "Chinese": "奥尔坦希亚便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Hortensia's Meal",
+        "zh-Hans": "奥尔坦希亚便当",
+        "zh-Hant": "奧爾坦希亞便當",
+        "ja": "オルテンシア弁当",
+        "ko": "오르텐시아의 도시락",
+        "de": "Hortensias Ration",
+        "fr": "Repas d'Hortensia",
+        "es": "Ración de Hortensia",
+        "it": "Pasto di Hortensia"
+      }
     },
     {
       "Id": "IID_ロサードのお弁当",
@@ -1295,7 +3066,18 @@
       "Chinese": "罗萨德便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Rosado's Meal",
+        "zh-Hans": "罗萨德便当",
+        "zh-Hant": "羅薩德便當",
+        "ja": "ロサード弁当",
+        "ko": "로사도의 도시락",
+        "de": "Rosados Ration",
+        "fr": "Repas de Rosado",
+        "es": "Ración de Rosado",
+        "it": "Pasto di Rosado"
+      }
     },
     {
       "Id": "IID_ゴルドマリーのお弁当",
@@ -1303,7 +3085,18 @@
       "Chinese": "戈尔德玛莉便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Goldmary's Meal",
+        "zh-Hans": "戈尔德玛莉便当",
+        "zh-Hant": "戈爾德瑪莉便當",
+        "ja": "ゴルドマリー弁当",
+        "ko": "골드마리의 도시락",
+        "de": "Goldmarys Ration",
+        "fr": "Repas de Goldmary",
+        "es": "Ración de Goldmary",
+        "it": "Pasto di Goldmary"
+      }
     },
     {
       "Id": "IID_ミスティラのお弁当",
@@ -1311,7 +3104,18 @@
       "Chinese": "蜜丝提拉便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Timerra's Meal",
+        "zh-Hans": "蜜丝提拉便当",
+        "zh-Hant": "蜜絲提拉便當",
+        "ja": "ミスティラ弁当",
+        "ko": "미스티라의 도시락",
+        "de": "Timerras Ration",
+        "fr": "Repas de Timerra",
+        "es": "Ración de Timerra",
+        "it": "Pasto di Timerra"
+      }
     },
     {
       "Id": "IID_メリンのお弁当",
@@ -1319,7 +3123,18 @@
       "Chinese": "玫琳便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Merrin's Meal",
+        "zh-Hans": "玫琳便当",
+        "zh-Hant": "玫琳便當",
+        "ja": "メリン弁当",
+        "ko": "메린의 도시락",
+        "de": "Merrins Ration",
+        "fr": "Repas de Merrin",
+        "es": "Ración de Merrin",
+        "it": "Pasto di Merrin"
+      }
     },
     {
       "Id": "IID_パネトネのお弁当",
@@ -1327,7 +3142,18 @@
       "Chinese": "帕涅托涅便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Panette's Meal",
+        "zh-Hans": "帕涅托涅便当",
+        "zh-Hant": "帕涅托涅便當",
+        "ja": "パネトネ弁当",
+        "ko": "파네토네의 도시락",
+        "de": "Panettes Ration",
+        "fr": "Repas de Panette",
+        "es": "Ración de Panette",
+        "it": "Pasto di Panette"
+      }
     },
     {
       "Id": "IID_フォガートのお弁当",
@@ -1335,7 +3161,18 @@
       "Chinese": "佛贾特便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fogado's Meal",
+        "zh-Hans": "佛贾特便当",
+        "zh-Hant": "佛賈特便當",
+        "ja": "フォガート弁当",
+        "ko": "포가토의 도시락",
+        "de": "Fogados Ration",
+        "fr": "Repas de Fogado",
+        "es": "Ración de Fogado",
+        "it": "Pasto di Fogado"
+      }
     },
     {
       "Id": "IID_パンドロのお弁当",
@@ -1343,7 +3180,18 @@
       "Chinese": "庞德罗便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Pandreo's Meal",
+        "zh-Hans": "庞德罗便当",
+        "zh-Hant": "龐德羅便當",
+        "ja": "パンドロ弁当",
+        "ko": "판도로의 도시락",
+        "de": "Pandreos Ration",
+        "fr": "Repas de Pandreo",
+        "es": "Ración de Pandreo",
+        "it": "Pasto di Pandreo"
+      }
     },
     {
       "Id": "IID_ボネのお弁当",
@@ -1351,7 +3199,18 @@
       "Chinese": "波聂便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Bunet's Meal",
+        "zh-Hans": "波聂便当",
+        "zh-Hant": "波聶便當",
+        "ja": "ボネ弁当",
+        "ko": "보네의 도시락",
+        "de": "Bunets Ration",
+        "fr": "Repas de Bunet",
+        "es": "Ración de Bunet",
+        "it": "Pasto di Bunet"
+      }
     },
     {
       "Id": "IID_アンナのお弁当",
@@ -1359,7 +3218,18 @@
       "Chinese": "安娜便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Anna's Meal",
+        "zh-Hans": "安娜便当",
+        "zh-Hant": "安娜便當",
+        "ja": "アンナ弁当",
+        "ko": "안나의 도시락",
+        "de": "Annas Ration",
+        "fr": "Repas d'Anna",
+        "es": "Ración de Anna",
+        "it": "Pasto di Anna"
+      }
     },
     {
       "Id": "IID_ジャンのお弁当",
@@ -1367,7 +3237,18 @@
       "Chinese": "贾恩便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Jean's Meal",
+        "zh-Hans": "贾恩便当",
+        "zh-Hant": "賈恩便當",
+        "ja": "ジャン弁当",
+        "ko": "장의 도시락",
+        "de": "Jeans Ration",
+        "fr": "Repas de Jean",
+        "es": "Ración de Jean",
+        "it": "Pasto di Jean"
+      }
     },
     {
       "Id": "IID_ユナカのお弁当",
@@ -1375,7 +3256,18 @@
       "Chinese": "尤娜卡便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Yunaka's Meal",
+        "zh-Hans": "尤娜卡便当",
+        "zh-Hant": "尤娜卡便當",
+        "ja": "ユナカ弁当",
+        "ko": "유나카의 도시락",
+        "de": "Yunakas Ration",
+        "fr": "Repas de Yunaka",
+        "es": "Ración de Yunaka",
+        "it": "Pasto di Yunaka"
+      }
     },
     {
       "Id": "IID_セアダスのお弁当",
@@ -1383,7 +3275,18 @@
       "Chinese": "赛安达斯便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Seadall's Meal",
+        "zh-Hans": "赛安达斯便当",
+        "zh-Hant": "賽安達斯便當",
+        "ja": "セアダス弁当",
+        "ko": "세아다스의 도시락",
+        "de": "Seadalls Ration",
+        "fr": "Repas de Seadall",
+        "es": "Ración de Seadall",
+        "it": "Pasto di Seadall"
+      }
     },
     {
       "Id": "IID_リンデンのお弁当",
@@ -1391,7 +3294,18 @@
       "Chinese": "霖丹便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Lindon's Meal",
+        "zh-Hans": "霖丹便当",
+        "zh-Hant": "霖丹便當",
+        "ja": "リンデン弁当",
+        "ko": "린덴의 도시락",
+        "de": "Lindons Ration",
+        "fr": "Repas de Lindon",
+        "es": "Ración de Lindon",
+        "it": "Pasto di Lindon"
+      }
     },
     {
       "Id": "IID_ザフィーアのお弁当",
@@ -1399,7 +3313,18 @@
       "Chinese": "札菲亚便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Saphir's Meal",
+        "zh-Hans": "札菲亚便当",
+        "zh-Hant": "札菲亞便當",
+        "ja": "ザフィーア弁当",
+        "ko": "자피아의 도시락",
+        "de": "Saphirs Ration",
+        "fr": "Repas de Saphir",
+        "es": "Ración de Saphir",
+        "it": "Pasto di Saphir"
+      }
     },
     {
       "Id": "IID_ヴェイルのお弁当",
@@ -1407,7 +3332,18 @@
       "Chinese": "贝珥便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Veyle's Meal",
+        "zh-Hans": "贝珥便当",
+        "zh-Hant": "貝珥便當",
+        "ja": "ヴェイル弁当",
+        "ko": "베일의 도시락",
+        "de": "Veyles Ration",
+        "fr": "Repas de Veyle",
+        "es": "Ración de Veyle",
+        "it": "Pasto di Veyle"
+      }
     },
     {
       "Id": "IID_モーヴのお弁当",
@@ -1415,7 +3351,18 @@
       "Chinese": "莫布便当",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Mauvier's Meal",
+        "zh-Hans": "莫布便当",
+        "zh-Hant": "莫布便當",
+        "ja": "モーヴ弁当",
+        "ko": "모브의 도시락",
+        "de": "Mauviers Ration",
+        "fr": "Repas de Mauvier",
+        "es": "Ración de Mauvier",
+        "it": "Pasto di Mauvier"
+      }
     },
     {
       "Id": "IID_牛肉",
@@ -1423,7 +3370,18 @@
       "Chinese": "牛肉",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Beef",
+        "zh-Hans": "牛肉",
+        "zh-Hant": "牛肉",
+        "ja": "牛肉",
+        "ko": "소고기",
+        "de": "Rind",
+        "fr": "Bœuf",
+        "es": "Ternera",
+        "it": "Manzo"
+      }
     },
     {
       "Id": "IID_豚肉",
@@ -1431,7 +3389,18 @@
       "Chinese": "猪肉",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Pork",
+        "zh-Hans": "猪肉",
+        "zh-Hant": "豬肉",
+        "ja": "豚肉",
+        "ko": "돼지고기",
+        "de": "Schwein",
+        "fr": "Porc",
+        "es": "Cerdo",
+        "it": "Maiale"
+      }
     },
     {
       "Id": "IID_鶏肉",
@@ -1439,7 +3408,18 @@
       "Chinese": "鸡肉",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Chicken",
+        "zh-Hans": "鸡肉",
+        "zh-Hant": "雞肉",
+        "ja": "鶏肉",
+        "ko": "닭고기",
+        "de": "Huhn",
+        "fr": "Poulet",
+        "es": "Pollo",
+        "it": "Pollo"
+      }
     },
     {
       "Id": "IID_羊肉",
@@ -1447,7 +3427,18 @@
       "Chinese": "羊肉",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Mutton",
+        "zh-Hans": "羊肉",
+        "zh-Hant": "羊肉",
+        "ja": "羊肉",
+        "ko": "양고기",
+        "de": "Lamm",
+        "fr": "Mouton",
+        "es": "Cordero",
+        "it": "Agnello"
+      }
     },
     {
       "Id": "IID_タマネギ",
@@ -1455,7 +3446,18 @@
       "Chinese": "洋葱",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Onion",
+        "zh-Hans": "洋葱",
+        "zh-Hant": "洋蔥",
+        "ja": "タマネギ",
+        "ko": "양파",
+        "de": "Zwiebel",
+        "fr": "Oignon",
+        "es": "Cebollas",
+        "it": "Cipolla"
+      }
     },
     {
       "Id": "IID_キャベツ",
@@ -1463,7 +3465,18 @@
       "Chinese": "卷心菜",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Cabbage",
+        "zh-Hans": "卷心菜",
+        "zh-Hant": "高麗菜",
+        "ja": "キャベツ",
+        "ko": "양배추",
+        "de": "Kohl",
+        "fr": "Chou",
+        "es": "Coles",
+        "it": "Cavolo"
+      }
     },
     {
       "Id": "IID_ハーブ",
@@ -1471,7 +3484,18 @@
       "Chinese": "香草",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Herb",
+        "zh-Hans": "香草",
+        "zh-Hant": "香草",
+        "ja": "ハーブ",
+        "ko": "허브",
+        "de": "Kraut",
+        "fr": "Herbes",
+        "es": "Hierbas",
+        "it": "Erbe aromatiche"
+      }
     },
     {
       "Id": "IID_トマト",
@@ -1479,7 +3503,18 @@
       "Chinese": "番茄",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Tomato",
+        "zh-Hans": "番茄",
+        "zh-Hant": "番茄",
+        "ja": "トマト",
+        "ko": "토마토",
+        "de": "Tomate",
+        "fr": "Tomate",
+        "es": "Tomates",
+        "it": "Pomodoro"
+      }
     },
     {
       "Id": "IID_芋",
@@ -1487,7 +3522,18 @@
       "Chinese": "薯类",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Potato",
+        "zh-Hans": "薯类",
+        "zh-Hant": "薯類",
+        "ja": "芋",
+        "ko": "감자",
+        "de": "Kartoffel",
+        "fr": "Pomme de terre",
+        "es": "Papas",
+        "it": "Patata"
+      }
     },
     {
       "Id": "IID_幻の野菜",
@@ -1495,7 +3541,18 @@
       "Chinese": "幻之蔬菜",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Rare Vegetable",
+        "zh-Hans": "幻之蔬菜",
+        "zh-Hant": "幻之蔬菜",
+        "ja": "幻の野菜",
+        "ko": "환상의 야채",
+        "de": "Selt. Gemüse",
+        "fr": "Légume rare",
+        "es": "Verdura rara",
+        "it": "Verdura rara"
+      }
     },
     {
       "Id": "IID_小麦",
@@ -1503,7 +3560,18 @@
       "Chinese": "小麦粉",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Wheat Flour",
+        "zh-Hans": "小麦粉",
+        "zh-Hant": "小麥粉",
+        "ja": "小麦粉",
+        "ko": "밀가루",
+        "de": "Weizenmehl",
+        "fr": "Farine de blé",
+        "es": "Harina de trigo",
+        "it": "Farina"
+      }
     },
     {
       "Id": "IID_リンゴ",
@@ -1511,7 +3579,18 @@
       "Chinese": "苹果",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Apple",
+        "zh-Hans": "苹果",
+        "zh-Hant": "蘋果",
+        "ja": "リンゴ",
+        "ko": "사과",
+        "de": "Apfel",
+        "fr": "Pomme",
+        "es": "Manzanas",
+        "it": "Mela"
+      }
     },
     {
       "Id": "IID_オレンジ",
@@ -1519,7 +3598,18 @@
       "Chinese": "柳橙",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Orange",
+        "zh-Hans": "柳橙",
+        "zh-Hant": "柳橙",
+        "ja": "オレンジ",
+        "ko": "오렌지",
+        "de": "Orange",
+        "fr": "Orange",
+        "es": "Naranjas",
+        "it": "Arancia"
+      }
     },
     {
       "Id": "IID_モモ",
@@ -1527,7 +3617,18 @@
       "Chinese": "蜜桃",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Peach",
+        "zh-Hans": "蜜桃",
+        "zh-Hant": "蜜桃",
+        "ja": "モモ",
+        "ko": "복숭아",
+        "de": "Pfirsich",
+        "fr": "Pêche",
+        "es": "Duraznos",
+        "it": "Pesca"
+      }
     },
     {
       "Id": "IID_ブドウ",
@@ -1535,7 +3636,18 @@
       "Chinese": "葡萄",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Grapes",
+        "zh-Hans": "葡萄",
+        "zh-Hant": "葡萄",
+        "ja": "ブドウ",
+        "ko": "포도",
+        "de": "Trauben",
+        "fr": "Raisin",
+        "es": "Uvas",
+        "it": "Uva"
+      }
     },
     {
       "Id": "IID_ベリー",
@@ -1543,7 +3655,18 @@
       "Chinese": "莓果",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Berries",
+        "zh-Hans": "莓果",
+        "zh-Hant": "莓果",
+        "ja": "ベリー",
+        "ko": "베리",
+        "de": "Beeren",
+        "fr": "Baies",
+        "es": "Bayas",
+        "it": "Frutti di bosco"
+      }
     },
     {
       "Id": "IID_幻の果物",
@@ -1551,7 +3674,18 @@
       "Chinese": "幻之水果",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Rare Fruit",
+        "zh-Hans": "幻之水果",
+        "zh-Hant": "幻之水果",
+        "ja": "幻の果物",
+        "ko": "환상의 과일",
+        "de": "Seltenes Obst",
+        "fr": "Fruit rare",
+        "es": "Fruta rara",
+        "it": "Frutto raro"
+      }
     },
     {
       "Id": "IID_木の実",
@@ -1559,7 +3693,18 @@
       "Chinese": "树果",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Nuts",
+        "zh-Hans": "树果",
+        "zh-Hant": "樹果",
+        "ja": "木の実",
+        "ko": "나무 열매",
+        "de": "Nüsse",
+        "fr": "Noix",
+        "es": "Nueces",
+        "it": "Frutta secca"
+      }
     },
     {
       "Id": "IID_ニシン",
@@ -1567,7 +3712,18 @@
       "Chinese": "鲱鱼",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Herring",
+        "zh-Hans": "鲱鱼",
+        "zh-Hant": "鯡魚",
+        "ja": "ニシン",
+        "ko": "청어",
+        "de": "Hering",
+        "fr": "Hareng",
+        "es": "Samenque",
+        "it": "Aringa"
+      }
     },
     {
       "Id": "IID_コイ",
@@ -1575,7 +3731,18 @@
       "Chinese": "鲤鱼",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Carp",
+        "zh-Hans": "鲤鱼",
+        "zh-Hant": "鯉魚",
+        "ja": "コイ",
+        "ko": "잉어",
+        "de": "Karpfen",
+        "fr": "Carpe",
+        "es": "Carpioca",
+        "it": "Carpa"
+      }
     },
     {
       "Id": "IID_サケ",
@@ -1583,7 +3750,18 @@
       "Chinese": "鲑鱼",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Salmon",
+        "zh-Hans": "鲑鱼",
+        "zh-Hant": "鮭魚",
+        "ja": "サケ",
+        "ko": "연어",
+        "de": "Lachs",
+        "fr": "Saumon",
+        "es": "Saltipa",
+        "it": "Salmone"
+      }
     },
     {
       "Id": "IID_タラ",
@@ -1591,7 +3769,18 @@
       "Chinese": "鳕鱼",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Cod",
+        "zh-Hans": "鳕鱼",
+        "zh-Hant": "鱈魚",
+        "ja": "タラ",
+        "ko": "대구",
+        "de": "Dorsch",
+        "fr": "Morue",
+        "es": "Valcamuza",
+        "it": "Merluzzo"
+      }
     },
     {
       "Id": "IID_ウナギ",
@@ -1599,7 +3788,18 @@
       "Chinese": "鳗鱼",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Eel",
+        "zh-Hans": "鳗鱼",
+        "zh-Hant": "鰻魚",
+        "ja": "ウナギ",
+        "ko": "장어",
+        "de": "Aal",
+        "fr": "Anguille",
+        "es": "Micenia",
+        "it": "Anguilla"
+      }
     },
     {
       "Id": "IID_イワシ",
@@ -1607,7 +3807,18 @@
       "Chinese": "沙丁鱼",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Sardines",
+        "zh-Hans": "沙丁鱼",
+        "zh-Hant": "沙丁魚",
+        "ja": "イワシ",
+        "ko": "정어리",
+        "de": "Sardine",
+        "fr": "Sardine",
+        "es": "Ojosas",
+        "it": "Sardine"
+      }
     },
     {
       "Id": "IID_すり身",
@@ -1615,7 +3826,18 @@
       "Chinese": "碎肉",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Minced Fish",
+        "zh-Hans": "碎肉",
+        "zh-Hant": "碎肉",
+        "ja": "すり身",
+        "ko": "으깬 어육",
+        "de": "Surimi",
+        "fr": "Poisson haché",
+        "es": "Surimi",
+        "it": "Trito di pesce"
+      }
     },
     {
       "Id": "IID_干物",
@@ -1623,7 +3845,18 @@
       "Chinese": "干货",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Dried Fish",
+        "zh-Hans": "干货",
+        "zh-Hant": "乾貨",
+        "ja": "干物",
+        "ko": "건어물",
+        "de": "Trockenfisch",
+        "fr": "Poisson séché",
+        "es": "Pescado seco",
+        "it": "Pesce secco"
+      }
     },
     {
       "Id": "IID_刺身",
@@ -1631,7 +3864,18 @@
       "Chinese": "生鱼片",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Sashimi",
+        "zh-Hans": "生鱼片",
+        "zh-Hant": "生魚片",
+        "ja": "刺身",
+        "ko": "회",
+        "de": "Sashimi",
+        "fr": "Sashimi",
+        "es": "Sashimi",
+        "it": "Sashimi"
+      }
     },
     {
       "Id": "IID_幻の魚",
@@ -1639,7 +3883,18 @@
       "Chinese": "幻之鱼",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Rare Fish",
+        "zh-Hans": "幻之鱼",
+        "zh-Hant": "幻之魚",
+        "ja": "幻の魚",
+        "ko": "환상의 물고기",
+        "de": "Seltener Fisch",
+        "fr": "Poisson rare",
+        "es": "Pescado raro",
+        "it": "Pesce raro"
+      }
     },
     {
       "Id": "IID_ミルク",
@@ -1647,7 +3902,18 @@
       "Chinese": "乳品",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Milk",
+        "zh-Hans": "乳品",
+        "zh-Hant": "乳品",
+        "ja": "ミルク",
+        "ko": "우유",
+        "de": "Milch",
+        "fr": "Lait",
+        "es": "Leche",
+        "it": "Latte"
+      }
     },
     {
       "Id": "IID_タマゴ",
@@ -1655,7 +3921,18 @@
       "Chinese": "蛋",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Eggs",
+        "zh-Hans": "蛋",
+        "zh-Hant": "蛋",
+        "ja": "卵",
+        "ko": "달걀",
+        "de": "Eier",
+        "fr": "Œufs",
+        "es": "Huevos",
+        "it": "Uova"
+      }
     },
     {
       "Id": "IID_米",
@@ -1663,7 +3940,18 @@
       "Chinese": "米",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Rice",
+        "zh-Hans": "米",
+        "zh-Hant": "米",
+        "ja": "米",
+        "ko": "쌀",
+        "de": "Reis",
+        "fr": "Riz",
+        "es": "Arroz",
+        "it": "Riso"
+      }
     },
     {
       "Id": "IID_豆",
@@ -1671,7 +3959,18 @@
       "Chinese": "豆子",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Beans",
+        "zh-Hans": "豆子",
+        "zh-Hant": "豆子",
+        "ja": "豆",
+        "ko": "콩",
+        "de": "Bohnen",
+        "fr": "Haricots",
+        "es": "Frijoles",
+        "it": "Fagioli"
+      }
     },
     {
       "Id": "IID_スパイス",
@@ -1679,7 +3978,18 @@
       "Chinese": "香料",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Spices",
+        "zh-Hans": "香料",
+        "zh-Hant": "香料",
+        "ja": "スパイス",
+        "ko": "향신료",
+        "de": "Gewürze",
+        "fr": "Épices",
+        "es": "Especias",
+        "it": "Spezie"
+      }
     },
     {
       "Id": "IID_摘みたての茶葉",
@@ -1687,7 +3997,18 @@
       "Chinese": "现摘茶叶",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Tea Leaves",
+        "zh-Hans": "现摘茶叶",
+        "zh-Hant": "現摘茶葉",
+        "ja": "摘みたての茶葉",
+        "ko": "갓 딴 찻잎",
+        "de": "Teeblätter",
+        "fr": "Feuilles de thé",
+        "es": "Hojas de té",
+        "it": "Foglie di tè"
+      }
     },
     {
       "Id": "IID_硬い干し肉",
@@ -1695,7 +4016,18 @@
       "Chinese": "坚硬肉干",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Dried Meat",
+        "zh-Hans": "坚硬肉干",
+        "zh-Hant": "堅硬肉乾",
+        "ja": "硬い干し肉",
+        "ko": "단단한 육포",
+        "de": "Dörrfleisch",
+        "fr": "Viande séchée",
+        "es": "Cecina",
+        "it": "Carne secca"
+      }
     },
     {
       "Id": "IID_厳選ヨーグルト",
@@ -1703,7 +4035,18 @@
       "Chinese": "严选酸奶",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Yogurt",
+        "zh-Hans": "严选酸奶",
+        "zh-Hant": "嚴選優格",
+        "ja": "厳選ヨーグルト",
+        "ko": "엄선 요구르트",
+        "de": "Joghurt",
+        "fr": "Yaourt",
+        "es": "Yogur",
+        "it": "Yogurt"
+      }
     },
     {
       "Id": "IID_こだわりの焼き芋",
@@ -1711,7 +4054,18 @@
       "Chinese": "行家烤番薯",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Roasted Yam",
+        "zh-Hans": "行家烤番薯",
+        "zh-Hant": "行家烤番薯",
+        "ja": "こだわりの焼き芋",
+        "ko": "열심히 구운 감자",
+        "de": "Süßkartoffel",
+        "fr": "Patate grillée",
+        "es": "Camote asado",
+        "it": "Patata arrosto"
+      }
     },
     {
       "Id": "IID_鍛錬用の重り石",
@@ -1719,7 +4073,18 @@
       "Chinese": "锻炼用的重石",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Training Weight",
+        "zh-Hans": "锻炼用的重石",
+        "zh-Hant": "鍛鍊用的重石",
+        "ja": "鍛錬用の重り石",
+        "ko": "단련용 돌",
+        "de": "Trainingsstein",
+        "fr": "Lest",
+        "es": "Pesas",
+        "it": "Peso"
+      }
     },
     {
       "Id": "IID_塗る筋肉増強剤",
@@ -1727,7 +4092,18 @@
       "Chinese": "外用肌肉增强剂",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Muscle Balm",
+        "zh-Hans": "外用肌肉增强剂",
+        "zh-Hant": "外用肌肉增強劑",
+        "ja": "塗る筋肉増強剤",
+        "ko": "바르는 근육 증강제",
+        "de": "Muskelbalsam",
+        "fr": "Baume musculaire",
+        "es": "Bálsamo muscular",
+        "it": "Balsamo muscolare"
+      }
     },
     {
       "Id": "IID_動物用のマタタビ",
@@ -1735,7 +4111,18 @@
       "Chinese": "动物用的木天蓼",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Animal Treats",
+        "zh-Hans": "动物用的木天蓼",
+        "zh-Hant": "動物用的木天蓼",
+        "ja": "動物用のマタタビ",
+        "ko": "동물용 개다래",
+        "de": "Leckerlis",
+        "fr": "Friandises",
+        "es": "Comida para animales",
+        "it": "Cibo per animali"
+      }
     },
     {
       "Id": "IID_よく切れる彫刻刀",
@@ -1743,7 +4130,18 @@
       "Chinese": "锋利雕刻刀",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Sharp Chisel",
+        "zh-Hans": "锋利雕刻刀",
+        "zh-Hant": "鋒利雕刻刀",
+        "ja": "よく切れる彫刻刀",
+        "ko": "날카로운 조각도",
+        "de": "Scharfer Meißel",
+        "fr": "Ciseau affûté",
+        "es": "Cincel afilado",
+        "it": "Scalpello affilato"
+      }
     },
     {
       "Id": "IID_不思議な童話絵本",
@@ -1751,7 +4149,18 @@
       "Chinese": "奇妙的童话绘本",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fairy-Tale Book",
+        "zh-Hans": "奇妙的童话绘本",
+        "zh-Hant": "奇妙的童話繪本",
+        "ja": "不思議な童話絵本",
+        "ko": "신비한 그림 동화책",
+        "de": "Märchenbuch",
+        "fr": "Livre de contes",
+        "es": "Libro de cuentos",
+        "it": "Libro di favole"
+      }
     },
     {
       "Id": "IID_世界各国の詩集",
@@ -1759,7 +4168,18 @@
       "Chinese": "世界各国诗集",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Poetry Book",
+        "zh-Hans": "世界各国诗集",
+        "zh-Hant": "世界各國詩集",
+        "ja": "世界各国の詩集",
+        "ko": "세계 각국의 시집",
+        "de": "Poesiebuch",
+        "fr": "Recueil de poésies",
+        "es": "Libro de poesía",
+        "it": "Libro di poesie"
+      }
     },
     {
       "Id": "IID_難しい哲学書",
@@ -1767,7 +4187,18 @@
       "Chinese": "深奥的哲学书",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Philosophy Book",
+        "zh-Hans": "深奥的哲学书",
+        "zh-Hant": "深奧的哲學書",
+        "ja": "難しい哲学書",
+        "ko": "어려운 철학서",
+        "de": "Philosophiebuch",
+        "fr": "Livre de philosophie",
+        "es": "Libro de filosofía",
+        "it": "Libro di filosofia"
+      }
     },
     {
       "Id": "IID_神竜聖書",
@@ -1775,7 +4206,18 @@
       "Chinese": "神龙圣书",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Dragon Scripture",
+        "zh-Hans": "神龙圣书",
+        "zh-Hant": "神龍聖書",
+        "ja": "神竜聖書",
+        "ko": "신룡 성서",
+        "de": "Drachenschrift",
+        "fr": "Livre du Dragon",
+        "es": "Escrituras sagradas",
+        "it": "Scritture del Drago"
+      }
     },
     {
       "Id": "IID_エレオスの歴史書",
@@ -1783,7 +4225,18 @@
       "Chinese": "艾雷欧斯历史书",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Elyos History",
+        "zh-Hans": "艾雷欧斯历史书",
+        "zh-Hant": "艾雷歐斯歷史書",
+        "ja": "エレオスの歴史書",
+        "ko": "엘레오스의 역사서",
+        "de": "Elyos' Geschichte",
+        "fr": "Histoire d'Elyos",
+        "es": "Historia de Elyos",
+        "it": "Storia dell'Elyos"
+      }
     },
     {
       "Id": "IID_強い香りの香水",
@@ -1791,7 +4244,18 @@
       "Chinese": "香气浓郁的香水",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Strong Perfume",
+        "zh-Hans": "香气浓郁的香水",
+        "zh-Hant": "香氣濃郁的香水",
+        "ja": "強い香りの香水",
+        "ko": "향이 강한 향수",
+        "de": "Schweres Parfüm",
+        "fr": "Parfum fort",
+        "es": "Perfume potente",
+        "it": "Profumo forte"
+      }
     },
     {
       "Id": "IID_虫取り網",
@@ -1799,7 +4263,18 @@
       "Chinese": "捕虫网",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Butterfly Net",
+        "zh-Hans": "捕虫网",
+        "zh-Hant": "捕蟲網",
+        "ja": "虫取り網",
+        "ko": "잠자리채",
+        "de": "Kescher",
+        "fr": "Filet à papillons",
+        "es": "Cazamariposas",
+        "it": "Retino per insetti"
+      }
     },
     {
       "Id": "IID_日よけ帽子",
@@ -1807,7 +4282,18 @@
       "Chinese": "遮阳帽",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Sun Visor",
+        "zh-Hans": "遮阳帽",
+        "zh-Hant": "遮陽帽",
+        "ja": "日よけ帽子",
+        "ko": "햇빛 차단 모자",
+        "de": "Sonnenblende",
+        "fr": "Visière estivale",
+        "es": "Visera solar",
+        "it": "Cappellino da sole"
+      }
     },
     {
       "Id": "IID_キクの花",
@@ -1815,7 +4301,18 @@
       "Chinese": "菊花",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Chrysanthemum",
+        "zh-Hans": "菊花",
+        "zh-Hant": "菊花",
+        "ja": "キクの花",
+        "ko": "국화꽃",
+        "de": "Chrysantheme",
+        "fr": "Chrysanthème",
+        "es": "Crisantemo",
+        "it": "Crisantemo"
+      }
     },
     {
       "Id": "IID_レンズマメの花",
@@ -1823,7 +4320,18 @@
       "Chinese": "扁豆花",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Lentil Flower",
+        "zh-Hans": "扁豆花",
+        "zh-Hant": "扁豆花",
+        "ja": "レンズマメの花",
+        "ko": "렌즈콩꽃",
+        "de": "Linsenblume",
+        "fr": "Fleur de lentille",
+        "es": "Flor de lenteja",
+        "it": "Fiore di lenticchia"
+      }
     },
     {
       "Id": "IID_ユリの花",
@@ -1831,7 +4339,18 @@
       "Chinese": "百合花",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Lily",
+        "zh-Hans": "百合花",
+        "zh-Hant": "百合花",
+        "ja": "ユリの花",
+        "ko": "백합꽃",
+        "de": "Lilie",
+        "fr": "Lys",
+        "es": "Lirio",
+        "it": "Giglio"
+      }
     },
     {
       "Id": "IID_コマツナの花",
@@ -1839,7 +4358,18 @@
       "Chinese": "小松菜花",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Desert Marigold",
+        "zh-Hans": "小松菜花",
+        "zh-Hant": "小松菜花",
+        "ja": "コマツナの花",
+        "ko": "소송채꽃",
+        "de": "Sandblume",
+        "fr": "Souci du désert",
+        "es": "Flor del desierto",
+        "it": "Fior delle sabbie"
+      }
     },
     {
       "Id": "IID_ルピナスの花",
@@ -1847,7 +4377,18 @@
       "Chinese": "羽扇豆花",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Lupine Flower",
+        "zh-Hans": "羽扇豆花",
+        "zh-Hant": "羽扇豆花",
+        "ja": "ルピナスの花",
+        "ko": "루피너스꽃",
+        "de": "Lupine",
+        "fr": "Fleur de lupin",
+        "es": "Flor de altramuz",
+        "it": "Fiore di lupino"
+      }
     },
     {
       "Id": "IID_シロツメクサ",
@@ -1855,7 +4396,18 @@
       "Chinese": "白三叶草",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "White Clover",
+        "zh-Hans": "白三叶草",
+        "zh-Hant": "白三葉草",
+        "ja": "シロツメクサ",
+        "ko": "클로버",
+        "de": "Weißklee",
+        "fr": "Trèfle blanc",
+        "es": "Trébol blanco",
+        "it": "Trifoglio bianco"
+      }
     },
     {
       "Id": "IID_角笛",
@@ -1863,7 +4415,18 @@
       "Chinese": "号角",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Horn",
+        "zh-Hans": "号角",
+        "zh-Hant": "號角",
+        "ja": "角笛",
+        "ko": "뿔피리",
+        "de": "Horn",
+        "fr": "Cor",
+        "es": "Cuerno",
+        "it": "Corno"
+      }
     },
     {
       "Id": "IID_手作りの花輪",
@@ -1871,7 +4434,18 @@
       "Chinese": "手作花环",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Flower Wreath",
+        "zh-Hans": "手作花环",
+        "zh-Hant": "手作花圈",
+        "ja": "手作りの花輪",
+        "ko": "손수 만든 화환",
+        "de": "Blumenkranz",
+        "fr": "Couronne de fleurs",
+        "es": "Corona floral",
+        "it": "Ghirlanda"
+      }
     },
     {
       "Id": "IID_可愛いエプロン",
@@ -1879,7 +4453,18 @@
       "Chinese": "可爱围裙",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Cute Apron",
+        "zh-Hans": "可爱围裙",
+        "zh-Hant": "可愛圍裙",
+        "ja": "可愛いエプロン",
+        "ko": "귀여운 에이프런",
+        "de": "Niedl. Schürze",
+        "fr": "Tablier mignon",
+        "es": "Delantal lindo",
+        "it": "Grembiule carino"
+      }
     },
     {
       "Id": "IID_釣り用の餌",
@@ -1887,7 +4472,18 @@
       "Chinese": "钓饵",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fishing Bait",
+        "zh-Hans": "钓饵",
+        "zh-Hant": "釣餌",
+        "ja": "釣り用の餌",
+        "ko": "낚시용 미끼",
+        "de": "Fischköder",
+        "fr": "Appât de pêche",
+        "es": "Cebo de pesca",
+        "it": "Esca"
+      }
     },
     {
       "Id": "IID_多機能ナイフ",
@@ -1895,7 +4491,18 @@
       "Chinese": "多功能折叠刀",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Utility Knife",
+        "zh-Hans": "多功能折叠刀",
+        "zh-Hant": "多功能折疊刀",
+        "ja": "多機能ナイフ",
+        "ko": "다기능 나이프",
+        "de": "Allzweckmesser",
+        "fr": "Couteau multifonction",
+        "es": "Navaja multiusos",
+        "it": "Coltello multiuso"
+      }
     },
     {
       "Id": "IID_木彫りのクマ",
@@ -1903,7 +4510,18 @@
       "Chinese": "熊木雕",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Bear Carving",
+        "zh-Hans": "熊木雕",
+        "zh-Hant": "熊木雕",
+        "ja": "木彫りのクマ",
+        "ko": "목조 곰",
+        "de": "Bärenschnitzerei",
+        "fr": "Statuette d'ours",
+        "es": "Talla de oso",
+        "it": "Orso di legno"
+      }
     },
     {
       "Id": "IID_裁縫セット",
@@ -1911,7 +4529,18 @@
       "Chinese": "裁缝套组",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Sewing Kit",
+        "zh-Hans": "裁缝套组",
+        "zh-Hant": "裁縫套組",
+        "ja": "裁縫セット",
+        "ko": "재봉 세트",
+        "de": "Nähzeug",
+        "fr": "Kit de couture",
+        "es": "Set de costura",
+        "it": "Set da cucito"
+      }
     },
     {
       "Id": "IID_ヤギの毛糸玉",
@@ -1919,7 +4548,18 @@
       "Chinese": "羊毛线球",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Sheep Wool",
+        "zh-Hans": "羊毛线球",
+        "zh-Hant": "羊毛線球",
+        "ja": "羊の毛糸玉",
+        "ko": "양 털실 뭉치",
+        "de": "Schafwolle",
+        "fr": "Laine de mouton",
+        "es": "Lana de oveja",
+        "it": "Lana di pecora"
+      }
     },
     {
       "Id": "IID_上質なハンカチ",
@@ -1927,7 +4567,18 @@
       "Chinese": "高级手帕",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Quality Kerchief",
+        "zh-Hans": "高级手帕",
+        "zh-Hant": "高級手帕",
+        "ja": "上質なハンカチ",
+        "ko": "품질 좋은 손수건",
+        "de": "Taschentuch",
+        "fr": "Mouchoir",
+        "es": "Pañuelo bueno",
+        "it": "Fazzoletto"
+      }
     },
     {
       "Id": "IID_高級な羽根ペン",
@@ -1935,7 +4586,18 @@
       "Chinese": "高级羽毛笔",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fine Quill Pen",
+        "zh-Hans": "高级羽毛笔",
+        "zh-Hant": "高級羽毛筆",
+        "ja": "高級な羽根ペン",
+        "ko": "고급 깃펜",
+        "de": "Federkiel",
+        "fr": "Stylo à plume",
+        "es": "Pluma de lujo",
+        "it": "Calamo di lusso"
+      }
     },
     {
       "Id": "IID_装飾入りの短剣",
@@ -1943,7 +4605,18 @@
       "Chinese": "装饰短剑",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Fancy Dagger",
+        "zh-Hans": "装饰短剑",
+        "zh-Hant": "裝飾短劍",
+        "ja": "装飾入りの短剣",
+        "ko": "장식된 단검",
+        "de": "Edler Dolch",
+        "fr": "Dague ornementale",
+        "es": "Daga decorada",
+        "it": "Pugnale decorato"
+      }
     },
     {
       "Id": "IID_シカ角の耳飾り",
@@ -1951,7 +4624,18 @@
       "Chinese": "鹿角耳饰",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Antler Earrings",
+        "zh-Hans": "鹿角耳饰",
+        "zh-Hant": "鹿角耳飾",
+        "ja": "シカ角の耳飾り",
+        "ko": "사슴뿔 귀걸이",
+        "de": "Hornohrringe",
+        "fr": "Boucles en bois",
+        "es": "Pendientes de asta",
+        "it": "Orecchini di corno"
+      }
     },
     {
       "Id": "IID_卓上遊び用絵札",
@@ -1959,7 +4643,18 @@
       "Chinese": "桌游用纸牌",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Playing Cards",
+        "zh-Hans": "桌游用纸牌",
+        "zh-Hant": "桌遊用紙牌",
+        "ja": "卓上遊び用絵札",
+        "ko": "탁상 놀이용 카드",
+        "de": "Spielkarten",
+        "fr": "Cartes à jouer",
+        "es": "Naipes",
+        "it": "Carte da gioco"
+      }
     },
     {
       "Id": "IID_激辛調味料",
@@ -1967,7 +4662,18 @@
       "Chinese": "超辣调味料",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Spicy Seasonings",
+        "zh-Hans": "超辣调味料",
+        "zh-Hant": "超辣調味料",
+        "ja": "激辛調味料",
+        "ko": "엄청 매운 조미료",
+        "de": "Scharfes Gewürz",
+        "fr": "Assaisonnement fort",
+        "es": "Condimento fuerte",
+        "it": "Spezie piccanti"
+      }
     },
     {
       "Id": "IID_風景の絵葉書",
@@ -1975,7 +4681,18 @@
       "Chinese": "风景明信片",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Landscape Art",
+        "zh-Hans": "风景明信片",
+        "zh-Hant": "風景明信片",
+        "ja": "風景の絵葉書",
+        "ko": "풍경 그림엽서",
+        "de": "Landschaftsbild",
+        "fr": "Paysage",
+        "es": "Paisaje",
+        "it": "Paesaggio"
+      }
     },
     {
       "Id": "IID_美しい蝋燭",
@@ -1983,7 +4700,18 @@
       "Chinese": "美丽的蜡烛",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Lovely Candle",
+        "zh-Hans": "美丽的蜡烛",
+        "zh-Hant": "美麗的蠟燭",
+        "ja": "美しい蝋燭",
+        "ko": "예쁜 초",
+        "de": "Schöne Kerze",
+        "fr": "Jolie bougie",
+        "es": "Vela bonita",
+        "it": "Candela carina"
+      }
     },
     {
       "Id": "IID_生き物図鑑",
@@ -1991,7 +4719,18 @@
       "Chinese": "生物图鉴",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Field Guide",
+        "zh-Hans": "生物图鉴",
+        "zh-Hant": "生物圖鑑",
+        "ja": "生き物図鑑",
+        "ko": "생물 도감",
+        "de": "Naturführer",
+        "fr": "Encyclopédie",
+        "es": "Guía de campo",
+        "it": "Manuale di biologia"
+      }
     },
     {
       "Id": "IID_怪しいお札",
@@ -1999,7 +4738,18 @@
       "Chinese": "诡异符咒",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Spooky Scroll",
+        "zh-Hans": "诡异符咒",
+        "zh-Hant": "詭異符咒",
+        "ja": "怪しいお札",
+        "ko": "수상한 부적",
+        "de": "Spukrolle",
+        "fr": "Parchemin sinistre",
+        "es": "Papel misterioso",
+        "it": "Rotolo arcano"
+      }
     },
     {
       "Id": "IID_大きなお皿",
@@ -2007,7 +4757,18 @@
       "Chinese": "巨大盘子",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Large Plate",
+        "zh-Hans": "巨大盘子",
+        "zh-Hant": "巨大盤子",
+        "ja": "大きなお皿",
+        "ko": "커다란 접시",
+        "de": "Großer Teller",
+        "fr": "Grand plateau",
+        "es": "Bandeja",
+        "it": "Grande piatto"
+      }
     },
     {
       "Id": "IID_包帯",
@@ -2015,7 +4776,18 @@
       "Chinese": "绷带",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Bandages",
+        "zh-Hans": "绷带",
+        "zh-Hant": "繃帶",
+        "ja": "包帯",
+        "ko": "붕대",
+        "de": "Verbände",
+        "fr": "Bandages",
+        "es": "Vendas",
+        "it": "Garza"
+      }
     },
     {
       "Id": "IID_綺麗な石ころ",
@@ -2023,7 +4795,18 @@
       "Chinese": "漂亮的石头",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Pretty Pebble",
+        "zh-Hans": "漂亮的石头",
+        "zh-Hant": "漂亮的石頭",
+        "ja": "綺麗な石ころ",
+        "ko": "예쁜 돌멩이",
+        "de": "Hübscher Kiesel",
+        "fr": "Joli galet",
+        "es": "Guijarro bonito",
+        "it": "Ciottolo carino"
+      }
     },
     {
       "Id": "IID_守り神の宝石",
@@ -2031,7 +4814,18 @@
       "Chinese": "守护神的宝石",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Spirit Gem",
+        "zh-Hans": "守护神的宝石",
+        "zh-Hant": "守護神的寶石",
+        "ja": "守り神の宝石",
+        "ko": "수호신의 보석",
+        "de": "Schutz-Juwel",
+        "fr": "Gemme protectrice",
+        "es": "Gema protectora",
+        "it": "Gemma protettrice"
+      }
     },
     {
       "Id": "IID_馬糞",
@@ -2039,7 +4833,18 @@
       "Chinese": "马粪",
       "Kind": 10,
       "MaxUses": 1,
-      "MaxRefine": 0
+      "MaxRefine": 0,
+      "Names": {
+        "en": "Horse Manure",
+        "zh-Hans": "马粪",
+        "zh-Hant": "馬糞",
+        "ja": "馬糞",
+        "ko": "말똥",
+        "de": "Pferdedung",
+        "fr": "Crottin",
+        "es": "Estiércol de caballo",
+        "it": "Letame"
+      }
     }
   ]
 }

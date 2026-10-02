@@ -199,5 +199,7 @@
   "ImportCharacter": "导入角色",
   "CharacterExported": "角色已导出：",
   "ExportFailed": "无法导出角色：",
-  "ImportFailed": "无法导入角色："
+  "ImportFailed": "无法导入角色：",
+  "Expert": "专家",
+  "Fishing": "钓鱼"
 }

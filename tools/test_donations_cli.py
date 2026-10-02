@@ -58,7 +58,7 @@ def check_donations(command: list[str], real_directory: Path | None, fixture: by
         for options in [[], ["--all", "--country", "Firene"], ["--country", "unknown"], ["--level", "5"]]:
             run("donations-max", str(source), str(output), *options, success=False)
             assert not output.exists()
-        for options in [["--json", "--json"], ["--language", "fr"], ["--language"], ["--unknown"]]:
+        for options in [["--json", "--json"], ["--language", "xx"], ["--language"], ["--unknown"]]:
             run("donations", str(source), *options, success=False)
         run("donations-max", str(source), str(source), "--all", success=False)
         output.write_bytes(b"existing")

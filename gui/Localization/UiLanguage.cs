@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Avalonia;
+using FeeEditor.Core;
 
 namespace FeeEditor.Gui.Localization;
 
@@ -10,7 +11,7 @@ public static class UiLanguage
 
     public static IReadOnlyDictionary<string, string> Read(string language)
     {
-        if (language is not ("en" or "zh-Hans"))
+        if (!LanguageCatalog.Codes.Contains(language))
             throw new ArgumentException("Unsupported UI language.", nameof(language));
         using var stream = typeof(UiLanguage).Assembly.GetManifestResourceStream(
             $"FeeEditor.Gui.Localization.{language}.json")

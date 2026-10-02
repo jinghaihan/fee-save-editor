@@ -389,6 +389,8 @@ def main() -> None:
     check_supports(command, args.save_directory, main_fixture())
     from test_engravings_cli import check_engravings
     check_engravings(command, args.save_directory, main_fixture())
+    from test_languages_cli import check_languages
+    check_languages(command)
     print("CLI tests passed.")
 
 

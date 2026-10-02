@@ -72,7 +72,7 @@ public static class EmblemCatalog
             data.Rings.Select(row => row with { Names = Freeze(row.Names) }).ToArray(), data.BondExperience);
     }
 
-    private static bool ValidNames(IReadOnlyDictionary<string, string> names) => new[] { "en", "zh-Hans" }
+    private static bool ValidNames(IReadOnlyDictionary<string, string> names) => LanguageCatalog.Codes
         .All(language => names.TryGetValue(language, out string? name) && !string.IsNullOrWhiteSpace(name));
     private static IReadOnlyDictionary<string, string> Freeze(IReadOnlyDictionary<string, string> names) =>
         new ReadOnlyDictionary<string, string>(names.ToDictionary(pair => pair.Key, pair => pair.Value));

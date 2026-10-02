@@ -10,7 +10,8 @@ In the examples below, replace `FeeEditor.Cli` with that command or the CLI
 executable. Every editing command writes a new file and rejects an existing
 destination, including the input file. Reading and editing never overwrite it.
 Use `--json` for structured output. Catalog and relationship commands also
-accept `--language en|zh-Hans` where shown by `--help`.
+accept `--language <code>` where shown by `--help`. Supported codes are `en`,
+`zh-Hans`, `zh-Hant`, `ja`, `ko`, `de`, `fr`, `es` and `it`.
 
 ## Main
 

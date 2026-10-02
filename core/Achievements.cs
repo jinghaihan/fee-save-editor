@@ -36,7 +36,7 @@ public static class AchievementCatalog
         if (data.Achievements.Length != 765 || data.Achievements.Select(row => row.Id).Distinct().Count() != data.Achievements.Length
             || data.Achievements.Any(row => !row.Id.StartsWith("AID_", StringComparison.Ordinal) || row.Id.Length <= 4
                 || !Enum.IsDefined(row.Category) || row.Reward < 0
-                || new[] { "en", "zh-Hans" }.Any(language => !row.Names.TryGetValue(language, out string? name)
+                || LanguageCatalog.Codes.Any(language => !row.Names.TryGetValue(language, out string? name)
                     || string.IsNullOrWhiteSpace(name) || name.Contains("\\x", StringComparison.Ordinal))))
             throw new InvalidDataException("Invalid achievement IDs, categories or messages.");
         return Array.AsReadOnly(data.Achievements);

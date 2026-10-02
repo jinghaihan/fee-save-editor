@@ -6,35 +6,70 @@
       "Id": "PushUps",
       "Names": {
         "en": "Push-Ups",
-        "zh-Hans": "俯卧撑"
+        "zh-Hans": "俯卧撑",
+        "zh-Hant": "伏地挺身",
+        "ja": "腕立て伏せ",
+        "ko": "팔 굽혀 펴기",
+        "de": "Liegestütze",
+        "fr": "Pompes",
+        "es": "Flexiones",
+        "it": "Flessioni"
       },
       "Records": [
         {
           "Key": "G_MusclePushUpBestNormal",
           "Names": {
             "en": "Normal",
-            "zh-Hans": "普通"
+            "zh-Hans": "普通",
+            "zh-Hant": "普通",
+            "ja": "ノーマル",
+            "ko": "노멀",
+            "de": "Normal",
+            "fr": "Normal",
+            "es": "Normal",
+            "it": "Normale"
           }
         },
         {
           "Key": "G_MusclePushUpBestHard",
           "Names": {
             "en": "Hard",
-            "zh-Hans": "困难"
+            "zh-Hans": "困难",
+            "zh-Hant": "困難",
+            "ja": "ハード",
+            "ko": "하드",
+            "de": "Schwer",
+            "fr": "Difficile",
+            "es": "Difícil",
+            "it": "Difficile"
           }
         },
         {
           "Key": "G_MusclePushUpBestMaster",
           "Names": {
             "en": "Expert",
-            "zh-Hans": "专家"
+            "zh-Hans": "专家",
+            "zh-Hant": "專家",
+            "ja": "エキスパート",
+            "ko": "익스퍼트",
+            "de": "Experte",
+            "fr": "Expert",
+            "es": "Experto",
+            "it": "Esperto"
           }
         },
         {
           "Key": "G_MusclePushUpBestEternal",
           "Names": {
             "en": "Iron Muscle",
-            "zh-Hans": "肌肉炸裂"
+            "zh-Hans": "肌肉炸裂",
+            "zh-Hant": "肌肉炸裂",
+            "ja": "マッスル",
+            "ko": "머슬",
+            "de": "Eisern",
+            "fr": "Culturiste",
+            "es": "Culturista",
+            "it": "Culturista"
           }
         }
       ]
@@ -43,35 +78,70 @@
       "Id": "SitUps",
       "Names": {
         "en": "Sit-Ups",
-        "zh-Hans": "仰卧起坐"
+        "zh-Hans": "仰卧起坐",
+        "zh-Hant": "仰臥起坐",
+        "ja": "腹筋",
+        "ko": "복근 트레이닝",
+        "de": "Klappmesser",
+        "fr": "Abdominaux",
+        "es": "Abdominales",
+        "it": "Addominali"
       },
       "Records": [
         {
           "Key": "G_MuscleSitUpBestNormal",
           "Names": {
             "en": "Normal",
-            "zh-Hans": "普通"
+            "zh-Hans": "普通",
+            "zh-Hant": "普通",
+            "ja": "ノーマル",
+            "ko": "노멀",
+            "de": "Normal",
+            "fr": "Normal",
+            "es": "Normal",
+            "it": "Normale"
           }
         },
         {
           "Key": "G_MuscleSitUpBestHard",
           "Names": {
             "en": "Hard",
-            "zh-Hans": "困难"
+            "zh-Hans": "困难",
+            "zh-Hant": "困難",
+            "ja": "ハード",
+            "ko": "하드",
+            "de": "Schwer",
+            "fr": "Difficile",
+            "es": "Difícil",
+            "it": "Difficile"
           }
         },
         {
           "Key": "G_MuscleSitUpBestMaster",
           "Names": {
             "en": "Expert",
-            "zh-Hans": "专家"
+            "zh-Hans": "专家",
+            "zh-Hant": "專家",
+            "ja": "エキスパート",
+            "ko": "익스퍼트",
+            "de": "Experte",
+            "fr": "Expert",
+            "es": "Experto",
+            "it": "Esperto"
           }
         },
         {
           "Key": "G_MuscleSitUpBestEternal",
           "Names": {
             "en": "Iron Muscle",
-            "zh-Hans": "肌肉炸裂"
+            "zh-Hans": "肌肉炸裂",
+            "zh-Hant": "肌肉炸裂",
+            "ja": "マッスル",
+            "ko": "머슬",
+            "de": "Eisern",
+            "fr": "Culturiste",
+            "es": "Culturista",
+            "it": "Culturista"
           }
         }
       ]
@@ -80,35 +150,70 @@
       "Id": "Squats",
       "Names": {
         "en": "Squats",
-        "zh-Hans": "深蹲"
+        "zh-Hans": "深蹲",
+        "zh-Hant": "深蹲",
+        "ja": "スクワット",
+        "ko": "스쿼트",
+        "de": "Kniebeugen",
+        "fr": "Flexions",
+        "es": "Sentadillas",
+        "it": "Squat"
       },
       "Records": [
         {
           "Key": "G_MuscleSquatBestNormal",
           "Names": {
             "en": "Normal",
-            "zh-Hans": "普通"
+            "zh-Hans": "普通",
+            "zh-Hant": "普通",
+            "ja": "ノーマル",
+            "ko": "노멀",
+            "de": "Normal",
+            "fr": "Normal",
+            "es": "Normal",
+            "it": "Normale"
           }
         },
         {
           "Key": "G_MuscleSquatBestHard",
           "Names": {
             "en": "Hard",
-            "zh-Hans": "困难"
+            "zh-Hans": "困难",
+            "zh-Hant": "困難",
+            "ja": "ハード",
+            "ko": "하드",
+            "de": "Schwer",
+            "fr": "Difficile",
+            "es": "Difícil",
+            "it": "Difficile"
           }
         },
         {
           "Key": "G_MuscleSquatBestMaster",
           "Names": {
             "en": "Expert",
-            "zh-Hans": "专家"
+            "zh-Hans": "专家",
+            "zh-Hant": "專家",
+            "ja": "エキスパート",
+            "ko": "익스퍼트",
+            "de": "Experte",
+            "fr": "Expert",
+            "es": "Experto",
+            "it": "Esperto"
           }
         },
         {
           "Key": "G_MuscleSquatBestEternal",
           "Names": {
             "en": "Iron Muscle",
-            "zh-Hans": "肌肉炸裂"
+            "zh-Hans": "肌肉炸裂",
+            "zh-Hant": "肌肉炸裂",
+            "ja": "マッスル",
+            "ko": "머슬",
+            "de": "Eisern",
+            "fr": "Culturiste",
+            "es": "Culturista",
+            "it": "Culturista"
           }
         }
       ]
@@ -117,28 +222,56 @@
       "Id": "WyvernRide",
       "Names": {
         "en": "Wyvern Ride",
-        "zh-Hans": "飞龙射手"
+        "zh-Hans": "飞龙射手",
+        "zh-Hant": "飛龍射手",
+        "ja": "ドラゴンシューター",
+        "ko": "드래곤 슈터",
+        "de": "Wyvernreiten",
+        "fr": "Vol sur wyverne",
+        "es": "Ir en wyvern",
+        "it": "Volo in viverna"
       },
       "Records": [
         {
           "Key": "G_DragonRideNormalScore",
           "Names": {
             "en": "Normal",
-            "zh-Hans": "普通"
+            "zh-Hans": "普通",
+            "zh-Hant": "普通",
+            "ja": "ノーマル",
+            "ko": "노멀",
+            "de": "Normal",
+            "fr": "Normal",
+            "es": "Normal",
+            "it": "Normale"
           }
         },
         {
           "Key": "G_DragonRideHardScore",
           "Names": {
             "en": "Hard",
-            "zh-Hans": "困难"
+            "zh-Hans": "困难",
+            "zh-Hant": "困難",
+            "ja": "ハード",
+            "ko": "하드",
+            "de": "Schwer",
+            "fr": "Difficile",
+            "es": "Difícil",
+            "it": "Difficile"
           }
         },
         {
           "Key": "G_DragonRideExpertScore",
           "Names": {
             "en": "Expert",
-            "zh-Hans": "专家"
+            "zh-Hans": "专家",
+            "zh-Hant": "專家",
+            "ja": "エキスパート",
+            "ko": "익스퍼트",
+            "de": "Experte",
+            "fr": "Expert",
+            "es": "Experto",
+            "it": "Esperto"
           }
         }
       ]
@@ -147,147 +280,294 @@
       "Id": "Fishing",
       "Names": {
         "en": "Fishing",
-        "zh-Hans": "钓鱼"
+        "zh-Hans": "钓鱼",
+        "zh-Hant": "釣魚",
+        "ja": "釣り",
+        "ko": "낚시",
+        "de": "Angeln",
+        "fr": "Pêche",
+        "es": "Pesca",
+        "it": "Pesca"
       },
       "Records": [
         {
           "Key": "G_Fishing_イッカクイワナ_Count",
           "Names": {
             "en": "Charwhal",
-            "zh-Hans": "独角红点鲑"
+            "zh-Hans": "独角红点鲑",
+            "zh-Hant": "獨角紅點鮭",
+            "ja": "イッカクイワナ",
+            "ko": "외뿔 곤들매기",
+            "de": "Einhornforelle",
+            "fr": "Omble cornu",
+            "es": "Truceronte",
+            "it": "Salmeronte"
           }
         },
         {
           "Key": "G_Fishing_バンガンニシン_Count",
           "Names": {
             "en": "Samian Herring",
-            "zh-Hans": "班岗鲱鱼"
+            "zh-Hans": "班岗鲱鱼",
+            "zh-Hant": "班崗鯡魚",
+            "ja": "バンガンニシン",
+            "ko": "방간 청어",
+            "de": "Samia-Hering",
+            "fr": "Hareng samien",
+            "es": "Samenque",
+            "it": "Aringa dames"
           }
         },
         {
           "Key": "G_Fishing_オメメイワシ_Count",
           "Names": {
             "en": "Big-Eyed Sardine",
-            "zh-Hans": "欧梅梅沙丁鱼"
+            "zh-Hans": "欧梅梅沙丁鱼",
+            "zh-Hant": "歐梅梅沙丁魚",
+            "ja": "オメメイワシ",
+            "ko": "큰 눈 정어리",
+            "de": "Glotz-Sardine",
+            "fr": "Sardine globuleuse",
+            "es": "Ojosa",
+            "it": "Sardina occhiona"
           }
         },
         {
           "Key": "G_Fishing_ポンヤマメ_Count",
           "Names": {
             "en": "Sint Trout",
-            "zh-Hans": "圆纹樱鳟"
+            "zh-Hans": "圆纹樱鳟",
+            "zh-Hant": "圓紋櫻鱒",
+            "ja": "ポンヤマメ",
+            "ko": "방울 산천어",
+            "de": "Sint-Forelle",
+            "fr": "Truite daphnée",
+            "es": "Sincha",
+            "it": "Trotalmone"
           }
         },
         {
           "Key": "G_Fishing_テオテスクイッド_Count",
           "Names": {
             "en": "Paffo Squid",
-            "zh-Hans": "提欧特鱿鱼"
+            "zh-Hans": "提欧特鱿鱼",
+            "zh-Hant": "提歐特魷魚",
+            "ja": "テオテスクイッド",
+            "ko": "테오테 오징어",
+            "de": "Paffo-Kalmar",
+            "fr": "Calamar tabril",
+            "es": "Calapafo",
+            "it": "Calamaro imata"
           }
         },
         {
           "Key": "G_Fishing_アビッドクラブ_Count",
           "Names": {
             "en": "Sammar Crab",
-            "zh-Hans": "阿比德蟹"
+            "zh-Hans": "阿比德蟹",
+            "zh-Hant": "阿比德蟹",
+            "ja": "アビッドクラブ",
+            "ko": "아비도 게",
+            "de": "Samar-Krabbe",
+            "fr": "Crabe sammar",
+            "es": "Candarejo",
+            "it": "Granchio canyon"
           }
         },
         {
           "Key": "G_Fishing_ヘルルコイ_Count",
           "Names": {
             "en": "Caria Carp",
-            "zh-Hans": "赫鲁鲁鲤鱼"
+            "zh-Hans": "赫鲁鲁鲤鱼",
+            "zh-Hant": "赫魯魯鯉魚",
+            "ja": "ヘルルコイ",
+            "ko": "헤루루 잉어",
+            "de": "Caria-Karpfen",
+            "fr": "Carpe cario",
+            "es": "Carpioca",
+            "it": "Carpa almaria"
           }
         },
         {
           "Key": "G_Fishing_ブロスウナギ_Count",
           "Names": {
             "en": "Myceen Eel",
-            "zh-Hans": "布洛斯鳗鱼"
+            "zh-Hans": "布洛斯鳗鱼",
+            "zh-Hant": "布洛斯鰻魚",
+            "ja": "ブロスウナギ",
+            "ko": "브로스 장어",
+            "de": "Mykenä-Aal",
+            "fr": "Anguille mycèle",
+            "es": "Micenia",
+            "it": "Anguilla driana"
           }
         },
         {
           "Key": "G_Fishing_ムノンテイルアジ_Count",
           "Names": {
             "en": "Gela Tail Sierra",
-            "zh-Hans": "穆诺泰尔竹策鱼"
+            "zh-Hans": "穆诺泰尔竹策鱼",
+            "zh-Hant": "穆諾泰爾竹筴魚",
+            "ja": "ムノンテイルアジ",
+            "ko": "멤논 꼬리 전갱이",
+            "de": "Gela-Makrele",
+            "fr": "Maquereau luxequeue",
+            "es": "Gileta",
+            "it": "Sgombro budur"
           }
         },
         {
           "Key": "G_Fishing_ラバナトロウト_Count",
           "Names": {
             "en": "Tieraden Trout",
-            "zh-Hans": "拉巴纳鳟鱼"
+            "zh-Hans": "拉巴纳鳟鱼",
+            "zh-Hant": "拉巴納鱒魚",
+            "ja": "ラバナトラウト",
+            "ko": "라바나 송어",
+            "de": "Tierra-Forelle",
+            "fr": "Truite tiradène",
+            "es": "Terradén",
+            "it": "Trota tieraden"
           }
         },
         {
           "Key": "G_Fishing_ロガーオクトパス_Count",
           "Names": {
             "en": "Matob Octopus",
-            "zh-Hans": "罗格章鱼"
+            "zh-Hans": "罗格章鱼",
+            "zh-Hant": "羅格章魚",
+            "ja": "ロガーオクトパス",
+            "ko": "로거 문어",
+            "de": "Matob-Oktopus",
+            "fr": "Pieuvre dolomine",
+            "es": "Matulpo",
+            "it": "Polpo stela"
           }
         },
         {
           "Key": "G_Fishing_ドスマレイ_Count",
           "Names": {
             "en": "Smash-Head Ray",
-            "zh-Hans": "多斯玛魟鱼"
+            "zh-Hans": "多斯玛魟鱼",
+            "zh-Hant": "多斯瑪魟魚",
+            "ja": "ドスマエイ",
+            "ko": "도스마 가오리",
+            "de": "Flachkopf-Rochen",
+            "fr": "Raie précipice",
+            "es": "Mantúfalo",
+            "it": "Razza spaccatesta"
           }
         },
         {
           "Key": "G_Fishing_レインボートロウト_Count",
           "Names": {
             "en": "Chromatic Trout",
-            "zh-Hans": "七彩鳟鱼"
+            "zh-Hans": "七彩鳟鱼",
+            "zh-Hant": "七彩鱒魚",
+            "ja": "ナナイロトラウト",
+            "ko": "칠색 송어",
+            "de": "Prismaforelle",
+            "fr": "Truite chromatique",
+            "es": "Trucha arcoíris",
+            "it": "Trota variopinta"
           }
         },
         {
           "Key": "G_Fishing_スリットヒレサケ_Count",
           "Names": {
             "en": "Tipa Salmon",
-            "zh-Hans": "长鳍鲑鱼"
+            "zh-Hans": "长鳍鲑鱼",
+            "zh-Hant": "長鰭鮭魚",
+            "ja": "スリットヒレサケ",
+            "ko": "슬릿핀 연어",
+            "de": "Tipa-Lachs",
+            "fr": "Saumon tipa",
+            "es": "Saltipa",
+            "it": "Salmone amoni"
           }
         },
         {
           "Key": "G_Fishing_ヘッジヒゲナマズ_Count",
           "Names": {
             "en": "Mir Catfish",
-            "zh-Hans": "海吉长须鲶"
+            "zh-Hans": "海吉长须鲶",
+            "zh-Hant": "海吉長鬚鯰",
+            "ja": "ヘッジヒゲナマズ",
+            "ko": "헨지 수염 매기",
+            "de": "Mir-Wels",
+            "fr": "Poisson-chat myr",
+            "es": "Miluro",
+            "it": "Pesce bolgatto"
           }
         },
         {
           "Key": "G_Fishing_オニキバカタラ_Count",
           "Names": {
             "en": "Valcamonic Cod",
-            "zh-Hans": "鬼牙鳕鱼"
+            "zh-Hans": "鬼牙鳕鱼",
+            "zh-Hant": "鬼牙鱈魚",
+            "ja": "オニキバカタラ",
+            "ko": "왕엄니 대구",
+            "de": "Valcamo-Dorsch",
+            "fr": "Morue valamone",
+            "es": "Valcamuza",
+            "it": "Merluzzo valcamo"
           }
         },
         {
           "Key": "G_Fishing_マンドコブバス_Count",
           "Names": {
             "en": "Monvill Bass",
-            "zh-Hans": "曼多柯布鲈鱼"
+            "zh-Hans": "曼多柯布鲈鱼",
+            "zh-Hant": "曼多柯布鱸魚",
+            "ja": "マンドコブバス",
+            "ko": "만드 혹 농어",
+            "de": "Monvill-Barsch",
+            "fr": "Bar monville",
+            "es": "Monvila",
+            "it": "Spigola pagos"
           }
         },
         {
           "Key": "G_Fishing_サリアイヌウツボ_Count",
           "Names": {
             "en": "Canisaria Eel",
-            "zh-Hans": "萨利艾奴虎鳗"
+            "zh-Hans": "萨利艾奴虎鳗",
+            "zh-Hant": "薩利艾奴虎鰻",
+            "ja": "サリアイヌウツボ",
+            "ko": "사리아 개 곰치",
+            "de": "Canisaria-Aal",
+            "fr": "Anguille canissaire",
+            "es": "Canisaria",
+            "it": "Murena canisaria"
           }
         },
         {
           "Key": "G_Fishing_テフラカツオ_Count",
           "Names": {
             "en": "Bisot Tuna",
-            "zh-Hans": "特弗拉鲣鱼"
+            "zh-Hans": "特弗拉鲣鱼",
+            "zh-Hant": "特弗拉鰹魚",
+            "ja": "テフラカツオ",
+            "ko": "테프라 가다랑어",
+            "de": "Bisot-Thunfisch",
+            "fr": "Thon bisotin",
+            "es": "Bisote",
+            "it": "Tonno tredame"
           }
         },
         {
           "Key": "G_Fishing_エンシャントカツオ_Count",
           "Names": {
             "en": "Enchan Tuna",
-            "zh-Hans": "艾恰托鲣鱼"
+            "zh-Hans": "艾恰托鲣鱼",
+            "zh-Hant": "艾恰托鰹魚",
+            "ja": "エチャットカツオ",
+            "ko": "인챈트 가다랑어",
+            "de": "Mirakelthunfisch",
+            "fr": "Thon enchanté",
+            "es": "Cautino",
+            "it": "Tonno tevole"
           }
         }
       ]

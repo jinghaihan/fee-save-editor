@@ -75,9 +75,9 @@ internal static class DonationsCommand
             if (options[index] == "--language" && language is null && ++index < options.Length)
             {
                 language = options[index];
-                if (language is "en" or "zh-Hans") continue;
+                if (LanguageCatalog.Codes.Contains(language)) continue;
             }
-            throw new ArgumentException("Use --json and/or --language en|zh-Hans, without duplicates.");
+            throw new ArgumentException("Use --json and/or --language en|zh-Hans|zh-Hant|ja|ko|de|fr|es|it, without duplicates.");
         }
         return language ?? "en";
     }

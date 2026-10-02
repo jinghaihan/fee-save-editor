@@ -6,7 +6,7 @@ import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from import_roster_catalog import TEXT_REVISION, fetch
+from import_roster_catalog import TEXT_REVISION, fetch, load_texts
 
 DATA_REVISION = "86b8be7b9820e1bb3bce87d2a9a805ead85d92ab"
 
@@ -26,12 +26,7 @@ def main() -> None:
         else:
             previous = levels[group][-1] if levels[group] else 0
             levels[group].append(previous + int(row.get("Cost")))
-    texts = {}
-    for language, folder in (("en", "US/USen"), ("zh-Hans", "CN/CNch")):
-        values = {}
-        for file in ("GameData", "Hub", "HubCommon"):
-            values.update(line.split("\t", 1) for line in fetch("delvier/Iron19_L10n", TEXT_REVISION, f"{folder}/{file}.txt").splitlines() if "\t" in line)
-        texts[language] = values
+    texts = load_texts(("GameData", "Hub", "HubCommon"))
     countries = []
     for row in sheets["国データ"].findall("./Data/Param"):
         if row.get("IsNotLevel") != "false":

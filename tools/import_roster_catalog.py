@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """Import minimal roster names and limits, without bundling original game tables."""
 
+from __future__ import annotations
+
 import argparse
+from concurrent.futures import ThreadPoolExecutor
+from functools import lru_cache
 import json
 import re
 import urllib.request
@@ -11,27 +15,42 @@ from pathlib import Path
 DATA_REVISION = "8a64328fc9a4df7649852ec2ac8b7d5beaedbc58"
 TEXT_REVISION = "810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b"
 VANILLA_REVISION = "99677e4cad22b636bee4af5a3052003bed17c443"
+LANGUAGES = {
+    "en": "US/USen", "zh-Hans": "CN/CNch", "zh-Hant": "TW/TWch",
+    "ja": "JP/JPja", "ko": "KR/KRko", "de": "EU/EUde",
+    "fr": "US/USfr", "es": "US/USes", "it": "EU/EUit",
+}
 STATS = ["Hp", "Str", "Tech", "Quick", "Luck", "Def", "Magic", "Mdef", "Phys", "Sight", "Move"]
 WEAPONS = ["None", "Sword", "Lance", "Axe", "Bow", "Dagger", "Magic", "Rod", "Fist", "Special"]
 
 
+@lru_cache(maxsize=None)
 def fetch(repo: str, revision: str, path: str) -> str:
     url = f"https://raw.githubusercontent.com/{repo}/{revision}/{path}"
-    with urllib.request.urlopen(url) as response:
+    with urllib.request.urlopen(url, timeout=60) as response:
         return response.read().decode("utf-8-sig")
+
+
+def load_texts(files: list[str] | tuple[str, ...]) -> dict[str, dict[str, str]]:
+    jobs = [(language, f"{folder}/{name}.txt") for language, folder in LANGUAGES.items() for name in files]
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        sources = list(pool.map(lambda job: fetch("delvier/Iron19_L10n", TEXT_REVISION, job[1]), jobs))
+    texts = {language: {} for language in LANGUAGES}
+    for (language, _), source in zip(jobs, sources):
+        for line in source.splitlines():
+            if "\t" not in line:
+                continue
+            key, value = line.split("\t", 1)
+            # The French class label ends with a native grammar marker, not visible text.
+            texts[language][key] = value.replace(r"\x0E\x0A\x00\x06", "")
+    return texts
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    texts = {}
-    for language, folder in [("en", "US/USen"), ("zh-Hans", "CN/CNch")]:
-        values = {}
-        for name in ["Person", "Job", "Item", "Skill", "Patch0", "Patch1", "Patch2", "Patch3"]:
-            source = fetch("delvier/Iron19_L10n", TEXT_REVISION, f"{folder}/{name}.txt")
-            values.update(line.split("\t", 1) for line in source.splitlines() if "\t" in line)
-        texts[language] = values
+    texts = load_texts(["Person", "Job", "Item", "Skill", "Patch0", "Patch1", "Patch2", "Patch3"])
     base = "assets/VanillaFiles/"
     people = ET.fromstring(fetch("LordMewtwo73/feEngage-randomizer", DATA_REVISION, base + "person.xml"))
     jobs = ET.fromstring(fetch("LordMewtwo73/feEngage-randomizer", DATA_REVISION, base + "job.xml"))
@@ -77,7 +96,9 @@ def main() -> None:
                   for row in items.findall("./Sheet/Data/Param")
                   if row.get("Iid") and row.get("Name") in texts["en"] and row.get("Name") in texts["zh-Hans"]
                   and all(texts[language][row.get("Name")].strip() for language in texts)]
-    item_names.append({"Id": "IID_エンゲージ枠", "Names": {"en": "Engage slot", "zh-Hans": "结合栏位"}, "EngageOnly": True})
+    item_names.append({"Id": "IID_エンゲージ枠", "Names": {"en": "Engage slot", "zh-Hans": "结合栏位", "zh-Hant": "結合欄位",
+        "ja": "エンゲージ枠", "ko": "인게이지 슬롯", "de": "Engage-Platz", "fr": "Emplacement Engage",
+        "es": "Espacio Engage", "it": "Slot Engage"}, "EngageOnly": True})
     def normalized(value: str) -> str:
         return re.sub(r"\s+", "", value).casefold()
 

@@ -9,6 +9,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from import_roster_catalog import load_texts
+
 SOURCE = "https://raw.githubusercontent.com/laqieer/FE17-DOC/"
 
 
@@ -24,6 +26,7 @@ def main() -> None:
     args = parser.parse_args()
     book = ET.fromstring(fetch(args.revision, "fe_assets_gamedata/Item.xml"))
     texts = {row["key"]: row for row in csv.DictReader(io.StringIO(fetch(args.revision, "translations/Item.csv")))}
+    localized = load_texts(["Item", "Patch0", "Patch1", "Patch2", "Patch3"])
     levels = {}
     group = None
     for record in book.findall("Sheet")[2].findall("./Data/Param"):
@@ -40,7 +43,8 @@ def main() -> None:
         text = texts.get(record.get("Name", "").removeprefix("MIID_"))
         if not text or kind not in range(1, 11) or flags & (8 | 16 | 128 | 512 | 1024):
             continue
-        items.append({"Id": iid, "English": text["usen"], "Chinese": text["cnch"], "Kind": kind,
+        items.append({"Id": iid, "English": text["usen"], "Chinese": text["cnch"],
+                      "Names": {language: values[record.get("Name")] for language, values in localized.items()}, "Kind": kind,
                       "MaxUses": int(record.get("Endurance")), "MaxRefine": levels.get("RID_" + iid[4:], 0)})
     if not items or len({item["Id"] for item in items}) != len(items):
         raise ValueError("The source item catalog is incomplete or duplicated.")

@@ -57,7 +57,7 @@ public static class MinigameCatalog
             || records.Select(row => row.Key).Distinct().Count() != 35
             || records.Any(row => !row.Key.StartsWith("G_", StringComparison.Ordinal))
             || data.Groups.Select(group => group.Names).Concat(records.Select(row => row.Names))
-                .Any(names => new[] { "en", "zh-Hans" }.Any(language => !names.TryGetValue(language, out string? name)
+                .Any(names => LanguageCatalog.Codes.Any(language => !names.TryGetValue(language, out string? name)
                     || string.IsNullOrWhiteSpace(name))))
             throw new InvalidDataException("Invalid minigame groups, record keys or names.");
         return Array.AsReadOnly(data.Groups);

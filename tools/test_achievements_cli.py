@@ -21,7 +21,7 @@ def check_achievements(command: list[str], real_directory: Path | None, fixture:
     assert catalog[0]["Name"] == "Complete a support conversation with Vander."
     chinese = json.loads(run("catalog", "--language", "zh-Hans"))
     assert "凡德雷" in chinese[0]["Name"]
-    for options in [("--language", "ja"), ("--json", "--json"), ("--language",), ("--other",)]:
+    for options in [("--language", "xx"), ("--json", "--json"), ("--language",), ("--other",)]:
         run("catalog", *options, success=False)
 
     def wide(text: str) -> bytes:

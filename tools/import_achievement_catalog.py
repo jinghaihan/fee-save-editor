@@ -1,17 +1,28 @@
 #!/usr/bin/env python3
-"""Import named achievements and resolve their English and Chinese messages."""
+"""Import named achievements and resolve the game's localized message parameters."""
 
 import argparse
 import json
 import re
 import xml.etree.ElementTree as ET
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from import_donation_catalog import DATA_REVISION
-from import_roster_catalog import TEXT_REVISION, fetch
+from import_roster_catalog import TEXT_REVISION, fetch, load_texts
 
 TEXT_FILES = ("Achieve", "GameData", "Hub", "HubCommon", "Person", "Network", "ResidentMenu", "Patch0", "Patch1", "Patch2", "Patch3")
+
+
+def korean_particles(message: str) -> str:
+    pattern = r"\\x0E\\x0A(?:\\x[0-9A-Fa-f]{2}){3}(과|이|｣을|으로)\\x[0-9A-Fa-f]{2}(와|가|｣를|로)"
+
+    def choose(match: re.Match) -> str:
+        prefix = message[:match.start()].rstrip(" ｣」\"'")
+        final = (ord(prefix[-1]) - 0xAC00) % 28 if prefix and "가" <= prefix[-1] <= "힣" else 0
+        consonant = final != 0 and not (match[1] == "으로" and final == 8)
+        return match[1] if consonant else match[2]
+
+    return re.sub(pattern, choose, message)
 
 
 def main() -> None:
@@ -21,13 +32,7 @@ def main() -> None:
     root = ET.fromstring(fetch("Xzonn/FireEmblemEngageData", DATA_REVISION, "data/xml/Achieve.xml"))
     people = ET.fromstring(fetch("Xzonn/FireEmblemEngageData", DATA_REVISION, "data/xml/Person.xml"))
     person_names = {row.get("Pid"): row.get("Name") for row in people.findall("./Sheet/Data/Param")}
-    jobs = [(language, f"{folder}/{name}.txt") for language, folder in (("en", "US/USen"), ("zh-Hans", "CN/CNch"))
-            for name in TEXT_FILES]
-    with ThreadPoolExecutor(max_workers=8) as pool:
-        contents = list(pool.map(lambda job: fetch("delvier/Iron19_L10n", TEXT_REVISION, job[1]), jobs))
-    texts = {"en": {}, "zh-Hans": {}}
-    for (language, _), content in zip(jobs, contents):
-        texts[language].update(line.split("\t", 1) for line in content.splitlines() if "\t" in line)
+    texts = load_texts(TEXT_FILES)
 
     def name(row: ET.Element, language: str) -> str:
         values = texts[language]
@@ -54,6 +59,8 @@ def main() -> None:
             return slots[slot]
 
         message = re.sub(token, parameter, message)
+        if language == "ko":
+            message = korean_particles(message)
         message = message.replace(r"\x0E\x08\x02\x1A\x18RelianceRing", "S")
         message = message.replace(r"\n", " ").strip()
         if not message or r"\x" in message:

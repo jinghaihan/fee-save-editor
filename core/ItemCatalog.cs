@@ -4,13 +4,15 @@ namespace FeeEditor.Core;
 
 public sealed record ItemDefinition(string Id, string English, string Chinese, int Kind, int MaxUses, int MaxRefine)
 {
+    public IReadOnlyDictionary<string, string> Names { get; init; } = new Dictionary<string, string>();
     public uint Hash => ItemCatalog.Hash(Id);
     public bool UnlimitedUses => MaxUses == byte.MaxValue;
     public string Name(string language) => language switch
     {
         "en" => English,
         "zh-Hans" => Chinese,
-        _ => throw new ArgumentException("Unsupported item language.", nameof(language))
+        _ => Names.TryGetValue(language, out string? name) ? name
+            : throw new ArgumentException("Unsupported item language.", nameof(language))
     };
 }
 
@@ -42,6 +44,8 @@ public static class ItemCatalog
             ?? throw new InvalidDataException("The item catalog is invalid.");
         if (data.Items.Length == 0 || data.Items.Any(item => string.IsNullOrWhiteSpace(item.Id)
             || string.IsNullOrWhiteSpace(item.English) || string.IsNullOrWhiteSpace(item.Chinese)
+            || LanguageCatalog.Codes.Any(language => !item.Names.TryGetValue(language, out string? name)
+                || string.IsNullOrWhiteSpace(name))
             || item.MaxUses is < 1 or > 255 || item.MaxRefine is < 0 or > 5)
             || data.Items.Select(item => item.Hash).Distinct().Count() != data.Items.Length)
             throw new InvalidDataException("The item catalog has invalid bounds or ambiguous hashes.");

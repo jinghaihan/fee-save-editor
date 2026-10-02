@@ -44,7 +44,8 @@ public static class DonationCatalog
                 || country.Key != "G_投資_" + country.Id[4..] || country.Thresholds.Length != 5 || country.Thresholds[0] != 0
                 || !country.Thresholds.SequenceEqual(country.Thresholds.Distinct().Order())
                 || country.Thresholds.Any(value => value is < 0 or > MaximumAmount)
-                || !country.Names.ContainsKey("en") || !country.Names.ContainsKey("zh-Hans")))
+                || LanguageCatalog.Codes.Any(language => !country.Names.TryGetValue(language, out string? name)
+                    || string.IsNullOrWhiteSpace(name))))
             throw new InvalidDataException("Invalid donation countries or thresholds.");
         return Array.AsReadOnly(data.Countries);
     }

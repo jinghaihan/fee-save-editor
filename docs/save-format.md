@@ -256,7 +256,7 @@ matched to their character's canonical birth class; Enchanter and Mage Cannoneer
 are available as DLC generic classes. The base fliers are female-only; Alear's
 gender comes from the save's UnitEdit customization rather than the person table.
 
-`tools/import_roster_catalog.py` generates minimal facts and English/Chinese
+`tools/import_roster_catalog.py` generates minimal facts and nine-language
 names, including DLC, from pinned
 [data tables](https://github.com/LordMewtwo73/feEngage-randomizer/tree/8a64328fc9a4df7649852ec2ac8b7d5beaedbc58/assets/VanillaFiles)
 and [localized messages](https://github.com/delvier/Iron19_L10n/tree/810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b).

@@ -94,5 +94,5 @@ public static class RosterCatalog
         new System.Collections.ObjectModel.ReadOnlyDictionary<string, string>(names.ToDictionary(pair => pair.Key, pair => pair.Value));
 
     private static bool ValidNames(IReadOnlyDictionary<string, string> names) =>
-        new[] { "en", "zh-Hans" }.All(language => names.TryGetValue(language, out string? name) && !string.IsNullOrWhiteSpace(name));
+        LanguageCatalog.Codes.All(language => names.TryGetValue(language, out string? name) && !string.IsNullOrWhiteSpace(name));
 }

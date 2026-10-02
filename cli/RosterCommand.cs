@@ -84,7 +84,12 @@ internal static class RosterCommand
     {
         if (option.EmblemId is string gid) return EmblemCatalog.Emblem(gid)!.Name(language);
         if (option.RingHash is uint hash) return EmblemCatalog.Ring(hash)!.Name(language);
-        return language == "zh-Hans" ? "无" : "None";
+        return language switch
+        {
+            "zh-Hans" => "无", "zh-Hant" => "無",
+            "ja" => "なし", "ko" => "없음", "de" => "Keine",
+            "fr" => "Aucun", "es" => "Ninguno", "it" => "Nessuno", _ => "None"
+        };
     }
 
     private static string DisplayLanguage(string[] options)
@@ -104,8 +109,8 @@ internal static class RosterCommand
             else
                 throw new ArgumentException($"Invalid roster display option: {options[index]}");
         }
-        if (language is not "en" and not "zh-Hans")
-            throw new ArgumentException("Language must be en or zh-Hans.");
+        if (!LanguageCatalog.Codes.Contains(language))
+            throw new ArgumentException("Choose a supported language: en, zh-Hans, zh-Hant, ja, ko, de, fr, es or it.");
         return language;
     }
 

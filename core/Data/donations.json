@@ -7,7 +7,14 @@
       "Key": "G_投資_フィレネ",
       "Names": {
         "en": "Firene",
-        "zh-Hans": "费列聂"
+        "zh-Hans": "费列聂",
+        "zh-Hant": "費列聶",
+        "ja": "フィレネ",
+        "ko": "피레네",
+        "de": "Firene",
+        "fr": "Firene",
+        "es": "Firene",
+        "it": "Firene"
       },
       "Thresholds": [
         0,
@@ -22,7 +29,14 @@
       "Key": "G_投資_ブロディア",
       "Names": {
         "en": "Brodia",
-        "zh-Hans": "布罗帝亚"
+        "zh-Hans": "布罗帝亚",
+        "zh-Hant": "布羅帝亞",
+        "ja": "ブロディア",
+        "ko": "브로디아",
+        "de": "Brodia",
+        "fr": "Brodia",
+        "es": "Brodia",
+        "it": "Brodia"
       },
       "Thresholds": [
         0,
@@ -37,7 +51,14 @@
       "Key": "G_投資_イルシオン",
       "Names": {
         "en": "Elusia",
-        "zh-Hans": "伊尔席翁"
+        "zh-Hans": "伊尔席翁",
+        "zh-Hant": "伊爾席翁",
+        "ja": "イルシオン",
+        "ko": "이르시온",
+        "de": "Elusia",
+        "fr": "Elusia",
+        "es": "Elusia",
+        "it": "Elusia"
       },
       "Thresholds": [
         0,
@@ -52,7 +73,14 @@
       "Key": "G_投資_ソルム",
       "Names": {
         "en": "Solm",
-        "zh-Hans": "索尔姆"
+        "zh-Hans": "索尔姆",
+        "zh-Hant": "索爾姆",
+        "ja": "ソルム",
+        "ko": "솔룸",
+        "de": "Solm",
+        "fr": "Solm",
+        "es": "Solm",
+        "it": "Solm"
       },
       "Thresholds": [
         0,

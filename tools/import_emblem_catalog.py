@@ -6,7 +6,7 @@ import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from import_roster_catalog import TEXT_REVISION, VANILLA_REVISION, fetch
+from import_roster_catalog import TEXT_REVISION, VANILLA_REVISION, fetch, load_texts
 
 DLC = {
     "GID_エーデルガルト": "MGID_Edelgard", "GID_チキ": "MGID_Tiki",
@@ -20,13 +20,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    texts = {}
-    for language, folder in (("en", "US/USen"), ("zh-Hans", "CN/CNch")):
-        values = {}
-        for name in ("Person", "BondsRing", "Patch0", "Patch1", "Patch2", "Patch3"):
-            source = fetch("delvier/Iron19_L10n", TEXT_REVISION, f"{folder}/{name}.txt")
-            values.update(line.split("\t", 1) for line in source.splitlines() if "\t" in line)
-        texts[language] = values
+    texts = load_texts(("Person", "BondsRing", "Patch0", "Patch1", "Patch2", "Patch3"))
 
     def names(key: str) -> dict:
         result = {language: values[key] for language, values in texts.items()}

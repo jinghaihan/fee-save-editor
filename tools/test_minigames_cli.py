@@ -59,7 +59,7 @@ def check_minigames(command, save_directory, synthetic):
                             "--rank", "F"], check=True, capture_output=True)
             updated = json.loads(subprocess.check_output([*command, "main", "minigames", str(output)], text=True))
             assert updated[3]["Records"][0]["Rank"] == 9 and updated[3]["Records"][0]["Value"] == record["Value"]
-        for options in (["--language", "ja"], ["--json", "--json"], ["--language"], ["--score", "999"]):
+        for options in (["--language", "xx"], ["--json", "--json"], ["--language"], ["--score", "999"]):
             result = subprocess.run([*command, "main", "minigames", str(source), *options], capture_output=True, text=True)
             assert result.returncode != 0
         training, wyvern, fish = (catalog[index]["Records"][0]["Key"] for index in (0, 3, 4))

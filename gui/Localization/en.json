@@ -199,5 +199,7 @@
   "ImportCharacter": "Import Character",
   "CharacterExported": "Character exported:",
   "ExportFailed": "Could not export character:",
-  "ImportFailed": "Could not import character:"
+  "ImportFailed": "Could not import character:",
+  "Expert": "Expert",
+  "Fishing": "Fishing"
 }

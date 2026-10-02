@@ -4,8 +4,9 @@
 import argparse
 import json
 import xml.etree.ElementTree as ET
+from pathlib import Path
 
-from import_roster_catalog import TEXT_REVISION, fetch
+from import_roster_catalog import TEXT_REVISION, fetch, load_texts, LANGUAGES
 
 DATA_REVISION = "86b8be7b9820e1bb3bce87d2a9a805ead85d92ab"
 
@@ -14,18 +15,20 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
-    texts = {}
-    for language, folder in (("en", "US/USen"), ("zh-Hans", "CN/CNch")):
-        texts[language] = dict(line.split("\t", 1) for line in fetch(
-            "delvier/Iron19_L10n", TEXT_REVISION, f"{folder}/Hub.txt").splitlines() if "\t" in line)
+    texts = load_texts(["Hub"])
 
     def names(label: str) -> dict[str, str]:
         return {language: values[label] for language, values in texts.items()}
 
+    def interface_names(key: str) -> dict[str, str]:
+        root = Path(__file__).resolve().parents[1] / "gui/Localization"
+        return {language: json.loads((root / f"{language}.json").read_text(encoding="utf-8"))[key]
+                for language in LANGUAGES}
+
     groups = []
-    difficulties = [("Normal", {"en": "Normal", "zh-Hans": "普通"}),
-                    ("Hard", {"en": "Hard", "zh-Hans": "困难"}),
-                    ("Master", {"en": "Expert", "zh-Hans": "专家"}),
+    difficulties = [("Normal", interface_names("Normal")),
+                    ("Hard", interface_names("Hard")),
+                    ("Master", interface_names("Expert")),
                     ("Eternal", names("MID_Hub_MuscleExercises_Muscle"))]
     for activity, suffix, label in (("PushUps", "PushUp", "PushUps"),
                                     ("SitUps", "SitUp", "Ads"),
@@ -38,7 +41,7 @@ def main() -> None:
                                for difficulty, (_, translated) in zip(("Normal", "Hard", "Expert"), difficulties[:3])]})
     fish = ET.fromstring(fetch("Xzonn/FireEmblemEngageData", DATA_REVISION, "data/xml/FishingFishData.xml"))
     fish_rows = next(sheet for sheet in fish if sheet.get("Name") == "さかな情報").findall("./Data/Param")
-    groups.append({"Id": "Fishing", "Names": {"en": "Fishing", "zh-Hans": "钓鱼"},
+    groups.append({"Id": "Fishing", "Names": interface_names("Fishing"),
                    "Records": [{"Key": f"G_Fishing_{row.get('FishName')}_Count", "Names": names(row.get("NameLabel"))}
                                for row in fish_rows]})
     if len(fish_rows) != 20 or sum(len(group["Records"]) for group in groups) != 35:
