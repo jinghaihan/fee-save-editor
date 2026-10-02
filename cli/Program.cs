@@ -51,6 +51,8 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli emblems bond-max <save> <new-file> --instance <id> --person <PID>
           FeeEditor.Cli emblems bonds-max <save> <new-file> --instance <id>
           FeeEditor.Cli emblems ring-set <save> <new-file> --instance <id> --amount <0-99>
+          FeeEditor.Cli emblems rings-fill-s <save> <new-file>
+          FeeEditor.Cli emblems ring-meld <save> <new-file> --instance <id>
           FeeEditor.Cli supports catalog [--json] [--language en|zh-Hans]
           FeeEditor.Cli supports list <save> [--json] [--language en|zh-Hans]
           FeeEditor.Cli supports set <save> <new-file> --pair <key> [--rank None|C|B|A|A+] [--points <0-99>]

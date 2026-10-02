@@ -13,7 +13,9 @@ internal static class EmblemsCommand
             Print(new
             {
                 Emblems = EmblemCatalog.Emblems.Select(row => new { row.Id, Name = row.Name(language), row.Dlc }),
-                Rings = EmblemCatalog.Rings.Select(row => new { row.Id, Name = row.Name(language), Rank = row.RankName, row.MaxStock })
+                Rings = EmblemCatalog.Rings.Select(row => new { row.Id, Name = row.Name(language), Rank = row.RankName, row.MaxStock,
+                    Melding = BondRingCatalog.Melding(row.Hash) is { } meld
+                        ? new { ResultId = meld.Result.Id, ResultRank = meld.Result.RankName, meld.RequiredRings, meld.BondFragments } : null })
             });
             return 0;
         }
@@ -41,13 +43,18 @@ internal static class EmblemsCommand
                 }));
             return 0;
         }
-        if (args is not [var verb, var input, var output, .. var options] || verb is not ("bond-set" or "bond-max" or "bonds-max" or "ring-set"))
+        if (args is not [var verb, var input, var output, .. var options]
+            || verb is not ("bond-set" or "bond-max" or "bonds-max" or "ring-set" or "rings-fill-s" or "ring-meld"))
             throw new ArgumentException("Unknown Emblems command. Run --help for usage.");
         var values = Options(options, verb);
         var current = EngageSave.Load(input);
-        uint instance = checked((uint)Number(Required(values, "--instance")));
+        uint instance = verb == "rings-fill-s" ? 0 : checked((uint)Number(Required(values, "--instance")));
         EngageSave edited;
-        if (verb == "ring-set")
+        if (verb == "rings-fill-s")
+            edited = current.WithMissingSBondRings();
+        else if (verb == "ring-meld")
+            edited = current.WithMeldedBondRing(instance);
+        else if (verb == "ring-set")
             edited = current.WithBondRingStock(instance, Number(Required(values, "--amount")));
         else if (verb is "bond-max" or "bonds-max")
             edited = current.WithMaximumEmblemBonds(instance, verb == "bond-max" ? Required(values, "--person") : null);
@@ -90,6 +97,8 @@ internal static class EmblemsCommand
             "bond-set" => ["--instance", "--person", "--level", "--experience"],
             "bond-max" => ["--instance", "--person"],
             "bonds-max" => ["--instance"],
+            "ring-meld" => ["--instance"],
+            "rings-fill-s" => [],
             _ => ["--instance", "--amount"]
         };
         if (options.Length % 2 != 0) throw new ArgumentException("Provide Emblem options and their values.");

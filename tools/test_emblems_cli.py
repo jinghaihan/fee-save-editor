@@ -23,7 +23,7 @@ def sections(data: bytes) -> dict[bytes, bytes]:
     return {data[start:start + 4]: data[start + 8:end] for start, end in zip(offsets, offsets[1:])}
 
 
-def fixture(base: bytes) -> bytes:
+def fixture(base: bytes, ring_rows: list[tuple[int, str, int]] | None = None) -> bytes:
     base = bytes(base)
     header = lambda version: struct.pack("<II", version, 0xcdcdcdcd) + bytes(24)
     bonds = header(2) + struct.pack("<I", 3)
@@ -36,8 +36,9 @@ def fixture(base: bytes) -> bytes:
             pact = instance == 3 and pid == "PID_ユナカ"
             bonds += wide(pid) + struct.pack("<IBHIIII B", 3, 21 if pact else 1, 209 if pact else 0,
                 2, 2, 0x12345678, 0x87654321, 46 if pact else 32)
-    rings = header(3) + struct.pack("<I", 2)
-    for instance, rnid, stock in ((10, "RNID_紋章_シーダ_C", 7), (11, "RNID_紋章_シーダ_S", 1)):
+    ring_rows = ring_rows if ring_rows is not None else [(10, "RNID_紋章_シーダ_C", 7), (11, "RNID_紋章_シーダ_S", 1)]
+    rings = header(3) + struct.pack("<I", len(ring_rows))
+    for instance, rnid, stock in ring_rows:
         rings += struct.pack("<IHI B", instance, 0xefcd, game_hash(rnid), stock)
     records = sections(base)
     records[b"DBDG"], records[b"GNIR"] = bonds, rings
@@ -91,6 +92,19 @@ def bond_records(data: bytes) -> list[dict]:
     return result
 
 
+def ring_records(data: bytes) -> list[tuple[int, int, int]]:
+    blob = sections(data)[b"GNIR"]
+    count = struct.unpack_from("<I", blob, 32)[0]
+    assert len(blob) == 36 + count * 11
+    result = []
+    for index in range(count):
+        instance, marker, ring_hash, stock = struct.unpack_from("<IHIB", blob, 36 + index * 11)
+        assert marker == 0xefcd and 1 <= instance <= 750
+        result.append((instance, ring_hash, stock))
+    assert len({ring[0] for ring in result}) == count
+    return result
+
+
 def check_emblems(command: list[str], real_directory: Path | None, base: bytes) -> None:
     def run(*args: str, valid: bool = True) -> bytes:
         completed = subprocess.run([*command, "emblems", *args], capture_output=True)
@@ -115,6 +129,26 @@ def check_emblems(command: list[str], real_directory: Path | None, base: bytes) 
             assert len(data) == (3 if name == "synthetic" else 20)
             assert len(rings) == (2 if name == "synthetic" else 374)
             assert all(row["Id"] is not None for row in rings)
+            filled = root / f"{name}-s-rings"
+            run("rings-fill-s", str(source), str(filled))
+            filled_bytes = filled.read_bytes()
+            original_rings, full_rings = ring_records(original), ring_records(filled_bytes)
+            s_hashes = {game_hash(row["Id"]) for row in catalog["Rings"] if row["Rank"] == "S"}
+            assert len(s_hashes) == 123
+            assert s_hashes <= {ring_hash for _, ring_hash, stock in full_rings if stock > 0}
+            original_positive = [ring for ring in original_rings if ring[2] > 0]
+            assert all(ring in full_rings for ring in original_positive)
+            for tag, payload in sections(original).items():
+                if tag not in (b"GNIR", b"RESU"):
+                    assert sections(filled_bytes)[tag] == payload
+            again = root / f"{name}-s-rings-again"
+            run("rings-fill-s", str(filled), str(again))
+            assert again.read_bytes() == filled_bytes
+            run("rings-fill-s", str(source), str(source), valid=False)
+            for options in (("--all",), ("--instance", "10"), ("--amount", "1")):
+                invalid_fill = root / f"{name}-invalid-fill"
+                run("rings-fill-s", str(source), str(invalid_fill), *options, valid=False)
+                assert not invalid_fill.exists()
             before = bond_records(original)
             for instance in (1, 2):
                 target = next(row for row in before if row["instance"] == instance and row["pid"] == "PID_リュール")
@@ -157,6 +191,35 @@ def check_emblems(command: list[str], real_directory: Path | None, base: bytes) 
             run("ring-set", str(source), str(source), "--instance", str(ring["InstanceId"]), "--amount", "1", valid=False)
             assert source.read_bytes() == original
         pact_source = root / "synthetic-source"
+        for rank, target, required, cost in (("C", "B", 2, 100), ("B", "A", 3, 1000), ("A", "S", 4, 10000)):
+            ring_source = root / f"meld-{rank}-source"
+            ring_source.write_bytes(fixture(base, [(10, f"RNID_紋章_シーダ_{rank}", required + 1)]))
+            # Prepare resources through the public CLI, not a dependent save parser.
+            prepared = root / f"meld-{rank}-prepared"
+            done = subprocess.run([*command, "main", "set", str(ring_source), str(prepared), "--bond-fragments", "20000"], capture_output=True)
+            assert done.returncode == 0, done.stderr.decode()
+            output = root / f"meld-{rank}-output"
+            run("ring-meld", str(prepared), str(output), "--instance", "10")
+            actual = ring_records(output.read_bytes())
+            assert (10, game_hash(f"RNID_紋章_シーダ_{rank}"), 1) in actual
+            assert (1, game_hash(f"RNID_紋章_シーダ_{target}"), 1) in actual
+            summary = subprocess.run([*command, "main", "show", str(output), "--json"], capture_output=True)
+            assert summary.returncode == 0, summary.stderr.decode()
+            assert json.loads(summary.stdout)["BondFragments"] == 20000 - cost
+            for tag, payload in sections(prepared.read_bytes()).items():
+                if tag not in (b"GNIR", b"RESU"):
+                    assert sections(output.read_bytes())[tag] == payload
+            for options in (("--instance", "999"), ("--instance", "-1"), ("--instance", "10", "--amount", "1"),
+                            ("--instance", "10", "--instance", "10"), ()):
+                invalid = root / f"meld-{rank}-invalid"
+                run("ring-meld", str(prepared), str(invalid), *options, valid=False)
+                assert not invalid.exists()
+            run("ring-meld", str(prepared), str(prepared), "--instance", "10", valid=False)
+            assert ring_source.read_bytes() == fixture(base, [(10, f"RNID_紋章_シーダ_{rank}", required + 1)])
+        no_material = root / "meld-no-material"
+        no_material.write_bytes(fixture(base, [(10, "RNID_紋章_シーダ_C", 1)]))
+        run("ring-meld", str(no_material), str(root / "meld-refused"), "--instance", "10", valid=False)
+        assert not (root / "meld-refused").exists()
         pact_max = root / "pact-max"
         run("bond-max", str(pact_source), str(pact_max), "--instance", "3", "--person", "PID_ユナカ")
         pact = next(row for row in bond_records(pact_max.read_bytes()) if row["instance"] == 3 and row["pid"] == "PID_ユナカ")
@@ -171,4 +234,4 @@ def check_emblems(command: list[str], real_directory: Path | None, base: bytes) 
         if real_directory:
             for name, original in cases[1:]:
                 assert (real_directory / name).read_bytes() == original
-    print("Emblem CLI: catalogs, DLC, EXP/level mapping, byte diffs, stock, bounds and protected saves passed.")
+    print("Emblem CLI: catalogs, bonds, S-ring fill, three melding ranks/costs, byte preservation and protected saves passed.")

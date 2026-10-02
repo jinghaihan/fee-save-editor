@@ -133,7 +133,15 @@ equipment ownership. Both accept `--language en|zh-Hans`.
 `emblems bonds-max --instance <id>` maximizes all known saved character bonds
 for that Emblem. Alear edits synchronize existing character supports and cannot
 invent or replace a Pact partner. `emblems ring-set` accepts `--instance` and
-`--amount` with ownership-aware limits. Every command writes a new file.
+`--amount` with ownership-aware limits. `emblems rings-fill-s <save> <new-file>`
+adds one copy of each missing S-rank Bond Ring, including the three Heroes bonus
+rings, without duplicating owned/equipped copies or spending fragments.
+`emblems ring-meld <save> <new-file> --instance <id>` melds same-character,
+same-rank unequipped copies into one higher-rank ring: 2 C + 100 fragments → B,
+3 B + 1,000 → A, or 4 A + 10,000 → S. Equipped copies are never consumed.
+`emblems catalog` includes each ring's next rank and material/fragment costs.
+Every command writes a new file; Emblem Rings, DLC Bracelets and their equipment
+links are not removed or changed by ordinary Bond Ring management.
 
 `supports catalog` lists the legal base/DLC pairs and their C/B/A point thresholds.
 `supports list <save> --json` includes the saved rank, points, map score and legal
