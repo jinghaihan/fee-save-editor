@@ -47,5 +47,21 @@
   "Casual": "Casual",
   "Classic": "Classic",
   "EditFailed": "Could not apply changes:",
-  "MainUnavailable": "Main editing is unavailable for this save:"
+  "MainUnavailable": "Main editing is unavailable for this save:",
+  "Items": "Items",
+  "Convoy": "Convoy",
+  "Item": "Item",
+  "ItemEditor": "Item Editor",
+  "RemainingUses": "Remaining Uses",
+  "RefineLevel": "Refine Level",
+  "Engraving": "Engraving",
+  "None": "None",
+  "Unlimited": "Unlimited",
+  "RestoreUses": "Restore Uses",
+  "RestoreAllUses": "Restore All Uses",
+  "AddItem": "Add Item",
+  "DeleteItem": "Delete Item",
+  "UnknownItem": "Unknown item",
+  "SelectItem": "Select an item.",
+  "Unavailable": "Unavailable"
 }

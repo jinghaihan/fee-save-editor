@@ -6,7 +6,7 @@
         Width="1100" Height="740" MinWidth="800" MinHeight="540">
   <Grid RowDefinitions="Auto,*,Auto" Margin="24" RowSpacing="24">
     <Grid ColumnDefinitions="Auto,*">
-      <Menu>
+      <Menu VerticalAlignment="Center">
         <MenuItem Header="{DynamicResource File}">
           <MenuItem Header="{DynamicResource OpenSave}" Click="OpenSave_Click" />
           <MenuItem Name="SaveCopyMenu" Header="{DynamicResource SaveCopy}" Click="SaveCopy_Click" IsEnabled="False" />
@@ -22,10 +22,14 @@
           <MenuItem Header="{DynamicResource Inspector}" Click="Inspector_Click" />
         </MenuItem>
       </Menu>
-      <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="24">
+      <Grid Grid.Column="1" ColumnDefinitions="Auto,Auto,Auto" HorizontalAlignment="Right" ColumnSpacing="16">
         <TextBlock Name="PageTitle" Text="{DynamicResource Main}" VerticalAlignment="Center" FontWeight="SemiBold" />
-        <Button Name="ApplyMainButton" Content="{DynamicResource ApplyChanges}" Click="ApplyMain_Click" IsEnabled="False" />
-      </StackPanel>
+        <Button Grid.Column="1" Name="ApplyMainButton" Content="{DynamicResource ApplyChanges}" Click="ApplyMain_Click" IsEnabled="False" VerticalAlignment="Center" />
+        <TabStrip Grid.Column="2" Name="MainNavigation" SelectedIndex="0" SelectionChanged="Navigation_Changed">
+          <TabStripItem Content="{DynamicResource Main}" />
+          <TabStripItem Content="{DynamicResource Items}" />
+        </TabStrip>
+      </Grid>
     </Grid>
     <Grid Name="MainPanel" Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="24">
       <suki:GlassCard Padding="28">
@@ -75,6 +79,64 @@
                 <NumericUpDown Name="SilverIngotsInput" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
               </StackPanel>
             </StackPanel>
+          </StackPanel>
+        </ScrollViewer>
+      </suki:GlassCard>
+    </Grid>
+    <Grid Name="ItemsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+      <suki:GlassCard Padding="20">
+        <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="16">
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <TextBlock Text="{DynamicResource Convoy}" FontWeight="SemiBold" />
+            <TextBlock Name="ConvoyCount" Grid.Column="1" />
+          </Grid>
+          <TextBox Name="ItemSearch" Grid.Row="1" PlaceholderText="{DynamicResource Search}" TextChanged="ItemSearch_Changed" />
+          <ListBox Name="InventoryList" Grid.Row="2" SelectionChanged="InventoryList_Changed">
+            <ListBox.ItemTemplate>
+              <DataTemplate DataType="x:Object" x:CompileBindings="False">
+                <TextBlock Text="{Binding Label}" TextWrapping="Wrap" />
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+          <Button Grid.Row="3" Name="RestoreAllUsesButton" Content="{DynamicResource RestoreAllUses}" Click="RestoreAllUses_Click" HorizontalAlignment="Stretch" IsEnabled="False" />
+        </Grid>
+      </suki:GlassCard>
+      <suki:GlassCard Name="ItemEditorCard" Grid.Column="1" Padding="20">
+        <ScrollViewer>
+          <StackPanel Name="ItemEditorInputs" IsEnabled="False" Width="340" HorizontalAlignment="Left" Spacing="16">
+            <TextBlock Text="{DynamicResource ItemEditor}" FontWeight="SemiBold" />
+            <StackPanel Spacing="8">
+              <TextBlock Text="{DynamicResource Item}" />
+              <TextBox Name="ItemTypeSearch" Height="42" PlaceholderText="{DynamicResource Search}" TextChanged="ItemTypeSearch_Changed" />
+              <ComboBox Name="ItemTypeInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="ItemTypeInput_Changed">
+                <ComboBox.ItemTemplate>
+                  <DataTemplate DataType="x:Object" x:CompileBindings="False">
+                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" />
+                  </DataTemplate>
+                </ComboBox.ItemTemplate>
+              </ComboBox>
+            </StackPanel>
+            <StackPanel Spacing="8">
+              <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+                <TextBlock Text="{DynamicResource RemainingUses}" VerticalAlignment="Center" />
+                <Button Grid.Column="1" Name="RestoreUsesButton" Content="{DynamicResource RestoreUses}" Click="RestoreUses_Click" />
+              </Grid>
+              <NumericUpDown Name="ItemUsesInput" Minimum="1" Maximum="255" Increment="1" FormatString="0" HorizontalAlignment="Stretch" Height="42" />
+              <TextBlock Name="UnlimitedUsesLabel" Text="{DynamicResource Unlimited}" IsVisible="False" />
+            </StackPanel>
+            <StackPanel Spacing="8">
+              <TextBlock Text="{DynamicResource RefineLevel}" />
+              <NumericUpDown Name="ItemRefineInput" Minimum="0" Maximum="5" Increment="1" FormatString="0" HorizontalAlignment="Stretch" Height="42" />
+            </StackPanel>
+            <StackPanel Spacing="8">
+              <TextBlock Text="{DynamicResource Engraving}" />
+              <TextBlock Name="ItemEngravingValue" />
+            </StackPanel>
+            <Button Name="ApplyItemButton" Height="42" Content="{DynamicResource ApplyChanges}" Click="ApplyItem_Click" HorizontalAlignment="Stretch" />
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+              <Button Name="AddItemButton" Height="42" Content="{DynamicResource AddItem}" Click="AddItem_Click" HorizontalAlignment="Stretch" />
+              <Button Name="DeleteItemButton" Height="42" Grid.Column="1" Content="{DynamicResource DeleteItem}" Click="DeleteItem_Click" HorizontalAlignment="Stretch" />
+            </Grid>
           </StackPanel>
         </ScrollViewer>
       </suki:GlassCard>

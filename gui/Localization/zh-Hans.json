@@ -47,5 +47,21 @@
   "Casual": "休闲模式",
   "Classic": "经典模式",
   "EditFailed": "无法应用修改：",
-  "MainUnavailable": "此存档暂不支持主页编辑："
+  "MainUnavailable": "此存档暂不支持主页编辑：",
+  "Items": "物品",
+  "Convoy": "仓库",
+  "Item": "物品",
+  "ItemEditor": "物品编辑",
+  "RemainingUses": "剩余次数",
+  "RefineLevel": "锻造等级",
+  "Engraving": "刻印",
+  "None": "无",
+  "Unlimited": "无限",
+  "RestoreUses": "回满次数",
+  "RestoreAllUses": "全部回满次数",
+  "AddItem": "添加物品",
+  "DeleteItem": "删除物品",
+  "UnknownItem": "未知物品",
+  "SelectItem": "请选择物品。",
+  "Unavailable": "不可用"
 }

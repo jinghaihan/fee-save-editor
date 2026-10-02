@@ -3,4 +3,7 @@
     <AssemblyName>FeeEditor.Core</AssemblyName>
     <RootNamespace>FeeEditor.Core</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data/items.json" LogicalName="FeeEditor.Core.Data.items.json" />
+  </ItemGroup>
 </Project>

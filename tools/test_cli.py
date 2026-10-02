@@ -231,6 +231,128 @@ def check_saves(command: list[str]) -> None:
             assert not output.exists()
 
 
+def inventory_fixture(capacity: int = 4) -> bytes:
+    original = main_fixture()
+    offsets = struct.unpack_from("<3I", original, 132)
+    user, opaque = original[offsets[0]:offsets[1]], original[offsets[1]:offsets[2]]
+
+    def item(item_hash: int, uses: int, refine: int, flags: int, engraving: int | None = None) -> bytes:
+        reference = struct.pack("<H", 0xccdb) if engraving is None else struct.pack("<HI", 0xefcd, engraving)
+        return struct.pack("<IIBHI", 1, 5, 1, 0xefcd, item_hash) + struct.pack("<BBI", uses, refine, flags) + reference
+
+    empty = struct.pack("<IIB", 1, 5, 0)
+    entries = [item(0x4e134981, 4, 0, 0xdeadbeef), item(0xe9d2a0e9, 255, 3, 0x55, 0x123abc),
+               item(0x12345678, 17, 8, 0xffffffff), empty]
+    entries = (entries + [empty] * capacity)[:capacity]
+    payload = struct.pack("<I", 1) + bytes(range(1, 29)) + struct.pack("<H", capacity) + b"".join(entries)
+    transport = b"NART" + struct.pack("<I", len(payload) + 4) + payload
+    index = struct.pack("<32I", 260, 260 + len(user), 260 + len(user) + len(transport),
+                        260 + len(user) + len(transport) + len(opaque), *([0] * 28))
+    body = original[:132] + index + user + transport + opaque + b"LVRC"
+    return body + struct.pack("<I", zlib.crc32(body))
+
+
+def inventory_entries(data: bytes) -> list[dict]:
+    """Decode the convoy independently to check CLI output and byte preservation."""
+    offsets = [offset for offset in struct.unpack_from("<32I", data, 132) if offset]
+    transport = next(offset for offset in offsets if data[offset:offset + 4] == b"NART")
+    end = transport + 4 + struct.unpack_from("<I", data, transport + 4)[0]
+    count = struct.unpack_from("<H", data, transport + 40)[0]
+    position = transport + 42
+    entries = []
+    for slot in range(count):
+        entry_version, item_version, present = struct.unpack_from("<IIB", data, position)
+        assert (entry_version, item_version) == (1, 5) and present in (0, 1)
+        position += 9
+        if not present:
+            continue
+        marker, item_hash = struct.unpack_from("<HI", data, position)
+        assert marker == 0xefcd
+        uses_offset = position + 6
+        uses, refine, flags, marker = struct.unpack_from("<BBIH", data, uses_offset)
+        position += 14
+        engraving = None
+        if marker == 0xefcd:
+            engraving = struct.unpack_from("<I", data, position)[0]
+            position += 4
+        else:
+            assert marker == 0xccdb
+        entries.append(dict(Slot=slot, ItemHash=item_hash, Uses=uses, RefineLevel=refine, Flags=flags,
+                            EngravingHash=engraving, UsesOffset=uses_offset))
+    assert position == end
+    return entries
+
+
+def check_inventory(command: list[str], real_directory: Path | None) -> None:
+    catalog = json.loads(subprocess.check_output([*command, "items", "catalog", "--json"], text=True))
+    recover = next(item for item in catalog if item["Id"] == "IID_リカバー")
+    assert recover["MaxUses"] == 10 and recover["MaxRefine"] == 0
+    cases = [("synthetic", inventory_fixture())]
+    if real_directory:
+        cases += [(name, (real_directory / name).read_bytes()) for name in ("Auto", "Manual0")]
+    with tempfile.TemporaryDirectory(prefix="fee-items-test-") as directory:
+        root = Path(directory)
+        source, output, restored = (root / name for name in ("source", "edited", "restored"))
+        for name, original in cases:
+            source.write_bytes(original)
+            result = json.loads(subprocess.check_output([*command, "items", "list", str(source), "--json"], text=True))
+            entries = inventory_entries(original)
+            assert result["Occupied"] == len(entries)
+            for actual, decoded in zip(result["Items"], entries):
+                assert all(actual[key] == value for key, value in decoded.items() if key != "UsesOffset")
+            staff = next(item for item in result["Items"] if item["Id"] == "IID_リカバー")
+            subprocess.run([*command, "items", "set", str(source), str(output), "--slot", str(staff["Slot"]),
+                            "--uses", "1"], check=True, capture_output=True)
+            edited = output.read_bytes()
+            offset = next(entry["UsesOffset"] for entry in entries if entry["Slot"] == staff["Slot"])
+            allowed = {offset, *range(len(original) - 4, len(original))}
+            assert {i for i, pair in enumerate(zip(original, edited)) if pair[0] != pair[1]} <= allowed
+            assert len(edited) == len(original) and zlib.crc32(edited[:-4]) == struct.unpack_from("<I", edited, len(edited) - 4)[0]
+            subprocess.run([*command, "items", "set", str(output), str(restored), "--slot", str(staff["Slot"]),
+                            "--uses", str(staff["Uses"])], check=True, capture_output=True)
+            assert restored.read_bytes() == original
+            output.unlink()
+            restored.unlink()
+            subprocess.run([*command, "items", "add", str(source), str(output), "--item", "IID_リカバー"],
+                           check=True, capture_output=True)
+            original_slots = {entry["Slot"] for entry in entries}
+            new_slot = next(entry["Slot"] for entry in inventory_entries(output.read_bytes()) if entry["Slot"] not in original_slots)
+            subprocess.run([*command, "items", "delete", str(output), str(restored), "--slot", str(new_slot)],
+                           check=True, capture_output=True)
+            assert restored.read_bytes() == original and source.read_bytes() == original
+            output.unlink()
+            restored.unlink()
+            print(f"{name}: convoy independent decoding, byte-diff and add/delete reversal passed.")
+
+        original = inventory_fixture()
+        source.write_bytes(original)
+        subprocess.run([*command, "items", "restore", str(source), str(output), "--all"], check=True, capture_output=True)
+        restored_entries = inventory_entries(output.read_bytes())
+        expected = inventory_entries(original)
+        expected[0]["Uses"] = 10
+        assert restored_entries == expected
+        output.unlink()
+        for options in (["--slot", "0", "--uses", "0"], ["--slot", "0", "--uses", "11"],
+                        ["--slot", "0", "--refine", "1"], ["--slot", "1", "--refine", "6"],
+                        ["--slot", "1", "--uses", "254"], ["--slot", "4", "--uses", "1"],
+                        ["--slot", "-1"], ["--slot", "0", "--uses", "1.5"],
+                        ["--slot", "0", "--item", "IID_missing"], ["--slot", "1", "--item", "IID_リカバー"],
+                        ["--slot", "0", "--slot", "1"], ["--slot", "0", "--unknown", "1"], [], ["--slot"]):
+            failure = subprocess.run([*command, "items", "set", str(source), str(output), *options], capture_output=True, text=True)
+            assert failure.returncode == 1 and "Unhandled exception" not in failure.stderr, failure
+            assert not output.exists() and source.read_bytes() == original
+        for slot in ("2", "3", "4", "-1"):
+            failure = subprocess.run([*command, "items", "restore", str(source), str(output), "--slot", slot], capture_output=True)
+            assert failure.returncode == 1 and not output.exists()
+        source.write_bytes(inventory_fixture(capacity=1))
+        assert subprocess.run([*command, "items", "add", str(source), str(output), "--item", "IID_リカバー"],
+                              capture_output=True).returncode == 1
+        assert not output.exists()
+    if real_directory:
+        for name, original in cases[1:]:
+            assert (real_directory / name).read_bytes() == original
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cli", required=True, type=Path)
@@ -244,6 +366,7 @@ def main() -> None:
     assert subprocess.run([*command, "unknown"], capture_output=True).returncode != 0
     check_saves(command)
     check_main(command, args.save_directory)
+    check_inventory(command, args.save_directory)
     print("CLI tests passed.")
 
 

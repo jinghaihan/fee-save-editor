@@ -11,7 +11,7 @@ public sealed record SaveSection(string Name, int Offset, int Length)
 }
 
 /// <summary>Reads the section container while preserving every original byte.</summary>
-public sealed class EngageSave
+public sealed partial class EngageSave
 {
     private const int IndexSize = 132;
     private readonly byte[] _bytes;

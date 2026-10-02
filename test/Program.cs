@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Headless;
 using Avalonia.LogicalTree;
 using Avalonia.Threading;
@@ -20,6 +21,11 @@ Check(UiLanguage.Read("en").Keys.Order().SequenceEqual(UiLanguage.Read("zh-Hans"
 Check(!window.FindControl<MenuItem>("SaveCopyMenu")!.IsEnabled, "Copy is enabled without a save.");
 Check(window.FindControl<Grid>("MainPanel")!.IsVisible && !window.FindControl<StackPanel>("SettingsInputs")!.IsEnabled,
     "Main controls must be visible but disabled before a save is loaded.");
+window.ShowItems();
+Check(window.FindControl<Grid>("ItemsPanel")!.IsVisible && !window.FindControl<StackPanel>("ItemEditorInputs")!.IsEnabled,
+    "Item controls must be visible but disabled before a save is loaded.");
+window.FindControl<TabStrip>("MainNavigation")!.SelectedIndex = 0;
+Check(window.FindControl<Grid>("MainPanel")!.IsVisible, "The native tab strip did not switch pages.");
 
 string temporary = Path.Combine(Path.GetTempPath(), $"fee-gui-test-{Guid.NewGuid():N}");
 Directory.CreateDirectory(temporary);
@@ -71,6 +77,7 @@ try
     Check(!Directory.EnumerateFiles(temporary, ".fee-*.tmp").Any(), "Temporary save files were left behind.");
 
     MainTests.Run(window, temporary);
+    InventoryTests.Run(window, temporary);
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -87,6 +94,7 @@ try
             if (name != "Global")
             {
                 var loaded = window.Save!;
+                InventoryTests.CheckReal(loaded);
                 var current = loaded.ReadMainValues();
                 var updated = current with { Money = 12345, BondFragments = 6789, IronIngots = 111,
                     SteelIngots = 222, SilverIngots = 333, Difficulty = Difficulty.Normal,
@@ -97,11 +105,15 @@ try
                 Console.WriteLine($"{name}: Main edit and exact restoration passed.");
             }
         }
-    if (args is ["--save-directory", var screenshotDirectory, "--screenshot", var screenshot])
+    if (args is ["--save-directory", var screenshotDirectory, "--screenshot", var screenshot, .. var captureOptions])
     {
         Check(window.LoadSave(Path.Combine(screenshotDirectory, "Manual0")), "Could not load screenshot save.");
         Check(window.FindControl<Button>("ApplyMainButton")!.IsEnabled, "The screenshot's Main action is disabled.");
         window.SetLanguage("en");
+        if (captureOptions is ["--page", "items"])
+            window.ShowItems();
+        else
+            Check(captureOptions.Length == 0, "Unknown screenshot page.");
         Dispatcher.UIThread.RunJobs();
         // Allow theme transitions to settle before capturing the final state.
         var rendering = System.Diagnostics.Stopwatch.StartNew();
@@ -115,7 +127,7 @@ try
         using var rendered = window.CaptureRenderedFrame();
         Check(rendered is not null, "Screenshot capture failed.");
         rendered!.Save(screenshot, Avalonia.Media.Imaging.PngBitmapEncoderOptions.Default);
-        Console.WriteLine($"Main screenshot: {Path.GetFullPath(screenshot)}");
+        Console.WriteLine($"Screenshot: {Path.GetFullPath(screenshot)}");
     }
 }
 finally

@@ -18,6 +18,8 @@ public partial class MainWindow : Window
         BondFragmentsInput.Maximum = MainLimits.MaxBondFragments;
         IronIngotsInput.Maximum = SteelIngotsInput.Maximum = SilverIngotsInput.Maximum = MainLimits.MaxIngots;
         RefreshOptions();
+        RefreshItemChoices();
+        RefreshPageTitle();
     }
 
     public bool LoadSave(string path)
@@ -34,6 +36,7 @@ public partial class MainWindow : Window
             SaveCopyMenu.IsEnabled = true;
             Message.IsVisible = false;
             LoadMainValues();
+            LoadInventory();
             return true;
         }
         catch (Exception error) when (IsFileError(error))
@@ -51,6 +54,8 @@ public partial class MainWindow : Window
         {
             if (CanEditMain && !ApplyMainValues())
                 return false;
+            if (ItemsPanel.IsVisible && HasPendingItemValues() && !ApplyItemValues())
+                return false;
             Save.WriteCopy(path);
             ShowMessage("CopySaved", Path.GetFullPath(path));
             return true;
@@ -66,6 +71,7 @@ public partial class MainWindow : Window
     {
         UiLanguage.Apply(language);
         RefreshOptions();
+        RefreshInventoryLanguage();
         RefreshOverview();
         RefreshPageTitle();
         Message.IsVisible = false;
@@ -167,6 +173,20 @@ public partial class MainWindow : Window
     private void Exit_Click(object? sender, RoutedEventArgs e) => Close();
     private void Main_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: false);
     private void Inspector_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: true);
+    private void Navigation_Changed(object? sender, SelectionChangedEventArgs e)
+    {
+        if (MainPanel is null || ItemsPanel is null)
+            return;
+        switch (MainNavigation.SelectedIndex)
+        {
+            case 0 when !MainPanel.IsVisible:
+                ShowPage(inspector: false);
+                break;
+            case 1 when !ItemsPanel.IsVisible:
+                ShowItems();
+                break;
+        }
+    }
     private void ApplyMain_Click(object? sender, RoutedEventArgs e) => ApplyMainValues();
     private void English_Click(object? sender, RoutedEventArgs e) => SetLanguage("en");
     private void Chinese_Click(object? sender, RoutedEventArgs e) => SetLanguage("zh-Hans");

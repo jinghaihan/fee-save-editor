@@ -1,0 +1,2045 @@
+{
+  "SourceRevision": "99677e4cad22b636bee4af5a3052003bed17c443",
+  "Items": [
+    {
+      "Id": "IID_不明",
+      "English": "???",
+      "Chinese": "？？？",
+      "Kind": 10,
+      "MaxUses": 255,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ほそみの剣",
+      "English": "Slim Sword",
+      "Chinese": "细剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鉄の剣",
+      "English": "Iron Sword",
+      "Chinese": "铁剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鋼の剣",
+      "English": "Steel Sword",
+      "Chinese": "钢剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_銀の剣",
+      "English": "Silver Sword",
+      "Chinese": "银剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_アーマーキラー",
+      "English": "Armorslayer",
+      "Chinese": "破甲剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_キルソード",
+      "English": "Killing Edge",
+      "Chinese": "必杀剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_いかづちの剣",
+      "English": "Levin Sword",
+      "Chinese": "雷之剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_倭刀",
+      "English": "Wo Dao",
+      "Chinese": "倭刀",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ドラゴンキラー",
+      "English": "Wyrmslayer",
+      "Chinese": "屠龙剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_勇者の剣",
+      "English": "Brave Sword",
+      "Chinese": "勇者之剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_リベラシオン",
+      "English": "Libération",
+      "Chinese": "里贝拉锡翁",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ヴィレグランツ",
+      "English": "Wille Glanz",
+      "Chinese": "毕雷古兰兹",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_クラドホルグ",
+      "English": "Caladbolg",
+      "Chinese": "克拉德霍格",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鉄の大剣",
+      "English": "Iron Blade",
+      "Chinese": "铁大剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鋼の大剣",
+      "English": "Steel Blade",
+      "Chinese": "钢大剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_銀の大剣",
+      "English": "Silver Blade",
+      "Chinese": "银大剑",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ゲオルギオス",
+      "English": "Georgios",
+      "Chinese": "盖欧吉欧斯",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_フォルクヴァング",
+      "English": "Fólkvangr",
+      "Chinese": "弗尔克范格",
+      "Kind": 1,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ほそみの槍",
+      "English": "Slim Lance",
+      "Chinese": "细枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鉄の槍",
+      "English": "Iron Lance",
+      "Chinese": "铁枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鋼の槍",
+      "English": "Steel Lance",
+      "Chinese": "钢枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_銀の槍",
+      "English": "Silver Lance",
+      "Chinese": "银枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_手槍",
+      "English": "Javelin",
+      "Chinese": "标枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ナイトキラー",
+      "English": "Ridersbane",
+      "Chinese": "骑士杀手",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_キラーランス",
+      "English": "Killer Lance",
+      "Chinese": "必杀枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ほのおの槍",
+      "English": "Flame Lance",
+      "Chinese": "炎枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_スレンドスピア",
+      "English": "Spear",
+      "Chinese": "投枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_勇者の槍",
+      "English": "Brave Lance",
+      "Chinese": "勇者之枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ブリューナク",
+      "English": "Brionac",
+      "Chinese": "布里欧奈克",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鉄の大槍",
+      "English": "Iron Greatlance",
+      "Chinese": "铁大枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鋼の大槍",
+      "English": "Steel Greatlance",
+      "Chinese": "钢大枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_銀の大槍",
+      "English": "Silver Greatlance",
+      "Chinese": "银大枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ヴェノマス",
+      "English": "Venomous",
+      "Chinese": "恶毒枪",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_フェンサリル",
+      "English": "Fensalir",
+      "Chinese": "芬萨里尔",
+      "Kind": 2,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ショートアクス",
+      "English": "Compact Axe",
+      "Chinese": "短斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鉄の斧",
+      "English": "Iron Axe",
+      "Chinese": "铁斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鋼の斧",
+      "English": "Steel Axe",
+      "Chinese": "钢斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_銀の斧",
+      "English": "Silver Axe",
+      "Chinese": "银斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_手斧",
+      "English": "Hand Axe",
+      "Chinese": "手斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ハンマー",
+      "English": "Hammer",
+      "Chinese": "战锤",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ポールアクス",
+      "English": "Poleaxe",
+      "Chinese": "长斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_キラーアクス",
+      "English": "Killer Axe",
+      "Chinese": "必杀斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_トマホーク",
+      "English": "Tomahawk",
+      "Chinese": "投斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_勇者の斧",
+      "English": "Brave Axe",
+      "Chinese": "勇者之斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_フラガラッハ",
+      "English": "Fragarach",
+      "Chinese": "佛拉格拉克",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鉄の大斧",
+      "English": "Iron Greataxe",
+      "Chinese": "铁大斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鋼の大斧",
+      "English": "Steel Greataxe",
+      "Chinese": "钢大斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_銀の大斧",
+      "English": "Silver Greataxe",
+      "Chinese": "银大斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_かぜの大斧",
+      "English": "Hurricane Axe",
+      "Chinese": "风大斧",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ウコンバサラ",
+      "English": "Ukonvasara",
+      "Chinese": "乌哥巴萨拉",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ノーアトゥーン",
+      "English": "Nóatún",
+      "Chinese": "诺欧通",
+      "Kind": 3,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ショートボウ",
+      "English": "Mini Bow",
+      "Chinese": "短弓",
+      "Kind": 4,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鉄の弓",
+      "English": "Iron Bow",
+      "Chinese": "铁弓",
+      "Kind": 4,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鋼の弓",
+      "English": "Steel Bow",
+      "Chinese": "钢弓",
+      "Kind": 4,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_銀の弓",
+      "English": "Silver Bow",
+      "Chinese": "银弓",
+      "Kind": 4,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_長弓",
+      "English": "Longbow",
+      "Chinese": "长弓",
+      "Kind": 4,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_キラーボウ",
+      "English": "Killer Bow",
+      "Chinese": "必杀弓",
+      "Kind": 4,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_光の弓",
+      "English": "Radiant Bow",
+      "Chinese": "光之弓",
+      "Kind": 4,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_勇者の弓",
+      "English": "Brave Bow",
+      "Chinese": "勇者之弓",
+      "Kind": 4,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_レンダウィル",
+      "English": "Lendabair",
+      "Chinese": "伦达威尔",
+      "Kind": 4,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ショートナイフ",
+      "English": "Short Knife",
+      "Chinese": "短刀",
+      "Kind": 5,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鉄のナイフ",
+      "English": "Iron Dagger",
+      "Chinese": "铁刀",
+      "Kind": 5,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鋼のナイフ",
+      "English": "Steel Dagger",
+      "Chinese": "钢刀",
+      "Kind": 5,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_銀のナイフ",
+      "English": "Silver Dagger",
+      "Chinese": "银刀",
+      "Kind": 5,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_カルド",
+      "English": "Kard",
+      "Chinese": "卡尔德",
+      "Kind": 5,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_スティレット",
+      "English": "Stiletto",
+      "Chinese": "史提列特",
+      "Kind": 5,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ペシュカド",
+      "English": "Peshkatz",
+      "Chinese": "佩修卡特",
+      "Kind": 5,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ミセリコルデ",
+      "English": "Misericorde",
+      "Chinese": "米谢利克德",
+      "Kind": 5,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_シンクエディア",
+      "English": "Cinquedea",
+      "Chinese": "辛克艾迪亚",
+      "Kind": 5,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_カルンウェナン",
+      "English": "Carnwenhan",
+      "Chinese": "卡伦威南",
+      "Kind": 5,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_サージ",
+      "English": "Surge",
+      "Chinese": "浪涌",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ファイアー",
+      "English": "Fire",
+      "Chinese": "火焰",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_サンダー",
+      "English": "Thunder",
+      "Chinese": "雷电",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ウィンド",
+      "English": "Wind",
+      "Chinese": "烈风",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_エルサージ",
+      "English": "Elsurge",
+      "Chinese": "狂涌",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_エルファイアー",
+      "English": "Elfire",
+      "Chinese": "狂焰",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_エルサンダー",
+      "English": "Elthunder",
+      "Chinese": "狂雷",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_エルウィンド",
+      "English": "Elwind",
+      "Chinese": "狂风",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ボルガノン",
+      "English": "Bolganone",
+      "Chinese": "火山爆焰",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_トロン",
+      "English": "Thoron",
+      "Chinese": "托隆",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_エクスカリバー",
+      "English": "Excalibur",
+      "Chinese": "埃克斯卡利伯",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ノヴァ",
+      "English": "Nova",
+      "Chinese": "新星",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_オヴスキュリテ",
+      "English": "Obscurité",
+      "Chinese": "暗黑无光",
+      "Kind": 6,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_ライブ",
+      "English": "Heal",
+      "Chinese": "圣疗",
+      "Kind": 7,
+      "MaxUses": 25,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_リライブ",
+      "English": "Mend",
+      "Chinese": "大圣疗",
+      "Kind": 7,
+      "MaxUses": 20,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_リブロー",
+      "English": "Physic",
+      "Chinese": "远程圣疗",
+      "Kind": 7,
+      "MaxUses": 10,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_リカバー",
+      "English": "Recover",
+      "Chinese": "圣愈",
+      "Kind": 7,
+      "MaxUses": 10,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_リザーブ",
+      "English": "Fortify",
+      "Chinese": "全体圣疗",
+      "Kind": 7,
+      "MaxUses": 5,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_レスト",
+      "English": "Restore",
+      "Chinese": "休息",
+      "Kind": 7,
+      "MaxUses": 10,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ワープ",
+      "English": "Warp",
+      "Chinese": "传送",
+      "Kind": 7,
+      "MaxUses": 5,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_リワープ",
+      "English": "Rewarp",
+      "Chinese": "自我传送",
+      "Kind": 7,
+      "MaxUses": 5,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_レスキュー",
+      "English": "Rescue",
+      "Chinese": "救援",
+      "Kind": 7,
+      "MaxUses": 5,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ドロー",
+      "English": "Entrap",
+      "Chinese": "召敌",
+      "Kind": 7,
+      "MaxUses": 3,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_トーチ",
+      "English": "Illume",
+      "Chinese": "火炬",
+      "Kind": 7,
+      "MaxUses": 5,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_フリーズ",
+      "English": "Freeze",
+      "Chinese": "冰封",
+      "Kind": 7,
+      "MaxUses": 5,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_サイレス",
+      "English": "Silence",
+      "Chinese": "沉默",
+      "Kind": 7,
+      "MaxUses": 5,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_アイスロック",
+      "English": "Obstruct",
+      "Chinese": "冰锁",
+      "Kind": 7,
+      "MaxUses": 10,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_コラプス",
+      "English": "Fracture",
+      "Chinese": "崩塌",
+      "Kind": 7,
+      "MaxUses": 10,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ノードゥス",
+      "English": "Nodus",
+      "Chinese": "结节",
+      "Kind": 7,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_初心の法",
+      "English": "Initiate Art",
+      "Chinese": "新手体术",
+      "Kind": 8,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鉄身の法",
+      "English": "Iron-Body Art",
+      "Chinese": "基本体术",
+      "Kind": 8,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_鋼身の法",
+      "English": "Steel-Hand Art",
+      "Chinese": "高级体术",
+      "Kind": 8,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_銀身の法",
+      "English": "Silver-Spirit Art",
+      "Chinese": "专家体术",
+      "Kind": 8,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_護身の法",
+      "English": "Shielding Art",
+      "Chinese": "护身体术",
+      "Kind": 8,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_閃進の法",
+      "English": "Flashing Fist Art",
+      "Chinese": "闪进体术",
+      "Kind": 8,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_覇神の法",
+      "English": "Divine Fist Art",
+      "Chinese": "霸神体术",
+      "Kind": 8,
+      "MaxUses": 255,
+      "MaxRefine": 5
+    },
+    {
+      "Id": "IID_火のブレス",
+      "English": "Fire Breath",
+      "Chinese": "火之吐息",
+      "Kind": 9,
+      "MaxUses": 255,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_炎塊",
+      "English": "Fireball",
+      "Chinese": "炎块",
+      "Kind": 9,
+      "MaxUses": 255,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ソンブル_物理攻撃",
+      "English": "Fell Assault",
+      "Chinese": "邪龙的强击",
+      "Kind": 9,
+      "MaxUses": 255,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ソンブル_魔法攻撃",
+      "English": "Fell Surge",
+      "Chinese": "邪龙的波动",
+      "Kind": 9,
+      "MaxUses": 255,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ソンブル_回転アタック",
+      "English": "Whirling Death",
+      "Chinese": "邪龙旋转乱舞",
+      "Kind": 9,
+      "MaxUses": 255,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ソンブル_ビーム",
+      "English": "Howling Beam",
+      "Chinese": "邪龙吼叫炮",
+      "Kind": 9,
+      "MaxUses": 255,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ソンブル_エンゲージブレイク",
+      "English": "Disengage",
+      "Chinese": "结合破坏",
+      "Kind": 9,
+      "MaxUses": 255,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_火炎砲台",
+      "English": "Flame Cannon",
+      "Chinese": "火炎炮台",
+      "Kind": 9,
+      "MaxUses": 255,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_傷薬",
+      "English": "Vulnerary",
+      "Chinese": "伤药",
+      "Kind": 10,
+      "MaxUses": 3,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_毒消し",
+      "English": "Antitoxin",
+      "Chinese": "解毒剂",
+      "Kind": 10,
+      "MaxUses": 3,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_特効薬",
+      "English": "Elixir",
+      "Chinese": "特效药",
+      "Kind": 10,
+      "MaxUses": 3,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_聖水",
+      "English": "Pure Water",
+      "Chinese": "圣水",
+      "Kind": 10,
+      "MaxUses": 3,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_たいまつ",
+      "English": "Torch",
+      "Chinese": "火把",
+      "Kind": 10,
+      "MaxUses": 3,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_天使の衣",
+      "English": "Seraph Robe",
+      "Chinese": "天使之衣",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_力のしずく",
+      "English": "Energy Drop",
+      "Chinese": "力量水滴",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_精霊の粉",
+      "English": "Spirit Dust",
+      "Chinese": "精灵之粉",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_秘伝の書",
+      "English": "Secret Book",
+      "Chinese": "秘传之书",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_はやての羽",
+      "English": "Speedwing",
+      "Chinese": "疾风羽毛",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_女神の像",
+      "English": "Goddess Icon",
+      "Chinese": "女神像",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_竜の盾",
+      "English": "Dracoshield",
+      "Chinese": "龙盾",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_魔よけ",
+      "English": "Talisman",
+      "Chinese": "避邪物",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ブーツ",
+      "English": "Boots",
+      "Chinese": "靴子",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_スキルの書・守",
+      "English": "Novice Book",
+      "Chinese": "特技之书·守",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_スキルの書・破",
+      "English": "Adept Book",
+      "Chinese": "特技之书·破",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_スキルの書・離",
+      "English": "Expert Book",
+      "Chinese": "特技之书·离",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_HPの薬",
+      "English": "HP Tonic",
+      "Chinese": "HP药",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_力の薬",
+      "English": "Strength Tonic",
+      "Chinese": "力量药",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_技の薬",
+      "English": "Dexterity Tonic",
+      "Chinese": "技巧药",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_速さの薬",
+      "English": "Speed Tonic",
+      "Chinese": "速度药",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_幸運の薬",
+      "English": "Luck Tonic",
+      "Chinese": "幸运药",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_守備の薬",
+      "English": "Defense Tonic",
+      "Chinese": "防守药",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_魔力の薬",
+      "English": "Magic Tonic",
+      "Chinese": "魔力药",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_魔防の薬",
+      "English": "Resistance Tonic",
+      "Chinese": "魔防药",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_マスタープルフ",
+      "English": "Master Seal",
+      "Chinese": "大师证",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_チェンジプルフ",
+      "English": "Second Seal",
+      "Chinese": "转职证",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ヴァンドレのお弁当",
+      "English": "Vander's Meal",
+      "Chinese": "凡德雷便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_クランのお弁当",
+      "English": "Clanne's Meal",
+      "Chinese": "柯岚便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_フランのお弁当",
+      "English": "Framme's Meal",
+      "Chinese": "芙岚便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_アルフレッドのお弁当",
+      "English": "Alfred's Meal",
+      "Chinese": "阿尔弗雷德便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ブシュロンのお弁当",
+      "English": "Boucheron's Meal",
+      "Chinese": "布修隆便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_エーティエのお弁当",
+      "English": "Etie's Meal",
+      "Chinese": "艾媞耶便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_セリーヌのお弁当",
+      "English": "Céline's Meal",
+      "Chinese": "锡莉奴便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ルイのお弁当",
+      "English": "Louis's Meal",
+      "Chinese": "路易便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_クロエのお弁当",
+      "English": "Chloé's Meal",
+      "Chinese": "克萝艾便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ディアマンドのお弁当",
+      "English": "Diamant's Meal",
+      "Chinese": "帝亚曼德便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_アンバーのお弁当",
+      "English": "Amber's Meal",
+      "Chinese": "安巴便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ジェーデのお弁当",
+      "English": "Jade's Meal",
+      "Chinese": "洁德便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_スタルークのお弁当",
+      "English": "Alcryst's Meal",
+      "Chinese": "史塔卢克便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ラピスのお弁当",
+      "English": "Lapis's Meal",
+      "Chinese": "菈琵思便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_シトリニカのお弁当",
+      "English": "Citrinne's Meal",
+      "Chinese": "希特丽妮卡便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_アイビーのお弁当",
+      "English": "Ivy's Meal",
+      "Chinese": "艾比便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ゼルコバのお弁当",
+      "English": "Zelkov's Meal",
+      "Chinese": "杰尔科巴便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_カゲツのお弁当",
+      "English": "Kagetsu's Meal",
+      "Chinese": "花月便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_オルテンシアのお弁当",
+      "English": "Hortensia's Meal",
+      "Chinese": "奥尔坦希亚便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ロサードのお弁当",
+      "English": "Rosado's Meal",
+      "Chinese": "罗萨德便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ゴルドマリーのお弁当",
+      "English": "Goldmary's Meal",
+      "Chinese": "戈尔德玛莉便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ミスティラのお弁当",
+      "English": "Timerra's Meal",
+      "Chinese": "蜜丝提拉便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_メリンのお弁当",
+      "English": "Merrin's Meal",
+      "Chinese": "玫琳便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_パネトネのお弁当",
+      "English": "Panette's Meal",
+      "Chinese": "帕涅托涅便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_フォガートのお弁当",
+      "English": "Fogado's Meal",
+      "Chinese": "佛贾特便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_パンドロのお弁当",
+      "English": "Pandreo's Meal",
+      "Chinese": "庞德罗便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ボネのお弁当",
+      "English": "Bunet's Meal",
+      "Chinese": "波聂便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_アンナのお弁当",
+      "English": "Anna's Meal",
+      "Chinese": "安娜便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ジャンのお弁当",
+      "English": "Jean's Meal",
+      "Chinese": "贾恩便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ユナカのお弁当",
+      "English": "Yunaka's Meal",
+      "Chinese": "尤娜卡便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_セアダスのお弁当",
+      "English": "Seadall's Meal",
+      "Chinese": "赛安达斯便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_リンデンのお弁当",
+      "English": "Lindon's Meal",
+      "Chinese": "霖丹便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ザフィーアのお弁当",
+      "English": "Saphir's Meal",
+      "Chinese": "札菲亚便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ヴェイルのお弁当",
+      "English": "Veyle's Meal",
+      "Chinese": "贝珥便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_モーヴのお弁当",
+      "English": "Mauvier's Meal",
+      "Chinese": "莫布便当",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_牛肉",
+      "English": "Beef",
+      "Chinese": "牛肉",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_豚肉",
+      "English": "Pork",
+      "Chinese": "猪肉",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_鶏肉",
+      "English": "Chicken",
+      "Chinese": "鸡肉",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_羊肉",
+      "English": "Mutton",
+      "Chinese": "羊肉",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_タマネギ",
+      "English": "Onion",
+      "Chinese": "洋葱",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_キャベツ",
+      "English": "Cabbage",
+      "Chinese": "卷心菜",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ハーブ",
+      "English": "Herb",
+      "Chinese": "香草",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_トマト",
+      "English": "Tomato",
+      "Chinese": "番茄",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_芋",
+      "English": "Potato",
+      "Chinese": "薯类",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_幻の野菜",
+      "English": "Rare Vegetable",
+      "Chinese": "幻之蔬菜",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_小麦",
+      "English": "Wheat Flour",
+      "Chinese": "小麦粉",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_リンゴ",
+      "English": "Apple",
+      "Chinese": "苹果",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_オレンジ",
+      "English": "Orange",
+      "Chinese": "柳橙",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_モモ",
+      "English": "Peach",
+      "Chinese": "蜜桃",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ブドウ",
+      "English": "Grapes",
+      "Chinese": "葡萄",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ベリー",
+      "English": "Berries",
+      "Chinese": "莓果",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_幻の果物",
+      "English": "Rare Fruit",
+      "Chinese": "幻之水果",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_木の実",
+      "English": "Nuts",
+      "Chinese": "树果",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ニシン",
+      "English": "Herring",
+      "Chinese": "鲱鱼",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_コイ",
+      "English": "Carp",
+      "Chinese": "鲤鱼",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_サケ",
+      "English": "Salmon",
+      "Chinese": "鲑鱼",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_タラ",
+      "English": "Cod",
+      "Chinese": "鳕鱼",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ウナギ",
+      "English": "Eel",
+      "Chinese": "鳗鱼",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_イワシ",
+      "English": "Sardines",
+      "Chinese": "沙丁鱼",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_すり身",
+      "English": "Minced Fish",
+      "Chinese": "碎肉",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_干物",
+      "English": "Dried Fish",
+      "Chinese": "干货",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_刺身",
+      "English": "Sashimi",
+      "Chinese": "生鱼片",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_幻の魚",
+      "English": "Rare Fish",
+      "Chinese": "幻之鱼",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ミルク",
+      "English": "Milk",
+      "Chinese": "乳品",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_タマゴ",
+      "English": "Eggs",
+      "Chinese": "蛋",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_米",
+      "English": "Rice",
+      "Chinese": "米",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_豆",
+      "English": "Beans",
+      "Chinese": "豆子",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_スパイス",
+      "English": "Spices",
+      "Chinese": "香料",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_摘みたての茶葉",
+      "English": "Tea Leaves",
+      "Chinese": "现摘茶叶",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_硬い干し肉",
+      "English": "Dried Meat",
+      "Chinese": "坚硬肉干",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_厳選ヨーグルト",
+      "English": "Yogurt",
+      "Chinese": "严选酸奶",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_こだわりの焼き芋",
+      "English": "Roasted Yam",
+      "Chinese": "行家烤番薯",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_鍛錬用の重り石",
+      "English": "Training Weight",
+      "Chinese": "锻炼用的重石",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_塗る筋肉増強剤",
+      "English": "Muscle Balm",
+      "Chinese": "外用肌肉增强剂",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_動物用のマタタビ",
+      "English": "Animal Treats",
+      "Chinese": "动物用的木天蓼",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_よく切れる彫刻刀",
+      "English": "Sharp Chisel",
+      "Chinese": "锋利雕刻刀",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_不思議な童話絵本",
+      "English": "Fairy-Tale Book",
+      "Chinese": "奇妙的童话绘本",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_世界各国の詩集",
+      "English": "Poetry Book",
+      "Chinese": "世界各国诗集",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_難しい哲学書",
+      "English": "Philosophy Book",
+      "Chinese": "深奥的哲学书",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_神竜聖書",
+      "English": "Dragon Scripture",
+      "Chinese": "神龙圣书",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_エレオスの歴史書",
+      "English": "Elyos History",
+      "Chinese": "艾雷欧斯历史书",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_強い香りの香水",
+      "English": "Strong Perfume",
+      "Chinese": "香气浓郁的香水",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_虫取り網",
+      "English": "Butterfly Net",
+      "Chinese": "捕虫网",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_日よけ帽子",
+      "English": "Sun Visor",
+      "Chinese": "遮阳帽",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_キクの花",
+      "English": "Chrysanthemum",
+      "Chinese": "菊花",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_レンズマメの花",
+      "English": "Lentil Flower",
+      "Chinese": "扁豆花",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ユリの花",
+      "English": "Lily",
+      "Chinese": "百合花",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_コマツナの花",
+      "English": "Desert Marigold",
+      "Chinese": "小松菜花",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ルピナスの花",
+      "English": "Lupine Flower",
+      "Chinese": "羽扇豆花",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_シロツメクサ",
+      "English": "White Clover",
+      "Chinese": "白三叶草",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_角笛",
+      "English": "Horn",
+      "Chinese": "号角",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_手作りの花輪",
+      "English": "Flower Wreath",
+      "Chinese": "手作花环",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_可愛いエプロン",
+      "English": "Cute Apron",
+      "Chinese": "可爱围裙",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_釣り用の餌",
+      "English": "Fishing Bait",
+      "Chinese": "钓饵",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_多機能ナイフ",
+      "English": "Utility Knife",
+      "Chinese": "多功能折叠刀",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_木彫りのクマ",
+      "English": "Bear Carving",
+      "Chinese": "熊木雕",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_裁縫セット",
+      "English": "Sewing Kit",
+      "Chinese": "裁缝套组",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_ヤギの毛糸玉",
+      "English": "Sheep Wool",
+      "Chinese": "羊毛线球",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_上質なハンカチ",
+      "English": "Quality Kerchief",
+      "Chinese": "高级手帕",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_高級な羽根ペン",
+      "English": "Fine Quill Pen",
+      "Chinese": "高级羽毛笔",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_装飾入りの短剣",
+      "English": "Fancy Dagger",
+      "Chinese": "装饰短剑",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_シカ角の耳飾り",
+      "English": "Antler Earrings",
+      "Chinese": "鹿角耳饰",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_卓上遊び用絵札",
+      "English": "Playing Cards",
+      "Chinese": "桌游用纸牌",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_激辛調味料",
+      "English": "Spicy Seasonings",
+      "Chinese": "超辣调味料",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_風景の絵葉書",
+      "English": "Landscape Art",
+      "Chinese": "风景明信片",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_美しい蝋燭",
+      "English": "Lovely Candle",
+      "Chinese": "美丽的蜡烛",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_生き物図鑑",
+      "English": "Field Guide",
+      "Chinese": "生物图鉴",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_怪しいお札",
+      "English": "Spooky Scroll",
+      "Chinese": "诡异符咒",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_大きなお皿",
+      "English": "Large Plate",
+      "Chinese": "巨大盘子",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_包帯",
+      "English": "Bandages",
+      "Chinese": "绷带",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_綺麗な石ころ",
+      "English": "Pretty Pebble",
+      "Chinese": "漂亮的石头",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_守り神の宝石",
+      "English": "Spirit Gem",
+      "Chinese": "守护神的宝石",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    },
+    {
+      "Id": "IID_馬糞",
+      "English": "Horse Manure",
+      "Chinese": "马粪",
+      "Kind": 10,
+      "MaxUses": 1,
+      "MaxRefine": 0
+    }
+  ]
+}

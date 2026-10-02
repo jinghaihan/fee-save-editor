@@ -48,8 +48,8 @@ Private saves are not committed. Automated tests construct synthetic game and
 global containers, and test truncation, incorrect CRCs, invalid sizes, malformed
 indices, destination conflicts, search, and repeated language switching.
 
-The Main fields below have separate typed-layout tests. Other gameplay fields
-remain uneditable. A valid outer checksum alone does not prove that the game
+The Main and convoy fields below have separate typed-layout tests. Other gameplay
+fields remain uneditable. A valid outer checksum alone does not prove that the game
 accepts a gameplay edit.
 
 ## Main fields (USER version 20)
@@ -101,6 +101,60 @@ manual/automatic-save tests cover no-op preservation, byte-diff allowlists,
 Unicode name resizing, exact edit reversal, malformed inputs, zero/maximum/over-limit
 resource amounts and language switching.
 In-game loading of edited saves is still to be tested.
+
+## Convoy (TRAN version 1, UnitItem version 5)
+
+The TRAN payload contains a version word, 28 preserved padding bytes and a
+16-bit saved capacity. The supplied game saves have 999 slots. Each slot begins
+with Transporter.Data version `1`, UnitItem version `5` and a one-byte presence
+flag. Empty slots end there. An occupied slot then contains:
+
+| Field | Encoding |
+| --- | --- |
+| Item reference | `0xefcd` (UInt16), followed by the UInt32 item-ID hash |
+| Remaining uses | Byte |
+| Refinement | Byte |
+| Flags | UInt32, preserved |
+| Engraving reference | `0xccdb` (UInt16) for none, or `0xefcd` + UInt32 hash |
+
+The serialized hash is FNV-1 over UTF-16 code units, starting at `2166136261`:
+multiply by `16777619` modulo 2^32, then XOR the next code unit. This is not
+FNV-1a or a hash over UTF-8 bytes. Independently observed references include
+Recover `0x4e134981`, Boots `0x27ec834e`, Elixir `0x4c74ae9a` and Fensalir
+`0xe9d2a0e9`; all 118 occupied slots in both local saves resolve with this encoding.
+
+The matching executable's UnitItem serializer at `0x1fb2220` and deserializer
+at `0x1fb2320` confirm this field order. These addresses apply only to the build
+ID recorded above. Adding/deleting a slot entry resizes TRAN, relocates all later
+index offsets and updates the outer CRC without changing other section payloads.
+The saved capacity itself is never changed. One slot represents one item;
+remaining uses are not an inventory quantity.
+
+`core/Data/items.json` contains minimal item facts and two-language names, generated
+with `tools/import_item_catalog.py` from FE17-DOC commit
+`99677e4cad22b636bee4af5a3052003bed17c443`:
+[item table](https://github.com/laqieer/FE17-DOC/blob/99677e4cad22b636bee4af5a3052003bed17c443/fe_assets_gamedata/Item.xml)
+and [names](https://github.com/laqieer/FE17-DOC/blob/99677e4cad22b636bee4af5a3052003bed17c443/translations/Item.csv).
+The importer includes convoy item kinds 1–10 and excludes entries marked
+chapter-only, enemy-only, Engage-only, unpublished or not entrustable. Forging
+ranges come from the refinement rows rather than assuming every item allows +5.
+The catalog is a bounded snapshot, not a claim of complete DLC coverage.
+
+Edits accept `1..MaxUses` for finite-use items, the unlimited-use sentinel `255`
+for weapons, and `0..MaxRefine` for each known item. Unknown existing items can be
+read, copied or explicitly deleted/replaced; their maximum values are not guessed.
+Batch restoration skips unknown items and unlimited-use weapons. Selected-item
+restoration rejects an empty or unknown slot. Existing unusual values are readable
+without mutation, but new out-of-range edits are rejected.
+
+Item replacement preserves the slot's flags and engraving reference; adding an
+item initializes these fields to zero and no engraving. An engraved weapon cannot
+be replaced by a non-forgeable item. Engraving changes remain unimplemented pending
+ownership checks across convoy and unit equipment. Save Copy applies pending valid
+item inputs when the Items panel is active. The inventory editor does not alter
+equipped unit items. Tests cover empty/unknown/engraved entries, 999-slot capacity,
+invalid ranges and encodings, exact reversal, untouched other sections and live
+language switching. In-game loading remains unverified.
 
 ## Resource inputs
 

@@ -2,6 +2,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using FeeEditor.Core;
+using FeeEditor.Cli;
 
 if (args is ["--version"])
 {
@@ -18,6 +19,12 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli copy <save> <new-file>
           FeeEditor.Cli main show <save> [--json]
           FeeEditor.Cli main set <save> <new-file> [options]
+          FeeEditor.Cli items catalog [--json]
+          FeeEditor.Cli items list <save> [--json]
+          FeeEditor.Cli items set <save> <new-file> --slot <index> [--item <IID>] [--uses <value>] [--refine <level>]
+          FeeEditor.Cli items add <save> <new-file> --item <IID> [--uses <value>] [--refine <level>]
+          FeeEditor.Cli items delete <save> <new-file> --slot <index>
+          FeeEditor.Cli items restore <save> <new-file> --all|--slot <index>
           FeeEditor.Cli --version
         Main options:
           --money <amount> --bond-fragments <amount>
@@ -32,6 +39,8 @@ try
 {
     switch (args)
     {
+        case ["items", .. var options]:
+            return ItemsCommand.Run(options);
         case ["inspect", var source, .. var options] when options is [] or ["--json"]:
             var save = EngageSave.Load(source);
             Console.WriteLine(JsonSerializer.Serialize(new

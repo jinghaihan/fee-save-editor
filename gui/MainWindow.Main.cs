@@ -92,10 +92,16 @@ public partial class MainWindow
     private void ShowPage(bool inspector)
     {
         MainPanel.IsVisible = !inspector;
+        ItemsPanel.IsVisible = false;
         InspectorPanel.IsVisible = inspector;
         ApplyMainButton.IsVisible = !inspector;
+        MainNavigation.SelectedIndex = inspector ? -1 : 0;
         RefreshPageTitle();
     }
 
-    private void RefreshPageTitle() => PageTitle.Text = UiLanguage.Get(InspectorPanel.IsVisible ? "Inspector" : "Main");
+    private void RefreshPageTitle()
+    {
+        PageTitle.Text = UiLanguage.Get("Inspector");
+        PageTitle.IsVisible = InspectorPanel.IsVisible;
+    }
 }
