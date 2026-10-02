@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using FeeEditor.Gui.Localization;
 
 namespace FeeEditor.Gui;
@@ -19,6 +20,7 @@ public partial class App : Application
         {
             var window = new MainWindow();
             desktop.MainWindow = window;
+            Dispatcher.UIThread.Post(MacDockIcon.Apply);
             if (desktop.Args is [var path])
                 window.LoadSave(path);
         }

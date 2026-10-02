@@ -16,6 +16,9 @@ var window = new MainWindow();
 window.Show();
 Dispatcher.UIThread.RunJobs();
 Check(UiLanguage.Current == "en", "The default UI language is not English.");
+Check(window.Icon is not null, "The Sommie window icon is missing.");
+Check(window.FindControl<Image>("AppLogo") is null,
+    "The menu must not contain a separate avatar, matching the FETH template.");
 Check(UiLanguage.Read("en").Keys.Order().SequenceEqual(UiLanguage.Read("zh-Hans").Keys.Order()),
     "English and Chinese resource keys differ.");
 Check(!window.FindControl<MenuItem>("SaveCopyMenu")!.IsEnabled, "Copy is enabled without a save.");

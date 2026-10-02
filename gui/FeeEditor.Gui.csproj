@@ -4,6 +4,7 @@
     <AssemblyName>FeeEditor.Gui</AssemblyName>
     <RootNamespace>FeeEditor.Gui</RootNamespace>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <ApplicationIcon>Assets/app-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="12.1.3" />
@@ -14,5 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization/*.json" WithCulture="false" />
+    <AvaloniaResource Include="Assets/app-icon.png" />
+    <AvaloniaResource Include="Assets/app-icon.ico" />
   </ItemGroup>
 </Project>

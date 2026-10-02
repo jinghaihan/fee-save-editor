@@ -26,6 +26,7 @@ are still under development.
   Current class is displayed; reclassing is not implemented yet. Engage weapons
   and reserved Engage slots are displayed but not replaced/deleted as normal items.
 - Desktop application using SukiUI controls.
+- Sommie application icon.
 - English UI by default, with live switching to Simplified Chinese, including
   character, class and item names. The character catalog includes all 41 playable
   characters, including DLC. Names fall back to English, or a visible hash for

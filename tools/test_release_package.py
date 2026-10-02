@@ -26,6 +26,8 @@ def main() -> None:
                 info = plistlib.load(source)
             assert info["CFBundleShortVersionString"] == version
             assert (app / "Contents/MacOS" / info["CFBundleExecutable"]).is_file()
+            assert info["CFBundleIconFile"] == "AppIcon.icns"
+            assert (app / "Contents/Resources/AppIcon.icns").stat().st_size > 0
             subprocess.run(["codesign", "--verify", "--deep", "--strict", str(app)], check=True)
             cli = target / "Cli/FeeEditor.Cli"
         else:
