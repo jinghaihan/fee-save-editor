@@ -48,6 +48,10 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli emblems bond-max <save> <new-file> --instance <id> --person <PID>
           FeeEditor.Cli emblems bonds-max <save> <new-file> --instance <id>
           FeeEditor.Cli emblems ring-set <save> <new-file> --instance <id> --amount <0-99>
+          FeeEditor.Cli supports catalog [--json] [--language en|zh-Hans]
+          FeeEditor.Cli supports list <save> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli supports set <save> <new-file> --pair <key> [--rank None|C|B|A|A+] [--points <0-99>]
+          FeeEditor.Cli supports max <save> <new-file> --all|--pair <key>
           FeeEditor.Cli --version
         Main options:
           --money <amount> --bond-fragments <amount>
@@ -68,6 +72,8 @@ try
             return RosterCommand.Run(options);
         case ["emblems", .. var options]:
             return EmblemsCommand.Run(options);
+        case ["supports", .. var options]:
+            return SupportsCommand.Run(options);
         case ["inspect", var source, .. var options] when options is [] or ["--json"]:
             var save = EngageSave.Load(source);
             Console.WriteLine(JsonSerializer.Serialize(new

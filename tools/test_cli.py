@@ -371,6 +371,8 @@ def main() -> None:
     check_roster(command, args.save_directory, main_fixture())
     from test_emblems_cli import check_emblems
     check_emblems(command, args.save_directory, main_fixture())
+    from test_supports_cli import check_supports
+    check_supports(command, args.save_directory, main_fixture())
     print("CLI tests passed.")
 
 
