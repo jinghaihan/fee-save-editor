@@ -8,6 +8,18 @@ internal static class RosterCommand
 {
     public static int Run(string[] args)
     {
+        if (args is ["catalog", .. var catalogOptions])
+        {
+            string language = DisplayLanguage(catalogOptions);
+            Console.WriteLine(JsonSerializer.Serialize(new
+            {
+                Classes = RosterCatalog.Classes.Where(job => (job.Flags & 1) != 0).Select(job => new
+                    { job.Id, Name = job.Name(language), job.MaxLevel, WeaponVariants = job.WeaponVariants() }),
+                Skills = RosterCatalog.Skills.Where(skill => skill.Inheritable).Select(skill => new
+                    { skill.Id, Name = skill.Name(language), skill.Family, skill.Tier })
+            }, new JsonSerializerOptions { WriteIndented = true }));
+            return 0;
+        }
         if (args is ["list", var input, .. var displayOptions])
         {
             string language = DisplayLanguage(displayOptions);
@@ -20,6 +32,10 @@ internal static class RosterCommand
                 ClassId = RosterCatalog.Class(character.ClassHash)?.Id,
                 Class = RosterCatalog.Class(character.ClassHash)?.Name(language) ?? $"Unknown class (0x{character.ClassHash:X8})",
                 character.Values, character.Stats, character.Progress,
+                EquippedSkills = character.Progress.EquippedSkills.Select(skill => new
+                    { skill.Hash, Id = RosterCatalog.Skill(skill.Hash)?.Id, Name = SkillName(skill.Hash, language) }),
+                InheritedSkills = character.Progress.InheritedSkills.Select(skill => new
+                    { skill.Hash, Id = RosterCatalog.Skill(skill.Hash)?.Id, Name = SkillName(skill.Hash, language) }),
                 Items = character.Items.Select(slot => new
                 {
                     slot.Slot, Id = ItemCatalog.Find(slot.Item?.ItemHash ?? 0)?.Id,
@@ -66,6 +82,12 @@ internal static class RosterCommand
         {
             "set" => ["--character", "--level", "--experience", "--sp"],
             "class" => ["--character", "--class", "--weapons"],
+            "condition" => ["--character", "--internal-level", "--hp"],
+            "skill-unlock" or "skill-remove" => ["--character", "--skill"],
+            "skills-max" => ["--character"],
+            "skills-equip" => ["--character", "--first", "--second"],
+            "class-skill" => ["--character", "--unlocked"],
+            "proficiencies" => ["--character", "--weapons"],
             "stat" => ["--character", "--stat", "--value"],
             "item-set" => ["--character", "--slot", "--item", "--uses", "--refine"],
             "item-delete" => ["--character", "--slot"],
@@ -78,6 +100,35 @@ internal static class RosterCommand
         if (index >= characters.Count)
             throw new ArgumentOutOfRangeException(nameof(index));
         var character = characters[index];
+        if (verb == "skills-max") return save.UnlockAllRosterSkills(index);
+        if (verb == "condition")
+        {
+            if (values.Count == 1) throw new ArgumentException("Provide --internal-level or --hp.");
+            int internalLevel = character.Progress.InternalLevel, hp = character.Progress.CurrentHP;
+            if (values.TryGetValue("--internal-level", out string? text))
+                internalLevel = int.TryParse(text, out int value) ? value : throw new ArgumentException("Internal level must be a whole number.");
+            if (values.TryGetValue("--hp", out string? currentHP)) hp = Number(currentHP);
+            return save.WithRosterCondition(index, internalLevel, hp);
+        }
+        if (verb is "skill-unlock" or "skill-remove")
+            return save.WithRosterSkill(index, Required(values, "--skill"), verb == "skill-unlock");
+        if (verb == "class-skill")
+        {
+            if (!bool.TryParse(Required(values, "--unlocked"), out bool unlocked))
+                throw new ArgumentException("Use true or false for --unlocked.");
+            return save.WithRosterClassSkill(index, unlocked);
+        }
+        if (verb == "skills-equip")
+        {
+            if (values.Count == 1) throw new ArgumentException("Provide --first or --second.");
+            uint? first = character.Progress.EquippedSkills.ElementAtOrDefault(0)?.Hash;
+            uint? second = character.Progress.EquippedSkills.ElementAtOrDefault(1)?.Hash;
+            if (values.TryGetValue("--first", out string? firstId)) first = SkillHash(firstId);
+            if (values.TryGetValue("--second", out string? secondId)) second = SkillHash(secondId);
+            return save.WithRosterEquippedSkills(index, first, second);
+        }
+        if (verb == "proficiencies")
+            return save.WithRosterProficiencies(index, WeaponMask(Required(values, "--weapons")));
         if (verb == "class")
         {
             string classId = Required(values, "--class");
@@ -86,16 +137,7 @@ internal static class RosterCommand
             uint mask = job.WeaponVariants().First();
             if (values.TryGetValue("--weapons", out string? text))
             {
-                mask = 0;
-                foreach (string name in text.Split(','))
-                {
-                    if (!Enum.TryParse<WeaponType>(name, ignoreCase: true, out var type)
-                        || !Enum.IsDefined(type) || int.TryParse(name, out _))
-                        throw new ArgumentException("Use weapon names separated by commas, such as Sword,Lance.");
-                    uint bit = 1u << (int)type;
-                    if ((mask & bit) != 0) throw new ArgumentException("Duplicate weapon type.");
-                    mask |= bit;
-                }
+                mask = WeaponMask(text);
             }
             return save.WithRosterClass(index, classId, mask);
         }
@@ -166,4 +208,29 @@ internal static class RosterCommand
 
     private static int Number(string text) => int.TryParse(text, out int value) && value >= 0
         ? value : throw new ArgumentException("Roster values must be nonnegative whole numbers within their game limits.");
+
+    private static uint? SkillHash(string id)
+    {
+        if (id == "none") return null;
+        return RosterCatalog.Skills.FirstOrDefault(skill => skill.Id == id)?.Hash
+            ?? throw new ArgumentException("Select a known skill ID, or none to clear a slot.");
+    }
+
+    private static string SkillName(uint hash, string language) => RosterCatalog.Skill(hash)?.Name(language) ?? $"Unknown skill (0x{hash:X8})";
+
+    private static uint WeaponMask(string text)
+    {
+        if (text == "none") return 0;
+        uint mask = 0;
+        foreach (string name in text.Split(','))
+        {
+            if (!Enum.TryParse<WeaponType>(name, ignoreCase: true, out var type)
+                || !Enum.IsDefined(type) || int.TryParse(name, out _))
+                throw new ArgumentException("Use weapon names separated by commas, such as Sword,Lance.");
+            uint bit = 1u << (int)type;
+            if ((mask & bit) != 0) throw new ArgumentException("Duplicate weapon type.");
+            mask |= bit;
+        }
+        return mask;
+    }
 }

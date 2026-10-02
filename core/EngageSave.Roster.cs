@@ -54,7 +54,7 @@ public sealed partial class EngageSave
         if (stat == RosterStat.HP)
         {
             int hp = entry.LevelOffset + 2 - layout.Section.PayloadOffset;
-            payload[hp] = (byte)Math.Min(payload[hp], value);
+            payload[hp] = (byte)Math.Min(payload[hp], Math.Clamp(value + entry.Progress.HPBonus, 1, 255));
         }
         return ReplaceSection(layout.Section, payload);
     }

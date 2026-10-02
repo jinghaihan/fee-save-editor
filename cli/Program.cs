@@ -26,12 +26,19 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli items delete <save> <new-file> --slot <index>
           FeeEditor.Cli items restore <save> <new-file> --all|--slot <index>
           FeeEditor.Cli roster list <save> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli roster catalog [--json] [--language en|zh-Hans]
           FeeEditor.Cli roster class <save> <new-file> --character <index> --class <JID> [--weapons Sword,Lance]
           FeeEditor.Cli roster set <save> <new-file> --character <index> [--level <value>] [--experience <value>] [--sp <value>]
           FeeEditor.Cli roster stat <save> <new-file> --character <index> --stat <name> --value <value>
           FeeEditor.Cli roster item-set <save> <new-file> --character <index> --slot <index> [--item <IID>] [--uses <value>] [--refine <level>]
           FeeEditor.Cli roster item-delete <save> <new-file> --character <index> --slot <index>
           FeeEditor.Cli roster restore <save> <new-file> --character <index>
+          FeeEditor.Cli roster condition <save> <new-file> --character <index> [--internal-level <value>] [--hp <value>]
+          FeeEditor.Cli roster skill-unlock|skill-remove <save> <new-file> --character <index> --skill <SID>
+          FeeEditor.Cli roster skills-equip <save> <new-file> --character <index> [--first <SID|none>] [--second <SID|none>]
+          FeeEditor.Cli roster skills-max <save> <new-file> --character <index>
+          FeeEditor.Cli roster class-skill <save> <new-file> --character <index> --unlocked true|false
+          FeeEditor.Cli roster proficiencies <save> <new-file> --character <index> --weapons Sword,Lance
           FeeEditor.Cli --version
         Main options:
           --money <amount> --bond-fragments <amount>

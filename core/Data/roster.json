@@ -11168,5 +11168,5097 @@
       },
       "EngageOnly": true
     }
+  ],
+  "Skills": [
+    {
+      "Id": "SID_ＨＰ＋５_継承用",
+      "Names": {
+        "en": "HP +5",
+        "zh-Hans": "HP+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_ＨＰ",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_ＨＰ＋７_継承用",
+      "Names": {
+        "en": "HP +7",
+        "zh-Hans": "HP+7"
+      },
+      "Inheritable": true,
+      "Family": "SID_ＨＰ",
+      "Tier": 7
+    },
+    {
+      "Id": "SID_ＨＰ＋１０_継承用",
+      "Names": {
+        "en": "HP +10",
+        "zh-Hans": "HP+10"
+      },
+      "Inheritable": true,
+      "Family": "SID_ＨＰ",
+      "Tier": 10
+    },
+    {
+      "Id": "SID_ＨＰ＋１２_継承用",
+      "Names": {
+        "en": "HP +12",
+        "zh-Hans": "HP+12"
+      },
+      "Inheritable": true,
+      "Family": "SID_ＨＰ",
+      "Tier": 12
+    },
+    {
+      "Id": "SID_ＨＰ＋１５_継承用",
+      "Names": {
+        "en": "HP +15",
+        "zh-Hans": "HP+15"
+      },
+      "Inheritable": true,
+      "Family": "SID_ＨＰ",
+      "Tier": 15
+    },
+    {
+      "Id": "SID_力＋１_継承用",
+      "Names": {
+        "en": "Strength +1",
+        "zh-Hans": "力量+1"
+      },
+      "Inheritable": true,
+      "Family": "SID_力",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_力＋２_継承用",
+      "Names": {
+        "en": "Strength +2",
+        "zh-Hans": "力量+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_力",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_力＋３_継承用",
+      "Names": {
+        "en": "Strength +3",
+        "zh-Hans": "力量+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_力",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_力＋４_継承用",
+      "Names": {
+        "en": "Strength +4",
+        "zh-Hans": "力量+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_力",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_力＋５_継承用",
+      "Names": {
+        "en": "Strength +5",
+        "zh-Hans": "力量+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_力",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_力＋６_継承用",
+      "Names": {
+        "en": "Strength +6",
+        "zh-Hans": "力量+6"
+      },
+      "Inheritable": true,
+      "Family": "SID_力",
+      "Tier": 6
+    },
+    {
+      "Id": "SID_技＋１_継承用",
+      "Names": {
+        "en": "Dexterity +1",
+        "zh-Hans": "技巧+1"
+      },
+      "Inheritable": true,
+      "Family": "SID_技",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_技＋２_継承用",
+      "Names": {
+        "en": "Dexterity +2",
+        "zh-Hans": "技巧+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_技",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_技＋３_継承用",
+      "Names": {
+        "en": "Dexterity +3",
+        "zh-Hans": "技巧+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_技",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_技＋４_継承用",
+      "Names": {
+        "en": "Dexterity +4",
+        "zh-Hans": "技巧+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_技",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_技＋５_継承用",
+      "Names": {
+        "en": "Dexterity +5",
+        "zh-Hans": "技巧+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_技",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_速さ＋１_継承用",
+      "Names": {
+        "en": "Speed +1",
+        "zh-Hans": "速度+1"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さ",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_速さ＋２_継承用",
+      "Names": {
+        "en": "Speed +2",
+        "zh-Hans": "速度+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さ",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_速さ＋３_継承用",
+      "Names": {
+        "en": "Speed +3",
+        "zh-Hans": "速度+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さ",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_速さ＋４_継承用",
+      "Names": {
+        "en": "Speed +4",
+        "zh-Hans": "速度+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さ",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_速さ＋５_継承用",
+      "Names": {
+        "en": "Speed +5",
+        "zh-Hans": "速度+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さ",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_幸運＋２_継承用",
+      "Names": {
+        "en": "Luck +2",
+        "zh-Hans": "幸运+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_幸運",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_幸運＋４_継承用",
+      "Names": {
+        "en": "Luck +4",
+        "zh-Hans": "幸运+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_幸運",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_幸運＋６_継承用",
+      "Names": {
+        "en": "Luck +6",
+        "zh-Hans": "幸运+6"
+      },
+      "Inheritable": true,
+      "Family": "SID_幸運",
+      "Tier": 6
+    },
+    {
+      "Id": "SID_幸運＋８_継承用",
+      "Names": {
+        "en": "Luck +8",
+        "zh-Hans": "幸运+8"
+      },
+      "Inheritable": true,
+      "Family": "SID_幸運",
+      "Tier": 8
+    },
+    {
+      "Id": "SID_幸運＋１０_継承用",
+      "Names": {
+        "en": "Luck +10",
+        "zh-Hans": "幸运+10"
+      },
+      "Inheritable": true,
+      "Family": "SID_幸運",
+      "Tier": 10
+    },
+    {
+      "Id": "SID_幸運＋１２_継承用",
+      "Names": {
+        "en": "Luck +12",
+        "zh-Hans": "幸运+12"
+      },
+      "Inheritable": true,
+      "Family": "SID_幸運",
+      "Tier": 12
+    },
+    {
+      "Id": "SID_守備＋１_継承用",
+      "Names": {
+        "en": "Defense +1",
+        "zh-Hans": "防守+1"
+      },
+      "Inheritable": true,
+      "Family": "SID_守備",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_守備＋２_継承用",
+      "Names": {
+        "en": "Defense +2",
+        "zh-Hans": "防守+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_守備",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_守備＋３_継承用",
+      "Names": {
+        "en": "Defense +3",
+        "zh-Hans": "防守+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_守備",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_守備＋４_継承用",
+      "Names": {
+        "en": "Defense +4",
+        "zh-Hans": "防守+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_守備",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_守備＋５_継承用",
+      "Names": {
+        "en": "Defense +5",
+        "zh-Hans": "防守+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_守備",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_魔力＋２_継承用",
+      "Names": {
+        "en": "Magic +2",
+        "zh-Hans": "魔力+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_魔力＋３_継承用",
+      "Names": {
+        "en": "Magic +3",
+        "zh-Hans": "魔力+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_魔力＋４_継承用",
+      "Names": {
+        "en": "Magic +4",
+        "zh-Hans": "魔力+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_魔力＋５_継承用",
+      "Names": {
+        "en": "Magic +5",
+        "zh-Hans": "魔力+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_魔防＋２_継承用",
+      "Names": {
+        "en": "Resistance +2",
+        "zh-Hans": "魔防+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔防",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_魔防＋３_継承用",
+      "Names": {
+        "en": "Resistance +3",
+        "zh-Hans": "魔防+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔防",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_魔防＋４_継承用",
+      "Names": {
+        "en": "Resistance +4",
+        "zh-Hans": "魔防+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔防",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_魔防＋５_継承用",
+      "Names": {
+        "en": "Resistance +5",
+        "zh-Hans": "魔防+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔防",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_体格＋３_継承用",
+      "Names": {
+        "en": "Build +3",
+        "zh-Hans": "体格+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_体格",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_体格＋４_継承用",
+      "Names": {
+        "en": "Build +4",
+        "zh-Hans": "体格+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_体格",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_体格＋５_継承用",
+      "Names": {
+        "en": "Build +5",
+        "zh-Hans": "体格+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_体格",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_回避＋１０",
+      "Names": {
+        "en": "Avoid +10",
+        "zh-Hans": "回避+10"
+      },
+      "Inheritable": true,
+      "Family": "SID_回避",
+      "Tier": 10
+    },
+    {
+      "Id": "SID_回避＋１５",
+      "Names": {
+        "en": "Avoid +15",
+        "zh-Hans": "回避+15"
+      },
+      "Inheritable": true,
+      "Family": "SID_回避",
+      "Tier": 15
+    },
+    {
+      "Id": "SID_回避＋２０",
+      "Names": {
+        "en": "Avoid +20",
+        "zh-Hans": "回避+20"
+      },
+      "Inheritable": true,
+      "Family": "SID_回避",
+      "Tier": 20
+    },
+    {
+      "Id": "SID_回避＋２５",
+      "Names": {
+        "en": "Avoid +25",
+        "zh-Hans": "回避+25"
+      },
+      "Inheritable": true,
+      "Family": "SID_回避",
+      "Tier": 25
+    },
+    {
+      "Id": "SID_回避＋３０",
+      "Names": {
+        "en": "Avoid +30",
+        "zh-Hans": "回避+30"
+      },
+      "Inheritable": true,
+      "Family": "SID_回避",
+      "Tier": 30
+    },
+    {
+      "Id": "SID_命中＋１０",
+      "Names": {
+        "en": "Hit +10",
+        "zh-Hans": "命中+10"
+      },
+      "Inheritable": true,
+      "Family": "SID_命中",
+      "Tier": 10
+    },
+    {
+      "Id": "SID_命中＋１５",
+      "Names": {
+        "en": "Hit +15",
+        "zh-Hans": "命中+15"
+      },
+      "Inheritable": true,
+      "Family": "SID_命中",
+      "Tier": 15
+    },
+    {
+      "Id": "SID_命中＋２０",
+      "Names": {
+        "en": "Hit +20",
+        "zh-Hans": "命中+20"
+      },
+      "Inheritable": true,
+      "Family": "SID_命中",
+      "Tier": 20
+    },
+    {
+      "Id": "SID_命中＋２５",
+      "Names": {
+        "en": "Hit +25",
+        "zh-Hans": "命中+25"
+      },
+      "Inheritable": true,
+      "Family": "SID_命中",
+      "Tier": 25
+    },
+    {
+      "Id": "SID_命中＋３０",
+      "Names": {
+        "en": "Hit +30",
+        "zh-Hans": "命中+30"
+      },
+      "Inheritable": true,
+      "Family": "SID_命中",
+      "Tier": 30
+    },
+    {
+      "Id": "SID_必殺回避＋１０",
+      "Names": {
+        "en": "Dodge +10",
+        "zh-Hans": "必避+10"
+      },
+      "Inheritable": true,
+      "Family": "SID_必殺回避",
+      "Tier": 10
+    },
+    {
+      "Id": "SID_必殺回避＋１５",
+      "Names": {
+        "en": "Dodge +15",
+        "zh-Hans": "必避+15"
+      },
+      "Inheritable": true,
+      "Family": "SID_必殺回避",
+      "Tier": 15
+    },
+    {
+      "Id": "SID_必殺回避＋２０",
+      "Names": {
+        "en": "Dodge +20",
+        "zh-Hans": "必避+20"
+      },
+      "Inheritable": true,
+      "Family": "SID_必殺回避",
+      "Tier": 20
+    },
+    {
+      "Id": "SID_必殺回避＋２５",
+      "Names": {
+        "en": "Dodge +25",
+        "zh-Hans": "必避+25"
+      },
+      "Inheritable": true,
+      "Family": "SID_必殺回避",
+      "Tier": 25
+    },
+    {
+      "Id": "SID_必殺回避＋３０",
+      "Names": {
+        "en": "Dodge +30",
+        "zh-Hans": "必避+30"
+      },
+      "Inheritable": true,
+      "Family": "SID_必殺回避",
+      "Tier": 30
+    },
+    {
+      "Id": "SID_剣術・柔１",
+      "Names": {
+        "en": "Sword Agility 1",
+        "zh-Hans": "剑术·柔Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・柔",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_剣術・柔２",
+      "Names": {
+        "en": "Sword Agility 2",
+        "zh-Hans": "剑术·柔Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・柔",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_剣術・柔３",
+      "Names": {
+        "en": "Sword Agility 3",
+        "zh-Hans": "剑术·柔Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・柔",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_剣術・柔４",
+      "Names": {
+        "en": "Sword Agility 4",
+        "zh-Hans": "剑术·柔Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・柔",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_剣術・柔５",
+      "Names": {
+        "en": "Sword Agility 5",
+        "zh-Hans": "剑术·柔Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・柔",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_剣術・剛１",
+      "Names": {
+        "en": "Sword Power 1",
+        "zh-Hans": "剑术·刚Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・剛",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_剣術・剛２",
+      "Names": {
+        "en": "Sword Power 2",
+        "zh-Hans": "剑术·刚Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・剛",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_剣術・剛３",
+      "Names": {
+        "en": "Sword Power 3",
+        "zh-Hans": "剑术·刚Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・剛",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_剣術・剛４",
+      "Names": {
+        "en": "Sword Power 4",
+        "zh-Hans": "剑术·刚Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・剛",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_剣術・剛５",
+      "Names": {
+        "en": "Sword Power 5",
+        "zh-Hans": "剑术·刚Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・剛",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_剣術・心１",
+      "Names": {
+        "en": "Sword Focus 1",
+        "zh-Hans": "剑术·心Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・心",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_剣術・心２",
+      "Names": {
+        "en": "Sword Focus 2",
+        "zh-Hans": "剑术·心Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・心",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_剣術・心３",
+      "Names": {
+        "en": "Sword Focus 3",
+        "zh-Hans": "剑术·心Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・心",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_剣術・心４",
+      "Names": {
+        "en": "Sword Focus 4",
+        "zh-Hans": "剑术·心Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・心",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_剣術・心５",
+      "Names": {
+        "en": "Sword Focus 5",
+        "zh-Hans": "剑术·心Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_剣術・心",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_槍術・柔１",
+      "Names": {
+        "en": "Lance Agility 1",
+        "zh-Hans": "枪术·柔Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_槍術・柔",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_槍術・柔２",
+      "Names": {
+        "en": "Lance Agility 2",
+        "zh-Hans": "枪术·柔Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_槍術・柔",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_槍術・柔３",
+      "Names": {
+        "en": "Lance Agility 3",
+        "zh-Hans": "枪术·柔Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_槍術・柔",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_槍術・柔４",
+      "Names": {
+        "en": "Lance Agility 4",
+        "zh-Hans": "枪术·柔Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_槍術・柔",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_槍術・柔５",
+      "Names": {
+        "en": "Lance Agility 5",
+        "zh-Hans": "枪术·柔Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_槍術・柔",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_槍術・剛１",
+      "Names": {
+        "en": "Lance Power 1",
+        "zh-Hans": "枪术·刚Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_槍術・剛",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_槍術・剛２",
+      "Names": {
+        "en": "Lance Power 2",
+        "zh-Hans": "枪术·刚Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_槍術・剛",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_槍術・剛３",
+      "Names": {
+        "en": "Lance Power 3",
+        "zh-Hans": "枪术·刚Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_槍術・剛",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_槍術・剛４",
+      "Names": {
+        "en": "Lance Power 4",
+        "zh-Hans": "枪术·刚Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_槍術・剛",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_槍術・剛５",
+      "Names": {
+        "en": "Lance Power 5",
+        "zh-Hans": "枪术·刚Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_槍術・剛",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_斧術・剛１",
+      "Names": {
+        "en": "Axe Power 1",
+        "zh-Hans": "斧术·刚Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_斧術・剛",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_斧術・剛２",
+      "Names": {
+        "en": "Axe Power 2",
+        "zh-Hans": "斧术·刚Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_斧術・剛",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_斧術・剛３",
+      "Names": {
+        "en": "Axe Power 3",
+        "zh-Hans": "斧术·刚Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_斧術・剛",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_斧術・剛４",
+      "Names": {
+        "en": "Axe Power 4",
+        "zh-Hans": "斧术·刚Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_斧術・剛",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_斧術・剛５",
+      "Names": {
+        "en": "Axe Power 5",
+        "zh-Hans": "斧术·刚Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_斧術・剛",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_弓術・柔１",
+      "Names": {
+        "en": "Bow Agility 1",
+        "zh-Hans": "弓术·柔Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_弓術・柔",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_弓術・柔２",
+      "Names": {
+        "en": "Bow Agility 2",
+        "zh-Hans": "弓术·柔Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_弓術・柔",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_弓術・柔３",
+      "Names": {
+        "en": "Bow Agility 3",
+        "zh-Hans": "弓术·柔Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_弓術・柔",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_弓術・柔４",
+      "Names": {
+        "en": "Bow Agility 4",
+        "zh-Hans": "弓术·柔Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_弓術・柔",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_弓術・柔５",
+      "Names": {
+        "en": "Bow Agility 5",
+        "zh-Hans": "弓术·柔Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_弓術・柔",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_弓術・心１",
+      "Names": {
+        "en": "Bow Focus 1",
+        "zh-Hans": "弓术·心Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_弓術・心",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_弓術・心２",
+      "Names": {
+        "en": "Bow Focus 2",
+        "zh-Hans": "弓术·心Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_弓術・心",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_弓術・心３",
+      "Names": {
+        "en": "Bow Focus 3",
+        "zh-Hans": "弓术·心Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_弓術・心",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_弓術・心４",
+      "Names": {
+        "en": "Bow Focus 4",
+        "zh-Hans": "弓术·心Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_弓術・心",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_弓術・心５",
+      "Names": {
+        "en": "Bow Focus 5",
+        "zh-Hans": "弓术·心Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_弓術・心",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_体術・心１",
+      "Names": {
+        "en": "Art Focus 1",
+        "zh-Hans": "体术·心Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_体術・心",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_体術・心２",
+      "Names": {
+        "en": "Art Focus 2",
+        "zh-Hans": "体术·心Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_体術・心",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_体術・心３",
+      "Names": {
+        "en": "Art Focus 3",
+        "zh-Hans": "体术·心Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_体術・心",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_体術・心４",
+      "Names": {
+        "en": "Art Focus 4",
+        "zh-Hans": "体术·心Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_体術・心",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_体術・心５",
+      "Names": {
+        "en": "Art Focus 5",
+        "zh-Hans": "体术·心Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_体術・心",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_短剣術１",
+      "Names": {
+        "en": "Knife Precision 1",
+        "zh-Hans": "短剑术Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_短剣術",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_短剣術２",
+      "Names": {
+        "en": "Knife Precision 2",
+        "zh-Hans": "短剑术Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_短剣術",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_短剣術３",
+      "Names": {
+        "en": "Knife Precision 3",
+        "zh-Hans": "短剑术Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_短剣術",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_短剣術４",
+      "Names": {
+        "en": "Knife Precision 4",
+        "zh-Hans": "短剑术Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_短剣術",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_短剣術５",
+      "Names": {
+        "en": "Knife Precision 5",
+        "zh-Hans": "短剑术Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_短剣術",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_魔道１",
+      "Names": {
+        "en": "Tome Precision 1",
+        "zh-Hans": "魔道Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔道",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_魔道２",
+      "Names": {
+        "en": "Tome Precision 2",
+        "zh-Hans": "魔道Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔道",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_魔道３",
+      "Names": {
+        "en": "Tome Precision 3",
+        "zh-Hans": "魔道Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔道",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_魔道４",
+      "Names": {
+        "en": "Tome Precision 4",
+        "zh-Hans": "魔道Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔道",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_魔道５",
+      "Names": {
+        "en": "Tome Precision 5",
+        "zh-Hans": "魔道Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔道",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_信仰１",
+      "Names": {
+        "en": "Staff Mastery 1",
+        "zh-Hans": "信仰Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_信仰",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_信仰２",
+      "Names": {
+        "en": "Staff Mastery 2",
+        "zh-Hans": "信仰Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_信仰",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_信仰３",
+      "Names": {
+        "en": "Staff Mastery 3",
+        "zh-Hans": "信仰Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_信仰",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_信仰４",
+      "Names": {
+        "en": "Staff Mastery 4",
+        "zh-Hans": "信仰Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_信仰",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_信仰５",
+      "Names": {
+        "en": "Staff Mastery 5",
+        "zh-Hans": "信仰Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_信仰",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_見切り",
+      "Names": {
+        "en": "Perceptive",
+        "zh-Hans": "识破"
+      },
+      "Inheritable": true,
+      "Family": "SID_見切り",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_見切り＋",
+      "Names": {
+        "en": "Perceptive+",
+        "zh-Hans": "识破+"
+      },
+      "Inheritable": true,
+      "Family": "SID_見切り",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_ブレイク時追撃",
+      "Names": {
+        "en": "Break Defenses",
+        "zh-Hans": "接二连三"
+      },
+      "Inheritable": true,
+      "Family": "SID_ブレイク時追撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_不屈",
+      "Names": {
+        "en": "Unyielding",
+        "zh-Hans": "不屈"
+      },
+      "Inheritable": true,
+      "Family": "SID_不屈",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_不屈＋",
+      "Names": {
+        "en": "Unyielding+",
+        "zh-Hans": "不屈+"
+      },
+      "Inheritable": true,
+      "Family": "SID_不屈",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_不屈＋＋",
+      "Names": {
+        "en": "Unyielding++",
+        "zh-Hans": "不屈++"
+      },
+      "Inheritable": true,
+      "Family": "SID_不屈",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_異形リベンジ",
+      "Names": {
+        "en": "Holy Stance",
+        "zh-Hans": "异形复仇"
+      },
+      "Inheritable": true,
+      "Family": "SID_異形リベンジ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_異形リベンジ＋",
+      "Names": {
+        "en": "Holy Stance+",
+        "zh-Hans": "异形复仇+"
+      },
+      "Inheritable": true,
+      "Family": "SID_異形リベンジ",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_異形リベンジ＋＋",
+      "Names": {
+        "en": "Holy Stance++",
+        "zh-Hans": "异形复仇++"
+      },
+      "Inheritable": true,
+      "Family": "SID_異形リベンジ",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_異形リベンジ＋＋_闇",
+      "Names": {
+        "en": "Unholy Stance",
+        "zh-Hans": "复仇"
+      },
+      "Inheritable": false,
+      "Family": "SID_異形リベンジ＋＋_闇",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_共鳴の黒魔法",
+      "Names": {
+        "en": "Resonance",
+        "zh-Hans": "共鸣之黑魔法"
+      },
+      "Inheritable": true,
+      "Family": "SID_共鳴の黒魔法",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_共鳴の黒魔法＋",
+      "Names": {
+        "en": "Resonance+",
+        "zh-Hans": "共鸣之黑魔法+"
+      },
+      "Inheritable": true,
+      "Family": "SID_共鳴の黒魔法",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_大好物",
+      "Names": {
+        "en": "Favorite Food",
+        "zh-Hans": "最喜欢的东西"
+      },
+      "Inheritable": true,
+      "Family": "SID_大好物",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_再移動",
+      "Names": {
+        "en": "Canter",
+        "zh-Hans": "再移动"
+      },
+      "Inheritable": true,
+      "Family": "SID_再移動",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_再移動＋",
+      "Names": {
+        "en": "Canter+",
+        "zh-Hans": "再移动+"
+      },
+      "Inheritable": true,
+      "Family": "SID_再移動",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_助走",
+      "Names": {
+        "en": "Momentum",
+        "zh-Hans": "助跑"
+      },
+      "Inheritable": true,
+      "Family": "SID_助走",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_助走＋",
+      "Names": {
+        "en": "Momentum+",
+        "zh-Hans": "助跑+"
+      },
+      "Inheritable": true,
+      "Family": "SID_助走",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_猛進",
+      "Names": {
+        "en": "Headlong Rush",
+        "zh-Hans": "猛进"
+      },
+      "Inheritable": true,
+      "Family": "SID_猛進",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_杖使い",
+      "Names": {
+        "en": "Cleric",
+        "zh-Hans": "操杖"
+      },
+      "Inheritable": false,
+      "Family": "SID_杖使い",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_杖使い＋",
+      "Names": {
+        "en": "Cleric+",
+        "zh-Hans": "操杖+"
+      },
+      "Inheritable": false,
+      "Family": "SID_杖使い",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_杖使い＋＋",
+      "Names": {
+        "en": "Cleric++",
+        "zh-Hans": "操杖++"
+      },
+      "Inheritable": false,
+      "Family": "SID_杖使い",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_サイレス無効",
+      "Names": {
+        "en": "Silence Ward",
+        "zh-Hans": "沉默防御"
+      },
+      "Inheritable": true,
+      "Family": "SID_サイレス無効",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_癒しの響き",
+      "Names": {
+        "en": "Healing Light",
+        "zh-Hans": "治愈之声"
+      },
+      "Inheritable": true,
+      "Family": "SID_癒しの響き",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_踏ん張り",
+      "Names": {
+        "en": "Hold Out",
+        "zh-Hans": "坚持"
+      },
+      "Inheritable": true,
+      "Family": "SID_踏ん張り",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_踏ん張り＋",
+      "Names": {
+        "en": "Hold Out+",
+        "zh-Hans": "坚持+"
+      },
+      "Inheritable": true,
+      "Family": "SID_踏ん張り",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_踏ん張り＋＋",
+      "Names": {
+        "en": "Hold Out++",
+        "zh-Hans": "坚持++"
+      },
+      "Inheritable": true,
+      "Family": "SID_踏ん張り",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_踏ん張り＋＋＋",
+      "Names": {
+        "en": "Hold Out+++",
+        "zh-Hans": "坚持+++"
+      },
+      "Inheritable": true,
+      "Family": "SID_踏ん張り",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_踏み込み",
+      "Names": {
+        "en": "Advance",
+        "zh-Hans": "深入"
+      },
+      "Inheritable": true,
+      "Family": "SID_踏み込み",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_武器相性激化",
+      "Names": {
+        "en": "Arms Shield",
+        "zh-Hans": "避开要害"
+      },
+      "Inheritable": true,
+      "Family": "SID_武器相性激化",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_武器相性激化＋",
+      "Names": {
+        "en": "Arms Shield+",
+        "zh-Hans": "避开要害+"
+      },
+      "Inheritable": true,
+      "Family": "SID_武器相性激化",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_武器相性激化＋＋",
+      "Names": {
+        "en": "Arms Shield++",
+        "zh-Hans": "避开要害++"
+      },
+      "Inheritable": true,
+      "Family": "SID_武器相性激化",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_待ち伏せ",
+      "Names": {
+        "en": "Vantage",
+        "zh-Hans": "埋伏"
+      },
+      "Inheritable": true,
+      "Family": "SID_待ち伏せ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_待ち伏せ＋",
+      "Names": {
+        "en": "Vantage+",
+        "zh-Hans": "埋伏+"
+      },
+      "Inheritable": true,
+      "Family": "SID_待ち伏せ",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_待ち伏せ＋＋",
+      "Names": {
+        "en": "Vantage++",
+        "zh-Hans": "埋伏++"
+      },
+      "Inheritable": true,
+      "Family": "SID_待ち伏せ",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_絆の力",
+      "Names": {
+        "en": "Dual Strike",
+        "zh-Hans": "双重攻击"
+      },
+      "Inheritable": false,
+      "Family": "SID_絆の力",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_デュアルアシスト",
+      "Names": {
+        "en": "Dual Assist",
+        "zh-Hans": "双重协助"
+      },
+      "Inheritable": true,
+      "Family": "SID_デュアルアシスト",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_デュアルアシスト＋",
+      "Names": {
+        "en": "Dual Assist+",
+        "zh-Hans": "双重协助+"
+      },
+      "Inheritable": true,
+      "Family": "SID_デュアルアシスト",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_デュアルサポート",
+      "Names": {
+        "en": "Dual Support",
+        "zh-Hans": "双重支援"
+      },
+      "Inheritable": true,
+      "Family": "SID_デュアルサポート",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_攻め立て",
+      "Names": {
+        "en": "Alacrity",
+        "zh-Hans": "强攻"
+      },
+      "Inheritable": true,
+      "Family": "SID_攻め立て",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_攻め立て＋",
+      "Names": {
+        "en": "Alacrity+",
+        "zh-Hans": "强攻+"
+      },
+      "Inheritable": true,
+      "Family": "SID_攻め立て",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_攻め立て＋＋",
+      "Names": {
+        "en": "Alacrity++",
+        "zh-Hans": "强攻++"
+      },
+      "Inheritable": true,
+      "Family": "SID_攻め立て",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_速さの吸収",
+      "Names": {
+        "en": "Speedtaker",
+        "zh-Hans": "速度吸收"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さの吸収",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_破壊",
+      "Names": {
+        "en": "Demolish",
+        "zh-Hans": "破坏"
+      },
+      "Inheritable": true,
+      "Family": "SID_破壊",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_引き戻し",
+      "Names": {
+        "en": "Reposition",
+        "zh-Hans": "带回"
+      },
+      "Inheritable": true,
+      "Family": "SID_引き戻し",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_怒り",
+      "Names": {
+        "en": "Wrath",
+        "zh-Hans": "愤怒"
+      },
+      "Inheritable": true,
+      "Family": "SID_怒り",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_勇将",
+      "Names": {
+        "en": "Resolve",
+        "zh-Hans": "勇将"
+      },
+      "Inheritable": true,
+      "Family": "SID_勇将",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_勇将＋",
+      "Names": {
+        "en": "Resolve+",
+        "zh-Hans": "勇将+"
+      },
+      "Inheritable": true,
+      "Family": "SID_勇将",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_天刻の拍動",
+      "Names": {
+        "en": "Divine Pulse",
+        "zh-Hans": "天刻之脉动"
+      },
+      "Inheritable": true,
+      "Family": "SID_天刻の拍動",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_天刻の拍動＋",
+      "Names": {
+        "en": "Divine Pulse+",
+        "zh-Hans": "天刻之脉动+"
+      },
+      "Inheritable": true,
+      "Family": "SID_天刻の拍動",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_師の導き",
+      "Names": {
+        "en": "Mentorship",
+        "zh-Hans": "老师的引导"
+      },
+      "Inheritable": true,
+      "Family": "SID_師の導き",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_拾得",
+      "Names": {
+        "en": "Lost & Found",
+        "zh-Hans": "拾得"
+      },
+      "Inheritable": true,
+      "Family": "SID_拾得",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_竜脈",
+      "Names": {
+        "en": "Dragon Vein",
+        "zh-Hans": "龙脉"
+      },
+      "Inheritable": false,
+      "Family": "SID_竜脈",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_竜呪",
+      "Names": {
+        "en": "Draconic Hex",
+        "zh-Hans": "龙咒"
+      },
+      "Inheritable": true,
+      "Family": "SID_竜呪",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_防陣",
+      "Names": {
+        "en": "Pair Up",
+        "zh-Hans": "防阵"
+      },
+      "Inheritable": true,
+      "Family": "SID_防陣",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_スキンシップ",
+      "Names": {
+        "en": "Quality Time",
+        "zh-Hans": "身体接触"
+      },
+      "Inheritable": true,
+      "Family": "SID_スキンシップ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_スキンシップ＋",
+      "Names": {
+        "en": "Quality Time+",
+        "zh-Hans": "身体接触+"
+      },
+      "Inheritable": true,
+      "Family": "SID_スキンシップ",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_月の腕輪",
+      "Names": {
+        "en": "Lunar Brace",
+        "zh-Hans": "月之手镯"
+      },
+      "Inheritable": true,
+      "Family": "SID_月の腕輪",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_太陽の腕輪",
+      "Names": {
+        "en": "Solar Brace",
+        "zh-Hans": "太阳之手镯"
+      },
+      "Inheritable": false,
+      "Family": "SID_太陽の腕輪",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_日月の腕輪",
+      "Names": {
+        "en": "Eclipse Brace",
+        "zh-Hans": "日月手镯"
+      },
+      "Inheritable": false,
+      "Family": "SID_日月の腕輪",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_月の腕輪＋",
+      "Names": {
+        "en": "Lunar Brace+",
+        "zh-Hans": "月之手镯+"
+      },
+      "Inheritable": true,
+      "Family": "SID_月の腕輪",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_太陽の腕輪＋",
+      "Names": {
+        "en": "Solar Brace+",
+        "zh-Hans": "太阳之手镯+"
+      },
+      "Inheritable": false,
+      "Family": "SID_太陽の腕輪",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_日月の腕輪＋",
+      "Names": {
+        "en": "Eclipse Brace+",
+        "zh-Hans": "日月手镯+"
+      },
+      "Inheritable": false,
+      "Family": "SID_日月の腕輪",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_優風",
+      "Names": {
+        "en": "Gentility",
+        "zh-Hans": "优风"
+      },
+      "Inheritable": true,
+      "Family": "SID_優風",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_勇空",
+      "Names": {
+        "en": "Bravery",
+        "zh-Hans": "勇空"
+      },
+      "Inheritable": false,
+      "Family": "SID_勇空",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_蒼穹",
+      "Names": {
+        "en": "Blue Skies",
+        "zh-Hans": "苍穹"
+      },
+      "Inheritable": false,
+      "Family": "SID_蒼穹",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_優風＋",
+      "Names": {
+        "en": "Gentility+",
+        "zh-Hans": "优风+"
+      },
+      "Inheritable": true,
+      "Family": "SID_優風",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_勇空＋",
+      "Names": {
+        "en": "Bravery+",
+        "zh-Hans": "勇空+"
+      },
+      "Inheritable": false,
+      "Family": "SID_勇空",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_蒼穹＋",
+      "Names": {
+        "en": "Blue Skies+",
+        "zh-Hans": "苍穹+"
+      },
+      "Inheritable": false,
+      "Family": "SID_蒼穹",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_リュール邪竜特効",
+      "Names": {
+        "en": "Holy Aura",
+        "zh-Hans": "邪龙有效"
+      },
+      "Inheritable": false,
+      "Family": "SID_リュール邪竜特効",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_神竜の加護",
+      "Names": {
+        "en": "Holy Shield",
+        "zh-Hans": "神龙加护"
+      },
+      "Inheritable": false,
+      "Family": "SID_神竜の加護",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_絆を繋薙くもの",
+      "Names": {
+        "en": "Bond Forger",
+        "zh-Hans": "系承牵绊者"
+      },
+      "Inheritable": false,
+      "Family": "SID_絆を繋薙くもの",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_絆を繋薙くもの＋",
+      "Names": {
+        "en": "Bond Forger+",
+        "zh-Hans": "系承牵绊者+"
+      },
+      "Inheritable": false,
+      "Family": "SID_絆を繋薙くもの",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_エレオスの祝福",
+      "Names": {
+        "en": "Boon of Elyos",
+        "zh-Hans": "艾雷欧斯的祝福"
+      },
+      "Inheritable": false,
+      "Family": "SID_エレオスの祝福",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_カウンター",
+      "Names": {
+        "en": "Divine Speed",
+        "zh-Hans": "神速"
+      },
+      "Inheritable": false,
+      "Family": "SID_カウンター",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_迅走",
+      "Names": {
+        "en": "Gallop",
+        "zh-Hans": "快跑"
+      },
+      "Inheritable": false,
+      "Family": "SID_迅走",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_迅走_闇",
+      "Names": {
+        "en": "Dark Gallop",
+        "zh-Hans": "快跑（暗）"
+      },
+      "Inheritable": false,
+      "Family": "SID_迅走_闇",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_重唱",
+      "Names": {
+        "en": "Echo",
+        "zh-Hans": "重唱"
+      },
+      "Inheritable": false,
+      "Family": "SID_重唱",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_増幅",
+      "Names": {
+        "en": "Augment",
+        "zh-Hans": "增幅"
+      },
+      "Inheritable": false,
+      "Family": "SID_増幅",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_増幅_闇",
+      "Names": {
+        "en": "Dark Augment",
+        "zh-Hans": "增幅（暗）"
+      },
+      "Inheritable": false,
+      "Family": "SID_増幅_闇",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_超越",
+      "Names": {
+        "en": "Rise Above",
+        "zh-Hans": "超越"
+      },
+      "Inheritable": false,
+      "Family": "SID_超越",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_超越_闇",
+      "Names": {
+        "en": "Sink Below",
+        "zh-Hans": "超越（暗）"
+      },
+      "Inheritable": false,
+      "Family": "SID_超越_闇",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_順応",
+      "Names": {
+        "en": "Adaptable",
+        "zh-Hans": "瞬应"
+      },
+      "Inheritable": false,
+      "Family": "SID_順応",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_絆盾",
+      "Names": {
+        "en": "Bonded Shield",
+        "zh-Hans": "牵绊之盾"
+      },
+      "Inheritable": false,
+      "Family": "SID_絆盾",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_残像",
+      "Names": {
+        "en": "Call Doubles",
+        "zh-Hans": "残像"
+      },
+      "Inheritable": false,
+      "Family": "SID_残像",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_アイクエンゲージスキル",
+      "Names": {
+        "en": "Laguz Friend",
+        "zh-Hans": "不动"
+      },
+      "Inheritable": false,
+      "Family": "SID_アイクエンゲージスキル",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_先生",
+      "Names": {
+        "en": "Instruct",
+        "zh-Hans": "指导"
+      },
+      "Inheritable": false,
+      "Family": "SID_先生",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_呪縛",
+      "Names": {
+        "en": "Dreadful Aura",
+        "zh-Hans": "咒缚"
+      },
+      "Inheritable": false,
+      "Family": "SID_呪縛",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_双聖",
+      "Names": {
+        "en": "Sacred Twins",
+        "zh-Hans": "双圣"
+      },
+      "Inheritable": false,
+      "Family": "SID_双聖",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_オルタネイト",
+      "Names": {
+        "en": "Night and Day",
+        "zh-Hans": "交替"
+      },
+      "Inheritable": false,
+      "Family": "SID_オルタネイト",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_マルスエンゲージ技",
+      "Names": {
+        "en": "Lodestar Rush",
+        "zh-Hans": "星之突击"
+      },
+      "Inheritable": false,
+      "Family": "SID_マルスエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_シグルドエンゲージ技",
+      "Names": {
+        "en": "Override",
+        "zh-Hans": "破阵星驰"
+      },
+      "Inheritable": false,
+      "Family": "SID_シグルドエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_セリカエンゲージ技",
+      "Names": {
+        "en": "Warp Ragnarok",
+        "zh-Hans": "传送末世烈焰"
+      },
+      "Inheritable": false,
+      "Family": "SID_セリカエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_セリカエンゲージ技_闇",
+      "Names": {
+        "en": "Dark Warp",
+        "zh-Hans": "传送末世烈焰（暗）"
+      },
+      "Inheritable": false,
+      "Family": "SID_セリカエンゲージ技_闇",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_セリカエンゲージ技_闇_M020",
+      "Names": {
+        "en": "Ragnarok Warp",
+        "zh-Hans": "末世烈焰传送"
+      },
+      "Inheritable": false,
+      "Family": "SID_セリカエンゲージ技_闇_M",
+      "Tier": 20
+    },
+    {
+      "Id": "SID_ミカヤエンゲージ技",
+      "Names": {
+        "en": "Great Sacrifice",
+        "zh-Hans": "大治愈之手"
+      },
+      "Inheritable": false,
+      "Family": "SID_ミカヤエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_ロイエンゲージ技",
+      "Names": {
+        "en": "Blazing Lion",
+        "zh-Hans": "狮子红莲焰舞"
+      },
+      "Inheritable": false,
+      "Family": "SID_ロイエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_リーフエンゲージ技",
+      "Names": {
+        "en": "Quadruple Hit",
+        "zh-Hans": "四重巧击"
+      },
+      "Inheritable": false,
+      "Family": "SID_リーフエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_ルキナエンゲージ技",
+      "Names": {
+        "en": "All for One",
+        "zh-Hans": "人人为我"
+      },
+      "Inheritable": false,
+      "Family": "SID_ルキナエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_リンエンゲージ技",
+      "Names": {
+        "en": "Astra Storm",
+        "zh-Hans": "流星群"
+      },
+      "Inheritable": false,
+      "Family": "SID_リンエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_アイクエンゲージ技",
+      "Names": {
+        "en": "Great Aether",
+        "zh-Hans": "霸克·天空"
+      },
+      "Inheritable": false,
+      "Family": "SID_アイクエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_ベレトエンゲージ技",
+      "Names": {
+        "en": "Goddess Dance",
+        "zh-Hans": "计策：女神之舞"
+      },
+      "Inheritable": false,
+      "Family": "SID_ベレトエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_ベレトエンゲージ技_闇",
+      "Names": {
+        "en": "Diabolical Dance",
+        "zh-Hans": "计策：邪神之舞"
+      },
+      "Inheritable": false,
+      "Family": "SID_ベレトエンゲージ技_闇",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_カムイエンゲージ技",
+      "Names": {
+        "en": "Torrential Roar",
+        "zh-Hans": "龙穿炮"
+      },
+      "Inheritable": false,
+      "Family": "SID_カムイエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_エイリークエンゲージ技",
+      "Names": {
+        "en": "Twin Strike",
+        "zh-Hans": "双流"
+      },
+      "Inheritable": false,
+      "Family": "SID_エイリークエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_リュールエンゲージ技",
+      "Names": {
+        "en": "Dragon Blast",
+        "zh-Hans": "神龙破"
+      },
+      "Inheritable": false,
+      "Family": "SID_リュールエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_リュールエンゲージ技共同",
+      "Names": {
+        "en": "Bond Blast",
+        "zh-Hans": "牵绊·神龙破"
+      },
+      "Inheritable": false,
+      "Family": "SID_リュールエンゲージ技共同",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_神竜の結束",
+      "Names": {
+        "en": "Divinely Inspiring",
+        "zh-Hans": "神龙团结"
+      },
+      "Inheritable": false,
+      "Family": "SID_神竜の結束",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_白の忠誠",
+      "Names": {
+        "en": "Alabaster Duty",
+        "zh-Hans": "白之忠诚"
+      },
+      "Inheritable": false,
+      "Family": "SID_白の忠誠",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_碧の信仰",
+      "Names": {
+        "en": "Verdant Faith",
+        "zh-Hans": "碧之信仰"
+      },
+      "Inheritable": false,
+      "Family": "SID_碧の信仰",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_緋い声援",
+      "Names": {
+        "en": "Crimson Cheer",
+        "zh-Hans": "绯红声援"
+      },
+      "Inheritable": false,
+      "Family": "SID_緋い声援",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_自己研鑽",
+      "Names": {
+        "en": "Self-Improver",
+        "zh-Hans": "自己钻研"
+      },
+      "Inheritable": false,
+      "Family": "SID_自己研鑽",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_筋肉増強剤",
+      "Names": {
+        "en": "Energized",
+        "zh-Hans": "肌肉增强剂"
+      },
+      "Inheritable": false,
+      "Family": "SID_筋肉増強剤",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_涙腺崩壊",
+      "Names": {
+        "en": "Moved to Tears",
+        "zh-Hans": "泪腺崩坏"
+      },
+      "Inheritable": false,
+      "Family": "SID_涙腺崩壊",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_平和の花",
+      "Names": {
+        "en": "Gentle Flower",
+        "zh-Hans": "和平之花"
+      },
+      "Inheritable": false,
+      "Family": "SID_平和の花",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_絵になる二人",
+      "Names": {
+        "en": "Fairy-Tale Folk",
+        "zh-Hans": "二人如画"
+      },
+      "Inheritable": false,
+      "Family": "SID_絵になる二人",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_花園の門番",
+      "Names": {
+        "en": "Admiration",
+        "zh-Hans": "花园门卫"
+      },
+      "Inheritable": false,
+      "Family": "SID_花園の門番",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_真っ向勝負",
+      "Names": {
+        "en": "Fair Fight",
+        "zh-Hans": "正面对决"
+      },
+      "Inheritable": false,
+      "Family": "SID_真っ向勝負",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_名乗り上げ",
+      "Names": {
+        "en": "Aspiring Hero",
+        "zh-Hans": "报上名号"
+      },
+      "Inheritable": false,
+      "Family": "SID_名乗り上げ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_瞑想",
+      "Names": {
+        "en": "Meditation",
+        "zh-Hans": "冥想"
+      },
+      "Inheritable": false,
+      "Family": "SID_瞑想",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_僕が守ります！",
+      "Names": {
+        "en": "Get Behind Me!",
+        "zh-Hans": "由我守护！"
+      },
+      "Inheritable": false,
+      "Family": "SID_僕が守ります！",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_戦果委譲",
+      "Names": {
+        "en": "Share Spoils",
+        "zh-Hans": "战果转让"
+      },
+      "Inheritable": false,
+      "Family": "SID_戦果委譲",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_大盤振る舞い",
+      "Names": {
+        "en": "Generosity",
+        "zh-Hans": "盛宴款待"
+      },
+      "Inheritable": false,
+      "Family": "SID_大盤振る舞い",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_執着",
+      "Names": {
+        "en": "Single-Minded",
+        "zh-Hans": "执着"
+      },
+      "Inheritable": false,
+      "Family": "SID_執着",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_『次』はない",
+      "Names": {
+        "en": "Not *Quite*",
+        "zh-Hans": "没有“下次”"
+      },
+      "Inheritable": false,
+      "Family": "SID_『次』はない",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_光彩奪目！",
+      "Names": {
+        "en": "Blinding Flash",
+        "zh-Hans": "光彩夺目！"
+      },
+      "Inheritable": false,
+      "Family": "SID_光彩奪目！",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_煌めく理力",
+      "Names": {
+        "en": "Big Personality",
+        "zh-Hans": "辉煌原力"
+      },
+      "Inheritable": false,
+      "Family": "SID_煌めく理力",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_微笑み",
+      "Names": {
+        "en": "Stunning Smile",
+        "zh-Hans": "微笑"
+      },
+      "Inheritable": false,
+      "Family": "SID_微笑み",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_溜め息",
+      "Names": {
+        "en": "Disarming Sigh",
+        "zh-Hans": "叹息"
+      },
+      "Inheritable": false,
+      "Family": "SID_溜め息",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_ソルムの騒音",
+      "Names": {
+        "en": "Racket of Solm",
+        "zh-Hans": "索尔姆的噪音"
+      },
+      "Inheritable": false,
+      "Family": "SID_ソルムの騒音",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_エスコート",
+      "Names": {
+        "en": "Knightly Escort",
+        "zh-Hans": "护航"
+      },
+      "Inheritable": false,
+      "Family": "SID_エスコート",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_戦の血",
+      "Names": {
+        "en": "Blood Fury",
+        "zh-Hans": "战之血"
+      },
+      "Inheritable": false,
+      "Family": "SID_戦の血",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_人たらし",
+      "Names": {
+        "en": "Charmer",
+        "zh-Hans": "八面玲珑"
+      },
+      "Inheritable": false,
+      "Family": "SID_人たらし",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_大集会",
+      "Names": {
+        "en": "Party Animal",
+        "zh-Hans": "大集会"
+      },
+      "Inheritable": false,
+      "Family": "SID_大集会",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_料理再現",
+      "Names": {
+        "en": "Seconds?",
+        "zh-Hans": "料理再现"
+      },
+      "Inheritable": false,
+      "Family": "SID_料理再現",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_一攫千金",
+      "Names": {
+        "en": "Make a Killing",
+        "zh-Hans": "一夕致富"
+      },
+      "Inheritable": false,
+      "Family": "SID_一攫千金",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_努力の才",
+      "Names": {
+        "en": "Expertise",
+        "zh-Hans": "努力才能"
+      },
+      "Inheritable": false,
+      "Family": "SID_努力の才",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_殺しの技術",
+      "Names": {
+        "en": "Trained to Kill",
+        "zh-Hans": "杀人技术"
+      },
+      "Inheritable": false,
+      "Family": "SID_殺しの技術",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_神秘の踊り",
+      "Names": {
+        "en": "Curious Dance",
+        "zh-Hans": "神秘舞蹈"
+      },
+      "Inheritable": false,
+      "Family": "SID_神秘の踊り",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_歴戦の勘",
+      "Names": {
+        "en": "Weapon Insight",
+        "zh-Hans": "身经百战的直觉"
+      },
+      "Inheritable": false,
+      "Family": "SID_歴戦の勘",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_勝利への意思",
+      "Names": {
+        "en": "Will to Win",
+        "zh-Hans": "求胜意志"
+      },
+      "Inheritable": false,
+      "Family": "SID_勝利への意思",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_邪竜の救済",
+      "Names": {
+        "en": "Fell Protection",
+        "zh-Hans": "邪龙的救济"
+      },
+      "Inheritable": false,
+      "Family": "SID_邪竜の救済",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_次への備え",
+      "Names": {
+        "en": "Contemplative",
+        "zh-Hans": "蓄势待发"
+      },
+      "Inheritable": false,
+      "Family": "SID_次への備え",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_切り抜け",
+      "Names": {
+        "en": "Run Through",
+        "zh-Hans": "破敌斩"
+      },
+      "Inheritable": false,
+      "Family": "SID_切り抜け",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_助太刀",
+      "Names": {
+        "en": "Brave Assist",
+        "zh-Hans": "帮手"
+      },
+      "Inheritable": false,
+      "Family": "SID_助太刀",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_挟撃",
+      "Names": {
+        "en": "Pincer Attack",
+        "zh-Hans": "夹击"
+      },
+      "Inheritable": false,
+      "Family": "SID_挟撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_手助け",
+      "Names": {
+        "en": "Reforge",
+        "zh-Hans": "帮助"
+      },
+      "Inheritable": false,
+      "Family": "SID_手助け",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_スマッシュ＋",
+      "Names": {
+        "en": "Smash+",
+        "zh-Hans": "猛击+"
+      },
+      "Inheritable": false,
+      "Family": "SID_スマッシュ",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_無慈悲",
+      "Names": {
+        "en": "Merciless",
+        "zh-Hans": "无慈悲"
+      },
+      "Inheritable": false,
+      "Family": "SID_無慈悲",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_集中",
+      "Names": {
+        "en": "No Distractions",
+        "zh-Hans": "集中"
+      },
+      "Inheritable": false,
+      "Family": "SID_集中",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_狙撃",
+      "Names": {
+        "en": "Careful Aim",
+        "zh-Hans": "狙击"
+      },
+      "Inheritable": false,
+      "Family": "SID_狙撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_入れ替え",
+      "Names": {
+        "en": "Swap",
+        "zh-Hans": "替换"
+      },
+      "Inheritable": false,
+      "Family": "SID_入れ替え",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_護衛",
+      "Names": {
+        "en": "Allied Defense",
+        "zh-Hans": "护卫"
+      },
+      "Inheritable": false,
+      "Family": "SID_護衛",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_回り込み",
+      "Names": {
+        "en": "Pivot",
+        "zh-Hans": "迂回"
+      },
+      "Inheritable": false,
+      "Family": "SID_回り込み",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_足狙い",
+      "Names": {
+        "en": "Hobble",
+        "zh-Hans": "瞄准足部"
+      },
+      "Inheritable": false,
+      "Family": "SID_足狙い",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_移動補助",
+      "Names": {
+        "en": "Clear the Way",
+        "zh-Hans": "移动辅助"
+      },
+      "Inheritable": false,
+      "Family": "SID_移動補助",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_急襲",
+      "Names": {
+        "en": "Air Raid",
+        "zh-Hans": "急袭"
+      },
+      "Inheritable": false,
+      "Family": "SID_急襲",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_すり抜け",
+      "Names": {
+        "en": "Pass",
+        "zh-Hans": "穿越"
+      },
+      "Inheritable": false,
+      "Family": "SID_すり抜け",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_魔力増幅",
+      "Names": {
+        "en": "Spell Harmony",
+        "zh-Hans": "魔力增幅"
+      },
+      "Inheritable": false,
+      "Family": "SID_魔力増幅",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_背理の法",
+      "Names": {
+        "en": "Chaos Style",
+        "zh-Hans": "背理之法"
+      },
+      "Inheritable": false,
+      "Family": "SID_背理の法",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_気の拡散",
+      "Names": {
+        "en": "Diffuse Healer",
+        "zh-Hans": "气之扩散"
+      },
+      "Inheritable": false,
+      "Family": "SID_気の拡散",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_自己回復",
+      "Names": {
+        "en": "Self-Healing",
+        "zh-Hans": "自己回复"
+      },
+      "Inheritable": false,
+      "Family": "SID_自己回復",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_神竜気",
+      "Names": {
+        "en": "Divine Spirit",
+        "zh-Hans": "神龙气"
+      },
+      "Inheritable": false,
+      "Family": "SID_神竜気",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_邪竜気",
+      "Names": {
+        "en": "Fell Spirit",
+        "zh-Hans": "邪龙气"
+      },
+      "Inheritable": false,
+      "Family": "SID_邪竜気",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_金蓮",
+      "Names": {
+        "en": "Golden Lotus",
+        "zh-Hans": "金莲"
+      },
+      "Inheritable": false,
+      "Family": "SID_金蓮",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_華炎",
+      "Names": {
+        "en": "Ignis",
+        "zh-Hans": "华炎"
+      },
+      "Inheritable": false,
+      "Family": "SID_華炎",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_太陽",
+      "Names": {
+        "en": "Sol",
+        "zh-Hans": "太阳"
+      },
+      "Inheritable": false,
+      "Family": "SID_太陽",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_月光",
+      "Names": {
+        "en": "Luna",
+        "zh-Hans": "月光"
+      },
+      "Inheritable": false,
+      "Family": "SID_月光",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_虚空",
+      "Names": {
+        "en": "Grasping Void",
+        "zh-Hans": "虚空"
+      },
+      "Inheritable": false,
+      "Family": "SID_虚空",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_大樹",
+      "Names": {
+        "en": "World Tree",
+        "zh-Hans": "大树"
+      },
+      "Inheritable": false,
+      "Family": "SID_大樹",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_砂陣",
+      "Names": {
+        "en": "Sandstorm",
+        "zh-Hans": "沙阵"
+      },
+      "Inheritable": false,
+      "Family": "SID_砂陣",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_水鏡",
+      "Names": {
+        "en": "Back at You",
+        "zh-Hans": "水镜"
+      },
+      "Inheritable": false,
+      "Family": "SID_水鏡",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_魔法剣",
+      "Names": {
+        "en": "Soulblade",
+        "zh-Hans": "魔法剑"
+      },
+      "Inheritable": false,
+      "Family": "SID_魔法剣",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_特別な踊り",
+      "Names": {
+        "en": "Special Dance",
+        "zh-Hans": "特别舞蹈"
+      },
+      "Inheritable": false,
+      "Family": "SID_特別な踊り",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_伝道師",
+      "Names": {
+        "en": "Sympathetic",
+        "zh-Hans": "传道师"
+      },
+      "Inheritable": false,
+      "Family": "SID_伝道師",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_必殺剣",
+      "Names": {
+        "en": "Deadly Blade",
+        "zh-Hans": "必杀剑"
+      },
+      "Inheritable": false,
+      "Family": "SID_必殺剣",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_百戦練磨",
+      "Names": {
+        "en": "Battlewise",
+        "zh-Hans": "身经百战"
+      },
+      "Inheritable": false,
+      "Family": "SID_百戦練磨",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_回復",
+      "Names": {
+        "en": "Renewal",
+        "zh-Hans": "回复"
+      },
+      "Inheritable": false,
+      "Family": "SID_回復",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_風薙ぎ",
+      "Names": {
+        "en": "Windsweep",
+        "zh-Hans": "疾风横扫"
+      },
+      "Inheritable": false,
+      "Family": "SID_風薙ぎ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_轟雷",
+      "Names": {
+        "en": "Great Thunder",
+        "zh-Hans": "轰雷"
+      },
+      "Inheritable": false,
+      "Family": "SID_轟雷",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_瞬殺",
+      "Names": {
+        "en": "Bane",
+        "zh-Hans": "瞬杀"
+      },
+      "Inheritable": false,
+      "Family": "SID_瞬殺",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_慈悲",
+      "Names": {
+        "en": "Mercy",
+        "zh-Hans": "慈悲"
+      },
+      "Inheritable": false,
+      "Family": "SID_慈悲",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_業火",
+      "Names": {
+        "en": "Raging Fire",
+        "zh-Hans": "业火"
+      },
+      "Inheritable": false,
+      "Family": "SID_業火",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_剛腕",
+      "Names": {
+        "en": "Strong Arm",
+        "zh-Hans": "铁腕"
+      },
+      "Inheritable": false,
+      "Family": "SID_剛腕",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_祈り",
+      "Names": {
+        "en": "Miracle",
+        "zh-Hans": "祈祷"
+      },
+      "Inheritable": false,
+      "Family": "SID_祈り",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_ダイムサンダ",
+      "Names": {
+        "en": "Dire Thunder",
+        "zh-Hans": "神雷"
+      },
+      "Inheritable": false,
+      "Family": "SID_ダイムサンダ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_王の器",
+      "Names": {
+        "en": "Rightful Ruler",
+        "zh-Hans": "帝王之才"
+      },
+      "Inheritable": false,
+      "Family": "SID_王の器",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_いやしの心",
+      "Names": {
+        "en": "Healtouch",
+        "zh-Hans": "治愈之心"
+      },
+      "Inheritable": false,
+      "Family": "SID_いやしの心",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_引き寄せ",
+      "Names": {
+        "en": "Draw Back",
+        "zh-Hans": "拉近"
+      },
+      "Inheritable": false,
+      "Family": "SID_引き寄せ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_ギガスカリバー",
+      "Names": {
+        "en": "Giga Excalibur",
+        "zh-Hans": "纪加斯卡利伯"
+      },
+      "Inheritable": false,
+      "Family": "SID_ギガスカリバー",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_旋風",
+      "Names": {
+        "en": "Wind Adept",
+        "zh-Hans": "旋风"
+      },
+      "Inheritable": false,
+      "Family": "SID_旋風",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_体当たり",
+      "Names": {
+        "en": "Shove",
+        "zh-Hans": "冲撞"
+      },
+      "Inheritable": false,
+      "Family": "SID_体当たり",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_閃花",
+      "Names": {
+        "en": "Flickering Flower",
+        "zh-Hans": "闪花"
+      },
+      "Inheritable": false,
+      "Family": "SID_閃花",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_幻月",
+      "Names": {
+        "en": "Paraselene",
+        "zh-Hans": "幻月"
+      },
+      "Inheritable": false,
+      "Family": "SID_幻月",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_風神",
+      "Names": {
+        "en": "Wind God",
+        "zh-Hans": "风神"
+      },
+      "Inheritable": false,
+      "Family": "SID_風神",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_騎士道",
+      "Names": {
+        "en": "Chivalry",
+        "zh-Hans": "骑士道"
+      },
+      "Inheritable": false,
+      "Family": "SID_騎士道",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_武士道",
+      "Names": {
+        "en": "Bushido",
+        "zh-Hans": "武士道"
+      },
+      "Inheritable": false,
+      "Family": "SID_武士道",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_滅殺",
+      "Names": {
+        "en": "Lethality",
+        "zh-Hans": "灭杀"
+      },
+      "Inheritable": false,
+      "Family": "SID_滅殺",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_必的",
+      "Names": {
+        "en": "Sure Strike",
+        "zh-Hans": "必中目标"
+      },
+      "Inheritable": false,
+      "Family": "SID_必的",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_絆の指輪_アルフォンス",
+      "Names": {
+        "en": "Spur Attack",
+        "zh-Hans": "攻击纹章"
+      },
+      "Inheritable": false,
+      "Family": "SID_絆の指輪_アルフォンス",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_絆の指輪_シャロン",
+      "Names": {
+        "en": "Fortify Def",
+        "zh-Hans": "防守鼓舞"
+      },
+      "Inheritable": false,
+      "Family": "SID_絆の指輪_シャロン",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_絆の指輪_アンナ",
+      "Names": {
+        "en": "Spur Res",
+        "zh-Hans": "魔防纹章"
+      },
+      "Inheritable": false,
+      "Family": "SID_絆の指輪_アンナ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_蛇毒",
+      "Names": {
+        "en": "Poison Strike",
+        "zh-Hans": "蛇毒"
+      },
+      "Inheritable": false,
+      "Family": "SID_蛇毒",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_死の吐息",
+      "Names": {
+        "en": "Savage Blow",
+        "zh-Hans": "死亡吐息"
+      },
+      "Inheritable": false,
+      "Family": "SID_死の吐息",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_剣殺し",
+      "Names": {
+        "en": "Swordbreaker",
+        "zh-Hans": "破剑者"
+      },
+      "Inheritable": false,
+      "Family": "SID_剣殺し",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_槍殺し",
+      "Names": {
+        "en": "Lancebreaker",
+        "zh-Hans": "破枪者"
+      },
+      "Inheritable": false,
+      "Family": "SID_槍殺し",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_斧殺し",
+      "Names": {
+        "en": "Axebreaker",
+        "zh-Hans": "破斧者"
+      },
+      "Inheritable": false,
+      "Family": "SID_斧殺し",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_魔殺し",
+      "Names": {
+        "en": "Tomebreaker",
+        "zh-Hans": "破魔者"
+      },
+      "Inheritable": false,
+      "Family": "SID_魔殺し",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_弓殺し",
+      "Names": {
+        "en": "Bowbreaker",
+        "zh-Hans": "破弓者"
+      },
+      "Inheritable": false,
+      "Family": "SID_弓殺し",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_短刀殺し",
+      "Names": {
+        "en": "Knifebreaker",
+        "zh-Hans": "破短剑者"
+      },
+      "Inheritable": false,
+      "Family": "SID_短刀殺し",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_気功殺し",
+      "Names": {
+        "en": "Artbreaker",
+        "zh-Hans": "破体术者"
+      },
+      "Inheritable": false,
+      "Family": "SID_気功殺し",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_力封じ",
+      "Names": {
+        "en": "Seal Strength",
+        "zh-Hans": "力量封锁"
+      },
+      "Inheritable": false,
+      "Family": "SID_力封じ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_魔力封じ",
+      "Names": {
+        "en": "Seal Magic",
+        "zh-Hans": "魔力封锁"
+      },
+      "Inheritable": false,
+      "Family": "SID_魔力封じ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_守備封じ",
+      "Names": {
+        "en": "Seal Defense",
+        "zh-Hans": "防守封锁"
+      },
+      "Inheritable": false,
+      "Family": "SID_守備封じ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_速さ封じ",
+      "Names": {
+        "en": "Seal Speed",
+        "zh-Hans": "速度封锁"
+      },
+      "Inheritable": false,
+      "Family": "SID_速さ封じ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_魔防封じ",
+      "Names": {
+        "en": "Seal Resistance",
+        "zh-Hans": "魔防封锁"
+      },
+      "Inheritable": false,
+      "Family": "SID_魔防封じ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_鬼神の構え",
+      "Names": {
+        "en": "Fierce Stance",
+        "zh-Hans": "鬼神架势"
+      },
+      "Inheritable": false,
+      "Family": "SID_鬼神の構え",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_金剛の構え",
+      "Names": {
+        "en": "Steady Stance",
+        "zh-Hans": "金刚架势"
+      },
+      "Inheritable": false,
+      "Family": "SID_金剛の構え",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_飛燕の構え",
+      "Names": {
+        "en": "Darting Stance",
+        "zh-Hans": "飞燕架势"
+      },
+      "Inheritable": false,
+      "Family": "SID_飛燕の構え",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_明鏡の構え",
+      "Names": {
+        "en": "Warding Stance",
+        "zh-Hans": "明镜架势"
+      },
+      "Inheritable": false,
+      "Family": "SID_明鏡の構え",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_死線",
+      "Names": {
+        "en": "Life and Death",
+        "zh-Hans": "死线"
+      },
+      "Inheritable": false,
+      "Family": "SID_死線",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_相性激化",
+      "Names": {
+        "en": "Triangle Adept",
+        "zh-Hans": "强化互克"
+      },
+      "Inheritable": false,
+      "Family": "SID_相性激化",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_噛描",
+      "Names": {
+        "en": "Cornered Beast",
+        "zh-Hans": "狗急跳墙"
+      },
+      "Inheritable": false,
+      "Family": "SID_噛描",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_自壊",
+      "Names": {
+        "en": "Self-Destruct",
+        "zh-Hans": "自毁"
+      },
+      "Inheritable": false,
+      "Family": "SID_自壊",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_清流の一撃",
+      "Names": {
+        "en": "Duelist's Blow",
+        "zh-Hans": "清流一击"
+      },
+      "Inheritable": false,
+      "Family": "SID_清流の一撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_飛燕の一撃",
+      "Names": {
+        "en": "Darting Blow",
+        "zh-Hans": "飞燕一击"
+      },
+      "Inheritable": false,
+      "Family": "SID_飛燕の一撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_鬼神の一撃",
+      "Names": {
+        "en": "Death Blow",
+        "zh-Hans": "鬼神一击"
+      },
+      "Inheritable": false,
+      "Family": "SID_鬼神の一撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_凶鳥の一撃",
+      "Names": {
+        "en": "Certain Blow",
+        "zh-Hans": "凶鸟一击"
+      },
+      "Inheritable": false,
+      "Family": "SID_凶鳥の一撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_金剛の一撃",
+      "Names": {
+        "en": "Armored Blow",
+        "zh-Hans": "金刚一击"
+      },
+      "Inheritable": false,
+      "Family": "SID_金剛の一撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_明鏡の一撃",
+      "Names": {
+        "en": "Warding Blow",
+        "zh-Hans": "明镜一击"
+      },
+      "Inheritable": false,
+      "Family": "SID_明鏡の一撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_狂乱の一撃",
+      "Names": {
+        "en": "Spirit Strike",
+        "zh-Hans": "减气"
+      },
+      "Inheritable": false,
+      "Family": "SID_狂乱の一撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_ブレイク無効",
+      "Names": {
+        "en": "Unbreakable",
+        "zh-Hans": "打破无效"
+      },
+      "Inheritable": false,
+      "Family": "SID_ブレイク無効",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_特効耐性",
+      "Names": {
+        "en": "Stalwart",
+        "zh-Hans": "克制耐性"
+      },
+      "Inheritable": false,
+      "Family": "SID_特効耐性",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_特効無効",
+      "Names": {
+        "en": "Unwavering",
+        "zh-Hans": "克制无效"
+      },
+      "Inheritable": false,
+      "Family": "SID_特効無効",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_不動",
+      "Names": {
+        "en": "Anchor",
+        "zh-Hans": "移动效果无效"
+      },
+      "Inheritable": false,
+      "Family": "SID_不動",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_熟練者",
+      "Names": {
+        "en": "Veteran",
+        "zh-Hans": "熟练者"
+      },
+      "Inheritable": false,
+      "Family": "SID_熟練者",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_熟練者＋",
+      "Names": {
+        "en": "Veteran+",
+        "zh-Hans": "熟练者+"
+      },
+      "Inheritable": false,
+      "Family": "SID_熟練者",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_チェインアタック威力軽減",
+      "Names": {
+        "en": "Bond Breaker",
+        "zh-Hans": "撕裂牵绊者"
+      },
+      "Inheritable": false,
+      "Family": "SID_チェインアタック威力軽減",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_力・技＋１",
+      "Names": {
+        "en": "Str/Dex +1",
+        "zh-Hans": "力量、技巧+1"
+      },
+      "Inheritable": true,
+      "Family": "SID_力・技",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_力・技＋２",
+      "Names": {
+        "en": "Str/Dex +2",
+        "zh-Hans": "力量、技巧+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_力・技",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_力・技＋３",
+      "Names": {
+        "en": "Str/Dex +3",
+        "zh-Hans": "力量、技巧+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_力・技",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_力・技＋４",
+      "Names": {
+        "en": "Str/Dex +4",
+        "zh-Hans": "力量、技巧+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_力・技",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_力・技＋５",
+      "Names": {
+        "en": "Str/Dex +5",
+        "zh-Hans": "力量、技巧+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_力・技",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_ＨＰ・幸運＋２",
+      "Names": {
+        "en": "HP/Lck +2",
+        "zh-Hans": "HP、幸运+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_ＨＰ・幸運",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_ＨＰ・幸運＋４",
+      "Names": {
+        "en": "HP/Lck +4",
+        "zh-Hans": "HP、幸运+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_ＨＰ・幸運",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_ＨＰ・幸運＋６",
+      "Names": {
+        "en": "HP/Lck +6",
+        "zh-Hans": "HP、幸运+6"
+      },
+      "Inheritable": true,
+      "Family": "SID_ＨＰ・幸運",
+      "Tier": 6
+    },
+    {
+      "Id": "SID_ＨＰ・幸運＋８",
+      "Names": {
+        "en": "HP/Lck +8",
+        "zh-Hans": "HP、幸运+8"
+      },
+      "Inheritable": true,
+      "Family": "SID_ＨＰ・幸運",
+      "Tier": 8
+    },
+    {
+      "Id": "SID_ＨＰ・幸運＋１０",
+      "Names": {
+        "en": "HP/Lck +10",
+        "zh-Hans": "HP、幸运+10"
+      },
+      "Inheritable": true,
+      "Family": "SID_ＨＰ・幸運",
+      "Tier": 10
+    },
+    {
+      "Id": "SID_力・守備＋１",
+      "Names": {
+        "en": "Str/Def +1",
+        "zh-Hans": "力量、防守+1"
+      },
+      "Inheritable": true,
+      "Family": "SID_力・守備",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_力・守備＋２",
+      "Names": {
+        "en": "Str/Def +2",
+        "zh-Hans": "力量、防守+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_力・守備",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_力・守備＋３",
+      "Names": {
+        "en": "Str/Def +3",
+        "zh-Hans": "力量、防守+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_力・守備",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_力・守備＋４",
+      "Names": {
+        "en": "Str/Def +4",
+        "zh-Hans": "力量、防守+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_力・守備",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_力・守備＋５",
+      "Names": {
+        "en": "Str/Def +5",
+        "zh-Hans": "力量、防守+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_力・守備",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_魔力・技＋１",
+      "Names": {
+        "en": "Mag/Dex +1",
+        "zh-Hans": "魔力、技巧+1"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力・技",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_魔力・技＋２",
+      "Names": {
+        "en": "Mag/Dex +2",
+        "zh-Hans": "魔力、技巧+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力・技",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_魔力・技＋３",
+      "Names": {
+        "en": "Mag/Dex +3",
+        "zh-Hans": "魔力、技巧+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力・技",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_魔力・技＋４",
+      "Names": {
+        "en": "Mag/Dex +4",
+        "zh-Hans": "魔力、技巧+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力・技",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_魔力・技＋５",
+      "Names": {
+        "en": "Mag/Dex +5",
+        "zh-Hans": "魔力、技巧+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力・技",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_魔力・魔防＋１",
+      "Names": {
+        "en": "Mag/Res +1",
+        "zh-Hans": "魔力、魔防+1"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力・魔防",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_魔力・魔防＋２",
+      "Names": {
+        "en": "Mag/Res +2",
+        "zh-Hans": "魔力、魔防+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力・魔防",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_魔力・魔防＋３",
+      "Names": {
+        "en": "Mag/Res +3",
+        "zh-Hans": "魔力、魔防+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力・魔防",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_魔力・魔防＋４",
+      "Names": {
+        "en": "Mag/Res +4",
+        "zh-Hans": "魔力、魔防+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力・魔防",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_魔力・魔防＋５",
+      "Names": {
+        "en": "Mag/Res +5",
+        "zh-Hans": "魔力、魔防+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_魔力・魔防",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_速さ・魔防＋１",
+      "Names": {
+        "en": "Spd/Res +1",
+        "zh-Hans": "速度、魔防+1"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さ・魔防",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_速さ・魔防＋２",
+      "Names": {
+        "en": "Spd/Res +2",
+        "zh-Hans": "速度、魔防+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さ・魔防",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_速さ・魔防＋３",
+      "Names": {
+        "en": "Spd/Res +3",
+        "zh-Hans": "速度、魔防+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さ・魔防",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_速さ・魔防＋４",
+      "Names": {
+        "en": "Spd/Res +4",
+        "zh-Hans": "速度、魔防+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さ・魔防",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_速さ・魔防＋５",
+      "Names": {
+        "en": "Spd/Res +5",
+        "zh-Hans": "速度、魔防+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_速さ・魔防",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_技・速さ＋１",
+      "Names": {
+        "en": "Spd/Dex +1",
+        "zh-Hans": "速度、技巧+1"
+      },
+      "Inheritable": true,
+      "Family": "SID_技・速さ",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_技・速さ＋２",
+      "Names": {
+        "en": "Spd/Dex +2",
+        "zh-Hans": "速度、技巧+2"
+      },
+      "Inheritable": true,
+      "Family": "SID_技・速さ",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_技・速さ＋３",
+      "Names": {
+        "en": "Spd/Dex +3",
+        "zh-Hans": "速度、技巧+3"
+      },
+      "Inheritable": true,
+      "Family": "SID_技・速さ",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_技・速さ＋４",
+      "Names": {
+        "en": "Spd/Dex +4",
+        "zh-Hans": "速度、技巧+4"
+      },
+      "Inheritable": true,
+      "Family": "SID_技・速さ",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_技・速さ＋５",
+      "Names": {
+        "en": "Spd/Dex +5",
+        "zh-Hans": "速度、技巧+5"
+      },
+      "Inheritable": true,
+      "Family": "SID_技・速さ",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_対弓術１",
+      "Names": {
+        "en": "Bow Guard 1",
+        "zh-Hans": "弓术对策Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_対弓術",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_対弓術２",
+      "Names": {
+        "en": "Bow Guard 2",
+        "zh-Hans": "弓术对策Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_対弓術",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_対弓術３",
+      "Names": {
+        "en": "Bow Guard 3",
+        "zh-Hans": "弓术对策Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_対弓術",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_対弓術４",
+      "Names": {
+        "en": "Bow Guard 4",
+        "zh-Hans": "弓术对策Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_対弓術",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_対弓術５",
+      "Names": {
+        "en": "Bow Guard 5",
+        "zh-Hans": "弓术对策Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_対弓術",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_対特殊１",
+      "Names": {
+        "en": "Special Guard 1",
+        "zh-Hans": "特殊对策Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_対特殊",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_対特殊２",
+      "Names": {
+        "en": "Special Guard 2",
+        "zh-Hans": "特殊对策Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_対特殊",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_対特殊３",
+      "Names": {
+        "en": "Special Guard 3",
+        "zh-Hans": "特殊对策Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_対特殊",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_対特殊４",
+      "Names": {
+        "en": "Special Guard 4",
+        "zh-Hans": "特殊对策Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_対特殊",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_対特殊５",
+      "Names": {
+        "en": "Special Guard 5",
+        "zh-Hans": "特殊对策Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_対特殊",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_対斧術１",
+      "Names": {
+        "en": "Axe Guard 1",
+        "zh-Hans": "斧术对策Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_対斧術",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_対斧術２",
+      "Names": {
+        "en": "Axe Guard 2",
+        "zh-Hans": "斧术对策Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_対斧術",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_対斧術３",
+      "Names": {
+        "en": "Axe Guard 3",
+        "zh-Hans": "斧术对策Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_対斧術",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_対斧術４",
+      "Names": {
+        "en": "Axe Guard 4",
+        "zh-Hans": "斧术对策Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_対斧術",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_対斧術５",
+      "Names": {
+        "en": "Axe Guard 5",
+        "zh-Hans": "斧术对策Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_対斧術",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_対短剣術１",
+      "Names": {
+        "en": "Knife Guard 1",
+        "zh-Hans": "短剑术对策Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_対短剣術",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_対短剣術２",
+      "Names": {
+        "en": "Knife Guard 2",
+        "zh-Hans": "短剑术对策Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_対短剣術",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_対短剣術３",
+      "Names": {
+        "en": "Knife Guard 3",
+        "zh-Hans": "短剑术对策Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_対短剣術",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_対短剣術４",
+      "Names": {
+        "en": "Knife Guard 4",
+        "zh-Hans": "短剑术对策Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_対短剣術",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_対短剣術５",
+      "Names": {
+        "en": "Knife Guard 5",
+        "zh-Hans": "短剑术对策Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_対短剣術",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_対魔道１",
+      "Names": {
+        "en": "Magic Guard 1",
+        "zh-Hans": "魔道对策Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_対魔道",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_対魔道２",
+      "Names": {
+        "en": "Magic Guard 2",
+        "zh-Hans": "魔道对策Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_対魔道",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_対魔道３",
+      "Names": {
+        "en": "Magic Guard 3",
+        "zh-Hans": "魔道对策Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_対魔道",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_対魔道４",
+      "Names": {
+        "en": "Magic Guard 4",
+        "zh-Hans": "魔道对策Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_対魔道",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_対魔道５",
+      "Names": {
+        "en": "Magic Guard 5",
+        "zh-Hans": "魔道对策Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_対魔道",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_対槍術１",
+      "Names": {
+        "en": "Lance Guard 1",
+        "zh-Hans": "枪术对策Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_対槍術",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_対槍術２",
+      "Names": {
+        "en": "Lance Guard 2",
+        "zh-Hans": "枪术对策Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_対槍術",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_対槍術３",
+      "Names": {
+        "en": "Lance Guard 3",
+        "zh-Hans": "枪术对策Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_対槍術",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_対槍術４",
+      "Names": {
+        "en": "Lance Guard 4",
+        "zh-Hans": "枪术对策Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_対槍術",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_対槍術５",
+      "Names": {
+        "en": "Lance Guard 5",
+        "zh-Hans": "枪术对策Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_対槍術",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_対剣術１",
+      "Names": {
+        "en": "Sword Guard 1",
+        "zh-Hans": "剑术对策Lv.1"
+      },
+      "Inheritable": true,
+      "Family": "SID_対剣術",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_対剣術２",
+      "Names": {
+        "en": "Sword Guard 2",
+        "zh-Hans": "剑术对策Lv.2"
+      },
+      "Inheritable": true,
+      "Family": "SID_対剣術",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_対剣術３",
+      "Names": {
+        "en": "Sword Guard 3",
+        "zh-Hans": "剑术对策Lv.3"
+      },
+      "Inheritable": true,
+      "Family": "SID_対剣術",
+      "Tier": 3
+    },
+    {
+      "Id": "SID_対剣術４",
+      "Names": {
+        "en": "Sword Guard 4",
+        "zh-Hans": "剑术对策Lv.4"
+      },
+      "Inheritable": true,
+      "Family": "SID_対剣術",
+      "Tier": 4
+    },
+    {
+      "Id": "SID_対剣術５",
+      "Names": {
+        "en": "Sword Guard 5",
+        "zh-Hans": "剑术对策Lv.5"
+      },
+      "Inheritable": true,
+      "Family": "SID_対剣術",
+      "Tier": 5
+    },
+    {
+      "Id": "SID_計略_引込の計",
+      "Names": {
+        "en": "Assembly Gambit",
+        "zh-Hans": "计策：引诱之计"
+      },
+      "Inheritable": true,
+      "Family": "SID_計略_引込の計",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_切磋琢磨",
+      "Names": {
+        "en": "Friendly Rivalry",
+        "zh-Hans": "切磋琢磨"
+      },
+      "Inheritable": false,
+      "Family": "SID_切磋琢磨",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_計略",
+      "Names": {
+        "en": "Gambit",
+        "zh-Hans": "计策"
+      },
+      "Inheritable": false,
+      "Family": "SID_計略",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_武器シンクロ",
+      "Names": {
+        "en": "Weapon Sync",
+        "zh-Hans": "武器同步"
+      },
+      "Inheritable": true,
+      "Family": "SID_武器シンクロ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_武器シンクロ＋",
+      "Names": {
+        "en": "Weapon Sync+",
+        "zh-Hans": "武器同步+"
+      },
+      "Inheritable": true,
+      "Family": "SID_武器シンクロ",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_血統",
+      "Names": {
+        "en": "Lineage",
+        "zh-Hans": "血统"
+      },
+      "Inheritable": true,
+      "Family": "SID_血統",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_光玉の加護",
+      "Names": {
+        "en": "Lightsphere",
+        "zh-Hans": "光玉加护"
+      },
+      "Inheritable": true,
+      "Family": "SID_光玉の加護",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_星玉の加護",
+      "Names": {
+        "en": "Starsphere",
+        "zh-Hans": "星玉加护"
+      },
+      "Inheritable": true,
+      "Family": "SID_星玉の加護",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_命玉の加護",
+      "Names": {
+        "en": "Lifesphere",
+        "zh-Hans": "命玉加护"
+      },
+      "Inheritable": true,
+      "Family": "SID_命玉の加護",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_命玉の加護＋",
+      "Names": {
+        "en": "Lifesphere+",
+        "zh-Hans": "命玉加护+"
+      },
+      "Inheritable": true,
+      "Family": "SID_命玉の加護",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_命玉の加護＋＋",
+      "Names": {
+        "en": "Lifesphere++",
+        "zh-Hans": "命玉加护++"
+      },
+      "Inheritable": true,
+      "Family": "SID_命玉の加護",
+      "Tier": 2
+    },
+    {
+      "Id": "SID_地玉の加護",
+      "Names": {
+        "en": "Geosphere",
+        "zh-Hans": "地玉加护"
+      },
+      "Inheritable": true,
+      "Family": "SID_地玉の加護",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_地玉の加護＋",
+      "Names": {
+        "en": "Geosphere+",
+        "zh-Hans": "地玉加护+"
+      },
+      "Inheritable": true,
+      "Family": "SID_地玉の加護",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_切り返し",
+      "Names": {
+        "en": "Quick Riposte",
+        "zh-Hans": "回击"
+      },
+      "Inheritable": true,
+      "Family": "SID_切り返し",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_切り返し＋",
+      "Names": {
+        "en": "Quick Riposte+",
+        "zh-Hans": "回击+"
+      },
+      "Inheritable": true,
+      "Family": "SID_切り返し",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_重撃",
+      "Names": {
+        "en": "Heavy Attack",
+        "zh-Hans": "重击"
+      },
+      "Inheritable": true,
+      "Family": "SID_重撃",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_角の睨み",
+      "Names": {
+        "en": "Piercing Glare",
+        "zh-Hans": "角之瞪视"
+      },
+      "Inheritable": false,
+      "Family": "SID_角の睨み",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_適応能力",
+      "Names": {
+        "en": "Adaptability",
+        "zh-Hans": "适应力"
+      },
+      "Inheritable": true,
+      "Family": "SID_適応能力",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_適応能力＋",
+      "Names": {
+        "en": "Adaptability+",
+        "zh-Hans": "适应力+"
+      },
+      "Inheritable": true,
+      "Family": "SID_適応能力",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_SPコンバート",
+      "Names": {
+        "en": "SP Conversion",
+        "zh-Hans": "SP转换"
+      },
+      "Inheritable": true,
+      "Family": "SID_SPコンバート",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_血讐",
+      "Names": {
+        "en": "Reprisal",
+        "zh-Hans": "血仇"
+      },
+      "Inheritable": true,
+      "Family": "SID_血讐",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_血讐＋",
+      "Names": {
+        "en": "Reprisal+",
+        "zh-Hans": "血仇+"
+      },
+      "Inheritable": true,
+      "Family": "SID_血讐",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_限界突破",
+      "Names": {
+        "en": "Level Boost",
+        "zh-Hans": "突破极限"
+      },
+      "Inheritable": true,
+      "Family": "SID_限界突破",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_異界の力",
+      "Names": {
+        "en": "Book of Worlds",
+        "zh-Hans": "异界之力"
+      },
+      "Inheritable": true,
+      "Family": "SID_異界の力",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_理魔法＋",
+      "Names": {
+        "en": "Anima Focus",
+        "zh-Hans": "理之精髓"
+      },
+      "Inheritable": true,
+      "Family": "SID_理魔法",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_慧眼",
+      "Names": {
+        "en": "Keen Insight",
+        "zh-Hans": "慧眼"
+      },
+      "Inheritable": true,
+      "Family": "SID_慧眼",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_慧眼＋",
+      "Names": {
+        "en": "Keen Insight+",
+        "zh-Hans": "慧眼+"
+      },
+      "Inheritable": true,
+      "Family": "SID_慧眼",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_囮指名",
+      "Names": {
+        "en": "Assign Decoy",
+        "zh-Hans": "指名诱饵"
+      },
+      "Inheritable": true,
+      "Family": "SID_囮指名",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_復帰阻止",
+      "Names": {
+        "en": "Block Recovery",
+        "zh-Hans": "阻止复原"
+      },
+      "Inheritable": true,
+      "Family": "SID_復帰阻止",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_竜脈・異",
+      "Names": {
+        "en": "Dragon Vein",
+        "zh-Hans": "龙脉"
+      },
+      "Inheritable": false,
+      "Family": "SID_竜脈・異",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_地脈吸収",
+      "Names": {
+        "en": "Groundswell",
+        "zh-Hans": "地脉吸收"
+      },
+      "Inheritable": true,
+      "Family": "SID_地脈吸収",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_デトックス",
+      "Names": {
+        "en": "Detoxify",
+        "zh-Hans": "解毒"
+      },
+      "Inheritable": true,
+      "Family": "SID_デトックス",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_後始末",
+      "Names": {
+        "en": "Decisive Strike",
+        "zh-Hans": "乘胜追击"
+      },
+      "Inheritable": true,
+      "Family": "SID_後始末",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_後始末＋",
+      "Names": {
+        "en": "Decisive Strike+",
+        "zh-Hans": "乘胜追击+"
+      },
+      "Inheritable": true,
+      "Family": "SID_後始末",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_力まかせ",
+      "Names": {
+        "en": "Brute Force",
+        "zh-Hans": "奋力"
+      },
+      "Inheritable": true,
+      "Family": "SID_力まかせ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_カリスマ",
+      "Names": {
+        "en": "Charm",
+        "zh-Hans": "超凡魅力"
+      },
+      "Inheritable": true,
+      "Family": "SID_カリスマ",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_不意打ち",
+      "Names": {
+        "en": "Surprise Attack",
+        "zh-Hans": "偷袭"
+      },
+      "Inheritable": true,
+      "Family": "SID_不意打ち",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_七色の叫び",
+      "Names": {
+        "en": "Rally Spectrum",
+        "zh-Hans": "七彩呐喊"
+      },
+      "Inheritable": true,
+      "Family": "SID_七色の叫び",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_七色の叫び＋",
+      "Names": {
+        "en": "Rally Spectrum+",
+        "zh-Hans": "七彩呐喊+"
+      },
+      "Inheritable": true,
+      "Family": "SID_七色の叫び",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_戦技",
+      "Names": {
+        "en": "Combat Arts",
+        "zh-Hans": "战技"
+      },
+      "Inheritable": false,
+      "Family": "SID_戦技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_戦技_狂嵐",
+      "Names": {
+        "en": "Raging Storm",
+        "zh-Hans": "狂风"
+      },
+      "Inheritable": false,
+      "Family": "SID_戦技_狂嵐",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_戦技_無残",
+      "Names": {
+        "en": "Atrocity",
+        "zh-Hans": "无惨"
+      },
+      "Inheritable": false,
+      "Family": "SID_戦技_無残",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_戦技_落星",
+      "Names": {
+        "en": "Fallen Star",
+        "zh-Hans": "落星"
+      },
+      "Inheritable": false,
+      "Family": "SID_戦技_落星",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_竜化",
+      "Names": {
+        "en": "Draconic Form",
+        "zh-Hans": "龙化"
+      },
+      "Inheritable": false,
+      "Family": "SID_竜化",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_鉄壁",
+      "Names": {
+        "en": "Impenetrable",
+        "zh-Hans": "铁壁"
+      },
+      "Inheritable": false,
+      "Family": "SID_鉄壁",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_契約",
+      "Names": {
+        "en": "Contract",
+        "zh-Hans": "契约"
+      },
+      "Inheritable": false,
+      "Family": "SID_契約",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_陽光",
+      "Names": {
+        "en": "Flare",
+        "zh-Hans": "阳光"
+      },
+      "Inheritable": false,
+      "Family": "SID_陽光",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_天駆",
+      "Names": {
+        "en": "Soar",
+        "zh-Hans": "天驱"
+      },
+      "Inheritable": false,
+      "Family": "SID_天駆",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_半身",
+      "Names": {
+        "en": "Other Half",
+        "zh-Hans": "另一半"
+      },
+      "Inheritable": false,
+      "Family": "SID_半身",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_三級長エンゲージ技",
+      "Names": {
+        "en": "Houses Unite",
+        "zh-Hans": "连花月风闪"
+      },
+      "Inheritable": false,
+      "Family": "SID_三級長エンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_三級長エンゲージ技＋",
+      "Names": {
+        "en": "Houses Unite+",
+        "zh-Hans": "连花月风闪+"
+      },
+      "Inheritable": false,
+      "Family": "SID_三級長エンゲージ技",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_チキエンゲージ技",
+      "Names": {
+        "en": "Divine Blessing",
+        "zh-Hans": "神龙的祝福"
+      },
+      "Inheritable": false,
+      "Family": "SID_チキエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_チキエンゲージ技＋",
+      "Names": {
+        "en": "Divine Blessing+",
+        "zh-Hans": "神龙的祝福+"
+      },
+      "Inheritable": false,
+      "Family": "SID_チキエンゲージ技",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_ヘクトルエンゲージ技",
+      "Names": {
+        "en": "Storm's Eye",
+        "zh-Hans": "止水雷轰架势"
+      },
+      "Inheritable": false,
+      "Family": "SID_ヘクトルエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_ヘクトルエンゲージ技＋",
+      "Names": {
+        "en": "Storm's Eye+",
+        "zh-Hans": "止水雷轰架势+"
+      },
+      "Inheritable": false,
+      "Family": "SID_ヘクトルエンゲージ技",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_ヴェロニカエンゲージ技",
+      "Names": {
+        "en": "Summon Hero",
+        "zh-Hans": "英雄召唤"
+      },
+      "Inheritable": false,
+      "Family": "SID_ヴェロニカエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_セネリオエンゲージ技",
+      "Names": {
+        "en": "Cataclysm",
+        "zh-Hans": "灾厄"
+      },
+      "Inheritable": false,
+      "Family": "SID_セネリオエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_セネリオエンゲージ技＋",
+      "Names": {
+        "en": "Cataclysm+",
+        "zh-Hans": "灾厄+"
+      },
+      "Inheritable": false,
+      "Family": "SID_セネリオエンゲージ技",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_カミラエンゲージ技",
+      "Names": {
+        "en": "Dark Inferno",
+        "zh-Hans": "暗夜爆破阵"
+      },
+      "Inheritable": false,
+      "Family": "SID_カミラエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_カミラエンゲージ技＋",
+      "Names": {
+        "en": "Dark Inferno+",
+        "zh-Hans": "暗夜爆破阵+"
+      },
+      "Inheritable": false,
+      "Family": "SID_カミラエンゲージ技",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_クロムエンゲージ技",
+      "Names": {
+        "en": "Giga Levin Sword",
+        "zh-Hans": "万钧雷霆剑"
+      },
+      "Inheritable": false,
+      "Family": "SID_クロムエンゲージ技",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_クロムエンゲージ技＋",
+      "Names": {
+        "en": "Giga Levin Sword+",
+        "zh-Hans": "万钧雷霆剑+"
+      },
+      "Inheritable": false,
+      "Family": "SID_クロムエンゲージ技",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_守護者",
+      "Names": {
+        "en": "Protective",
+        "zh-Hans": "守护者"
+      },
+      "Inheritable": false,
+      "Family": "SID_守護者",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_負けず嫌い",
+      "Names": {
+        "en": "Rivalry",
+        "zh-Hans": "争强好胜"
+      },
+      "Inheritable": false,
+      "Family": "SID_負けず嫌い",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_ムードメーカー",
+      "Names": {
+        "en": "Friendly Boost",
+        "zh-Hans": "开心果"
+      },
+      "Inheritable": false,
+      "Family": "SID_ムードメーカー",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_生存戦略",
+      "Names": {
+        "en": "Survival Plan",
+        "zh-Hans": "生存战略"
+      },
+      "Inheritable": false,
+      "Family": "SID_生存戦略",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_理想の騎士像",
+      "Names": {
+        "en": "Knightly Code",
+        "zh-Hans": "理想中的骑士"
+      },
+      "Inheritable": false,
+      "Family": "SID_理想の騎士像",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_全弾発射",
+      "Names": {
+        "en": "Let Fly",
+        "zh-Hans": "全弹发射"
+      },
+      "Inheritable": false,
+      "Family": "SID_全弾発射",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_輸送隊",
+      "Names": {
+        "en": "Convoy",
+        "zh-Hans": "运输队"
+      },
+      "Inheritable": false,
+      "Family": "SID_輸送隊",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_裏邪竜ノ子_兵種スキル",
+      "Names": {
+        "en": "Spur Emblems",
+        "zh-Hans": "增进纹章气"
+      },
+      "Inheritable": false,
+      "Family": "SID_裏邪竜ノ子_兵種スキル",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_保身",
+      "Names": {
+        "en": "Self-Defense",
+        "zh-Hans": "保身"
+      },
+      "Inheritable": false,
+      "Family": "SID_保身",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_戦場の花",
+      "Names": {
+        "en": "Fierce Bloom",
+        "zh-Hans": "战场之花"
+      },
+      "Inheritable": false,
+      "Family": "SID_戦場の花",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_促す決着",
+      "Names": {
+        "en": "This Ends Here",
+        "zh-Hans": "犹豫不决"
+      },
+      "Inheritable": false,
+      "Family": "SID_促す決着",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_能力誇示",
+      "Names": {
+        "en": "Show-Off",
+        "zh-Hans": "自命不凡"
+      },
+      "Inheritable": false,
+      "Family": "SID_能力誇示",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_傷をつけたわね",
+      "Names": {
+        "en": "Final Say",
+        "zh-Hans": "居然伤到我了？"
+      },
+      "Inheritable": false,
+      "Family": "SID_傷をつけたわね",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_密かな支援",
+      "Names": {
+        "en": "Stealth Assist",
+        "zh-Hans": "秘密支援"
+      },
+      "Inheritable": false,
+      "Family": "SID_密かな支援",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_王の尊厳",
+      "Names": {
+        "en": "Dignity of Solm",
+        "zh-Hans": "王者尊严"
+      },
+      "Inheritable": false,
+      "Family": "SID_王の尊厳",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_殺戮者",
+      "Names": {
+        "en": "Wear Down",
+        "zh-Hans": "杀戮者"
+      },
+      "Inheritable": false,
+      "Family": "SID_殺戮者",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_瘴気の領域",
+      "Names": {
+        "en": "Miasma Domain",
+        "zh-Hans": "瘴气领域"
+      },
+      "Inheritable": false,
+      "Family": "SID_瘴気の領域",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_氷の領域",
+      "Names": {
+        "en": "Frost Domain",
+        "zh-Hans": "冰之领域"
+      },
+      "Inheritable": false,
+      "Family": "SID_氷の領域",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_異形狼連携",
+      "Names": {
+        "en": "Pack Hunter",
+        "zh-Hans": "群起狩猎"
+      },
+      "Inheritable": false,
+      "Family": "SID_異形狼連携",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_チェインアタック威力軽減＋",
+      "Names": {
+        "en": "Bond Breaker+",
+        "zh-Hans": "撕裂牵绊者+"
+      },
+      "Inheritable": false,
+      "Family": "SID_チェインアタック威力軽減",
+      "Tier": 1
+    },
+    {
+      "Id": "SID_以心",
+      "Names": {
+        "en": "Attuned",
+        "zh-Hans": "以心"
+      },
+      "Inheritable": false,
+      "Family": "SID_以心",
+      "Tier": 0
+    },
+    {
+      "Id": "SID_裏邪竜ノ娘_兵種スキル",
+      "Names": {
+        "en": "Resist Emblems",
+        "zh-Hans": "抑制纹章气"
+      },
+      "Inheritable": false,
+      "Family": "SID_裏邪竜ノ娘_兵種スキル",
+      "Tier": 0
+    }
   ]
 }

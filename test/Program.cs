@@ -83,6 +83,7 @@ try
     InventoryTests.Run(window, temporary);
     RosterTests.Run(window, temporary);
     RosterClassTests.Run(window, temporary);
+    RosterSkillTests.Run(window, temporary);
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -102,6 +103,7 @@ try
                 InventoryTests.CheckReal(loaded);
                 RosterTests.CheckReal(loaded);
                 RosterClassTests.CheckReal(loaded);
+                RosterSkillTests.CheckReal(loaded);
                 var current = loaded.ReadMainValues();
                 var updated = current with { Money = 12345, BondFragments = 6789, IronIngots = 111,
                     SteelIngots = 222, SilverIngots = 333, Difficulty = Difficulty.Normal,
@@ -124,7 +126,7 @@ try
             window.ShowRoster();
             window.FindControl<TabStrip>("RosterTabs")!.SelectedIndex = page switch
             {
-                "roster" => 0, "roster-stats" => 1, "roster-items" => 2,
+                "roster" => 0, "roster-stats" => 1, "roster-items" => 2, "roster-skills" => 3, "roster-proficiencies" => 4,
                 _ => throw new ArgumentException("Unknown roster screenshot tab.")
             };
         }

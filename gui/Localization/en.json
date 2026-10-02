@@ -96,5 +96,19 @@
   "Dagger": "Dagger",
   "Staff": "Staff",
   "Arts": "Arts",
-  "Special": "Special"
+  "Special": "Special",
+  "Skills": "Skills",
+  "Proficiencies": "Weapon Proficiencies",
+  "InternalLevel": "Internal Level",
+  "CurrentHP": "Current HP",
+  "RestoreHP": "Restore HP",
+  "EquippedSkills": "Equipped Skills",
+  "InheritedSkills": "Inherited Skills",
+  "ClassSkill": "Class Skill",
+  "Unlocked": "Unlocked",
+  "UnlockSkill": "Unlock Skill",
+  "RemoveSkill": "Remove Skill",
+  "UnlockAll": "Unlock All",
+  "UnknownSkill": "Unknown skill",
+  "SelectSkill": "Select a skill."
 }

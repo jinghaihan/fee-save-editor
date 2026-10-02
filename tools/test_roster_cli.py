@@ -116,6 +116,35 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
             print(f"{name}: roster independent scalar decoding, translation and byte-diff preservation passed.")
 
         source.write_bytes(original)
+        catalog = json.loads(run("catalog", "--json").stdout)
+        assert len(catalog["Skills"]) == 277
+        canter, starsphere = "SID_再移動", "SID_星玉の加護"
+        assert run("skill-unlock", str(source), str(output), "--character", "0", "--skill", canter).returncode == 0
+        assert len(output.read_bytes()) == len(original) + 14
+        assert run("skills-equip", str(output), str(restored), "--character", "0", "--first", canter, "--second", "none").returncode == 0
+        info = json.loads(run("list", str(restored), "--json").stdout)[0]
+        assert info["EquippedSkills"][0]["Name"] == "Canter"
+        output.unlink()
+        assert run("skill-remove", str(restored), str(output), "--character", "0", "--skill", canter).returncode == 0
+        assert output.read_bytes() == original
+        output.unlink()
+        restored.unlink()
+        assert run("skills-max", str(source), str(output), "--character", "0").returncode == 0
+        info = json.loads(run("list", str(output), "--language", "zh-Hans", "--json").stdout)[0]
+        assert len(info["InheritedSkills"]) == 94
+        assert next(skill for skill in info["InheritedSkills"] if skill["Id"] == starsphere)["Name"] != "Starsphere"
+        output.unlink()
+        assert run("proficiencies", str(source), str(output), "--character", "0", "--weapons", "Sword").returncode == 0
+        info = json.loads(run("list", str(output), "--json").stdout)[0]
+        assert info["Progress"]["Proficiencies"] == 2
+        output.unlink()
+        assert run("condition", str(source), str(output), "--character", "0", "--internal-level", "-100", "--hp", "0").returncode == 0
+        info = json.loads(run("list", str(output), "--json").stdout)[0]
+        assert info["Progress"]["InternalLevel"] == -100 and info["Progress"]["CurrentHP"] == 0
+        assert run("condition", str(output), str(restored), "--character", "0", "--internal-level", "4", "--hp", "20").returncode == 0
+        assert restored.read_bytes() == original
+        output.unlink()
+        restored.unlink()
         result = run("class", str(source), str(output), "--character", "0", "--class", "JID_ブレイブヒーロー", "--weapons", "Sword,Axe")
         assert result.returncode == 0, result.stderr
         data = output.read_bytes()
@@ -124,7 +153,16 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
         assert data[start + 109:start + 111] == bytes((1, 0))
         info = json.loads(run("list", str(output), "--json").stdout)[0]
         assert info["Progress"]["SelectedWeapons"] == 10 and info["Progress"]["InternalLevel"] == 8
+        assert run("set", str(output), str(restored), "--character", "0", "--level", "5").returncode == 0
         output.unlink()
+        class_baseline = restored.read_bytes()
+        assert run("class-skill", str(restored), str(output), "--character", "0", "--unlocked", "true").returncode == 0
+        assert json.loads(run("list", str(output), "--json").stdout)[0]["Progress"]["ClassSkill"] is not None
+        restored.unlink()
+        assert run("class-skill", str(output), str(restored), "--character", "0", "--unlocked", "false").returncode == 0
+        assert restored.read_bytes() == class_baseline
+        output.unlink()
+        restored.unlink()
         for character, level in (("0", "20"), ("1", "40")):
             assert run("set", str(source), str(output), "--character", character, "--level", level, "--experience", "0").returncode == 0
             output.unlink()
@@ -142,6 +180,15 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
         assert output.read_bytes()[first_item_uses] == 10
         output.unlink()
         failures = [
+            ("condition", "--character", "0", "--internal-level", "101"),
+            ("condition", "--character", "0", "--hp", "255"),
+            ("condition", "--character", "0"),
+            ("skill-unlock", "--character", "0", "--skill", "SID_missing"),
+            ("skills-equip", "--character", "0", "--first", canter),
+            ("skills-equip", "--character", "0"),
+            ("class-skill", "--character", "0", "--unlocked", "invalid"),
+            ("proficiencies", "--character", "0", "--weapons", "none"),
+            ("proficiencies", "--character", "0", "--weapons", "Special"),
             ("class", "--character", "0", "--class", "JID_ダンサー"),
             ("class", "--character", "0", "--class", "JID_ランスペガサス"),
             ("class", "--character", "0", "--class", "JID_ブレイブヒーロー", "--weapons", "Sword"),

@@ -35,6 +35,8 @@ public partial class MainWindow
         _selectedCharacter = null;
         _selectedCharacterItem = null;
         RosterGeneralForm.IsEnabled = RosterStatsForm.IsEnabled = RosterItemsForm.IsEnabled = false;
+        RosterSkillsForm.IsEnabled = RosterProficienciesForm.IsEnabled = false;
+        RosterSkillList.ItemsSource = Array.Empty<SkillChoice>();
         RosterList.ItemsSource = Array.Empty<RosterRow>();
         RosterItemsList.ItemsSource = Array.Empty<InventoryRow>();
         RosterName.Clear();
@@ -86,6 +88,7 @@ public partial class MainWindow
     {
         var character = SelectedCharacter;
         RosterGeneralForm.IsEnabled = RosterStatsForm.IsEnabled = RosterItemsForm.IsEnabled = character is not null;
+        RosterSkillsForm.IsEnabled = RosterProficienciesForm.IsEnabled = character is not null;
         if (character is null)
         {
             RosterName.Clear();
@@ -106,6 +109,10 @@ public partial class MainWindow
         RosterLevel.Text = character.Values.Level.ToString();
         RosterExperience.Text = character.Values.Experience.ToString();
         RosterSkillPoints.Text = character.Values.SkillPoints.ToString();
+        RosterInternalLevel.Text = character.Progress.InternalLevel.ToString();
+        RosterCurrentHP.Maximum = Save!.RosterMaximumHP(character.Index);
+        RosterCurrentHP.Text = character.Progress.CurrentHP.ToString();
+        RefreshRosterSkills(character, preserveEdits: false);
         RosterStatsInputs.Children.Clear();
         _rosterStats.Clear();
         foreach (var stat in character.Stats.Where(stat => stat.Stat != RosterStat.Sight))
@@ -156,6 +163,7 @@ public partial class MainWindow
             field.Label.Text = UiLanguage.Get(stat.ToString());
         RefreshCharacterItems(selectEditor: false);
         RefreshCharacterItemChoices((RosterItemType.SelectedItem as ItemChoice)?.Definition.Hash);
+        RefreshRosterSkills(character, preserveEdits: true);
     }
 
     public bool ApplyRosterValues()
@@ -163,7 +171,7 @@ public partial class MainWindow
         return EditRoster(save =>
         {
             var character = SelectedCharacter ?? throw new ArgumentException("Select a character.");
-            return PendingGeneralValues(save, character);
+            return PendingRosterCondition(PendingGeneralValues(save, character), character);
         }, refresh: true);
     }
 
@@ -172,8 +180,8 @@ public partial class MainWindow
         var character = SelectedCharacter ?? throw new ArgumentException("Select a character.");
         foreach (var (stat, field) in _rosterStats.Where(pair => pair.Value.Input.IsEnabled))
             save = save.WithRosterStat(character.Index, stat, Amount(field.Input));
-        return save;
-    }, refresh: false);
+        return PendingRosterCondition(save, character);
+    }, refresh: true);
 
     private bool EditRoster(Func<EngageSave, EngageSave> edit, bool refresh)
     {
@@ -281,7 +289,8 @@ public partial class MainWindow
         foreach (var (stat, field) in _rosterStats.Where(pair => pair.Value.Input.IsEnabled))
             if (field.Input.Text != character.Stats[(int)stat].Value.ToString())
                 save = save.WithRosterStat(character.Index, stat, Amount(field.Input));
-        return save;
+        save = PendingRosterCondition(save, character);
+        return PendingRosterSkills(save, character);
     }
 
     private EngageSave PendingGeneralValues(EngageSave save, RosterCharacter character)
@@ -347,6 +356,8 @@ public partial class MainWindow
         RosterGeneralForm.IsVisible = RosterTabs.SelectedIndex == 0;
         RosterStatsForm.IsVisible = RosterTabs.SelectedIndex == 1;
         RosterItemsForm.IsVisible = RosterTabs.SelectedIndex == 2;
+        RosterSkillsForm.IsVisible = RosterTabs.SelectedIndex == 3;
+        RosterProficienciesForm.IsVisible = RosterTabs.SelectedIndex == 4;
     }
     private void RosterLevel_Changed(object? sender, NumericUpDownValueChangedEventArgs e)
     {

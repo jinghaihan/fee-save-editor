@@ -37,16 +37,25 @@ public sealed record ItemNameDefinition(string Id, IReadOnlyDictionary<string, s
     public string Name(string language) => Names.GetValueOrDefault(language) ?? Names["en"];
 }
 
+public sealed record SkillDefinition(string Id, IReadOnlyDictionary<string, string> Names, bool Inheritable, string Family, int Tier)
+{
+    public uint Hash => ItemCatalog.Hash(Id);
+    public string Name(string language) => Names.GetValueOrDefault(language) ?? Names["en"];
+}
+
 public static class RosterCatalog
 {
-    private sealed record CatalogData(PersonDefinition[] Persons, ClassDefinition[] Classes, ItemNameDefinition[] ItemNames);
+    private sealed record CatalogData(PersonDefinition[] Persons, ClassDefinition[] Classes, ItemNameDefinition[] ItemNames, SkillDefinition[] Skills);
     private static readonly CatalogData Data = Load();
     private static readonly IReadOnlyDictionary<uint, PersonDefinition> People = Data.Persons.ToDictionary(person => person.Hash);
     private static readonly IReadOnlyDictionary<uint, ClassDefinition> Jobs = Data.Classes.ToDictionary(job => job.Hash);
     private static readonly IReadOnlyDictionary<uint, ItemNameDefinition> ItemNames = Data.ItemNames.ToDictionary(item => item.Hash);
+    private static readonly IReadOnlyDictionary<uint, SkillDefinition> SkillNames = Data.Skills.ToDictionary(skill => skill.Hash);
     public static PersonDefinition? Person(uint hash) => People.GetValueOrDefault(hash);
     public static ClassDefinition? Class(uint hash) => Jobs.GetValueOrDefault(hash);
     public static ItemNameDefinition? Item(uint hash) => ItemNames.GetValueOrDefault(hash);
+    public static SkillDefinition? Skill(uint hash) => SkillNames.GetValueOrDefault(hash);
+    public static IReadOnlyList<SkillDefinition> Skills { get; } = Array.AsReadOnly(Data.Skills);
     public static IReadOnlyList<PersonDefinition> Persons { get; } = Array.AsReadOnly(Data.Persons);
     public static IReadOnlyList<ClassDefinition> Classes { get; } = Array.AsReadOnly(Data.Classes);
     public static IReadOnlyList<ClassDefinition> ClassesFor(uint personHash, int gender)
@@ -67,7 +76,8 @@ public static class RosterCatalog
             || data.Persons.Any(person => person.LimitModifiers.Count != 11 || !ValidNames(person.Names))
             || data.Classes.Any(job => job.BaseStats.Count != 11 || job.Limits.Count != 11 || job.Weapons.Count != 10
                 || job.MaxLevel is < 1 or > 40 || !ValidNames(job.Names))
-            || data.ItemNames.Length == 0 || data.ItemNames.Any(item => !ValidNames(item.Names)))
+            || data.ItemNames.Length == 0 || data.ItemNames.Any(item => !ValidNames(item.Names))
+            || data.Skills.Length == 0 || data.Skills.Any(skill => !ValidNames(skill.Names)))
             throw new InvalidDataException("The roster catalog has missing translations or invalid limits.");
         return new CatalogData(data.Persons.Select(person => person with
         {
@@ -76,7 +86,8 @@ public static class RosterCatalog
         {
             Names = ReadOnlyNames(job.Names), BaseStats = Array.AsReadOnly(job.BaseStats.ToArray()),
             Limits = Array.AsReadOnly(job.Limits.ToArray()), Weapons = Array.AsReadOnly(job.Weapons.ToArray())
-        }).ToArray(), data.ItemNames.Select(item => item with { Names = ReadOnlyNames(item.Names) }).ToArray());
+        }).ToArray(), data.ItemNames.Select(item => item with { Names = ReadOnlyNames(item.Names) }).ToArray(),
+            data.Skills.Select(skill => skill with { Names = ReadOnlyNames(skill.Names) }).ToArray());
     }
 
     private static IReadOnlyDictionary<string, string> ReadOnlyNames(IReadOnlyDictionary<string, string> names) =>

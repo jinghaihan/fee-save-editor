@@ -3,6 +3,7 @@
 
 import argparse
 import json
+import re
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -27,7 +28,7 @@ def main() -> None:
     texts = {}
     for language, folder in [("en", "US/USen"), ("zh-Hans", "CN/CNch")]:
         values = {}
-        for name in ["Person", "Job", "Item", "Patch0", "Patch1", "Patch2", "Patch3"]:
+        for name in ["Person", "Job", "Item", "Skill", "Patch0", "Patch1", "Patch2", "Patch3"]:
             source = fetch("delvier/Iron19_L10n", TEXT_REVISION, f"{folder}/{name}.txt")
             values.update(line.split("\t", 1) for line in source.splitlines() if "\t" in line)
         texts[language] = values
@@ -38,6 +39,9 @@ def main() -> None:
     vanilla_jobs = {row.get("Jid"): row for row in vanilla.findall("./Sheet/Data/Param")}
     items = ET.fromstring(fetch("LordMewtwo73/feEngage-randomizer", DATA_REVISION, base + "item.xml"))
     playable = ET.fromstring(fetch("LordMewtwo73/feEngage-randomizer", DATA_REVISION, "assets/CharacterData.xml"))
+    skill_data = ET.fromstring(fetch("LordMewtwo73/feEngage-randomizer", DATA_REVISION, "assets/SkillData.xml"))
+    vanilla_skills = ET.fromstring(fetch("laqieer/FE17-DOC", VANILLA_REVISION, "fe_assets_gamedata/Skill.xml"))
+    skill_rows = {row.get("Sid"): row for row in vanilla_skills.findall("./Sheet/Data/Param")}
     ids = {row.get("PID") for row in playable.findall("./Sheet/Data/Param")}
 
     def class_flags(row: ET.Element) -> int:
@@ -74,11 +78,36 @@ def main() -> None:
                   if row.get("Iid") and row.get("Name") in texts["en"] and row.get("Name") in texts["zh-Hans"]
                   and all(texts[language][row.get("Name")].strip() for language in texts)]
     item_names.append({"Id": "IID_エンゲージ枠", "Names": {"en": "Engage slot", "zh-Hans": "结合栏位"}, "EngageOnly": True})
+    def normalized(value: str) -> str:
+        return re.sub(r"\s+", "", value).casefold()
+
+    skills = []
+    for row in skill_data.findall("./Sheet/Data/Param"):
+        sid = row.get("SID")
+        definition = skill_rows.get(sid)
+        key = definition.get("Name") if definition is not None else None
+        if not key or key not in texts["en"] or key not in texts["zh-Hans"]:
+            matches = [key for key, value in texts["en"].items() if key.startswith("MSID_")
+                       and not key.startswith("MSID_H_") and normalized(value) == normalized(row.get("Name"))
+                       and key in texts["zh-Hans"]]
+            if not matches:
+                raise ValueError(f"Missing skill translations: {sid} / {row.get('Name')}")
+            key = matches[0]
+        suffix = re.search(r"[0-9０-９]+$", sid.removesuffix("_継承用"))
+        tier = int(suffix.group()) if suffix else len(sid) - len(sid.rstrip("＋"))
+        skills.append({"Id": sid, "Names": {language: values[key] for language, values in texts.items()},
+                       "Inheritable": row.get("Type") in {"Inherit", "Sync"} and int(row.get("SP") or "0") > 0,
+                       "Family": re.sub(r"[0-9０-９＋]+$", "", sid.removesuffix("_継承用")), "Tier": tier})
+    # Nel's saved class-skill hash and job-table ID match, but SkillData.xml omits it.
+    sid = "SID_裏邪竜ノ娘_兵種スキル"
+    key = "MSID_JobSkill_ShadowPrincessR"
+    skills.append({"Id": sid, "Names": {language: values[key] for language, values in texts.items()},
+                   "Inheritable": False, "Family": sid, "Tier": 0})
     if len(persons) != 41 or len({row["Id"] for row in persons}) != 41:
         raise ValueError("The roster must include all 41 playable characters, including DLC.")
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps({"DataRevision": DATA_REVISION, "TextRevision": TEXT_REVISION,
-                                      "Persons": persons, "Classes": classes, "ItemNames": item_names}, ensure_ascii=False, indent=2) + "\n",
+                                      "Persons": persons, "Classes": classes, "ItemNames": item_names, "Skills": skills}, ensure_ascii=False, indent=2) + "\n",
                            encoding="utf-8")
     print(f"Imported {len(persons)} characters and {len(classes)} classes.")
 

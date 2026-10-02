@@ -174,8 +174,9 @@ force mask. This differs from the two-byte null marker used for item engravings.
 The item list is version `2`, with eight version-5 UnitItem records. UnitItem
 encoding is shared with the convoy but has no Transporter.Data wrapper.
 
-The remainder contains skills, accessories, enhancements, AI and actor data.
-These are preserved opaquely. The final ten bytes contain two indices, Int16 SP,
+The following progression blocks are decoded as described below. Private skills,
+accessories, enhancements, AI and other actor data remain unchanged by edits.
+The final ten bytes contain two indices, Int16 SP,
 an owner integer and two signed target coordinates. Variable-length item changes
 update the Unit record length, UNIT section size, subsequent section offsets
 and the outer checksum. Other characters and sections remain unchanged.
@@ -250,6 +251,25 @@ version 1 contains another. Each capability is version 1, count 11, and eleven
 version/count and leaves subsequent AI, customization, Emblem and battle state
 untouched. This layout was checked against all characters in both supplied manual
 and automatic saves, including DLC, optional targets and equipped skills.
+
+Inherited skills use the pinned randomizer's `SkillData.xml` IDs and positive
+inheritance SP costs (Inherit/Sync categories), with the original vanilla skill
+message keys and localized Patch0–3 messages. The editable catalog contains 277
+skills in 94 tier families. Nel's `SID_裏邪竜ノ娘_兵種スキル` is resolved directly from
+her job's LearningSkill and `MSID_JobSkill_ShadowPrincessR` in Patch3. Skill IDs
+and names, not numeric UI positions, determine edits. Unknown skills remain visible
+and are retained. Upgrading a family replaces its earlier tier in the inherited
+pool and equipped slots; removing a skill also removes it from those slots.
+New inheritance entries use age 0/category 11, consistent with `AddToEquipSkillPool`
+at `0x1a36560`; existing entry metadata and private skills are preserved.
+
+Weapon proficiency edits affect only Sword through Arts bits (mask 510); innate
+and current-class requirements cannot be removed, while Special and unknown bits
+are retained. Current HP is bounded by unenhanced maximum HP plus the serialized
+enhancement calculator's HP bonus, up to 255. Internal level is a signed byte;
+the editor accepts -100 through 100, matching the native setter's bounds.
+Changing it or the displayed level does not simulate growth. Skill and class-skill
+changes relocate the containing record/section and preserve subsequent sections.
 
 ## Resource inputs
 

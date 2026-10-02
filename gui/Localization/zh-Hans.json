@@ -96,5 +96,19 @@
   "Dagger": "短剑",
   "Staff": "杖",
   "Arts": "体术",
-  "Special": "特殊"
+  "Special": "特殊",
+  "Skills": "技能",
+  "Proficiencies": "武器资质",
+  "InternalLevel": "内部等级",
+  "CurrentHP": "当前 HP",
+  "RestoreHP": "回复 HP",
+  "EquippedSkills": "已装备技能",
+  "InheritedSkills": "继承技能",
+  "ClassSkill": "职业技能",
+  "Unlocked": "已解锁",
+  "UnlockSkill": "解锁技能",
+  "RemoveSkill": "移除技能",
+  "UnlockAll": "全部解锁",
+  "UnknownSkill": "未知技能",
+  "SelectSkill": "请选择技能。"
 }

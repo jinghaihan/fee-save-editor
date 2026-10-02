@@ -27,10 +27,14 @@ are still under development.
   branches, including DLC classes. Reclassing resets level/EXP and the old class
   skill using the game's rules; switching only a weapon branch retains progress. Engage weapons
   and reserved Engage slots are displayed but not replaced/deleted as normal items.
+  Unlock, upgrade or remove inherited skills, equip two slots, or unlock the
+  highest tier of every inheritance skill family, including DLC. Toggle learned
+  class skills at their required level. Edit weapon proficiencies without removing
+  innate/current-class requirements. Edit internal level and current HP, or restore HP.
 - Desktop application using SukiUI controls.
 - Sommie application icon.
 - English UI by default, with live switching to Simplified Chinese, including
-  character, class and item names. The character catalog includes all 41 playable
+  character, class, skill and item names. The character catalog includes all 41 playable
   characters, including DLC. Names fall back to English, or a visible hash for
   unrecognized records, rather than showing blank entries.
 - Save inspector under Tools, with section search and file information.
@@ -66,6 +70,12 @@ Use `--language zh-Hans` to inspect translated character/class/equipment names.
 `roster class` accepts `--character`, `--class <JID>` and an optional
 `--weapons Sword,Lance` branch. Level, EXP, learned class skill and internal level
 follow the same reclassing rules as the GUI.
+`roster catalog --json` lists class and skill IDs. `skill-unlock` / `skill-remove`
+accept `--character` and `--skill <SID>`; `skills-max` unlocks the highest tier
+of each family for one character. `skills-equip` accepts `--first <SID|none>`
+and/or `--second <SID|none>`. `class-skill --unlocked true|false` edits the learned
+class skill. `proficiencies --weapons Sword,Lance` edits weapon proficiencies;
+`condition --internal-level <value> --hp <value>` edits either or both fields.
 
 The container reader has been checked against game-format version 9 saves.
 Main, convoy and roster edits have been checked through serialization and exact restoration on
