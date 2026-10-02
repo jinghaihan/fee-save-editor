@@ -88,6 +88,7 @@ try
     MainTests.Run(window, temporary);
     DonationTests.Run();
     AchievementTests.Run();
+    AchievementGuiTests.Run(window, temporary);
     DonationGuiTests.Run(window, temporary);
     InventoryTests.Run(window, temporary);
     RosterTests.Run(window, temporary);
@@ -112,6 +113,7 @@ try
             Check(window.LoadSave(path), $"The GUI could not open {name}.");
             Check(window.CanEditMain == (name != "Global"), $"{name}: Main edit availability is incorrect.");
             Check(window.CanEditDonations == (name != "Global"), $"{name}: Donation edit availability is incorrect.");
+            Check(window.CanEditAchievements == (name != "Global"), $"{name}: Achievement edit availability is incorrect.");
             string destination = Path.Combine(temporary, name + "-copy");
             Check(window.SaveCopy(destination), $"The GUI could not copy {name}.");
             Check(File.ReadAllBytes(destination).AsSpan().SequenceEqual(before), $"{name} copy differs.");
@@ -158,6 +160,8 @@ try
         }
         else if (captureOptions is ["--page", "support"])
             window.ShowSupports();
+        else if (captureOptions is ["--page", "achievements"])
+            window.ShowAchievements();
         else if (captureOptions is ["--page", "emblems"] or ["--page", "rings"] or ["--page", "ring-meld"])
         {
             window.ShowEmblems();

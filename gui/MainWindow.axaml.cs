@@ -20,6 +20,7 @@ public partial class MainWindow : Window
             if (change.Property == NumericUpDown.TextProperty) UpdateDonationLevel();
         };
         RefreshDonationLanguage();
+        RefreshAchievementLanguage();
         EmblemBondExpInput.PropertyChanged += (_, change) =>
         {
             if (change.Property == NumericUpDown.TextProperty) UpdateEmblemBondLevel();
@@ -57,6 +58,7 @@ public partial class MainWindow : Window
             Message.IsVisible = false;
             LoadMainValues();
             LoadDonations();
+            LoadAchievements();
             LoadInventory();
             LoadRoster();
             LoadEmblems();
@@ -103,6 +105,7 @@ public partial class MainWindow : Window
         RefreshOptions();
         RefreshInventoryLanguage();
         RefreshDonationLanguage();
+        RefreshAchievementLanguage();
         RefreshRosterLanguage();
         RefreshEmblemLanguage();
         RefreshSupportLanguage();
@@ -209,7 +212,7 @@ public partial class MainWindow : Window
     private void Inspector_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: true);
     private void Navigation_Changed(object? sender, SelectionChangedEventArgs e)
     {
-        if (MainPanel is null || ItemsPanel is null || RosterPanel is null || EmblemsPanel is null || SupportsPanel is null)
+        if (MainPanel is null || ItemsPanel is null || RosterPanel is null || EmblemsPanel is null || SupportsPanel is null || AchievementsPanel is null)
             return;
         switch (MainNavigation.SelectedIndex)
         {
@@ -227,6 +230,9 @@ public partial class MainWindow : Window
                 break;
             case 4 when !SupportsPanel.IsVisible:
                 ShowSupports();
+                break;
+            case 5 when !AchievementsPanel.IsVisible:
+                ShowAchievements();
                 break;
         }
     }

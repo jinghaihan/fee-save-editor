@@ -149,5 +149,20 @@
   "MaxSupport": "支援满级",
   "MaxAllSupports": "全部支援满级",
   "SelectSupport": "请选择支援配对。",
-  "SupportsUnavailable": "无法读取支援："
+  "SupportsUnavailable": "无法读取支援：",
+  "Achievements": "成就",
+  "Achievement": "成就",
+  "Category": "分类",
+  "AllCategories": "全部分类",
+  "Status": "状态",
+  "AchievementCategoryUnit": "角色",
+  "AchievementCategoryBattle": "战斗",
+  "AchievementCategorySomniel": "索拉涅尔",
+  "AchievementCategoryShop": "购物",
+  "AchievementCategorySystem": "其他",
+  "NotAchieved": "未达成",
+  "RewardAvailable": "奖励待领取",
+  "RewardClaimed": "奖励已领取",
+  "UnlockAchievement": "解锁成就",
+  "AchievementsUnavailable": "无法读取成就："
 }

@@ -98,6 +98,7 @@ public partial class MainWindow
         RosterPanel.IsVisible = false;
         EmblemsPanel.IsVisible = false;
         SupportsPanel.IsVisible = false;
+        AchievementsPanel.IsVisible = false;
         InspectorPanel.IsVisible = inspector;
         ApplyMainButton.IsVisible = !inspector;
         MainNavigation.SelectedIndex = inspector ? -1 : 0;

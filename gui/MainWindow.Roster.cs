@@ -25,6 +25,7 @@ public partial class MainWindow
     {
         MainPanel.IsVisible = ItemsPanel.IsVisible = InspectorPanel.IsVisible = EmblemsPanel.IsVisible = false;
         SupportsPanel.IsVisible = false;
+        AchievementsPanel.IsVisible = false;
         RosterPanel.IsVisible = true;
         ApplyMainButton.IsVisible = false;
         MainNavigation.SelectedIndex = 2;

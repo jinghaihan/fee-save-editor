@@ -149,5 +149,20 @@
   "MaxSupport": "Max Support",
   "MaxAllSupports": "Max All Supports",
   "SelectSupport": "Select a support pair.",
-  "SupportsUnavailable": "Could not read supports:"
+  "SupportsUnavailable": "Could not read supports:",
+  "Achievements": "Achievements",
+  "Achievement": "Achievement",
+  "Category": "Category",
+  "AllCategories": "All Categories",
+  "Status": "Status",
+  "AchievementCategoryUnit": "Characters",
+  "AchievementCategoryBattle": "Battle",
+  "AchievementCategorySomniel": "Somniel",
+  "AchievementCategoryShop": "Shopping",
+  "AchievementCategorySystem": "Other",
+  "NotAchieved": "Not Achieved",
+  "RewardAvailable": "Reward Available",
+  "RewardClaimed": "Reward Claimed",
+  "UnlockAchievement": "Unlock Achievement",
+  "AchievementsUnavailable": "Could not read achievements:"
 }

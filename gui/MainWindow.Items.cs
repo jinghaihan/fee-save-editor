@@ -22,6 +22,7 @@ public partial class MainWindow
         RosterPanel.IsVisible = false;
         EmblemsPanel.IsVisible = false;
         SupportsPanel.IsVisible = false;
+        AchievementsPanel.IsVisible = false;
         ApplyMainButton.IsVisible = false;
         MainNavigation.SelectedIndex = 1;
         RefreshPageTitle();

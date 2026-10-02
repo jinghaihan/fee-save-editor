@@ -41,6 +41,7 @@
           <TabStripItem Content="{DynamicResource Roster}" />
           <TabStripItem Content="{DynamicResource Emblems}" />
           <TabStripItem Content="{DynamicResource Support}" />
+          <TabStripItem Content="{DynamicResource Achievements}" />
         </TabStrip>
       </Grid>
     </Grid>
@@ -69,25 +70,25 @@
       <suki:GlassCard Grid.Column="2" Padding="28">
         <ScrollViewer>
           <StackPanel Spacing="20">
-              <TextBlock Text="{DynamicResource Donations}" FontWeight="SemiBold" />
-              <StackPanel Name="DonationInputs" Spacing="12" IsEnabled="False">
-                <ComboBox Name="DonationCountryInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="DonationCountry_Changed"
-                          AutomationProperties.Name="{DynamicResource Country}">
-                  <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Name}" /></DataTemplate></ComboBox.ItemTemplate>
-                </ComboBox>
-                <StackPanel Spacing="8">
-                  <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
-                    <TextBlock Text="{DynamicResource Level}" VerticalAlignment="Center" />
-                    <Button Name="MaxDonationButton" Grid.Column="1" Content="{DynamicResource MaxLevel}" Click="MaxDonation_Click" />
-                  </Grid>
-                  <ComboBox Name="DonationLevelInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="DonationLevel_Changed" />
-                </StackPanel>
-                <StackPanel Spacing="8">
-                  <TextBlock Text="{DynamicResource DonatedGold}" />
-                  <NumericUpDown Name="DonationAmountInput" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
-                </StackPanel>
+            <TextBlock Text="{DynamicResource Donations}" FontWeight="SemiBold" />
+            <StackPanel Name="DonationInputs" Spacing="12" IsEnabled="False">
+              <ComboBox Name="DonationCountryInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="DonationCountry_Changed"
+                        AutomationProperties.Name="{DynamicResource Country}">
+                <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Name}" /></DataTemplate></ComboBox.ItemTemplate>
+              </ComboBox>
+              <StackPanel Spacing="8">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+                  <TextBlock Text="{DynamicResource Level}" VerticalAlignment="Center" />
+                  <Button Name="MaxDonationButton" Grid.Column="1" Content="{DynamicResource MaxLevel}" Click="MaxDonation_Click" />
+                </Grid>
+                <ComboBox Name="DonationLevelInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="DonationLevel_Changed" />
               </StackPanel>
-              <Button Name="MaxAllDonationsButton" Content="{DynamicResource MaxAllLevels}" HorizontalAlignment="Stretch" Click="MaxAllDonations_Click" IsEnabled="False" />
+              <StackPanel Spacing="8">
+                <TextBlock Text="{DynamicResource DonatedGold}" />
+                <NumericUpDown Name="DonationAmountInput" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+              </StackPanel>
+            </StackPanel>
+            <Button Name="MaxAllDonationsButton" Content="{DynamicResource MaxAllLevels}" HorizontalAlignment="Stretch" Click="MaxAllDonations_Click" IsEnabled="False" />
           </StackPanel>
         </ScrollViewer>
       </suki:GlassCard>
@@ -442,6 +443,48 @@
             </StackPanel>
             <Button Name="MaxSupportButton" Content="{DynamicResource MaxSupport}" HorizontalAlignment="Stretch" Click="MaxSupport_Click" />
             <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplySupport_Click" />
+          </StackPanel>
+        </ScrollViewer>
+      </suki:GlassCard>
+    </Grid>
+    <Grid Name="AchievementsPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+      <suki:GlassCard Padding="20">
+        <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="16">
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <TextBlock Text="{DynamicResource Achievements}" FontWeight="SemiBold" />
+            <TextBlock Name="AchievementCompletion" Grid.Column="1" />
+          </Grid>
+          <ComboBox Name="AchievementCategoryInput" Grid.Row="1" Margin="0" Height="42" HorizontalAlignment="Stretch"
+                    AutomationProperties.Name="{DynamicResource Category}" SelectionChanged="AchievementFilter_Changed">
+            <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
+          </ComboBox>
+          <TextBox Name="AchievementSearch" Grid.Row="2" PlaceholderText="{DynamicResource Search}" TextChanged="AchievementSearch_Changed" />
+          <ListBox Name="AchievementList" Grid.Row="3" SelectionChanged="AchievementList_Changed">
+            <ListBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" TextWrapping="Wrap" /></DataTemplate></ListBox.ItemTemplate>
+          </ListBox>
+          <Button Name="UnlockAllAchievementsButton" Grid.Row="4" Content="{DynamicResource UnlockAll}" HorizontalAlignment="Stretch"
+                  IsEnabled="False" Click="UnlockAllAchievements_Click" />
+        </Grid>
+      </suki:GlassCard>
+      <suki:GlassCard Grid.Column="1" Padding="20">
+        <ScrollViewer>
+          <StackPanel Name="AchievementForm" IsEnabled="False" Width="340" HorizontalAlignment="Left" Spacing="24">
+            <TextBlock Text="{DynamicResource Achievement}" FontWeight="SemiBold" />
+            <TextBlock Name="AchievementNameValue" TextWrapping="Wrap" />
+            <StackPanel Spacing="8">
+              <TextBlock Text="{DynamicResource Category}" />
+              <TextBox Name="AchievementCategoryValue" IsReadOnly="True" Height="42" />
+            </StackPanel>
+            <StackPanel Spacing="8">
+              <TextBlock Text="{DynamicResource Status}" />
+              <TextBox Name="AchievementStatusValue" IsReadOnly="True" Height="42" />
+            </StackPanel>
+            <StackPanel Spacing="8">
+              <TextBlock Text="{DynamicResource BondFragments}" />
+              <TextBox Name="AchievementRewardValue" IsReadOnly="True" Height="42" />
+            </StackPanel>
+            <Button Name="UnlockAchievementButton" Content="{DynamicResource UnlockAchievement}" HorizontalAlignment="Stretch"
+                    IsEnabled="False" Click="UnlockAchievement_Click" />
           </StackPanel>
         </ScrollViewer>
       </suki:GlassCard>
