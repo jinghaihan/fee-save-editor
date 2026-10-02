@@ -107,8 +107,26 @@ internal static class RosterSkillTests
         window.ShowItems();
         Check(window.SaveCopy(destination) && EngageSave.Load(destination).ReadRoster()[0].Progress.EquippedSkills.Count == 1,
             "Saving from another page lost pending equipped skills.");
+        string secondDestination = Path.Combine(temporary, "roster-skills-second-save");
+        Check(window.SaveCopy(secondDestination) && File.ReadAllBytes(destination).AsSpan().SequenceEqual(File.ReadAllBytes(secondDestination)),
+            "Saving a second copy changed already-applied roster fields.");
+        window.ShowRoster();
+        foreach (int tab in new[] { 0, 1, 2, 3 })
+        {
+            tabs.SelectedIndex = tab;
+            Dispatcher.UIThread.RunJobs();
+            string name = tab switch { 0 => "RosterGeneralForm", 1 => "RosterStatsForm", 2 => "RosterItemsForm", _ => "RosterSkillsForm" };
+            var form = window.FindControl<Control>(name)!;
+            Check(form.Bounds.Width <= 712 && form.Bounds.Width > 0, "A roster form exceeded its available width.");
+        }
         tabs.SelectedIndex = 4;
         Check(window.FindControl<StackPanel>("RosterProficienciesForm")!.IsVisible, "The Proficiencies tab did not open.");
+        window.FindControl<TextBox>("RosterSearch")!.Text = "no matching character";
+        Dispatcher.UIThread.RunJobs();
+        Check(window.FindControl<ComboBox>("RosterEquippedSkill1")!.ItemCount == 0
+            && window.FindControl<NumericUpDown>("RosterInternalLevel")!.Value is null,
+            "Clearing character selection left another character's progression displayed.");
+        window.FindControl<TextBox>("RosterSearch")!.Clear();
         Console.WriteLine("Roster skills: 277 base/DLC skills, 94 maximum tiers, two slots, proficiencies, HP/internal limits and live UI passed.");
     }
 

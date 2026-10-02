@@ -4,7 +4,7 @@
         x:Class="FeeEditor.Gui.MainWindow"
         Title="{DynamicResource AppTitle}"
         Icon="/Assets/app-icon.ico"
-        Width="1100" Height="740" MinWidth="800" MinHeight="540">
+        Width="1120" Height="780" MinWidth="860" MinHeight="600">
   <Grid RowDefinitions="Auto,*,Auto" Margin="24" RowSpacing="24">
     <Grid ColumnDefinitions="Auto,*">
       <Menu VerticalAlignment="Center">
@@ -168,7 +168,8 @@
           </TabStrip>
           <ScrollViewer Grid.Row="1">
             <Grid>
-              <StackPanel Name="RosterGeneralForm" Width="340" HorizontalAlignment="Left" Spacing="16" IsEnabled="False">
+              <Grid Name="RosterGeneralForm" MaxWidth="712" ColumnDefinitions="*,*" ColumnSpacing="32" HorizontalAlignment="Stretch" IsEnabled="False">
+                <StackPanel Spacing="16">
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Name}" />
                   <TextBox Name="RosterName" IsReadOnly="True" Height="42" />
@@ -190,6 +191,8 @@
                   </ComboBox>
                 </StackPanel>
                 <Button Content="{DynamicResource ChangeClass}" HorizontalAlignment="Stretch" Click="ChangeRosterClass_Click" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Spacing="16">
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Level}" />
                   <NumericUpDown Name="RosterLevel" Minimum="1" Maximum="40" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" ValueChanged="RosterLevel_Changed" />
@@ -207,17 +210,21 @@
                   <NumericUpDown Name="RosterInternalLevel" Minimum="-100" Maximum="100" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
                 </StackPanel>
                 <Button Name="ApplyRosterValuesButton" Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterValues_Click" />
-              </StackPanel>
-              <StackPanel Name="RosterStatsForm" Width="340" HorizontalAlignment="Left" Spacing="16" IsVisible="False" IsEnabled="False">
-                <StackPanel Spacing="8">
-                  <TextBlock Text="{DynamicResource CurrentHP}" />
-                  <NumericUpDown Name="RosterCurrentHP" Minimum="0" Maximum="255" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
-                  <Button Content="{DynamicResource RestoreHP}" HorizontalAlignment="Stretch" Click="RestoreRosterHP_Click" />
                 </StackPanel>
-                <StackPanel Name="RosterStatsInputs" Spacing="16" />
+              </Grid>
+              <StackPanel Name="RosterStatsForm" MaxWidth="712" HorizontalAlignment="Stretch" Spacing="12" IsVisible="False" IsEnabled="False">
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="32">
+                  <StackPanel Spacing="8">
+                    <TextBlock Text="{DynamicResource CurrentHP}" />
+                    <NumericUpDown Name="RosterCurrentHP" Minimum="0" Maximum="255" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
+                  </StackPanel>
+                  <Button Grid.Column="1" Content="{DynamicResource RestoreHP}" Height="42" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Click="RestoreRosterHP_Click" />
+                </Grid>
+                <Grid Name="RosterStatsInputs" ColumnDefinitions="*,*" ColumnSpacing="32" RowSpacing="8" />
                 <Button Name="ApplyRosterStatsButton" Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterStats_Click" />
               </StackPanel>
-              <StackPanel Name="RosterItemsForm" Width="340" HorizontalAlignment="Left" Spacing="16" IsVisible="False" IsEnabled="False">
+              <Grid Name="RosterItemsForm" MaxWidth="712" ColumnDefinitions="*,*" ColumnSpacing="32" HorizontalAlignment="Stretch" IsVisible="False" IsEnabled="False">
+                <StackPanel Spacing="16">
                 <Button Content="{DynamicResource RestoreAllUses}" HorizontalAlignment="Stretch" Click="RestoreRosterUses_Click" />
                 <ListBox Name="RosterItemsList" SelectionChanged="RosterItemsList_Changed">
                   <ListBox.ItemTemplate>
@@ -226,6 +233,8 @@
                     </DataTemplate>
                   </ListBox.ItemTemplate>
                 </ListBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Spacing="16">
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Item}" />
                   <TextBox Name="RosterItemSearch" PlaceholderText="{DynamicResource Search}" TextChanged="RosterItemSearch_Changed" />
@@ -248,8 +257,9 @@
                 </StackPanel>
                 <Button Name="ApplyRosterItemButton" Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterItem_Click" />
                 <Button Name="DeleteRosterItemButton" Content="{DynamicResource DeleteItem}" HorizontalAlignment="Stretch" Click="DeleteRosterItem_Click" />
-              </StackPanel>
-              <Grid Name="RosterSkillsForm" ColumnDefinitions="340,340" ColumnSpacing="32" IsVisible="False" IsEnabled="False" HorizontalAlignment="Left">
+                </StackPanel>
+              </Grid>
+              <Grid Name="RosterSkillsForm" MaxWidth="712" ColumnDefinitions="*,*" ColumnSpacing="32" IsVisible="False" IsEnabled="False" HorizontalAlignment="Stretch">
                 <StackPanel Spacing="16">
                   <TextBlock Text="{DynamicResource EquippedSkills}" FontWeight="SemiBold" />
                   <ComboBox Name="RosterEquippedSkill1" Height="42" Margin="0" HorizontalAlignment="Stretch">
@@ -264,10 +274,10 @@
                   <CheckBox Name="RosterClassSkillUnlocked" Content="{DynamicResource Unlocked}" />
                   <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterClassSkill_Click" />
                 </StackPanel>
-                <StackPanel Grid.Column="1" Spacing="16">
+                <StackPanel Grid.Column="1" Spacing="12">
                   <TextBlock Text="{DynamicResource InheritedSkills}" FontWeight="SemiBold" />
                   <TextBox Name="RosterSkillSearch" PlaceholderText="{DynamicResource Search}" TextChanged="RosterSkillSearch_Changed" />
-                  <ListBox Name="RosterSkillList" Height="260" SelectionChanged="RosterSkillList_Changed">
+                  <ListBox Name="RosterSkillList" Height="220" SelectionChanged="RosterSkillList_Changed">
                     <ListBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" TextWrapping="Wrap" /></DataTemplate></ListBox.ItemTemplate>
                   </ListBox>
                   <ComboBox Name="RosterSkillChoice" Height="42" Margin="0" HorizontalAlignment="Stretch">
@@ -278,7 +288,7 @@
                   <Button Content="{DynamicResource UnlockAll}" HorizontalAlignment="Stretch" Click="UnlockAllRosterSkills_Click" />
                 </StackPanel>
               </Grid>
-              <StackPanel Name="RosterProficienciesForm" Width="340" HorizontalAlignment="Left" Spacing="16" IsVisible="False" IsEnabled="False">
+              <StackPanel Name="RosterProficienciesForm" MaxWidth="340" HorizontalAlignment="Left" Spacing="16" IsVisible="False" IsEnabled="False">
                 <WrapPanel Name="RosterProficiencyInputs" />
                 <Button Content="{DynamicResource UnlockAll}" HorizontalAlignment="Stretch" Click="UnlockRosterProficiencies_Click" />
                 <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterProficiencies_Click" />

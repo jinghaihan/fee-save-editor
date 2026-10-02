@@ -122,9 +122,9 @@ internal static class RosterTests
         var tabs = window.FindControl<TabStrip>("RosterTabs")!;
         Check(list.ItemCount == 2 && level.Value == 5 && exp.Value == 12 && sp.Value == 400 && level.Maximum == 20,
             "Roster values were empty or limits were generic.");
-        var form = window.FindControl<StackPanel>("RosterGeneralForm")!;
-        Check(form.Width == 340 && form.HorizontalAlignment == Avalonia.Layout.HorizontalAlignment.Left,
-            "Roster form alignment differs from the existing editor layout.");
+        var form = window.FindControl<Grid>("RosterGeneralForm")!;
+        Check(form.MaxWidth == 712 && form.ColumnDefinitions.Count == 2 && form.ColumnSpacing == 32,
+            "Roster fields are not arranged in two equally spaced columns.");
         level.Text = "7";
         var uses = window.FindControl<NumericUpDown>("RosterItemUses")!;
         uses.Text = "6";
@@ -150,7 +150,7 @@ internal static class RosterTests
         tabs.SelectedIndex = 1;
         Check(window.FindControl<StackPanel>("RosterStatsForm")!.IsVisible, "The Stats tab did not switch.");
         tabs.SelectedIndex = 2;
-        Check(window.FindControl<StackPanel>("RosterItemsForm")!.IsVisible, "The Items tab did not switch.");
+        Check(window.FindControl<Grid>("RosterItemsForm")!.IsVisible, "The Items tab did not switch.");
         string copy = Path.Combine(temporary, "roster-pending-copy");
         window.ShowItems();
         Check(window.SaveCopy(copy), "Save Copy rejected valid pending values from another roster tab/page: "

@@ -36,13 +36,15 @@ public partial class MainWindow
         _selectedCharacterItem = null;
         RosterGeneralForm.IsEnabled = RosterStatsForm.IsEnabled = RosterItemsForm.IsEnabled = false;
         RosterSkillsForm.IsEnabled = RosterProficienciesForm.IsEnabled = false;
-        RosterSkillList.ItemsSource = Array.Empty<SkillChoice>();
+        ClearRosterSkills();
         RosterList.ItemsSource = Array.Empty<RosterRow>();
         RosterItemsList.ItemsSource = Array.Empty<InventoryRow>();
         RosterName.Clear();
         RosterClass.ItemsSource = Array.Empty<ClassChoice>();
         RosterLevel.Value = RosterExperience.Value = RosterSkillPoints.Value = null;
+        RosterInternalLevel.Value = RosterCurrentHP.Value = null;
         RosterStatsInputs.Children.Clear();
+        RosterStatsInputs.RowDefinitions.Clear();
         _rosterStats.Clear();
         RosterSearch.Clear();
         if (Save is null || Save.Kind != SaveKind.Game)
@@ -94,6 +96,8 @@ public partial class MainWindow
             RosterName.Clear();
             RosterClass.ItemsSource = Array.Empty<ClassChoice>();
             RosterLevel.Value = RosterExperience.Value = RosterSkillPoints.Value = null;
+            RosterInternalLevel.Value = RosterCurrentHP.Value = null;
+            ClearRosterSkills();
             RosterStatsInputs.Children.Clear();
             _rosterStats.Clear();
             RosterItemsList.ItemsSource = Array.Empty<InventoryRow>();
@@ -114,6 +118,7 @@ public partial class MainWindow
         RosterCurrentHP.Text = character.Progress.CurrentHP.ToString();
         RefreshRosterSkills(character, preserveEdits: false);
         RosterStatsInputs.Children.Clear();
+        RosterStatsInputs.RowDefinitions.Clear();
         _rosterStats.Clear();
         foreach (var stat in character.Stats.Where(stat => stat.Stat != RosterStat.Sight))
         {
@@ -125,6 +130,10 @@ public partial class MainWindow
             var field = new StackPanel { Spacing = 8 };
             field.Children.Add(label);
             field.Children.Add(input);
+            int index = RosterStatsInputs.Children.Count;
+            if (index % 2 == 0) RosterStatsInputs.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
+            Grid.SetColumn(field, index % 2);
+            Grid.SetRow(field, index / 2);
             RosterStatsInputs.Children.Add(field);
             _rosterStats.Add(stat.Stat, (label, input));
         }
@@ -279,7 +288,7 @@ public partial class MainWindow
                 return save;
             return save.WithRosterItem(_selectedCharacter!.Value, _selectedCharacterItem.Value, choice.Definition.Id,
                 choice.Definition.UnlimitedUses ? 255 : Amount(RosterItemUses), Amount(RosterItemRefine));
-        }, refresh: false);
+        }, refresh: true);
     }
 
     private EngageSave PendingCharacterValues(EngageSave save)

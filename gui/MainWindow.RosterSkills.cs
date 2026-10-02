@@ -11,6 +11,19 @@ public partial class MainWindow
     private readonly Dictionary<WeaponType, CheckBox> _rosterProficiencies = new();
     private uint? _selectedRosterSkill;
 
+    private void ClearRosterSkills()
+    {
+        _selectedRosterSkill = null;
+        RosterSkillList.ItemsSource = Array.Empty<SkillChoice>();
+        RosterSkillChoice.ItemsSource = Array.Empty<SkillChoice>();
+        RosterEquippedSkill1.ItemsSource = Array.Empty<SkillChoice>();
+        RosterEquippedSkill2.ItemsSource = Array.Empty<SkillChoice>();
+        RosterClassSkillName.Text = "";
+        RosterClassSkillUnlocked.IsChecked = false;
+        _rosterProficiencies.Clear();
+        RosterProficiencyInputs.Children.Clear();
+    }
+
     private static string SkillName(uint hash) => RosterCatalog.Skill(hash)?.Name(UiLanguage.Current)
         ?? $"{UiLanguage.Get("UnknownSkill")} (0x{hash:X8})";
 
