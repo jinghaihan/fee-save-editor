@@ -196,7 +196,7 @@ internal static class EmblemTests
     { writer.Write(version); writer.Write(0xcdcdcdcdu); writer.Write(new byte[24]); }
     private static void Wide(BinaryWriter writer, string value)
     { byte[] bytes = Encoding.Unicode.GetBytes(value); writer.Write((uint)bytes.Length); writer.Write(bytes); }
-    private static byte[] Container(byte[] bonds, byte[] rings, byte[]? original = null,
+    internal static byte[] Container(byte[] bonds, byte[] rings, byte[]? original = null,
         string? supportKey = null, uint supportVersion = 1, byte supportRank = 1)
     {
         original ??= MainTests.Fixture();

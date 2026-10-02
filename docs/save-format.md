@@ -366,7 +366,36 @@ nullable hash-reference encoding (occupied entries require a hash), and byte sto
 unowned common rings to 0–99 and refuses stock edits on owned rings. An equipped
 instance is therefore constrained to exactly one. `IsSingleRank` affects rank
 variants, not the common-ring stock limit. Pool capacity is 750 records, not 750
-total copies. This editor changes existing common-ring stock, not pool membership.
+total copies. Existing stock edits preserve pool membership.
+
+The S-ring fill and meld operations can resize the ordinary ring pool. Native
+`SingletonPool.OnDeserialize` at `0x3207330` reconstructs its free-ID queue from
+unused IDs 1 through capacity; it does not save a next-ID counter in the header.
+New records use the lowest unused ID in 1–750. Existing IDs and the 32-byte pool
+header are preserved, with limits of 700 unequipped and 50 equipped instances.
+Native `UnitRingPool.Add` at `0x1c5d420` caps total copies of one ring definition
+at 99, including equipped copies. New stock follows this aggregate limit.
+
+Fill S creates one missing copy of each of the 123 named S rings (120 normal
+families and the three Heroes bonus rings). Existing positive stock, including
+worn rings, counts as owned; a zero-stock unequipped row is reused. Other ranks,
+unknown entries, GDBD/GOD and UNIT equipment links are not altered. It is a direct
+editor action and does not consume fragments or simulate gacha/story unlocks.
+
+Melding consumes only unequipped copies of the selected character and rank,
+creates one next-rank ring, and deducts spendable fragments. The pinned complete
+`Params.xml` table specifies 2 C + 100 fragments → B, 3 B + 1,000 → A and
+4 A + 10,000 → S. S/single-rank/unknown rings cannot be melded. Native subtraction
+at `0x1c5d5f0` removes fully consumed rows; remaining stacks retain their IDs.
+Acquisition mirrors `RingData.SetProcurement` at `0x2425940`: OR the rank bit
+into the integer USER variable `G_指輪_<group>`. `RingData.OnBuild` derives the
+group by removing the `RNID_` prefix and the two-character rank suffix. Other
+rank bits are preserved. No achievements, global gallery or story flags are
+fabricated. Invalid material counts, fragments, capacity, links or variable
+schemas fail atomically; source save bytes remain unchanged.
+
+`tools/import_bond_ring_rules.py` imports the three melding costs from
+Xzonn/FireEmblemEngageData revision `86b8be7b9820e1bb3bce87d2a9a805ead85d92ab`.
 
 Owners are resolved from the UNIT trailer after AI/customization: two bytes,
 battle-data version 4 and sparse count/pairs, two bytes, weapon-rank count/bytes,

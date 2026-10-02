@@ -7,6 +7,7 @@
     <EmbeddedResource Include="Data/items.json" LogicalName="FeeEditor.Core.Data.items.json" />
     <EmbeddedResource Include="Data/roster.json" LogicalName="FeeEditor.Core.Data.roster.json" />
     <EmbeddedResource Include="Data/emblems.json" LogicalName="FeeEditor.Core.Data.emblems.json" />
+    <EmbeddedResource Include="Data/bond-ring-melding.json" LogicalName="FeeEditor.Core.Data.bond-ring-melding.json" />
     <EmbeddedResource Include="Data/supports.json" LogicalName="FeeEditor.Core.Data.supports.json" />
     <EmbeddedResource Include="Data/engravings.json" LogicalName="FeeEditor.Core.Data.engravings.json" />
   </ItemGroup>

@@ -93,6 +93,7 @@ try
     RosterStatTests.Run();
     RosterStatGuiTests.Run(window, temporary);
     EmblemTests.Run();
+    BondRingTests.Run();
     EmblemGuiTests.Run(window, temporary);
     SupportTests.Run();
     SupportGuiTests.Run(window, temporary);
@@ -120,6 +121,7 @@ try
                 RosterSkillTests.CheckReal(loaded);
                 RosterStatTests.CheckReal(loaded);
                 EmblemTests.CheckReal(loaded);
+                BondRingTests.CheckReal(loaded);
                 SupportTests.CheckReal(loaded);
                 EngravingTests.CheckReal(loaded);
                 var current = loaded.ReadMainValues();

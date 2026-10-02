@@ -13,6 +13,8 @@ public sealed record BondRingDefinition(string Id, IReadOnlyDictionary<string, s
     public uint Hash => ItemCatalog.Hash(Id);
     public int MaxStock => 99;
     public string RankName => new[] { "C", "B", "A", "S" }[Rank];
+    public string Group => Id[5..^2];
+    public string AcquisitionKey => "G_指輪_" + Group;
     public string Name(string language) => Names.GetValueOrDefault(language) ?? Names["en"];
 }
 
@@ -63,7 +65,8 @@ public static class EmblemCatalog
             || data.BondExperience[0] != 0 || data.BondExperience[^1] != 208
             || data.BondExperience.Zip(data.BondExperience.Skip(1)).Any(pair => pair.First >= pair.Second)
             || data.Emblems.Any(row => !ValidNames(row.Names))
-            || data.Rings.Any(row => row.Rank is < 0 or > 3 || !ValidNames(row.Names)))
+            || data.Rings.Any(row => row.Rank is < 0 or > 3 || !ValidNames(row.Names)
+                || !row.Id.StartsWith("RNID_", StringComparison.Ordinal) || !row.Id.EndsWith("_" + row.RankName, StringComparison.Ordinal)))
             throw new InvalidDataException("The Emblem catalog has invalid names or limits.");
         return new(data.Emblems.Select(row => row with { Names = Freeze(row.Names) }).ToArray(),
             data.Rings.Select(row => row with { Names = Freeze(row.Names) }).ToArray(), data.BondExperience);
