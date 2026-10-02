@@ -102,6 +102,7 @@ try
     RosterSkillTests.Run(window, temporary);
     RosterTransferTests.Run(window, temporary);
     RosterEquipmentTests.Run(window, temporary);
+    RosterRecoveryTests.Run(window, temporary);
     RosterStatTests.Run();
     RosterStatGuiTests.Run(window, temporary);
     EmblemTests.Run();
@@ -141,6 +142,7 @@ try
                 RosterSkillTests.CheckReal(loaded);
                 RosterTransferTests.CheckReal(loaded);
                 RosterEquipmentTests.CheckReal(loaded);
+                RosterRecoveryTests.CheckReal(loaded);
                 RosterStatTests.CheckReal(loaded);
                 EmblemTests.CheckReal(loaded);
                 BondRingTests.CheckReal(loaded);
@@ -202,10 +204,21 @@ try
         }
         else if (captureOptions is ["--page", var page] && page.StartsWith("roster", StringComparison.Ordinal))
         {
+            if (page == "roster-recovery")
+            {
+                string recovery = Path.Combine(temporary, "roster-recovery-preview");
+                File.WriteAllBytes(recovery, RosterRecoveryTests.Fixture(UnitForce.Dead).Serialize());
+                Check(window.LoadSave(recovery), "Could not load the recovery preview fixture.");
+            }
             window.ShowRoster();
+            if (page == "roster-recovery")
+            {
+                var list = window.FindControl<ListBox>("RosterList")!;
+                list.SelectedItem = list.Items.Cast<MainWindow.RosterRow>().Single(row => row.Index == 1);
+            }
             window.FindControl<TabStrip>("RosterTabs")!.SelectedIndex = page switch
             {
-                "roster" => 0, "roster-stats" => 1, "roster-items" => 2, "roster-skills" => 3, "roster-proficiencies" => 4, "roster-equipment" => 5,
+                "roster" or "roster-recovery" => 0, "roster-stats" => 1, "roster-items" => 2, "roster-skills" => 3, "roster-proficiencies" => 4, "roster-equipment" => 5,
                 _ => throw new ArgumentException("Unknown roster screenshot tab.")
             };
         }

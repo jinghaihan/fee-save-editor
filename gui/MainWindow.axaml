@@ -261,6 +261,11 @@
                   <TextBox Name="RosterName" IsReadOnly="True" Height="42" />
                 </StackPanel>
                 <StackPanel Spacing="8">
+                  <TextBlock Text="{DynamicResource Status}" />
+                  <TextBox Name="RosterStatusInput" IsReadOnly="True" Height="42" />
+                  <Button Name="RestoreRosterCharacterButton" Content="{DynamicResource RestoreCharacter}" HorizontalAlignment="Stretch" IsEnabled="False" Click="RestoreRosterCharacter_Click" />
+                </StackPanel>
+                <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Class}" />
                   <ComboBox Name="RosterClass" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="RosterClass_Changed">
                     <ComboBox.ItemTemplate>

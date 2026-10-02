@@ -87,9 +87,17 @@ FeeEditor.Cli roster stats-max Manual0 Manual0-edited --all
 FeeEditor.Cli roster class Manual0 Manual0-edited --character 0 --class JID_パラディン --weapons Sword
 FeeEditor.Cli roster condition Manual0 Manual0-edited --character 0 --internal-level 20 --hp 30
 FeeEditor.Cli roster restore Manual0 Manual0-edited --character 0
+FeeEditor.Cli roster restore-character Manual0 Manual0-edited --character 1
 ```
 
 Use character indices from `roster list` and IDs from `roster catalog`.
+`restore` refills carried-item uses. `restore-character` returns an existing dead
+or lost playable character to the available bench and restores HP. Use a chapter,
+Somniel or world-map save outside battle; unknown, guest, summoned, relay and
+story-restricted units are excluded. Recruitment and story progress are not edited.
+Character indices can change when moving between force pools; run `roster list`
+again before another indexed operation. Its `Availability` field distinguishes
+normal bench characters from dead or lost units.
 `personal-stat` edits the stored personal value; `stat` edits the current-class
 result. `stats-max --character <index>` targets one character; `--all` targets
 existing playable characters. Targets are calculated across each character's

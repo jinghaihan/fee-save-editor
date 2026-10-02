@@ -50,7 +50,7 @@ internal static class RosterCommand
             var characters = EngageSave.Load(input).ReadRoster();
             Console.WriteLine(JsonSerializer.Serialize(characters.Select(character => new
             {
-                character.Index, character.Force,
+                character.Index, character.Force, character.Availability,
                 PersonId = RosterCatalog.Person(character.PersonHash)?.Id,
                 Name = RosterCatalog.Person(character.PersonHash)?.Name(language) ?? $"Unknown character (0x{character.PersonHash:X8})",
                 ClassId = RosterCatalog.Class(character.ClassHash)?.Id,
@@ -127,7 +127,7 @@ internal static class RosterCommand
             "item-set" => ["--character", "--slot", "--item", "--uses", "--refine", "--engraving"],
             "item-engrave" => ["--character", "--slot", "--engraving"],
             "item-delete" => ["--character", "--slot"],
-            "restore" => ["--character"],
+            "restore" or "restore-character" => ["--character"],
             "import" => ["--character", "--file"],
             "equipment-set" => ["--character", "--emblem", "--ring", "--none"],
             _ => throw new ArgumentException("Unknown roster command. Run --help for usage.")
@@ -138,6 +138,7 @@ internal static class RosterCommand
         if (index >= characters.Count)
             throw new ArgumentOutOfRangeException(nameof(index));
         var character = characters[index];
+        if (verb == "restore-character") return save.RestoreRosterCharacter(index);
         if (verb == "equipment-set")
         {
             if (values.Count != 2) throw new ArgumentException("Choose exactly one of --emblem, --ring or --none.");

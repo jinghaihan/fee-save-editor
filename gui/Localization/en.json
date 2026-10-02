@@ -1,4 +1,9 @@
 {
+  "RestoreCharacter": "Restore Character",
+  "RosterAvailable": "Available",
+  "RosterDead": "Dead",
+  "RosterLost": "Lost",
+  "RosterOther": "Unavailable",
   "Equipment": "Equipment",
   "Emblem": "Emblem",
   "Unequip": "Unequip",

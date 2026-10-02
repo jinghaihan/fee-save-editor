@@ -1,11 +1,25 @@
+using System.Buffers.Binary;
+
 namespace FeeEditor.Core;
 
 public enum RosterStat { HP, Strength, Dexterity, Speed, Luck, Defense, Magic, Resistance, Build, Sight, Movement }
 public enum UnitForce { Player, Enemy, Ally, Absent, Dead, Lost, Temporary }
+public enum RosterAvailability { Available, Dead, Lost, Other }
 public sealed record RosterValue(int Level, int Experience, int SkillPoints);
 public sealed record CharacterStat(RosterStat Stat, int Value, int? Maximum, int PersonalValue);
 public sealed record RosterCharacter(int Index, UnitForce Force, uint PersonHash, uint ClassHash, RosterValue Values,
-    IReadOnlyList<CharacterStat> Stats, IReadOnlyList<InventorySlot> Items, RosterProgress Progress);
+    IReadOnlyList<CharacterStat> Stats, IReadOnlyList<InventorySlot> Items, RosterProgress Progress, ulong StatusFlags)
+{
+    public RosterAvailability Availability
+    {
+        get
+        {
+            if (Force == UnitForce.Lost) return RosterAvailability.Lost;
+            if (Force == UnitForce.Dead || (StatusFlags & 0x200UL) != 0) return RosterAvailability.Dead;
+            return Force is UnitForce.Player or UnitForce.Absent ? RosterAvailability.Available : RosterAvailability.Other;
+        }
+    }
+}
 
 internal sealed record CharacterLayout(RosterCharacter Character, int Start, int End, int BaseStatsOffset,
     int LevelOffset, int[] ItemStarts, int[] ItemEnds, RosterProgressLayout Progress);
@@ -50,7 +64,10 @@ internal sealed class RosterLayout
                 var unit = new SaveReader(bytes, start + 4, end);
                 if (unit.UInt32() != 40 || unit.UInt32() != 0xcdcdcdcd)
                     throw new InvalidDataException("Unsupported character record version.");
-                unit.Skip(24 + 8);
+                unit.Skip(24);
+                int statusOffset = unit.Position;
+                unit.Skip(8);
+                ulong status = BinaryPrimitives.ReadUInt64LittleEndian(bytes.AsSpan(statusOffset, 8));
                 uint person = unit.Reference() ?? throw new InvalidDataException("A character has no person reference.");
                 uint job = unit.Reference() ?? throw new InvalidDataException("A character has no class reference.");
                 if (unit.UInt32() != 0)
@@ -103,7 +120,7 @@ internal sealed class RosterLayout
                 var tail = new SaveReader(bytes, end - 8, end);
                 int sp = (short)tail.UInt16();
                 var character = new RosterCharacter(result.Count, (UnitForce)force, person, job,
-                    new RosterValue(level, experience, sp), CharacterStats(person, job, baseStats), Array.AsReadOnly(items), progress.Values);
+                    new RosterValue(level, experience, sp), CharacterStats(person, job, baseStats), Array.AsReadOnly(items), progress.Values, status);
                 result.Add(new CharacterLayout(character, start, end, baseOffset, levelOffset, starts, ends, progress));
                 reader.Skip(end - reader.Position);
             }

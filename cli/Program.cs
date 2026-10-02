@@ -48,6 +48,7 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli roster item-engrave <save> <new-file> --character <index> --slot <index> --engraving <GID|none>
           FeeEditor.Cli roster item-delete <save> <new-file> --character <index> --slot <index>
           FeeEditor.Cli roster restore <save> <new-file> --character <index>
+          FeeEditor.Cli roster restore-character <save> <new-file> --character <index>
           FeeEditor.Cli roster condition <save> <new-file> --character <index> [--internal-level <value>] [--hp <value>]
           FeeEditor.Cli roster skill-unlock|skill-remove <save> <new-file> --character <index> --skill <SID>
           FeeEditor.Cli roster skills-equip <save> <new-file> --character <index> [--first <SID|none>] [--second <SID|none>]

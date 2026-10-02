@@ -1,4 +1,9 @@
 {
+  "RestoreCharacter": "恢复角色",
+  "RosterAvailable": "可用",
+  "RosterDead": "死亡",
+  "RosterLost": "丢失",
+  "RosterOther": "不可用",
   "Equipment": "装备",
   "Emblem": "纹章士",
   "Unequip": "卸下",

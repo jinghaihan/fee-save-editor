@@ -35,6 +35,8 @@ public partial class MainWindow
     private void LoadRoster()
     {
         CanEditRoster = false;
+        RestoreRosterCharacterButton.IsEnabled = false;
+        RosterStatusInput.Clear();
         ExportRosterCharacterButton.IsEnabled = ImportRosterCharacterButton.IsEnabled = false;
         MaximizeAllRosterStatsButton.IsEnabled = MaximizeRosterStatsButton.IsEnabled = false;
         _selectedCharacter = null;
@@ -85,7 +87,7 @@ public partial class MainWindow
         MaximizeAllRosterStatsButton.IsEnabled = roster.Any(character => character.Force is not UnitForce.Enemy and not UnitForce.Temporary
             && RosterCatalog.Person(character.PersonHash) is not null);
         var rows = roster.Where(character => character.Force is not UnitForce.Enemy and not UnitForce.Temporary)
-            .Select(character => new RosterRow(character.Index, $"{CharacterName(character)} · Lv. {character.Values.Level}"))
+            .Select(character => new RosterRow(character.Index, CharacterLabel(character)))
             .Where(row => row.Label.Contains(query, StringComparison.OrdinalIgnoreCase)).ToArray();
         _refreshingRoster = true;
         RosterList.ItemsSource = rows;
@@ -110,6 +112,8 @@ public partial class MainWindow
         RosterSkillsForm.IsEnabled = RosterProficienciesForm.IsEnabled = character is not null;
         if (character is null)
         {
+            RosterStatusInput.Clear();
+            RestoreRosterCharacterButton.IsEnabled = false;
             RefreshRosterEquipment(preserveEdits: false);
             RosterName.Clear();
             RosterClass.ItemsSource = Array.Empty<ClassChoice>();
@@ -174,9 +178,19 @@ public partial class MainWindow
         _refreshingRoster = false;
     }
 
+    private static string CharacterLabel(RosterCharacter character)
+    {
+        string label = $"{CharacterName(character)} · Lv. {character.Values.Level}";
+        if (character.Availability is RosterAvailability.Dead or RosterAvailability.Lost)
+            label += " · " + UiLanguage.Get("Roster" + character.Availability);
+        return label;
+    }
+
     private void RefreshCharacterNames(RosterCharacter character)
     {
         RosterName.Text = character.Progress.CustomName ?? CharacterName(character);
+        RosterStatusInput.Text = UiLanguage.Get("Roster" + character.Availability);
+        RestoreRosterCharacterButton.IsEnabled = Save!.CanRestoreRosterCharacter(character.Index);
         uint selected = (RosterClass.SelectedItem as ClassChoice)?.Definition.Hash ?? character.ClassHash;
         bool refreshing = _refreshingRoster;
         _refreshingRoster = true;
@@ -220,6 +234,20 @@ public partial class MainWindow
         }, refresh: true);
     }
 
+    public bool RestoreSelectedRosterCharacter()
+    {
+        if (SelectedCharacter is not { } character) return false;
+        return EditRoster(save =>
+        {
+            save = PendingEmblemValues(PendingCharacterValues(save));
+            if (HasPendingRosterItemValues()) save = EditedCharacterItem(save);
+            return save.RestoreRosterCharacter(character.Index);
+        },
+            refresh: true, selectPerson: character.PersonHash);
+    }
+
+    private void RestoreRosterCharacter_Click(object? sender, RoutedEventArgs e) => RestoreSelectedRosterCharacter();
+
     public bool ApplyRosterStats() => EditRoster(save =>
     {
         var character = SelectedCharacter ?? throw new ArgumentException("Select a character.");
@@ -257,7 +285,7 @@ public partial class MainWindow
         }
     }
 
-    private bool EditRoster(Func<EngageSave, EngageSave> edit, bool refresh, bool requireCharacter = true)
+    private bool EditRoster(Func<EngageSave, EngageSave> edit, bool refresh, bool requireCharacter = true, uint? selectPerson = null)
     {
         if (!CanEditRoster || Save is null || requireCharacter && SelectedCharacter is null)
             return false;
@@ -266,7 +294,10 @@ public partial class MainWindow
             var beforeEquipment = CanEditRosterEquipment ? Save.ReadCharacterRingLinks() : null;
             var edited = edit(Save);
             bool changedEquipment = beforeEquipment is not null && !beforeEquipment.SequenceEqual(edited.ReadCharacterRingLinks());
+            int? selectedIndex = selectPerson.HasValue
+                ? edited.ReadRoster().Single(character => character.PersonHash == selectPerson.Value).Index : _selectedCharacter;
             Save = edited;
+            _selectedCharacter = selectedIndex;
             if (changedEquipment) RefreshEmblemRecords(preserveEditor: false);
             RefreshRoster(selectEditor: refresh);
             RefreshInventory(selectEditor: !HasPendingItemValues());
