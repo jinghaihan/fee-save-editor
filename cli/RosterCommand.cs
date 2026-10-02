@@ -65,6 +65,7 @@ internal static class RosterCommand
         string[] allowed = verb switch
         {
             "set" => ["--character", "--level", "--experience", "--sp"],
+            "class" => ["--character", "--class", "--weapons"],
             "stat" => ["--character", "--stat", "--value"],
             "item-set" => ["--character", "--slot", "--item", "--uses", "--refine"],
             "item-delete" => ["--character", "--slot"],
@@ -77,6 +78,27 @@ internal static class RosterCommand
         if (index >= characters.Count)
             throw new ArgumentOutOfRangeException(nameof(index));
         var character = characters[index];
+        if (verb == "class")
+        {
+            string classId = Required(values, "--class");
+            var job = save.ReadRosterClasses(index).FirstOrDefault(job => job.Id == classId)
+                ?? throw new ArgumentException("This character cannot use the selected class.");
+            uint mask = job.WeaponVariants().First();
+            if (values.TryGetValue("--weapons", out string? text))
+            {
+                mask = 0;
+                foreach (string name in text.Split(','))
+                {
+                    if (!Enum.TryParse<WeaponType>(name, ignoreCase: true, out var type)
+                        || !Enum.IsDefined(type) || int.TryParse(name, out _))
+                        throw new ArgumentException("Use weapon names separated by commas, such as Sword,Lance.");
+                    uint bit = 1u << (int)type;
+                    if ((mask & bit) != 0) throw new ArgumentException("Duplicate weapon type.");
+                    mask |= bit;
+                }
+            }
+            return save.WithRosterClass(index, classId, mask);
+        }
         if (verb == "set")
         {
             if (values.Count == 1)

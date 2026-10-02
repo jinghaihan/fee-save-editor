@@ -35,7 +35,7 @@ def unit(person: str, job: str, has_target: bool) -> bytes:
     body += struct.pack("<I4Hi", 0, 0xccdb, 0xccdb, 0xccdb, 0xccdb, 0)
     body += struct.pack("<II", 1, 0) * 3 + struct.pack("<BIIII", 0, 2, 510, 2, 6)
     capability = struct.pack("<II11i", 1, 11, *([0] * 11))
-    body += capability * 3 + struct.pack("<I", 1) + capability + struct.pack("<b", 4)
+    body += capability * 3 + struct.pack("<I", 1) + capability + struct.pack("<bBB", 4, 2, 0)
     body += bytes(range(48)) + struct.pack("<BBhIbb", 1, 2, 400, 0x87654321, -1, -1)
     return struct.pack("<I", len(body) + 4) + body
 
@@ -116,6 +116,15 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
             print(f"{name}: roster independent scalar decoding, translation and byte-diff preservation passed.")
 
         source.write_bytes(original)
+        result = run("class", str(source), str(output), "--character", "0", "--class", "JID_ブレイブヒーロー", "--weapons", "Sword,Axe")
+        assert result.returncode == 0, result.stderr
+        data = output.read_bytes()
+        start = records(data)[0]
+        assert struct.unpack_from("<I", data, start + 52)[0] == game_hash("JID_ブレイブヒーロー")
+        assert data[start + 109:start + 111] == bytes((1, 0))
+        info = json.loads(run("list", str(output), "--json").stdout)[0]
+        assert info["Progress"]["SelectedWeapons"] == 10 and info["Progress"]["InternalLevel"] == 8
+        output.unlink()
         for character, level in (("0", "20"), ("1", "40")):
             assert run("set", str(source), str(output), "--character", character, "--level", level, "--experience", "0").returncode == 0
             output.unlink()
@@ -133,6 +142,11 @@ def check_roster(command: list[str], real_directory: Path | None, base: bytes) -
         assert output.read_bytes()[first_item_uses] == 10
         output.unlink()
         failures = [
+            ("class", "--character", "0", "--class", "JID_ダンサー"),
+            ("class", "--character", "0", "--class", "JID_ランスペガサス"),
+            ("class", "--character", "0", "--class", "JID_ブレイブヒーロー", "--weapons", "Sword"),
+            ("class", "--character", "0", "--class", "JID_ブレイブヒーロー", "--weapons", "Sword,Sword"),
+            ("class", "--character", "0", "--class", "JID_missing"),
             ("set", "--character", "0", "--level", "21"),
             ("set", "--character", "1", "--level", "41"),
             ("set", "--character", "0", "--level", "20", "--experience", "1"),

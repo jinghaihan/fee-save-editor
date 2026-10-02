@@ -97,7 +97,7 @@ internal sealed class RosterLayout
                     items[slot] = new InventorySlot(slot, item);
                     ends[slot] = unit.Position;
                 }
-                var progress = RosterProgressLayout.Read(unit, currentHP);
+                var progress = RosterProgressLayout.Read(unit, currentHP, (UnitForce)force, person);
                 if (unit.Remaining < 10)
                     throw new InvalidDataException("The character trailer is truncated.");
                 var tail = new SaveReader(bytes, end - 8, end);

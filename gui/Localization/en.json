@@ -86,5 +86,15 @@
   "UnknownCharacter": "Unknown character",
   "UnknownClass": "Unknown class",
   "EmptySlot": "Empty",
-  "RosterUnavailable": "Could not read roster:"
+  "RosterUnavailable": "Could not read roster:",
+  "Weapons": "Weapons",
+  "ChangeClass": "Change Class",
+  "Sword": "Sword",
+  "Lance": "Lance",
+  "Axe": "Axe",
+  "Bow": "Bow",
+  "Dagger": "Dagger",
+  "Staff": "Staff",
+  "Arts": "Arts",
+  "Special": "Special"
 }

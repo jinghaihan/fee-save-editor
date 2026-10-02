@@ -4,6 +4,7 @@ namespace FeeEditor.Core;
 
 internal sealed class SaveReader(byte[] bytes, int position, int end)
 {
+    private static readonly System.Text.Encoding Unicode = new System.Text.UnicodeEncoding(false, false, true);
     public int Position { get; private set; } = position;
     public int Remaining => end - Position;
     public void Skip(int count)
@@ -36,4 +37,17 @@ internal sealed class SaveReader(byte[] bytes, int position, int end)
         0xefcd => UInt32(),
         _ => throw new InvalidDataException($"Unsupported roster reference encoding at 0x{Position - 2:X}.")
     };
+    public string? String()
+    {
+        uint length = UInt32();
+        if (length == uint.MaxValue)
+            return null;
+        if (length > 4096 || (length & 1) != 0)
+            throw new InvalidDataException("Invalid character string length.");
+        int start = Position;
+        Skip((int)length);
+        try { return Unicode.GetString(bytes, start, (int)length); }
+        catch (System.Text.DecoderFallbackException error)
+        { throw new InvalidDataException("Invalid character string encoding.", error); }
+    }
 }

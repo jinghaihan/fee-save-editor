@@ -23,7 +23,9 @@ are still under development.
   or restore their remaining uses. Item flags and engravings are preserved.
   Level limits follow the current class (20 or 40); EXP is 0–99, or 0 at maximum
   level, and SP is 0–9,999. Changing level does not simulate growth rolls.
-  Current class is displayed; reclassing is not implemented yet. Engage weapons
+  Reclass through a class dropdown with character/gender restrictions and weapon
+  branches, including DLC classes. Reclassing resets level/EXP and the old class
+  skill using the game's rules; switching only a weapon branch retains progress. Engage weapons
   and reserved Engage slots are displayed but not replaced/deleted as normal items.
 - Desktop application using SukiUI controls.
 - Sommie application icon.
@@ -61,6 +63,9 @@ saved item slot from that character's `Items`. `roster item-set` accepts
 `--character`, `--slot`, `--item`, `--uses` and `--refine`;
 `roster item-delete` accepts `--character` and `--slot`.
 Use `--language zh-Hans` to inspect translated character/class/equipment names.
+`roster class` accepts `--character`, `--class <JID>` and an optional
+`--weapons Sword,Lance` branch. Level, EXP, learned class skill and internal level
+follow the same reclassing rules as the GUI.
 
 The container reader has been checked against game-format version 9 saves.
 Main, convoy and roster edits have been checked through serialization and exact restoration on

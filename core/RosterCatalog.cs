@@ -2,17 +2,33 @@ using System.Text.Json;
 
 namespace FeeEditor.Core;
 
-public sealed record PersonDefinition(string Id, IReadOnlyDictionary<string, string> Names, IReadOnlyList<int> LimitModifiers)
+public sealed record PersonDefinition(string Id, IReadOnlyDictionary<string, string> Names, IReadOnlyList<int> LimitModifiers,
+    int Gender, string BirthClass)
 {
     public uint Hash => ItemCatalog.Hash(Id);
     public string Name(string language) => Names.GetValueOrDefault(language) ?? Names["en"];
 }
 
 public sealed record ClassDefinition(string Id, IReadOnlyDictionary<string, string> Names, int MaxLevel,
-    IReadOnlyList<int> BaseStats, IReadOnlyList<int> Limits)
+    IReadOnlyList<int> BaseStats, IReadOnlyList<int> Limits, int Flags, bool Advanced, string Promotion,
+    string LearningSkill, IReadOnlyList<int> Weapons)
 {
     public uint Hash => ItemCatalog.Hash(Id);
     public string Name(string language) => Names.GetValueOrDefault(language) ?? Names["en"];
+    public IReadOnlyList<uint> WeaponVariants()
+    {
+        uint mandatory = 0;
+        var options = new List<uint>();
+        int count = 0;
+        for (int index = 1; index < Weapons.Count; index++)
+        {
+            if (Weapons[index] == 1) mandatory |= 1u << index;
+            if (Weapons[index] is 2 or 3) { options.Add(1u << index); count = Weapons[index] - 1; }
+        }
+        if (count == 0) return [mandatory];
+        if (count == 1) return options.Select(mask => mandatory | mask).ToArray();
+        return options.SelectMany((mask, index) => options.Skip(index + 1).Select(other => mandatory | mask | other)).ToArray();
+    }
 }
 
 public sealed record ItemNameDefinition(string Id, IReadOnlyDictionary<string, string> Names, bool EngageOnly)
@@ -33,6 +49,14 @@ public static class RosterCatalog
     public static ItemNameDefinition? Item(uint hash) => ItemNames.GetValueOrDefault(hash);
     public static IReadOnlyList<PersonDefinition> Persons { get; } = Array.AsReadOnly(Data.Persons);
     public static IReadOnlyList<ClassDefinition> Classes { get; } = Array.AsReadOnly(Data.Classes);
+    public static IReadOnlyList<ClassDefinition> ClassesFor(uint personHash, int gender)
+    {
+        var person = Person(personHash) ?? throw new ArgumentException("Select a known playable character.");
+        var birth = Class(ItemCatalog.Hash(person.BirthClass));
+        return Classes.Where(job => (job.Flags & 1) != 0 && ((job.Flags & 2) != 0
+            || job.Id == person.BirthClass || job.Id == birth?.Promotion)
+            && ((job.Flags & 4) == 0 || gender == 2)).ToArray();
+    }
 
     private static CatalogData Load()
     {
@@ -41,7 +65,7 @@ public static class RosterCatalog
         var data = JsonSerializer.Deserialize<CatalogData>(source) ?? throw new InvalidDataException("Invalid roster catalog.");
         if (data.Persons.Length != 41 || data.Classes.Length == 0
             || data.Persons.Any(person => person.LimitModifiers.Count != 11 || !ValidNames(person.Names))
-            || data.Classes.Any(job => job.BaseStats.Count != 11 || job.Limits.Count != 11
+            || data.Classes.Any(job => job.BaseStats.Count != 11 || job.Limits.Count != 11 || job.Weapons.Count != 10
                 || job.MaxLevel is < 1 or > 40 || !ValidNames(job.Names))
             || data.ItemNames.Length == 0 || data.ItemNames.Any(item => !ValidNames(item.Names)))
             throw new InvalidDataException("The roster catalog has missing translations or invalid limits.");
@@ -51,7 +75,7 @@ public static class RosterCatalog
         }).ToArray(), data.Classes.Select(job => job with
         {
             Names = ReadOnlyNames(job.Names), BaseStats = Array.AsReadOnly(job.BaseStats.ToArray()),
-            Limits = Array.AsReadOnly(job.Limits.ToArray())
+            Limits = Array.AsReadOnly(job.Limits.ToArray()), Weapons = Array.AsReadOnly(job.Weapons.ToArray())
         }).ToArray(), data.ItemNames.Select(item => item with { Names = ReadOnlyNames(item.Names) }).ToArray());
     }
 

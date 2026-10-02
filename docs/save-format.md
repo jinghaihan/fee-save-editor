@@ -194,8 +194,23 @@ Reducing HP clamps current HP down but does not heal it.
 Level/EXP award logic at `0x1a39d40` uses the current job's MaxLevel and resets
 EXP at maximum level. New edits enforce level `1..MaxLevel`, EXP `0..99` (zero
 at maximum), and SP `0..9999` as in the setter at `0x1a39db0`. Level editing
-does not run the game's growth code, and class-ID-only replacement is not offered
-as a substitute for verified reclassing.
+does not run the game's growth code.
+
+Reclassing follows `Unit.ClassChange` at `0x1a3c7b0`: start at level 1 (21 when
+moving from an advanced class, or a level-21+ special class, to a 40-level class),
+clear EXP and the learned class skill, and retain base stats and carried items.
+The internal-level calculator is `clamp(oldInternal + oldLevel - 1, 0, cap)`;
+cap is 30/40/50 for Normal/Hard/Maddening. Subtract `newLevel - 1`, with floor 0.
+Current HP is lowered only if the new maximum requires it; reclassing does not
+heal. The selected weapon mask follows job weapon codes: 1 mandatory, 2 choose
+one, 3 choose two. Required proficiencies are added while existing ones remain.
+Switching only the weapon branch does not reset level, EXP or the learned skill.
+
+Class eligibility uses the original vanilla job flags from pinned FE17-DOC, not
+the randomizer's modified eligibility flags. Exclusive base/promoted classes are
+matched to their character's canonical birth class; Enchanter and Mage Cannoneer
+are available as DLC generic classes. The base fliers are female-only; Alear's
+gender comes from the save's UnitEdit customization rather than the person table.
 
 `tools/import_roster_catalog.py` generates minimal facts and English/Chinese
 names, including DLC, from pinned
@@ -203,8 +218,8 @@ names, including DLC, from pinned
 and [localized messages](https://github.com/delvier/Iron19_L10n/tree/810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b).
 Only the 41 canonical playable person IDs are imported, not custom appended
 dragon-form rows. These tables are not claimed to be wholly unmodified vanilla
-data: the importer uses names, bases/caps and MaxLevel, not altered job flags to
-decide reclassing eligibility. Full source dumps are not bundled. Display-only
+data: names, bases/caps and MaxLevel are imported, with original vanilla flags
+and an explicit DLC class allowlist used for eligibility. Full source dumps are not bundled. Display-only
 item names do not expand the verified editable convoy-item catalog.
 
 Engage items (item-data flag 128), including `IID_エンゲージ枠`, occupy entries

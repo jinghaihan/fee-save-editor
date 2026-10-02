@@ -86,5 +86,15 @@
   "UnknownCharacter": "未知角色",
   "UnknownClass": "未知职业",
   "EmptySlot": "空",
-  "RosterUnavailable": "无法读取名册："
+  "RosterUnavailable": "无法读取名册：",
+  "Weapons": "武器",
+  "ChangeClass": "转职",
+  "Sword": "剑",
+  "Lance": "枪",
+  "Axe": "斧",
+  "Bow": "弓",
+  "Dagger": "短剑",
+  "Staff": "杖",
+  "Arts": "体术",
+  "Special": "特殊"
 }

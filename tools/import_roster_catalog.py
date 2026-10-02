@@ -9,7 +9,9 @@ from pathlib import Path
 
 DATA_REVISION = "8a64328fc9a4df7649852ec2ac8b7d5beaedbc58"
 TEXT_REVISION = "810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b"
+VANILLA_REVISION = "99677e4cad22b636bee4af5a3052003bed17c443"
 STATS = ["Hp", "Str", "Tech", "Quick", "Luck", "Def", "Magic", "Mdef", "Phys", "Sight", "Move"]
+WEAPONS = ["None", "Sword", "Lance", "Axe", "Bow", "Dagger", "Magic", "Rod", "Fist", "Special"]
 
 
 def fetch(repo: str, revision: str, path: str) -> str:
@@ -32,9 +34,21 @@ def main() -> None:
     base = "assets/VanillaFiles/"
     people = ET.fromstring(fetch("LordMewtwo73/feEngage-randomizer", DATA_REVISION, base + "person.xml"))
     jobs = ET.fromstring(fetch("LordMewtwo73/feEngage-randomizer", DATA_REVISION, base + "job.xml"))
+    vanilla = ET.fromstring(fetch("laqieer/FE17-DOC", VANILLA_REVISION, "fe_assets_gamedata/Job.xml"))
+    vanilla_jobs = {row.get("Jid"): row for row in vanilla.findall("./Sheet/Data/Param")}
     items = ET.fromstring(fetch("LordMewtwo73/feEngage-randomizer", DATA_REVISION, base + "item.xml"))
     playable = ET.fromstring(fetch("LordMewtwo73/feEngage-randomizer", DATA_REVISION, "assets/CharacterData.xml"))
     ids = {row.get("PID") for row in playable.findall("./Sheet/Data/Param")}
+
+    def class_flags(row: ET.Element) -> int:
+        vanilla_row = vanilla_jobs.get(row.get("Jid"))
+        if vanilla_row is not None:
+            return int(vanilla_row.get("Flag"))
+        if row.get("Jid") in {"JID_エンチャント", "JID_マージカノン"}:
+            return 11
+        if row.get("Jid") in {"JID_裏邪竜ノ娘", "JID_裏邪竜ノ子", "JID_メリュジーヌ_味方"}:
+            return 1
+        return 0
 
     def names(row: ET.Element) -> dict:
         key = row.get("Name")
@@ -43,10 +57,14 @@ def main() -> None:
             raise ValueError(f"Missing localized name: {key}")
         return result
 
-    persons = [{"Id": row.get("Pid"), "Names": names(row),
+    persons = [{"Id": row.get("Pid"), "Names": names(row), "Gender": int(row.get("Gender")), "BirthClass": row.get("Jid"),
                 "LimitModifiers": [int(row.get("Limit." + stat)) for stat in STATS]}
                for row in people.findall("./Sheet/Data/Param") if row.get("Pid") in ids]
     classes = [{"Id": row.get("Jid"), "Names": names(row), "MaxLevel": int(row.get("MaxLevel")),
+                "Flags": class_flags(row),
+                "Advanced": int(row.get("Rank")) == 1,
+                "Promotion": row.get("HighJob1"), "LearningSkill": row.get("LearningSkill"),
+                "Weapons": [int(row.get("Weapon" + kind)) for kind in WEAPONS],
                 "BaseStats": [int(row.get("Base." + stat)) for stat in STATS],
                 "Limits": [int(row.get("Limit." + stat)) for stat in STATS]}
                for row in jobs.findall("./Sheet/Data/Param")

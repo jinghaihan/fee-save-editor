@@ -1,15 +1,16 @@
 namespace FeeEditor.Core;
 
+public enum WeaponType { Sword = 1, Lance, Axe, Bow, Dagger, Magic, Staff, Arts, Special }
 public sealed record RosterSkill(uint Hash, int Age, int Category);
 public sealed record RosterProgress(int CurrentHP, int InternalLevel, uint OriginalProficiencies,
     uint Proficiencies, uint SelectedWeapons, uint? ClassSkill,
-    IReadOnlyList<RosterSkill> EquippedSkills, IReadOnlyList<RosterSkill> InheritedSkills);
+    IReadOnlyList<RosterSkill> EquippedSkills, IReadOnlyList<RosterSkill> InheritedSkills, string? CustomName, int Gender);
 
 internal sealed record RosterProgressLayout(RosterProgress Values, int EquippedStart, int EquippedEnd,
     int PoolStart, int PoolEnd, int ClassSkillStart, int ClassSkillEnd, int MasksOffset, int InternalLevelOffset,
     int HPBonus)
 {
-    public static RosterProgressLayout Read(SaveReader reader, int currentHP)
+    public static RosterProgressLayout Read(SaveReader reader, int currentHP, UnitForce force, uint person)
     {
         if (reader.UInt32() != 0)
             throw new InvalidDataException("Unsupported accessory list version.");
@@ -40,9 +41,42 @@ internal sealed record RosterProgressLayout(RosterProgress Values, int EquippedS
         int hpBonus = ReadEnhancement(reader);
         int internalOffset = reader.Position;
         int internalLevel = (sbyte)reader.Byte();
-        var values = new RosterProgress(currentHP, internalLevel, original, aptitude, weapons, classSkill, equipped, pool);
+        if (force <= UnitForce.Ally)
+            SkipAI(reader);
+        if (reader.Byte() != 2)
+            throw new InvalidDataException("Unsupported character customization version.");
+        byte customized = reader.Byte();
+        if (customized > 1)
+            throw new InvalidDataException("Invalid character customization presence flag.");
+        int gender = RosterCatalog.Person(person)?.Gender ?? 0;
+        string? name = null;
+        if (customized == 1)
+        {
+            name = reader.String();
+            gender = reader.Byte();
+            reader.Skip(3); // Language and birthday.
+        }
+        var values = new RosterProgress(currentHP, internalLevel, original, aptitude, weapons, classSkill, equipped, pool, name, gender);
         return new(values, equippedStart, equippedEnd, poolStart, poolEnd, classSkillStart, classSkillEnd,
             masksOffset, internalOffset, hpBonus);
+    }
+
+    private static void SkipAI(SaveReader reader)
+    {
+        if (reader.UInt32() != 7)
+            throw new InvalidDataException("Unsupported character AI version.");
+        reader.Skip(4 + 13);
+        reader.String();
+        if (reader.UInt32() != 0)
+            throw new InvalidDataException("Unsupported AI movement range version.");
+        reader.Skip(5 + 2);
+        for (int index = 0; index < 4; index++) reader.String();
+        for (int index = 0; index < 16; index++)
+        {
+            if (reader.UInt32() != 0)
+                throw new InvalidDataException("Unsupported AI value version.");
+            reader.Skip(2);
+        }
     }
 
     private static IReadOnlyList<RosterSkill> ReadSkills(SaveReader reader)

@@ -133,13 +133,13 @@ internal static class RosterTests
             window.SetLanguage("zh-Hans");
             Dispatcher.UIThread.RunJobs();
             Check(((MainWindow.RosterRow)list.Items[0]!).Label.StartsWith("琉尔"), "Chinese character names did not update.");
-            Check(window.FindControl<TextBox>("RosterClass")!.Text == "神龙之子", "Chinese class name did not update.");
+            Check(((MainWindow.ClassChoice)window.FindControl<ComboBox>("RosterClass")!.SelectedItem!).Label == "神龙之子", "Chinese class name did not update.");
             Check(((MainWindow.InventoryRow)window.FindControl<ListBox>("RosterItemsList")!.Items[0]!).Label.StartsWith(ItemCatalog.Get(Recover).Chinese),
                 "Chinese equipment names did not update.");
             window.SetLanguage("en");
             Dispatcher.UIThread.RunJobs();
             Check(((MainWindow.RosterRow)list.Items[0]!).Label.StartsWith("Alear"), "English character names did not recover.");
-            Check(window.FindControl<TextBox>("RosterClass")!.Text == "Dragon Child", "English class name did not recover.");
+            Check(((MainWindow.ClassChoice)window.FindControl<ComboBox>("RosterClass")!.SelectedItem!).Label == "Dragon Child", "English class name did not recover.");
             Check(level.Text == "7" && uses.Text == "6", "Language switching discarded pending roster edits.");
         }
         search.Text = "alear";
@@ -277,6 +277,7 @@ internal static class RosterTests
             writer.Write(1u); writer.Write(11u); writer.Write(new byte[44]);
         }
         writer.Write((sbyte)4);
+        writer.Write((byte)2); writer.Write(false);
         writer.Write(Enumerable.Range(1, 48).Select(value => (byte)value).ToArray());
         writer.Write((byte)1); writer.Write((byte)2); writer.Write((short)400); writer.Write(0x87654321u);
         writer.Write((sbyte)-1); writer.Write((sbyte)-1);

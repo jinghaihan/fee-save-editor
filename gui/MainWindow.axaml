@@ -173,8 +173,21 @@
                 </StackPanel>
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Class}" />
-                  <TextBox Name="RosterClass" IsReadOnly="True" Height="42" />
+                  <ComboBox Name="RosterClass" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="RosterClass_Changed">
+                    <ComboBox.ItemTemplate>
+                      <DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate>
+                    </ComboBox.ItemTemplate>
+                  </ComboBox>
                 </StackPanel>
+                <StackPanel Name="RosterWeaponVariantField" Spacing="8">
+                  <TextBlock Text="{DynamicResource Weapons}" />
+                  <ComboBox Name="RosterWeaponVariant" Height="42" Margin="0" HorizontalAlignment="Stretch">
+                    <ComboBox.ItemTemplate>
+                      <DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate>
+                    </ComboBox.ItemTemplate>
+                  </ComboBox>
+                </StackPanel>
+                <Button Content="{DynamicResource ChangeClass}" HorizontalAlignment="Stretch" Click="ChangeRosterClass_Click" />
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Level}" />
                   <NumericUpDown Name="RosterLevel" Minimum="1" Maximum="40" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" ValueChanged="RosterLevel_Changed" />

@@ -8,6 +8,8 @@
         "en": "Alear",
         "zh-Hans": "琉尔"
       },
+      "Gender": 1,
+      "BirthClass": "JID_神竜ノ子",
       "LimitModifiers": [
         0,
         1,
@@ -28,6 +30,8 @@
         "en": "Vander",
         "zh-Hans": "凡德雷"
       },
+      "Gender": 1,
+      "BirthClass": "JID_パラディン",
       "LimitModifiers": [
         0,
         1,
@@ -48,6 +52,8 @@
         "en": "Clanne",
         "zh-Hans": "柯岚"
       },
+      "Gender": 1,
+      "BirthClass": "JID_マージ",
       "LimitModifiers": [
         0,
         1,
@@ -68,6 +74,8 @@
         "en": "Framme",
         "zh-Hans": "芙岚"
       },
+      "Gender": 2,
+      "BirthClass": "JID_モンク",
       "LimitModifiers": [
         0,
         0,
@@ -88,6 +96,8 @@
         "en": "Alfred",
         "zh-Hans": "阿尔弗雷德"
       },
+      "Gender": 1,
+      "BirthClass": "JID_アヴニール下級",
       "LimitModifiers": [
         0,
         2,
@@ -108,6 +118,8 @@
         "en": "Etie",
         "zh-Hans": "艾媞耶"
       },
+      "Gender": 2,
+      "BirthClass": "JID_アーチャー",
       "LimitModifiers": [
         0,
         2,
@@ -128,6 +140,8 @@
         "en": "Boucheron",
         "zh-Hans": "布修隆"
       },
+      "Gender": 1,
+      "BirthClass": "JID_アクスファイター",
       "LimitModifiers": [
         0,
         1,
@@ -148,6 +162,8 @@
         "en": "Céline",
         "zh-Hans": "锡莉奴"
       },
+      "Gender": 2,
+      "BirthClass": "JID_フロラージュ下級",
       "LimitModifiers": [
         0,
         -2,
@@ -168,6 +184,8 @@
         "en": "Chloé",
         "zh-Hans": "克萝艾"
       },
+      "Gender": 2,
+      "BirthClass": "JID_ランスペガサス",
       "LimitModifiers": [
         0,
         -2,
@@ -188,6 +206,8 @@
         "en": "Louis",
         "zh-Hans": "路易"
       },
+      "Gender": 1,
+      "BirthClass": "JID_ランスアーマー",
       "LimitModifiers": [
         0,
         1,
@@ -208,6 +228,8 @@
         "en": "Yunaka",
         "zh-Hans": "尤娜卡"
       },
+      "Gender": 2,
+      "BirthClass": "JID_シーフ",
       "LimitModifiers": [
         0,
         -1,
@@ -228,6 +250,8 @@
         "en": "Alcryst",
         "zh-Hans": "史塔卢克"
       },
+      "Gender": 1,
+      "BirthClass": "JID_ティラユール下級",
       "LimitModifiers": [
         0,
         1,
@@ -248,6 +272,8 @@
         "en": "Citrinne",
         "zh-Hans": "希特丽妮卡"
       },
+      "Gender": 2,
+      "BirthClass": "JID_マージ",
       "LimitModifiers": [
         0,
         -1,
@@ -268,6 +294,8 @@
         "en": "Lapis",
         "zh-Hans": "菈琵思"
       },
+      "Gender": 2,
+      "BirthClass": "JID_ソードファイター",
       "LimitModifiers": [
         0,
         -2,
@@ -288,6 +316,8 @@
         "en": "Diamant",
         "zh-Hans": "帝亚曼德"
       },
+      "Gender": 1,
+      "BirthClass": "JID_スュクセサール下級",
       "LimitModifiers": [
         0,
         2,
@@ -308,6 +338,8 @@
         "en": "Amber",
         "zh-Hans": "安巴"
       },
+      "Gender": 1,
+      "BirthClass": "JID_ランスナイト",
       "LimitModifiers": [
         0,
         2,
@@ -328,6 +360,8 @@
         "en": "Jade",
         "zh-Hans": "洁德"
       },
+      "Gender": 2,
+      "BirthClass": "JID_アクスアーマー",
       "LimitModifiers": [
         0,
         1,
@@ -348,6 +382,8 @@
         "en": "Ivy",
         "zh-Hans": "艾比"
       },
+      "Gender": 2,
+      "BirthClass": "JID_リンドブルム下級",
       "LimitModifiers": [
         0,
         0,
@@ -368,6 +404,8 @@
         "en": "Kagetsu",
         "zh-Hans": "花月"
       },
+      "Gender": 1,
+      "BirthClass": "JID_ソードマスター",
       "LimitModifiers": [
         0,
         -1,
@@ -388,6 +426,8 @@
         "en": "Zelkov",
         "zh-Hans": "杰尔科巴"
       },
+      "Gender": 1,
+      "BirthClass": "JID_シーフ",
       "LimitModifiers": [
         0,
         0,
@@ -408,6 +448,8 @@
         "en": "Fogado",
         "zh-Hans": "佛贾特"
       },
+      "Gender": 1,
+      "BirthClass": "JID_クピードー下級",
       "LimitModifiers": [
         0,
         -1,
@@ -428,6 +470,8 @@
         "en": "Pandreo",
         "zh-Hans": "庞德罗"
       },
+      "Gender": 1,
+      "BirthClass": "JID_ハイプリースト",
       "LimitModifiers": [
         0,
         -3,
@@ -448,6 +492,8 @@
         "en": "Bunet",
         "zh-Hans": "波聂"
       },
+      "Gender": 1,
+      "BirthClass": "JID_グレートナイト",
       "LimitModifiers": [
         0,
         1,
@@ -468,6 +514,8 @@
         "en": "Timerra",
         "zh-Hans": "蜜丝提拉"
       },
+      "Gender": 2,
+      "BirthClass": "JID_ピッチフォーク下級",
       "LimitModifiers": [
         0,
         -1,
@@ -488,6 +536,8 @@
         "en": "Panette",
         "zh-Hans": "帕涅托涅"
       },
+      "Gender": 2,
+      "BirthClass": "JID_ベルセルク",
       "LimitModifiers": [
         0,
         3,
@@ -508,6 +558,8 @@
         "en": "Merrin",
         "zh-Hans": "玫琳"
       },
+      "Gender": 2,
+      "BirthClass": "JID_ウルフナイト",
       "LimitModifiers": [
         0,
         -1,
@@ -528,6 +580,8 @@
         "en": "Hortensia",
         "zh-Hans": "奥尔坦希亚"
       },
+      "Gender": 2,
+      "BirthClass": "JID_スレイプニル下級",
       "LimitModifiers": [
         0,
         -2,
@@ -548,6 +602,8 @@
         "en": "Seadall",
         "zh-Hans": "赛安达斯"
       },
+      "Gender": 1,
+      "BirthClass": "JID_ダンサー",
       "LimitModifiers": [
         0,
         0,
@@ -568,6 +624,8 @@
         "en": "Rosado",
         "zh-Hans": "罗萨德"
       },
+      "Gender": 1,
+      "BirthClass": "JID_ドラゴンナイト",
       "LimitModifiers": [
         0,
         3,
@@ -588,6 +646,8 @@
         "en": "Goldmary",
         "zh-Hans": "戈尔德玛莉"
       },
+      "Gender": 2,
+      "BirthClass": "JID_ブレイブヒーロー",
       "LimitModifiers": [
         0,
         1,
@@ -608,6 +668,8 @@
         "en": "Lindon",
         "zh-Hans": "霖丹"
       },
+      "Gender": 1,
+      "BirthClass": "JID_セイジ",
       "LimitModifiers": [
         0,
         0,
@@ -628,6 +690,8 @@
         "en": "Saphir",
         "zh-Hans": "札菲亚"
       },
+      "Gender": 2,
+      "BirthClass": "JID_ウォーリアー",
       "LimitModifiers": [
         0,
         2,
@@ -648,6 +712,8 @@
         "en": "Veyle",
         "zh-Hans": "贝珥"
       },
+      "Gender": 2,
+      "BirthClass": "JID_邪竜ノ娘",
       "LimitModifiers": [
         0,
         0,
@@ -668,6 +734,8 @@
         "en": "Mauvier",
         "zh-Hans": "莫布"
       },
+      "Gender": 1,
+      "BirthClass": "JID_ロイヤルナイト",
       "LimitModifiers": [
         0,
         1,
@@ -688,6 +756,8 @@
         "en": "Anna",
         "zh-Hans": "安娜"
       },
+      "Gender": 2,
+      "BirthClass": "JID_アクスファイター",
       "LimitModifiers": [
         0,
         0,
@@ -708,6 +778,8 @@
         "en": "Jean",
         "zh-Hans": "贾恩"
       },
+      "Gender": 1,
+      "BirthClass": "JID_モンク",
       "LimitModifiers": [
         0,
         0,
@@ -728,6 +800,8 @@
         "en": "Nel",
         "zh-Hans": "爱尔"
       },
+      "Gender": 2,
+      "BirthClass": "JID_裏邪竜ノ娘",
       "LimitModifiers": [
         0,
         0,
@@ -748,6 +822,8 @@
         "en": "Rafal",
         "zh-Hans": "拉法尔"
       },
+      "Gender": 1,
+      "BirthClass": "JID_裏邪竜ノ子",
       "LimitModifiers": [
         0,
         0,
@@ -768,6 +844,8 @@
         "en": "Zelestia",
         "zh-Hans": "赛勒斯提雅"
       },
+      "Gender": 2,
+      "BirthClass": "JID_メリュジーヌ_味方",
       "LimitModifiers": [
         0,
         0,
@@ -788,6 +866,8 @@
         "en": "Gregory",
         "zh-Hans": "孤雷葛里"
       },
+      "Gender": 1,
+      "BirthClass": "JID_セイジ",
       "LimitModifiers": [
         0,
         -2,
@@ -808,6 +888,8 @@
         "en": "Madeline",
         "zh-Hans": "玛德琳"
       },
+      "Gender": 2,
+      "BirthClass": "JID_ジェネラル",
       "LimitModifiers": [
         0,
         3,
@@ -831,6 +913,22 @@
         "zh-Hans": "神龙之子"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "JID_神竜ノ王",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         6,
@@ -865,6 +963,22 @@
         "zh-Hans": "神龙之子"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         6,
@@ -899,6 +1013,22 @@
         "zh-Hans": "神龙之王"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_神竜気",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
       "BaseStats": [
         24,
         8,
@@ -933,6 +1063,22 @@
         "zh-Hans": "邪龙之子"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_邪竜気・闇",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         24,
         8,
@@ -967,6 +1113,22 @@
         "zh-Hans": "神龙之王"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_神竜気",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
       "BaseStats": [
         24,
         8,
@@ -1001,6 +1163,22 @@
         "zh-Hans": "邪龙之女"
       },
       "MaxLevel": 40,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_邪竜気",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         20,
         3,
@@ -1035,6 +1213,22 @@
         "zh-Hans": "邪龙之女"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_邪竜気・闇",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         20,
         3,
@@ -1069,6 +1263,22 @@
         "zh-Hans": "邪龙之王"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_邪竜気・闇",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         4,
@@ -1103,6 +1313,22 @@
         "zh-Hans": "邪龙之王"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         4,
@@ -1137,6 +1363,22 @@
         "zh-Hans": "大邪龙"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_邪竜気・闇",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         30,
         10,
@@ -1171,6 +1413,22 @@
         "zh-Hans": "王室贵族"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "JID_アヴニール",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         24,
         7,
@@ -1205,6 +1463,22 @@
         "zh-Hans": "阿巴尼尔"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_金蓮",
+      "Weapons": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         8,
@@ -1239,6 +1513,22 @@
         "zh-Hans": "王室贵族"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "JID_フロラージュ",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         20,
         5,
@@ -1273,6 +1563,22 @@
         "zh-Hans": "弗罗剌祝"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_華炎",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         21,
         6,
@@ -1307,6 +1613,22 @@
         "zh-Hans": "领主"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "JID_スュクセサール",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         8,
@@ -1341,6 +1663,22 @@
         "zh-Hans": "继承者"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_太陽",
+      "Weapons": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         10,
@@ -1375,6 +1713,22 @@
         "zh-Hans": "领主"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "JID_ティラユール",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         21,
         7,
@@ -1409,6 +1763,22 @@
         "zh-Hans": "狙击兵"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_月光",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         8,
@@ -1443,6 +1813,22 @@
         "zh-Hans": "驯兽师"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "JID_リンドブルム",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         20,
         1,
@@ -1477,6 +1863,22 @@
         "zh-Hans": "林德普尔姆"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_虚空",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         2,
@@ -1511,6 +1913,22 @@
         "zh-Hans": "驯兽师"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "JID_スレイプニル",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         18,
         0,
@@ -1545,6 +1963,22 @@
         "zh-Hans": "斯雷普尼尔"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_大樹",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         18,
         1,
@@ -1579,6 +2013,22 @@
         "zh-Hans": "义警队"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "JID_ピッチフォーク",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         24,
         8,
@@ -1613,6 +2063,22 @@
         "zh-Hans": "草叉枪兵"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_砂陣",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         9,
@@ -1647,6 +2113,22 @@
         "zh-Hans": "义警队"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "JID_クピードー",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         21,
         5,
@@ -1681,6 +2163,22 @@
         "zh-Hans": "邱比特"
       },
       "MaxLevel": 20,
+      "Flags": 1,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_水鏡",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         6,
@@ -1715,6 +2213,22 @@
         "zh-Hans": "美露莘"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_魔法剣",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         7,
@@ -1749,6 +2263,22 @@
         "zh-Hans": "刀剑战士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_ソードマスター",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         20,
         5,
@@ -1783,6 +2313,22 @@
         "zh-Hans": "刀剑将领"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_切り抜け",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         21,
         6,
@@ -1817,6 +2363,22 @@
         "zh-Hans": "无畏英雄"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_助太刀",
+      "Weapons": [
+        0,
+        1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         8,
@@ -1851,6 +2413,22 @@
         "zh-Hans": "枪战士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_ハルバーディア",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         7,
@@ -1885,6 +2463,22 @@
         "zh-Hans": "枪斗士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_挟撃",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         24,
         9,
@@ -1919,6 +2513,22 @@
         "zh-Hans": "皇家骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_手助け",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         7,
@@ -1953,6 +2563,22 @@
         "zh-Hans": "斧战士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_ベルセルク",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         26,
         9,
@@ -1987,6 +2613,22 @@
         "zh-Hans": "狂斗士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_スマッシュ＋",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         29,
         13,
@@ -2021,6 +2663,22 @@
         "zh-Hans": "勇士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_無慈悲",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         27,
         12,
@@ -2055,6 +2713,22 @@
         "zh-Hans": "弓箭手"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_スナイパー",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         19,
         6,
@@ -2089,6 +2763,22 @@
         "zh-Hans": "狙击手"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_集中",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         8,
@@ -2123,6 +2813,22 @@
         "zh-Hans": "弓骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_狙撃",
+      "Weapons": [
+        0,
+        2,
+        2,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         7,
@@ -2157,6 +2863,22 @@
         "zh-Hans": "重剑兵"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_ジェネラル",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         8,
@@ -2191,6 +2913,22 @@
         "zh-Hans": "重枪兵"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_ジェネラル",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         8,
@@ -2225,6 +2963,22 @@
         "zh-Hans": "重斧兵"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_ジェネラル",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         8,
@@ -2259,6 +3013,22 @@
         "zh-Hans": "将军"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_入れ替え",
+      "Weapons": [
+        0,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         28,
         11,
@@ -2293,6 +3063,22 @@
         "zh-Hans": "英勇骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_護衛",
+      "Weapons": [
+        0,
+        3,
+        3,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         26,
         9,
@@ -2327,6 +3113,22 @@
         "zh-Hans": "剑骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_パラディン",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         6,
@@ -2361,6 +3163,22 @@
         "zh-Hans": "枪骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_パラディン",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         6,
@@ -2395,6 +3213,22 @@
         "zh-Hans": "斧骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_パラディン",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         6,
@@ -2429,6 +3263,22 @@
         "zh-Hans": "圣骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_回り込み",
+      "Weapons": [
+        0,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         8,
@@ -2463,6 +3313,22 @@
         "zh-Hans": "狼骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_足狙い",
+      "Weapons": [
+        0,
+        2,
+        2,
+        2,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         6,
@@ -2497,6 +3363,22 @@
         "zh-Hans": "魔法师"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_セイジ",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         18,
         1,
@@ -2531,6 +3413,22 @@
         "zh-Hans": "圣者"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_魔力増幅",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         20,
         1,
@@ -2565,6 +3463,22 @@
         "zh-Hans": "魔法师骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_背理の法",
+      "Weapons": [
+        0,
+        2,
+        2,
+        2,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         21,
         5,
@@ -2599,6 +3513,22 @@
         "zh-Hans": "僧侣"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "JID_マスターモンク",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
       "BaseStats": [
         18,
         3,
@@ -2633,6 +3563,22 @@
         "zh-Hans": "僧侣大师"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_気の拡散",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
       "BaseStats": [
         22,
         6,
@@ -2667,6 +3613,22 @@
         "zh-Hans": "主教"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_自己回復",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
       "BaseStats": [
         20,
         3,
@@ -2701,6 +3663,22 @@
         "zh-Hans": "剑飞马骑士"
       },
       "MaxLevel": 20,
+      "Flags": 15,
+      "Advanced": false,
+      "Promotion": "JID_グリフォンナイト",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         21,
         5,
@@ -2735,6 +3713,22 @@
         "zh-Hans": "枪飞马骑士"
       },
       "MaxLevel": 20,
+      "Flags": 15,
+      "Advanced": false,
+      "Promotion": "JID_グリフォンナイト",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         21,
         5,
@@ -2769,6 +3763,22 @@
         "zh-Hans": "斧飞马骑士"
       },
       "MaxLevel": 20,
+      "Flags": 15,
+      "Advanced": false,
+      "Promotion": "JID_グリフォンナイト",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         21,
         5,
@@ -2803,6 +3813,22 @@
         "zh-Hans": "格里芬骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_移動補助",
+      "Weapons": [
+        0,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         7,
@@ -2837,6 +3863,22 @@
         "zh-Hans": "飞龙骑士"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_急襲",
+      "Weapons": [
+        0,
+        3,
+        3,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         9,
@@ -2871,6 +3913,22 @@
         "zh-Hans": "小偷"
       },
       "MaxLevel": 40,
+      "Flags": 11,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_すり抜け",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         5,
@@ -2905,6 +3963,22 @@
         "zh-Hans": "舞蹈家"
       },
       "MaxLevel": 40,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_特別な踊り",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
       "BaseStats": [
         21,
         5,
@@ -2939,6 +4013,22 @@
         "zh-Hans": "蛮族"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         26,
         9,
@@ -2973,6 +4063,22 @@
         "zh-Hans": "异形龙"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         30,
         0,
@@ -3007,6 +4113,22 @@
         "zh-Hans": "幻影龙"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         30,
         0,
@@ -3041,6 +4163,22 @@
         "zh-Hans": "村民"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         18,
         1,
@@ -3075,6 +4213,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         5,
@@ -3109,6 +4263,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         8,
@@ -3143,6 +4313,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         6,
@@ -3177,6 +4363,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         21,
         2,
@@ -3211,6 +4413,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         24,
         10,
@@ -3245,6 +4463,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         24,
         8,
@@ -3279,6 +4513,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         4,
@@ -3313,6 +4563,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         4,
@@ -3347,6 +4613,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         28,
         8,
@@ -3381,6 +4663,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
       "BaseStats": [
         23,
         7,
@@ -3415,6 +4713,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         7,
@@ -3449,6 +4763,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         7,
@@ -3483,6 +4813,22 @@
         "zh-Hans": "邪龙之女"
       },
       "MaxLevel": 40,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_裏邪竜ノ娘_兵種スキル",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         20,
         5,
@@ -3517,6 +4863,22 @@
         "zh-Hans": "邪龙之子"
       },
       "MaxLevel": 40,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_裏邪竜ノ子_兵種スキル",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         20,
         5,
@@ -3551,6 +4913,22 @@
         "zh-Hans": "邪龙之子"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_裏邪竜ノ子_兵種スキル",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         20,
         5,
@@ -3585,6 +4963,22 @@
         "zh-Hans": "邪龙之子"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_裏邪竜ノ子_兵種スキル",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         20,
         5,
@@ -3619,6 +5013,22 @@
         "zh-Hans": "大邪龙"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         30,
         10,
@@ -3653,6 +5063,22 @@
         "zh-Hans": "美露莘"
       },
       "MaxLevel": 40,
+      "Flags": 1,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_魔法剣",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         7,
@@ -3687,6 +5113,22 @@
         "zh-Hans": "附魔师"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_輸送隊",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
       "BaseStats": [
         20,
         5,
@@ -3721,6 +5163,22 @@
         "zh-Hans": "魔法加农炮兵"
       },
       "MaxLevel": 20,
+      "Flags": 11,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_全弾発射",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         20,
         5,
@@ -3755,6 +5213,22 @@
         "zh-Hans": "异形狼"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_異形狼連携",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         23,
         6,
@@ -3789,6 +5263,22 @@
         "zh-Hans": "幻影狼"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_幻影狼連携",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         23,
         6,
@@ -3823,6 +5313,22 @@
         "zh-Hans": "异形飞龙"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_瘴気の領域",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         30,
         2,
@@ -3857,6 +5363,22 @@
         "zh-Hans": "幻影飞龙"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "SID_氷の領域",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         30,
         2,
@@ -3891,6 +5413,22 @@
         "zh-Hans": "EX王室贵族"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_金蓮",
+      "Weapons": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         8,
@@ -3925,6 +5463,22 @@
         "zh-Hans": "EX王室贵族"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_華炎",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         21,
         6,
@@ -3959,6 +5513,22 @@
         "zh-Hans": "EX领主"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_太陽",
+      "Weapons": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         10,
@@ -3993,6 +5563,22 @@
         "zh-Hans": "EX领主"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_月光",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         8,
@@ -4027,6 +5613,22 @@
         "zh-Hans": "EX驯兽师"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_虚空",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         2,
@@ -4061,6 +5663,22 @@
         "zh-Hans": "EX驯兽师"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_大樹",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         18,
         1,
@@ -4095,6 +5713,22 @@
         "zh-Hans": "EX义警队"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_砂陣",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         25,
         9,
@@ -4129,6 +5763,22 @@
         "zh-Hans": "EX义警队"
       },
       "MaxLevel": 20,
+      "Flags": 0,
+      "Advanced": true,
+      "Promotion": "",
+      "LearningSkill": "SID_水鏡",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         6,
@@ -4163,6 +5813,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         7,
@@ -4197,6 +5863,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         7,
@@ -4231,6 +5913,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         7,
@@ -4265,6 +5963,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
       "BaseStats": [
         19,
         5,
@@ -4299,6 +6013,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         26,
         8,
@@ -4333,6 +6063,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         20,
         2,
@@ -4367,6 +6113,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         2,
@@ -4401,6 +6163,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         23,
         6,
@@ -4435,6 +6213,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         24,
         8,
@@ -4469,6 +6263,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         5,
@@ -4503,6 +6313,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         22,
         4,
@@ -4537,6 +6363,22 @@
         "zh-Hans": "纹章士"
       },
       "MaxLevel": 40,
+      "Flags": 0,
+      "Advanced": false,
+      "Promotion": "",
+      "LearningSkill": "",
+      "Weapons": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "BaseStats": [
         26,
         8,

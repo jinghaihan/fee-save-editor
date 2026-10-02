@@ -10,6 +10,8 @@ namespace FeeEditor.Gui;
 public partial class MainWindow
 {
     public sealed record RosterRow(int Index, string Label);
+    public sealed record ClassChoice(ClassDefinition Definition, string Label);
+    public sealed record WeaponChoice(uint Mask, string Label);
     public bool CanEditRoster { get; private set; }
     private int? _selectedCharacter;
     private int? _selectedCharacterItem;
@@ -36,7 +38,7 @@ public partial class MainWindow
         RosterList.ItemsSource = Array.Empty<RosterRow>();
         RosterItemsList.ItemsSource = Array.Empty<InventoryRow>();
         RosterName.Clear();
-        RosterClass.Clear();
+        RosterClass.ItemsSource = Array.Empty<ClassChoice>();
         RosterLevel.Value = RosterExperience.Value = RosterSkillPoints.Value = null;
         RosterStatsInputs.Children.Clear();
         _rosterStats.Clear();
@@ -87,7 +89,7 @@ public partial class MainWindow
         if (character is null)
         {
             RosterName.Clear();
-            RosterClass.Clear();
+            RosterClass.ItemsSource = Array.Empty<ClassChoice>();
             RosterLevel.Value = RosterExperience.Value = RosterSkillPoints.Value = null;
             RosterStatsInputs.Children.Clear();
             _rosterStats.Clear();
@@ -95,6 +97,8 @@ public partial class MainWindow
             return;
         }
         _refreshingRoster = true;
+        RosterClass.SelectedItem = null;
+        RosterWeaponVariant.SelectedItem = null;
         RefreshCharacterNames(character);
         var job = RosterCatalog.Class(character.ClassHash);
         RosterLevel.Maximum = job?.MaxLevel ?? 255;
@@ -124,9 +128,20 @@ public partial class MainWindow
 
     private void RefreshCharacterNames(RosterCharacter character)
     {
-        RosterName.Text = CharacterName(character);
-        RosterClass.Text = RosterCatalog.Class(character.ClassHash)?.Name(UiLanguage.Current)
-            ?? $"{UiLanguage.Get("UnknownClass")} (0x{character.ClassHash:X8})";
+        RosterName.Text = character.Progress.CustomName ?? CharacterName(character);
+        uint selected = (RosterClass.SelectedItem as ClassChoice)?.Definition.Hash ?? character.ClassHash;
+        bool refreshing = _refreshingRoster;
+        _refreshingRoster = true;
+        var classes = RosterCatalog.Person(character.PersonHash) is null ? [] : Save!.ReadRosterClasses(character.Index).ToList();
+        if (RosterCatalog.Class(character.ClassHash) is { } current && classes.All(job => job.Hash != current.Hash))
+            classes.Add(current);
+        var choices = classes.Select(job => new ClassChoice(job, job.Name(UiLanguage.Current)))
+            .OrderBy(choice => choice.Label, StringComparer.CurrentCultureIgnoreCase).ToArray();
+        RosterClass.ItemsSource = choices;
+        RosterClass.SelectedItem = choices.FirstOrDefault(choice => choice.Definition.Hash == selected)
+            ?? choices.FirstOrDefault(choice => choice.Definition.Hash == character.ClassHash);
+        RefreshWeaponVariants(character);
+        _refreshingRoster = refreshing;
     }
 
     private void RefreshRosterLanguage()
@@ -148,9 +163,8 @@ public partial class MainWindow
         return EditRoster(save =>
         {
             var character = SelectedCharacter ?? throw new ArgumentException("Select a character.");
-            var values = new RosterValue(Amount(RosterLevel), Amount(RosterExperience), Amount(RosterSkillPoints));
-            return save.WithRosterValues(character.Index, values);
-        }, refresh: false);
+            return PendingGeneralValues(save, character);
+        }, refresh: true);
     }
 
     public bool ApplyRosterStats() => EditRoster(save =>
@@ -263,8 +277,18 @@ public partial class MainWindow
     private EngageSave PendingCharacterValues(EngageSave save)
     {
         var character = SelectedCharacter ?? throw new ArgumentException("Select a character.");
+        save = PendingGeneralValues(save, character);
+        foreach (var (stat, field) in _rosterStats.Where(pair => pair.Value.Input.IsEnabled))
+            if (field.Input.Text != character.Stats[(int)stat].Value.ToString())
+                save = save.WithRosterStat(character.Index, stat, Amount(field.Input));
+        return save;
+    }
+
+    private EngageSave PendingGeneralValues(EngageSave save, RosterCharacter character)
+    {
+        save = PendingClass(save, character);
         var old = character.Values;
-        var values = old;
+        var values = save.ReadRoster()[character.Index].Values;
         if (RosterLevel.Text != old.Level.ToString())
             values = values with { Level = Amount(RosterLevel) };
         if (RosterExperience.Text != old.Experience.ToString())
@@ -272,9 +296,40 @@ public partial class MainWindow
         if (RosterSkillPoints.Text != old.SkillPoints.ToString())
             values = values with { SkillPoints = Amount(RosterSkillPoints) };
         save = save.WithRosterValues(character.Index, values);
-        foreach (var (stat, field) in _rosterStats.Where(pair => pair.Value.Input.IsEnabled))
-            save = save.WithRosterStat(character.Index, stat, Amount(field.Input));
         return save;
+    }
+
+    private EngageSave PendingClass(EngageSave save, RosterCharacter character)
+    {
+        if (RosterClass.SelectedItem is not ClassChoice choice || RosterWeaponVariant.SelectedItem is not WeaponChoice weapon)
+            return save;
+        if (choice.Definition.Hash == character.ClassHash && (weapon.Mask == character.Progress.SelectedWeapons
+            || character.Progress.SelectedWeapons == 0 && choice.Definition.WeaponVariants().Count == 1))
+            return save;
+        return save.WithRosterClass(character.Index, choice.Definition.Id, weapon.Mask);
+    }
+
+    private void RefreshWeaponVariants(RosterCharacter character)
+    {
+        if (RosterClass.SelectedItem is not ClassChoice choice)
+            return;
+        uint selected = (RosterWeaponVariant.SelectedItem as WeaponChoice)?.Mask ?? character.Progress.SelectedWeapons;
+        var variants = choice.Definition.WeaponVariants().Select(mask => new WeaponChoice(mask,
+            string.Join(" / ", Enum.GetValues<WeaponType>().Where(kind => (mask & (1u << (int)kind)) != 0)
+                .Select(kind => UiLanguage.Get(kind.ToString()))))).ToArray();
+        RosterWeaponVariant.ItemsSource = variants;
+        RosterWeaponVariant.SelectedItem = variants.FirstOrDefault(weapon => weapon.Mask == selected) ?? variants.FirstOrDefault();
+        RosterWeaponVariantField.IsVisible = variants.Length > 1;
+    }
+
+    public bool ChangeRosterClass() => EditRoster(save => PendingClass(save,
+        SelectedCharacter ?? throw new ArgumentException("Select a character.")), refresh: true);
+
+    private void ChangeRosterClass_Click(object? sender, RoutedEventArgs e) => ChangeRosterClass();
+    private void RosterClass_Changed(object? sender, SelectionChangedEventArgs e)
+    {
+        if (!_refreshingRoster && SelectedCharacter is { } character)
+            RefreshWeaponVariants(character);
     }
 
     private void RosterSearch_Changed(object? sender, TextChangedEventArgs e) => RefreshRoster(selectEditor: false);

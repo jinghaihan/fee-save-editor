@@ -82,6 +82,7 @@ try
     MainTests.Run(window, temporary);
     InventoryTests.Run(window, temporary);
     RosterTests.Run(window, temporary);
+    RosterClassTests.Run(window, temporary);
 
     if (args is ["--save-directory", var directory, ..])
         foreach (string name in new[] { "Auto", "Manual0", "Global" })
@@ -100,6 +101,7 @@ try
                 var loaded = window.Save!;
                 InventoryTests.CheckReal(loaded);
                 RosterTests.CheckReal(loaded);
+                RosterClassTests.CheckReal(loaded);
                 var current = loaded.ReadMainValues();
                 var updated = current with { Money = 12345, BondFragments = 6789, IronIngots = 111,
                     SteelIngots = 222, SilverIngots = 333, Difficulty = Difficulty.Normal,

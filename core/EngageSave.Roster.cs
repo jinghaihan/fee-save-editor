@@ -103,14 +103,7 @@ public sealed partial class EngageSave
         using (var writer = new BinaryWriter(record, System.Text.Encoding.UTF8, leaveOpen: true))
             InventoryLayout.WriteItem(writer, item);
         byte[] replacement = record.ToArray();
-        int delta = replacement.Length - (entry.ItemEnds[slot] - entry.ItemStarts[slot]);
-        using var output = new MemoryStream();
-        output.Write(_bytes.AsSpan(layout.Section.PayloadOffset, entry.ItemStarts[slot] - layout.Section.PayloadOffset));
-        output.Write(replacement);
-        output.Write(_bytes.AsSpan(entry.ItemEnds[slot], layout.Section.PayloadOffset + layout.Section.Length - entry.ItemEnds[slot]));
-        byte[] payload = output.ToArray();
-        Write32(payload, entry.Start - layout.Section.PayloadOffset, checked((uint)(entry.End - entry.Start + delta)));
-        var edited = ReplaceSection(layout.Section, payload);
+        var edited = ReplaceCharacterRange(layout, entry, entry.ItemStarts[slot], entry.ItemEnds[slot], replacement);
         if (edited.ReadRoster()[entry.Character.Index].Items[slot].Item != item)
             throw new InvalidDataException("The edited character item did not survive serialization.");
         return edited;
