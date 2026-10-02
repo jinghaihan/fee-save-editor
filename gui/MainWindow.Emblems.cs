@@ -182,18 +182,7 @@ public partial class MainWindow
         if (Save is null) return false;
         try
         {
-            if (_emblemTab == 0)
-            {
-                var bond = SelectedBond ?? throw new ArgumentException("Select an existing character bond.");
-                if (!HasPendingEmblemValues()) return true;
-                int level = EmblemBondLevelInput.SelectedItem is int selected ? selected : throw new ArgumentException(UiLanguage.Get("InvalidAmount"));
-                Save = Save.WithEmblemBond(_selectedEmblem!.Value, bond.PersonId, level, Amount(EmblemBondExpInput));
-            }
-            else
-            {
-                var ring = SelectedBondRing ?? throw new ArgumentException("Select an existing bond ring.");
-                Save = Save.WithBondRingStock(ring.InstanceId, Amount(BondRingStockInput));
-            }
+            Save = PendingEmblemValues(Save);
             RefreshOverview();
             RefreshSections();
             Message.IsVisible = false;
@@ -206,6 +195,19 @@ public partial class MainWindow
             ShowMessage("EditFailed", error.Message);
             return false;
         }
+    }
+
+    private EngageSave PendingEmblemValues(EngageSave save)
+    {
+        if (!HasPendingEmblemValues()) return save;
+        if (_emblemTab == 0)
+        {
+            var bond = SelectedBond ?? throw new ArgumentException("Select an existing character bond.");
+            int level = EmblemBondLevelInput.SelectedItem is int selected ? selected : throw new ArgumentException(UiLanguage.Get("InvalidAmount"));
+            return save.WithEmblemBond(_selectedEmblem!.Value, bond.PersonId, level, Amount(EmblemBondExpInput));
+        }
+        var ring = SelectedBondRing ?? throw new ArgumentException("Select an existing bond ring.");
+        return save.WithBondRingStock(ring.InstanceId, Amount(BondRingStockInput));
     }
 
     private void RefreshEmblemLanguage()

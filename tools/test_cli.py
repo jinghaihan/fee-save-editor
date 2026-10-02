@@ -377,6 +377,8 @@ def main() -> None:
     check_roster(command, args.save_directory, main_fixture())
     from test_roster_transfer_cli import check_roster_transfers
     check_roster_transfers(command, args.save_directory, main_fixture())
+    from test_roster_equipment_cli import check_roster_equipment
+    check_roster_equipment(command, args.save_directory, main_fixture())
     from test_emblems_cli import check_emblems
     check_emblems(command, args.save_directory, main_fixture())
     from test_supports_cli import check_supports

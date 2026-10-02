@@ -1,4 +1,7 @@
 {
+  "Equipment": "Equipment",
+  "Emblem": "Emblem",
+  "Unequip": "Unequip",
   "AppTitle": "Fire Emblem Engage Save Editor",
   "File": "File",
   "OpenSave": "Open Save...",

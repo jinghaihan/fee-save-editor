@@ -28,6 +28,7 @@ public partial class MainWindow
         AchievementsPanel.IsVisible = false;
         RosterPanel.IsVisible = true;
         MainNavigation.SelectedIndex = 2;
+        RefreshRosterEquipment(preserveEdits: true);
         RefreshPageTitle();
     }
 
@@ -39,6 +40,8 @@ public partial class MainWindow
         _selectedCharacter = null;
         _selectedCharacterItem = null;
         _rosterItemBaseline = null;
+        CanEditRosterEquipment = false;
+        RosterEquipmentForm.IsEnabled = false;
         RosterItemEngraving.ItemsSource = Array.Empty<EngravingChoice>();
         RosterGeneralForm.IsEnabled = RosterStatsForm.IsEnabled = RosterItemsForm.IsEnabled = false;
         RosterSkillsForm.IsEnabled = RosterProficienciesForm.IsEnabled = false;
@@ -107,6 +110,7 @@ public partial class MainWindow
         RosterSkillsForm.IsEnabled = RosterProficienciesForm.IsEnabled = character is not null;
         if (character is null)
         {
+            RefreshRosterEquipment(preserveEdits: false);
             RosterName.Clear();
             RosterClass.ItemsSource = Array.Empty<ClassChoice>();
             RosterLevel.Value = RosterExperience.Value = RosterSkillPoints.Value = null;
@@ -166,6 +170,7 @@ public partial class MainWindow
         RefreshRosterStatPreviews();
         _selectedCharacterItem = null;
         RefreshCharacterItems(selectEditor: true);
+        RefreshRosterEquipment(preserveEdits: false);
         _refreshingRoster = false;
     }
 
@@ -203,6 +208,7 @@ public partial class MainWindow
         RefreshEngravingChoices(RosterItemEngraving, (RosterItemType.SelectedItem as ItemChoice)?.Definition.Hash ?? _rosterItemBaseline?.ItemHash,
             (RosterItemEngraving.SelectedItem as EngravingChoice)?.Hash);
         RefreshRosterSkills(character, preserveEdits: true);
+        RefreshRosterEquipment(preserveEdits: true);
     }
 
     public bool ApplyRosterValues()
@@ -257,7 +263,11 @@ public partial class MainWindow
             return false;
         try
         {
-            Save = edit(Save);
+            var beforeEquipment = CanEditRosterEquipment ? Save.ReadCharacterRingLinks() : null;
+            var edited = edit(Save);
+            bool changedEquipment = beforeEquipment is not null && !beforeEquipment.SequenceEqual(edited.ReadCharacterRingLinks());
+            Save = edited;
+            if (changedEquipment) RefreshEmblemRecords(preserveEditor: false);
             RefreshRoster(selectEditor: refresh);
             RefreshInventory(selectEditor: !HasPendingItemValues());
             RefreshOverview();
@@ -379,7 +389,9 @@ public partial class MainWindow
         }, refresh: true);
     }
 
-    private EngageSave PendingCharacterValues(EngageSave save)
+    private EngageSave PendingCharacterValues(EngageSave save) => PendingRosterEquipment(PendingCharacterValuesWithoutEquipment(save));
+
+    private EngageSave PendingCharacterValuesWithoutEquipment(EngageSave save)
     {
         var character = SelectedCharacter ?? throw new ArgumentException("Select a character.");
         save = PendingGeneralValues(save, character);
@@ -459,6 +471,7 @@ public partial class MainWindow
         RosterItemsForm.IsVisible = RosterTabs.SelectedIndex == 2;
         RosterSkillsForm.IsVisible = RosterTabs.SelectedIndex == 3;
         RosterProficienciesForm.IsVisible = RosterTabs.SelectedIndex == 4;
+        RosterEquipmentForm.IsVisible = RosterTabs.SelectedIndex == 5;
     }
     private void RosterLevel_Changed(object? sender, NumericUpDownValueChangedEventArgs e)
     {

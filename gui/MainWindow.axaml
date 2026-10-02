@@ -248,6 +248,7 @@
               <TabStripItem Content="{DynamicResource Items}" />
               <TabStripItem Content="{DynamicResource Skills}" />
               <TabStripItem Content="{DynamicResource Proficiencies}" />
+              <TabStripItem Content="{DynamicResource Equipment}" />
             </TabStrip>
             <Button Name="MaximizeRosterStatsButton" Grid.Column="1" Content="{DynamicResource MaximizeStats}" IsVisible="False" IsEnabled="False" VerticalAlignment="Center" Click="MaximizeRosterStats_Click" />
           </Grid>
@@ -386,6 +387,23 @@
                 <WrapPanel Name="RosterProficiencyInputs" />
                 <Button Content="{DynamicResource UnlockAll}" HorizontalAlignment="Stretch" Click="UnlockRosterProficiencies_Click" />
                 <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterProficiencies_Click" />
+              </StackPanel>
+              <StackPanel Name="RosterEquipmentForm" Width="340" HorizontalAlignment="Left" Spacing="16" IsVisible="False" IsEnabled="False">
+                <StackPanel Spacing="8">
+                  <TextBlock Text="{DynamicResource Kind}" />
+                  <ComboBox Name="RosterEquipmentType" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="RosterEquipmentType_Changed">
+                    <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
+                  </ComboBox>
+                </StackPanel>
+                <StackPanel Name="RosterEquipmentChoiceField" Spacing="8">
+                  <TextBlock Name="RosterEquipmentChoiceTitle" />
+                  <TextBox Name="RosterEquipmentSearch" PlaceholderText="{DynamicResource Search}" TextChanged="RosterEquipmentSearch_Changed" />
+                  <ComboBox Name="RosterEquipmentChoice" Height="42" Margin="0" HorizontalAlignment="Stretch">
+                    <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" TextWrapping="Wrap" /></DataTemplate></ComboBox.ItemTemplate>
+                  </ComboBox>
+                </StackPanel>
+                <Button Name="ApplyRosterEquipmentButton" Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyRosterEquipment_Click" />
+                <Button Name="UnequipRosterButton" Content="{DynamicResource Unequip}" HorizontalAlignment="Stretch" Click="UnequipRoster_Click" />
               </StackPanel>
             </Grid>
           </ScrollViewer>

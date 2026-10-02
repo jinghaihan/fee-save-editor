@@ -1,4 +1,7 @@
 {
+  "Equipment": "装备",
+  "Emblem": "纹章士",
+  "Unequip": "卸下",
   "AppTitle": "Fire Emblem Engage Save Editor",
   "File": "文件",
   "OpenSave": "打开存档…",

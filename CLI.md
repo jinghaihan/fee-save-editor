@@ -107,6 +107,21 @@ and resets class progress; changing only a weapon branch retains it.
 - Class skill: `class-skill --character <index> --unlocked true|false`.
 - Proficiencies: `proficiencies --character <index> --weapons Sword,Lance`.
 
+Inspect equipment choices, then equip an owned instance or unequip the selected character:
+
+```sh
+FeeEditor.Cli roster equipment Manual0 --character 0 --json --language en
+FeeEditor.Cli roster equipment-set Manual0 Manual0-edited --character 0 --emblem 1
+FeeEditor.Cli roster equipment-set Manual0 Manual0-edited --character 0 --ring 10
+FeeEditor.Cli roster equipment-set Manual0 Manual0-edited --character 0 --none true
+```
+
+Use the instance IDs returned by `roster equipment`, not catalog IDs. Exactly one
+of `--emblem`, `--ring` or `--none` is required. Equipment already worn by another
+playable character transfers to the selected character. Equipping a stacked Bond
+Ring separates one copy; unequipping returns it to stock. Total copies are preserved.
+Unavailable story Emblems and active Engage+ links cannot be reassigned.
+
 ## Emblems and Bond Rings
 
 ```sh

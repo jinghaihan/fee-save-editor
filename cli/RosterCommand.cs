@@ -8,6 +8,24 @@ internal static class RosterCommand
 {
     public static int Run(string[] args)
     {
+        if (args is ["equipment", var equipmentSource, "--character", var equipmentIndex, .. var equipmentDisplay])
+        {
+            string language = DisplayLanguage(equipmentDisplay);
+            var loaded = EngageSave.Load(equipmentSource);
+            int index = Number(equipmentIndex);
+            Console.WriteLine(JsonSerializer.Serialize(new
+            {
+                Current = loaded.ReadRosterEquipment(index),
+                Links = loaded.ReadCharacterRingLinks().Single(link => link.CharacterIndex == index),
+                Options = loaded.ReadRosterEquipmentOptions(index).Select(option => new
+                {
+                    option.Selection, option.EmblemId, option.RingHash, option.OwnerIndex, option.StockCount,
+                    Name = EquipmentName(option, language),
+                    Rank = option.RingHash is uint ringHash ? EmblemCatalog.Ring(ringHash)!.RankName : null
+                })
+            }, new JsonSerializerOptions { WriteIndented = true, Converters = { new JsonStringEnumConverter() } }));
+            return 0;
+        }
         if (args is ["export", var exportSource, var exportPath, "--character", var exportIndex])
         {
             RosterTransfer.WriteNew(exportPath, EngageSave.Load(exportSource).ExportRosterCharacter(Number(exportIndex)));
@@ -62,6 +80,13 @@ internal static class RosterCommand
         return 0;
     }
 
+    private static string EquipmentName(RosterEquipmentOption option, string language)
+    {
+        if (option.EmblemId is string gid) return EmblemCatalog.Emblem(gid)!.Name(language);
+        if (option.RingHash is uint hash) return EmblemCatalog.Ring(hash)!.Name(language);
+        return language == "zh-Hans" ? "无" : "None";
+    }
+
     private static string DisplayLanguage(string[] options)
     {
         string language = "en";
@@ -104,6 +129,7 @@ internal static class RosterCommand
             "item-delete" => ["--character", "--slot"],
             "restore" => ["--character"],
             "import" => ["--character", "--file"],
+            "equipment-set" => ["--character", "--emblem", "--ring", "--none"],
             _ => throw new ArgumentException("Unknown roster command. Run --help for usage.")
         };
         var values = Options(options, allowed);
@@ -112,6 +138,20 @@ internal static class RosterCommand
         if (index >= characters.Count)
             throw new ArgumentOutOfRangeException(nameof(index));
         var character = characters[index];
+        if (verb == "equipment-set")
+        {
+            if (values.Count != 2) throw new ArgumentException("Choose exactly one of --emblem, --ring or --none.");
+            if (values.TryGetValue("--none", out string? none))
+            {
+                if (none != "true") throw new ArgumentException("Use --none true to unequip.");
+                return save.WithRosterEquipment(index, new(RosterEquipmentKind.None, 0));
+            }
+            var kind = values.ContainsKey("--emblem") ? RosterEquipmentKind.Emblem : RosterEquipmentKind.BondRing;
+            string key = kind == RosterEquipmentKind.Emblem ? "--emblem" : "--ring";
+            if (!uint.TryParse(Required(values, key), out uint instance) || instance == 0)
+                throw new ArgumentException("An equipment instance must be a positive integer.");
+            return save.WithRosterEquipment(index, new(kind, instance));
+        }
         if (verb == "import")
         {
             string path = Required(values, "--file");

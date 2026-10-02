@@ -401,8 +401,39 @@ Owners are resolved from the UNIT trailer after AI/customization: two bytes,
 battle-data version 4 and sparse count/pairs, two bytes, weapon-rank count/bytes,
 two bytes, and three 32-bit instance links (Emblem, partner Emblem, bond ring).
 The parser verifies the rest of the variable-length trailer and rejects duplicate
-ring owners or references to missing ring instances. Emblem equipment links are
-currently read, not reassigned; changing them also requires GOD ownership updates.
+ring owners or references to missing ring instances.
+
+### Roster equipment
+
+The owned GOD pool has version 8: a 32-byte header, 32-bit count, and records
+containing an instance ID, GodData hash reference, GDBD holder ID, four bytes
+(darkness, reserved deletion, escaping and cleaning progress), a byte-counted
+synchro dictionary (UTF-16 key plus UInt16 value), and a byte-counted refinement
+dictionary (UTF-16 weapon key, ten level bytes and a nullable skill key).
+Native `GodUnit.OnSerialize` at `0x2345420` does not serialize parent/child unit
+ownership. UNIT instance links reconstruct ownership; changing normal equipment
+therefore preserves GOD and GDBD bytes.
+
+Equipment choices include only owned, known normal/DLC Emblems with a matching
+GDBD holder and a bond record for the character. Dark, reserved, escaping,
+partner-linked and Alear's special Engage+ Emblem are excluded. Enemy/temporary
+owners and active Engage+ links are protected. A normal Emblem and a Bond Ring
+are mutually exclusive; a transfer clears the previous owner's normal link.
+
+Bond Ring assignment follows native `UnitRingPool.SetOwner` at `0x1c5d760`: a
+single-copy stock entry retains its ID; larger stacks separate one worn copy
+using a free native ID. Unequipping follows `ClearOwner` at `0x1c5d8a0`, returning
+the worn copy to an unworn stack or retaining it as the only stock entry.
+Stock totals by ring hash must remain unchanged. Capacity, instance IDs,
+ownership and stock limits are validated before exposing an immutable result.
+
+Native `Unit.SetRingImpl` at `0x1a4e000` and `Unit.SetGodUnit` at `0x1a4f180`
+clear Engage count/turn and status mask `0x07800080` (Engage and Dual Guard state).
+The editor applies the same reset only to characters whose equipment changes;
+partner links and all other unit fields are preserved. GUI/CLI regression tests
+cover synthetic pools and temporary copies of both private saves. In-game loading
+of edited equipment has not yet been verified. Addresses refer to the supplied
+game-version-304 NSO with build prefix `8C08B971`.
 
 `tools/import_emblem_catalog.py` imports minimal identifiers, names and thresholds
 from FE17-DOC revision `99677e4cad22b636bee4af5a3052003bed17c443` and Iron19_L10n

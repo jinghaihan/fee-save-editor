@@ -101,6 +101,7 @@ try
     RosterClassTests.Run(window, temporary);
     RosterSkillTests.Run(window, temporary);
     RosterTransferTests.Run(window, temporary);
+    RosterEquipmentTests.Run(window, temporary);
     RosterStatTests.Run();
     RosterStatGuiTests.Run(window, temporary);
     EmblemTests.Run();
@@ -138,6 +139,7 @@ try
                 RosterClassTests.CheckReal(loaded);
                 RosterSkillTests.CheckReal(loaded);
                 RosterTransferTests.CheckReal(loaded);
+                RosterEquipmentTests.CheckReal(loaded);
                 RosterStatTests.CheckReal(loaded);
                 EmblemTests.CheckReal(loaded);
                 BondRingTests.CheckReal(loaded);
@@ -192,7 +194,7 @@ try
             window.ShowRoster();
             window.FindControl<TabStrip>("RosterTabs")!.SelectedIndex = page switch
             {
-                "roster" => 0, "roster-stats" => 1, "roster-items" => 2, "roster-skills" => 3, "roster-proficiencies" => 4,
+                "roster" => 0, "roster-stats" => 1, "roster-items" => 2, "roster-skills" => 3, "roster-proficiencies" => 4, "roster-equipment" => 5,
                 _ => throw new ArgumentException("Unknown roster screenshot tab.")
             };
         }

@@ -7,34 +7,8 @@ public sealed partial class EngageSave
     public IReadOnlyList<SavedEmblem> ReadEmblems() => EmblemLayout.Read(this, _bytes).Emblems;
     public IReadOnlyList<BondRing> ReadBondRings() => BondRingLayout.Read(this, _bytes).Entries.Select(entry => entry.Ring).ToArray();
 
-    public IReadOnlyList<CharacterRingLinks> ReadCharacterRingLinks()
-    {
-        if (!Sections.Any(section => section.Name == "UNIT")) return Array.Empty<CharacterRingLinks>();
-        var links = new List<CharacterRingLinks>();
-        var usedRings = new HashSet<uint>();
-        foreach (var character in RosterLayout.Read(this, _bytes).Characters)
-        {
-            var reader = new SaveReader(_bytes, character.Progress.TailStart, character.End);
-            reader.Skip(2);
-            if (reader.Byte() != 4) throw new InvalidDataException("Unsupported unit battle-data version.");
-            int stats = reader.Byte();
-            if (stats > 43) throw new InvalidDataException("Invalid unit battle-data count.");
-            reader.Skip(stats * 8 + 2);
-            int weapons = reader.Byte();
-            if (weapons > 10) throw new InvalidDataException("Invalid unit weapon-rank count.");
-            reader.Skip(weapons + 2);
-            uint emblem = reader.UInt32(), partnerEmblem = reader.UInt32(), ring = reader.UInt32();
-            reader.Skip(4);
-            byte target = reader.Byte();
-            if (target > 1) throw new InvalidDataException("Invalid optional unit target.");
-            if (target == 1) reader.Reference();
-            reader.Skip(14);
-            if (reader.Remaining != 0) throw new InvalidDataException("Unrecognized character equipment trailer.");
-            if (ring != 0 && !usedRings.Add(ring)) throw new InvalidDataException("A ring instance has multiple owners.");
-            links.Add(new(character.Character.Index, emblem, partnerEmblem, ring));
-        }
-        return links.AsReadOnly();
-    }
+    public IReadOnlyList<CharacterRingLinks> ReadCharacterRingLinks() =>
+        CharacterEquipmentLayout.Read(this, _bytes).Select(location => location.Links).ToArray();
 
     public EngageSave WithEmblemBond(uint instanceId, string personId, int level, int? experience = null)
     {

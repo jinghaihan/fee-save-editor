@@ -35,6 +35,8 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli items restore <save> <new-file> --all|--slot <index>
           FeeEditor.Cli roster list <save> [--json] [--language en|zh-Hans]
           FeeEditor.Cli roster catalog [--json] [--language en|zh-Hans]
+          FeeEditor.Cli roster equipment <save> --character <index> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli roster equipment-set <save> <new-file> --character <index> --emblem <instance>|--ring <instance>|--none true
           FeeEditor.Cli roster export <save> <character.json> --character <index>
           FeeEditor.Cli roster import <save> <new-file> --character <index> --file <character.json>
           FeeEditor.Cli roster class <save> <new-file> --character <index> --class <JID> [--weapons Sword,Lance]
