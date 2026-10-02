@@ -87,6 +87,7 @@ try
 
     MainTests.Run(window, temporary);
     DonationTests.Run();
+    AchievementTests.Run();
     DonationGuiTests.Run(window, temporary);
     InventoryTests.Run(window, temporary);
     RosterTests.Run(window, temporary);
@@ -120,6 +121,7 @@ try
             {
                 var loaded = window.Save!;
                 DonationTests.CheckReal(loaded);
+                AchievementTests.CheckReal(loaded);
                 InventoryTests.CheckReal(loaded);
                 RosterTests.CheckReal(loaded);
                 RosterClassTests.CheckReal(loaded);

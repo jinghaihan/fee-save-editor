@@ -1,0 +1,7656 @@
+{
+  "DataRevision": "86b8be7b9820e1bb3bce87d2a9a805ead85d92ab",
+  "TextRevision": "810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b",
+  "Achievements": [
+    {
+      "Id": "AID_ヴァンドレとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Vander.",
+        "zh-Hans": "与凡德雷进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_クランとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Clanne.",
+        "zh-Hans": "与柯岚进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_フランとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Framme.",
+        "zh-Hans": "与芙岚进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_アルフレッドとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Alfred.",
+        "zh-Hans": "与阿尔弗雷德进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブシュロンとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Boucheron.",
+        "zh-Hans": "与布修隆进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エーティエとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Etie.",
+        "zh-Hans": "与艾媞耶进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_セリーヌとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Céline.",
+        "zh-Hans": "与锡莉奴进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ルイとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Louis.",
+        "zh-Hans": "与路易进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_クロエとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Chloé.",
+        "zh-Hans": "与克萝艾进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ディアマンドとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Diamant.",
+        "zh-Hans": "与帝亚曼德进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_アンバーとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Amber.",
+        "zh-Hans": "与安巴进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ジェーデとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Jade.",
+        "zh-Hans": "与洁德进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_スタルークとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Alcryst.",
+        "zh-Hans": "与史塔卢克进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ラピスとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Lapis.",
+        "zh-Hans": "与菈琵思进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_シトリニカとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Citrinne.",
+        "zh-Hans": "与希特丽妮卡进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_アイビーとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Ivy.",
+        "zh-Hans": "与艾比进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ゼルコバとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Zelkov.",
+        "zh-Hans": "与杰尔科巴进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_カゲツとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Kagetsu.",
+        "zh-Hans": "与花月进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_オルテンシアとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Hortensia.",
+        "zh-Hans": "与奥尔坦希亚进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ロサードとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Rosado.",
+        "zh-Hans": "与罗萨德进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ゴルドマリーとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Goldmary.",
+        "zh-Hans": "与戈尔德玛莉进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ミスティラとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Timerra.",
+        "zh-Hans": "与蜜丝提拉进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_メリンとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Merrin.",
+        "zh-Hans": "与玫琳进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_パネトネとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Panette.",
+        "zh-Hans": "与帕涅托涅进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_フォガートとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Fogado.",
+        "zh-Hans": "与佛贾特进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_パンドロとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Pandreo.",
+        "zh-Hans": "与庞德罗进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ボネとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Bunet.",
+        "zh-Hans": "与波聂进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_アンナとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Anna.",
+        "zh-Hans": "与安娜进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ジャンとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Jean.",
+        "zh-Hans": "与贾恩进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ユナカとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Yunaka.",
+        "zh-Hans": "与尤娜卡进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_セアダスとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Seadall.",
+        "zh-Hans": "与赛安达斯进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リンデンとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Lindon.",
+        "zh-Hans": "与霖丹进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ザフィーアとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Saphir.",
+        "zh-Hans": "与札菲亚进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ヴェイルとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Veyle.",
+        "zh-Hans": "与贝珥进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_モーヴとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Mauvier.",
+        "zh-Hans": "与莫布进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エルとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Nel.",
+        "zh-Hans": "与爱尔进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ラファールとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Rafal.",
+        "zh-Hans": "与拉法尔进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_セレスティアとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Zelestia.",
+        "zh-Hans": "与赛勒斯提雅进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_グレゴリーとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Gregory.",
+        "zh-Hans": "与孤雷葛里进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_マデリーンとの支援会話が発生",
+      "Category": 0,
+      "Names": {
+        "en": "Complete a support conversation with Madeline.",
+        "zh-Hans": "与玛德琳进行了支援对话。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間初めて支援会話Bが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level B with an ally.",
+        "zh-Hans": "首次观看等级B的支援对话。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間５人と支援会話Bが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level B with 5 allies.",
+        "zh-Hans": "观看了5名伙伴等级B的支援对话。"
+      },
+      "Reward": 60,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間１０人と支援会話Bが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level B with 10 allies.",
+        "zh-Hans": "观看了10名伙伴等级B的支援对话。"
+      },
+      "Reward": 70,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間１５人と支援会話Bが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level B with 15 allies.",
+        "zh-Hans": "观看了15名伙伴等级B的支援对话。"
+      },
+      "Reward": 80,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間２０人と支援会話Bが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level B with 20 allies.",
+        "zh-Hans": "观看了20名伙伴等级B的支援对话。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間２５人と支援会話Bが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level B with 25 allies.",
+        "zh-Hans": "观看了25名伙伴等级B的支援对话。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間３０人と支援会話Bが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level B with 30 allies.",
+        "zh-Hans": "观看了30名伙伴等级B的支援对话。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間３５人と支援会話Bが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level B with 35 allies.",
+        "zh-Hans": "观看了35名伙伴等级B的支援对话。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間初めて支援会話Aが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level A with an ally.",
+        "zh-Hans": "首次观看等级A的支援对话。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間５人と支援会話Aが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level A with 5 allies.",
+        "zh-Hans": "观看了5名伙伴等级A的支援对话。"
+      },
+      "Reward": 60,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間１０人と支援会話Aが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level A with 10 allies.",
+        "zh-Hans": "观看了10名伙伴等级A的支援对话。"
+      },
+      "Reward": 80,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間１５人と支援会話Aが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level A with 15 allies.",
+        "zh-Hans": "观看了15名伙伴等级A的支援对话。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間２０人と支援会話Aが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level A with 20 allies.",
+        "zh-Hans": "观看了20名伙伴等级A的支援对话。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間２５人と支援会話Aが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level A with 25 allies.",
+        "zh-Hans": "观看了25名伙伴等级A的支援对话。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間３０人と支援会話Aが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level A with 30 allies.",
+        "zh-Hans": "观看了30名伙伴等级A的支援对话。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間３５人と支援会話Aが発生",
+      "Category": 0,
+      "Names": {
+        "en": "Reach support level A with 35 allies.",
+        "zh-Hans": "观看了35名伙伴等级A的支援对话。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間初めて支援会話Ringが発生",
+      "Category": 0,
+      "Names": {
+        "en": "See a S conversation.",
+        "zh-Hans": "观看了支援对话S。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ヴァンドレと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Vander 5 times.",
+        "zh-Hans": "凡德雷出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_クランと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Clanne 5 times.",
+        "zh-Hans": "柯岚出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_フランと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Framme 5 times.",
+        "zh-Hans": "芙岚出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_アルフレッドと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Alfred 5 times.",
+        "zh-Hans": "阿尔弗雷德出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブシュロンと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Boucheron 5 times.",
+        "zh-Hans": "布修隆出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エーティエと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Etie 5 times.",
+        "zh-Hans": "艾媞耶出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_セリーヌと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Céline 5 times.",
+        "zh-Hans": "锡莉奴出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ルイと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Louis 5 times.",
+        "zh-Hans": "路易出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_クロエと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Chloé 5 times.",
+        "zh-Hans": "克萝艾出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ディアマンドと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Diamant 5 times.",
+        "zh-Hans": "帝亚曼德出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_アンバーと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Amber 5 times.",
+        "zh-Hans": "安巴出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ジェーデと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Jade 5 times.",
+        "zh-Hans": "洁德出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_スタルークと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Alcryst 5 times.",
+        "zh-Hans": "史塔卢克出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ラピスと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Lapis 5 times.",
+        "zh-Hans": "菈琵思出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_シトリニカと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Citrinne 5 times.",
+        "zh-Hans": "希特丽妮卡出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_アイビーと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Ivy 5 times.",
+        "zh-Hans": "艾比出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ゼルコバと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Zelkov 5 times.",
+        "zh-Hans": "杰尔科巴出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_カゲツと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Kagetsu 5 times.",
+        "zh-Hans": "花月出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_オルテンシアと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Hortensia 5 times.",
+        "zh-Hans": "奥尔坦希亚出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ロサードと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Rosado 5 times.",
+        "zh-Hans": "罗萨德出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ゴルドマリーと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Goldmary 5 times.",
+        "zh-Hans": "戈尔德玛莉出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ミスティラと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Timerra 5 times.",
+        "zh-Hans": "蜜丝提拉出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_メリンと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Merrin 5 times.",
+        "zh-Hans": "玫琳出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_パネトネと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Panette 5 times.",
+        "zh-Hans": "帕涅托涅出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_フォガートと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Fogado 5 times.",
+        "zh-Hans": "佛贾特出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_パンドロと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Pandreo 5 times.",
+        "zh-Hans": "庞德罗出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ボネと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Bunet 5 times.",
+        "zh-Hans": "波聂出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_アンナと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Anna 5 times.",
+        "zh-Hans": "安娜出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ジャンと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Jean 5 times.",
+        "zh-Hans": "贾恩出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ユナカと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Yunaka 5 times.",
+        "zh-Hans": "尤娜卡出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_セアダスと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Seadall 5 times.",
+        "zh-Hans": "赛安达斯出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リンデンと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Lindon 5 times.",
+        "zh-Hans": "霖丹出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ザフィーアと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Saphir 5 times.",
+        "zh-Hans": "札菲亚出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ヴェイルと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Veyle 5 times.",
+        "zh-Hans": "贝珥出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_モーヴと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Mauvier 5 times.",
+        "zh-Hans": "莫布出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エルと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Nel 5 times.",
+        "zh-Hans": "爱尔出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ラファールと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Rafal 5 times.",
+        "zh-Hans": "拉法尔出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_セレスティアと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Zelestia 5 times.",
+        "zh-Hans": "赛勒斯提雅出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_グレゴリーと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Gregory 5 times.",
+        "zh-Hans": "孤雷葛里出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_マデリーンと共に5回進軍",
+      "Category": 0,
+      "Names": {
+        "en": "Deploy Madeline 5 times.",
+        "zh-Hans": "玛德琳出击了5次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_遭遇戦初回クリア",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in a skirmish.",
+        "zh-Hans": "首次进行遭遇战。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_遭遇戦５回クリア",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 5 skirmishes.",
+        "zh-Hans": "进行了5次遭遇战。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_遭遇戦１０回クリア",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 10 skirmishes.",
+        "zh-Hans": "进行了10次遭遇战。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_遭遇戦１５回クリア",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 15 skirmishes.",
+        "zh-Hans": "进行了15次遭遇战。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_遭遇戦２０回クリア",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 20 skirmishes.",
+        "zh-Hans": "进行了20次遭遇战。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_遭遇戦２５回クリア",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 25 skirmishes.",
+        "zh-Hans": "进行了25次遭遇战。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_遭遇戦３０回クリア",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 30 skirmishes.",
+        "zh-Hans": "进行了30次遭遇战。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_遭遇戦３５回クリア",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 35 skirmishes.",
+        "zh-Hans": "进行了35次遭遇战。"
+      },
+      "Reward": 350,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_遭遇戦４０回クリア",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 40 skirmishes.",
+        "zh-Hans": "进行了40次遭遇战。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_遭遇戦４５回クリア",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 45 skirmishes.",
+        "zh-Hans": "进行了45次遭遇战。"
+      },
+      "Reward": 450,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数50回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 50 individual combats.",
+        "zh-Hans": "进行了50次战斗。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数100回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 100 individual combats.",
+        "zh-Hans": "进行了100次战斗。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数200回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 200 individual combats.",
+        "zh-Hans": "进行了200次战斗。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数300回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 300 individual combats.",
+        "zh-Hans": "进行了300次战斗。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数400回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 400 individual combats.",
+        "zh-Hans": "进行了400次战斗。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数500回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 500 individual combats.",
+        "zh-Hans": "进行了500次战斗。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数750回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 750 individual combats.",
+        "zh-Hans": "进行了750次战斗。"
+      },
+      "Reward": 750,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数1000回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 1000 individual combats.",
+        "zh-Hans": "进行了1000次战斗。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数1250回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 1250 individual combats.",
+        "zh-Hans": "进行了1250次战斗。"
+      },
+      "Reward": 1250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数1500回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 1500 individual combats.",
+        "zh-Hans": "进行了1500次战斗。"
+      },
+      "Reward": 1500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数1750回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 1750 individual combats.",
+        "zh-Hans": "进行了1750次战斗。"
+      },
+      "Reward": 1750,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数2000回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 2000 individual combats.",
+        "zh-Hans": "进行了2000次战斗。"
+      },
+      "Reward": 2000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数2500回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 2500 individual combats.",
+        "zh-Hans": "进行了2500次战斗。"
+      },
+      "Reward": 2500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数3000回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 3000 individual combats.",
+        "zh-Hans": "进行了3000次战斗。"
+      },
+      "Reward": 3000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数3500回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 3500 individual combats.",
+        "zh-Hans": "进行了3500次战斗。"
+      },
+      "Reward": 3500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数4000回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 4000 individual combats.",
+        "zh-Hans": "进行了4000次战斗。"
+      },
+      "Reward": 4000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数4500回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 4500 individual combats.",
+        "zh-Hans": "进行了4500次战斗。"
+      },
+      "Reward": 4500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_戦闘回数5000回達成",
+      "Category": 1,
+      "Names": {
+        "en": "Fight in 5000 individual combats.",
+        "zh-Hans": "进行了5000次战斗。"
+      },
+      "Reward": 5000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵初回撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat an enemy soldier.",
+        "zh-Hans": "首次击败一般士兵。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵10体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 10 enemy soldiers.",
+        "zh-Hans": "击败了10名一般士兵。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵20体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 20 enemy soldiers.",
+        "zh-Hans": "击败了20名一般士兵。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵30体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 30 enemy soldiers.",
+        "zh-Hans": "击败了30名一般士兵。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵40体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 40 enemy soldiers.",
+        "zh-Hans": "击败了40名一般士兵。"
+      },
+      "Reward": 40,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵50体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 50 enemy soldiers.",
+        "zh-Hans": "击败了50名一般士兵。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵75体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 75 enemy soldiers.",
+        "zh-Hans": "击败了75名一般士兵。"
+      },
+      "Reward": 75,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵100体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 100 enemy soldiers.",
+        "zh-Hans": "击败了100名一般士兵。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵150体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 150 enemy soldiers.",
+        "zh-Hans": "击败了150名一般士兵。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵200体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 200 enemy soldiers.",
+        "zh-Hans": "击败了200名一般士兵。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵250体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 250 enemy soldiers.",
+        "zh-Hans": "击败了250名一般士兵。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵300体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 300 enemy soldiers.",
+        "zh-Hans": "击败了300名一般士兵。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵350体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 350 enemy soldiers.",
+        "zh-Hans": "击败了350名一般士兵。"
+      },
+      "Reward": 350,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵400体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 400 enemy soldiers.",
+        "zh-Hans": "击败了400名一般士兵。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵450体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 450 enemy soldiers.",
+        "zh-Hans": "击败了450名一般士兵。"
+      },
+      "Reward": 450,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_一般兵500体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 500 enemy soldiers.",
+        "zh-Hans": "击败了500名一般士兵。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵初回撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat a Corrupted foe.",
+        "zh-Hans": "首次击败异形兵。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵10体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 10 Corrupted foes.",
+        "zh-Hans": "击败了10个异形兵。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵20体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 20 Corrupted foes.",
+        "zh-Hans": "击败了20个异形兵。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵30体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 30 Corrupted foes.",
+        "zh-Hans": "击败了30个异形兵。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵40体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 40 Corrupted foes.",
+        "zh-Hans": "击败了40个异形兵。"
+      },
+      "Reward": 40,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵50体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 50 Corrupted foes.",
+        "zh-Hans": "击败了50个异形兵。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵75体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 75 Corrupted foes.",
+        "zh-Hans": "击败了75个异形兵。"
+      },
+      "Reward": 75,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵100体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 100 Corrupted foes.",
+        "zh-Hans": "击败了100个异形兵。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵150体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 150 Corrupted foes.",
+        "zh-Hans": "击败了150个异形兵。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵200体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 200 Corrupted foes.",
+        "zh-Hans": "击败了200个异形兵。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵250体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 250 Corrupted foes.",
+        "zh-Hans": "击败了250个异形兵。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵300体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 300 Corrupted foes.",
+        "zh-Hans": "击败了300个异形兵。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵350体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 350 Corrupted foes.",
+        "zh-Hans": "击败了350个异形兵。"
+      },
+      "Reward": 350,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵400体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 400 Corrupted foes.",
+        "zh-Hans": "击败了400个异形兵。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵450体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 450 Corrupted foes.",
+        "zh-Hans": "击败了450个异形兵。"
+      },
+      "Reward": 450,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_異形兵500体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 500 Corrupted foes.",
+        "zh-Hans": "击败了500个异形兵。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族初回撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat a thief.",
+        "zh-Hans": "首次击败蛮族。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族10体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 10 thieves.",
+        "zh-Hans": "击败了10名蛮族。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族20体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 20 thieves.",
+        "zh-Hans": "击败了20名蛮族。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族30体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 30 thieves.",
+        "zh-Hans": "击败了30名蛮族。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族40体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 40 thieves.",
+        "zh-Hans": "击败了40名蛮族。"
+      },
+      "Reward": 40,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族50体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 50 thieves.",
+        "zh-Hans": "击败了50名蛮族。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族75体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 75 thieves.",
+        "zh-Hans": "击败了75名蛮族。"
+      },
+      "Reward": 75,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族100体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 100 thieves.",
+        "zh-Hans": "击败了100名蛮族。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族150体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 150 thieves.",
+        "zh-Hans": "击败了150名蛮族。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族200体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 200 thieves.",
+        "zh-Hans": "击败了200名蛮族。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族250体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 250 thieves.",
+        "zh-Hans": "击败了250名蛮族。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族300体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 300 thieves.",
+        "zh-Hans": "击败了300名蛮族。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族350体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 350 thieves.",
+        "zh-Hans": "击败了350名蛮族。"
+      },
+      "Reward": 350,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族400体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 400 thieves.",
+        "zh-Hans": "击败了400名蛮族。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族450体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 450 thieves.",
+        "zh-Hans": "击败了450名蛮族。"
+      },
+      "Reward": 450,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_蛮族500体撃破",
+      "Category": 1,
+      "Names": {
+        "en": "Defeat 500 thieves.",
+        "zh-Hans": "击败了500名蛮族。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖10回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 10 times.",
+        "zh-Hans": "使用了10次杖。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖50回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 50 times.",
+        "zh-Hans": "使用了50次杖。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖100回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 100 times.",
+        "zh-Hans": "使用了100次杖。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖150回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 150 times.",
+        "zh-Hans": "使用了150次杖。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖200回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 200 times.",
+        "zh-Hans": "使用了200次杖。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖250回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 250 times.",
+        "zh-Hans": "使用了250次杖。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖300回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 300 times.",
+        "zh-Hans": "使用了300次杖。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖350回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 350 times.",
+        "zh-Hans": "使用了350次杖。"
+      },
+      "Reward": 350,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖400回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 400 times.",
+        "zh-Hans": "使用了400次杖。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖450回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 450 times.",
+        "zh-Hans": "使用了450次杖。"
+      },
+      "Reward": 450,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_杖500回使用",
+      "Category": 1,
+      "Names": {
+        "en": "Use staves 500 times.",
+        "zh-Hans": "使用了500次杖。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_必殺技初回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Land a critical hit.",
+        "zh-Hans": "首次发动必杀攻击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_必殺技5回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Land a critical hit 5 times.",
+        "zh-Hans": "发动了5次必杀攻击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_必殺技20回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Land a critical hit 20 times.",
+        "zh-Hans": "发动了20次必杀攻击。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_必殺技50回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Land a critical hit 50 times.",
+        "zh-Hans": "发动了50次必杀攻击。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_必殺技100回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Land a critical hit 100 times.",
+        "zh-Hans": "发动了100次必杀攻击。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_必殺技150回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Land a critical hit 150 times.",
+        "zh-Hans": "发动了150次必杀攻击。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_必殺技200回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Land a critical hit 200 times.",
+        "zh-Hans": "发动了200次必杀攻击。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_必殺技250回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Land a critical hit 250 times.",
+        "zh-Hans": "发动了250次必杀攻击。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_必殺技300回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Land a critical hit 300 times.",
+        "zh-Hans": "发动了300次必杀攻击。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ初回",
+      "Category": 1,
+      "Names": {
+        "en": "Engage with an Emblem.",
+        "zh-Hans": "首次进行结合。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ5回",
+      "Category": 1,
+      "Names": {
+        "en": "Engage with an Emblem 5 times.",
+        "zh-Hans": "进行了5次结合。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ20回",
+      "Category": 1,
+      "Names": {
+        "en": "Engage with an Emblem 20 times.",
+        "zh-Hans": "进行了20次结合。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ50回",
+      "Category": 1,
+      "Names": {
+        "en": "Engage with an Emblem 50 times.",
+        "zh-Hans": "进行了50次结合。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ100回",
+      "Category": 1,
+      "Names": {
+        "en": "Engage with an Emblem 100 times.",
+        "zh-Hans": "进行了100次结合。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ150回",
+      "Category": 1,
+      "Names": {
+        "en": "Engage with an Emblem 150 times.",
+        "zh-Hans": "进行了150次结合。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ200回",
+      "Category": 1,
+      "Names": {
+        "en": "Engage with an Emblem 200 times.",
+        "zh-Hans": "进行了200次结合。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ250回",
+      "Category": 1,
+      "Names": {
+        "en": "Engage with an Emblem 250 times.",
+        "zh-Hans": "进行了250次结合。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ300回",
+      "Category": 1,
+      "Names": {
+        "en": "Engage with an Emblem 300 times.",
+        "zh-Hans": "进行了300次结合。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ技初回",
+      "Category": 1,
+      "Names": {
+        "en": "Use an engage attack.",
+        "zh-Hans": "首次发动结合技。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ技5回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Use engage attacks 5 times.",
+        "zh-Hans": "发动了5次结合技。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ技20回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Use engage attacks 20 times.",
+        "zh-Hans": "发动了20次结合技。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ技50回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Use engage attacks 50 times.",
+        "zh-Hans": "发动了50次结合技。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ技100回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Use engage attacks 100 times.",
+        "zh-Hans": "发动了100次结合技。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ技150回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Use engage attacks 150 times.",
+        "zh-Hans": "发动了150次结合技。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ技200回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Use engage attacks 200 times.",
+        "zh-Hans": "发动了200次结合技。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ技250回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Use engage attacks 250 times.",
+        "zh-Hans": "发动了250次结合技。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_エンゲージ技300回発動",
+      "Category": 1,
+      "Names": {
+        "en": "Use engage attacks 300 times.",
+        "zh-Hans": "发动了300次结合技。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_攻撃回避初回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Avoid an attack.",
+        "zh-Hans": "首次回避攻击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_攻撃回避10回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Avoid an attack 10 times.",
+        "zh-Hans": "回避了10次攻击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_攻撃回避50回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Avoid an attack 50 times.",
+        "zh-Hans": "回避了50次攻击。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_攻撃回避100回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Avoid an attack 100 times.",
+        "zh-Hans": "回避了100次攻击。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_攻撃回避200回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Avoid an attack 200 times.",
+        "zh-Hans": "回避了200次攻击。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_攻撃回避300回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Avoid an attack 300 times.",
+        "zh-Hans": "回避了300次攻击。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_攻撃回避400回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Avoid an attack 400 times.",
+        "zh-Hans": "回避了400次攻击。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_攻撃回避500回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Avoid an attack 500 times.",
+        "zh-Hans": "回避了500次攻击。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインガード初回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Block an attack.",
+        "zh-Hans": "首次防御攻击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインガード5回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Block an attack 5 times.",
+        "zh-Hans": "防御了5次攻击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインガード10回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Block an attack 10 times.",
+        "zh-Hans": "防御了10次攻击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインガード20回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Block an attack 20 times.",
+        "zh-Hans": "防御了20次攻击。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインガード50回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Block an attack 50 times.",
+        "zh-Hans": "防御了50次攻击。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインガード100回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Block an attack 100 times.",
+        "zh-Hans": "防御了100次攻击。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインガード150回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Block an attack 150 times.",
+        "zh-Hans": "防御了150次攻击。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインガード200回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Block an attack 200 times.",
+        "zh-Hans": "防御了200次攻击。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインガード250回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Block an attack 250 times.",
+        "zh-Hans": "防御了250次攻击。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインガード300回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Block an attack 300 times.",
+        "zh-Hans": "防御了300次攻击。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインアタック初回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use a chain attack.",
+        "zh-Hans": "首次发动连锁攻击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインアタック5回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use chain attacks 5 times.",
+        "zh-Hans": "发动了5次连锁攻击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインアタック10回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use chain attacks 10 times.",
+        "zh-Hans": "发动了10次连锁攻击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインアタック20回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use chain attacks 20 times.",
+        "zh-Hans": "发动了20次连锁攻击。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインアタック50回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use chain attacks 50 times.",
+        "zh-Hans": "发动了50次连锁攻击。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインアタック100回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use chain attacks 100 times.",
+        "zh-Hans": "发动了100次连锁攻击。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインアタック150回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use chain attacks 150 times.",
+        "zh-Hans": "发动了150次连锁攻击。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインアタック200回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use chain attacks 200 times.",
+        "zh-Hans": "发动了200次连锁攻击。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインアタック250回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use chain attacks 250 times.",
+        "zh-Hans": "发动了250次连锁攻击。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_チェインアタック300回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use chain attacks 300 times.",
+        "zh-Hans": "发动了300次连锁攻击。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_3人チェイン発生",
+      "Category": 1,
+      "Names": {
+        "en": "Perform a chain attack with 3 units.",
+        "zh-Hans": "发动了3人的连锁攻击。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_4人チェイン発生",
+      "Category": 1,
+      "Names": {
+        "en": "Perform a chain attack with 4 units.",
+        "zh-Hans": "发动了4人的连锁攻击。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_5人チェイン発生",
+      "Category": 1,
+      "Names": {
+        "en": "Perform a chain attack with 5 units.",
+        "zh-Hans": "发动了5人的连锁攻击。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_6人チェイン発生",
+      "Category": 1,
+      "Names": {
+        "en": "Perform a chain attack with 6 units.",
+        "zh-Hans": "发动了6人的连锁攻击。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_7人チェイン発生",
+      "Category": 1,
+      "Names": {
+        "en": "Perform a chain attack with 7 units.",
+        "zh-Hans": "发动了7人的连锁攻击。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_8人チェイン発生",
+      "Category": 1,
+      "Names": {
+        "en": "Perform a chain attack with 8 units.",
+        "zh-Hans": "发动了8人的连锁攻击。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_9人チェイン発生",
+      "Category": 1,
+      "Names": {
+        "en": "Perform a chain attack with 9 units.",
+        "zh-Hans": "发动了9人的连锁攻击。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_10人チェイン発生",
+      "Category": 1,
+      "Names": {
+        "en": "Perform a chain attack with 10 units.",
+        "zh-Hans": "发动了10人的连锁攻击。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブレイク初回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Break a foe in combat.",
+        "zh-Hans": "首次发动打破。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブレイク5回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Break foes 5 times.",
+        "zh-Hans": "发动了5次打破。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブレイク10回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Break foes 10 times.",
+        "zh-Hans": "发动了10次打破。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブレイク20回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Break foes 20 times.",
+        "zh-Hans": "发动了20次打破。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブレイク50回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Break foes 50 times.",
+        "zh-Hans": "发动了50次打破。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブレイク100回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Break foes 100 times.",
+        "zh-Hans": "发动了100次打破。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブレイク150回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Break foes 150 times.",
+        "zh-Hans": "发动了150次打破。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブレイク200回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Break foes 200 times.",
+        "zh-Hans": "发动了200次打破。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブレイク250回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Break foes 250 times.",
+        "zh-Hans": "发动了250次打破。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブレイク300回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Break foes 300 times.",
+        "zh-Hans": "发动了300次打破。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_スマッシュ初回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use a smash attack in combat.",
+        "zh-Hans": "首次发动猛击。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_スマッシュ5回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use a smash attack 5 times.",
+        "zh-Hans": "发动了5次猛击。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_スマッシュ10回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use a smash attack 10 times.",
+        "zh-Hans": "发动了10次猛击。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_スマッシュ20回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use a smash attack 20 times.",
+        "zh-Hans": "发动了20次猛击。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_スマッシュ30回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use a smash attack 30 times.",
+        "zh-Hans": "发动了30次猛击。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_スマッシュ40回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use a smash attack 40 times.",
+        "zh-Hans": "发动了40次猛击。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_スマッシュ50回発生",
+      "Category": 1,
+      "Names": {
+        "en": "Use a smash attack 50 times.",
+        "zh-Hans": "发动了50次猛击。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ミニゲーム初回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did an activity for the first time.",
+        "zh-Hans": "首次游玩活动。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_ミニゲーム10回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did activities 10 times.",
+        "zh-Hans": "游玩了10次活动。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_ミニゲーム20回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did activities 20 times.",
+        "zh-Hans": "游玩了20次活动。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_ミニゲーム30回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did activities 30 times.",
+        "zh-Hans": "游玩了30次活动。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_ミニゲーム40回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did activities 40 times.",
+        "zh-Hans": "游玩了40次活动。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_ミニゲーム50回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did activities 50 times.",
+        "zh-Hans": "游玩了50次活动。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_ミニゲーム60回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did activities 60 times.",
+        "zh-Hans": "游玩了60次活动。"
+      },
+      "Reward": 600,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_ミニゲーム70回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did activities 70 times.",
+        "zh-Hans": "游玩了70次活动。"
+      },
+      "Reward": 700,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_ミニゲーム80回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did activities 80 times.",
+        "zh-Hans": "游玩了80次活动。"
+      },
+      "Reward": 800,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_ミニゲーム90回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did activities 90 times.",
+        "zh-Hans": "游玩了90次活动。"
+      },
+      "Reward": 900,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_ミニゲーム100回プレイ",
+      "Category": 2,
+      "Names": {
+        "en": "Did activities 100 times.",
+        "zh-Hans": "游玩了100次活动。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪初めて精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create a Bond Ring.",
+        "zh-Hans": "首次精炼戒指。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪50個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 50 Bond Rings.",
+        "zh-Hans": "精炼了50次戒指。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪100個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 100 Bond Rings.",
+        "zh-Hans": "精炼了100次戒指。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪500個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 500 Bond Rings.",
+        "zh-Hans": "精炼了500次戒指。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪1000個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 1000 Bond Rings.",
+        "zh-Hans": "精炼了1000次戒指。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪1500個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 1500 Bond Rings.",
+        "zh-Hans": "精炼了1500次戒指。"
+      },
+      "Reward": 150,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪2000個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 2000 Bond Rings.",
+        "zh-Hans": "精炼了2000次戒指。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪2500個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 2500 Bond Rings.",
+        "zh-Hans": "精炼了2500次戒指。"
+      },
+      "Reward": 250,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪3000個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 3000 Bond Rings.",
+        "zh-Hans": "精炼了3000次戒指。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪3500個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 3500 Bond Rings.",
+        "zh-Hans": "精炼了3500次戒指。"
+      },
+      "Reward": 350,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪4000個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 4000 Bond Rings.",
+        "zh-Hans": "精炼了4000次戒指。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪4500個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 4500 Bond Rings.",
+        "zh-Hans": "精炼了4500次戒指。"
+      },
+      "Reward": 450,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪5000個精製",
+      "Category": 2,
+      "Names": {
+        "en": "Create 5000 Bond Rings.",
+        "zh-Hans": "精炼了5000次戒指。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪初めて合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings for the first time.",
+        "zh-Hans": "首次合成戒指。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪10個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 10 times.",
+        "zh-Hans": "合成了10次戒指。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪50個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 50 times.",
+        "zh-Hans": "合成了50次戒指。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪100個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 100 times.",
+        "zh-Hans": "合成了100次戒指。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪150個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 150 times.",
+        "zh-Hans": "合成了150次戒指。"
+      },
+      "Reward": 150,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪200個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 200 times.",
+        "zh-Hans": "合成了200次戒指。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪250個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 250 times.",
+        "zh-Hans": "合成了250次戒指。"
+      },
+      "Reward": 250,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪300個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 300 times.",
+        "zh-Hans": "合成了300次戒指。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪350個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 350 times.",
+        "zh-Hans": "合成了350次戒指。"
+      },
+      "Reward": 350,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪400個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 400 times.",
+        "zh-Hans": "合成了400次戒指。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪450個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 450 times.",
+        "zh-Hans": "合成了450次戒指。"
+      },
+      "Reward": 450,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪500個合成",
+      "Category": 2,
+      "Names": {
+        "en": "Meld Bond Rings 500 times.",
+        "zh-Hans": "合成了500次戒指。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Cランク指輪10個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 10 C-rank Bond Rings.",
+        "zh-Hans": "获得了10枚阶级C的牵绊戒指。"
+      },
+      "Reward": 5,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Cランク指輪100個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 100 C-rank Bond Rings.",
+        "zh-Hans": "获得了100枚阶级C的牵绊戒指。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Cランク指輪500個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 500 C-rank Bond Rings.",
+        "zh-Hans": "获得了500枚阶级C的牵绊戒指。"
+      },
+      "Reward": 20,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Cランク指輪1000個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 1000 C-rank Bond Rings.",
+        "zh-Hans": "获得了1000枚阶级C的牵绊戒指。"
+      },
+      "Reward": 30,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Bランク指輪5個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 5 B-rank Bond Rings.",
+        "zh-Hans": "获得了5枚阶级B的牵绊戒指。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Bランク指輪20個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 20 B-rank Bond Rings.",
+        "zh-Hans": "获得了20枚阶级B的牵绊戒指。"
+      },
+      "Reward": 30,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Bランク指輪50個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 50 B-rank Bond Rings.",
+        "zh-Hans": "获得了50枚阶级B的牵绊戒指。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Bランク指輪100個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 100 B-rank Bond Rings.",
+        "zh-Hans": "获得了100枚阶级B的牵绊戒指。"
+      },
+      "Reward": 70,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Aランク指輪3個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 3 A-rank Bond Rings.",
+        "zh-Hans": "获得了3枚阶级A的牵绊戒指。"
+      },
+      "Reward": 20,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Aランク指輪10個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 10 A-rank Bond Rings.",
+        "zh-Hans": "获得了10枚阶级A的牵绊戒指。"
+      },
+      "Reward": 60,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Aランク指輪20個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 20 A-rank Bond Rings.",
+        "zh-Hans": "获得了20枚阶级A的牵绊戒指。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Aランク指輪50個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 50 A-rank Bond Rings.",
+        "zh-Hans": "获得了50枚阶级A的牵绊戒指。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Sランク指輪1個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain an S-rank Bond Ring.",
+        "zh-Hans": "首次获得阶级S的牵绊戒指。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Sランク指輪3個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 3 S-rank Bond Rings.",
+        "zh-Hans": "获得了3枚阶级S的牵绊戒指。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Sランク指輪5個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 5 S-rank Bond Rings.",
+        "zh-Hans": "获得了5枚阶级S的牵绊戒指。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_Sランク指輪10個獲得",
+      "Category": 2,
+      "Names": {
+        "en": "Obtain 10 S-rank Bond Rings.",
+        "zh-Hans": "获得了10枚阶级S的牵绊戒指。"
+      },
+      "Reward": 1000,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き初回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish a ring for the first time.",
+        "zh-Hans": "首次研磨戒指。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き5回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 5 times.",
+        "zh-Hans": "研磨了5次戒指。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き10回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 10 times.",
+        "zh-Hans": "研磨了10次戒指。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き20回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 20 times.",
+        "zh-Hans": "研磨了20次戒指。"
+      },
+      "Reward": 20,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き30回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 30 times.",
+        "zh-Hans": "研磨了30次戒指。"
+      },
+      "Reward": 30,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き40回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 40 times.",
+        "zh-Hans": "研磨了40次戒指。"
+      },
+      "Reward": 40,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き50回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 50 times.",
+        "zh-Hans": "研磨了50次戒指。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き60回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 60 times.",
+        "zh-Hans": "研磨了60次戒指。"
+      },
+      "Reward": 60,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き70回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 70 times.",
+        "zh-Hans": "研磨了70次戒指。"
+      },
+      "Reward": 70,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き80回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 80 times.",
+        "zh-Hans": "研磨了80次戒指。"
+      },
+      "Reward": 80,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き90回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 90 times.",
+        "zh-Hans": "研磨了90次戒指。"
+      },
+      "Reward": 90,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_指輪磨き100回",
+      "Category": 2,
+      "Names": {
+        "en": "Polish rings 100 times.",
+        "zh-Hans": "研磨了100次戒指。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M004"
+    },
+    {
+      "Id": "AID_フィレネに投資",
+      "Category": 2,
+      "Names": {
+        "en": "Donate to Firene.",
+        "zh-Hans": "投资了费列聂。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_フィレネの投資段階が２になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Firene to donation level 2.",
+        "zh-Hans": "费列聂的投资阶级升至2。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_フィレネの投資段階が３になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Firene to donation level 3.",
+        "zh-Hans": "费列聂的投资阶级升至3。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_フィレネの投資段階が４になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Firene to donation level 4.",
+        "zh-Hans": "费列聂的投资阶级升至4。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_フィレネの投資段階が５になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Firene to donation level 5.",
+        "zh-Hans": "费列聂的投资阶级升至5。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_ブロディアに投資",
+      "Category": 2,
+      "Names": {
+        "en": "Donate to Brodia.",
+        "zh-Hans": "投资了布罗帝亚。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M007"
+    },
+    {
+      "Id": "AID_ブロディアの投資段階が２になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Brodia to donation level 2.",
+        "zh-Hans": "布罗帝亚的投资阶级升至2。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M007"
+    },
+    {
+      "Id": "AID_ブロディアの投資段階が３になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Brodia to donation level 3.",
+        "zh-Hans": "布罗帝亚的投资阶级升至3。"
+      },
+      "Reward": 150,
+      "Chapter": "CID_M007"
+    },
+    {
+      "Id": "AID_ブロディアの投資段階が４になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Brodia to donation level 4.",
+        "zh-Hans": "布罗帝亚的投资阶级升至4。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M007"
+    },
+    {
+      "Id": "AID_ブロディアの投資段階が５になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Brodia to donation level 5.",
+        "zh-Hans": "布罗帝亚的投资阶级升至5。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M007"
+    },
+    {
+      "Id": "AID_イルシオンに投資",
+      "Category": 2,
+      "Names": {
+        "en": "Donate to Elusia.",
+        "zh-Hans": "投资了伊尔席翁。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M010"
+    },
+    {
+      "Id": "AID_イルシオンの投資段階が２になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Elusia to donation level 2.",
+        "zh-Hans": "伊尔席翁的投资阶级升至2。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M010"
+    },
+    {
+      "Id": "AID_イルシオンの投資段階が３になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Elusia to donation level 3.",
+        "zh-Hans": "伊尔席翁的投资阶级升至3。"
+      },
+      "Reward": 150,
+      "Chapter": "CID_M010"
+    },
+    {
+      "Id": "AID_イルシオンの投資段階が４になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Elusia to donation level 4.",
+        "zh-Hans": "伊尔席翁的投资阶级升至4。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M010"
+    },
+    {
+      "Id": "AID_イルシオンの投資段階が５になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Elusia to donation level 5.",
+        "zh-Hans": "伊尔席翁的投资阶级升至5。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M010"
+    },
+    {
+      "Id": "AID_ソルムに投資",
+      "Category": 2,
+      "Names": {
+        "en": "Donate to Solm.",
+        "zh-Hans": "投资了索尔姆。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M012"
+    },
+    {
+      "Id": "AID_ソルムの投資段階が２になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Solm to donation level 2.",
+        "zh-Hans": "索尔姆的投资阶级升至2。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M012"
+    },
+    {
+      "Id": "AID_ソルムの投資段階が３になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Solm to donation level 3.",
+        "zh-Hans": "索尔姆的投资阶级升至3。"
+      },
+      "Reward": 150,
+      "Chapter": "CID_M012"
+    },
+    {
+      "Id": "AID_ソルムの投資段階が４になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Solm to donation level 4.",
+        "zh-Hans": "索尔姆的投资阶级升至4。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M012"
+    },
+    {
+      "Id": "AID_ソルムの投資段階が５になった",
+      "Category": 2,
+      "Names": {
+        "en": "Bring Solm to donation level 5.",
+        "zh-Hans": "索尔姆的投资阶级升至5。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M012"
+    },
+    {
+      "Id": "AID_全ての国の投資段階を最大にした",
+      "Category": 2,
+      "Names": {
+        "en": "Reach max donation for all countries.",
+        "zh-Hans": "所有国家的投资阶级皆已达上限。"
+      },
+      "Reward": 2000,
+      "Chapter": "CID_M012"
+    },
+    {
+      "Id": "AID_投資額合計10000",
+      "Category": 2,
+      "Names": {
+        "en": "Donate a total of 10000.",
+        "zh-Hans": "投资金额总计为10000G。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_投資額合計100000",
+      "Category": 2,
+      "Names": {
+        "en": "Donate a total of 100000.",
+        "zh-Hans": "投资金额总计为100000G。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_投資額合計1000000",
+      "Category": 2,
+      "Names": {
+        "en": "Donate a total of 350000.",
+        "zh-Hans": "投资金额总计为350000G。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_料理初回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook for the first time.",
+        "zh-Hans": "首次制作料理。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理10回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook 10 times.",
+        "zh-Hans": "制作了10次料理。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理20回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook 20 times.",
+        "zh-Hans": "制作了20次料理。"
+      },
+      "Reward": 20,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理30回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook 30 times.",
+        "zh-Hans": "制作了30次料理。"
+      },
+      "Reward": 30,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理40回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook 40 times.",
+        "zh-Hans": "制作了40次料理。"
+      },
+      "Reward": 40,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理50回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook 50 times.",
+        "zh-Hans": "制作了50次料理。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理60回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook 60 times.",
+        "zh-Hans": "制作了60次料理。"
+      },
+      "Reward": 60,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理70回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook 70 times.",
+        "zh-Hans": "制作了70次料理。"
+      },
+      "Reward": 70,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理80回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook 80 times.",
+        "zh-Hans": "制作了80次料理。"
+      },
+      "Reward": 80,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理90回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook 90 times.",
+        "zh-Hans": "制作了90次料理。"
+      },
+      "Reward": 90,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理100回製作",
+      "Category": 2,
+      "Names": {
+        "en": "Cook 100 times.",
+        "zh-Hans": "制作了100次料理。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理G初回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank G meal.",
+        "zh-Hans": "首次制作特性为G的料理。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理G5回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank G meal 5 times.",
+        "zh-Hans": "制作了5次特性为G的料理。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理F初回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank F meal.",
+        "zh-Hans": "首次制作特性为F的料理。"
+      },
+      "Reward": 20,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理F5回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank F meal 5 times.",
+        "zh-Hans": "制作了5次特性为F的料理。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理E初回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank E meal.",
+        "zh-Hans": "首次制作特性为E的料理。"
+      },
+      "Reward": 30,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理E5回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank E meal 5 times.",
+        "zh-Hans": "制作了5次特性为E的料理。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理D初回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank D meal.",
+        "zh-Hans": "首次制作特性为D的料理。"
+      },
+      "Reward": 40,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理D5回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank D meal 5 times.",
+        "zh-Hans": "制作了5次特性为D的料理。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理C初回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank C meal.",
+        "zh-Hans": "首次制作特性为C的料理。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理C20回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank C meal 20 times.",
+        "zh-Hans": "制作了20次特性为C的料理。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理B初回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank B meal.",
+        "zh-Hans": "首次制作特性为B的料理。"
+      },
+      "Reward": 60,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理B20回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank B meal 20 times.",
+        "zh-Hans": "制作了20次特性为B的料理。"
+      },
+      "Reward": 150,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理A初回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank A meal.",
+        "zh-Hans": "首次制作特性为A的料理。"
+      },
+      "Reward": 70,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理A20回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank A meal 20 times.",
+        "zh-Hans": "制作了20次特性为A的料理。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理S初回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank S meal.",
+        "zh-Hans": "首次制作特性为S的料理。"
+      },
+      "Reward": 80,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理S5回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank S meal 5 times.",
+        "zh-Hans": "制作了5次特性为S的料理。"
+      },
+      "Reward": 250,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理SS初回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank SS meal.",
+        "zh-Hans": "首次制作特性为SS的料理。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_料理SS3回",
+      "Category": 2,
+      "Names": {
+        "en": "Make a rank SS meal 3 times.",
+        "zh-Hans": "制作了3次特性为SS的料理。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M006"
+    },
+    {
+      "Id": "AID_寝る初回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally for the first time.",
+        "zh-Hans": "首次触发唤醒对话。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る5回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 5 times.",
+        "zh-Hans": "触发了5次唤醒对话。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る10回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 10 times.",
+        "zh-Hans": "触发了10次唤醒对话。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る20回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 20 times.",
+        "zh-Hans": "触发了20次唤醒对话。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る30回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 30 times.",
+        "zh-Hans": "触发了30次唤醒对话。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る40回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 40 times.",
+        "zh-Hans": "触发了40次唤醒对话。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る50回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 50 times.",
+        "zh-Hans": "触发了50次唤醒对话。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る60回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 60 times.",
+        "zh-Hans": "触发了60次唤醒对话。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る70回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 70 times.",
+        "zh-Hans": "触发了70次唤醒对话。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る80回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 80 times.",
+        "zh-Hans": "触发了80次唤醒对话。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る90回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 90 times.",
+        "zh-Hans": "触发了90次唤醒对话。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_寝る100回",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to an ally 100 times.",
+        "zh-Hans": "触发了100次唤醒对话。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間５人と起こしイベントCが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 5 C-support allies.",
+        "zh-Hans": "触发了与5名伙伴等级C的唤醒对话。"
+      },
+      "Reward": 60,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間１０人と起こしイベントCが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 10 C-support allies.",
+        "zh-Hans": "触发了与10名伙伴等级C的唤醒对话。"
+      },
+      "Reward": 60,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間１５人と起こしイベントCが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 15 C-support allies.",
+        "zh-Hans": "触发了与15名伙伴等级C的唤醒对话。"
+      },
+      "Reward": 70,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間２０人と起こしイベントCが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 20 C-support allies.",
+        "zh-Hans": "触发了与20名伙伴等级C的唤醒对话。"
+      },
+      "Reward": 70,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間２５人と起こしイベントCが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 25 C-support allies.",
+        "zh-Hans": "触发了与25名伙伴等级C的唤醒对话。"
+      },
+      "Reward": 80,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間３０人と起こしイベントCが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 30 C-support allies.",
+        "zh-Hans": "触发了与30名伙伴等级C的唤醒对话。"
+      },
+      "Reward": 80,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間５人と起こしイベントBが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 5 B-support allies.",
+        "zh-Hans": "触发了与5名伙伴等级B的唤醒对话。"
+      },
+      "Reward": 90,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間１０人と起こしイベントBが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 10 B-support allies.",
+        "zh-Hans": "触发了与10名伙伴等级B的唤醒对话。"
+      },
+      "Reward": 90,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間１５人と起こしイベントBが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 15 B-support allies.",
+        "zh-Hans": "触发了与15名伙伴等级B的唤醒对话。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間２０人と起こしイベントBが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 20 B-support allies.",
+        "zh-Hans": "触发了与20名伙伴等级B的唤醒对话。"
+      },
+      "Reward": 110,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間２５人と起こしイベントBが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 25 B-support allies.",
+        "zh-Hans": "触发了与25名伙伴等级B的唤醒对话。"
+      },
+      "Reward": 120,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間３０人と起こしイベントBが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 30 B-support allies.",
+        "zh-Hans": "触发了与30名伙伴等级B的唤醒对话。"
+      },
+      "Reward": 130,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間５人と起こしイベントAが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 5 A-support allies.",
+        "zh-Hans": "触发了与5名伙伴等级A的唤醒对话。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間１０人と起こしイベントAが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 10 A-support allies.",
+        "zh-Hans": "触发了与10名伙伴等级A的唤醒对话。"
+      },
+      "Reward": 160,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間１５人と起こしイベントAが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 15 A-support allies.",
+        "zh-Hans": "触发了与15名伙伴等级A的唤醒对话。"
+      },
+      "Reward": 170,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間２０人と起こしイベントAが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 20 A-support allies.",
+        "zh-Hans": "触发了与20名伙伴等级A的唤醒对话。"
+      },
+      "Reward": 180,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間２５人と起こしイベントAが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 25 A-support allies.",
+        "zh-Hans": "触发了与25名伙伴等级A的唤醒对话。"
+      },
+      "Reward": 190,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間３０人と起こしイベントAが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to 30 A-support allies.",
+        "zh-Hans": "触发了与30名伙伴等级A的唤醒对话。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間と起こしイベントSが発生",
+      "Category": 2,
+      "Names": {
+        "en": "Wake up to your S-support ally.",
+        "zh-Hans": "触发了与伙伴的唤醒对话S。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル初回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena.",
+        "zh-Hans": "首次在锻炼之间与伙伴战斗。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル10回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena 10 times.",
+        "zh-Hans": "在锻炼之间与伙伴战斗了10次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル20回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena 20 times.",
+        "zh-Hans": "在锻炼之间与伙伴战斗了20次。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル30回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena 30 times.",
+        "zh-Hans": "在锻炼之间与伙伴战斗了30次。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル40回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena 40 times.",
+        "zh-Hans": "在锻炼之间与伙伴战斗了40次。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル50回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena 50 times.",
+        "zh-Hans": "在锻炼之间与伙伴战斗了50次。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル60回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena 60 times.",
+        "zh-Hans": "在锻炼之间与伙伴战斗了60次。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル70回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena 70 times.",
+        "zh-Hans": "在锻炼之间与伙伴战斗了70次。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル80回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena 80 times.",
+        "zh-Hans": "在锻炼之间与伙伴战斗了80次。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル90回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena 90 times.",
+        "zh-Hans": "在锻炼之间与伙伴战斗了90次。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル100回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an ally in the Arena 100 times.",
+        "zh-Hans": "在锻炼之间与伙伴战斗了100次。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル初勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena.",
+        "zh-Hans": "首次在锻炼之间战胜伙伴。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル5回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 5 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴5次。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル10回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 10 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴10次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル20回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 20 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴20次。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル30回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 30 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴30次。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル40回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 40 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴40次。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル50回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 50 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴50次。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル60回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 60 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴60次。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル70回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 70 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴70次。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル80回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 80 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴80次。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル90回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 90 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴90次。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_仲間とバトル100回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an ally in the Arena 100 times.",
+        "zh-Hans": "在锻炼之间战胜了伙伴100次。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル初回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena.",
+        "zh-Hans": "首次在锻炼之间与纹章士战斗。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル10回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena 10 times.",
+        "zh-Hans": "在锻炼之间与纹章士战斗了10次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル20回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena 20 times.",
+        "zh-Hans": "在锻炼之间与纹章士战斗了20次。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル30回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena 30 times.",
+        "zh-Hans": "在锻炼之间与纹章士战斗了30次。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル40回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena 40 times.",
+        "zh-Hans": "在锻炼之间与纹章士战斗了40次。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル50回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena 50 times.",
+        "zh-Hans": "在锻炼之间与纹章士战斗了50次。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル60回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena 60 times.",
+        "zh-Hans": "在锻炼之间与纹章士战斗了60次。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル70回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena 70 times.",
+        "zh-Hans": "在锻炼之间与纹章士战斗了70次。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル80回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena 80 times.",
+        "zh-Hans": "在锻炼之间与纹章士战斗了80次。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル90回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena 90 times.",
+        "zh-Hans": "在锻炼之间与纹章士战斗了90次。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル100回",
+      "Category": 2,
+      "Names": {
+        "en": "Fight an Emblem in the Arena 100 times.",
+        "zh-Hans": "在锻炼之间与纹章士战斗了100次。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル初勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena.",
+        "zh-Hans": "首次在锻炼之间战胜纹章士。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル5回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 5 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士5次。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル10回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 10 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士10次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル20回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 20 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士20次。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル30回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 30 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士30次。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル40回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 40 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士40次。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル50回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 50 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士50次。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル60回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 60 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士60次。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル70回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 70 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士70次。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル80回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 80 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士80次。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル90回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 90 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士90次。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_紋章士とバトル100回勝利",
+      "Category": 2,
+      "Names": {
+        "en": "Defeat an Emblem in the Arena 100 times.",
+        "zh-Hans": "在锻炼之间战胜了纹章士100次。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器初めて購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy a weapon.",
+        "zh-Hans": "首次购买武器。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器10点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 10 weapons.",
+        "zh-Hans": "购买了10件武器。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器20点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 20 weapons.",
+        "zh-Hans": "购买了20件武器。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器30点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 30 weapons.",
+        "zh-Hans": "购买了30件武器。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器40点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 40 weapons.",
+        "zh-Hans": "购买了40件武器。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器50点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 50 weapons.",
+        "zh-Hans": "购买了50件武器。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器60点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 60 weapons.",
+        "zh-Hans": "购买了60件武器。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器70点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 70 weapons.",
+        "zh-Hans": "购买了70件武器。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器80点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 80 weapons.",
+        "zh-Hans": "购买了80件武器。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器90点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 90 weapons.",
+        "zh-Hans": "购买了90件武器。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器100点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 100 weapons.",
+        "zh-Hans": "购买了100件武器。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器剣10点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 10 swords.",
+        "zh-Hans": "购买了10件剑类武器。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器剣20点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 20 swords.",
+        "zh-Hans": "购买了20件剑类武器。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器剣30点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 30 swords.",
+        "zh-Hans": "购买了30件剑类武器。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器剣40点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 40 swords.",
+        "zh-Hans": "购买了40件剑类武器。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器剣50点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 50 swords.",
+        "zh-Hans": "购买了50件剑类武器。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器槍10点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 10 lances.",
+        "zh-Hans": "购买了10件枪类武器。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器槍20点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 20 lances.",
+        "zh-Hans": "购买了20件枪类武器。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器槍30点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 30 lances.",
+        "zh-Hans": "购买了30件枪类武器。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器槍40点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 40 lances.",
+        "zh-Hans": "购买了40件枪类武器。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器槍50点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 50 lances.",
+        "zh-Hans": "购买了50件枪类武器。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器斧10点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 10 axes.",
+        "zh-Hans": "购买了10件斧类武器。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器斧20点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 20 axes.",
+        "zh-Hans": "购买了20件斧类武器。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器斧30点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 30 axes.",
+        "zh-Hans": "购买了30件斧类武器。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器斧40点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 40 axes.",
+        "zh-Hans": "购买了40件斧类武器。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器斧50点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 50 axes.",
+        "zh-Hans": "购买了50件斧类武器。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器弓10点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 10 bows.",
+        "zh-Hans": "购买了10件弓类武器。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器弓20点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 20 bows.",
+        "zh-Hans": "购买了20件弓类武器。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器弓30点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 30 bows.",
+        "zh-Hans": "购买了30件弓类武器。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器弓40点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 40 bows.",
+        "zh-Hans": "购买了40件弓类武器。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器弓50点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 50 bows.",
+        "zh-Hans": "购买了50件弓类武器。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器短剣10点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 10 knives.",
+        "zh-Hans": "购买了10件短剑类武器。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器短剣20点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 20 knives.",
+        "zh-Hans": "购买了20件短剑类武器。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器短剣30点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 30 knives.",
+        "zh-Hans": "购买了30件短剑类武器。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器短剣40点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 40 knives.",
+        "zh-Hans": "购买了40件短剑类武器。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器短剣50点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 50 knives.",
+        "zh-Hans": "购买了50件短剑类武器。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器魔法10点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 10 tomes.",
+        "zh-Hans": "购买了10件魔道书类武器。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器魔法20点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 20 tomes.",
+        "zh-Hans": "购买了20件魔道书类武器。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器魔法30点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 30 tomes.",
+        "zh-Hans": "购买了30件魔道书类武器。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器魔法40点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 40 tomes.",
+        "zh-Hans": "购买了40件魔道书类武器。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器魔法50点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 50 tomes.",
+        "zh-Hans": "购买了50件魔道书类武器。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器拳10点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 10 scrolls.",
+        "zh-Hans": "购买了10件体术类武器。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器拳20点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 20 scrolls.",
+        "zh-Hans": "购买了20件体术类武器。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器拳30点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 30 scrolls.",
+        "zh-Hans": "购买了30件体术类武器。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器拳40点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 40 scrolls.",
+        "zh-Hans": "购买了40件体术类武器。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器拳50点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 50 scrolls.",
+        "zh-Hans": "购买了50件体术类武器。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器初めて売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell a weapon.",
+        "zh-Hans": "首次出售武器。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器10点売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell 10 weapons.",
+        "zh-Hans": "出售了10件武器。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器20点売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell 20 weapons.",
+        "zh-Hans": "出售了20件武器。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器30点売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell 30 weapons.",
+        "zh-Hans": "出售了30件武器。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器40点売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell 40 weapons.",
+        "zh-Hans": "出售了40件武器。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_武器50点売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell 50 weapons.",
+        "zh-Hans": "出售了50件武器。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具初めて購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy an item.",
+        "zh-Hans": "首次购买道具。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具50点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 50 items.",
+        "zh-Hans": "购买了50个道具。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具100点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 100 items.",
+        "zh-Hans": "购买了100个道具。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具150点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 150 items.",
+        "zh-Hans": "购买了150个道具。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具200点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 200 items.",
+        "zh-Hans": "购买了200个道具。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具250点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 250 items.",
+        "zh-Hans": "购买了250个道具。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具300点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 300 items.",
+        "zh-Hans": "购买了300个道具。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具350点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 350 items.",
+        "zh-Hans": "购买了350个道具。"
+      },
+      "Reward": 350,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具400点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 400 items.",
+        "zh-Hans": "购买了400个道具。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具450点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 450 items.",
+        "zh-Hans": "购买了450个道具。"
+      },
+      "Reward": 450,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具500点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 500 items.",
+        "zh-Hans": "购买了500个道具。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具初めて売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell an item.",
+        "zh-Hans": "首次出售道具。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具10点売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell 10 items.",
+        "zh-Hans": "出售了10个道具。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具20点売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell 20 items.",
+        "zh-Hans": "出售了20个道具。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具30点売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell 30 items.",
+        "zh-Hans": "出售了30个道具。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具40点売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell 40 items.",
+        "zh-Hans": "出售了40个道具。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具50点売却",
+      "Category": 3,
+      "Names": {
+        "en": "Sell 50 items.",
+        "zh-Hans": "出售了50个道具。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具杖10点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 10 staves.",
+        "zh-Hans": "购买了10把杖。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具杖20点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 20 staves.",
+        "zh-Hans": "购买了20把杖。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具杖30点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 30 staves.",
+        "zh-Hans": "购买了30把杖。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具杖40点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 40 staves.",
+        "zh-Hans": "购买了40把杖。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_道具杖50点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 50 staves.",
+        "zh-Hans": "购买了50把杖。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_アクセサリ初めて購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy an outfit or accessory at the boutique.",
+        "zh-Hans": "首次购买装饰品。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_アクセサリ5点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 5 outfits/accessories at the boutique.",
+        "zh-Hans": "购买了5件装饰品。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_アクセサリ10点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 10 outfits/accessories at the boutique.",
+        "zh-Hans": "购买了10件装饰品。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_アクセサリ15点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 15 outfits/accessories at the boutique.",
+        "zh-Hans": "购买了15件装饰品。"
+      },
+      "Reward": 150,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_アクセサリ20点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 20 outfits/accessories at the boutique.",
+        "zh-Hans": "购买了20件装饰品。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_アクセサリ25点購入",
+      "Category": 3,
+      "Names": {
+        "en": "Buy 25 outfits/accessories at the boutique.",
+        "zh-Hans": "购买了25件装饰品。"
+      },
+      "Reward": 250,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_着せ替え初回",
+      "Category": 3,
+      "Names": {
+        "en": "Change outfits or accessories for the first time.",
+        "zh-Hans": "首次更换装饰品。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_着せ替え10回",
+      "Category": 3,
+      "Names": {
+        "en": "Change outfits/accessories 10 times.",
+        "zh-Hans": "更换了10次装饰品。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_着せ替え30回",
+      "Category": 3,
+      "Names": {
+        "en": "Change outfits/accessories 30 times.",
+        "zh-Hans": "更换了30次装饰品。"
+      },
+      "Reward": 30,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_着せ替え50回",
+      "Category": 3,
+      "Names": {
+        "en": "Change outfits/accessories 50 times.",
+        "zh-Hans": "更换了50次装饰品。"
+      },
+      "Reward": 50,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_着せ替え80回",
+      "Category": 3,
+      "Names": {
+        "en": "Change outfits/accessories 80 times.",
+        "zh-Hans": "更换了80次装饰品。"
+      },
+      "Reward": 80,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_着せ替え100回",
+      "Category": 3,
+      "Names": {
+        "en": "Change outfits/accessories 100 times.",
+        "zh-Hans": "更换了100次装饰品。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_初めて錬成",
+      "Category": 3,
+      "Names": {
+        "en": "Refine a weapon.",
+        "zh-Hans": "首次锻造武器。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成10回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine 10 weapons.",
+        "zh-Hans": "锻造了10次武器。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成20回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine 20 weapons.",
+        "zh-Hans": "锻造了20次武器。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成30回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine 30 weapons.",
+        "zh-Hans": "锻造了30次武器。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成40回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine 40 weapons.",
+        "zh-Hans": "锻造了40次武器。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成50回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine 50 weapons.",
+        "zh-Hans": "锻造了50次武器。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成60回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine 60 weapons.",
+        "zh-Hans": "锻造了60次武器。"
+      },
+      "Reward": 600,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成70回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine 70 weapons.",
+        "zh-Hans": "锻造了70次武器。"
+      },
+      "Reward": 700,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成80回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine 80 weapons.",
+        "zh-Hans": "锻造了80次武器。"
+      },
+      "Reward": 800,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成90回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine 90 weapons.",
+        "zh-Hans": "锻造了90次武器。"
+      },
+      "Reward": 900,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成100回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine 100 weapons.",
+        "zh-Hans": "锻造了100次武器。"
+      },
+      "Reward": 1000,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成剣10回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine swords 10 times.",
+        "zh-Hans": "锻造了10次剑类武器。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成剣20回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine swords 20 times.",
+        "zh-Hans": "锻造了20次剑类武器。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成剣30回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine swords 30 times.",
+        "zh-Hans": "锻造了30次剑类武器。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成剣40回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine swords 40 times.",
+        "zh-Hans": "锻造了40次剑类武器。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成剣50回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine swords 50 times.",
+        "zh-Hans": "锻造了50次剑类武器。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成槍10回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine lances 10 times.",
+        "zh-Hans": "锻造了10次枪类武器。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成槍20回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine lances 20 times.",
+        "zh-Hans": "锻造了20次枪类武器。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成槍30回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine lances 30 times.",
+        "zh-Hans": "锻造了30次枪类武器。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成槍40回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine lances 40 times.",
+        "zh-Hans": "锻造了40次枪类武器。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成槍50回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine lances 50 times.",
+        "zh-Hans": "锻造了50次枪类武器。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成斧10回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine axes 10 times.",
+        "zh-Hans": "锻造了10次斧类武器。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成斧20回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine axes 20 times.",
+        "zh-Hans": "锻造了20次斧类武器。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成斧30回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine axes 30 times.",
+        "zh-Hans": "锻造了30次斧类武器。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成斧40回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine axes 40 times.",
+        "zh-Hans": "锻造了40次斧类武器。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成斧50回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine axes 50 times.",
+        "zh-Hans": "锻造了50次斧类武器。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成弓10回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine bows 10 times.",
+        "zh-Hans": "锻造了10次弓类武器。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成弓20回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine bows 20 times.",
+        "zh-Hans": "锻造了20次弓类武器。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成弓30回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine bows 30 times.",
+        "zh-Hans": "锻造了30次弓类武器。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成弓40回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine bows 40 times.",
+        "zh-Hans": "锻造了40次弓类武器。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成弓50回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine bows 50 times.",
+        "zh-Hans": "锻造了50次弓类武器。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成短剣10回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine knives 10 times.",
+        "zh-Hans": "锻造了10次短剑类武器。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成短剣20回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine knives 20 times.",
+        "zh-Hans": "锻造了20次短剑类武器。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成短剣30回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine knives 30 times.",
+        "zh-Hans": "锻造了30次短剑类武器。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成短剣40回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine knives 40 times.",
+        "zh-Hans": "锻造了40次短剑类武器。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成短剣50回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine knives 50 times.",
+        "zh-Hans": "锻造了50次短剑类武器。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成魔法10回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine tomes 10 times.",
+        "zh-Hans": "锻造了10次魔道书类武器。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成魔法20回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine tomes 20 times.",
+        "zh-Hans": "锻造了20次魔道书类武器。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成魔法30回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine tomes 30 times.",
+        "zh-Hans": "锻造了30次魔道书类武器。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成魔法40回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine tomes 40 times.",
+        "zh-Hans": "锻造了40次魔道书类武器。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成魔法50回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine tomes 50 times.",
+        "zh-Hans": "锻造了50次魔道书类武器。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成拳10回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine art scrolls 10 times.",
+        "zh-Hans": "锻造了10次体术类武器。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成拳20回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine art scrolls 20 times.",
+        "zh-Hans": "锻造了20次体术类武器。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成拳30回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine art scrolls 30 times.",
+        "zh-Hans": "锻造了30次体术类武器。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成拳40回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine art scrolls 40 times.",
+        "zh-Hans": "锻造了40次体术类武器。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_錬成拳50回",
+      "Category": 3,
+      "Names": {
+        "en": "Refine art scrolls 50 times.",
+        "zh-Hans": "锻造了50次体术类武器。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_初めて紋章を刻む",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave a weapon.",
+        "zh-Hans": "首次给武器刻上纹章。"
+      },
+      "Reward": 10,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_紋章を刻む10回",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave 10 weapons.",
+        "zh-Hans": "在武器上刻入纹章10次。"
+      },
+      "Reward": 100,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_紋章を刻む20回",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave 20 weapons.",
+        "zh-Hans": "在武器上刻入纹章20次。"
+      },
+      "Reward": 200,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_紋章を刻む30回",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave 30 weapons.",
+        "zh-Hans": "在武器上刻入纹章30次。"
+      },
+      "Reward": 300,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_紋章を刻む40回",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave 40 weapons.",
+        "zh-Hans": "在武器上刻入纹章40次。"
+      },
+      "Reward": 400,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_紋章を刻む50回",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave 50 weapons.",
+        "zh-Hans": "在武器上刻入纹章50次。"
+      },
+      "Reward": 500,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_紋章を刻む60回",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave 60 weapons.",
+        "zh-Hans": "在武器上刻入纹章60次。"
+      },
+      "Reward": 600,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_紋章を刻む70回",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave 70 weapons.",
+        "zh-Hans": "在武器上刻入纹章70次。"
+      },
+      "Reward": 700,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_紋章を刻む80回",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave 80 weapons.",
+        "zh-Hans": "在武器上刻入纹章80次。"
+      },
+      "Reward": 800,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_紋章を刻む90回",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave 90 weapons.",
+        "zh-Hans": "在武器上刻入纹章90次。"
+      },
+      "Reward": 900,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_紋章を刻む100回",
+      "Category": 3,
+      "Names": {
+        "en": "Engrave 100 weapons.",
+        "zh-Hans": "在武器上刻入纹章100次。"
+      },
+      "Reward": 1000,
+      "Chapter": "CID_M005"
+    },
+    {
+      "Id": "AID_プレイ時間12時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 12 hours.",
+        "zh-Hans": "游玩了12小时。"
+      },
+      "Reward": 120,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_プレイ時間24時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 24 hours.",
+        "zh-Hans": "游玩了24小时。"
+      },
+      "Reward": 240,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_プレイ時間48時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 48 hours.",
+        "zh-Hans": "游玩了48小时。"
+      },
+      "Reward": 480,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_プレイ時間72時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 72 hours.",
+        "zh-Hans": "游玩了72小时。"
+      },
+      "Reward": 720,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_プレイ時間96時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 96 hours.",
+        "zh-Hans": "游玩了96小时。"
+      },
+      "Reward": 960,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_プレイ時間120時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 120 hours.",
+        "zh-Hans": "游玩了120小时。"
+      },
+      "Reward": 1200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_プレイ時間144時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 144 hours.",
+        "zh-Hans": "游玩了144小时。"
+      },
+      "Reward": 1400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_プレイ時間168時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 168 hours.",
+        "zh-Hans": "游玩了168小时。"
+      },
+      "Reward": 1680,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_プレイ時間192時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 192 hours.",
+        "zh-Hans": "游玩了192小时。"
+      },
+      "Reward": 1920,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_プレイ時間216時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 216 hours.",
+        "zh-Hans": "游玩了216小时。"
+      },
+      "Reward": 2160,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_プレイ時間240時間経過",
+      "Category": 4,
+      "Names": {
+        "en": "Play for 240 hours.",
+        "zh-Hans": "游玩了240小时。"
+      },
+      "Reward": 2400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_1章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 1, \"Awake at Last.\"",
+        "zh-Hans": "已完成第1章《苏醒》。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_2章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 2, \"Queen Lumera.\"",
+        "zh-Hans": "已完成第2章《神龙王琉弥艾尔》。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_3章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 3, \"Hostilities.\"",
+        "zh-Hans": "已完成第3章《袭击者》。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_4章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 4, \"A Land in Bloom.\"",
+        "zh-Hans": "已完成第4章《花之风车村》。"
+      },
+      "Reward": 40,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_5章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 5, \"Retaking the Castle.\"",
+        "zh-Hans": "已完成第5章《夺回王城》。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_6章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 6, \"The Stolen Ring.\"",
+        "zh-Hans": "已完成第6章《被夺走的戒指》。"
+      },
+      "Reward": 60,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_7章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 7, \"Dark Emblem.\"",
+        "zh-Hans": "已完成第7章《暗黑纹章士》。"
+      },
+      "Reward": 70,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_8章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 8, \"The Kingdom of Might.\"",
+        "zh-Hans": "已完成第8章《英勇尚武的王国》。"
+      },
+      "Reward": 80,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_9章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 9, \"A Clash of Forces.\"",
+        "zh-Hans": "已完成第9章《冲突》。"
+      },
+      "Reward": 90,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_10章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 10, \"The Fell Dragon Sombron.\"",
+        "zh-Hans": "已完成第10章《邪龙尚卜尔》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_11章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 11, \"Retreat.\"",
+        "zh-Hans": "已完成第11章《撤退》。"
+      },
+      "Reward": 110,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_12章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 12, \"The Sentinels.\"",
+        "zh-Hans": "已完成第12章《沙漠自卫团》。"
+      },
+      "Reward": 120,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_13章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 13, \"Heroes of the Oasis.\"",
+        "zh-Hans": "已完成第13章《绿洲勇者》。"
+      },
+      "Reward": 130,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_14章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 14, \"The Battle for Solm.\"",
+        "zh-Hans": "已完成第14章《索尔姆攻防战》。"
+      },
+      "Reward": 140,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_15章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 15, \"Dancer in the Ruins.\"",
+        "zh-Hans": "已完成第15章《废墟的舞蹈家》。"
+      },
+      "Reward": 150,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_16章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 16, \"Seashore Travels.\"",
+        "zh-Hans": "已完成第16章《穿越海岸线》。"
+      },
+      "Reward": 160,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_17章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 17, \"Serenity in Ruin.\"",
+        "zh-Hans": "已完成第17章《粉碎的和平》。"
+      },
+      "Reward": 170,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_18章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 18, \"The Cold Voyage.\"",
+        "zh-Hans": "已完成第18章《冰冷的航线》。"
+      },
+      "Reward": 180,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_19章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 19, \"The Dead Town.\"",
+        "zh-Hans": "已完成第19章《死之海港》。"
+      },
+      "Reward": 190,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_20章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 20, \"The Kingless Castle.\"",
+        "zh-Hans": "已完成第20章《无王之城》。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_21章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 21, \"The Return.\"",
+        "zh-Hans": "已完成第21章《归来》。"
+      },
+      "Reward": 210,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_22章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 22, \"The Fell & the Divine.\"",
+        "zh-Hans": "已完成第22章《神龙与邪龙》。"
+      },
+      "Reward": 220,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_23章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 23, \"The Four Hounds.\"",
+        "zh-Hans": "已完成第23章《四狗》。"
+      },
+      "Reward": 230,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_24章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 24, \"Recollections.\"",
+        "zh-Hans": "已完成第24章《回忆》。"
+      },
+      "Reward": 240,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_25章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 25, \"The Final Guardian.\"",
+        "zh-Hans": "已完成第25章《最后的门卫》。"
+      },
+      "Reward": 250,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_26章クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Chapter 26, \"The Last Engage.\"",
+        "zh-Hans": "已完成第26章《最终结合》。"
+      },
+      "Reward": 260,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝０１クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"Budding Talent.\"",
+        "zh-Hans": "已完成外传《大器晚成》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝０２クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"Mysterious Merchant.\"",
+        "zh-Hans": "已完成外传《秘密的旅行商人》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝０３クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Exalt.\"",
+        "zh-Hans": "已完成外传《圣公主》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝０４クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Lady of the Plains.\"",
+        "zh-Hans": "已完成外传《草原女爵》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝０５クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Radiant Hero.\"",
+        "zh-Hans": "已完成外传《苍炎勇者》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝０６クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Instructor.\"",
+        "zh-Hans": "已完成外传《引领者》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝０７クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Crux of Fate.\"",
+        "zh-Hans": "已完成外传《选择未来之人》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝０８クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Azure Twin.\"",
+        "zh-Hans": "已完成外传《碧绿风空》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝０９クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Holy Knight.\"",
+        "zh-Hans": "已完成外传《圣战骑士》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝１０クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Sage Lord.\"",
+        "zh-Hans": "已完成外传《贤王》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝１１クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Dawn Maiden.\"",
+        "zh-Hans": "已完成外传《拂晓巫女》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝１２クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Young Lion.\"",
+        "zh-Hans": "已完成外传《幼狮》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝１３クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Caring Princess.\"",
+        "zh-Hans": "已完成外传《慈悲公主》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝１４クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Hero-King.\"",
+        "zh-Hans": "已完成外传《英雄王》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_外伝１５クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Paralogue, \"The Connector.\"",
+        "zh-Hans": "已完成外传《编织者》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_神竜の章０１クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Divine Paralogue, \"The Ancestor.\"",
+        "zh-Hans": "已完成神龙之章《先祖神龙》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_神竜の章０２クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Divine Paralogue, \"The Brash General.\"",
+        "zh-Hans": "已完成神龙之章《热血猛将》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_神竜の章０３クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Divine Paralogue, \"The Lonely Heir.\"",
+        "zh-Hans": "已完成神龙之章《年幼皇女》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_神竜の章０４クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Divine Paralogue, \"The Radiant Strategist.\"",
+        "zh-Hans": "已完成神龙之章《苍色参谋》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_神竜の章０５クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Divine Paralogue, \"The Doting Sister.\"",
+        "zh-Hans": "已完成神龙之章《黑暗妖艳》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_神竜の章０６クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Divine Paralogue, \"The Shepherd Exalt.\"",
+        "zh-Hans": "已完成神龙之章《圣王》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_邪竜の章０１クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Fell Xenologue 1, \"Dragons from Afar.\"",
+        "zh-Hans": "已完成邪龙之章1《异国双龙》。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_邪竜の章０２クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Fell Xenologue 2, \"Seeds of Unrest.\"",
+        "zh-Hans": "已完成邪龙之章2《动荡不安的花城》。"
+      },
+      "Reward": 120,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_邪竜の章０３クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Fell Xenologue 3, \"Path to War.\"",
+        "zh-Hans": "已完成邪龙之章3《士兵们的作战之道》。"
+      },
+      "Reward": 140,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_邪竜の章０４クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Fell Xenologue 4, \"Clash of Queens.\"",
+        "zh-Hans": "已完成邪龙之章4《王者之战》。"
+      },
+      "Reward": 160,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_邪竜の章０５クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Fell Xenologue 5, \"The Fell Heir.\"",
+        "zh-Hans": "已完成邪龙之章5《邪龙继承者》。"
+      },
+      "Reward": 180,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_邪竜の章０６クリア",
+      "Category": 4,
+      "Names": {
+        "en": "Cleared Fell Xenologue 6, \"Seven Bracelets.\"",
+        "zh-Hans": "已完成邪龙之章6《七手镯》。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数初回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in an Outrealm Trial.",
+        "zh-Hans": "首次进行异界的试炼。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数10回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 10 Outrealm Trials.",
+        "zh-Hans": "挑战了10次异界的试炼。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数20回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 20 Outrealm Trials.",
+        "zh-Hans": "挑战了20次异界的试炼。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数30回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 30 Outrealm Trials.",
+        "zh-Hans": "挑战了30次异界的试炼。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数40回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 40 Outrealm Trials.",
+        "zh-Hans": "挑战了40次异界的试炼。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数50回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 50 Outrealm Trials.",
+        "zh-Hans": "挑战了50次异界的试炼。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数60回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 60 Outrealm Trials.",
+        "zh-Hans": "挑战了60次异界的试炼。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数70回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 70 Outrealm Trials.",
+        "zh-Hans": "挑战了70次异界的试炼。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数80回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 80 Outrealm Trials.",
+        "zh-Hans": "挑战了80次异界的试炼。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数90回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 90 Outrealm Trials.",
+        "zh-Hans": "挑战了90次异界的试炼。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数100回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 100 Outrealm Trials.",
+        "zh-Hans": "挑战了100次异界的试炼。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数110回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 110 Outrealm Trials.",
+        "zh-Hans": "挑战了110次异界的试炼。"
+      },
+      "Reward": 1100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数120回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 120 Outrealm Trials.",
+        "zh-Hans": "挑战了120次异界的试炼。"
+      },
+      "Reward": 1200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数130回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 130 Outrealm Trials.",
+        "zh-Hans": "挑战了130次异界的试炼。"
+      },
+      "Reward": 1300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数140回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 140 Outrealm Trials.",
+        "zh-Hans": "挑战了140次异界的试炼。"
+      },
+      "Reward": 1400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数150回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 150 Outrealm Trials.",
+        "zh-Hans": "挑战了150次异界的试炼。"
+      },
+      "Reward": 1500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数160回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 160 Outrealm Trials.",
+        "zh-Hans": "挑战了160次异界的试炼。"
+      },
+      "Reward": 1600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数170回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 170 Outrealm Trials.",
+        "zh-Hans": "挑战了170次异界的试炼。"
+      },
+      "Reward": 1700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数180回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 180 Outrealm Trials.",
+        "zh-Hans": "挑战了180次异界的试炼。"
+      },
+      "Reward": 1800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数190回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 190 Outrealm Trials.",
+        "zh-Hans": "挑战了190次异界的试炼。"
+      },
+      "Reward": 1900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦数200回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 200 Outrealm Trials.",
+        "zh-Hans": "挑战了200次异界的试炼。"
+      },
+      "Reward": 2000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　初回",
+      "Category": 4,
+      "Names": {
+        "en": "Win an Outrealm Trial.",
+        "zh-Hans": "首次于异界的试炼中获胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　10回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 10 Outrealm Trials.",
+        "zh-Hans": "于异界的试炼中获胜了10次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　20回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 20 Outrealm Trials.",
+        "zh-Hans": "于异界的试炼中获胜了20次。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　30回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 30 Outrealm Trials.",
+        "zh-Hans": "于异界的试炼中获胜了30次。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　40回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 40 Outrealm Trials.",
+        "zh-Hans": "于异界的试炼中获胜了40次。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　50回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 50 Outrealm Trials.",
+        "zh-Hans": "于异界的试炼中获胜了50次。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　60回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 60 Outrealm Trials.",
+        "zh-Hans": "于异界的试炼中获胜了60次。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　70回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 70 Outrealm Trials.",
+        "zh-Hans": "于异界的试炼中获胜了70次。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　80回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 80 Outrealm Trials.",
+        "zh-Hans": "于异界的试炼中获胜了80次。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　90回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 90 Outrealm Trials.",
+        "zh-Hans": "于异界的试炼中获胜了90次。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_通信対戦勝利数　100回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 100 Outrealm Trials.",
+        "zh-Hans": "于异界的试炼中获胜了100次。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　初回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in a Relay Trial.",
+        "zh-Hans": "首次进行续战的试炼。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　10回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 10 Relay Trials.",
+        "zh-Hans": "挑战了10次续战的试炼。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　20回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 20 Relay Trials.",
+        "zh-Hans": "挑战了20次续战的试炼。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　30回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 30 Relay Trials.",
+        "zh-Hans": "挑战了30次续战的试炼。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　40回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 40 Relay Trials.",
+        "zh-Hans": "挑战了40次续战的试炼。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　50回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 50 Relay Trials.",
+        "zh-Hans": "挑战了50次续战的试炼。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　60回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 60 Relay Trials.",
+        "zh-Hans": "挑战了60次续战的试炼。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　70回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 70 Relay Trials.",
+        "zh-Hans": "挑战了70次续战的试炼。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　80回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 80 Relay Trials.",
+        "zh-Hans": "挑战了80次续战的试炼。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　90回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 90 Relay Trials.",
+        "zh-Hans": "挑战了90次续战的试炼。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　100回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 100 Relay Trials.",
+        "zh-Hans": "挑战了100次续战的试炼。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　110回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 110 Relay Trials.",
+        "zh-Hans": "挑战了110次续战的试炼。"
+      },
+      "Reward": 1100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　120回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 120 Relay Trials.",
+        "zh-Hans": "挑战了120次续战的试炼。"
+      },
+      "Reward": 1200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　130回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 130 Relay Trials.",
+        "zh-Hans": "挑战了130次续战的试炼。"
+      },
+      "Reward": 1300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　140回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 140 Relay Trials.",
+        "zh-Hans": "挑战了140次续战的试炼。"
+      },
+      "Reward": 1400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　150回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 150 Relay Trials.",
+        "zh-Hans": "挑战了150次续战的试炼。"
+      },
+      "Reward": 1500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　160回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 160 Relay Trials.",
+        "zh-Hans": "挑战了160次续战的试炼。"
+      },
+      "Reward": 1600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　170回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 170 Relay Trials.",
+        "zh-Hans": "挑战了170次续战的试炼。"
+      },
+      "Reward": 1700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　180回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 180 Relay Trials.",
+        "zh-Hans": "挑战了180次续战的试炼。"
+      },
+      "Reward": 1800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　190回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 190 Relay Trials.",
+        "zh-Hans": "挑战了190次续战的试炼。"
+      },
+      "Reward": 1900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル数　200回",
+      "Category": 4,
+      "Names": {
+        "en": "Take part in 200 Relay Trials.",
+        "zh-Hans": "挑战了200次续战的试炼。"
+      },
+      "Reward": 2000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　初回",
+      "Category": 4,
+      "Names": {
+        "en": "Win a Relay Trial.",
+        "zh-Hans": "首次于续战的试炼中获胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　10回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 10 Relay Trials.",
+        "zh-Hans": "于续战的试炼中获胜了10次。"
+      },
+      "Reward": 100,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　20回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 20 Relay Trials.",
+        "zh-Hans": "于续战的试炼中获胜了20次。"
+      },
+      "Reward": 200,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　30回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 30 Relay Trials.",
+        "zh-Hans": "于续战的试炼中获胜了30次。"
+      },
+      "Reward": 300,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　40回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 40 Relay Trials.",
+        "zh-Hans": "于续战的试炼中获胜了40次。"
+      },
+      "Reward": 400,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　50回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 50 Relay Trials.",
+        "zh-Hans": "于续战的试炼中获胜了50次。"
+      },
+      "Reward": 500,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　60回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 60 Relay Trials.",
+        "zh-Hans": "于续战的试炼中获胜了60次。"
+      },
+      "Reward": 600,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　70回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 70 Relay Trials.",
+        "zh-Hans": "于续战的试炼中获胜了70次。"
+      },
+      "Reward": 700,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　80回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 80 Relay Trials.",
+        "zh-Hans": "于续战的试炼中获胜了80次。"
+      },
+      "Reward": 800,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　90回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 90 Relay Trials.",
+        "zh-Hans": "于续战的试炼中获胜了90次。"
+      },
+      "Reward": 900,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_リレーバトル勝利数　100回",
+      "Category": 4,
+      "Names": {
+        "en": "Win 100 Relay Trials.",
+        "zh-Hans": "于续战的试炼中获胜了100次。"
+      },
+      "Reward": 1000,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ１　ランク1",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Verdant Plain Tempest Trial at any difficulty.",
+        "zh-Hans": "于连战的试炼“绿野的连战”最低难度中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ１　ランク10",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Verdant Plain Tempest Trial at difficulty 10.",
+        "zh-Hans": "于连战的试炼“绿野的连战”难度10中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ１　ランク20",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Verdant Plain Tempest Trial at difficulty 20.",
+        "zh-Hans": "于连战的试炼“绿野的连战”难度20中大获全胜。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ１　ランク30",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Verdant Plain Tempest Trial at difficulty 30.",
+        "zh-Hans": "于连战的试炼“绿野的连战”难度30中大获全胜。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ１　ランク40",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Verdant Plain Tempest Trial at difficulty 40.",
+        "zh-Hans": "于连战的试炼“绿野的连战”难度40中大获全胜。"
+      },
+      "Reward": 40,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ１　ランク50",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Verdant Plain Tempest Trial at difficulty 50.",
+        "zh-Hans": "于连战的试炼“绿野的连战”难度50中大获全胜。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ２　ランク1",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Floral Field Tempest Trial at any difficulty.",
+        "zh-Hans": "于连战的试炼“花田的连战”最低难度中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ２　ランク10",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Floral Field Tempest Trial at difficulty 10.",
+        "zh-Hans": "于连战的试炼“花田的连战”难度10中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ２　ランク20",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Floral Field Tempest Trial at difficulty 20.",
+        "zh-Hans": "于连战的试炼“花田的连战”难度20中大获全胜。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ２　ランク30",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Floral Field Tempest Trial at difficulty 30.",
+        "zh-Hans": "于连战的试炼“花田的连战”难度30中大获全胜。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ２　ランク40",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Floral Field Tempest Trial at difficulty 40.",
+        "zh-Hans": "于连战的试炼“花田的连战”难度40中大获全胜。"
+      },
+      "Reward": 40,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ２　ランク50",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Floral Field Tempest Trial at difficulty 50.",
+        "zh-Hans": "于连战的试炼“花田的连战”难度50中大获全胜。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ３　ランク1",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Mountain Peak Tempest Trial at any difficulty.",
+        "zh-Hans": "于连战的试炼“高原的连战”最低难度中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ３　ランク10",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Mountain Peak Tempest Trial at difficulty 10.",
+        "zh-Hans": "于连战的试炼“高原的连战”难度10中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ３　ランク20",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Mountain Peak Tempest Trial at difficulty 20.",
+        "zh-Hans": "于连战的试炼“高原的连战”难度20中大获全胜。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ３　ランク30",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Mountain Peak Tempest Trial at difficulty 30.",
+        "zh-Hans": "于连战的试炼“高原的连战”难度30中大获全胜。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ３　ランク40",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Mountain Peak Tempest Trial at difficulty 40.",
+        "zh-Hans": "于连战的试炼“高原的连战”难度40中大获全胜。"
+      },
+      "Reward": 40,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ３　ランク50",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Mountain Peak Tempest Trial at difficulty 50.",
+        "zh-Hans": "于连战的试炼“高原的连战”难度50中大获全胜。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ４　ランク1",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Winter Forest Tempest Trial at any difficulty.",
+        "zh-Hans": "于连战的试炼“雪森林的连战”最低难度中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ４　ランク10",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Winter Forest Tempest Trial at difficulty 10.",
+        "zh-Hans": "于连战的试炼“雪森林的连战”难度10中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ４　ランク20",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Winter Forest Tempest Trial at difficulty 20.",
+        "zh-Hans": "于连战的试炼“雪森林的连战”难度20中大获全胜。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ４　ランク30",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Winter Forest Tempest Trial at difficulty 30.",
+        "zh-Hans": "于连战的试炼“雪森林的连战”难度30中大获全胜。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ４　ランク40",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Winter Forest Tempest Trial at difficulty 40.",
+        "zh-Hans": "于连战的试炼“雪森林的连战”难度40中大获全胜。"
+      },
+      "Reward": 40,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ４　ランク50",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Winter Forest Tempest Trial at difficulty 50.",
+        "zh-Hans": "于连战的试炼“雪森林的连战”难度50中大获全胜。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ５　ランク1",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Desert Dunes Tempest Trial at any difficulty.",
+        "zh-Hans": "于连战的试炼“沙海的连战”最低难度中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ５　ランク10",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Desert Dunes Tempest Trial at difficulty 10.",
+        "zh-Hans": "于连战的试炼“沙海的连战”难度10中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ５　ランク20",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Desert Dunes Tempest Trial at difficulty 20.",
+        "zh-Hans": "于连战的试炼“沙海的连战”难度20中大获全胜。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ５　ランク30",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Desert Dunes Tempest Trial at difficulty 30.",
+        "zh-Hans": "于连战的试炼“沙海的连战”难度30中大获全胜。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ５　ランク40",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Desert Dunes Tempest Trial at difficulty 40.",
+        "zh-Hans": "于连战的试炼“沙海的连战”难度40中大获全胜。"
+      },
+      "Reward": 40,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ５　ランク50",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Desert Dunes Tempest Trial at difficulty 50.",
+        "zh-Hans": "于连战的试炼“沙海的连战”难度50中大获全胜。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ６　ランク1",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Vicious Volcano Tempest Trial at any difficulty.",
+        "zh-Hans": "于连战的试炼“岩浆的连战”最低难度中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ６　ランク10",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Vicious Volcano Tempest Trial at difficulty 10.",
+        "zh-Hans": "于连战的试炼“岩浆的连战”难度10中大获全胜。"
+      },
+      "Reward": 10,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ６　ランク20",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Vicious Volcano Tempest Trial at difficulty 20.",
+        "zh-Hans": "于连战的试炼“岩浆的连战”难度20中大获全胜。"
+      },
+      "Reward": 20,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ６　ランク30",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Vicious Volcano Tempest Trial at difficulty 30.",
+        "zh-Hans": "于连战的试炼“岩浆的连战”难度30中大获全胜。"
+      },
+      "Reward": 30,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ６　ランク40",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Vicious Volcano Tempest Trial at difficulty 40.",
+        "zh-Hans": "于连战的试炼“岩浆的连战”难度40中大获全胜。"
+      },
+      "Reward": 40,
+      "Chapter": ""
+    },
+    {
+      "Id": "AID_連戦マップ６　ランク50",
+      "Category": 4,
+      "Names": {
+        "en": "Clear the Vicious Volcano Tempest Trial at difficulty 50.",
+        "zh-Hans": "于连战的试炼“岩浆的连战”难度50中大获全胜。"
+      },
+      "Reward": 50,
+      "Chapter": ""
+    }
+  ]
+}
