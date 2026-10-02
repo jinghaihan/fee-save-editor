@@ -17,6 +17,7 @@ public partial class MainWindow
         {
             var edited = Save.WithMainValues(ReadMainInputs());
             if (CanEditDonations) edited = edited.WithDonations(ReadDonationInputs());
+            if (CanEditMinigames) edited = edited.WithMinigameRecords(ReadMinigameInputs());
             Save = edited;
             RefreshOverview();
             RefreshSections();

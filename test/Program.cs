@@ -115,7 +115,7 @@ try
             Check(window.LoadSave(path), $"The GUI could not open {name}.");
             Check(window.CanEditMain == (name != "Global"), $"{name}: Main edit availability is incorrect.");
             Check(window.CanEditDonations == (name != "Global"), $"{name}: Donation edit availability is incorrect.");
-            Check(window.CanReadMinigames == (name != "Global"), $"{name}: Minigame record availability is incorrect.");
+            Check(window.CanEditMinigames == (name != "Global"), $"{name}: Minigame edit availability is incorrect.");
             Check(window.CanEditAchievements == (name != "Global"), $"{name}: Achievement edit availability is incorrect.");
             string destination = Path.Combine(temporary, name + "-copy");
             Check(window.SaveCopy(destination), $"The GUI could not copy {name}.");
@@ -166,6 +166,8 @@ try
             window.ShowSupports();
         else if (captureOptions is ["--page", "achievements"])
             window.ShowAchievements();
+        else if (captureOptions is ["--page", "minigame-fishing"] or ["--page", "minigame-wyvern"])
+            window.FindControl<ComboBox>("MinigameInput")!.SelectedIndex = captureOptions[1] == "minigame-fishing" ? 4 : 3;
         else if (captureOptions is ["--page", "emblems"] or ["--page", "rings"] or ["--page", "ring-meld"])
         {
             window.ShowEmblems();

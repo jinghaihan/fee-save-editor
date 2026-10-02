@@ -126,27 +126,35 @@
         </ScrollViewer>
       </suki:GlassCard>
       <suki:GlassCard Name="MinigamesCard" Grid.Row="1" Padding="20">
-        <Grid RowDefinitions="Auto,Auto,Auto,*" RowSpacing="12">
+        <Grid RowDefinitions="Auto,*" RowSpacing="12">
           <TextBlock Text="{DynamicResource Minigames}" FontWeight="SemiBold" />
-          <ComboBox Name="MinigameInput" Grid.Row="1" Height="42" Margin="0" HorizontalAlignment="Stretch"
-                    IsEnabled="False" SelectionChanged="Minigame_Changed" AutomationProperties.Name="{DynamicResource Minigames}">
-            <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Name}" /></DataTemplate></ComboBox.ItemTemplate>
-          </ComboBox>
-          <Grid Grid.Row="2" ColumnDefinitions="*,Auto" ColumnSpacing="24">
-            <TextBlock Text="{DynamicResource Record}" />
-            <TextBlock Name="MinigameValueTitle" Grid.Column="1" Text="{DynamicResource BestScore}" />
-          </Grid>
-          <ScrollViewer Grid.Row="3">
-            <ItemsControl Name="MinigameRecords">
-              <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="x:Object" x:CompileBindings="False">
-                  <Grid ColumnDefinitions="*,Auto" ColumnSpacing="24" Margin="0,0,0,10" MinHeight="26">
-                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" VerticalAlignment="Center" />
-                    <TextBlock Grid.Column="1" Text="{Binding Value}" VerticalAlignment="Center" />
-                  </Grid>
-                </DataTemplate>
-              </ItemsControl.ItemTemplate>
-            </ItemsControl>
+          <ScrollViewer Grid.Row="1">
+            <StackPanel Name="MinigameInputs" Spacing="12" IsEnabled="False">
+              <Grid ColumnDefinitions="*,*" ColumnSpacing="24">
+                <ComboBox Name="MinigameInput" Height="42" Margin="0" HorizontalAlignment="Stretch"
+                          SelectionChanged="Minigame_Changed" AutomationProperties.Name="{DynamicResource Minigames}">
+                  <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Name}" /></DataTemplate></ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox Name="MinigameRecordInput" Grid.Column="1" Height="42" Margin="0" HorizontalAlignment="Stretch"
+                          SelectionChanged="MinigameRecord_Changed" AutomationProperties.Name="{DynamicResource Record}">
+                  <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Name}" /></DataTemplate></ComboBox.ItemTemplate>
+                </ComboBox>
+              </Grid>
+              <Grid ColumnDefinitions="*,*" ColumnSpacing="24">
+                <StackPanel Name="MinigameValueField" Spacing="8">
+                  <TextBlock Name="MinigameValueTitle" Text="{DynamicResource BestScore}" />
+                  <NumericUpDown Name="MinigameValueInput" Height="42" Margin="0" Minimum="0" Maximum="2147483647" FormatString="0" />
+                </StackPanel>
+                <StackPanel Name="MinigameSizeField" Grid.Column="1" Spacing="8" IsVisible="False">
+                  <TextBlock Text="{DynamicResource BestSize}" />
+                  <NumericUpDown Name="MinigameSizeInput" Height="42" Margin="0" Minimum="0" Maximum="2147483647" FormatString="0" />
+                </StackPanel>
+              </Grid>
+              <StackPanel Name="MinigameRankField" Spacing="8" IsVisible="False">
+                <TextBlock Name="MinigameRankTitle" Text="{DynamicResource BestRank}" />
+                <ComboBox Name="MinigameRankInput" Height="42" Margin="0" HorizontalAlignment="Stretch" />
+              </StackPanel>
+            </StackPanel>
           </ScrollViewer>
         </Grid>
       </suki:GlassCard>

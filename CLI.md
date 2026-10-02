@@ -21,6 +21,8 @@ FeeEditor.Cli main set Manual0 Manual0-edited --difficulty maddening --mode clas
 FeeEditor.Cli main donation-catalog --json
 FeeEditor.Cli main donations Manual0 --json
 FeeEditor.Cli main minigames Manual0 --json --language en
+FeeEditor.Cli main minigame-set Manual0 Manual0-edited --record G_MusclePushUpBestNormal --value 2000
+FeeEditor.Cli main minigame-set Manual0 Manual0-edited --record G_DragonRideNormalScore --value 40000 --rank SSS
 FeeEditor.Cli main donation-set Manual0 Manual0-edited --country Firene --level 5
 FeeEditor.Cli main donations-max Manual0 Manual0-edited --all
 ```
@@ -33,8 +35,18 @@ level and amount are supplied they must agree. `donations-max` accepts
 Donation edits do not spend money or replay rewards.
 
 `minigames` reads 15 strength-training/wyvern high scores and catch counts for
-20 fish species. These records are currently read-only; score/rank synchronization
-and unlock/reward rules are not yet exposed for editing.
+20 fish species, including their saved sizes and size ranks. `minigame-set` uses
+the record keys in that output. `--value` edits a high score or catch count;
+`--best-size` edits a fishing record in centimeters. `--rank` accepts a saved
+rank number or a name from the record's `Ranks` array. Wyvern ranks are
+None=0, SSS=1, SS=2, S=3, A=4 through F=9; fish size ranks run from Tiny=0
+through Giant=5. Omitted fields are preserved.
+
+Scores, catch counts and sizes accept nonnegative signed 32-bit integers
+(0–2,147,483,647). This is the **storage boundary**, not a verified achievable
+gameplay maximum. Saved evaluations and scores are separate editable fields;
+the editor does not infer a rank from a score or size. These edits do not change
+unlocks, temporary stat bonuses, inventory, achievement counters or rewards.
 
 ## Items
 

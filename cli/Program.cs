@@ -22,6 +22,7 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli main donation-catalog [--json] [--language en|zh-Hans]
           FeeEditor.Cli main donations <save> [--json] [--language en|zh-Hans]
           FeeEditor.Cli main minigames <save> [--json] [--language en|zh-Hans]
+          FeeEditor.Cli main minigame-set <save> <output> --record <key> [--value <n>] [--rank <rank>] [--best-size <cm>]
           FeeEditor.Cli main donation-set <save> <new-file> --country <Firene|Brodia|Elusia|Solm> [--level <1-5>] [--amount <0-9999999>]
           FeeEditor.Cli main donations-max <save> <new-file> --all|--country <name>
           FeeEditor.Cli items catalog [--json]
@@ -79,7 +80,7 @@ try
 {
     switch (args)
     {
-        case ["main", "minigames", ..]:
+        case ["main", var minigameVerb, ..] when minigameVerb is "minigames" or "minigame-set":
             return MinigamesCommand.Run(args[1..]);
         case ["main", var verb, ..] when verb is "donations" or "donation-catalog" or "donation-set" or "donations-max":
             return DonationsCommand.Run(args[1..]);

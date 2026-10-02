@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Import labels for verified, read-only minigame record variables."""
+"""Import labels for verified minigame record variables."""
 
 import argparse
 import json
