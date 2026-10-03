@@ -1,5 +1,35 @@
 # Engage save container
 
+## Advanced editing
+
+Existing USER numeric variables use signed 32-bit values. Generic editing changes
+only an existing type-0 value; string entries, duplicate keys and unknown formats
+are rejected. Dedicated panels are reloaded after GUI raw-variable edits.
+
+Inactive UNIT force groups (3 bench, 4 dead, 5 lost) share the same record shape.
+Moving preserves the complete unit record. Deletion removes only a validated
+unlinked unit after returning ring equipment, and retains historical GDBD/UREL
+records. Protagonist, Pact, target/owner, guest, relay and battle associations are
+protected. Normal carried items must be removed explicitly before deletion.
+
+Fresh playable records use UNIT record version 40, an empty eight-slot item list,
+empty inherited/equipped skill pools, no owner/target/ring links, and catalog
+starting personal offsets for the selected difficulty. Level starts at 1 rather
+than simulating recruitment growth. Initial SP, internal level and proficiencies
+come from the pinned Person table. Missing bonds for owned normal Emblems are
+initialized at level 1 and 0 EXP; existing bonds are not reset. Story flags and
+recruitment events are not changed. These records have automated serialization
+and preservation coverage, but have not yet been verified by loading them in-game.
+
+Null (two-byte) and unknown (six-byte) class references can be replaced with the
+known character's starting class outside battle, rebuilding record sizes and
+section indexes. Level, EXP, current HP and weapon branch are validated, and the
+old class skill is cleared. Known classes and unknown characters are not repaired.
+
+Owned GOD records have variable lengths. Removal unlinks equipment and removes
+the exact record range, updates the owned count and preserves GDBD bonds/skills.
+Story-reserved, dark, escaping, unknown and Engage+ equipment cannot be removed.
+
 These are observations from format-version 9 game saves and a matching global
 save. They describe the outer container, not a complete gameplay schema.
 
@@ -79,6 +109,38 @@ subsequent section-index offset, and preserves unknown USER fields and later
 section payloads. Core edits are immutable and are reparsed before being returned.
 GUI Save Copy applies pending valid Main inputs automatically; invalid inputs
 produce no output. Global saves remain inspection/copy-only.
+
+### Somniel activity uses
+
+The signed 32-bit fields at money-relative offsets `+8` and `+12` are
+`TrainingCount` and `ArenaCount`. The UI exposes remaining uses as `1 - TrainingCount`
+and `3 - ArenaCount`; restoring writes zero to both spent-use counters. Native
+getters at `0x250e530` and `0x250e550` access these fields, and chapter completion
+clears TrainingCount at `0x25136ec`. This does not change strength-training scores,
+Arena Emblem training, activity rewards or other progress. Out-of-range counters
+disable this editor instead of being silently normalized. Tests cover every
+accepted value, byte-exact reversal and real-save copies; in-game use is not yet
+verified.
+
+### Emblem ring and bracelet dirtiness
+
+Owned GOD version-8 records store a single dirty byte after the darkness,
+reserved and escaping flags and before the synchro-skill count. Its native
+getter at `0x233eb00` reads GodUnit's `m_Dirty` byte; the range is `0..255`, with
+zero clean. The writer changes only this byte and the outer CRC32. It leaves
+equipment, flags, synchro skills, weapons and GDBD bonds unchanged.
+
+Owned instance IDs and bond-holder IDs are separate identities. The UI matches
+both the bond-holder ID and Emblem GID to the selected owned ring/bracelet; it
+does not assume the IDs are equal. All 12 base-game rings and seven DLC bracelets
+are supported; Engage+ Alear is not a physical ring and is excluded. Automated
+tests cover distinct IDs, every supported ring/bracelet, invalid values, language
+and selection changes, and real-save preservation. In-game cleaning is not yet
+verified; this edit does not simulate polishing interactions or their rewards.
+
+Batch cleaning changes all known owned physical rings/bracelets in one GOD
+replacement, leaving Engage+ and unknown records untouched. Pending GUI edits
+are validated before the batch commits; invalid inputs leave the save unchanged.
 
 Resource amounts are limited to the game's ranges: money and spendable bond
 fragments are `0..9,999,999`; iron, steel and silver are `0..9,999`. These limits
@@ -288,6 +350,14 @@ the randomizer's modified eligibility flags. Exclusive base/promoted classes are
 matched to their character's canonical birth class; Enchanter and Mage Cannoneer
 are available as DLC generic classes. The base fliers are female-only; Alear's
 gender comes from the save's UnitEdit customization rather than the person table.
+
+The protagonist-name editor changes only the length-prefixed UTF-16LE name in
+the existing version-2 UnitEdit customization for `PID_リュール`. It preserves
+gender, language, birthday and all subsequent record bytes, then updates the
+character/section sizes, section index and CRC. Missing customization records are
+not fabricated. Empty names, control characters, malformed Unicode and strings
+exceeding the parser's 4096-byte bound are rejected; this bound is a serialization
+limit, not a claim about the in-game naming screen's character limit.
 
 `tools/import_roster_catalog.py` generates minimal facts and nine-language
 names, including DLC, from pinned

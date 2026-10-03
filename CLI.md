@@ -17,6 +17,11 @@ accept `--language <code>` where shown by `--help`. Supported codes are `en`,
 
 ```sh
 FeeEditor.Cli main show Manual0 --json
+FeeEditor.Cli main name Manual0
+FeeEditor.Cli main name-set Manual0 Manual0-edited --name Alear
+FeeEditor.Cli main activities Manual0 --json
+FeeEditor.Cli main activities-set Manual0 Manual0-edited --training-remaining 1 --arena-remaining 3
+FeeEditor.Cli main activities-restore Manual0 Manual0-edited
 FeeEditor.Cli main set Manual0 Manual0-edited --money 5000 --bond-fragments 10000 --iron 100 --steel 50 --silver 20
 FeeEditor.Cli main set Manual0 Manual0-edited --difficulty maddening --mode classic --sommie-name Sommie
 FeeEditor.Cli main donation-catalog --json
@@ -29,6 +34,9 @@ FeeEditor.Cli main donations-max Manual0 Manual0-edited --all
 ```
 
 Money and bond fragments accept 0–9,999,999; each ingot type accepts 0–9,999.
+Activity edits use remaining attempts: strength training accepts 0–1 and standard
+Arena training accepts 0–3. `activities-restore` restores both. These edits leave
+high scores, temporary stat bonuses, Emblem training and achievement counters unchanged.
 Donation levels 1–5 map to cumulative amounts 0, 5,000, 15,000, 40,000 and
 90,000. `donation-set` also accepts `--amount` from 0–9,999,999; when both
 level and amount are supplied they must agree. `donations-max` accepts
@@ -54,8 +62,8 @@ unlocks, temporary stat bonuses, inventory, achievement counters or rewards.
 ```sh
 FeeEditor.Cli items catalog --json
 FeeEditor.Cli items list Manual0 --json
-FeeEditor.Cli items set Manual0 Manual0-edited --slot 0 --item IID_てつの剣 --refine 5
-FeeEditor.Cli items add Manual0 Manual0-edited --item IID_てつの剣
+FeeEditor.Cli items set Manual0 Manual0-edited --slot 0 --item IID_鉄の剣 --refine 5
+FeeEditor.Cli items add Manual0 Manual0-edited --item IID_鉄の剣
 FeeEditor.Cli items delete Manual0 Manual0-edited --slot 0
 FeeEditor.Cli items restore Manual0 Manual0-edited --all
 FeeEditor.Cli items engravings --json
@@ -101,6 +109,12 @@ FeeEditor.Cli roster class Manual0 Manual0-edited --character 0 --class JID_パ�
 FeeEditor.Cli roster condition Manual0 Manual0-edited --character 0 --internal-level 20 --hp 30
 FeeEditor.Cli roster restore Manual0 Manual0-edited --character 0
 FeeEditor.Cli roster restore-character Manual0 Manual0-edited --character 1
+FeeEditor.Cli roster missing Manual0 --json
+FeeEditor.Cli roster add Manual0 Manual0-edited --person PID_フラン
+FeeEditor.Cli roster move Manual0 Manual0-edited --character 1 --force Lost
+FeeEditor.Cli roster delete Manual0 Manual0-edited --character 1
+FeeEditor.Cli roster class-repair Manual0 Manual0-edited --character 1
+FeeEditor.Cli roster classes-repair Manual0 Manual0-edited --all
 ```
 
 Use character indices from `roster list` and IDs from `roster catalog`.
@@ -111,6 +125,20 @@ story-restricted units are excluded. Recruitment and story progress are not edit
 Character indices can change when moving between force pools; run `roster list`
 again before another indexed operation. Its `Availability` field distinguishes
 normal bench characters from dead or lost units.
+`add` creates a missing playable character at level 1 in their starting class,
+using difficulty-specific starting personal offsets, initial SP/proficiencies and
+full HP. It does not calculate recruitment-level growth, provide equipment or
+advance story events. Owned normal Emblems receive any missing level-1 bond record;
+existing bonds are preserved. The protagonist and duplicate characters are excluded.
+`move` accepts only `Absent`, `Dead` or `Lost` outside battle. It preserves the
+character record, including death flags; use `restore-character` to revive a unit.
+`delete` rejects the protagonist, Pact partner, deployed/guest/story-restricted
+characters and saved target/owner associations. Clear ordinary carried items first.
+Equipped Emblems are unlinked and Bond Rings returned to stock; historical bonds
+and support records remain. `class-repair` restores an inactive playable unit's
+missing/unknown class to its verified starting class, resets its class skill and
+checks level, EXP, weapon branch and HP. Valid classes are untouched. The GUI also
+performs this repair in memory when opening a compatible non-battle save.
 `personal-stat` edits the stored personal value; `stat` edits the current-class
 result. `stats-max --character <index>` targets one character; `--all` targets
 existing playable characters. Targets are calculated across each character's
@@ -148,8 +176,13 @@ Unavailable story Emblems and active Engage+ links cannot be reassigned.
 ```sh
 FeeEditor.Cli emblems catalog --json
 FeeEditor.Cli emblems list Manual0 --json
+FeeEditor.Cli emblems conditions Manual0 --json
+FeeEditor.Cli emblems dirt-set Manual0 Manual0-edited --instance 1 --value 128
+FeeEditor.Cli emblems clean Manual0 Manual0-edited --instance 1
+FeeEditor.Cli emblems clean-all Manual0 Manual0-edited
 FeeEditor.Cli emblems missing Manual0 --json
 FeeEditor.Cli emblems add Manual0 Manual0-edited --emblem GID_チキ
+FeeEditor.Cli emblems remove Manual0 Manual0-edited --instance 1
 FeeEditor.Cli emblems rings Manual0 --json
 FeeEditor.Cli emblems bond-set Manual0 Manual0-edited --instance 1 --person PID_ヴァンドレ --level 20
 FeeEditor.Cli emblems bond-max Manual0 Manual0-edited --instance 1 --person PID_ヴァンドレ
@@ -160,6 +193,11 @@ FeeEditor.Cli emblems ring-meld Manual0 Manual0-edited --instance 100
 ```
 
 Use saved instance IDs from the lists; the example numbers are placeholders.
+`conditions` reports owned ring/bracelet instance IDs separately from bond-holder
+IDs. Use its `InstanceId` for `dirt-set` and `clean`, not an ID from the bond list.
+Dirtiness is 0–255, with 0 clean. `clean-all` cleans every owned, known physical
+Emblem Ring and Bracelet without choosing an instance. Cleaning changes only each ring/bracelet's dirty
+value; equipment, bonds, and other rings are preserved. Engage+ Alear is excluded.
 `catalog` includes each Bond Ring's nonzero `StatBonuses` and localized skill
 names/descriptions, including S-rank effects and the three Heroes bonus rings.
 `missing` lists absent normal Emblems; `add` takes a catalog GID instead of an
@@ -169,7 +207,10 @@ Existing bonds and purchased skills are preserved. First-time acquisition create
 level-1 bonds with 0 EXP for saved playable units and initializes unrefined Engage
 weapons. The new ring is unequipped; equip it through Roster. Adding a DLC Bracelet
 does not install or grant DLC. Engage+ Alear and story-completion flags are not
-created, and no Emblem removal command is provided.
+created. `remove` uses the owned instance ID from `conditions`, requires a
+non-battle save, unequips any owner first and preserves all historical bonds and
+skills for re-acquisition. Reserved, dark, escaping, unknown and Engage+ Emblems
+are excluded.
 
 Bond levels map to the game's EXP thresholds. `bond-set` also accepts
 `--experience`; both fields must agree when supplied together. Alear bonds
@@ -219,6 +260,19 @@ change activity counters or advance the story. `--all` includes all named
 achievements, including chapter-gated ones, not just a GUI search/category filter.
 
 ## Inspect and copy
+
+The Inspector's Variables tab and these commands edit existing numeric game variables:
+
+```sh
+FeeEditor.Cli variables list Manual0 --json
+FeeEditor.Cli variables set Manual0 Manual0-edited --key G_所持_IID_てつの晶石 --value 100
+```
+
+Values accept signed 32-bit integers (−2,147,483,648–2,147,483,647). This is raw
+storage editing, not a guarantee that a value is valid for its game mechanic;
+prefer the dedicated panels for known fields. String variables, missing keys,
+duplicate keys and unknown block formats are rejected. No variable is inserted
+or removed. GUI edits reload the dedicated panels to keep their values in sync.
 
 ```sh
 FeeEditor.Cli inspect Manual0 --json
