@@ -1,88 +1,152 @@
 using System.Globalization;
+using Avalonia;
+using Avalonia.Automation;
 using Avalonia.Controls;
+using Avalonia.Layout;
+using Avalonia.Media;
 using FeeEditor.Core;
 using FeeEditor.Gui.Localization;
+using SukiUI.Controls;
 
 namespace FeeEditor.Gui;
 
 public partial class MainWindow
 {
-    public sealed record MinigameChoice(string Id, string Name);
+    private sealed record MinigameEditor(MinigameRecordDefinition Definition, TextBlock Label,
+        NumericUpDown Value, NumericUpDown? Size, ComboBox? Rank);
     public bool CanEditMinigames { get; private set; }
-    private readonly Dictionary<string, MinigameValues> _minigameValues = new(StringComparer.Ordinal);
-    private string? _minigameRecordKey;
-    private bool _refreshingMinigames;
+    private readonly Dictionary<string, MinigameEditor> _minigameEditors = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, TextBlock> _minigameTitles = new(StringComparer.Ordinal);
+    private readonly List<(TextBlock Label, string Key)> _minigameHeadings = [];
+
+    public void ShowMinigames()
+    {
+        MainPanel.IsVisible = ItemsPanel.IsVisible = RosterPanel.IsVisible = InspectorPanel.IsVisible = false;
+        EmblemsPanel.IsVisible = BondRingsPanel.IsVisible = EmblemPagesPanel.IsVisible = false;
+        SupportsPanel.IsVisible = AchievementsPanel.IsVisible = false;
+        MinigamesPanel.IsVisible = true;
+        MainNavigation.SelectedIndex = 5;
+        RefreshPageLayout();
+    }
+
+    private void BuildMinigameCards()
+    {
+        if (_minigameEditors.Count != 0) return;
+        foreach (var group in MinigameCatalog.Groups)
+        {
+            var title = new TextBlock { FontWeight = FontWeight.SemiBold, TextWrapping = TextWrapping.Wrap };
+            _minigameTitles.Add(group.Id, title);
+            var content = new StackPanel { Spacing = 16 };
+            content.Children.Add(title);
+            bool fishing = group.Id == "Fishing", ranked = group.Records[0].RankKey is not null;
+            string columns = "*,*";
+            if (fishing) columns = "2*,*,*,*";
+            else if (ranked) columns = "*,*,*";
+            var rows = new Grid
+            {
+                ColumnDefinitions = new ColumnDefinitions(columns),
+                ColumnSpacing = 24, RowSpacing = 16
+            };
+            rows.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
+            AddHeading(fishing ? "Caught" : "BestScore", 1);
+            if (fishing) AddHeading("BestSize", 2);
+            if (ranked) AddHeading(fishing ? "SizeRank" : "BestRank", fishing ? 3 : 2);
+            foreach (var definition in group.Records)
+            {
+                int row = rows.RowDefinitions.Count;
+                rows.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
+                var label = new TextBlock { VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.Wrap };
+                var value = CreateMinigameNumber(definition.Key);
+                NumericUpDown? size = fishing ? CreateMinigameNumber(definition.Key + "Size") : null;
+                ComboBox? rank = ranked ? new ComboBox
+                {
+                    Tag = definition.Key + "Rank", Height = 42, Margin = new Thickness(0),
+                    HorizontalAlignment = HorizontalAlignment.Stretch, IsEnabled = false
+                } : null;
+                Add(label, row, 0);
+                Add(value, row, 1);
+                if (size is not null) Add(size, row, 2);
+                if (rank is not null) Add(rank, row, fishing ? 3 : 2);
+                _minigameEditors.Add(definition.Key, new(definition, label, value, size, rank));
+            }
+            content.Children.Add(rows);
+            var card = new GlassCard { Name = "Minigame" + group.Id + "Card", Padding = new Thickness(20), Content = content };
+            var target = group.Id switch
+            {
+                "Fishing" => FishingMinigameCards,
+                "SitUps" or "WyvernRide" => MinigameRightCards,
+                _ => MinigameLeftCards
+            };
+            target.Children.Add(card);
+
+            void AddHeading(string key, int column)
+            {
+                var label = new TextBlock { TextWrapping = TextWrapping.Wrap };
+                _minigameHeadings.Add((label, key));
+                Add(label, 0, column);
+            }
+            void Add(Control control, int row, int column)
+            {
+                Grid.SetRow(control, row);
+                Grid.SetColumn(control, column);
+                rows.Children.Add(control);
+            }
+        }
+    }
+
+    private static NumericUpDown CreateMinigameNumber(string key) => new()
+    {
+        Tag = key, Minimum = 0, Maximum = int.MaxValue, Height = 42, Margin = new Thickness(0),
+        FormatString = "0", HorizontalAlignment = HorizontalAlignment.Stretch, IsEnabled = false
+    };
 
     private void LoadMinigames()
     {
         CanEditMinigames = false;
-        MinigameInputs.IsEnabled = false;
-        _refreshingMinigames = true;
+        foreach (var editor in _minigameEditors.Values)
+        {
+            editor.Value.IsEnabled = false;
+            SetMinigameNumber(editor.Value, null);
+            if (editor.Size is not null) { editor.Size.IsEnabled = false; SetMinigameNumber(editor.Size, null); }
+            if (editor.Rank is not null) { editor.Rank.IsEnabled = false; editor.Rank.SelectedIndex = -1; }
+        }
+        if (Save is null || !CanEditMain) return;
         try
         {
-            _minigameValues.Clear();
-            _minigameRecordKey = null;
-            MinigameRecordInput.ItemsSource = null;
-            MinigameValueInput.Value = MinigameSizeInput.Value = null;
-            MinigameRankInput.SelectedIndex = -1;
-            if (Save is null || !CanEditMain) return;
-            foreach (var row in Save.ReadMinigameRecords()) _minigameValues.Add(row.Definition.Key, row.Values);
+            var records = Save.ReadMinigameRecords();
+            foreach (var record in records)
+            {
+                var editor = _minigameEditors[record.Definition.Key];
+                SetMinigameNumber(editor.Value, record.Value);
+                editor.Value.IsEnabled = true;
+                if (editor.Size is not null) { SetMinigameNumber(editor.Size, record.BestSize); editor.Size.IsEnabled = true; }
+                if (editor.Rank is not null) { editor.Rank.SelectedIndex = record.Rank ?? -1; editor.Rank.IsEnabled = true; }
+            }
             CanEditMinigames = true;
-            MinigameInputs.IsEnabled = true;
-            RefreshMinigameRecords();
         }
-        catch (Exception error) when (IsFileError(error))
-        {
-            _minigameValues.Clear();
-            ShowMessage("MinigamesUnavailable", error.Message);
-        }
-        finally { _refreshingMinigames = false; }
+        catch (Exception error) when (IsFileError(error)) { ShowMessage("MinigamesUnavailable", error.Message); }
     }
 
     private void RefreshMinigameLanguage()
     {
-        bool refreshing = _refreshingMinigames;
-        _refreshingMinigames = true;
-        try
+        BuildMinigameCards();
+        foreach (var group in MinigameCatalog.Groups) _minigameTitles[group.Id].Text = group.Name(UiLanguage.Current);
+        foreach (var (label, key) in _minigameHeadings) label.Text = UiLanguage.Get(key);
+        foreach (var editor in _minigameEditors.Values)
         {
-            string? selected = (MinigameInput.SelectedItem as MinigameChoice)?.Id;
-            MinigameInput.ItemsSource = MinigameCatalog.Groups.Select(group =>
-                new MinigameChoice(group.Id, group.Name(UiLanguage.Current))).ToArray();
-            MinigameInput.SelectedItem = MinigameInput.Items.Cast<MinigameChoice>().FirstOrDefault(row => row.Id == selected)
-                ?? MinigameInput.Items[0];
-            RefreshMinigameRecords(loadValues: false);
+            string name = editor.Definition.Name(UiLanguage.Current);
+            editor.Label.Text = name;
+            AutomationProperties.SetName(editor.Value, name + " — " + UiLanguage.Get(editor.Definition.IsFishing ? "Caught" : "BestScore"));
+            if (editor.Size is not null) AutomationProperties.SetName(editor.Size, name + " — " + UiLanguage.Get("BestSize"));
+            if (editor.Rank is not null)
+            {
+                int selected = editor.Rank.SelectedIndex;
+                editor.Rank.ItemsSource = editor.Definition.Ranks.Select(label =>
+                    editor.Definition.IsFishing || label == "None" ? UiLanguage.Get(label) : label).ToArray();
+                editor.Rank.SelectedIndex = selected;
+                AutomationProperties.SetName(editor.Rank, name + " — " + UiLanguage.Get(editor.Definition.IsFishing ? "SizeRank" : "BestRank"));
+            }
         }
-        finally { _refreshingMinigames = refreshing; }
-    }
-
-    private void RefreshMinigameRecords(bool loadValues = true)
-    {
-        if (MinigameInput.SelectedItem is not MinigameChoice selected) return;
-        var group = MinigameCatalog.Groups.Single(row => row.Id == selected.Id);
-        string? key = _minigameRecordKey;
-        MinigameRecordInput.ItemsSource = group.Records.Select(row => new MinigameChoice(row.Key, row.Name(UiLanguage.Current))).ToArray();
-        MinigameRecordInput.SelectedItem = MinigameRecordInput.Items.Cast<MinigameChoice>().FirstOrDefault(row => row.Id == key)
-            ?? MinigameRecordInput.Items[0];
-        _minigameRecordKey = ((MinigameChoice)MinigameRecordInput.SelectedItem!).Id;
-        MinigameValueTitle.Text = UiLanguage.Get(selected.Id == "Fishing" ? "Caught" : "BestScore");
-        MinigameSizeField.IsVisible = selected.Id == "Fishing";
-        Grid.SetColumnSpan(MinigameValueField, selected.Id == "Fishing" ? 1 : 2);
-        MinigameRankField.IsVisible = selected.Id is "Fishing" or "WyvernRide";
-        MinigameRankTitle.Text = UiLanguage.Get(selected.Id == "Fishing" ? "SizeRank" : "BestRank");
-        int rank = MinigameRankInput.SelectedIndex;
-        MinigameRankInput.ItemsSource = selected.Id == "Fishing"
-            ? MinigameCatalog.FishRanks.Select(UiLanguage.Get).ToArray()
-            : MinigameCatalog.WyvernRanks.Select(label => label == "None" ? UiLanguage.Get("None") : label).ToArray();
-        MinigameRankInput.SelectedIndex = rank;
-        if (loadValues && CanEditMinigames) LoadMinigameRecord();
-    }
-
-    private void LoadMinigameRecord()
-    {
-        if (_minigameRecordKey is null || !_minigameValues.TryGetValue(_minigameRecordKey, out var row)) return;
-        SetMinigameNumber(MinigameValueInput, row.Value);
-        SetMinigameNumber(MinigameSizeInput, row.BestSize);
-        MinigameRankInput.SelectedIndex = row.Rank ?? -1;
     }
 
     private static void SetMinigameNumber(NumericUpDown input, int? value)
@@ -91,49 +155,16 @@ public partial class MainWindow
         input.Text = value?.ToString(CultureInfo.InvariantCulture) ?? "";
     }
 
-    private MinigameValues ReadMinigameInput()
-    {
-        int? rank = null, size = null;
-        if (MinigameRankField.IsVisible)
-        {
-            if (MinigameRankInput.SelectedIndex < 0) throw new ArgumentException(UiLanguage.Get("InvalidAmount"));
-            rank = MinigameRankInput.SelectedIndex;
-        }
-        if (MinigameSizeField.IsVisible) size = Amount(MinigameSizeInput);
-        return new(Amount(MinigameValueInput), rank, size);
-    }
-
     private Dictionary<string, MinigameValues> ReadMinigameInputs()
     {
-        var values = new Dictionary<string, MinigameValues>(_minigameValues, StringComparer.Ordinal);
-        if (_minigameRecordKey is not null) values[_minigameRecordKey] = ReadMinigameInput();
+        var values = new Dictionary<string, MinigameValues>(StringComparer.Ordinal);
+        foreach (var (key, editor) in _minigameEditors)
+        {
+            if (editor.Rank is not null && editor.Rank.SelectedIndex < 0)
+                throw new ArgumentException(UiLanguage.Get("InvalidAmount"));
+            values.Add(key, new(Amount(editor.Value), editor.Rank?.SelectedIndex,
+                editor.Size is null ? null : Amount(editor.Size)));
+        }
         return values;
-    }
-
-    private void Minigame_Changed(object? sender, SelectionChangedEventArgs e) => ChangeMinigameSelection(activity: true);
-    private void MinigameRecord_Changed(object? sender, SelectionChangedEventArgs e) => ChangeMinigameSelection(activity: false);
-
-    private void ChangeMinigameSelection(bool activity)
-    {
-        if (_refreshingMinigames || !CanEditMinigames) return;
-        _refreshingMinigames = true;
-        try
-        {
-            if (_minigameRecordKey is not null) _minigameValues[_minigameRecordKey] = ReadMinigameInput();
-            if (activity) RefreshMinigameRecords();
-            else
-            {
-                _minigameRecordKey = (MinigameRecordInput.SelectedItem as MinigameChoice)?.Id;
-                LoadMinigameRecord();
-            }
-        }
-        catch (Exception error) when (IsFileError(error))
-        {
-            var group = MinigameCatalog.Groups.Single(row => row.Records.Any(record => record.Key == _minigameRecordKey));
-            MinigameInput.SelectedItem = MinigameInput.Items.Cast<MinigameChoice>().Single(row => row.Id == group.Id);
-            RefreshMinigameRecords(loadValues: false);
-            ShowMessage("EditFailed", error.Message);
-        }
-        finally { _refreshingMinigames = false; }
     }
 }

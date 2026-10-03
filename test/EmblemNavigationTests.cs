@@ -15,7 +15,7 @@ internal static class EmblemNavigationTests
         var navigation = window.FindControl<TabStrip>("MainNavigation")!;
         var pages = window.FindControl<TabStrip>("EmblemPages")!;
         var container = window.FindControl<Grid>("EmblemPagesPanel")!;
-        Check(navigation.ItemCount == 6 && pages.ItemCount == 2 && pages.Parent == container,
+        Check(navigation.ItemCount == 8 && pages.ItemCount == 2 && pages.Parent == container,
             "Emblems must use page-level tabs above both cards.");
         var bonds = window.FindControl<Grid>("EmblemsPanel")!;
         var rings = window.FindControl<Grid>("BondRingsPanel")!;

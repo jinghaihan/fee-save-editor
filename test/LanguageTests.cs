@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.LogicalTree;
 using Avalonia.Threading;
 using FeeEditor.Core;
 using FeeEditor.Gui;
@@ -51,17 +52,21 @@ internal static class LanguageTests
         {
             Check(Equals(window.FindControl<ComboBox>("DifficultyInput")!.SelectedItem, UiLanguage.Get("Hard")),
                 "Difficulty did not translate.");
-            var group = (MainWindow.MinigameChoice)window.FindControl<ComboBox>("MinigameInput")!.SelectedItem!;
-            Check(group.Name == MinigameCatalog.Groups.Single(row => row.Id == group.Id).Name(UiLanguage.Current),
-                "Minigame names did not translate.");
+            foreach (var group in MinigameCatalog.Groups)
+            {
+                var card = window.GetLogicalDescendants().OfType<SukiUI.Controls.GlassCard>()
+                    .Single(card => card.Name == "Minigame" + group.Id + "Card");
+                Check(((TextBlock)((StackPanel)card.Content!).Children[0]).Text == group.Name(UiLanguage.Current),
+                    "Minigame card names did not translate.");
+            }
         });
         CheckPage(window, temporary, "language-roster", RosterTests.Fixture(), () =>
         {
             window.ShowRoster();
             var selected = (MainWindow.RosterRow)window.FindControl<ListBox>("RosterList")!.SelectedItem!;
             var person = window.Save!.ReadRoster()[selected.Index];
-            Check(window.FindControl<TextBlock>("RosterName")!.Text == RosterCatalog.Person(person.PersonHash)!.Name(UiLanguage.Current),
-                "Roster plain-text name did not translate.");
+            Check(selected.Label.StartsWith(person.Progress.CustomName ?? RosterCatalog.Person(person.PersonHash)!.Name(UiLanguage.Current))
+                && window.FindControl<Control>("RosterName") is null, "Roster list name did not translate or was duplicated in the editor.");
             Check(window.FindControl<TextBlock>("RosterStatusValue")!.Text == UiLanguage.Get("RosterAvailable"),
                 "Availability did not translate.");
             Check(window.FindControl<ComboBox>("RosterClass")!.Items.Cast<MainWindow.ClassChoice>()
@@ -105,7 +110,7 @@ internal static class LanguageTests
             window.SetLanguage(language);
             Dispatcher.UIThread.RunJobs();
             var navigation = window.FindControl<TabStrip>("MainNavigation")!;
-            string[] keys = ["Main", "Items", "Roster", "Emblems", "Support", "Achievements"];
+            string[] keys = ["Main", "Items", "Roster", "Emblems", "Support", "Minigames", "Achievements", "Inspector"];
             Check(navigation.Items.Cast<TabStripItem>().Select(item => item.Content as string).SequenceEqual(keys.Select(UiLanguage.Get)),
                 "Top-level tabs retain text from a previous language.");
             Check(window.FindControl<TabStrip>("ItemPages")!.Items.Cast<TabStripItem>().Select(item => item.Content as string)

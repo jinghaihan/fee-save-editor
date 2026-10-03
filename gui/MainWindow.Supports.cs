@@ -23,13 +23,14 @@ public partial class MainWindow
             return;
         }
         MainPanel.IsVisible = ItemsPanel.IsVisible = RosterPanel.IsVisible = EmblemsPanel.IsVisible = InspectorPanel.IsVisible = false;
+        MinigamesPanel.IsVisible = false;
         BondRingsPanel.IsVisible = false;
         EmblemPagesPanel.IsVisible = false;
         SupportsPanel.IsVisible = true;
         AchievementsPanel.IsVisible = false;
         MainNavigation.SelectedIndex = 4;
         RefreshSupportRecords(preserveEditor: HasPendingSupportValues());
-        RefreshPageTitle();
+        RefreshPageLayout();
     }
 
     private static string SupportRankName(SupportRank rank) => rank switch

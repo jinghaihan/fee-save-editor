@@ -206,14 +206,14 @@ internal static class RosterTests
     }
 
     public static byte[] Fixture(int baseStrength = 3, Action<byte[]>? mutate = null, UnitForce force = UnitForce.Absent,
-        bool validEquipment = false)
+        bool validEquipment = false, string? protagonistName = null)
     {
         using var output = new MemoryStream();
         using (var writer = new BinaryWriter(output, Encoding.UTF8, leaveOpen: true))
         {
             writer.Write(0u); writer.Write(0xcdcdcdcdu); writer.Write(new byte[24]);
             writer.Write((byte)force); writer.Write((byte)2);
-            writer.Write(Character("PID_リュール", "JID_神竜ノ子", baseStrength, optionalTarget: false, force, validEquipment));
+            writer.Write(Character("PID_リュール", "JID_神竜ノ子", baseStrength, optionalTarget: false, force, validEquipment, protagonistName));
             writer.Write(Character("PID_ユナカ", "JID_シーフ", 3, optionalTarget: true, force, validEquipment));
             writer.Write((byte)255);
         }
@@ -242,7 +242,8 @@ internal static class RosterTests
         return result;
     }
 
-    private static byte[] Character(string person, string job, int baseStrength, bool optionalTarget, UnitForce force, bool validEquipment)
+    private static byte[] Character(string person, string job, int baseStrength, bool optionalTarget, UnitForce force, bool validEquipment,
+        string? customName = null)
     {
         using var output = new MemoryStream();
         using var writer = new BinaryWriter(output, Encoding.UTF8, leaveOpen: true);
@@ -285,7 +286,13 @@ internal static class RosterTests
             for (int index = 0; index < 4; index++) writer.Write(uint.MaxValue);
             for (int index = 0; index < 16; index++) { writer.Write(0u); writer.Write((ushort)0); }
         }
-        writer.Write((byte)2); writer.Write(false);
+        writer.Write((byte)2); writer.Write(customName is not null);
+        if (customName is not null)
+        {
+            byte[] name = Encoding.Unicode.GetBytes(customName);
+            writer.Write(name.Length); writer.Write(name);
+            writer.Write((byte)2); writer.Write((byte)3); writer.Write((ushort)0x0917);
+        }
         if (validEquipment)
         {
             writer.Write((ushort)0); writer.Write((byte)4); writer.Write((byte)2);

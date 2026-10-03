@@ -20,11 +20,6 @@ public partial class MainWindow : Window
             item.Click += Language_Click;
             LanguageMenu.Items.Add(item);
         }
-        DonationAmountInput.Maximum = DonationCatalog.MaximumAmount;
-        DonationAmountInput.PropertyChanged += (_, change) =>
-        {
-            if (change.Property == NumericUpDown.TextProperty) UpdateDonationLevel();
-        };
         RefreshDonationLanguage();
         RefreshMinigameLanguage();
         RefreshAchievementLanguage();
@@ -47,7 +42,7 @@ public partial class MainWindow : Window
         RefreshOptions();
         RefreshItemChoices();
         RefreshQuantityItemLanguage();
-        RefreshPageTitle();
+        RefreshPageLayout();
     }
 
     public bool LoadSave(string path)
@@ -58,6 +53,7 @@ public partial class MainWindow : Window
             var save = EngageSave.Load(path);
             Save = save;
             CanEditEmblems = CanEditBondRings = false;
+            CanEditVariables = false;
             _path = Path.GetFullPath(path);
             SectionSearch.Clear();
             RefreshOverview();
@@ -65,14 +61,17 @@ public partial class MainWindow : Window
             SaveCopyMenu.IsEnabled = true;
             Message.IsVisible = false;
             LoadMainValues();
+            LoadActivities();
             LoadDonations();
             LoadMinigames();
             LoadAchievements();
             LoadInventory();
             LoadQuantityItems();
             LoadRoster();
+            LoadProtagonistName();
             LoadEmblems();
             LoadSupports();
+            LoadVariables();
             return true;
         }
         catch (Exception error) when (IsFileError(error))
@@ -88,18 +87,8 @@ public partial class MainWindow : Window
             return false;
         try
         {
-            if (CanEditMain && !ApplyMainValues())
-                return false;
-            if (HasPendingItemValues() && !ApplyItemValues())
-                return false;
-            if (HasPendingQuantityItemValues() && !ApplyQuantityItemValues())
-                return false;
-            if (CanEditRoster && !ApplyPendingRoster())
-                return false;
-            if (HasPendingEmblemValues() && !ApplyEmblemValues())
-                return false;
-            if (HasPendingSupportValues() && !ApplySupportValues())
-                return false;
+            if (HasPendingVariable() && !ApplyVariableValue()) return false;
+            if (!ApplyPendingGameplayValues()) return false;
             Save.WriteCopy(path);
             ShowMessage("CopySaved", Path.GetFullPath(path));
             return true;
@@ -124,8 +113,22 @@ public partial class MainWindow : Window
         RefreshEmblemLanguage();
         RefreshSupportLanguage();
         RefreshOverview();
-        RefreshPageTitle();
+        RefreshPageLayout();
         Message.IsVisible = false;
+    }
+
+    private bool ApplyPendingGameplayValues() =>
+        (!CanEditMain || ApplyMainValues())
+        && (!HasPendingItemValues() || ApplyItemValues())
+        && (!HasPendingQuantityItemValues() || ApplyQuantityItemValues())
+        && (!CanEditRoster || ApplyPendingRoster())
+        && (!HasPendingEmblemValues() || ApplyEmblemValues())
+        && (!HasPendingSupportValues() || ApplySupportValues());
+
+    private void RefreshGameplayValues()
+    {
+        LoadMainValues(); LoadActivities(); LoadDonations(); LoadMinigames(); LoadAchievements();
+        LoadInventory(); LoadQuantityItems(); LoadRoster(); LoadProtagonistName(); LoadEmblems(); LoadSupports();
     }
 
     private void RefreshOverview()
@@ -225,12 +228,10 @@ public partial class MainWindow : Window
     private async void About_Click(object? sender, RoutedEventArgs e) =>
         await new AboutWindow().ShowDialog(this);
 
-    private void Main_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: false);
-    private void Inspector_Click(object? sender, RoutedEventArgs e) => ShowPage(inspector: true);
     private void Navigation_Changed(object? sender, SelectionChangedEventArgs e)
     {
         if (MainPanel is null || ItemsPanel is null || RosterPanel is null || EmblemsPanel is null
-            || EmblemPagesPanel is null || BondRingsPanel is null || SupportsPanel is null || AchievementsPanel is null)
+            || EmblemPagesPanel is null || BondRingsPanel is null || SupportsPanel is null || AchievementsPanel is null || MinigamesPanel is null || InspectorPanel is null)
             return;
         switch (MainNavigation.SelectedIndex)
         {
@@ -249,8 +250,14 @@ public partial class MainWindow : Window
             case 4 when !SupportsPanel.IsVisible:
                 ShowSupports();
                 break;
-            case 5 when !AchievementsPanel.IsVisible:
+            case 5 when !MinigamesPanel.IsVisible:
+                ShowMinigames();
+                break;
+            case 6 when !AchievementsPanel.IsVisible:
                 ShowAchievements();
+                break;
+            case 7 when !InspectorPanel.IsVisible:
+                ShowPage(inspector: true);
                 break;
         }
     }

@@ -1,5 +1,9 @@
+using Avalonia;
+using Avalonia.Automation;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Layout;
+using Avalonia.Media;
 using FeeEditor.Core;
 using FeeEditor.Gui.Localization;
 
@@ -7,131 +11,124 @@ namespace FeeEditor.Gui;
 
 public partial class MainWindow
 {
-    public sealed record DonationChoice(string Id, string Name);
-    public bool CanEditDonations { get; private set; }
-    private readonly Dictionary<string, int> _donationAmounts = new();
-    private string? _donationCountryId;
+    private sealed record DonationEditor(DonationCountry Country, TextBlock Title, ComboBox Level,
+        NumericUpDown Amount, TextBlock LevelLabel, TextBlock AmountLabel);
+    private readonly Dictionary<string, DonationEditor> _donationEditors = new(StringComparer.Ordinal);
     private bool _refreshingDonations;
+    public bool CanEditDonations { get; private set; }
+
+    private void BuildDonationRows()
+    {
+        if (_donationEditors.Count != 0) return;
+        foreach (var country in DonationCatalog.Countries)
+        {
+            var title = new TextBlock { Tag = country.Id + "Title", FontWeight = FontWeight.SemiBold,
+                VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.Wrap };
+            var levelLabel = new TextBlock { TextWrapping = TextWrapping.Wrap };
+            var amountLabel = new TextBlock { TextWrapping = TextWrapping.Wrap };
+            var level = new ComboBox { Tag = country.Id + "Level", ItemsSource = Enumerable.Range(1, 5).ToArray(),
+                SelectedIndex = -1, Height = 42, MinHeight = 42, MaxHeight = 42, Margin = new Thickness(0), HorizontalAlignment = HorizontalAlignment.Stretch };
+            var amount = new NumericUpDown { Tag = country.Id, Minimum = 0, Maximum = DonationCatalog.MaximumAmount,
+                FormatString = "0", Height = 42, Margin = new Thickness(0), HorizontalAlignment = HorizontalAlignment.Stretch };
+            var fields = new Grid { ColumnDefinitions = new("*,*"), RowDefinitions = new("Auto,Auto"),
+                ColumnSpacing = 24, RowSpacing = 8 };
+            fields.Children.Add(levelLabel);
+            Grid.SetColumn(amountLabel, 1);
+            fields.Children.Add(amountLabel);
+            Grid.SetRow(level, 1);
+            fields.Children.Add(level);
+            Grid.SetRow(amount, 1);
+            Grid.SetColumn(amount, 1);
+            fields.Children.Add(amount);
+            var row = new StackPanel { Spacing = 8 };
+            row.Children.Add(title);
+            row.Children.Add(fields);
+            DonationInputs.Children.Add(row);
+            var editor = new DonationEditor(country, title, level, amount, levelLabel, amountLabel);
+            _donationEditors.Add(country.Id, editor);
+            level.SelectionChanged += (_, _) => ChangeDonationLevel(editor);
+            amount.PropertyChanged += (_, change) =>
+            {
+                if (change.Property == NumericUpDown.TextProperty) UpdateDonationLevel(editor);
+            };
+        }
+    }
 
     private void LoadDonations()
     {
-        CanEditDonations = false;
-        DonationInputs.IsEnabled = false;
-        MaxAllDonationsButton.IsEnabled = false;
+        CanEditDonations = DonationInputs.IsEnabled = MaxAllDonationsButton.IsEnabled = false;
         _refreshingDonations = true;
         try
         {
-            _donationAmounts.Clear();
-            _donationCountryId = null;
-            DonationCountryInput.SelectedIndex = -1;
-            DonationLevelInput.SelectedIndex = -1;
-            DonationAmountInput.Value = null;
+            foreach (var editor in _donationEditors.Values)
+            {
+                editor.Amount.Value = null;
+                editor.Amount.Text = "";
+                editor.Level.SelectedIndex = -1;
+            }
             if (Save is null || !CanEditMain) return;
-            foreach (var row in Save.ReadDonations()) _donationAmounts.Add(row.Country.Id, row.Amount);
-            CanEditDonations = true;
-            DonationInputs.IsEnabled = true;
-            MaxAllDonationsButton.IsEnabled = true;
-            _donationCountryId = DonationCatalog.Countries[0].Id;
-            DonationCountryInput.SelectedIndex = 0;
-            LoadDonationCountry();
+            var donations = Save.ReadDonations();
+            foreach (var donation in donations) SetDonationAmount(_donationEditors[donation.Country.Id], donation.Amount);
+            CanEditDonations = DonationInputs.IsEnabled = MaxAllDonationsButton.IsEnabled = true;
         }
-        catch (Exception error) when (IsFileError(error))
-        {
-            ShowMessage("DonationsUnavailable", error.Message);
-        }
+        catch (Exception error) when (IsFileError(error)) { ShowMessage("DonationsUnavailable", error.Message); }
         finally { _refreshingDonations = false; }
     }
 
     private void RefreshDonationLanguage()
     {
-        _refreshingDonations = true;
-        try
+        BuildDonationRows();
+        foreach (var editor in _donationEditors.Values)
         {
-            int selected = DonationCountryInput.SelectedIndex;
-            DonationCountryInput.ItemsSource = DonationCatalog.Countries.Select(country =>
-                new DonationChoice(country.Id, country.Name(UiLanguage.Current))).ToArray();
-            DonationCountryInput.SelectedIndex = selected;
-            DonationLevelInput.ItemsSource = Enumerable.Range(1, 5).ToArray();
-            if (_donationCountryId is not null && CanEditDonations) UpdateDonationLevelSelection();
+            string name = editor.Country.Name(UiLanguage.Current);
+            editor.Title.Text = name;
+            editor.LevelLabel.Text = UiLanguage.Get("Level");
+            editor.AmountLabel.Text = UiLanguage.Get("DonatedGold");
+            AutomationProperties.SetName(editor.Level, name + " — " + UiLanguage.Get("Level"));
+            AutomationProperties.SetName(editor.Amount, name + " — " + UiLanguage.Get("DonatedGold"));
         }
+    }
+
+    private static void SetDonationAmount(DonationEditor editor, int amount)
+    {
+        editor.Amount.Value = amount;
+        editor.Amount.Text = amount.ToString(editor.Amount.NumberFormat);
+        editor.Level.SelectedIndex = editor.Country.LevelForAmount(amount) - 1;
+    }
+
+    private Dictionary<string, int> ReadDonationInputs() => _donationEditors.ToDictionary(
+        entry => entry.Key, entry => Amount(entry.Value.Amount), StringComparer.Ordinal);
+
+    private void ChangeDonationLevel(DonationEditor editor)
+    {
+        if (_refreshingDonations || !CanEditDonations || editor.Level.SelectedIndex < 0) return;
+        _refreshingDonations = true;
+        try { SetDonationAmount(editor, editor.Country.AmountForLevel(editor.Level.SelectedIndex + 1)); }
         finally { _refreshingDonations = false; }
     }
 
-    private void LoadDonationCountry()
-    {
-        if (_donationCountryId is null) return;
-        int amount = _donationAmounts[_donationCountryId];
-        DonationAmountInput.Value = amount;
-        DonationAmountInput.Text = amount.ToString(DonationAmountInput.NumberFormat);
-        DonationLevelInput.SelectedIndex = DonationCatalog.Country(_donationCountryId).LevelForAmount(amount) - 1;
-    }
-
-    private Dictionary<string, int> ReadDonationInputs()
-    {
-        var values = new Dictionary<string, int>(_donationAmounts);
-        if (_donationCountryId is null) throw new ArgumentException(UiLanguage.Get("SelectCountry"));
-        values[_donationCountryId] = Amount(DonationAmountInput);
-        return values;
-    }
-
-    private void DonationCountry_Changed(object? sender, SelectionChangedEventArgs e)
-    {
-        if (_refreshingDonations || !CanEditDonations || DonationCountryInput.SelectedItem is not DonationChoice selected) return;
-        _refreshingDonations = true;
-        try
-        {
-            if (_donationCountryId is not null) _donationAmounts[_donationCountryId] = Amount(DonationAmountInput);
-            _donationCountryId = selected.Id;
-            LoadDonationCountry();
-        }
-        catch (Exception error) when (IsFileError(error))
-        {
-            DonationCountryInput.SelectedItem = DonationCountryInput.Items.Cast<DonationChoice>()
-                .FirstOrDefault(row => row.Id == _donationCountryId);
-            ShowMessage("EditFailed", error.Message);
-        }
-        finally { _refreshingDonations = false; }
-    }
-
-    private void DonationLevel_Changed(object? sender, SelectionChangedEventArgs e)
-    {
-        if (_refreshingDonations || !CanEditDonations || _donationCountryId is null || DonationLevelInput.SelectedIndex < 0) return;
-        _refreshingDonations = true;
-        try
-        {
-            int amount = DonationCatalog.Country(_donationCountryId).AmountForLevel(DonationLevelInput.SelectedIndex + 1);
-            DonationAmountInput.Value = amount;
-            DonationAmountInput.Text = amount.ToString(DonationAmountInput.NumberFormat);
-        }
-        finally { _refreshingDonations = false; }
-    }
-
-    private void UpdateDonationLevelSelection()
-    {
-        if (_donationCountryId is null) return;
-        try { DonationLevelInput.SelectedIndex = DonationCatalog.Country(_donationCountryId).LevelForAmount(Amount(DonationAmountInput)) - 1; }
-        catch (ArgumentException) { DonationLevelInput.SelectedIndex = -1; }
-    }
-
-    private void UpdateDonationLevel()
+    private void UpdateDonationLevel(DonationEditor editor)
     {
         if (_refreshingDonations || !CanEditDonations) return;
         _refreshingDonations = true;
-        try { UpdateDonationLevelSelection(); }
+        try { editor.Level.SelectedIndex = editor.Country.LevelForAmount(Amount(editor.Amount)) - 1; }
+        catch (ArgumentException) { editor.Level.SelectedIndex = -1; }
         finally { _refreshingDonations = false; }
     }
 
-    public bool MaximizeDonations(bool allCountries)
+    public bool MaximizeDonations(string? countryId = null)
     {
-        if (!CanEditDonations || _donationCountryId is null) return false;
-        var targets = DonationCatalog.Countries.Where(country => allCountries || country.Id == _donationCountryId);
-        foreach (var country in targets) _donationAmounts[country.Id] = country.AmountForLevel(country.MaximumLevel);
+        if (!CanEditDonations || (countryId is not null && !_donationEditors.ContainsKey(countryId))) return false;
         _refreshingDonations = true;
-        try { LoadDonationCountry(); }
+        try
+        {
+            foreach (var editor in _donationEditors.Values)
+                if (countryId is null || editor.Country.Id == countryId)
+                    SetDonationAmount(editor, editor.Country.AmountForLevel(editor.Country.MaximumLevel));
+        }
         finally { _refreshingDonations = false; }
         return ApplyMainValues();
     }
 
-    private void MaxDonation_Click(object? sender, RoutedEventArgs e) => MaximizeDonations(false);
-    private void MaxAllDonations_Click(object? sender, RoutedEventArgs e) => MaximizeDonations(true);
+    private void MaxAllDonations_Click(object? sender, RoutedEventArgs e) => MaximizeDonations();
 }

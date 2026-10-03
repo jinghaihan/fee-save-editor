@@ -17,13 +17,14 @@ public partial class MainWindow
 
     public void ShowAchievements()
     {
+        MinigamesPanel.IsVisible = false;
         MainPanel.IsVisible = ItemsPanel.IsVisible = RosterPanel.IsVisible = EmblemsPanel.IsVisible = SupportsPanel.IsVisible = InspectorPanel.IsVisible = false;
         BondRingsPanel.IsVisible = false;
         EmblemPagesPanel.IsVisible = false;
         AchievementsPanel.IsVisible = true;
-        MainNavigation.SelectedIndex = 5;
+        MainNavigation.SelectedIndex = 6;
         RefreshAchievementRecords();
-        RefreshPageTitle();
+        RefreshPageLayout();
     }
 
     private void LoadAchievements()

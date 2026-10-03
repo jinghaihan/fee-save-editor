@@ -17,13 +17,13 @@ window.Show();
 Dispatcher.UIThread.RunJobs();
 Check(UiLanguage.Current == "en", "The default UI language is not English.");
 Check(window.Icon is not null, "The Sommie window icon is missing.");
-HeaderLayoutTests.Run(window);
+if (args is not ["--advanced-tests"]) HeaderLayoutTests.Run(window);
 Check(window.FindControl<Image>("AppLogo") is null,
     "The menu must not contain a separate avatar, matching the FETH template.");
-Check(window.FindControl<Control>("RosterName") is TextBlock
+Check(window.FindControl<Control>("RosterName") is null
     && window.FindControl<Control>("RosterStatusValue") is TextBlock
     && window.FindControl<Control>("RosterStatusInput") is null,
-    "Character names and availability must be plain text, not input controls.");
+    "The character name must appear only in the list; availability must be plain text.");
 foreach (string name in new[] { "AchievementCategoryValue", "AchievementStatusValue", "AchievementRewardValue" })
     Check(window.FindControl<Control>(name) is TextBlock,
         $"{name}: read-only achievement information must be plain text.");
@@ -69,6 +69,11 @@ string temporary = Path.Combine(Path.GetTempPath(), $"fee-gui-test-{Guid.NewGuid
 Directory.CreateDirectory(temporary);
 try
 {
+    if (args is ["--advanced-tests"])
+    {
+        AdvancedEditingTests.Run(window, temporary);
+        return;
+    }
     byte[] original = Fixture();
     string source = Path.Combine(temporary, "Manual0");
     File.WriteAllBytes(source, original);
@@ -115,6 +120,8 @@ try
     Check(!Directory.EnumerateFiles(temporary, ".fee-*.tmp").Any(), "Temporary save files were left behind.");
 
     MainTests.Run(window, temporary);
+    ProtagonistNameTests.Run(window, temporary);
+    ActivityConditionTests.Run(window, temporary);
     MinigameTests.Run();
     MinigameGuiTests.Run(window, temporary);
     DonationTests.Run();
@@ -130,6 +137,7 @@ try
     RosterTransferTests.Run(window, temporary);
     RosterEquipmentTests.Run(window, temporary);
     RosterRecoveryTests.Run(window, temporary);
+    AdvancedEditingTests.Run(window, temporary);
     RosterStatTests.Run();
     RosterStatGuiTests.Run(window, temporary);
     EmblemTests.Run();
@@ -209,7 +217,7 @@ try
         else if (captureOptions is ["--page", "achievements"])
             window.ShowAchievements();
         else if (captureOptions is ["--page", "minigame-fishing"] or ["--page", "minigame-wyvern"])
-            window.FindControl<ComboBox>("MinigameInput")!.SelectedIndex = captureOptions[1] == "minigame-fishing" ? 4 : 3;
+            window.ShowMinigames();
         else if (captureOptions is ["--page", "emblems"] or ["--page", "rings"] or ["--page", "ring-meld"] or ["--page", "emblem-add"])
         {
             if (captureOptions[1] == "emblem-add")

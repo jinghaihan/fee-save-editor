@@ -24,8 +24,8 @@ internal static class EmblemGuiTests
         var exp = window.FindControl<NumericUpDown>("EmblemBondExpInput")!;
         Check(choices.ItemCount == 3 && list.ItemCount == 2 && (int)levels.SelectedItem! == 1 && exp.Value == 0,
             "The Emblem form did not show the saved values.");
-        Check(window.FindControl<StackPanel>("EmblemBondForm")!.Width == 340,
-            "The Emblem form is not aligned with existing editor forms.");
+        Check(window.FindControl<StackPanel>("EmblemBondForm")!.MaxWidth == 340,
+            "The Emblem form must retain its normal maximum width while fitting beside ring care.");
         Check(exp.Parent is StackPanel { Parent: StackPanel } && levels.Parent?.Parent == exp.Parent.Parent,
             "Bond level and EXP must be stacked directly in the same form, without a disclosure.");
         levels.SelectedItem = 10;

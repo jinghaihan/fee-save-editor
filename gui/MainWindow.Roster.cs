@@ -23,6 +23,7 @@ public partial class MainWindow
 
     public void ShowRoster()
     {
+        MinigamesPanel.IsVisible = false;
         MainPanel.IsVisible = ItemsPanel.IsVisible = InspectorPanel.IsVisible = EmblemsPanel.IsVisible = false;
         BondRingsPanel.IsVisible = false;
         EmblemPagesPanel.IsVisible = false;
@@ -31,12 +32,15 @@ public partial class MainWindow
         RosterPanel.IsVisible = true;
         MainNavigation.SelectedIndex = 2;
         RefreshRosterEquipment(preserveEdits: true);
-        RefreshPageTitle();
+        RefreshPageLayout();
     }
 
     private void LoadRoster()
     {
         CanEditRoster = false;
+        AddRosterCharacterButton.IsEnabled = DeleteRosterCharacterButton.IsEnabled = MoveRosterCharacterButton.IsEnabled = false;
+        MissingRosterCharacterInput.ItemsSource = Array.Empty<MissingCharacterChoice>();
+        RosterForceInput.ItemsSource = Array.Empty<ForceChoice>();
         RestoreRosterCharacterButton.IsEnabled = false;
         RosterStatusValue.Text = "";
         ExportRosterCharacterButton.IsEnabled = ImportRosterCharacterButton.IsEnabled = false;
@@ -52,7 +56,6 @@ public partial class MainWindow
         ClearRosterSkills();
         RosterList.ItemsSource = Array.Empty<RosterRow>();
         RosterItemsList.ItemsSource = Array.Empty<InventoryRow>();
-        RosterName.Text = "";
         RosterClass.ItemsSource = Array.Empty<ClassChoice>();
         RosterLevel.Value = RosterExperience.Value = RosterSkillPoints.Value = null;
         RosterInternalLevel.Value = RosterCurrentHP.Value = null;
@@ -65,6 +68,13 @@ public partial class MainWindow
         try
         {
             Save.ReadRoster();
+            var repaired = Save.RepairAllRosterClasses();
+            if (!ReferenceEquals(Save, repaired))
+            {
+                Save = repaired;
+                RefreshOverview();
+                RefreshSections();
+            }
             CanEditRoster = true;
             RefreshRoster(selectEditor: true);
         }
@@ -80,7 +90,7 @@ public partial class MainWindow
         RosterCatalog.Person(character.PersonHash)?.Name(UiLanguage.Current)
         ?? $"{UiLanguage.Get("UnknownCharacter")} (0x{character.PersonHash:X8})";
 
-    private void RefreshRoster(bool selectEditor)
+    private void RefreshRoster(bool selectEditor, bool preserveSelection = false)
     {
         if (!CanEditRoster || Save is null)
             return;
@@ -90,7 +100,8 @@ public partial class MainWindow
             && RosterCatalog.Person(character.PersonHash) is not null);
         var rows = roster.Where(character => character.Force is not UnitForce.Enemy and not UnitForce.Temporary)
             .Select(character => new RosterRow(character.Index, CharacterLabel(character)))
-            .Where(row => row.Label.Contains(query, StringComparison.OrdinalIgnoreCase)).ToArray();
+            .Where(row => row.Label.Contains(query, StringComparison.OrdinalIgnoreCase)
+                || preserveSelection && row.Index == _selectedCharacter).ToArray();
         _refreshingRoster = true;
         RosterList.ItemsSource = rows;
         RosterList.SelectedItem = rows.FirstOrDefault(row => row.Index == _selectedCharacter) ?? rows.FirstOrDefault();
@@ -114,10 +125,10 @@ public partial class MainWindow
         RosterSkillsForm.IsEnabled = RosterProficienciesForm.IsEnabled = character is not null;
         if (character is null)
         {
+            RefreshRosterManagement();
             RosterStatusValue.Text = "";
             RestoreRosterCharacterButton.IsEnabled = false;
             RefreshRosterEquipment(preserveEdits: false);
-            RosterName.Text = "";
             RosterClass.ItemsSource = Array.Empty<ClassChoice>();
             RosterLevel.Value = RosterExperience.Value = RosterSkillPoints.Value = null;
             RosterInternalLevel.Value = RosterCurrentHP.Value = null;
@@ -128,6 +139,8 @@ public partial class MainWindow
             return;
         }
         _refreshingRoster = true;
+        RosterForceInput.SelectedItem = null;
+        RefreshRosterManagement();
         RosterClass.SelectedItem = null;
         RosterWeaponVariant.SelectedItem = null;
         RefreshCharacterNames(character);
@@ -138,7 +151,8 @@ public partial class MainWindow
         RosterExperience.Text = character.Values.Experience.ToString();
         RosterSkillPoints.Text = character.Values.SkillPoints.ToString();
         RosterInternalLevel.Text = character.Progress.InternalLevel.ToString();
-        RosterCurrentHP.Maximum = Save!.RosterMaximumHP(character.Index);
+        RosterCurrentHP.IsEnabled = job is not null;
+        RosterCurrentHP.Maximum = job is null ? 255 : Save!.RosterMaximumHP(character.Index);
         RosterCurrentHP.Text = character.Progress.CurrentHP.ToString();
         RefreshRosterSkills(character, preserveEdits: false);
         RosterStatsInputs.Children.Clear();
@@ -182,7 +196,7 @@ public partial class MainWindow
 
     private static string CharacterLabel(RosterCharacter character)
     {
-        string label = $"{CharacterName(character)} · Lv. {character.Values.Level}";
+        string label = $"{character.Progress.CustomName ?? CharacterName(character)} · Lv. {character.Values.Level}";
         if (character.Availability is RosterAvailability.Dead or RosterAvailability.Lost)
             label += " · " + UiLanguage.Get("Roster" + character.Availability);
         return label;
@@ -190,7 +204,6 @@ public partial class MainWindow
 
     private void RefreshCharacterNames(RosterCharacter character)
     {
-        RosterName.Text = character.Progress.CustomName ?? CharacterName(character);
         RosterStatusValue.Text = UiLanguage.Get("Roster" + character.Availability);
         RestoreRosterCharacterButton.IsEnabled = Save!.CanRestoreRosterCharacter(character.Index);
         uint selected = (RosterClass.SelectedItem as ClassChoice)?.Definition.Hash ?? character.ClassHash;
@@ -213,6 +226,7 @@ public partial class MainWindow
         if (!CanEditRoster)
             return;
         RefreshRoster(selectEditor: false);
+        RefreshRosterManagement();
         if (SelectedCharacter is not { } character)
             return;
         RefreshCharacterNames(character);
@@ -302,6 +316,7 @@ public partial class MainWindow
             _selectedCharacter = selectedIndex;
             if (changedEquipment) RefreshEmblemRecords(preserveEditor: false);
             RefreshRoster(selectEditor: refresh);
+            RefreshRosterManagement();
             RefreshInventory(selectEditor: !HasPendingItemValues());
             RefreshOverview();
             RefreshSections();

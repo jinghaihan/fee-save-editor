@@ -26,6 +26,10 @@ internal static class AchievementGuiTests
         var category = window.FindControl<ComboBox>("AchievementCategoryInput")!;
         var status = window.FindControl<TextBlock>("AchievementStatusValue")!;
         var statusFilter = window.FindControl<ComboBox>("AchievementStatusFilter")!;
+        var filters = window.FindControl<Grid>("AchievementFilters")!;
+        Check(filters.Children.Contains(category) && filters.Children.Contains(statusFilter)
+            && Grid.GetColumn(category) == 0 && Grid.GetColumn(statusFilter) == 1,
+            "Achievement category and status filters must share one row.");
         Check(list.ItemCount == 765 && category.ItemCount == 6 && status.Text == "Not Achieved", "Achievement controls are incomplete.");
         Check(statusFilter.ItemCount == 4 && list.Items.Cast<MainWindow.AchievementRow>()
             .All(row => row.Label == AchievementCatalog.Achievements.Single(value => value.Id == row.Id).Name("en")),

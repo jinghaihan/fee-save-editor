@@ -20,6 +20,16 @@
         <ItemsPanelTemplate><VirtualizingStackPanel CacheLength="1" /></ItemsPanelTemplate>
       </Setter>
     </Style>
+    <Style Selector="ComboBox.achievement-filter /template/ ToggleButton#toggle">
+      <Setter Property="Padding" Value="8,5" />
+      <Setter Property="Width" Value="28" />
+      <Setter Property="MinWidth" Value="28" />
+      <Setter Property="MaxWidth" Value="28" />
+      <Setter Property="Margin" Value="4,0,0,0" />
+    </Style>
+    <Style Selector="ComboBox.achievement-filter /template/ ContentControl">
+      <Setter Property="Margin" Value="8,1,0,0" />
+    </Style>
   </Window.Styles>
   <Window.Resources>
     <ItemsPanelTemplate x:Key="EngravingEffectsPanel"><UniformGrid Columns="3" /></ItemsPanelTemplate>
@@ -47,26 +57,21 @@
           <MenuItem Header="{DynamicResource Exit}" Click="Exit_Click" />
         </MenuItem>
         <MenuItem Name="LanguageMenu" Header="{DynamicResource Language}" />
-        <MenuItem Header="{DynamicResource Tools}">
-          <MenuItem Header="{DynamicResource Main}" Click="Main_Click" />
-          <MenuItem Header="{DynamicResource Inspector}" Click="Inspector_Click" />
-        </MenuItem>
         <MenuItem Name="HelpMenu" Header="{DynamicResource Help}">
           <MenuItem Name="AboutMenu" Header="{DynamicResource About}" Click="About_Click" />
         </MenuItem>
       </Menu>
       <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-        <Grid ColumnDefinitions="Auto,Auto" HorizontalAlignment="Right" ColumnSpacing="16">
-          <TextBlock Name="PageTitle" Text="{DynamicResource Main}" VerticalAlignment="Center" FontWeight="SemiBold" />
-          <TabStrip Grid.Column="1" Name="MainNavigation" FontSize="13" SelectedIndex="0" SelectionChanged="Navigation_Changed">
-            <TabStripItem Content="{DynamicResource Main}" />
-            <TabStripItem Content="{DynamicResource Items}" />
-            <TabStripItem Content="{DynamicResource Roster}" />
-            <TabStripItem Content="{DynamicResource Emblems}" />
-            <TabStripItem Content="{DynamicResource Support}" />
-            <TabStripItem Content="{DynamicResource Achievements}" />
-          </TabStrip>
-        </Grid>
+        <TabStrip Name="MainNavigation" HorizontalAlignment="Right" FontSize="13" SelectedIndex="0" SelectionChanged="Navigation_Changed">
+          <TabStripItem Content="{DynamicResource Main}" />
+          <TabStripItem Content="{DynamicResource Items}" />
+          <TabStripItem Content="{DynamicResource Roster}" />
+          <TabStripItem Content="{DynamicResource Emblems}" />
+          <TabStripItem Content="{DynamicResource Support}" />
+          <TabStripItem Content="{DynamicResource Minigames}" />
+          <TabStripItem Content="{DynamicResource Achievements}" />
+          <TabStripItem Content="{DynamicResource Inspector}" />
+        </TabStrip>
       </ScrollViewer>
     </Grid>
     <ScrollViewer Name="MainScroll" Grid.Row="1" Margin="24,0" IsVisible="{Binding IsVisible, ElementName=MainPanel}" HorizontalScrollBarVisibility="Disabled">
@@ -76,6 +81,10 @@
             <StackPanel Spacing="12" HorizontalAlignment="Stretch">
               <TextBlock Text="{DynamicResource GameSettings}" FontWeight="SemiBold" />
               <StackPanel Name="SettingsInputs" IsEnabled="False" Spacing="12">
+                <StackPanel Spacing="8">
+                  <TextBlock Text="{DynamicResource PlayerName}" />
+                  <TextBox Name="PlayerNameInput" Height="42" MaxLength="2048" IsEnabled="False" />
+                </StackPanel>
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Difficulty}" />
                   <ComboBox Name="DifficultyInput" Height="42" Margin="0" HorizontalAlignment="Stretch" />
@@ -91,39 +100,6 @@
               </StackPanel>
             </StackPanel>
           </suki:GlassCard>
-          <suki:GlassCard Name="MinigamesCard" Padding="20">
-            <Grid RowDefinitions="Auto,Auto" RowSpacing="12">
-              <TextBlock Text="{DynamicResource Minigames}" FontWeight="SemiBold" />
-              <StackPanel Name="MinigameInputs" Grid.Row="1" Spacing="12" IsEnabled="False">
-                <Grid ColumnDefinitions="*,*" ColumnSpacing="24">
-                  <ComboBox Name="MinigameInput" Height="42" Margin="0" HorizontalAlignment="Stretch"
-                            SelectionChanged="Minigame_Changed" AutomationProperties.Name="{DynamicResource Minigames}">
-                    <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Name}" /></DataTemplate></ComboBox.ItemTemplate>
-                  </ComboBox>
-                  <ComboBox Name="MinigameRecordInput" Grid.Column="1" Height="42" Margin="0" HorizontalAlignment="Stretch"
-                            SelectionChanged="MinigameRecord_Changed" AutomationProperties.Name="{DynamicResource Record}">
-                    <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Name}" /></DataTemplate></ComboBox.ItemTemplate>
-                  </ComboBox>
-                </Grid>
-                <Grid ColumnDefinitions="*,*" ColumnSpacing="24">
-                  <StackPanel Name="MinigameValueField" Spacing="8">
-                    <TextBlock Name="MinigameValueTitle" Text="{DynamicResource BestScore}" />
-                    <NumericUpDown Name="MinigameValueInput" Height="42" Margin="0" Minimum="0" Maximum="2147483647" FormatString="0" />
-                  </StackPanel>
-                  <StackPanel Name="MinigameSizeField" Grid.Column="1" Spacing="8" IsVisible="False">
-                    <TextBlock Text="{DynamicResource BestSize}" />
-                    <NumericUpDown Name="MinigameSizeInput" Height="42" Margin="0" Minimum="0" Maximum="2147483647" FormatString="0" />
-                  </StackPanel>
-                </Grid>
-                <StackPanel Name="MinigameRankField" Spacing="8" IsVisible="False">
-                  <TextBlock Name="MinigameRankTitle" Text="{DynamicResource BestRank}" />
-                  <ComboBox Name="MinigameRankInput" Height="42" Margin="0" HorizontalAlignment="Stretch" />
-                </StackPanel>
-              </StackPanel>
-            </Grid>
-          </suki:GlassCard>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Spacing="24">
           <suki:GlassCard Name="ResourcesCard" Padding="20">
             <StackPanel Spacing="12" HorizontalAlignment="Stretch">
               <TextBlock Text="{DynamicResource Resources}" FontWeight="SemiBold" />
@@ -157,28 +133,35 @@
               </StackPanel>
             </StackPanel>
           </suki:GlassCard>
+          <suki:GlassCard Name="ActivitiesCard" Padding="20">
+            <StackPanel Spacing="12">
+              <TextBlock Text="{DynamicResource SomnielActivities}" FontWeight="SemiBold" />
+              <Grid Name="ActivityInputs" IsEnabled="False" ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="24" RowSpacing="8">
+                <TextBlock Text="{DynamicResource TrainingRemaining}" TextWrapping="Wrap" />
+                <TextBlock Grid.Column="1" Text="{DynamicResource ArenaRemaining}" TextWrapping="Wrap" />
+                <NumericUpDown Name="TrainingRemainingInput" Grid.Row="1" Minimum="0" Maximum="1" Height="42" Margin="0" FormatString="0" />
+                <NumericUpDown Name="ArenaRemainingInput" Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="3" Height="42" Margin="0" FormatString="0" />
+              </Grid>
+              <Button Name="RestoreActivitiesButton" Content="{DynamicResource RestoreActivityUses}" HorizontalAlignment="Stretch" IsEnabled="False" Click="RestoreActivities_Click" />
+            </StackPanel>
+          </suki:GlassCard>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Spacing="24">
           <suki:GlassCard Name="DonationsCard" Padding="20">
             <StackPanel Spacing="12">
               <TextBlock Text="{DynamicResource Donations}" FontWeight="SemiBold" />
-              <StackPanel Name="DonationInputs" Spacing="12" IsEnabled="False">
-                <ComboBox Name="DonationCountryInput" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="DonationCountry_Changed"
-                          AutomationProperties.Name="{DynamicResource Country}">
-                  <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Name}" /></DataTemplate></ComboBox.ItemTemplate>
-                </ComboBox>
-                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="24" RowSpacing="8">
-                  <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
-                    <TextBlock Text="{DynamicResource Level}" VerticalAlignment="Center" />
-                    <Button Name="MaxDonationButton" Grid.Column="1" Content="{DynamicResource MaxLevel}" Click="MaxDonation_Click" />
-                  </Grid>
-                  <TextBlock Grid.Column="1" Text="{DynamicResource DonatedGold}" VerticalAlignment="Center" />
-                  <ComboBox Name="DonationLevelInput" Grid.Row="1" Height="42" Margin="0" HorizontalAlignment="Stretch" SelectionChanged="DonationLevel_Changed" />
-                  <NumericUpDown Name="DonationAmountInput" Grid.Column="1" Grid.Row="1" Minimum="0" Increment="1" FormatString="0" Height="42" HorizontalAlignment="Stretch" />
-                </Grid>
-              </StackPanel>
+              <StackPanel Name="DonationInputs" Spacing="24" IsEnabled="False" />
               <Button Name="MaxAllDonationsButton" Content="{DynamicResource MaxAllLevels}" HorizontalAlignment="Stretch" Click="MaxAllDonations_Click" IsEnabled="False" />
             </StackPanel>
           </suki:GlassCard>
         </StackPanel>
+      </Grid>
+    </ScrollViewer>
+    <ScrollViewer Name="MinigamesScroll" Grid.Row="1" Margin="24,0" IsVisible="{Binding IsVisible, ElementName=MinigamesPanel}" HorizontalScrollBarVisibility="Disabled">
+      <Grid Name="MinigamesPanel" IsVisible="False" ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="24" RowSpacing="24" VerticalAlignment="Top">
+        <StackPanel Name="MinigameLeftCards" Spacing="24" />
+        <StackPanel Name="MinigameRightCards" Grid.Column="1" Spacing="24" />
+        <StackPanel Name="FishingMinigameCards" Grid.Row="1" Grid.ColumnSpan="2" Spacing="24" />
       </Grid>
     </ScrollViewer>
     <Grid Name="ItemsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" RowDefinitions="Auto,*" RowSpacing="12">
@@ -278,7 +261,7 @@
     </Grid>
     <Grid Name="RosterPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
-        <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" RowSpacing="16">
+        <Grid RowDefinitions="Auto,Auto,*,Auto,Auto,Auto" RowSpacing="16">
           <TextBlock Text="{DynamicResource CharacterList}" FontWeight="SemiBold" />
           <TextBox Name="RosterSearch" Grid.Row="1" PlaceholderText="{DynamicResource Search}" TextChanged="RosterSearch_Changed" />
           <ListBox Name="RosterList" Grid.Row="2" SelectionChanged="RosterList_Changed">
@@ -292,6 +275,27 @@
           <Grid Grid.Row="4" ColumnDefinitions="*,*" ColumnSpacing="12">
             <Button Name="ExportRosterCharacterButton" Content="{DynamicResource Export}" HorizontalAlignment="Stretch" IsEnabled="False" Click="ExportRosterCharacter_Click" />
             <Button Name="ImportRosterCharacterButton" Grid.Column="1" Content="{DynamicResource Import}" HorizontalAlignment="Stretch" IsEnabled="False" Click="ImportRosterCharacter_Click" />
+          </Grid>
+          <Grid Grid.Row="5" ColumnDefinitions="*,*" ColumnSpacing="12">
+            <Button Name="AddRosterCharacterButton" Content="{DynamicResource Add}" HorizontalAlignment="Stretch" IsEnabled="False">
+              <Button.Flyout><Flyout><suki:GlassCard Padding="20" Width="320" IsOpaque="True">
+                <StackPanel Spacing="16">
+                  <TextBlock Text="{DynamicResource AddCharacter}" FontWeight="SemiBold" />
+                  <ComboBox Name="MissingRosterCharacterInput" HorizontalAlignment="Stretch">
+                    <ComboBox.ItemTemplate><DataTemplate x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
+                  </ComboBox>
+                  <Button Content="{DynamicResource Add}" Click="AddRosterCharacter_Click" HorizontalAlignment="Stretch" />
+                </StackPanel>
+              </suki:GlassCard></Flyout></Button.Flyout>
+            </Button>
+            <Button Name="DeleteRosterCharacterButton" Grid.Column="1" Content="{DynamicResource Delete}" HorizontalAlignment="Stretch" IsEnabled="False">
+              <Button.Flyout><Flyout><suki:GlassCard Padding="20" Width="280" IsOpaque="True">
+                <StackPanel Spacing="16">
+                  <TextBlock Text="{DynamicResource ConfirmDeleteCharacter}" TextWrapping="Wrap" />
+                  <Button Content="{DynamicResource DeleteCharacter}" Click="DeleteRosterCharacter_Click" HorizontalAlignment="Stretch" />
+                </StackPanel>
+              </suki:GlassCard></Flyout></Button.Flyout>
+            </Button>
           </Grid>
         </Grid>
       </suki:GlassCard>
@@ -313,13 +317,14 @@
               <Grid Name="RosterGeneralForm" MaxWidth="712" ColumnDefinitions="*,*" ColumnSpacing="32" HorizontalAlignment="Stretch" IsEnabled="False">
                 <StackPanel Spacing="16">
                 <StackPanel Spacing="8">
-                  <TextBlock Text="{DynamicResource Name}" />
-                  <TextBlock Name="RosterName" MinHeight="42" VerticalAlignment="Center" TextWrapping="Wrap" />
-                </StackPanel>
-                <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Status}" />
                   <TextBlock Name="RosterStatusValue" MinHeight="42" VerticalAlignment="Center" TextWrapping="Wrap" />
                   <Button Name="RestoreRosterCharacterButton" Content="{DynamicResource RestoreCharacter}" HorizontalAlignment="Stretch" IsEnabled="False" Click="RestoreRosterCharacter_Click" />
+                  <TextBlock Text="{DynamicResource Force}" />
+                  <ComboBox Name="RosterForceInput" HorizontalAlignment="Stretch">
+                    <ComboBox.ItemTemplate><DataTemplate x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
+                  </ComboBox>
+                  <Button Name="MoveRosterCharacterButton" Content="{DynamicResource MoveCharacter}" Click="MoveRosterCharacter_Click" IsEnabled="False" HorizontalAlignment="Stretch" />
                 </StackPanel>
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource Class}" />
@@ -492,6 +497,15 @@
           </ListBox>
           <StackPanel Grid.Row="4" Spacing="16">
             <Button Name="MaxAllEmblemBondsButton" Content="{DynamicResource MaxAllBonds}" HorizontalAlignment="Stretch" Click="MaxAllEmblemBonds_Click" IsEnabled="False" />
+            <Button Name="CleanAllEmblemsButton" Content="{DynamicResource CleanAll}" HorizontalAlignment="Stretch" Click="CleanAllEmblems_Click" IsEnabled="False" />
+            <Button Name="RemoveEmblemButton" Content="{DynamicResource RemoveEmblem}" HorizontalAlignment="Stretch" IsEnabled="False">
+              <Button.Flyout><Flyout><suki:GlassCard Padding="20" Width="300" IsOpaque="True">
+                <StackPanel Spacing="16">
+                  <TextBlock Text="{DynamicResource ConfirmRemoveEmblem}" TextWrapping="Wrap" />
+                  <Button Content="{DynamicResource RemoveEmblem}" Click="RemoveEmblem_Click" HorizontalAlignment="Stretch" />
+                </StackPanel>
+              </suki:GlassCard></Flyout></Button.Flyout>
+            </Button>
             <Button Name="AddEmblemButton" Content="{DynamicResource AddEmblem}" HorizontalAlignment="Stretch" IsEnabled="False">
               <Button.Flyout>
                 <Flyout>
@@ -513,10 +527,13 @@
       </suki:GlassCard>
       <suki:GlassCard Grid.Column="1" Padding="20">
         <Grid RowDefinitions="Auto,*" RowSpacing="24">
-          <TextBlock Text="{DynamicResource Bonds}" FontWeight="SemiBold" />
+          <Grid ColumnDefinitions="*,*" ColumnSpacing="32">
+            <TextBlock Text="{DynamicResource Bonds}" FontWeight="SemiBold" VerticalAlignment="Center" />
+            <TextBlock Grid.Column="1" Text="{DynamicResource RingCare}" FontWeight="SemiBold" TextWrapping="Wrap" VerticalAlignment="Center" />
+          </Grid>
           <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
-            <StackPanel Spacing="24">
-              <StackPanel Name="EmblemBondForm" Spacing="16" Width="340" HorizontalAlignment="Left" IsEnabled="False">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="32">
+              <StackPanel Name="EmblemBondForm" Spacing="16" MaxWidth="340" HorizontalAlignment="Stretch" IsEnabled="False">
                 <StackPanel Spacing="8">
                   <TextBlock Text="{DynamicResource BondLevel}" />
                   <ComboBox Name="EmblemBondLevelInput" Height="42" HorizontalAlignment="Stretch" SelectionChanged="EmblemBondLevel_Changed" />
@@ -528,7 +545,15 @@
                 <Button Name="MaxEmblemBondButton" Content="{DynamicResource MaxBond}" HorizontalAlignment="Stretch" Click="MaxEmblemBond_Click" />
                 <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyEmblem_Click" />
               </StackPanel>
-            </StackPanel>
+              <StackPanel Name="EmblemConditionForm" Grid.Column="1" Spacing="16" MaxWidth="340" HorizontalAlignment="Stretch" IsEnabled="False">
+                <StackPanel Spacing="8">
+                  <TextBlock Text="{DynamicResource Dirtiness}" />
+                  <NumericUpDown Name="EmblemDirtinessInput" Minimum="0" Maximum="255" Height="42" Margin="0" FormatString="0" />
+                </StackPanel>
+                <Button Name="CleanEmblemButton" Content="{DynamicResource Clean}" HorizontalAlignment="Stretch" Click="CleanEmblem_Click" />
+                <Button Content="{DynamicResource ApplyChanges}" HorizontalAlignment="Stretch" Click="ApplyEmblem_Click" />
+              </StackPanel>
+            </Grid>
           </ScrollViewer>
         </Grid>
       </suki:GlassCard>
@@ -619,24 +644,26 @@
     </Grid>
     <Grid Name="AchievementsPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
       <suki:GlassCard Padding="20">
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto" RowSpacing="16">
+        <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="16">
           <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
             <TextBlock Text="{DynamicResource Achievements}" FontWeight="SemiBold" />
             <TextBlock Name="AchievementCompletion" Grid.Column="1" />
           </Grid>
-          <ComboBox Name="AchievementCategoryInput" Grid.Row="1" Margin="0" Height="42" HorizontalAlignment="Stretch"
-                    AutomationProperties.Name="{DynamicResource Category}" SelectionChanged="AchievementFilter_Changed">
-            <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
-          </ComboBox>
-          <ComboBox Name="AchievementStatusFilter" Grid.Row="2" Margin="0" Height="42" HorizontalAlignment="Stretch"
-                    AutomationProperties.Name="{DynamicResource Status}" SelectionChanged="AchievementFilter_Changed">
-            <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" /></DataTemplate></ComboBox.ItemTemplate>
-          </ComboBox>
-          <TextBox Name="AchievementSearch" Grid.Row="3" PlaceholderText="{DynamicResource Search}" TextChanged="AchievementSearch_Changed" />
-          <ListBox Name="AchievementList" Grid.Row="4" SelectionChanged="AchievementList_Changed">
+          <Grid Name="AchievementFilters" Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="12">
+            <ComboBox Name="AchievementCategoryInput" Classes="achievement-filter" Margin="0" MinHeight="42" MinWidth="0" HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="{DynamicResource Category}" SelectionChanged="AchievementFilter_Changed">
+              <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" TextWrapping="Wrap" FontSize="12" /></DataTemplate></ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Name="AchievementStatusFilter" Classes="achievement-filter" Grid.Column="1" Margin="0" MinHeight="42" MinWidth="0" HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="{DynamicResource Status}" SelectionChanged="AchievementFilter_Changed">
+              <ComboBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" TextWrapping="Wrap" FontSize="12" /></DataTemplate></ComboBox.ItemTemplate>
+            </ComboBox>
+          </Grid>
+          <TextBox Name="AchievementSearch" Grid.Row="2" PlaceholderText="{DynamicResource Search}" TextChanged="AchievementSearch_Changed" />
+          <ListBox Name="AchievementList" Grid.Row="3" SelectionChanged="AchievementList_Changed">
             <ListBox.ItemTemplate><DataTemplate DataType="x:Object" x:CompileBindings="False"><TextBlock Text="{Binding Label}" TextWrapping="Wrap" /></DataTemplate></ListBox.ItemTemplate>
           </ListBox>
-          <Button Name="UnlockAllAchievementsButton" Grid.Row="5" Content="{DynamicResource UnlockAll}" HorizontalAlignment="Stretch"
+          <Button Name="UnlockAllAchievementsButton" Grid.Row="4" Content="{DynamicResource UnlockAll}" HorizontalAlignment="Stretch"
                   IsEnabled="False" Click="UnlockAllAchievements_Click" />
         </Grid>
       </suki:GlassCard>
@@ -663,7 +690,12 @@
         </ScrollViewer>
       </suki:GlassCard>
     </Grid>
-    <Grid Name="InspectorPanel" Grid.Row="1" Margin="24,0" IsVisible="False" ColumnDefinitions="260,*" ColumnSpacing="16">
+    <Grid Name="InspectorPanel" Grid.Row="1" Margin="24,0" IsVisible="False" RowDefinitions="Auto,*" RowSpacing="12">
+      <TabStrip Name="InspectorPages" Classes="page-tabs" SelectedIndex="0" SelectionChanged="InspectorPages_Changed">
+        <TabStripItem Content="{DynamicResource Overview}" />
+        <TabStripItem Content="{DynamicResource Variables}" />
+      </TabStrip>
+      <Grid Name="InspectorOverviewPanel" Grid.Row="1" ColumnDefinitions="260,*" ColumnSpacing="16">
       <suki:GlassCard Padding="20">
         <Grid RowDefinitions="Auto,Auto,*" RowSpacing="16">
           <TextBlock Text="{DynamicResource Sections}" FontWeight="SemiBold" />
@@ -696,6 +728,24 @@
           </StackPanel>
         </ScrollViewer>
       </suki:GlassCard>
+      </Grid>
+      <Grid Name="VariablesPanel" Grid.Row="1" IsVisible="False" ColumnDefinitions="320,*" ColumnSpacing="24">
+        <suki:GlassCard Padding="20">
+          <Grid RowDefinitions="Auto,Auto,*" RowSpacing="12">
+            <TextBlock Text="{DynamicResource Variables}" FontWeight="SemiBold" />
+            <TextBox Grid.Row="1" Name="VariableSearch" PlaceholderText="{DynamicResource Search}" TextChanged="VariableSearch_Changed" />
+            <ListBox Grid.Row="2" Name="VariableList" SelectionChanged="VariableList_Changed" />
+          </Grid>
+        </suki:GlassCard>
+        <suki:GlassCard Grid.Column="1" Padding="20">
+          <StackPanel Name="VariableForm" IsEnabled="False" Spacing="16" Width="340" HorizontalAlignment="Left">
+            <TextBlock Name="VariableKeyValue" TextWrapping="Wrap" />
+            <TextBlock Text="{DynamicResource Value}" />
+            <NumericUpDown Name="VariableValueInput" Minimum="-2147483648" Maximum="2147483647" FormatString="0" />
+            <Button Content="{DynamicResource ApplyChanges}" Click="ApplyVariable_Click" HorizontalAlignment="Stretch" />
+          </StackPanel>
+        </suki:GlassCard>
+      </Grid>
     </Grid>
     <TextBlock Grid.Row="2" Name="Message" Margin="24,0" IsVisible="False" TextWrapping="Wrap" />
   </Grid>

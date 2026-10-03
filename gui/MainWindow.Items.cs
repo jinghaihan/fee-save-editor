@@ -16,6 +16,7 @@ public partial class MainWindow
 
     public void ShowItems()
     {
+        MinigamesPanel.IsVisible = false;
         MainPanel.IsVisible = false;
         InspectorPanel.IsVisible = false;
         ItemsPanel.IsVisible = true;
@@ -26,7 +27,7 @@ public partial class MainWindow
         SupportsPanel.IsVisible = false;
         AchievementsPanel.IsVisible = false;
         MainNavigation.SelectedIndex = 1;
-        RefreshPageTitle();
+        RefreshPageLayout();
     }
 
     private void LoadInventory()

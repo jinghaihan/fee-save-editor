@@ -8,6 +8,21 @@ namespace FeeEditor.Gui;
 public partial class MainWindow
 {
     public bool CanEditMain { get; private set; }
+    private bool _canEditProtagonistName;
+
+    private void LoadProtagonistName()
+    {
+        _canEditProtagonistName = PlayerNameInput.IsEnabled = false;
+        PlayerNameInput.Clear();
+        if (Save is null || !CanEditMain || !Save.Sections.Any(section => section.Name == "UNIT")) return;
+        try
+        {
+            if (Save.ReadProtagonistName() is not { } name) return;
+            PlayerNameInput.Text = name;
+            _canEditProtagonistName = PlayerNameInput.IsEnabled = true;
+        }
+        catch (Exception error) when (IsFileError(error)) { ShowMessage("MainUnavailable", error.Message); }
+    }
 
     public bool ApplyMainValues()
     {
@@ -18,7 +33,10 @@ public partial class MainWindow
             var edited = Save.WithMainValues(ReadMainInputs());
             if (CanEditDonations) edited = edited.WithDonations(ReadDonationInputs());
             if (CanEditMinigames) edited = edited.WithMinigameRecords(ReadMinigameInputs());
+            if (CanEditActivities) edited = edited.WithSomnielActivities(ReadActivityInputs());
+            if (_canEditProtagonistName) edited = edited.WithProtagonistName(PlayerNameInput.Text ?? "");
             Save = edited;
+            if (CanEditRoster) RefreshRoster(selectEditor: false, preserveSelection: true);
             RefreshQuantityItems(selectEditor: !HasPendingQuantityItemValues());
             RefreshOverview();
             RefreshSections();
@@ -93,6 +111,7 @@ public partial class MainWindow
 
     private void ShowPage(bool inspector)
     {
+        MinigamesPanel.IsVisible = false;
         MainPanel.IsVisible = !inspector;
         ItemsPanel.IsVisible = false;
         RosterPanel.IsVisible = false;
@@ -102,14 +121,13 @@ public partial class MainWindow
         SupportsPanel.IsVisible = false;
         AchievementsPanel.IsVisible = false;
         InspectorPanel.IsVisible = inspector;
-        MainNavigation.SelectedIndex = inspector ? -1 : 0;
-        RefreshPageTitle();
+        MainNavigation.SelectedIndex = inspector ? 7 : 0;
+        if (inspector && CanEditVariables && !HasPendingVariable()) RefreshVariables();
+        RefreshPageLayout();
     }
 
-    private void RefreshPageTitle()
+    private void RefreshPageLayout()
     {
-        WindowLayout.RowSpacing = ItemsPanel.IsVisible || EmblemPagesPanel.IsVisible ? 8 : 24;
-        PageTitle.Text = UiLanguage.Get("Inspector");
-        PageTitle.IsVisible = InspectorPanel.IsVisible;
+        WindowLayout.RowSpacing = ItemsPanel.IsVisible || EmblemPagesPanel.IsVisible || InspectorPanel.IsVisible ? 8 : 24;
     }
 }

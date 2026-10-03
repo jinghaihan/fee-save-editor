@@ -12,6 +12,7 @@ public partial class MainWindow
     public sealed record MissingEmblemChoice(string Id, string Label);
     public bool CanEditEmblems { get; private set; }
     public bool CanEditBondRings { get; private set; }
+    public bool CanEditEmblemConditions { get; private set; }
     private uint? _selectedEmblem;
     private enum EmblemPage { Bonds, BondRings }
     private EmblemPage _emblemPage;
@@ -50,6 +51,7 @@ public partial class MainWindow
         }
         bool preserveEditor = _emblemPage == page && HasPendingEmblemValues();
         _emblemPage = page;
+        MinigamesPanel.IsVisible = false;
         MainPanel.IsVisible = ItemsPanel.IsVisible = RosterPanel.IsVisible = InspectorPanel.IsVisible = false;
         SupportsPanel.IsVisible = AchievementsPanel.IsVisible = false;
         EmblemPagesPanel.IsVisible = true;
@@ -59,7 +61,7 @@ public partial class MainWindow
         MainNavigation.SelectedIndex = 3;
         RefreshEmblemRecords(preserveEditor);
         RefreshSupportRecords(preserveEditor: false);
-        RefreshPageTitle();
+        RefreshPageLayout();
     }
 
     private void EmblemPages_Changed(object? sender, SelectionChangedEventArgs e)
@@ -82,11 +84,20 @@ public partial class MainWindow
         ? Save.ReadBondRings().FirstOrDefault(row => row.InstanceId.ToString() == SelectedEmblemRecordKey) : null;
     private SavedEmblem? SelectedEmblem => CanEditEmblems && Save is not null
         ? Save.ReadEmblems().FirstOrDefault(row => row.InstanceId == _selectedEmblem) : null;
+    private EmblemCondition? SelectedEmblemCondition
+    {
+        get
+        {
+            if (!CanEditEmblemConditions || Save is null || SelectedEmblem is not { } emblem) return null;
+            var matches = Save.ReadEmblemConditions().Where(row => row.BondHolderId == emblem.InstanceId && row.EmblemId == emblem.EmblemId).ToArray();
+            return matches.Length == 1 ? matches[0] : null;
+        }
+    }
 
     private void LoadEmblems()
     {
         _refreshingEmblems = true;
-        CanEditEmblems = CanEditBondRings = false;
+        CanEditEmblems = CanEditBondRings = CanEditEmblemConditions = false;
         _selectedEmblem = null;
         _selectedBondRecord = _selectedRingRecord = null;
         EmblemChoiceInput.ItemsSource = Array.Empty<EmblemChoice>();
@@ -96,6 +107,9 @@ public partial class MainWindow
         BondRingSearch.Clear();
         EmblemBondLevelInput.ItemsSource = Enumerable.Range(1, 20).ToArray();
         EmblemBondExpInput.Value = BondRingStockInput.Value = null;
+        EmblemDirtinessInput.Value = null;
+        EmblemConditionForm.IsEnabled = false;
+        RemoveEmblemButton.IsEnabled = false;
         _refreshingEmblems = false;
         if (Save is not null && Save.Kind == SaveKind.Game)
         {
@@ -108,6 +122,11 @@ public partial class MainWindow
             catch (Exception error) when (IsFileError(error))
             {
                 if (Save.Sections.Any(row => row.Name == "RING")) ShowMessage("EmblemsUnavailable", error.Message);
+            }
+            if (Save.Sections.Any(row => row.Name == "GOD"))
+            {
+                try { Save.ReadEmblemConditions(); CanEditEmblemConditions = true; }
+                catch (Exception error) when (IsFileError(error)) { ShowMessage("EmblemsUnavailable", error.Message); }
             }
         }
         RefreshEmblemChoices();
@@ -140,6 +159,7 @@ public partial class MainWindow
         if (ActiveEmblemList is null) return;
         _refreshingEmblems = true;
 
+        CleanAllEmblemsButton.IsEnabled = CanEditEmblemConditions && Save is not null && Save.ReadEmblemConditions().Count > 0;
         bool available = _emblemPage == EmblemPage.Bonds ? CanEditEmblems : CanEditBondRings;
         var emblem = _emblemPage == EmblemPage.Bonds ? SelectedEmblem : null;
         MaxAllEmblemBondsButton.IsEnabled = emblem is not null && EmblemCatalog.Emblem(emblem.EmblemId) is not null;
@@ -188,6 +208,10 @@ public partial class MainWindow
 
     private void LoadEmblemEditor()
     {
+        var condition = _emblemPage == EmblemPage.Bonds ? SelectedEmblemCondition : null;
+        RemoveEmblemButton.IsEnabled = condition is not null && Save!.CanRemoveEmblem(condition.InstanceId);
+        EmblemConditionForm.IsEnabled = condition is not null;
+        EmblemDirtinessInput.Value = condition?.Dirtiness;
         var bond = _emblemPage == EmblemPage.Bonds ? SelectedBond : null;
         var ring = _emblemPage == EmblemPage.BondRings ? SelectedBondRing : null;
         var emblem = SelectedEmblem;
@@ -215,13 +239,15 @@ public partial class MainWindow
     {
         if (_emblemPage == EmblemPage.Bonds)
         {
-            var bond = SelectedBond;
-            return bond is not null && (EmblemBondLevelInput.SelectedItem is not int level || level != bond.Level
-                || EmblemBondExpInput.Text != bond.Experience.ToString());
+            return HasPendingBondValues() || (SelectedEmblemCondition is { } condition
+                && EmblemDirtinessInput.Text != condition.Dirtiness.ToString());
         }
         var ring = SelectedBondRing;
         return ring is not null && BondRingStockInput.Text != ring.StockCount.ToString();
     }
+
+    private bool HasPendingBondValues() => SelectedBond is { } bond &&
+        (EmblemBondLevelInput.SelectedItem is not int level || level != bond.Level || EmblemBondExpInput.Text != bond.Experience.ToString());
 
     public bool ApplyEmblemValues()
     {
@@ -248,12 +274,41 @@ public partial class MainWindow
         if (!HasPendingEmblemValues()) return save;
         if (_emblemPage == EmblemPage.Bonds)
         {
-            var bond = SelectedBond ?? throw new ArgumentException("Select an existing character bond.");
-            int level = EmblemBondLevelInput.SelectedItem is int selected ? selected : throw new ArgumentException(UiLanguage.Get("InvalidAmount"));
-            return save.WithEmblemBond(_selectedEmblem!.Value, bond.PersonId, level, Amount(EmblemBondExpInput));
+            var edited = save;
+            if (HasPendingBondValues())
+            {
+                var bond = SelectedBond!;
+                int level = EmblemBondLevelInput.SelectedItem is int selected ? selected : throw new ArgumentException(UiLanguage.Get("InvalidAmount"));
+                edited = edited.WithEmblemBond(_selectedEmblem!.Value, bond.PersonId, level, Amount(EmblemBondExpInput));
+            }
+            if (SelectedEmblemCondition is { } condition)
+                edited = edited.WithEmblemDirtiness(condition.InstanceId, Amount(EmblemDirtinessInput));
+            return edited;
         }
         var ring = SelectedBondRing ?? throw new ArgumentException("Select an existing bond ring.");
         return save.WithBondRingStock(ring.InstanceId, Amount(BondRingStockInput));
+    }
+
+    private void CleanEmblem_Click(object? sender, RoutedEventArgs e)
+    {
+        if (_emblemPage != EmblemPage.Bonds || SelectedEmblemCondition is null) return;
+        EmblemDirtinessInput.Value = 0;
+        ApplyEmblemValues();
+    }
+
+    private void CleanAllEmblems_Click(object? sender, RoutedEventArgs e)
+    {
+        if (!CanEditEmblemConditions || Save is null || _emblemPage != EmblemPage.Bonds) return;
+        try
+        {
+            Save = PendingEmblemValues(Save).WithCleanedEmblems();
+            RefreshOverview();
+            RefreshSections();
+            Message.IsVisible = false;
+            RefreshEmblemRecords(preserveEditor: false);
+            RefreshSupportRecords(preserveEditor: false);
+        }
+        catch (Exception error) when (IsFileError(error)) { ShowMessage("EditFailed", error.Message); }
     }
 
     private void RefreshEmblemLanguage()
@@ -428,7 +483,10 @@ public partial class MainWindow
         {
             string? personId = null;
             if (!all) personId = SelectedBond?.PersonId ?? throw new ArgumentException("Select an existing character bond.");
-            var edited = Save.WithMaximumEmblemBonds(instance, personId);
+            var edited = Save;
+            if (SelectedEmblemCondition is { } condition)
+                edited = edited.WithEmblemDirtiness(condition.InstanceId, Amount(EmblemDirtinessInput));
+            edited = edited.WithMaximumEmblemBonds(instance, personId);
             Save = edited;
             RefreshOverview();
             RefreshSections();

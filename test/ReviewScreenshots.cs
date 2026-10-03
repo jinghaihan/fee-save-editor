@@ -21,7 +21,12 @@ internal static class ReviewScreenshots
             ("quantity-items", "en", window.ShowItems),
             ("bond-rings", "en", window.ShowBondRings), ("achievements", "en", window.ShowAchievements),
             ("roster", "ja", window.ShowRoster), ("achievements", "ko", window.ShowAchievements),
-            ("main", "zh-Hans", () => window.FindControl<Avalonia.Controls.Primitives.TabStrip>("MainNavigation")!.SelectedIndex = 0)
+            ("main", "zh-Hans", () => window.FindControl<Avalonia.Controls.Primitives.TabStrip>("MainNavigation")!.SelectedIndex = 0),
+            ("variables", "en", () =>
+            {
+                window.FindControl<Avalonia.Controls.Primitives.TabStrip>("MainNavigation")!.SelectedIndex = 7;
+                window.FindControl<Avalonia.Controls.Primitives.TabStrip>("InspectorPages")!.SelectedIndex = 1;
+            })
         })
         {
             window.SetLanguage(language);
