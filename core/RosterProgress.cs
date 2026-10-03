@@ -8,7 +8,7 @@ public sealed record RosterProgress(int CurrentHP, int InternalLevel, uint Origi
 
 internal sealed record RosterProgressLayout(RosterProgress Values, int EquippedStart, int EquippedEnd,
     int PoolStart, int PoolEnd, int ClassSkillStart, int ClassSkillEnd, int MasksOffset, int InternalLevelOffset,
-    int HPBonus, int TailStart)
+    int HPBonus, int TailStart, int? NameStart, int? NameEnd)
 {
     public static RosterProgressLayout Read(SaveReader reader, int currentHP, UnitForce force, uint person)
     {
@@ -50,15 +50,18 @@ internal sealed record RosterProgressLayout(RosterProgress Values, int EquippedS
             throw new InvalidDataException("Invalid character customization presence flag.");
         int gender = RosterCatalog.Person(person)?.Gender ?? 0;
         string? name = null;
+        int? nameStart = null, nameEnd = null;
         if (customized == 1)
         {
+            nameStart = reader.Position;
             name = reader.String();
+            nameEnd = reader.Position;
             gender = reader.Byte();
             reader.Skip(3); // Language and birthday.
         }
         var values = new RosterProgress(currentHP, internalLevel, original, aptitude, weapons, classSkill, equipped, pool, name, gender);
         return new(values, equippedStart, equippedEnd, poolStart, poolEnd, classSkillStart, classSkillEnd,
-            masksOffset, internalOffset, hpBonus, reader.Position);
+            masksOffset, internalOffset, hpBonus, reader.Position, nameStart, nameEnd);
     }
 
     private static void SkipAI(SaveReader reader)
