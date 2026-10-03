@@ -5,12 +5,14 @@ public sealed record SavedEmblem(uint InstanceId, string EmblemId, string? PactP
 public sealed record BondRing(uint InstanceId, uint RingHash, int StockCount, int? OwnerIndex);
 public sealed record CharacterRingLinks(int CharacterIndex, uint EmblemInstance, uint PartnerEmblemInstance, uint RingInstance);
 internal sealed record BondLocation(uint EmblemInstance, EmblemBond Bond, int ValuesOffset, int FlagsOffset);
+internal sealed record BondHolderLocation(uint InstanceId, int CountOffset, int End);
 
 internal sealed class EmblemLayout
 {
     public required SaveSection Section { get; init; }
     public required IReadOnlyList<SavedEmblem> Emblems { get; init; }
     public required IReadOnlyList<BondLocation> Bonds { get; init; }
+    public required IReadOnlyList<BondHolderLocation> Holders { get; init; }
 
     public static EmblemLayout Read(EngageSave save, byte[] bytes)
     {
@@ -21,6 +23,7 @@ internal sealed class EmblemLayout
             throw new InvalidDataException("Invalid Emblem bond holder count.");
         var emblems = new List<SavedEmblem>();
         var locations = new List<BondLocation>();
+        var holders = new List<BondHolderLocation>();
         var instances = new HashSet<uint>();
         for (uint index = 0; index < count; index++)
         {
@@ -32,6 +35,7 @@ internal sealed class EmblemLayout
             if (special > 1 || special == 1 && reader.UInt32() != 0)
                 throw new InvalidDataException("Unsupported Pact Ring record.");
             string? partner = special == 1 ? reader.String() : null;
+            int countOffset = reader.Position;
             int bonds = reader.UInt16();
             if (bonds > 250 || bonds > reader.Remaining / 20)
                 throw new InvalidDataException("Invalid Emblem bond count.");
@@ -57,10 +61,11 @@ internal sealed class EmblemLayout
                 locations.Add(new(instance, entry, offset, flagsOffset));
             }
             emblems.Add(new(instance, gid, partner, entries.AsReadOnly()));
+            holders.Add(new(instance, countOffset, reader.Position));
         }
         if (reader.Remaining != 0)
             throw new InvalidDataException("The Emblem bond pool has unrecognized trailing data.");
-        return new() { Section = section, Emblems = emblems.AsReadOnly(), Bonds = locations.AsReadOnly() };
+        return new() { Section = section, Emblems = emblems.AsReadOnly(), Bonds = locations.AsReadOnly(), Holders = holders.AsReadOnly() };
     }
 
     internal static SaveSection GetSection(EngageSave save, string name)

@@ -22,7 +22,7 @@ public sealed record RosterCharacter(int Index, UnitForce Force, uint PersonHash
 }
 
 internal sealed record CharacterLayout(RosterCharacter Character, int Start, int End, int BaseStatsOffset,
-    int LevelOffset, int[] ItemStarts, int[] ItemEnds, RosterProgressLayout Progress);
+    int LevelOffset, int[] ItemStarts, int[] ItemEnds, RosterProgressLayout Progress, int ClassStart, int ClassEnd, uint? AttackTarget);
 
 internal sealed class RosterLayout
 {
@@ -69,7 +69,9 @@ internal sealed class RosterLayout
                 unit.Skip(8);
                 ulong status = BinaryPrimitives.ReadUInt64LittleEndian(bytes.AsSpan(statusOffset, 8));
                 uint person = unit.Reference() ?? throw new InvalidDataException("A character has no person reference.");
-                uint job = unit.Reference() ?? throw new InvalidDataException("A character has no class reference.");
+                int classStart = unit.Position;
+                uint job = unit.Reference() ?? 0;
+                int classEnd = unit.Position;
                 if (unit.UInt32() != 0)
                     throw new InvalidDataException("Unsupported base capability version.");
                 int baseOffset = unit.Position;
@@ -89,8 +91,7 @@ internal sealed class RosterLayout
                 byte hasTarget = unit.Byte();
                 if (hasTarget > 1)
                     throw new InvalidDataException("Invalid optional target presence flag.");
-                if (hasTarget == 1)
-                    unit.Reference();
+                uint? attackTarget = hasTarget == 1 ? unit.Reference() : null;
                 unit.Skip(4);
                 if (unit.UInt32() != 2 || unit.Byte() != 8)
                     throw new InvalidDataException("Unsupported character item list.");
@@ -121,7 +122,7 @@ internal sealed class RosterLayout
                 int sp = (short)tail.UInt16();
                 var character = new RosterCharacter(result.Count, (UnitForce)force, person, job,
                     new RosterValue(level, experience, sp), CharacterStats(person, job, baseStats), Array.AsReadOnly(items), progress.Values, status);
-                result.Add(new CharacterLayout(character, start, end, baseOffset, levelOffset, starts, ends, progress));
+                result.Add(new CharacterLayout(character, start, end, baseOffset, levelOffset, starts, ends, progress, classStart, classEnd, attackTarget));
                 reader.Skip(end - reader.Position);
             }
         }
