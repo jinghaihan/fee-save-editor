@@ -76,14 +76,19 @@ public sealed partial class EngageSave
             throw new InvalidDataException("Character restoration requires a verified class for maximum HP.");
         if (layout.Characters.Count(entry => entry.Character.PersonHash == character.PersonHash) != 1)
             throw new InvalidDataException("The save contains duplicate records for this character.");
+        ValidateOutOfBattleRoster(layout);
+    }
+
+    private void ValidateOutOfBattleRoster(RosterLayout layout)
+    {
         var user = Sections.Where(section => section.Name == "USER").ToArray();
         if (user.Length != 1 || user[0].Length < 37 || ReadUInt32(_bytes, user[0].PayloadOffset) != 20)
-            throw new InvalidDataException("Character restoration requires a verified USER section.");
+            throw new InvalidDataException("Roster management requires a verified USER section.");
         int context = user[0].PayloadOffset + 32;
         uint status = ReadUInt32(_bytes, context);
         byte sequence = _bytes[context + 4];
         if ((status & 2) != 0 || sequence is not (1 or 4 or 6)
             || layout.Characters.Any(entry => entry.Character.Force <= UnitForce.Ally))
-            throw new ArgumentException("Restore characters in an out-of-battle chapter, Somniel or world-map save.");
+            throw new ArgumentException("Manage characters and Emblems in an out-of-battle chapter, Somniel or world-map save.");
     }
 }

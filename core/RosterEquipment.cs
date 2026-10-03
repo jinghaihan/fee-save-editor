@@ -6,7 +6,7 @@ public sealed record RosterEquipmentOption(RosterEquipmentSelection Selection, s
     uint? RingHash, int? OwnerIndex, int StockCount);
 
 internal sealed record CharacterEquipmentLocation(CharacterRingLinks Links, int LinksOffset,
-    int EngageOffset, int StatusOffset);
+    int EngageOffset, int StatusOffset, uint? Target);
 
 internal static class CharacterEquipmentLayout
 {
@@ -31,19 +31,19 @@ internal static class CharacterEquipmentLayout
             reader.Skip(4);
             byte target = reader.Byte();
             if (target > 1) throw new InvalidDataException("Invalid optional unit target.");
-            if (target == 1) reader.Reference();
+            uint? targetHash = target == 1 ? reader.Reference() : null;
             reader.Skip(14);
             if (reader.Remaining != 0) throw new InvalidDataException("Unrecognized character equipment trailer.");
             if (ring != 0 && !usedRings.Add(ring)) throw new InvalidDataException("A ring instance has multiple owners.");
             locations.Add(new(new(character.Character.Index, emblem, partner, ring), offset,
-                character.Progress.TailStart, character.Start + 36));
+                character.Progress.TailStart, character.Start + 36, targetHash));
         }
         return locations.AsReadOnly();
     }
 }
 
 internal sealed record OwnedEmblem(uint InstanceId, uint GodHash, uint BondHolderId,
-    bool Darkness, bool Reserved, bool Escaping);
+    bool Darkness, bool Reserved, bool Escaping, byte Dirtiness, int DirtinessOffset, int Start, int End);
 
 internal static class OwnedEmblemLayout
 {
@@ -57,13 +57,15 @@ internal static class OwnedEmblemLayout
         var instances = new HashSet<uint>();
         for (uint index = 0; index < count; index++)
         {
+            int start = reader.Position;
             uint instance = reader.UInt32();
             if (instance == 0 || !instances.Add(instance)) throw new InvalidDataException("Invalid owned Emblem instance.");
             uint hash = reader.Reference() ?? throw new InvalidDataException("An Emblem has no game-data reference.");
             uint holder = reader.UInt32();
             byte dark = reader.Byte(), reserved = reader.Byte(), escaping = reader.Byte();
             if (dark > 1 || reserved > 1 || escaping > 1) throw new InvalidDataException("Invalid owned Emblem flags.");
-            reader.Skip(1); // Ring-cleaning progress, not ownership.
+            int dirtinessOffset = reader.Position;
+            byte dirtiness = reader.Byte();
             int synchro = reader.Byte();
             for (int row = 0; row < synchro; row++)
             {
@@ -77,7 +79,7 @@ internal static class OwnedEmblemLayout
                 reader.Skip(10);
                 reader.String();
             }
-            result.Add(new(instance, hash, holder, dark != 0, reserved != 0, escaping != 0));
+            result.Add(new(instance, hash, holder, dark != 0, reserved != 0, escaping != 0, dirtiness, dirtinessOffset, start, reader.Position));
         }
         if (reader.Remaining != 0) throw new InvalidDataException("Unrecognized owned Emblem data.");
         return result.AsReadOnly();

@@ -53,17 +53,20 @@ public sealed partial class EngageSave
             writer.Write((byte)0); // Normal rings have no Pact Ring association.
             writer.Write(checked((ushort)people.Count));
             foreach (string person in people)
-            {
-                WriteEmblemString(writer, person);
-                writer.Write(3u);
-                writer.Write((byte)1);
-                writer.Write((ushort)0);
-                writer.Write(2u);
-                writer.Write(0u); // Empty inherited-skill set.
-                writer.Write((byte)0);
-            }
+                WriteInitialCharacterBond(writer, person);
         }
         return record.ToArray();
+    }
+
+    private static void WriteInitialCharacterBond(BinaryWriter writer, string personId)
+    {
+        WriteEmblemString(writer, personId);
+        writer.Write(3u);
+        writer.Write((byte)1);
+        writer.Write((ushort)0);
+        writer.Write(2u);
+        writer.Write(0u); // Empty inherited-skill set.
+        writer.Write((byte)0);
     }
 
     private static byte[] NewOwnedEmblem(uint instance, uint hash, uint holderId, IReadOnlyList<string> weapons)
