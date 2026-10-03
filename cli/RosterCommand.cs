@@ -44,6 +44,13 @@ internal static class RosterCommand
             }, new JsonSerializerOptions { WriteIndented = true }));
             return 0;
         }
+        if (args is ["missing", var missingSource, .. var missingOptions])
+        {
+            string language = DisplayLanguage(missingOptions);
+            Console.WriteLine(JsonSerializer.Serialize(EngageSave.Load(missingSource).ReadMissingRosterCharacters()
+                .Select(person => new { person.Id, Name = person.Name(language) }), new JsonSerializerOptions { WriteIndented = true }));
+            return 0;
+        }
         if (args is ["list", var input, .. var displayOptions])
         {
             string language = DisplayLanguage(displayOptions);
@@ -118,6 +125,10 @@ internal static class RosterCommand
     {
         if (verb == "stats-max" && options is ["--all"])
             return save.MaximizeAllRosterStats();
+        if (verb == "classes-repair" && options is ["--all"])
+            return save.RepairAllRosterClasses();
+        if (verb == "add" && options is ["--person", var person])
+            return save.WithAddedRosterCharacter(person);
         string[] allowed = verb switch
         {
             "set" => ["--character", "--level", "--experience", "--sp"],
@@ -132,7 +143,8 @@ internal static class RosterCommand
             "item-set" => ["--character", "--slot", "--item", "--uses", "--refine", "--engraving"],
             "item-engrave" => ["--character", "--slot", "--engraving"],
             "item-delete" => ["--character", "--slot"],
-            "restore" or "restore-character" => ["--character"],
+            "restore" or "restore-character" or "delete" or "class-repair" => ["--character"],
+            "move" => ["--character", "--force"],
             "import" => ["--character", "--file"],
             "equipment-set" => ["--character", "--emblem", "--ring", "--none"],
             _ => throw new ArgumentException("Unknown roster command. Run --help for usage.")
@@ -143,6 +155,15 @@ internal static class RosterCommand
         if (index >= characters.Count)
             throw new ArgumentOutOfRangeException(nameof(index));
         var character = characters[index];
+        if (verb == "delete") return save.WithoutRosterCharacter(index);
+        if (verb == "class-repair") return save.RepairRosterClass(index);
+        if (verb == "move")
+        {
+            string force = Required(values, "--force");
+            if (!Enum.TryParse<UnitForce>(force, ignoreCase: false, out var destination)
+                || force != destination.ToString()) throw new ArgumentException("Choose Absent, Dead or Lost.");
+            return save.WithRosterForce(index, destination);
+        }
         if (verb == "restore-character") return save.RestoreRosterCharacter(index);
         if (verb == "equipment-set")
         {

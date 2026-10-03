@@ -23,7 +23,7 @@ internal static class EmblemsCommand
             });
             return 0;
         }
-        if (args is [var read, var source, .. var readOptions] && read is "list" or "rings" or "missing")
+        if (args is [var read, var source, .. var readOptions] && read is "list" or "rings" or "missing" or "conditions")
         {
             string language = Language(readOptions);
             var save = EngageSave.Load(source);
@@ -38,6 +38,9 @@ internal static class EmblemsCommand
                         MaximumLevel = EmblemCatalog.Emblem(row.EmblemId) is null ? (int?)null : EmblemCatalog.MaximumLevel(row, bond.PersonId)
                     })
                 }));
+            else if (read == "conditions")
+                Print(save.ReadEmblemConditions().Select(row => new { row.InstanceId, row.BondHolderId, row.EmblemId,
+                    Name = EmblemCatalog.Emblem(row.EmblemId)!.Name(language), row.Dirtiness, MaximumDirtiness = EmblemCondition.MaximumDirtiness }));
             else if (read == "missing")
                 Print(save.ReadMissingEmblems().Select(row => new { row.Id, Name = row.Name(language), row.Dlc }));
             else
@@ -51,13 +54,19 @@ internal static class EmblemsCommand
             return 0;
         }
         if (args is not [var verb, var input, var output, .. var options]
-            || verb is not ("add" or "bond-set" or "bond-max" or "bonds-max" or "ring-set" or "rings-fill-s" or "ring-meld"))
+            || verb is not ("add" or "remove" or "bond-set" or "bond-max" or "bonds-max" or "ring-set" or "rings-fill-s" or "ring-meld" or "dirt-set" or "clean" or "clean-all"))
             throw new ArgumentException("Unknown Emblems command. Run --help for usage.");
         var values = Options(options, verb);
         var current = EngageSave.Load(input);
-        uint instance = verb is "add" or "rings-fill-s" ? 0 : checked((uint)Number(Required(values, "--instance")));
+        uint instance = verb is "add" or "rings-fill-s" or "clean-all" ? 0 : checked((uint)Number(Required(values, "--instance")));
         EngageSave edited;
-        if (verb == "add")
+        if (verb == "remove")
+            edited = current.WithoutEmblem(instance);
+        else if (verb == "clean-all")
+            edited = current.WithCleanedEmblems();
+        else if (verb is "clean" or "dirt-set")
+            edited = current.WithEmblemDirtiness(instance, verb == "clean" ? 0 : Number(Required(values, "--value")));
+        else if (verb == "add")
             edited = current.WithAddedEmblem(Required(values, "--emblem"));
         else if (verb == "rings-fill-s")
             edited = current.WithMissingSBondRings();
@@ -108,6 +117,9 @@ internal static class EmblemsCommand
             "bond-max" => ["--instance", "--person"],
             "bonds-max" => ["--instance"],
             "ring-meld" => ["--instance"],
+            "clean" or "remove" => ["--instance"],
+            "clean-all" => [],
+            "dirt-set" => ["--instance", "--value"],
             "rings-fill-s" => [],
             _ => ["--instance", "--amount"]
         };

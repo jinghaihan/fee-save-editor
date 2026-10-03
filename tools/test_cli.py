@@ -366,6 +366,10 @@ def main() -> None:
     assert subprocess.run([*command, "unknown"], capture_output=True).returncode != 0
     check_saves(command)
     check_main(command, args.save_directory)
+    from test_protagonist_name_cli import check_protagonist_name
+    check_protagonist_name(command, args.save_directory, main_fixture())
+    from test_activities_cli import check_activities
+    check_activities(command, args.save_directory, main_fixture())
     from test_donations_cli import check_donations
     check_donations(command, args.save_directory, main_fixture())
     from test_minigames_cli import check_minigames
@@ -383,6 +387,8 @@ def main() -> None:
     check_roster_equipment(command, args.save_directory, main_fixture())
     from test_roster_recovery_cli import check_roster_recovery
     check_roster_recovery(command, args.save_directory, main_fixture())
+    from test_advanced_editing_cli import check_advanced_editing
+    check_advanced_editing(command, args.save_directory, main_fixture())
     from test_emblems_cli import check_emblems
     check_emblems(command, args.save_directory, main_fixture())
     from test_emblem_creation_cli import check_emblem_creation

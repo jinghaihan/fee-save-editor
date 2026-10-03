@@ -17,8 +17,15 @@ if (args.Length == 0 || args is ["--help"])
         Usage:
           FeeEditor.Cli inspect <save> [--json]
           FeeEditor.Cli copy <save> <new-file>
+          FeeEditor.Cli variables list <save> [--json]
+          FeeEditor.Cli variables set <save> <new-file> --key <key> --value <signed-int32>
           FeeEditor.Cli main show <save> [--json]
           FeeEditor.Cli main set <save> <new-file> [options]
+          FeeEditor.Cli main name <save>
+          FeeEditor.Cli main name-set <save> <new-file> --name <name>
+          FeeEditor.Cli main activities <save> [--json]
+          FeeEditor.Cli main activities-set <save> <new-file> [--training-remaining <0-1>] [--arena-remaining <0-3>]
+          FeeEditor.Cli main activities-restore <save> <new-file>
           FeeEditor.Cli main donation-catalog [--json] [--language <code>]
           FeeEditor.Cli main donations <save> [--json] [--language <code>]
           FeeEditor.Cli main minigames <save> [--json] [--language <code>]
@@ -39,6 +46,12 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli items restore <save> <new-file> --all|--slot <index>
           FeeEditor.Cli roster list <save> [--json] [--language <code>]
           FeeEditor.Cli roster catalog [--json] [--language <code>]
+          FeeEditor.Cli roster missing <save> [--json] [--language <code>]
+          FeeEditor.Cli roster add <save> <new-file> --person <PID>
+          FeeEditor.Cli roster delete <save> <new-file> --character <index>
+          FeeEditor.Cli roster move <save> <new-file> --character <index> --force Absent|Dead|Lost
+          FeeEditor.Cli roster class-repair <save> <new-file> --character <index>
+          FeeEditor.Cli roster classes-repair <save> <new-file> --all
           FeeEditor.Cli roster equipment <save> --character <index> [--json] [--language <code>]
           FeeEditor.Cli roster equipment-set <save> <new-file> --character <index> --emblem <instance>|--ring <instance>|--none true
           FeeEditor.Cli roster export <save> <character.json> --character <index>
@@ -62,7 +75,12 @@ if (args.Length == 0 || args is ["--help"])
           FeeEditor.Cli emblems catalog [--json] [--language <code>]
           FeeEditor.Cli emblems list <save> [--json] [--language <code>]
           FeeEditor.Cli emblems missing <save> [--json] [--language <code>]
+          FeeEditor.Cli emblems conditions <save> [--json] [--language <code>]
+          FeeEditor.Cli emblems dirt-set <save> <new-file> --instance <owned-id> --value <0-255>
+          FeeEditor.Cli emblems clean <save> <new-file> --instance <owned-id>
+          FeeEditor.Cli emblems clean-all <save> <new-file>
           FeeEditor.Cli emblems add <save> <new-file> --emblem <GID>
+          FeeEditor.Cli emblems remove <save> <new-file> --instance <owned-id>
           FeeEditor.Cli emblems rings <save> [--json] [--language <code>]
           FeeEditor.Cli emblems bond-set <save> <new-file> --instance <id> --person <PID> [--level <1-20>] [--experience <0-208>]
           FeeEditor.Cli emblems bond-max <save> <new-file> --instance <id> --person <PID>
@@ -92,10 +110,14 @@ try
 {
     switch (args)
     {
+        case ["main", var activityVerb, ..] when activityVerb is "activities" or "activities-set" or "activities-restore":
+            return ActivitiesCommand.Run(args[1..]);
         case ["main", var minigameVerb, ..] when minigameVerb is "minigames" or "minigame-set":
             return MinigamesCommand.Run(args[1..]);
         case ["main", var verb, ..] when verb is "donations" or "donation-catalog" or "donation-set" or "donations-max":
             return DonationsCommand.Run(args[1..]);
+        case ["variables", .. var variableOptions]:
+            return VariablesCommand.Run(variableOptions);
         case ["items", .. var options]:
             return ItemsCommand.Run(options);
         case ["roster", .. var options]:
@@ -125,6 +147,13 @@ try
         case ["main", "show", var source, .. var options] when options is [] or ["--json"]:
             Console.WriteLine(JsonSerializer.Serialize(EngageSave.Load(source).ReadMainValues(),
                 new JsonSerializerOptions { WriteIndented = true, Converters = { new JsonStringEnumConverter() } }));
+            return 0;
+        case ["main", "name", var source]:
+            Console.WriteLine(JsonSerializer.Serialize(new { PlayerName = EngageSave.Load(source).ReadProtagonistName() }));
+            return 0;
+        case ["main", "name-set", var source, var destination, "--name", var name]:
+            EngageSave.Load(source).WithProtagonistName(name).WriteCopy(destination);
+            Console.WriteLine(Path.GetFullPath(destination));
             return 0;
         case ["main", "set", var source, var destination, .. var options]:
             var current = EngageSave.Load(source);
