@@ -366,6 +366,8 @@ def main() -> None:
     assert subprocess.run([*command, "unknown"], capture_output=True).returncode != 0
     check_saves(command)
     check_main(command, args.save_directory)
+    from test_play_time_cli import check_play_time
+    check_play_time(command, args.save_directory, main_fixture())
     from test_protagonist_name_cli import check_protagonist_name
     check_protagonist_name(command, args.save_directory, main_fixture())
     from test_activities_cli import check_activities

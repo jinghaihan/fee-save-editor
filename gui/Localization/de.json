@@ -1,4 +1,8 @@
 {
+  "PlayTime": "Spielzeit",
+  "Hours": "Stunden",
+  "Minutes": "Minuten",
+  "Seconds": "Sekunden",
   "Variables": "Variablen",
   "VariablesUnavailable": "Dieser Spielstand unterstützt keine Bearbeitung numerischer Variablen.",
   "Value": "Wert",

@@ -1,4 +1,8 @@
 {
+  "PlayTime": "플레이 시간",
+  "Hours": "시간",
+  "Minutes": "분",
+  "Seconds": "초",
   "Variables": "변수",
   "VariablesUnavailable": "이 저장 파일의 숫자 변수는 편집할 수 없습니다.",
   "Value": "값",

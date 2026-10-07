@@ -9,6 +9,8 @@ public partial class MainWindow
 {
     public bool CanEditMain { get; private set; }
     private bool _canEditProtagonistName;
+    public bool CanEditPlayTime { get; private set; }
+    private float _loadedPlayTimeSeconds;
 
     private void LoadProtagonistName()
     {
@@ -31,11 +33,18 @@ public partial class MainWindow
         try
         {
             var edited = Save.WithMainValues(ReadMainInputs());
+            if (CanEditPlayTime)
+            {
+                int seconds = Amount(PlayTimeHoursInput) * 3600 + Amount(PlayTimeMinutesInput) * 60 + Amount(PlayTimeSecondsInput);
+                // Keep the original subsecond value when the displayed whole seconds are unchanged.
+                edited = edited.WithPlayTimeSeconds(seconds == (int)_loadedPlayTimeSeconds ? _loadedPlayTimeSeconds : seconds);
+            }
             if (CanEditDonations) edited = edited.WithDonations(ReadDonationInputs());
             if (CanEditMinigames) edited = edited.WithMinigameRecords(ReadMinigameInputs());
             if (CanEditActivities) edited = edited.WithSomnielActivities(ReadActivityInputs());
             if (_canEditProtagonistName) edited = edited.WithProtagonistName(PlayerNameInput.Text ?? "");
             Save = edited;
+            if (CanEditPlayTime) _loadedPlayTimeSeconds = edited.ReadPlayTimeSeconds();
             if (CanEditRoster) RefreshRoster(selectEditor: false, preserveSelection: true);
             RefreshQuantityItems(selectEditor: !HasPendingQuantityItemValues());
             RefreshOverview();
@@ -65,6 +74,8 @@ public partial class MainWindow
     private void LoadMainValues()
     {
         CanEditMain = false;
+        CanEditPlayTime = PlayTimeInputs.IsEnabled = false;
+        PlayTimeHoursInput.Value = PlayTimeMinutesInput.Value = PlayTimeSecondsInput.Value = null;
         SettingsInputs.IsEnabled = false;
         ResourceInputs.IsEnabled = false;
         DifficultyInput.SelectedIndex = -1;
@@ -89,6 +100,7 @@ public partial class MainWindow
             CanEditMain = true;
             SettingsInputs.IsEnabled = true;
             ResourceInputs.IsEnabled = true;
+            LoadPlayTime();
             ShowPage(inspector: false);
         }
         catch (Exception error) when (IsFileError(error))
@@ -97,6 +109,21 @@ public partial class MainWindow
             if (Save.Kind == SaveKind.Game)
                 ShowMessage("MainUnavailable", error.Message);
         }
+    }
+
+    private void LoadPlayTime()
+    {
+        if (Save is null || !Save.Sections.Any(section => section.Name == "TIME")) return;
+        try
+        {
+            _loadedPlayTimeSeconds = Save.ReadPlayTimeSeconds();
+            int seconds = (int)_loadedPlayTimeSeconds;
+            PlayTimeHoursInput.Value = seconds / 3600;
+            PlayTimeMinutesInput.Value = seconds / 60 % 60;
+            PlayTimeSecondsInput.Value = seconds % 60;
+            CanEditPlayTime = PlayTimeInputs.IsEnabled = true;
+        }
+        catch (Exception error) when (IsFileError(error)) { ShowMessage("MainUnavailable", error.Message); }
     }
 
     private void RefreshOptions()

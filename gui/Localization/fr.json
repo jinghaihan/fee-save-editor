@@ -1,4 +1,8 @@
 {
+  "PlayTime": "Temps de jeu",
+  "Hours": "Heures",
+  "Minutes": "Minutes",
+  "Seconds": "Secondes",
   "Variables": "Variables",
   "VariablesUnavailable": "Cette sauvegarde ne permet pas de modifier les variables numériques.",
   "Value": "Valeur",

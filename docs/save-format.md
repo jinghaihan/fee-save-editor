@@ -104,6 +104,22 @@ the summary checksum word; unsupported or ambiguous summaries are not edited.
 Both the summary checksum and the whole-file checksum are updated. The separate
 original-difficulty flag and lifetime bond-fragment total are preserved.
 
+### Play time
+
+The `TIME` section has payload version 0 and exactly 40 bytes: a 32-byte
+serialization header followed by float32 play seconds and float32 watch seconds.
+Native `GameTime.Serialize`/`Deserialize` convert play time between seconds and
+an internal 512-ticks-per-second counter. The verified maximum is 3,599,999.5
+seconds (999:59:59.5). Nonfinite, negative and over-limit values are rejected.
+
+Play-time editing writes only the play-seconds field and its duplicate at summary
+offset `0x28` for the supported hashed-chapter layout, then recalculates both
+checksums. Watch time, padding, achievement state and all other sections remain
+unchanged. The GUI shows whole hours, minutes and seconds and retains the original
+fractional seconds when those fields are unchanged. The CLI accepts optional
+fractional seconds. The game's `AchieveData.SetValuePlayTime` checks whole hours;
+changing time does not directly set achievement flags or claim rewards.
+
 Changing Sommie's name resizes its own string, adjusts the USER size and every
 subsequent section-index offset, and preserves unknown USER fields and later
 section payloads. Core edits are immutable and are reparsed before being returned.

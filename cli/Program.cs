@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -102,6 +103,7 @@ if (args.Length == 0 || args is ["--help"])
           --iron <amount> --steel <amount> --silver <amount>
           --difficulty normal|hard|maddening --mode casual|classic
           --sommie-name <name>
+          --play-time <HH:MM:SS> (0:00:00–999:59:59.5)
         """);
     return 0;
 }
@@ -145,8 +147,16 @@ try
             Console.WriteLine(Path.GetFullPath(destination));
             return 0;
         case ["main", "show", var source, .. var options] when options is [] or ["--json"]:
-            Console.WriteLine(JsonSerializer.Serialize(EngageSave.Load(source).ReadMainValues(),
-                new JsonSerializerOptions { WriteIndented = true, Converters = { new JsonStringEnumConverter() } }));
+            var shown = EngageSave.Load(source);
+            var jsonOptions = new JsonSerializerOptions { WriteIndented = true, Converters = { new JsonStringEnumConverter() } };
+            var mainJson = JsonSerializer.SerializeToNode(shown.ReadMainValues(), jsonOptions)!;
+            if (shown.Sections.Any(section => section.Name == "TIME"))
+            {
+                float seconds = shown.ReadPlayTimeSeconds();
+                mainJson["PlayTimeSeconds"] = (double)seconds;
+                mainJson["PlayTime"] = FormattableString.Invariant($"{(int)seconds / 3600}:{(int)seconds / 60 % 60:00}:{seconds % 60:00.########}");
+            }
+            Console.WriteLine(mainJson.ToJsonString(jsonOptions));
             return 0;
         case ["main", "name", var source]:
             Console.WriteLine(JsonSerializer.Serialize(new { PlayerName = EngageSave.Load(source).ReadProtagonistName() }));
@@ -157,7 +167,10 @@ try
             return 0;
         case ["main", "set", var source, var destination, .. var options]:
             var current = EngageSave.Load(source);
-            current.WithMainValues(PatchMain(current.ReadMainValues(), options)).WriteCopy(destination);
+            var patch = PatchMain(current.ReadMainValues(), options);
+            var mainEdited = current.WithMainValues(patch.Values);
+            if (patch.PlayTimeSeconds is { } playTime) mainEdited = mainEdited.WithPlayTimeSeconds(playTime);
+            mainEdited.WriteCopy(destination);
             Console.WriteLine(Path.GetFullPath(destination));
             return 0;
         default:
@@ -171,17 +184,23 @@ catch (Exception error) when (error is IOException or InvalidDataException or Un
     return 1;
 }
 
-static MainValues PatchMain(MainValues values, string[] options)
+static (MainValues Values, float? PlayTimeSeconds) PatchMain(MainValues values, string[] options)
 {
     if (options.Length == 0 || options.Length % 2 != 0)
         throw new ArgumentException("Provide at least one Main option and its value.");
     var seen = new HashSet<string>(StringComparer.Ordinal);
+    float? playTimeSeconds = null;
     for (int index = 0; index < options.Length; index += 2)
     {
         string key = options[index];
         string value = options[index + 1];
         if (!seen.Add(key))
             throw new ArgumentException($"Duplicate option: {key}");
+        if (key == "--play-time")
+        {
+            playTimeSeconds = ParsePlayTime(value);
+            continue;
+        }
         values = key switch
         {
             "--money" => values with { Money = Amount(value) },
@@ -204,7 +223,22 @@ static MainValues PatchMain(MainValues values, string[] options)
             _ => throw new ArgumentException($"Unknown Main option: {key}")
         };
     }
-    return values;
+    return (values, playTimeSeconds);
+}
+
+static float ParsePlayTime(string value)
+{
+    string[] parts = value.Split(':');
+    if (parts.Length != 3
+        || !int.TryParse(parts[0], NumberStyles.None, CultureInfo.InvariantCulture, out int hours) || hours > 999
+        || !int.TryParse(parts[1], NumberStyles.None, CultureInfo.InvariantCulture, out int minutes) || minutes > 59
+        || !decimal.TryParse(parts[2], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal seconds)
+        || seconds < 0 || seconds >= 60)
+        throw new ArgumentException("Play time must use HH:MM:SS, with hours 0–999 and minutes/seconds below 60.");
+    decimal total = hours * 3600m + minutes * 60m + seconds;
+    if (total > (decimal)(double)EngageSave.MaxPlayTimeSeconds)
+        throw new ArgumentException("Play time cannot exceed 999:59:59.5.");
+    return (float)total;
 }
 
 static int Amount(string value)

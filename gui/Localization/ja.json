@@ -1,4 +1,8 @@
 {
+  "PlayTime": "プレイ時間",
+  "Hours": "時",
+  "Minutes": "分",
+  "Seconds": "秒",
   "Variables": "変数",
   "VariablesUnavailable": "このセーブでは数値変数を編集できません。",
   "Value": "値",

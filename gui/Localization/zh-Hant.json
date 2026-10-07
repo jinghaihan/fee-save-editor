@@ -1,4 +1,8 @@
 {
+  "PlayTime": "遊玩時長",
+  "Hours": "時",
+  "Minutes": "分",
+  "Seconds": "秒",
   "Variables": "變數",
   "VariablesUnavailable": "此存檔不支援數值變數編輯。",
   "Value": "數值",

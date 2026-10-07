@@ -24,6 +24,7 @@ FeeEditor.Cli main activities-set Manual0 Manual0-edited --training-remaining 1 
 FeeEditor.Cli main activities-restore Manual0 Manual0-edited
 FeeEditor.Cli main set Manual0 Manual0-edited --money 5000 --bond-fragments 10000 --iron 100 --steel 50 --silver 20
 FeeEditor.Cli main set Manual0 Manual0-edited --difficulty maddening --mode classic --sommie-name Sommie
+FeeEditor.Cli main set Manual0 Manual0-edited --play-time 240:00:01
 FeeEditor.Cli main donation-catalog --json
 FeeEditor.Cli main donations Manual0 --json
 FeeEditor.Cli main minigames Manual0 --json --language en
@@ -34,6 +35,10 @@ FeeEditor.Cli main donations-max Manual0 Manual0-edited --all
 ```
 
 Money and bond fragments accept 0–9,999,999; each ingot type accepts 0–9,999.
+Play time uses `HH:MM:SS`, up to `999:59:59.5`; fractional seconds are optional.
+`main show` includes `PlayTime` and `PlayTimeSeconds` when a supported TIME section
+is present. Editing updates both the actual timer and the save-slot summary.
+It does not directly unlock achievements or claim their rewards.
 Activity edits use remaining attempts: strength training accepts 0–1 and standard
 Arena training accepts 0–3. `activities-restore` restores both. These edits leave
 high scores, temporary stat bonuses, Emblem training and achievement counters unchanged.

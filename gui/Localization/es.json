@@ -1,4 +1,8 @@
 {
+  "PlayTime": "Tiempo de juego",
+  "Hours": "Horas",
+  "Minutes": "Minutos",
+  "Seconds": "Segundos",
   "Variables": "Variables",
   "VariablesUnavailable": "Esta partida no permite editar variables numéricas.",
   "Value": "Valor",

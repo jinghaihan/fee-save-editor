@@ -1,4 +1,8 @@
 {
+  "PlayTime": "Play Time",
+  "Hours": "Hours",
+  "Minutes": "Minutes",
+  "Seconds": "Seconds",
   "Variables": "Variables",
   "VariablesUnavailable": "This save does not support numeric variable editing.",
   "Value": "Value",

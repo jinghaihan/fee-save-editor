@@ -15,6 +15,12 @@ AppBuilder.Configure<App>().UseSkia().WithInterFont()
 var window = new MainWindow();
 window.Show();
 Dispatcher.UIThread.RunJobs();
+if (args is ["--main-screenshot", var mainSave, var mainScreenshot])
+{
+    ReviewScreenshots.RunMain(window, mainSave, mainScreenshot);
+    window.Close();
+    return;
+}
 Check(UiLanguage.Current == "en", "The default UI language is not English.");
 Check(window.Icon is not null, "The Sommie window icon is missing.");
 if (args is not ["--advanced-tests"]) HeaderLayoutTests.Run(window);
@@ -120,6 +126,7 @@ try
     Check(!Directory.EnumerateFiles(temporary, ".fee-*.tmp").Any(), "Temporary save files were left behind.");
 
     MainTests.Run(window, temporary);
+    PlayTimeTests.Run(window, temporary);
     ProtagonistNameTests.Run(window, temporary);
     ActivityConditionTests.Run(window, temporary);
     MinigameTests.Run();
@@ -172,6 +179,7 @@ try
             {
                 QuantityItemTests.CheckReal(window.Save!);
                 var loaded = window.Save!;
+                PlayTimeTests.CheckReal(loaded);
                 DonationTests.CheckReal(loaded);
                 MinigameTests.CheckReal(loaded);
                 AchievementTests.CheckReal(loaded);

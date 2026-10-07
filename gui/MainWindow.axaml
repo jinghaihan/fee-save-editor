@@ -97,6 +97,16 @@
                   <TextBlock Text="{DynamicResource SommieName}" />
                   <TextBox Name="SommieNameInput" Height="42" />
                 </StackPanel>
+                <StackPanel Name="PlayTimeInputs" Spacing="8" IsEnabled="False">
+                  <TextBlock Text="{DynamicResource PlayTime}" />
+                  <Grid ColumnDefinitions="*,Auto,*,Auto,*" ColumnSpacing="8">
+                    <NumericUpDown Name="PlayTimeHoursInput" AutomationProperties.Name="{DynamicResource Hours}" Minimum="0" Maximum="999" Increment="1" FormatString="0" Height="42" />
+                    <TextBlock Grid.Column="1" Text=":" VerticalAlignment="Center" />
+                    <NumericUpDown Name="PlayTimeMinutesInput" Grid.Column="2" AutomationProperties.Name="{DynamicResource Minutes}" Minimum="0" Maximum="59" Increment="1" FormatString="00" Height="42" />
+                    <TextBlock Grid.Column="3" Text=":" VerticalAlignment="Center" />
+                    <NumericUpDown Name="PlayTimeSecondsInput" Grid.Column="4" AutomationProperties.Name="{DynamicResource Seconds}" Minimum="0" Maximum="59" Increment="1" FormatString="00" Height="42" />
+                  </Grid>
+                </StackPanel>
               </StackPanel>
             </StackPanel>
           </suki:GlassCard>
