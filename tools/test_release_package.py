@@ -2,6 +2,7 @@
 """Extract a platform package and verify its launchers and CLI."""
 
 import argparse
+import json
 import plistlib
 import subprocess
 import sys
@@ -41,6 +42,10 @@ def main() -> None:
             gui = target / ("FEE Save Editor.exe" if suffix else "FeeEditor.Gui")
             assert gui.is_file()
             cli = target / f"FeeEditor.Cli{suffix}"
+        for config in target.rglob("*.runtimeconfig.json"):
+            properties = json.loads(config.read_text(encoding="utf-8"))["runtimeOptions"]["configProperties"]
+            if properties.get("System.Runtime.InteropServices.BuiltInComInterop.IsSupported", True):
+                raise ValueError(f"Shared trimmed runtime requires COM interop to be disabled: {config.name}")
         assert not list(target.rglob("*.pdb"))
         subprocess.run([sys.executable, str(root / "tools/test_cli.py"), "--cli", str(cli)], check=True)
     print("Release package tests passed.")

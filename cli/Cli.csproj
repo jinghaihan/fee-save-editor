@@ -4,6 +4,7 @@
     <AssemblyName>FeeEditor.Cli</AssemblyName>
     <RootNamespace>FeeEditor.Cli</RootNamespace>
     <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
+    <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../core/Core.csproj" />
