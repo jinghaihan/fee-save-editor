@@ -3,6 +3,7 @@
     <OutputType>Exe</OutputType>
     <AssemblyName>FeeEditor.Cli</AssemblyName>
     <RootNamespace>FeeEditor.Cli</RootNamespace>
+    <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../core/Core.csproj" />

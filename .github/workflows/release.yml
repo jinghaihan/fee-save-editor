@@ -60,11 +60,8 @@ jobs:
       - name: Verify GUI rendering
         run: dotnet run --project test/Gui.Smoke.csproj -c Release --no-build
 
-      - name: Publish GUI
+      - name: Publish GUI and CLI with a shared trimmed runtime
         run: dotnet publish gui/FeeEditor.Gui.csproj -c Release -r ${{ matrix.rid }} --self-contained true -p:PublishSingleFile=false -o dist/gui/${{ matrix.rid }}
-
-      - name: Publish CLI
-        run: dotnet publish cli/Cli.csproj -c Release -r ${{ matrix.rid }} --self-contained true -p:PublishSingleFile=false -o dist/cli/${{ matrix.rid }}
 
       - name: Package platform download
         run: python tools/package_release.py ${{ matrix.rid }}

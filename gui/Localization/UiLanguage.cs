@@ -16,7 +16,7 @@ public static class UiLanguage
         using var stream = typeof(UiLanguage).Assembly.GetManifestResourceStream(
             $"FeeEditor.Gui.Localization.{language}.json")
             ?? throw new InvalidOperationException($"Missing language resource: {language}");
-        return JsonSerializer.Deserialize<Dictionary<string, string>>(stream)
+        return JsonSerializer.Deserialize(stream, UiLocaleJsonContext.Default.DictionaryStringString)
             ?? throw new InvalidOperationException($"Invalid language resource: {language}");
     }
 

@@ -114,7 +114,7 @@ def main() -> None:
 
     version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
     gui = args.gui or ROOT / "dist/gui" / args.rid
-    cli = args.cli or ROOT / "dist/cli" / args.rid
+    cli = args.cli or gui
     output = args.output or ROOT / "dist" / f"fee-save-editor-v{version}-{args.rid}.zip"
     suffix = ".exe" if args.rid == "win-x64" else ""
     for executable in (gui / f"FeeEditor.Gui{suffix}", cli / f"FeeEditor.Cli{suffix}"):

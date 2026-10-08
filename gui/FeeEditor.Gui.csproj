@@ -4,6 +4,10 @@
     <AssemblyName>FeeEditor.Gui</AssemblyName>
     <RootNamespace>FeeEditor.Gui</RootNamespace>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <PublishTrimmed Condition="'$(Configuration)' == 'Release'">true</PublishTrimmed>
+    <TrimMode>full</TrimMode>
+    <ILLinkTreatWarningsAsErrors>false</ILLinkTreatWarningsAsErrors>
+    <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
     <ApplicationIcon>Assets/app-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
@@ -17,5 +21,11 @@
     <EmbeddedResource Include="Localization/*.json" WithCulture="false" />
     <AvaloniaResource Include="Assets/app-icon.png" />
     <AvaloniaResource Include="Assets/app-icon.ico" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(PublishTrimmed)' == 'true'">
+    <ProjectReference Include="../cli/Cli.csproj" />
+    <TrimmerRootAssembly Include="FeeEditor.Gui" />
+    <TrimmerRootAssembly Include="FeeEditor.Core" />
+    <TrimmerRootAssembly Include="FeeEditor.Cli" />
   </ItemGroup>
 </Project>
