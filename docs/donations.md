@@ -5,7 +5,7 @@ is false: Firene, Brodia, Elusia and Solm. Lythos, Gradlon and DLC locations are
 not additional donation countries.
 
 Source: [HubInvestment.xml](https://github.com/Xzonn/FireEmblemEngageData/blob/86b8be7b9820e1bb3bce87d2a9a805ead85d92ab/data/xml/HubInvestment.xml).
-`tools/import_donation_catalog.py` pins the data revision and imports names in all nine supported languages from the pinned game-text revision.
+`scripts/import_donation_catalog.py` pins the data revision and imports names in all nine supported languages from the pinned game-text revision.
 
 | Level | Cumulative donated gold |
 | --- | ---: |

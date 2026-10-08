@@ -86,7 +86,7 @@ def check_build(head: str) -> None:
 def run_host_tests() -> None:
     command("dotnet", "build", "FeeEditor.slnx", "-c", "Release", "--nologo")
     command("dotnet", "run", "--project", "test/Gui.Smoke.csproj", "-c", "Release", "--no-build")
-    command(sys.executable, "tools/test_cli.py", "--cli", "cli/bin/Release/net10.0/FeeEditor.Cli.dll")
+    command(sys.executable, "scripts/test_cli.py", "--cli", "cli/bin/Release/net10.0/FeeEditor.Cli.dll")
 
 
 def push_tag(tag: str) -> None:

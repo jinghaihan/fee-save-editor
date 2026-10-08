@@ -47,7 +47,7 @@ def main() -> None:
             if properties.get("System.Runtime.InteropServices.BuiltInComInterop.IsSupported", True):
                 raise ValueError(f"Shared trimmed runtime requires COM interop to be disabled: {config.name}")
         assert not list(target.rglob("*.pdb"))
-        subprocess.run([sys.executable, str(root / "tools/test_cli.py"), "--cli", str(cli)], check=True)
+        subprocess.run([sys.executable, str(root / "scripts/test_cli.py"), "--cli", str(cli)], check=True)
     print("Release package tests passed.")
 
 

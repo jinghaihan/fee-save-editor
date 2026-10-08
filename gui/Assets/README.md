@@ -13,7 +13,7 @@ transparent padding. There are no added letters, borders or backgrounds.
 Regenerate them with Pillow installed:
 
 ```sh
-python tools/make_app_icons.py /path/to/FEE_Sommie.png
+python scripts/make_app_icons.py /path/to/FEE_Sommie.png
 ```
 
 The PNG is embedded for the macOS Dock. Windows embeds the ICO in

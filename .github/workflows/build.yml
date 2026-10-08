@@ -80,7 +80,7 @@ jobs:
         run: dotnet build cli/Cli.csproj -c Release --nologo
 
       - name: Verify save editing
-        run: python tools/test_cli.py --cli cli/bin/Release/net10.0/${{ matrix.executable }}
+        run: python scripts/test_cli.py --cli cli/bin/Release/net10.0/${{ matrix.executable }}
 
   package:
     needs: [gui, cli]
@@ -110,7 +110,7 @@ jobs:
           path: dist/gui/${{ matrix.rid }}
 
       - name: Package shared runtime
-        run: python tools/package_release.py ${{ matrix.rid }}
+        run: python scripts/package_release.py ${{ matrix.rid }}
 
       - name: Test extracted release ZIP
-        run: python tools/test_release_package.py ${{ matrix.rid }}
+        run: python scripts/test_release_package.py ${{ matrix.rid }}

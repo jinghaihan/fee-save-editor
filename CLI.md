@@ -292,9 +292,9 @@ Both game saves and `Global` saves support inspection and lossless copies.
 ```sh
 dotnet build FeeEditor.slnx -c Release
 dotnet run --project test/Gui.Smoke.csproj -c Release --no-build
-python3 tools/test_cli.py --cli cli/bin/Release/net10.0/FeeEditor.Cli.dll
-python3 tools/release.py minor --check
-python3 tools/release.py minor
+python3 scripts/test_cli.py --cli cli/bin/Release/net10.0/FeeEditor.Cli.dll
+python3 scripts/release.py minor --check
+python3 scripts/release.py minor
 ```
 
 The release script runs tests, updates `VERSION`, creates `chore: release vX.Y.Z`

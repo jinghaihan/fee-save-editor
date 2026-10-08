@@ -55,7 +55,7 @@ jobs:
         run: dotnet build FeeEditor.slnx -c Release --nologo
 
       - name: Verify CLI save editing
-        run: python tools/test_cli.py --cli cli/bin/Release/net10.0/${{ matrix.cli }}
+        run: python scripts/test_cli.py --cli cli/bin/Release/net10.0/${{ matrix.cli }}
 
       - name: Verify GUI rendering
         run: dotnet run --project test/Gui.Smoke.csproj -c Release --no-build
@@ -64,10 +64,10 @@ jobs:
         run: dotnet publish gui/FeeEditor.Gui.csproj -c Release -r ${{ matrix.rid }} --self-contained true -p:PublishSingleFile=false -o dist/gui/${{ matrix.rid }}
 
       - name: Package platform download
-        run: python tools/package_release.py ${{ matrix.rid }}
+        run: python scripts/package_release.py ${{ matrix.rid }}
 
       - name: Test extracted release ZIP
-        run: python tools/test_release_package.py ${{ matrix.rid }}
+        run: python scripts/test_release_package.py ${{ matrix.rid }}
 
       - uses: actions/upload-artifact@v7
         with:

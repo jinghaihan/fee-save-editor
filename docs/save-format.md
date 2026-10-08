@@ -209,7 +209,7 @@ The saved capacity itself is never changed. One slot represents one item;
 remaining uses are not an inventory quantity.
 
 `core/Data/items.json` contains 364 base/DLC convoy definitions with names in
-all nine supported languages. `tools/import_item_catalog.py` uses the pinned
+all nine supported languages. `scripts/import_item_catalog.py` uses the pinned
 complete [Item table](https://github.com/Xzonn/FireEmblemEngageData/blob/86b8be7b9820e1bb3bce87d2a9a805ead85d92ab/data/xml/Item.xml).
 The importer includes convoy kinds 1–10 and excludes quantity-based items and
 entries marked chapter-only, enemy-only, Engage-only, unpublished or not
@@ -375,7 +375,7 @@ not fabricated. Empty names, control characters, malformed Unicode and strings
 exceeding the parser's 4096-byte bound are rejected; this bound is a serialization
 limit, not a claim about the in-game naming screen's character limit.
 
-`tools/import_roster_catalog.py` generates minimal facts and nine-language
+`scripts/import_roster_catalog.py` generates minimal facts and nine-language
 names, including DLC, from pinned
 [data tables](https://github.com/LordMewtwo73/feEngage-randomizer/tree/8a64328fc9a4df7649852ec2ac8b7d5beaedbc58/assets/VanillaFiles)
 and [localized messages](https://github.com/delvier/Iron19_L10n/tree/810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b).
@@ -523,7 +523,7 @@ rank bits are preserved. No achievements, global gallery or story flags are
 fabricated. Invalid material counts, fragments, capacity, links or variable
 schemas fail atomically; source save bytes remain unchanged.
 
-`tools/import_bond_ring_rules.py` imports the three melding costs from
+`scripts/import_bond_ring_rules.py` imports the three melding costs from
 Xzonn/FireEmblemEngageData revision `86b8be7b9820e1bb3bce87d2a9a805ead85d92ab`.
 
 Owners are resolved from the UNIT trailer after AI/customization: two bytes,
@@ -594,7 +594,7 @@ are rebuilt. No UNIT equipment, USER resources, level-cap or story flags change.
 The native procurement call goes to runtime recording at `0x2718eb0`; it is not a
 story-unlock variable and is not synthesized here.
 
-`tools/import_emblem_creation.py` derives the minimal weapon list from the complete
+`scripts/import_emblem_creation.py` derives the minimal weapon list from the complete
 base/DLC `God.xml` at FireEmblemEngageData revision
 `86b8be7b9820e1bb3bce87d2a9a805ead85d92ab`. Synthetic tests cover every supported
 Emblem, reuse/new-holder paths, equipment, capacity and no-op handling. Independent
@@ -602,7 +602,7 @@ CLI decoding verifies flags, references, weapon initialization, preserved sectio
 and edits of temporary copies of the supplied saves. Gameplay after acquisition
 has not yet been tested.
 
-`tools/import_emblem_catalog.py` imports minimal identifiers, names and thresholds
+`scripts/import_emblem_catalog.py` imports minimal identifiers, names and thresholds
 from FE17-DOC revision `99677e4cad22b636bee4af5a3052003bed17c443` and Iron19_L10n
 revision `810fc6d5336e2caf6e434cc6dc316e8ceac5dc7b`. It includes all 20 saved main/DLC
 Emblems and 483 named common rings. Four untranslated color/debug table entries
