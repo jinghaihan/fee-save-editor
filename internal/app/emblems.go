@@ -74,7 +74,7 @@ func (a *App) emblemsPage(c *ui.Context) {
 			}
 		}
 		key := fmt.Sprintf("bonds/%d/%s", emblem.InstanceId, person)
-		a.columns(c, func() {
+		ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
 			type values struct {
 				Level string
 				Exp   float64
@@ -113,7 +113,7 @@ func (a *App) emblemsPage(c *ui.Context) {
 			a.button(c, "MaxBond", func() {
 				a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeEmblemBonds(emblem.InstanceId, person) })
 			})
-		}, func() {
+			ui.Spacer(c).Height(editorAppearance.SectionGap)
 			var condition *save.EmblemCondition
 			for _, r := range conditions {
 				if r.BondHolderId == emblem.InstanceId {
