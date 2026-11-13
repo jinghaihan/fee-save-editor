@@ -56,8 +56,9 @@ func (a *App) amiiboPage(c *ui.Context) {
 		}
 	}
 	ui.Scroll(c).Grow(1).Children(func() {
-		a.card(c, "amiibo").Children(func() {
-			a.sectionColumns(c, func() { a.amiiboGroup(c, "Outfits", rewards) }, func() { a.amiiboGroup(c, "Music", rewards) })
+		a.card(c, "amiibo").Gap(editorAppearance.CardPadding).Children(func() {
+			a.amiiboGroup(c, "Outfits", rewards)
+			a.amiiboGroup(c, "Music", rewards)
 		})
 	})
 }
@@ -69,35 +70,9 @@ func (a *App) amiiboGroup(c *ui.Context, group string, rewards []save.AmiiboRewa
 		}
 	}
 	ui.Column(c).Gap(editorAppearance.ControlGap).Role(ui.RoleGroup).Label(a.T("Amiibo" + group)).Children(func() {
-		a.heading(c, "Amiibo"+group, fmt.Sprintf("%d/12", unlocked))
-		for _, r := range rewards {
-			if r.Definition.Group != group {
-				continue
-			}
-			key := "amiibo-selection/" + r.Definition.Key
-			selected := a.flags[key]
-			if selected == nil {
-				selected = new(bool)
-				a.flags[key] = selected
-			}
-			if r.Unlocked {
-				*selected = true
-			}
-			ui.Checkbox(c.Key(key), selected, r.Definition.Names.Name(a.Language)).Disabled(r.Unlocked)
-		}
-		a.controlColumns(c, func() {
-			a.button(c, "UnlockSelected", func() {
-				keys := []string{}
-				for _, r := range rewards {
-					if r.Definition.Group == group {
-						if flag := a.flags["amiibo-selection/"+r.Definition.Key]; flag != nil && *flag {
-							keys = append(keys, r.Definition.Key)
-						}
-					}
-				}
-				a.apply(func(s *save.Save) (*save.Save, error) { return s.UnlockAmiibo(keys) })
-			})
-		}, func() {
+		ui.Row(c).Gap(editorAppearance.ControlGap).AlignItems(ui.Center).Children(func() {
+			ui.Text(c, a.T("Amiibo"+group)).Bold().Grow(1)
+			ui.Textf(c, "%d/12", unlocked)
 			a.button(c, "UnlockAll", func() {
 				keys := []string{}
 				for _, r := range rewards {
@@ -108,6 +83,15 @@ func (a *App) amiiboGroup(c *ui.Context, group string, rewards []save.AmiiboRewa
 				a.apply(func(s *save.Save) (*save.Save, error) { return s.UnlockAmiibo(keys) })
 			})
 		})
+		for _, r := range rewards {
+			if r.Definition.Group != group {
+				continue
+			}
+			unlocked := r.Unlocked
+			if ui.Checkbox(c.Key(r.Definition.Key), &unlocked, r.Definition.Names.Name(a.Language)).Disabled(r.Unlocked).Changed() {
+				a.apply(func(s *save.Save) (*save.Save, error) { return s.UnlockAmiibo([]string{r.Definition.Key}) })
+			}
+		}
 	})
 }
 func (a *App) achievementsPage(c *ui.Context) {

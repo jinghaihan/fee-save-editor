@@ -562,7 +562,6 @@ func TestControlGroupSpacing(t *testing.T) {
 				{"convoy-actions", 1, []string{"AddItem", "DeleteItem"}, true, 1},
 				{"emblem-actions", 3, []string{"MaxAllBonds", "CleanAll", "RemoveEmblem", "AddEmblem"}, false, 1},
 				{"achievement-filters", 6, []string{"Category", "Status"}, true, 1},
-				{"amiibo-actions", 8, []string{"UnlockSelected", "UnlockAll"}, true, 2},
 			} {
 				t.Run(fmt.Sprintf("%s/dark=%v/%dx%d", group.name, dark, size[0], size[1]), func(t *testing.T) {
 					a := fixture(t)
