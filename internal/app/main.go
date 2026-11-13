@@ -196,6 +196,11 @@ func (a *App) donationsCard(c *ui.Context) {
 			ui.Text(c, e.Error())
 			return
 		}
+		if !a.hasGameSave() {
+			for _, d := range catalog.DonationCountries {
+				rows = append(rows, save.Donation{Country: d})
+			}
+		}
 		for _, r := range rows {
 			d := r.Country
 			ui.Column(c.Key(d.Id)).Gap(editorAppearance.ControlGap).Children(func() {

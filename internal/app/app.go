@@ -272,6 +272,10 @@ type cachedResult[T any] struct {
 	Err   error
 }
 
+func (a *App) hasGameSave() bool {
+	return a.Save != nil && a.Save.Kind == save.Game
+}
+
 func read[T any](a *App, key string, fn func() (T, error)) (T, error) {
 	if a.Save == nil || a.Save.Kind == save.Global && key != "tickets" {
 		var zero T

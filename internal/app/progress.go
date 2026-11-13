@@ -25,27 +25,36 @@ func (a *App) animalsPage(c *ui.Context) {
 			}
 		})
 	}, func(id string) {
-		for _, r := range animals {
-			if r.Definition.Id != id {
-				continue
+		var r save.Animal
+		for _, row := range animals {
+			if row.Definition.Id == id {
+				r = row
+				break
 			}
-			ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
-				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
-				a.numberEdit(c, "Amount", "animals/"+id, r.Amount, 0, 99, func(s *save.Save, n int) (*save.Save, error) { return s.WithAnimal(id, n, false) })
-				a.applyButton(c, "animals")
-				a.button(c, "MaxAmount", func() {
-					if a.ApplyPending("animals") == nil {
-						a.apply(func(s *save.Save) (*save.Save, error) { return s.WithAnimal(id, 99, false) })
-					}
-				})
-			})
 		}
+		ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
+			if r.Definition.Id != "" {
+				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
+			}
+			a.numberEdit(c, "Amount", "animals/"+id, r.Amount, 0, 99, func(s *save.Save, n int) (*save.Save, error) { return s.WithAnimal(id, n, false) })
+			a.applyButton(c, "animals")
+			a.button(c, "MaxAmount", func() {
+				if a.ApplyPending("animals") == nil {
+					a.apply(func(s *save.Save) (*save.Save, error) { return s.WithAnimal(id, 99, false) })
+				}
+			})
+		})
 	})
 }
 func (a *App) amiiboPage(c *ui.Context) {
 	rewards, ok := data(c, a, "amiibo", a.Save.Amiibo)
 	if !ok {
 		return
+	}
+	if !a.hasGameSave() {
+		for _, d := range catalog.AmiiboRewards {
+			rewards = append(rewards, save.AmiiboReward{Definition: d})
+		}
 	}
 	ui.Scroll(c).Grow(1).Children(func() {
 		a.sectionColumns(c, func() { a.amiiboGroup(c, "Outfits", rewards) }, func() { a.amiiboGroup(c, "Music", rewards) })
@@ -149,33 +158,51 @@ func (a *App) achievementsPage(c *ui.Context) {
 	}}, func() {
 		a.button(c, "UnlockAll", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.UnlockAchievements("") }) })
 	}, func(id string) {
-		for _, r := range achievements {
-			if r.Definition.Id != id {
-				continue
+		var r save.Achievement
+		for _, row := range achievements {
+			if row.Definition.Id == id {
+				r = row
+				break
 			}
-			ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
-				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
-				a.staticField(c, "Category", a.T("AchievementCategory"+[]string{"Unit", "Battle", "Somniel", "Shop", "System"}[r.Definition.Category]))
-				status := "NotAchieved"
-				if r.RewardAvailable {
-					status = "RewardAvailable"
-				}
-				if r.RewardClaimed {
-					status = "RewardClaimed"
-				}
-				a.staticField(c, "Status", a.T(status))
-				a.staticField(c, "BondFragments", r.Definition.Reward)
-				if ui.Button(c, a.T("UnlockAchievement")).Disabled(r.Achieved).Clicked() {
-					a.apply(func(s *save.Save) (*save.Save, error) { return s.UnlockAchievements(id) })
-				}
-			})
 		}
+		ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
+			if r.Definition.Id != "" {
+				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
+			}
+			a.staticField(c, "Category", a.T("AchievementCategory"+[]string{"Unit", "Battle", "Somniel", "Shop", "System"}[r.Definition.Category]))
+			status := "NotAchieved"
+			if r.RewardAvailable {
+				status = "RewardAvailable"
+			}
+			if r.RewardClaimed {
+				status = "RewardClaimed"
+			}
+			a.staticField(c, "Status", a.T(status))
+			a.staticField(c, "BondFragments", r.Definition.Reward)
+			if ui.Button(c, a.T("UnlockAchievement")).Disabled(r.Achieved).Clicked() {
+				a.apply(func(s *save.Save) (*save.Save, error) { return s.UnlockAchievements(id) })
+			}
+		})
 	})
 }
 func (a *App) minigamesPage(c *ui.Context) {
 	records, ok := data(c, a, "minigames", a.Save.MinigameRecords)
 	if !ok {
 		return
+	}
+	if !a.hasGameSave() {
+		for _, group := range catalog.Minigames {
+			for _, d := range group.Records {
+				r := save.MinigameRecord{Definition: d}
+				if d.RankKey() != "" {
+					r.Rank = new(int)
+				}
+				if d.SizeKey() != "" {
+					r.BestSize = new(int)
+				}
+				records = append(records, r)
+			}
+		}
 	}
 	byKey := map[string]save.MinigameRecord{}
 	for _, r := range records {
@@ -299,15 +326,18 @@ func (a *App) inspectorPage(c *ui.Context) {
 			rows = append(rows, row{v.Key, v.Key, fmt.Sprint(v.Value)})
 		}
 		a.split(c, "variables", "Variables", rows, listHeader{}, nil, func(key string) {
-			for _, v := range variables {
-				if v.Key == key {
-					ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
-						ui.Text(c, key)
-						a.numberEdit(c, "Value", "variables/"+key, v.Value, -2147483648, 2147483647, func(s *save.Save, n int) (*save.Save, error) { return s.WithVariable(key, n) })
-						a.applyButton(c, "variables")
-					})
+			var v save.GameVariable
+			for _, row := range variables {
+				if row.Key == key {
+					v = row
+					break
 				}
 			}
+			ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
+				ui.Text(c, key)
+				a.numberEdit(c, "Value", "variables/"+key, v.Value, -2147483648, 2147483647, func(s *save.Save, n int) (*save.Save, error) { return s.WithVariable(key, n) })
+				a.applyButton(c, "variables")
+			})
 		})
 		return
 	}
@@ -323,7 +353,11 @@ func (a *App) inspectorPage(c *ui.Context) {
 		i, _ := strconv.Atoi(id)
 		ui.Column(c).Gap(editorAppearance.SectionGap).Children(func() {
 			ui.Column(c).Gap(editorAppearance.ControlGap).Children(func() {
-				a.staticField(c, "FileName", filepath.Base(a.Path))
+				filename := ""
+				if a.Path != "" {
+					filename = filepath.Base(a.Path)
+				}
+				a.staticField(c, "FileName", filename)
 				kind := "GameSave"
 				if a.Save != nil && a.Save.Kind == save.Global {
 					kind = "GlobalSave"
@@ -335,9 +369,14 @@ func (a *App) inspectorPage(c *ui.Context) {
 					}
 					return a.Save.Length()
 				}())
-				if a.Save != nil && a.Save.FormatVersion != nil {
-					a.staticField(c, "FormatVersion", *a.Save.FormatVersion)
-					a.staticField(c, "GameVersion", fmt.Sprintf("0x%X", *a.Save.GameVersion))
+				if a.Save == nil || a.Save.FormatVersion != nil {
+					version, gameVersion := 0, ""
+					if a.Save != nil {
+						version = int(*a.Save.FormatVersion)
+						gameVersion = fmt.Sprintf("0x%X", *a.Save.GameVersion)
+					}
+					a.staticField(c, "FormatVersion", version)
+					a.staticField(c, "GameVersion", gameVersion)
 				}
 				a.staticField(c, "Checksum", func() string {
 					if a.Save == nil {

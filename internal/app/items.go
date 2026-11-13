@@ -87,16 +87,20 @@ func (a *App) quantityPage(c *ui.Context, category string) {
 			})
 		}
 	}, func(id string) {
-		for _, r := range items {
-			if r.Definition.Id != id {
-				continue
+		var r save.QuantityItem
+		for _, row := range items {
+			if row.Definition.Id == id {
+				r = row
+				break
 			}
-			ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
-				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
-				a.numberEdit(c, "Amount", "quantity/"+id, r.Amount, 0, r.Definition.Maximum, func(s *save.Save, n int) (*save.Save, error) { return s.WithQuantity(id, n) })
-				a.applyButton(c, "quantity")
-			})
 		}
+		ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
+			if r.Definition.Id != "" {
+				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
+			}
+			a.numberEdit(c, "Amount", "quantity/"+id, r.Amount, 0, r.Definition.Maximum, func(s *save.Save, n int) (*save.Save, error) { return s.WithQuantity(id, n) })
+			a.applyButton(c, "quantity")
+		})
 	})
 }
 
@@ -130,7 +134,12 @@ func newItemDraft(item *save.InventoryItem) itemDraft {
 }
 func (a *App) itemEditor(c *ui.Context, scope string, index *int, slot int, item *save.InventoryItem) {
 	key := fmt.Sprintf("%s/%d", scope, slot)
-	d := draft(a, key, func() itemDraft { return newItemDraft(item) })
+	d := draft(a, key, func() itemDraft {
+		if !a.hasGameSave() {
+			return itemDraft{}
+		}
+		return newItemDraft(item)
+	})
 	stage := func() {
 		a.stage(key, func(s *save.Save) (*save.Save, error) {
 			if d.ID == "" {

@@ -159,3 +159,118 @@ func TestMinigameTableEditing(t *testing.T) {
 		})
 	}
 }
+
+func TestUnloadedFormsStayVisible(t *testing.T) {
+	for _, dark := range []bool{false, true} {
+		for _, size := range [][2]int{{1120, 780}, {860, 600}} {
+			a := New()
+			a.dark = dark
+			tt := ui.NewTesterWith(a.View, size[0], size[1], ui.TesterOptions{Dark: dark})
+			for _, v := range testViews() {
+				a.Page = v.page
+				a.revision++
+				if v.key != "" {
+					*a.tab(v.key) = v.tab
+				}
+				tt.Frame()
+				labels := []string{}
+				switch pages[v.page] {
+				case "Main":
+					for _, d := range catalog.DonationCountries {
+						labels = append(labels, replaceFormat(a.T("CountryLevel"), d.Names.Name(a.Language)))
+					}
+				case "Items":
+					if v.tab == 0 {
+						labels = []string{"Item", "RemainingUses", "RefineLevel", "Engraving"}
+					} else {
+						labels = []string{"Amount", "ApplyChanges"}
+					}
+				case "Roster":
+					switch v.tab {
+					case 0:
+						labels = []string{"Class", "Weapons", "Level", "SkillPoints"}
+					case 1:
+						for i, name := range save.StatNames {
+							if save.RosterStat(i) != save.Sight {
+								labels = append(labels, name)
+							}
+						}
+					case 2:
+						labels = []string{"Item", "RemainingUses", "RefineLevel", "Engraving"}
+					case 3:
+						labels = []string{"EquippedSkills", "ClassSkill", "InheritedSkills", "UnlockSkill"}
+					case 4:
+						labels = []string{"Sword", "Lance", "Arts"}
+					case 5:
+						labels = []string{"Kind", "Equipment", "Unequip"}
+					}
+				case "Emblems":
+					if v.tab == 0 {
+						labels = []string{"BondLevel", "Experience", "Dirtiness"}
+					} else {
+						labels = []string{"Amount", "EquippedBy"}
+					}
+				case "Support":
+					labels = []string{"Rank", "Points"}
+				case "Achievements":
+					labels = []string{"Category", "Status", "BondFragments", "UnlockAchievement"}
+				case "Animals":
+					labels = []string{"Amount", "MaxAmount"}
+				case "Amiibo":
+					count := 0
+					for _, n := range tt.AccessAll() {
+						if n.Role == ui.RoleCheckBox {
+							count++
+						}
+					}
+					if count != len(catalog.AmiiboRewards) {
+						t.Errorf("unloaded amiibo has %d checkboxes, want %d", count, len(catalog.AmiiboRewards))
+					}
+				case "Minigames":
+					labels = []string{"BestScore", "Caught", "BestSize", "BestRank"}
+				case "Inspector":
+					if v.tab == 0 {
+						labels = []string{"FormatVersion", "GameVersion", "Checksum", "PayloadSize"}
+					} else {
+						labels = []string{"Value", "ApplyChanges"}
+					}
+				}
+				for _, label := range labels {
+					if _, ok := tt.Find(a.T(label)); !ok {
+						t.Errorf("%s-%d: unloaded control %s is missing", pages[v.page], v.tab, label)
+					}
+				}
+				for _, n := range tt.AccessAll() {
+					switch n.Role {
+					case ui.RoleButton, ui.RoleTextField, ui.RoleComboBox, ui.RolePopUpButton, ui.RoleCheckBox:
+						if !n.Disabled {
+							t.Errorf("%s-%d: unloaded control %s is enabled", pages[v.page], v.tab, n.Name)
+						}
+					}
+				}
+				if dir := os.Getenv("FEE_AUDIT_DIR"); dir != "" && size[0] == 1120 {
+					theme := "light"
+					if dark {
+						theme = "dark"
+					}
+					path := filepath.Join(dir, theme, fmt.Sprintf("Unloaded-%s-%d.png", pages[v.page], v.tab))
+					if err := os.MkdirAll(filepath.Dir(path), 0755); err != nil {
+						t.Fatal(err)
+					}
+					f, err := os.Create(path)
+					if err != nil {
+						t.Fatal(err)
+					}
+					err = png.Encode(f, tt.Image())
+					f.Close()
+					if err != nil {
+						t.Fatal(err)
+					}
+				}
+			}
+			if a.Save != nil || len(a.pending) != 0 {
+				t.Fatal("unloaded views created save data or staged edits")
+			}
+		}
+	}
+}

@@ -263,6 +263,11 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 			a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeRosterStats(&index) })
 		})
 	})
+	if !a.hasGameSave() {
+		for i := range save.StatNames {
+			r.Stats = append(r.Stats, save.CharacterStat{Stat: save.RosterStat(i)})
+		}
+	}
 	ui.Grid(c).Columns(2).GapX(editorAppearance.SectionGap).GapY(editorAppearance.ControlGap).Children(func() {
 		for _, stat := range r.Stats {
 			if stat.Stat == save.Sight {
@@ -325,6 +330,9 @@ func (a *App) rosterItems(c *ui.Context, key string, r save.RosterCharacter) {
 			if selected >= 0 && selected < len(r.Items) {
 				index := r.Index
 				a.itemEditor(c, key, &index, selected, r.Items[selected].Item)
+			} else if !a.hasGameSave() {
+				index := r.Index
+				a.itemEditor(c, key, &index, -1, nil)
 			}
 		})
 	})
@@ -478,11 +486,16 @@ func (a *App) rosterEquipment(c *ui.Context, key string, r save.RosterCharacter)
 			}
 			choices = append(choices, option{fmt.Sprint(o.Selection.InstanceId), name})
 		}
-		selected := draft(a, key+"/equipment-choice", func() string { return fmt.Sprint(current.InstanceId) })
+		selected := draft(a, key+"/equipment-choice", func() string {
+			if !a.hasGameSave() {
+				return ""
+			}
+			return fmt.Sprint(current.InstanceId)
+		})
 		if kindChanged && len(choices) > 0 {
 			*selected = choices[0].ID
 		}
-		if *kind != "0" {
+		if *kind != "0" || !a.hasGameSave() {
 			a.combo(c, "Equipment", key+"/equipment", selected, choices)
 		}
 		a.button(c, "ApplyChanges", func() {
