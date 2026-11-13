@@ -51,9 +51,7 @@ func (a *App) View(c *ui.Context) {
 		}
 	})
 	if files := root.DroppedFiles(); len(files) > 0 {
-		if e := a.Load(files[0]); e != nil {
-			a.Status = e.Error()
-		}
+		a.openPath(files[0])
 	}
 	if ui.AlertDialog(c, &a.confirm, a.confirmLabel, "", a.T("Cancel"), a.T("Confirm")) == 1 && a.confirmAction != nil {
 		fn := a.confirmAction

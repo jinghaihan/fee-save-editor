@@ -300,6 +300,19 @@ func (a *App) post(fn func()) {
 		fn()
 	}
 }
+func (a *App) openPath(path string) {
+	go func() {
+		reader := New()
+		err := reader.Load(path)
+		a.post(func() {
+			if err != nil {
+				a.Status = err.Error()
+			} else {
+				a.install(path, reader.Save)
+			}
+		})
+	}()
+}
 func (a *App) open() {
 	title := a.T("OpenSave")
 	go func() {
@@ -388,11 +401,6 @@ func Run(path string) error {
 	if lang := os.Getenv("FEE_EDITOR_LANGUAGE"); lang != "" {
 		a.SetLanguage(lang)
 	}
-	if path != "" {
-		if e := a.Load(path); e != nil {
-			a.Status = e.Error()
-		}
-	}
 	mygo.App.WhenReady(func() {
 		if !a.languageChosen {
 			tags := make([]string, len(catalog.Languages))
@@ -409,6 +417,9 @@ func Run(path string) error {
 		}
 		a.menu()
 		mygo.Theme.OnUpdated(func() { a.post(func() { a.dark = mygo.Theme.IsDark() }) })
+		if path != "" {
+			a.openPath(path)
+		}
 	})
 	return mygo.App.Run()
 }
