@@ -2,7 +2,12 @@
 
 Edit Fire Emblem Engage saves, including DLC characters, Emblems and Bond Rings.
 
-![Roster editor](docs/roster.png)
+<table>
+  <tr>
+    <td width="50%"><img src="docs/roster.png" alt="Roster editor, light appearance"></td>
+    <td width="50%"><img src="docs/emblems.png" alt="Emblem bonds editor, dark appearance"></td>
+  </tr>
+</table>
 
 ## Features
 
