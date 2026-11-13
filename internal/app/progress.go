@@ -210,16 +210,12 @@ func (a *App) minigamesPage(c *ui.Context) {
 	}
 	ui.Scroll(c).Grow(1).MinHeight(0).Children(func() {
 		ui.Column(c).Gap(editorAppearance.SectionGap).Children(func() {
-			a.sectionColumns(c, func() {
-				for _, group := range catalog.Minigames {
-					if group.Id == "PushUps" || group.Id == "Squats" {
-						a.minigameCard(c, group, byKey)
-					}
-				}
-			}, func() {
-				for _, group := range catalog.Minigames {
-					if group.Id == "SitUps" || group.Id == "WyvernRide" {
-						a.minigameCard(c, group, byKey)
+			ui.Grid(c).Columns(2).Gap(editorAppearance.SectionGap).AlignItems(ui.Stretch).Children(func() {
+				for _, id := range []string{"PushUps", "SitUps", "Squats", "WyvernRide"} {
+					for _, group := range catalog.Minigames {
+						if group.Id == id {
+							a.minigameCard(c, group, byKey)
+						}
 					}
 				}
 			})

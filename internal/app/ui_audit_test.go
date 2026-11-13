@@ -160,6 +160,30 @@ func TestMinigameTableEditing(t *testing.T) {
 	}
 }
 
+func TestMinigameCardRows(t *testing.T) {
+	for _, dark := range []bool{false, true} {
+		for _, size := range [][2]int{{1120, 780}, {860, 600}} {
+			a := fixture(t)
+			a.Page, a.dark = 5, dark
+			tt := ui.NewTesterWith(a.View, size[0], size[1], ui.TesterOptions{Dark: dark})
+			cards := map[string]ui.Rect{}
+			for _, g := range catalog.Minigames {
+				n, ok := tt.AccessByRole(ui.RoleGroup, g.Names.Name(a.Language))
+				if !ok {
+					t.Fatalf("missing card %s", g.Id)
+				}
+				cards[g.Id] = n.Bounds
+			}
+			for _, pair := range [][2]string{{"PushUps", "SitUps"}, {"Squats", "WyvernRide"}} {
+				left, right := cards[pair[0]], cards[pair[1]]
+				if left.Y != right.Y || left.H != right.H || left.W != right.W {
+					t.Errorf("%v: cards have different bounds: %+v / %+v", pair, left, right)
+				}
+			}
+		}
+	}
+}
+
 func TestUnloadedFormsStayVisible(t *testing.T) {
 	for _, dark := range []bool{false, true} {
 		for _, size := range [][2]int{{1120, 780}, {860, 600}} {
