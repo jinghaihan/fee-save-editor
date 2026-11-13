@@ -32,7 +32,7 @@ func (a *App) supportPage(c *ui.Context) {
 		}
 		rows = append(rows, row{r.Key, name, []string{a.T("None"), "C", "B", "A", "A+"}[r.Rank]})
 	}
-	a.split(c, "supports", "SupportList", rows, func() { ui.Textf(c, "%d/%d", complete, known) }, func() {
+	a.split(c, "supports", "SupportList", rows, listHeader{summary: fmt.Sprintf("%d/%d", complete, known)}, func() {
 		a.button(c, "MaxAllSupports", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeSupports("") }) })
 	}, func(key string) {
 		var current save.CharacterSupport

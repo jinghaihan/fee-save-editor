@@ -18,7 +18,7 @@ func (a *App) animalsPage(c *ui.Context) {
 	for _, r := range animals {
 		rows = append(rows, row{r.Definition.Id, r.Definition.Names.Name(a.Language), fmt.Sprint(r.Amount)})
 	}
-	a.split(c, "animals", "Animals", rows, nil, func() {
+	a.split(c, "animals", "Animals", rows, listHeader{}, func() {
 		a.button(c, "MaxAllAnimals", func() {
 			if a.ApplyPending("animals") == nil {
 				a.apply(func(s *save.Save) (*save.Save, error) { return s.WithAnimal("", 99, true) })
@@ -52,14 +52,13 @@ func (a *App) amiiboPage(c *ui.Context) {
 	})
 }
 func (a *App) amiiboGroup(c *ui.Context, group string, rewards []save.AmiiboReward) {
-	a.section(c, "Amiibo"+group, func() {
-		unlocked := 0
-		for _, r := range rewards {
-			if r.Definition.Group == group && r.Unlocked {
-				unlocked++
-			}
+	unlocked := 0
+	for _, r := range rewards {
+		if r.Definition.Group == group && r.Unlocked {
+			unlocked++
 		}
-		ui.Text(c, fmt.Sprintf("%d/12", unlocked))
+	}
+	a.sectionWithSummary(c, "Amiibo"+group, fmt.Sprintf("%d/12", unlocked), func() {
 		for _, r := range rewards {
 			if r.Definition.Group != group {
 				continue
@@ -75,7 +74,7 @@ func (a *App) amiiboGroup(c *ui.Context, group string, rewards []save.AmiiboRewa
 			}
 			ui.Checkbox(c.Key(key), selected, r.Definition.Names.Name(a.Language)).Disabled(r.Unlocked)
 		}
-		a.columns(c, func() {
+		a.controlColumns(c, func() {
 			a.button(c, "UnlockSelected", func() {
 				keys := []string{}
 				for _, r := range rewards {
@@ -129,8 +128,8 @@ func (a *App) achievementsPage(c *ui.Context) {
 		}
 		rows = append(rows, row{r.Definition.Id, r.Definition.Names.Name(a.Language), ""})
 	}
-	a.split(c, "achievements", "Achievements", rows, func() {
-		ui.Row(c).Gap(editorAppearance.SectionGap).Children(func() {
+	a.split(c, "achievements", "Achievements", rows, listHeader{controls: func() {
+		ui.Row(c).Gap(editorAppearance.ControlGap).Children(func() {
 			categoryLabel, statusLabel := cats[*category], statuses[*statusFilter]
 			if ui.Select(c.Key("category"), &categoryLabel, cats).Grow(1).Basis(0).Label(a.T("Category")).Changed() {
 				for i, label := range cats {
@@ -147,7 +146,7 @@ func (a *App) achievementsPage(c *ui.Context) {
 				}
 			}
 		})
-	}, func() {
+	}}, func() {
 		a.button(c, "UnlockAll", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.UnlockAchievements("") }) })
 	}, func(id string) {
 		for _, r := range achievements {
@@ -279,7 +278,7 @@ func (a *App) inspectorPage(c *ui.Context) {
 		for _, v := range variables {
 			rows = append(rows, row{v.Key, v.Key, fmt.Sprint(v.Value)})
 		}
-		a.split(c, "variables", "Variables", rows, nil, nil, func(key string) {
+		a.split(c, "variables", "Variables", rows, listHeader{}, nil, func(key string) {
 			for _, v := range variables {
 				if v.Key == key {
 					ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
@@ -300,7 +299,7 @@ func (a *App) inspectorPage(c *ui.Context) {
 	for i, sec := range sectionsData {
 		sections = append(sections, row{strconv.Itoa(i), sec.Name, ""})
 	}
-	a.split(c, "sections", "Sections", sections, nil, nil, func(id string) {
+	a.split(c, "sections", "Sections", sections, listHeader{}, nil, func(id string) {
 		i, _ := strconv.Atoi(id)
 		ui.Column(c).Gap(editorAppearance.SectionGap).Children(func() {
 			a.section(c, "Overview", func() {

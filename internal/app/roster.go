@@ -40,26 +40,28 @@ func (a *App) rosterPage(c *ui.Context) {
 			rows = append(rows, row{strconv.Itoa(r.Index), a.characterName(r), fmt.Sprintf("Lv. %d", r.Values.Level)})
 		}
 	}
-	a.split(c, "roster", "CharacterList", rows, nil, func() {
-		a.button(c, "MaximizeAllStats", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeRosterStats(nil) }) })
-		id := a.selectedID("roster")
-		index, _ := strconv.Atoi(id)
-		ui.Row(c).Gap(editorAppearance.SectionGap).Children(func() {
-			for _, export := range []bool{true, false} {
-				key := "Import"
-				if export {
-					key = "Export"
+	a.split(c, "roster", "CharacterList", rows, listHeader{}, func() {
+		ui.Column(c.Key("roster-actions")).Gap(editorAppearance.ControlGap).Children(func() {
+			a.button(c, "MaximizeAllStats", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeRosterStats(nil) }) })
+			id := a.selectedID("roster")
+			index, _ := strconv.Atoi(id)
+			ui.Row(c).Gap(editorAppearance.ControlGap).Children(func() {
+				for _, export := range []bool{true, false} {
+					key := "Import"
+					if export {
+						key = "Export"
+					}
+					if ui.Button(c, a.T(key)).Grow(1).Basis(0).Disabled(id == "").Clicked() {
+						a.transferCharacter(index, export)
+					}
 				}
-				if ui.Button(c, a.T(key)).Grow(1).Basis(0).Disabled(id == "").Clicked() {
-					a.transferCharacter(index, export)
+			})
+			ui.Row(c).Gap(editorAppearance.ControlGap).Children(func() {
+				a.addCharacterButton(c)
+				if ui.Button(c, a.T("Delete")).Grow(1).Basis(0).Disabled(id == "" || a.Save == nil || !a.Save.CanDeleteRosterCharacter(index)).Clicked() {
+					a.ask("ConfirmDeleteCharacter", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.WithoutRosterCharacter(index) }) })
 				}
-			}
-		})
-		ui.Row(c).Gap(editorAppearance.SectionGap).Children(func() {
-			a.addCharacterButton(c)
-			if ui.Button(c, a.T("Delete")).Grow(1).Basis(0).Disabled(id == "" || a.Save == nil || !a.Save.CanDeleteRosterCharacter(index)).Clicked() {
-				a.ask("ConfirmDeleteCharacter", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.WithoutRosterCharacter(index) }) })
-			}
+			})
 		})
 	}, func(id string) {
 		var current save.RosterCharacter
@@ -234,7 +236,7 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 			hpmax = n
 		}
 	}
-	ui.Row(c).Gap(editorAppearance.SectionGap).AlignItems(ui.End).Children(func() {
+	ui.Row(c).Gap(editorAppearance.ControlGap).AlignItems(ui.End).Children(func() {
 		ui.Column(c).Grow(1).Basis(0).Children(func() {
 			a.numberEdit(c, "CurrentHP", key+"/hp", r.Progress.CurrentHP, 0, hpmax, func(s *save.Save, n int) (*save.Save, error) {
 				rows, e := s.Roster()
@@ -313,7 +315,7 @@ func (a *App) rosterItems(c *ui.Context, key string, r save.RosterCharacter) {
 				for _, v := range r.Items {
 					rows = append(rows, row{strconv.Itoa(v.Slot), a.itemLabel(v.Item), ""})
 				}
-				id := a.list(c, key+"/items", "", rows, nil, nil)
+				id := a.list(c, key+"/items", "", rows, listHeader{}, nil)
 				if id != "" {
 					selected, _ = strconv.Atoi(id)
 				}
@@ -396,7 +398,7 @@ func (a *App) rosterSkills(c *ui.Context, key string, r save.RosterCharacter) {
 			for _, s := range r.Progress.InheritedSkills {
 				rows = append(rows, row{fmt.Sprint(s.Hash), a.skillName(s.Hash), ""})
 			}
-			selected = a.list(c, key+"/inherited", "", rows, nil, nil)
+			selected = a.list(c, key+"/inherited", "", rows, listHeader{}, nil)
 		})
 		options := []option{}
 		for _, s := range catalog.Skills {

@@ -71,19 +71,33 @@ func (a *App) card(c *ui.Context, title string) ui.Element {
 	return ui.Column(c).Padding(editorAppearance.CardPadding).Gap(editorAppearance.SectionGap).Radius(editorAppearance.CardRadius).Background(cardColor(c)).Border(1, c.Theme().Border).MinWidth(0).Role(ui.RoleGroup).Label(a.T(title))
 }
 func (a *App) section(c *ui.Context, title string, fn func()) {
+	a.sectionWithSummary(c, title, "", fn)
+}
+func (a *App) heading(c *ui.Context, title, summary string) {
+	ui.Row(c).Gap(editorAppearance.ControlGap).AlignItems(ui.Center).Children(func() {
+		ui.Text(c, a.T(title)).Bold().Grow(1)
+		if summary != "" {
+			ui.Text(c, summary)
+		}
+	})
+}
+func (a *App) sectionWithSummary(c *ui.Context, title, summary string, fn func()) {
 	a.card(c, title).Children(func() {
-		ui.Text(c, a.T(title)).Bold()
+		a.heading(c, title, summary)
 		ui.Column(c).Gap(editorAppearance.ControlGap).Children(fn)
 	})
 }
 func (a *App) columns(c *ui.Context, fn ...func()) {
-	a.columnsWithGap(c, editorAppearance.ControlGap, fn...)
+	a.columnsWithGaps(c, editorAppearance.SectionGap, editorAppearance.ControlGap, fn...)
 }
 func (a *App) sectionColumns(c *ui.Context, fn ...func()) {
-	a.columnsWithGap(c, editorAppearance.SectionGap, fn...)
+	a.columnsWithGaps(c, editorAppearance.SectionGap, editorAppearance.SectionGap, fn...)
 }
-func (a *App) columnsWithGap(c *ui.Context, verticalGap float32, fn ...func()) {
-	ui.Row(c).Gap(editorAppearance.SectionGap).AlignItems(ui.Start).Children(func() {
+func (a *App) controlColumns(c *ui.Context, fn ...func()) {
+	a.columnsWithGaps(c, editorAppearance.ControlGap, editorAppearance.ControlGap, fn...)
+}
+func (a *App) columnsWithGaps(c *ui.Context, horizontalGap, verticalGap float32, fn ...func()) {
+	ui.Row(c).Gap(horizontalGap).AlignItems(ui.Start).Children(func() {
 		for _, f := range fn {
 			ui.Column(c).Grow(1).Basis(0).MinWidth(0).Gap(verticalGap).Children(f)
 		}
@@ -132,7 +146,13 @@ func (a *App) applyButton(c *ui.Context, prefix string) {
 func (a *App) numberEdit(c *ui.Context, label, key string, value, lo, hi int, fn func(*save.Save, int) (*save.Save, error)) {
 	a.numberField(c, label, key, float64(value), float64(lo), float64(hi), func(n int) { a.stage(key, func(s *save.Save) (*save.Save, error) { return fn(s, n) }) })
 }
-func (a *App) list(c *ui.Context, key, title string, rows []row, header, footer func()) string {
+
+type listHeader struct {
+	summary  string
+	controls func()
+}
+
+func (a *App) list(c *ui.Context, key, title string, rows []row, header listHeader, footer func()) string {
 	s := a.table(key)
 	selectedID := ""
 	if s.Selected >= 0 && s.Selected < len(s.Rows) {
@@ -140,10 +160,10 @@ func (a *App) list(c *ui.Context, key, title string, rows []row, header, footer 
 	}
 	ui.Column(c.Key(key)).Fill().Gap(editorAppearance.ControlGap).Children(func() {
 		if title != "" {
-			ui.Text(c, a.T(title)).Bold()
+			a.heading(c, title, header.summary)
 		}
-		if header != nil {
-			header()
+		if header.controls != nil {
+			header.controls()
 		}
 		ui.SearchField(c, &s.Query).Placeholder(a.T("Search")).Label(a.T("Search"))
 		filtered := []row{}
@@ -193,7 +213,7 @@ func clampIndex(index, length int) int {
 	}
 	return max(0, min(index, length-1))
 }
-func (a *App) split(c *ui.Context, key, title string, rows []row, header, footer func(), detail func(string)) {
+func (a *App) split(c *ui.Context, key, title string, rows []row, header listHeader, footer func(), detail func(string)) {
 	ui.Row(c).Grow(1).Basis(0).MinHeight(0).Gap(editorAppearance.SectionGap).AlignItems(ui.Stretch).Children(func() {
 		id := ""
 		width := float32(320)
@@ -265,41 +285,44 @@ type optionDisplay struct{ ID, Language, Text string }
 
 func (a *App) combo(c *ui.Context, label, key string, selected *string, options []option) bool {
 	changed := false
-	a.field(c, label, func() {
-		labels := make([]string, len(options))
-		counts := map[string]int{}
-		for _, o := range options {
-			counts[o.Name]++
+	a.field(c, label, func() { changed = a.comboControl(c, label, key, selected, options) })
+	return changed
+}
+func (a *App) comboControl(c *ui.Context, label, key string, selected *string, options []option) bool {
+	changed := false
+	labels := make([]string, len(options))
+	counts := map[string]int{}
+	for _, o := range options {
+		counts[o.Name]++
+	}
+	current := *selected
+	for i, o := range options {
+		labels[i] = o.Name
+		if counts[o.Name] > 1 {
+			labels[i] += " [" + o.ID + "]"
 		}
-		current := *selected
-		for i, o := range options {
-			labels[i] = o.Name
-			if counts[o.Name] > 1 {
-				labels[i] += " [" + o.ID + "]"
-			}
-			if o.ID == *selected {
-				current = labels[i]
-			}
+		if o.ID == *selected {
+			current = labels[i]
 		}
-		box := ui.Column(c.Key(key)).MinWidth(0)
-		state := ui.Local(box, "option", func() optionDisplay { return optionDisplay{*selected, a.Language, current} })
-		if state.ID != *selected || state.Language != a.Language {
-			state.ID = *selected
-			state.Language = a.Language
-			state.Text = current
-		}
-		box.Children(func() {
-			if ui.Combobox(c, &state.Text, labels).Label(a.T(label)).Changed() {
-				for i, text := range labels {
-					if state.Text == text {
-						*selected = options[i].ID
-						state.ID = *selected
-						changed = true
-						break
-					}
+	}
+	box := ui.Column(c.Key(key)).MinWidth(0)
+	state := ui.Local(box, "option", func() optionDisplay { return optionDisplay{*selected, a.Language, current} })
+	if state.ID != *selected || state.Language != a.Language {
+		state.ID = *selected
+		state.Language = a.Language
+		state.Text = current
+	}
+	box.Children(func() {
+		if ui.Combobox(c, &state.Text, labels).Label(a.T(label)).Changed() {
+			for i, text := range labels {
+				if state.Text == text {
+					*selected = options[i].ID
+					state.ID = *selected
+					changed = true
+					break
 				}
 			}
-		})
+		}
 	})
 	return changed
 }

@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 
 	"github.com/egoist/mygo/ui"
@@ -110,6 +111,9 @@ func checkBounds(t *testing.T, tt *ui.Tester, width, height int) {
 				if gap >= 0 && gap <= 20 && math.Abs(float64(search.Bounds.X-list.Bounds.X)) < 20 {
 					if search.Bounds.X != list.Bounds.X || search.Bounds.W != list.Bounds.W {
 						t.Errorf("list and search are not aligned: %+v / %+v", search.Bounds, list.Bounds)
+					}
+					if math.Abs(float64(gap-editorAppearance.ControlGap)) > 0.5 {
+						t.Errorf("search-to-list gap = %.1f, want 8", gap)
 					}
 				}
 			}
@@ -415,5 +419,149 @@ func TestCurrentClassChoiceIsApplicable(t *testing.T) {
 	after, e := a.Save.Roster()
 	if e != nil || a.Status != "" || after[0].ClassHash != before[0].ClassHash {
 		t.Fatalf("displayed class choice cannot be applied: %v %s", e, a.Status)
+	}
+}
+
+func TestRosterActionGroupSpacing(t *testing.T) {
+	for _, size := range [][2]int{{1120, 780}, {860, 600}} {
+		a := fixture(t)
+		a.Page = 2
+		tt := ui.NewTester(a.View, size[0], size[1])
+		actions := map[string]ui.AccessInfo{}
+		for _, key := range []string{"MaximizeAllStats", "Export", "Import", "Add", "Delete"} {
+			n, ok := tt.AccessByRole(ui.RoleButton, a.T(key))
+			if !ok {
+				t.Fatalf("missing action %s", key)
+			}
+			actions[key] = n
+			t.Logf("%dx%d %s: %+v", size[0], size[1], key, n.Bounds)
+		}
+		maxAll, export, imported, add, del := actions["MaximizeAllStats"].Bounds, actions["Export"].Bounds, actions["Import"].Bounds, actions["Add"].Bounds, actions["Delete"].Bounds
+		gaps := map[string]float32{
+			"max to export":    export.Y - maxAll.Y - maxAll.H,
+			"export to add":    add.Y - export.Y - export.H,
+			"import to delete": del.Y - imported.Y - imported.H,
+			"export to import": imported.X - export.X - export.W,
+			"add to delete":    del.X - add.X - add.W,
+		}
+		for name, gap := range gaps {
+			if math.Abs(float64(gap-8)) > 0.5 {
+				t.Errorf("%s gap = %.1f, want 8", name, gap)
+			}
+		}
+		if export.Y != imported.Y || add.Y != del.Y || export.H != imported.H || add.H != del.H || export.W != imported.W || add.W != del.W {
+			t.Error("paired actions have different sizes or baselines")
+		}
+	}
+}
+
+func TestEmblemListHeaderSpacing(t *testing.T) {
+	for _, size := range [][2]int{{1120, 780}, {860, 600}} {
+		a := fixture(t)
+		a.Page = 3
+		a.dark = true
+		tt := ui.NewTesterWith(a.View, size[0], size[1], ui.TesterOptions{Dark: true})
+		title, ok := tt.AccessByRole(ui.RoleText, a.T("CharacterList"))
+		if !ok {
+			t.Fatal("missing list title")
+		}
+		combo, ok := tt.Find(a.T("Emblem"))
+		if !ok {
+			t.Fatal("missing Emblem selector")
+		}
+		search, ok := tt.Find(a.T("Search"))
+		if !ok {
+			t.Fatal("missing list search")
+		}
+		for name, gap := range map[string]float32{"title to selector": combo.Y - title.Bounds.Y - title.Bounds.H, "selector to search": search.Y - combo.Y - combo.H} {
+			t.Logf("%dx%d %s: %.1f", size[0], size[1], name, gap)
+			if math.Abs(float64(gap-8)) > 0.5 {
+				t.Errorf("%s gap = %.1f, want 8", name, gap)
+			}
+		}
+		if title.Bounds.X != combo.X || combo.X != search.X || combo.W != search.W {
+			t.Fatal("list header edges do not align")
+		}
+	}
+}
+
+func TestControlGroupSpacing(t *testing.T) {
+	for _, dark := range []bool{false, true} {
+		for _, size := range [][2]int{{1120, 780}, {860, 600}} {
+			for _, group := range []struct {
+				name        string
+				page        int
+				labels      []string
+				horizontal  bool
+				occurrences int
+			}{
+				{"convoy-actions", 1, []string{"AddItem", "DeleteItem"}, true, 1},
+				{"convoy-apply", 1, []string{"ApplyChanges", "AddItem"}, false, 1},
+				{"emblem-actions", 3, []string{"MaxAllBonds", "CleanAll", "RemoveEmblem", "AddEmblem"}, false, 1},
+				{"achievement-filters", 6, []string{"Category", "Status"}, true, 1},
+				{"amiibo-actions", 8, []string{"UnlockSelected", "UnlockAll"}, true, 2},
+			} {
+				t.Run(fmt.Sprintf("%s/dark=%v/%dx%d", group.name, dark, size[0], size[1]), func(t *testing.T) {
+					a := fixture(t)
+					a.Page, a.dark = group.page, dark
+					tt := ui.NewTesterWith(a.View, size[0], size[1], ui.TesterOptions{Dark: dark})
+					rects := make([][]ui.Rect, len(group.labels))
+					for i, label := range group.labels {
+						for _, n := range tt.AccessAll() {
+							if (n.Role == ui.RoleButton || n.Role == ui.RolePopUpButton) && n.Name == a.T(label) {
+								rects[i] = append(rects[i], n.Bounds)
+							}
+						}
+						if len(rects[i]) != group.occurrences {
+							t.Fatalf("%s: got %d controls, want %d", label, len(rects[i]), group.occurrences)
+						}
+					}
+					for i := 1; i < len(rects); i++ {
+						for j, second := range rects[i] {
+							first := rects[i-1][j]
+							gap := second.Y - first.Y - first.H
+							if group.horizontal {
+								gap = second.X - first.X - first.W
+								if first.Y != second.Y || first.W != second.W || first.H != second.H {
+									t.Errorf("paired controls have unequal bounds: %+v / %+v", first, second)
+								}
+							}
+							if math.Abs(float64(gap-8)) > 0.5 {
+								t.Errorf("%s to %s gap = %.1f, want 8", group.labels[i-1], group.labels[i], gap)
+							}
+						}
+					}
+				})
+			}
+		}
+	}
+}
+
+func TestListSummaryPlacement(t *testing.T) {
+	for _, page := range []int{1, 4, 8} {
+		a := fixture(t)
+		a.Page = page
+		tt := ui.NewTester(a.View, 1120, 780)
+		titles := []string{"Convoy"}
+		if page == 4 {
+			titles = []string{"SupportList"}
+		} else if page == 8 {
+			titles = []string{"AmiiboOutfits", "AmiiboMusic"}
+		}
+		for _, key := range titles {
+			title, ok := tt.AccessByRole(ui.RoleText, a.T(key))
+			if !ok {
+				t.Fatalf("missing heading %s", key)
+			}
+			found := false
+			for _, n := range tt.AccessAll() {
+				if n.Role == ui.RoleText && strings.Contains(n.Name, "/") && math.Abs(float64(n.Bounds.Y-title.Bounds.Y)) < 0.5 && n.Bounds.X >= title.Bounds.X+title.Bounds.W {
+					found = true
+				}
+			}
+			if !found {
+				t.Errorf("%s count is not beside its heading", key)
+			}
+		}
 	}
 }

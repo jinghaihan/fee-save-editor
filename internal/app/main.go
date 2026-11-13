@@ -82,7 +82,7 @@ func (a *App) mainPage(c *ui.Context) {
 				a.textField(c, "SommieName", "main/sommie", v.SommieName, func(n string) { a.mainEdit("main/sommie", func(v *save.MainValues) { v.SommieName = n }) })
 				if seconds, e := read(a, "playtime", a.Save.PlayTime); e == nil {
 					a.field(c, "PlayTime", func() {
-						ui.Row(c).Gap(8).AlignItems(ui.Center).Children(func() {
+						ui.Row(c).Gap(editorAppearance.ControlGap).AlignItems(ui.Center).Children(func() {
 							for i, key := range []string{"Hours", "Minutes", "Seconds"} {
 								value, maximum := int(seconds)/3600, 999
 								switch i {

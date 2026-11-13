@@ -51,11 +51,11 @@ func (a *App) emblemsPage(c *ui.Context) {
 	for _, b := range emblem.Bonds {
 		rows = append(rows, row{b.PersonId, a.personName(b.PersonId), fmt.Sprintf("Lv. %d", b.Level)})
 	}
-	a.split(c, "bonds", "CharacterList", rows, func() {
-		if a.combo(c, "Emblem", "emblem-choice", selected, choices) {
+	a.split(c, "bonds", "CharacterList", rows, listHeader{controls: func() {
+		if a.comboControl(c, "Emblem", "emblem-choice", selected, choices) {
 			a.ApplyPending("bonds")
 		}
-	}, func() {
+	}}, func() {
 		a.button(c, "MaxAllBonds", func() {
 			a.perform("bonds", func(s *save.Save) (*save.Save, error) { return s.MaximizeEmblemBonds(emblem.InstanceId, "") })
 		})
@@ -188,7 +188,7 @@ func (a *App) bondRingsPage(c *ui.Context) {
 		}
 		rows = append(rows, row{fmt.Sprint(r.InstanceId), name, fmt.Sprint(r.StockCount)})
 	}
-	a.split(c, "rings", "BondRings", rows, nil, func() {
+	a.split(c, "rings", "BondRings", rows, listHeader{}, func() {
 		a.button(c, "FillSBondRings", func() {
 			a.perform("rings", func(s *save.Save) (*save.Save, error) { return s.WithMissingSBondRings() })
 		})

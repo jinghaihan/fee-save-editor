@@ -51,7 +51,7 @@ func (a *App) itemsPage(c *ui.Context) {
 			rows = append(rows, row{strconv.Itoa(slot.Slot), a.itemLabel(slot.Item), ""})
 		}
 	}
-	a.split(c, "convoy", "Convoy", rows, func() { ui.Text(c, fmt.Sprintf("%d / %d", len(rows), len(slots))) }, func() {
+	a.split(c, "convoy", "Convoy", rows, listHeader{summary: fmt.Sprintf("%d / %d", len(rows), len(slots))}, func() {
 		a.button(c, "RestoreAllUses", func() {
 			if a.ApplyPending("convoy") == nil {
 				a.apply(func(s *save.Save) (*save.Save, error) { return s.RestoreInventoryUses(nil) })
@@ -78,7 +78,7 @@ func (a *App) quantityPage(c *ui.Context, category string) {
 			rows = append(rows, row{r.Definition.Id, r.Definition.Names.Name(a.Language), fmt.Sprint(r.Amount)})
 		}
 	}
-	a.split(c, "quantity", category, rows, nil, func() {
+	a.split(c, "quantity", category, rows, listHeader{}, func() {
 		if category != "KeyItems" {
 			a.button(c, "FillAll", func() {
 				if a.ApplyPending("quantity") == nil {
@@ -233,7 +233,7 @@ func (a *App) itemEditor(c *ui.Context, scope string, index *int, slot int, item
 			a.ApplyPending(scope)
 		}
 		if index == nil {
-			a.columns(c, func() {
+			a.controlColumns(c, func() {
 				a.button(c, "AddItem", func() {
 					if d.ID == "" {
 						return
