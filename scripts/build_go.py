@@ -20,7 +20,7 @@ def main():
         shutil.rmtree(output)
     output.mkdir(parents=True,exist_ok=True)
     version=(ROOT/"VERSION").read_text().strip()
-    for name,package in (("Gui","fee-gui"),("Cli","fee-cli")):
+    for name,package in (("Gui","fee-editor"),("Cli","fee-cli")):
         suffix=".exe" if goos=="windows" else ""
         flags=f"-s -w -X github.com/jinghaihan/fee-save-editor/internal/app.Version={version} -X github.com/jinghaihan/fee-save-editor/internal/cli.Version={version}"
         if goos=="windows" and name=="Gui":flags+=" -H windowsgui"
