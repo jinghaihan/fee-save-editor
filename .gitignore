@@ -10,3 +10,5 @@ dist/
 # Local analysis inputs are never distributed.
 analysis/
 private-data/
+
+/build/

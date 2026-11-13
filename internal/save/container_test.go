@@ -2,10 +2,34 @@ package save
 
 import (
 	"bytes"
+	"errors"
 	"os"
 	"path/filepath"
 	"testing"
 )
+
+func TestExclusiveCopyOnFilesystemsWithoutLinks(t *testing.T) {
+	s := synthetic(t, "game")
+	validate := func(b []byte) error { _, err := Parse(b); return err }
+	path := filepath.Join(t.TempDir(), "copy")
+	if err := writeExclusiveCopy(path, s.Bytes(), validate); err != nil {
+		t.Fatal(err)
+	}
+	if err := writeExclusiveCopy(path, []byte("replacement"), validate); !errors.Is(err, os.ErrExist) {
+		t.Fatalf("existing output was not protected: %v", err)
+	}
+	b, err := os.ReadFile(path)
+	if err != nil || !bytes.Equal(b, s.Bytes()) {
+		t.Fatal("exclusive copy changed the save")
+	}
+	badPath := filepath.Join(t.TempDir(), "invalid")
+	if err := writeExclusiveCopy(badPath, []byte("invalid"), validate); err == nil {
+		t.Fatal("invalid output accepted")
+	}
+	if _, err := os.Stat(badPath); !errors.Is(err, os.ErrNotExist) {
+		t.Fatal("failed output was left behind")
+	}
+}
 
 func synthetic(t *testing.T, name string) *Save {
 	t.Helper()

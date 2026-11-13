@@ -144,7 +144,7 @@ func verified(b []byte) *Save {
 	}
 	return s
 }
-func (s *Save) WriteCopy(path string) error {
+func writeVerifiedCopy(path string, data []byte, validate func([]byte) error) error {
 	output, e := filepath.Abs(path)
 	if e != nil {
 		return e
@@ -157,7 +157,7 @@ func (s *Save) WriteCopy(path string) error {
 		return e
 	}
 	defer os.Remove(f.Name())
-	if _, e = f.Write(s.data); e == nil {
+	if _, e = f.Write(data); e == nil {
 		e = f.Sync()
 	}
 	ce := f.Close()
@@ -171,13 +171,61 @@ func (s *Save) WriteCopy(path string) error {
 	if e != nil {
 		return e
 	}
-	if _, e = Parse(persisted); e != nil {
+	if e = validate(persisted); e != nil {
 		return e
 	}
-	if !bytes.Equal(s.data, persisted) {
+	if !bytes.Equal(data, persisted) {
 		return fmt.Errorf("the written save differs from the in-memory save")
 	}
-	return os.Link(f.Name(), output)
+	if e = os.Link(f.Name(), output); e == nil {
+		return nil
+	}
+	return writeExclusiveCopy(output, persisted, validate)
+}
+func (s *Save) WriteCopy(path string) error {
+	return writeVerifiedCopy(path, s.data, func(b []byte) error { _, err := Parse(b); return err })
+}
+func WriteRosterTransfer(path string, data []byte) error {
+	if _, err := ReadRosterTransfer(data); err != nil {
+		return err
+	}
+	return writeVerifiedCopy(path, data, func(b []byte) error { _, err := ReadRosterTransfer(b); return err })
+}
+
+// FAT and exFAT do not support hard links. Reserve a new output exclusively there.
+func writeExclusiveCopy(path string, data []byte, validate func([]byte) error) (err error) {
+	f, err := os.OpenFile(path, os.O_CREATE|os.O_EXCL|os.O_WRONLY, 0600)
+	if err != nil {
+		return err
+	}
+	complete := false
+	defer func() {
+		f.Close()
+		if !complete {
+			os.Remove(path)
+		}
+	}()
+	if _, err = f.Write(data); err != nil {
+		return err
+	}
+	if err = f.Sync(); err != nil {
+		return err
+	}
+	if err = f.Close(); err != nil {
+		return err
+	}
+	persisted, err := os.ReadFile(path)
+	if err != nil {
+		return err
+	}
+	if err = validate(persisted); err != nil {
+		return err
+	}
+	if !bytes.Equal(data, persisted) {
+		return fmt.Errorf("the written file differs from its in-memory data")
+	}
+	complete = true
+	return nil
 }
 func get16(b []byte, p int) uint16    { return binary.LittleEndian.Uint16(b[p:]) }
 func get32(b []byte, p int) uint32    { return binary.LittleEndian.Uint32(b[p:]) }
