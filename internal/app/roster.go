@@ -118,7 +118,7 @@ func (a *App) addCharacterButton(c *ui.Context) {
 				}
 				return ""
 			})
-			a.combo(c, "CharacterList", "add-character", selected, options)
+			a.comboControl(c, "CharacterList", "add-character", selected, options)
 			a.button(c, "Add", func() {
 				id := *selected
 				if a.apply(func(s *save.Save) (*save.Save, error) { return s.WithAddedRosterCharacter(id) }) {

@@ -75,7 +75,6 @@ func (a *App) emblemsPage(c *ui.Context) {
 		}
 		key := fmt.Sprintf("bonds/%d/%s", emblem.InstanceId, person)
 		a.columns(c, func() {
-			ui.Text(c, a.T("Bonds")).Bold()
 			type values struct {
 				Level string
 				Exp   float64
@@ -116,7 +115,6 @@ func (a *App) emblemsPage(c *ui.Context) {
 			})
 			a.applyButton(c, key)
 		}, func() {
-			ui.Text(c, a.T("RingCare")).Bold()
 			var condition *save.EmblemCondition
 			for _, r := range conditions {
 				if r.BondHolderId == emblem.InstanceId {
@@ -165,7 +163,7 @@ func (a *App) addEmblemButton(c *ui.Context) {
 				}
 				return ""
 			})
-			a.combo(c, "Emblem", "add-emblem", selected, options)
+			a.comboControl(c, "Emblem", "add-emblem", selected, options)
 			a.button(c, "Add", func() {
 				id := *selected
 				if a.apply(func(s *save.Save) (*save.Save, error) { return s.WithAddedEmblem(id) }) {
@@ -200,7 +198,6 @@ func (a *App) bondRingsPage(c *ui.Context) {
 			}
 		}
 		ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
-			ui.Text(c, a.T("BondRings")).Bold()
 			maximum := 99
 			if a.Save != nil {
 				maximum, _ = a.Save.MaximumBondRingStock(ring.InstanceId)

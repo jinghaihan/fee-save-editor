@@ -92,8 +92,7 @@ func (a *App) quantityPage(c *ui.Context, category string) {
 				continue
 			}
 			ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
-				ui.Text(c, a.T("ItemEditor")).Bold()
-				ui.Text(c, r.Definition.Names.Name(a.Language))
+				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
 				a.numberEdit(c, "Amount", "quantity/"+id, r.Amount, 0, r.Definition.Maximum, func(s *save.Save, n int) (*save.Save, error) { return s.WithQuantity(id, n) })
 				a.applyButton(c, "quantity")
 			})
@@ -169,7 +168,6 @@ func (a *App) itemEditor(c *ui.Context, scope string, index *int, slot int, item
 		}
 	}
 	ui.Column(c.Key(key)).MaxWidth(340).Gap(editorAppearance.ControlGap).Disabled(!editable).Children(func() {
-		ui.Text(c, a.T("ItemEditor")).Bold()
 		search := a.query(c, key+"/search")
 		options := []option{}
 		for _, def := range catalog.Items {

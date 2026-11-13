@@ -206,49 +206,69 @@ func (a *App) minigamesPage(c *ui.Context) {
 }
 func (a *App) minigameCard(c *ui.Context, group catalog.MinigameGroup, records map[string]save.MinigameRecord) {
 	a.section(c, group.Names.Name(a.Language), func() {
-		for _, d := range group.Records {
-			r := records[d.Key]
-			ui.Row(c.Key(d.Key)).Gap(editorAppearance.SectionGap).AlignItems(ui.Center).Children(func() {
-				ui.Text(c, d.Names.Name(a.Language)).Grow(1).Basis(0)
-				ui.Column(c).Grow(1).Basis(0).MinWidth(0).Children(func() {
-					label := "BestScore"
-					if d.Fishing() {
-						label = "Caught"
-					}
-					a.numberEdit(c, label, "minigames/"+d.Key+"/value", r.Value, 0, 2147483647, func(s *save.Save, n int) (*save.Save, error) {
-						return s.WithMinigame(d.Key, save.MinigameValues{Value: n})
+		valueTitle := "BestScore"
+		nameTitle := "Difficulty"
+		if group.Id == "Fishing" {
+			valueTitle, nameTitle = "Caught", "Name"
+		}
+		headers := []string{nameTitle, valueTitle}
+		first := records[group.Records[0].Key]
+		if first.BestSize != nil {
+			headers = append(headers, "BestSize")
+		}
+		if first.Rank != nil {
+			headers = append(headers, "BestRank")
+		}
+		ui.Grid(c).Columns(len(headers)).GapX(editorAppearance.SectionGap).GapY(editorAppearance.ControlGap).Children(func() {
+			for _, header := range headers {
+				ui.Text(c, a.T(header)).Bold()
+			}
+			for _, d := range group.Records {
+				r := records[d.Key]
+				label := func(field string) string {
+					return group.Names.Name(a.Language) + " — " + d.Names.Name(a.Language) + " — " + a.T(field)
+				}
+				ui.Text(c, d.Names.Name(a.Language)).AlignSelf(ui.Center)
+				ui.Column(c.Key(d.Key + "/value")).MinWidth(0).Children(func() {
+					key := "minigames/" + d.Key + "/value"
+					a.numberControl(c, label(valueTitle), key, float64(r.Value), 0, 2147483647, func(n int) {
+						a.stage(key, func(s *save.Save) (*save.Save, error) { return s.WithMinigame(d.Key, save.MinigameValues{Value: n}) })
 					})
 				})
 				if r.BestSize != nil {
-					ui.Column(c).Grow(1).Basis(0).MinWidth(0).Children(func() {
-						a.numberEdit(c, "BestSize", "minigames/"+d.Key+"/size", *r.BestSize, 0, 2147483647, func(s *save.Save, n int) (*save.Save, error) {
-							rows, e := s.MinigameRecords()
-							if e != nil {
-								return nil, e
-							}
-							for _, old := range rows {
-								if old.Definition.Key == d.Key {
-									return s.WithMinigame(d.Key, save.MinigameValues{Value: old.Value, BestSize: &n})
+					ui.Column(c.Key(d.Key + "/size")).MinWidth(0).Children(func() {
+						key := "minigames/" + d.Key + "/size"
+						a.numberControl(c, label("BestSize"), key, float64(*r.BestSize), 0, 2147483647, func(n int) {
+							a.stage(key, func(s *save.Save) (*save.Save, error) {
+								rows, e := s.MinigameRecords()
+								if e != nil {
+									return nil, e
 								}
-							}
-							return nil, fmt.Errorf("unknown minigame record")
+								for _, old := range rows {
+									if old.Definition.Key == d.Key {
+										return s.WithMinigame(d.Key, save.MinigameValues{Value: old.Value, BestSize: &n})
+									}
+								}
+								return nil, fmt.Errorf("unknown minigame record")
+							})
 						})
 					})
 				}
 				if r.Rank != nil {
-					ui.Column(c).Grow(1).Basis(0).MinWidth(0).Children(func() {
+					ui.Column(c.Key(d.Key + "/rank")).MinWidth(0).Children(func() {
 						labels := make([]string, len(d.Ranks()))
 						for i, rank := range d.Ranks() {
 							labels[i] = a.T(rank)
 						}
-						a.selectField(c, "BestRank", "minigames/"+d.Key+"/rank", labels[*r.Rank], labels, func(text string) {
+						key := "minigames/" + d.Key + "/rank"
+						a.selectControl(c, label("BestRank"), key, labels[*r.Rank], labels, func(text string) {
 							rank := 0
 							for i, label := range labels {
 								if label == text {
 									rank = i
 								}
 							}
-							a.stage("minigames/"+d.Key+"/rank", func(s *save.Save) (*save.Save, error) {
+							a.stage(key, func(s *save.Save) (*save.Save, error) {
 								rows, e := s.MinigameRecords()
 								if e != nil {
 									return nil, e
@@ -263,8 +283,8 @@ func (a *App) minigameCard(c *ui.Context, group catalog.MinigameGroup, records m
 						})
 					})
 				}
-			})
-		}
+			}
+		})
 	})
 }
 func (a *App) inspectorPage(c *ui.Context) {
@@ -303,7 +323,6 @@ func (a *App) inspectorPage(c *ui.Context) {
 		i, _ := strconv.Atoi(id)
 		ui.Column(c).Gap(editorAppearance.SectionGap).Children(func() {
 			ui.Column(c).Gap(editorAppearance.ControlGap).Children(func() {
-				ui.Text(c, a.T("Overview")).Bold()
 				a.staticField(c, "FileName", filepath.Base(a.Path))
 				kind := "GameSave"
 				if a.Save != nil && a.Save.Kind == save.Global {

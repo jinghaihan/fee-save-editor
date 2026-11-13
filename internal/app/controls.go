@@ -107,12 +107,15 @@ func (a *App) field(c *ui.Context, label string, fn func()) {
 	ui.Field(c.Key(label), a.T(label), fn).Gap(editorAppearance.ControlGap).MinWidth(0)
 }
 func (a *App) numberField(c *ui.Context, label, key string, value float64, lo, hi float64, update func(int)) *float64 {
+	var v *float64
+	a.field(c, label, func() { v = a.numberControl(c, label, key, value, lo, hi, update) })
+	return v
+}
+func (a *App) numberControl(c *ui.Context, label, key string, value, lo, hi float64, update func(int)) *float64 {
 	v := a.number(key, value)
-	a.field(c, label, func() {
-		if ui.NumberInput(c.Key(key), v, lo, hi, 1).Label(a.T(label)).Changed() {
-			update(int(*v))
-		}
-	})
+	if ui.NumberInput(c.Key(key), v, lo, hi, 1).Role(ui.RoleGroup).Label(a.T(label)).Changed() {
+		update(int(*v))
+	}
 	return v
 }
 func (a *App) textField(c *ui.Context, label, key, current string, update func(string)) *string {
@@ -125,12 +128,15 @@ func (a *App) textField(c *ui.Context, label, key, current string, update func(s
 	return v
 }
 func (a *App) selectField(c *ui.Context, label, key, current string, options []string, update func(string)) *string {
+	var v *string
+	a.field(c, label, func() { v = a.selectControl(c, label, key, current, options, update) })
+	return v
+}
+func (a *App) selectControl(c *ui.Context, label, key, current string, options []string, update func(string)) *string {
 	v := a.choice(key, current)
-	a.field(c, label, func() {
-		if ui.Select(c.Key(key), v, options).Label(a.T(label)).Changed() {
-			update(*v)
-		}
-	})
+	if ui.Select(c.Key(key), v, options).Label(a.T(label)).Changed() {
+		update(*v)
+	}
 	return v
 }
 func (a *App) button(c *ui.Context, key string, fn func()) {
