@@ -56,7 +56,9 @@ func (a *App) amiiboPage(c *ui.Context) {
 		}
 	}
 	ui.Scroll(c).Grow(1).Children(func() {
-		a.sectionColumns(c, func() { a.amiiboGroup(c, "Outfits", rewards) }, func() { a.amiiboGroup(c, "Music", rewards) })
+		a.card(c, "amiibo").Children(func() {
+			a.sectionColumns(c, func() { a.amiiboGroup(c, "Outfits", rewards) }, func() { a.amiiboGroup(c, "Music", rewards) })
+		})
 	})
 }
 func (a *App) amiiboGroup(c *ui.Context, group string, rewards []save.AmiiboReward) {
@@ -66,7 +68,8 @@ func (a *App) amiiboGroup(c *ui.Context, group string, rewards []save.AmiiboRewa
 			unlocked++
 		}
 	}
-	a.sectionWithSummary(c, "Amiibo"+group, fmt.Sprintf("%d/12", unlocked), func() {
+	ui.Column(c).Gap(editorAppearance.ControlGap).Role(ui.RoleGroup).Label(a.T("Amiibo" + group)).Children(func() {
+		a.heading(c, "Amiibo"+group, fmt.Sprintf("%d/12", unlocked))
 		for _, r := range rewards {
 			if r.Definition.Group != group {
 				continue
