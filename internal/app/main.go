@@ -220,20 +220,22 @@ func (a *App) donationsCard(c *ui.Context) {
 				})
 			})
 		}
-		a.button(c, "MaxAllLevels", func() {
-			if a.ApplyPending("main/donations") != nil {
-				return
-			}
-			a.apply(func(s *save.Save) (*save.Save, error) {
-				edited := s
-				for _, d := range catalog.DonationCountries {
-					var e error
-					edited, e = edited.WithDonation(d.Id, d.Thresholds[4])
-					if e != nil {
-						return nil, e
-					}
+		ui.Column(c).Padding(editorAppearance.ControlGap, 0, 0).Children(func() {
+			a.button(c, "MaxAllLevels", func() {
+				if a.ApplyPending("main/donations") != nil {
+					return
 				}
-				return edited, nil
+				a.apply(func(s *save.Save) (*save.Save, error) {
+					edited := s
+					for _, d := range catalog.DonationCountries {
+						var e error
+						edited, e = edited.WithDonation(d.Id, d.Thresholds[4])
+						if e != nil {
+							return nil, e
+						}
+					}
+					return edited, nil
+				})
 			})
 		})
 	})
