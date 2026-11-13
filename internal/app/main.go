@@ -196,16 +196,15 @@ func (a *App) donationsCard(c *ui.Context) {
 			ui.Text(c, e.Error())
 			return
 		}
-		if !a.hasGameSave() {
-			for _, d := range catalog.DonationCountries {
-				rows = append(rows, save.Donation{Country: d})
-			}
-		}
+		amounts := map[string]int{}
 		for _, r := range rows {
-			d := r.Country
+			amounts[r.Country.Id] = r.Amount
+		}
+		for _, d := range catalog.DonationCountries {
+			savedAmount := amounts[d.Id]
 			ui.Column(c.Key(d.Id)).Gap(editorAppearance.ControlGap).Children(func() {
 				a.columns(c, func() {
-					amount := int(*a.number("main/donations/"+d.Id, float64(r.Amount)))
+					amount := int(*a.number("main/donations/"+d.Id, float64(savedAmount)))
 					levels := []string{"1", "2", "3", "4", "5"}
 					a.selectField(c, replaceFormat(a.T("CountryLevel"), d.Names.Name(a.Language)), "donation-level/"+d.Id, fmt.Sprint(d.Level(amount)), levels, func(text string) {
 						n := 1
@@ -215,7 +214,7 @@ func (a *App) donationsCard(c *ui.Context) {
 						*a.numbers["main/donations/"+d.Id] = float64(amount)
 					})
 				}, func() {
-					a.numberEdit(c, "DonatedGold", "main/donations/"+d.Id, r.Amount, 0, 9999999, func(s *save.Save, n int) (*save.Save, error) { return s.WithDonation(d.Id, n) })
+					a.numberEdit(c, "DonatedGold", "main/donations/"+d.Id, savedAmount, 0, 9999999, func(s *save.Save, n int) (*save.Save, error) { return s.WithDonation(d.Id, n) })
 				})
 			})
 		}
