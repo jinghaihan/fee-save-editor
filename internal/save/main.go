@@ -111,6 +111,7 @@ func (s *Save) setIntegerValues(values []GameVariable) *Save {
 	changed := false
 	for _, pair := range values {
 		key, value := pair.Key, pair.Value
+		need(value >= -2147483648 && value <= 2147483647, "Game-variable values must fit a signed 32-bit integer.")
 		if p := v.integerOffset(key); p >= 0 {
 			if signed32(s.data, p) == value {
 				continue

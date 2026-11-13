@@ -94,3 +94,12 @@ func TestVariableChangePreservesOtherRecords(t *testing.T) {
 		t.Fatal("arbitrary new inspector variable accepted")
 	}
 }
+func TestNumericVariablesRejectOverflow(t *testing.T) {
+	s := loadFixture(t, "main")
+	if _, e := s.WithVariable("G_所持_IID_てつの晶石", 2147483648); e == nil {
+		t.Fatal("signed 32-bit overflow accepted")
+	}
+	if _, e := s.WithVariable("G_所持_IID_てつの晶石", -2147483649); e == nil {
+		t.Fatal("signed 32-bit underflow accepted")
+	}
+}
