@@ -289,22 +289,21 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 			})
 		})
 		ui.Column(c).Grow(1).Basis(0).MinWidth(0).Children(func() {
-			if ui.Button(c, a.T("RestoreHP")).Clicked() {
-				a.perform(key, func(s *save.Save) (*save.Save, error) {
-					n, e := s.RosterMaximumHP(r.Index)
-					if e != nil {
-						return nil, e
-					}
-					return s.WithRosterCondition(r.Index, r.Progress.InternalLevel, n)
-				})
-			}
-		})
-	})
-	ui.Row(c).AlignItems(ui.Center).Children(func() {
-		ui.Text(c, a.T("Stats")).Bold().Grow(1)
-		a.button(c, "MaximizeStats", func() {
-			index := r.Index
-			a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeRosterStats(&index) })
+			ui.Row(c).Gap(editorAppearance.ControlGap).Children(func() {
+				if ui.Button(c, a.T("RestoreHP")).Grow(1).Basis(0).Clicked() {
+					a.perform(key, func(s *save.Save) (*save.Save, error) {
+						n, e := s.RosterMaximumHP(r.Index)
+						if e != nil {
+							return nil, e
+						}
+						return s.WithRosterCondition(r.Index, r.Progress.InternalLevel, n)
+					})
+				}
+				if ui.Button(c, a.T("MaximizeStats")).Grow(1).Basis(0).Clicked() {
+					index := r.Index
+					a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeRosterStats(&index) })
+				}
+			})
 		})
 	})
 	if !a.hasGameSave() {
@@ -312,7 +311,10 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 			r.Stats = append(r.Stats, save.CharacterStat{Stat: save.RosterStat(i)})
 		}
 	}
-	ui.Grid(c).Columns(2).GapX(editorAppearance.SectionGap).GapY(editorAppearance.ControlGap).Children(func() {
+	ui.Grid(c).ColumnTracks(ui.Fr(1), ui.Fixed(160), ui.Fr(1)).MaxWidth(520).GapX(editorAppearance.SectionGap).GapY(editorAppearance.ControlGap).AlignItems(ui.Center).Children(func() {
+		for _, label := range []string{"Stats", "Value", "StatLimit"} {
+			ui.Text(c, a.T(label)).Bold()
+		}
 		for _, stat := range r.Stats {
 			if stat.Stat == save.Sight {
 				continue
@@ -331,13 +333,8 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 			}
 			fieldKey := fmt.Sprintf("%s/stats/%d", key, stat.Stat)
 			value := a.number(fieldKey, float64(stat.Value))
-			ui.Column(c.Key(label)).Gap(editorAppearance.ControlGap).Children(func() {
-				ui.Row(c).Children(func() {
-					ui.Text(c, a.T(label)).Grow(1)
-					if verified {
-						ui.Text(c, replaceFormat(a.T("StatLimit"), fmt.Sprint(*stat.Maximum)))
-					}
-				})
+			ui.Text(c, a.T(label))
+			ui.Column(c.Key(label)).MinWidth(0).Children(func() {
 				input := ui.NumberInput(c, value, float64(low), float64(high), 1).Role(ui.RoleGroup).Label(a.T(label)).Disabled(!verified)
 				a.trackInput(fieldKey, input)
 				if input.Changed() {
@@ -345,6 +342,11 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 					a.stage(fieldKey, func(s *save.Save) (*save.Save, error) { return s.WithRosterStat(r.Index, stat.Stat, n, false) })
 				}
 			})
+			limit := "—"
+			if verified {
+				limit = fmt.Sprint(*stat.Maximum)
+			}
+			ui.Text(c, limit)
 		}
 	})
 }

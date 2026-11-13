@@ -248,5 +248,5 @@
   "Dirtiness": "오염도",
   "Clean": "닦기",
   "CleanAll": "모두 닦기",
-  "StatLimit": "상한 {0}"
+  "StatLimit": "병종 상한"
 }
