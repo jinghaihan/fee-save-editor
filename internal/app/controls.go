@@ -163,7 +163,7 @@ func (a *App) list(c *ui.Context, key, title string, rows []row, header, footer 
 			if r.Value != "" {
 				text += " · " + r.Value
 			}
-			ui.Text(c, text).Padding(7, 0).SingleLine()
+			ui.Text(c, text).Padding(7, 12).SingleLine()
 		}).Changed() {
 			if e := a.ApplyPending(strings.Split(key, "/")[0]); e != nil {
 				s.Selected = old
