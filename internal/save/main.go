@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"hash/crc32"
 	"math"
+	"sort"
 	"strings"
 	"unicode"
 )
@@ -91,13 +92,25 @@ func (s *Save) Variables() (out []GameVariable, err error) {
 	return out, nil
 }
 func (s *Save) setIntegers(values map[string]int) *Save {
+	keys := make([]string, 0, len(values))
+	for key := range values {
+		keys = append(keys, key)
+	}
+	sort.Strings(keys)
+	pairs := make([]GameVariable, 0, len(keys))
+	for _, key := range keys {
+		pairs = append(pairs, GameVariable{key, values[key]})
+	}
+	return s.setIntegerValues(pairs)
+}
+func (s *Save) setIntegerValues(values []GameVariable) *Save {
 	v := s.variables()
 	payload := bytes.Clone(s.data[v.Section.PayloadOffset() : v.Section.PayloadOffset()+v.Section.Length])
 	add := []byte{}
 	added := 0
 	changed := false
-	// Go callers that care about insertion order use one record at a time.
-	for key, value := range values {
+	for _, pair := range values {
+		key, value := pair.Key, pair.Value
 		if p := v.integerOffset(key); p >= 0 {
 			if signed32(s.data, p) == value {
 				continue
