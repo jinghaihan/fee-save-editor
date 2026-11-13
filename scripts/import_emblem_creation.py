@@ -6,6 +6,7 @@ import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from catalog_data import load_catalog
 from import_roster_catalog import fetch
 
 REVISION = "86b8be7b9820e1bb3bce87d2a9a805ead85d92ab"
@@ -17,7 +18,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    catalog = json.loads((Path(__file__).resolve().parents[1] / "core/Data/emblems.json").read_text(encoding="utf-8"))
+    catalog = load_catalog("emblems")
     normal = {row["Id"] for row in catalog["Emblems"] if row["Id"] != "GID_リュール"}
     god = ET.fromstring(fetch("Xzonn/FireEmblemEngageData", REVISION, "data/xml/God.xml"))
     groups = {}

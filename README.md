@@ -20,15 +20,11 @@ Edit Fire Emblem Engage saves, including DLC characters, Emblems and Bond Rings.
 
 Open **Help → About** to view the application version and visit its GitHub repository.
 
-English is the default language. The Language menu also supports Simplified Chinese, Traditional Chinese, Japanese, Korean, German, French, Spanish and Italian. Interface text and game-data names switch together, including characters, classes, skills, items, rings and achievements.
+The initial language follows your system preferences. The Language menu also supports Simplified Chinese, Traditional Chinese, Japanese, Korean, German, French, Spanish and Italian. Interface text and game-data names switch together, including characters, classes, skills, items, rings and achievements. Light and dark appearance follow your system settings.
 
 ## Get started
 
-With the .NET 10 SDK installed, run:
-
-```sh
-dotnet run --project gui/FeeEditor.Gui.csproj -c Release
-```
+Download the GUI from the [latest release](https://github.com/jinghaihan/fee-save-editor/releases/latest).
 
 Open a `Manual0` or `Auto` save, make your edits, then save a copy to another folder. Keep the original until you have checked the edited copy in-game. Open `Global` separately for Relay Tickets; editing a game save does not silently change its companion `Global` file.
 
@@ -36,6 +32,7 @@ For scripted edits, see the [CLI guide](CLI.md).
 
 ## Credits
 
+- [egoist/MyGo](https://github.com/egoist/mygo): desktop interface.
 - [Xzonn/FireEmblemEngageData](https://github.com/Xzonn/FireEmblemEngageData): game-data tables used to build the catalogs.
 - [delvier/Iron19_L10n](https://github.com/delvier/Iron19_L10n): Localized game text in all nine supported languages.
 - [laqieer/FE17-DOC](https://github.com/laqieer/FE17-DOC) and [LordMewtwo73/feEngage-randomizer](https://github.com/LordMewtwo73/feEngage-randomizer): save-format references and item, character, class and skill data.

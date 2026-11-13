@@ -45,10 +45,9 @@ def main() -> None:
             gui = target / ("FEE Save Editor.exe" if suffix else "FeeEditor.Gui")
             assert gui.is_file()
             cli = target / f"FeeEditor.Cli{suffix}"
-        for config in target.rglob("*.runtimeconfig.json"):
-            properties = json.loads(config.read_text(encoding="utf-8"))["runtimeOptions"]["configProperties"]
-            if properties.get("System.Runtime.InteropServices.BuiltInComInterop.IsSupported", True):
-                raise ValueError(f"Shared trimmed runtime requires COM interop to be disabled: {config.name}")
+        if list(target.rglob("*.dll")) or list(target.rglob("*.runtimeconfig.json")):
+            raise ValueError("The package contains obsolete runtime files")
+        assert (target / "licenses/MyGo.txt").is_file()
         assert not list(target.rglob("*.pdb"))
         check_package_cli(cli, version)
         check_gui_startup(gui)

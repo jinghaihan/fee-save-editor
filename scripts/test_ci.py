@@ -29,7 +29,7 @@ class ValidationReuseTests(unittest.TestCase):
         for parents in (COMMIT, f"{COMMIT} {PARENT} {PARENT}"):
             with patch.object(validation, "output", return_value=parents):
                 self.assertIsNone(validation.version_only_parent())
-        for files in ("", "README.md", "VERSION\ncore/Changed.cs", "VERSION"):
+        for files in ("", "README.md", "VERSION\ninternal/save/changed.go", "VERSION"):
             with self.subTest(files=files), patch.object(validation, "output", side_effect=[f"{COMMIT} {PARENT}", files]):
                 self.assertEqual(validation.version_only_parent(), PARENT if files == "VERSION" else None)
 
@@ -121,7 +121,7 @@ class WorkflowGuardTests(unittest.TestCase):
         self.assertIn("needs.validation.result == 'success'", release)
         self.assertIn("needs.validation.result == 'skipped'", release)
         self.assertNotIn("test_cli.py", platforms)
-        self.assertIn("--platform-smoke", platforms)
+        self.assertIn("go test -race ./internal/app ./internal/save", platforms)
         self.assertIn("verify-tag: true", release)
 
 

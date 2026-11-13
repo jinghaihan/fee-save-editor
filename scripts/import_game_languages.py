@@ -8,6 +8,7 @@ import tempfile
 from pathlib import Path
 
 from import_roster_catalog import LANGUAGES
+from catalog_data import load_catalog, write_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -40,8 +41,8 @@ def main():
             sys.argv = ["import", "--output", str(generated_path)]
             importlib.import_module(f"import_{catalog}_catalog").main()
             generated = json.loads(generated_path.read_text(encoding="utf-8"))
-            path = ROOT / "core/Data" / filename
-            existing = json.loads(path.read_text(encoding="utf-8"))
+            path = filename.removesuffix(".json")
+            existing = load_catalog(path)
             for collection in collections:
                 merge_names(existing[collection], generated[collection])
                 if collection == "Groups":
@@ -51,9 +52,9 @@ def main():
             outputs[path] = existing
             print(f"Validated {filename}: all nine languages; existing names and facts preserved.", flush=True)
 
-        item_path = ROOT / "core/Data/items.json"
-        items = json.loads(item_path.read_text(encoding="utf-8"))
-        roster = outputs[ROOT / "core/Data/roster.json"]
+        item_path = "items"
+        items = load_catalog(item_path)
+        roster = outputs["roster"]
         lookup = {row["Id"]: row["Names"] for row in roster["ItemNames"]}
         for item in items["Items"]:
             names = lookup[item["Id"]]
@@ -61,15 +62,15 @@ def main():
                 raise ValueError(f"Convoy item name changed: {item['Id']}")
             item["Names"] = names
         outputs[item_path] = items
-        quantity_path = ROOT / "core/Data/quantity-items.json"
-        quantities = json.loads(quantity_path.read_text(encoding="utf-8"))
+        quantity_path = "quantity-items"
+        quantities = load_catalog(quantity_path)
         for item in quantities["Items"]:
             item["Names"] = lookup[item["Id"]]
         outputs[quantity_path] = quantities
 
     # Write only after every catalog has passed validation.
     for path, data in outputs.items():
-        path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        write_catalog(path, data)
     print("Updated localized game names without changing limits, IDs or save bytes.")
 
 

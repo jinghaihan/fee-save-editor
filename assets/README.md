@@ -16,5 +16,5 @@ Regenerate them with Pillow installed:
 python scripts/make_app_icons.py /path/to/FEE_Sommie.png
 ```
 
-The PNG is embedded for the macOS Dock. Windows embeds the ICO in
-the executable. Release packaging converts the same PNG to the macOS ICNS file.
+The PNG is used for the application window icon. macOS release packaging converts
+the same artwork to ICNS for the Dock and Finder.

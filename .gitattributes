@@ -1,5 +1,0 @@
-migration/legacy/** linguist-vendored=true
-internal/catalog/data/*.gz binary
-*.go text eol=lf
-*.py text eol=lf
-*.yml text eol=lf

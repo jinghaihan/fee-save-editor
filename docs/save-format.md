@@ -208,7 +208,7 @@ index offsets and updates the outer CRC without changing other section payloads.
 The saved capacity itself is never changed. One slot represents one item;
 remaining uses are not an inventory quantity.
 
-`core/Data/items.json` contains 364 base/DLC convoy definitions with names in
+`internal/catalog/data/items.json.gz` contains 364 base/DLC convoy definitions with names in
 all nine supported languages. `scripts/import_item_catalog.py` uses the pinned
 complete [Item table](https://github.com/Xzonn/FireEmblemEngageData/blob/86b8be7b9820e1bb3bce87d2a9a805ead85d92ab/data/xml/Item.xml).
 The importer includes convoy kinds 1–10 and excludes quantity-based items and
@@ -234,7 +234,7 @@ language switching. In-game loading remains unverified.
 
 Seals, ingredients, gifts and materials are not UnitItems in TRAN. They are
 typed integer variables named `G_所持_<IID>` in USER. The same importer produces
-`core/Data/quantity-items.json`: 105 entries comprising four reclass items
+`internal/catalog/data/quantity-items.json.gz`: 105 entries comprising four reclass items
 (including DLC Mystic Satchel and Mage Cannon), 17 materials, 33 ingredients,
 45 gifts and six key items/fishing rods. These definitions are excluded from
 convoy and carried-item replacement selectors. Existing raw entries are never

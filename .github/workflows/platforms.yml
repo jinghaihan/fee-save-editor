@@ -31,9 +31,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-dotnet@v6
+      - uses: actions/setup-go@v6
         with:
-          dotnet-version: 10.0.x
+          go-version-file: go.mod
       - uses: actions/setup-python@v6
         with:
           python-version: '3.13'
@@ -43,17 +43,18 @@ jobs:
         run: |
           $version = (Get-Content VERSION -Raw).Trim()
           if ($env:GITHUB_REF_NAME -ne "v$version") { throw "Tag does not match VERSION" }
-      - name: Build platform test runner
-        run: dotnet build test/Gui.Smoke.csproj -c Release --nologo
-      - name: Render platform pages and verify save copy
-        run: dotnet test/bin/Release/net10.0/FeeEditor.Test.dll --platform-smoke
-      - name: Publish GUI and CLI with a shared trimmed runtime
-        run: dotnet publish gui/FeeEditor.Gui.csproj -c Release -r ${{ matrix.rid }} --self-contained true -p:PublishSingleFile=false -o dist/gui/${{ matrix.rid }}
+      - name: Verify platform UI and save editing
+        run: go test -race ./internal/app ./internal/save
+      - name: Build GUI and CLI
+        run: python scripts/build_go.py ${{ matrix.rid }}
       - name: Package platform download
         run: python scripts/package_release.py ${{ matrix.rid }}
       - name: Test extracted release ZIP
         if: runner.os != 'Linux'
         run: python scripts/test_release_package.py ${{ matrix.rid }}
+      - name: Install Linux display and Vulkan runtime
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y xvfb libvulkan1 mesa-vulkan-drivers
       - name: Test extracted release ZIP with a virtual display
         if: runner.os == 'Linux'
         run: xvfb-run -a python scripts/test_release_package.py ${{ matrix.rid }}

@@ -1,5 +1,6 @@
 """Verify every supported CLI language against the pinned localized game catalogs."""
 
+from catalog_data import load_catalog
 import json
 import subprocess
 from pathlib import Path
@@ -7,7 +8,7 @@ from pathlib import Path
 
 def check_languages(command):
     root = Path(__file__).resolve().parents[1]
-    catalog = lambda name: json.loads((root / "core/Data" / f"{name}.json").read_text(encoding="utf-8"))
+    catalog = lambda name: load_catalog(name)
     countries = catalog("donations")["Countries"]
     emblems = catalog("emblems")["Emblems"]
     achievements = catalog("achievements")["Achievements"]

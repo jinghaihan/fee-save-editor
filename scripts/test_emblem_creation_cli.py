@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from catalog_data import load_catalog
 import json
 import struct
 import subprocess
@@ -85,7 +86,7 @@ def without_tiki(data: bytes, remove_holder: bool = False) -> bytes:
 
 
 def check_emblem_creation(command: list[str], real_directory: Path | None, base: bytes) -> None:
-    catalog = json.loads((Path(__file__).resolve().parents[1] / "core/Data/emblem-creation.json").read_text(encoding="utf-8"))
+    catalog = load_catalog("emblem-creation")
     expected_weapons = {row["Id"]: row["Weapons"] for row in catalog["Emblems"]}
     original = fixture(base)
     cases = [("synthetic-reuse", without_tiki(original), False, False),
