@@ -184,6 +184,9 @@ func (a *App) list(c *ui.Context, key, title string, rows []row, header listHead
 		s.Rows = filtered
 		s.Selected = clampIndex(s.Selected, len(filtered))
 		s.List.Selected = &s.Selected
+		if s.Selected >= 0 && (selectedID == "" || filtered[s.Selected].ID != selectedID) {
+			s.List.Choose(s.Selected)
+		}
 		s.List.Key = func(i int) any { return filtered[i].ID }
 		old := s.Selected
 		if themedList(c, &s.List, len(filtered), func(i int) {

@@ -565,3 +565,32 @@ func TestListSummaryPlacement(t *testing.T) {
 		}
 	}
 }
+
+func TestQuantityCategorySelection(t *testing.T) {
+	a := fixture(t)
+	a.Page = 1
+	tt := ui.NewTester(a.View, 1120, 780)
+	for _, category := range []string{"ReclassItems", "Materials", "Ingredients", "Gifts", "KeyItems", "Materials"} {
+		if err := tt.Click(a.T(category)); err != nil {
+			t.Fatal(err)
+		}
+		if _, ok := tt.AccessByRole(ui.RoleButton, a.T("ApplyChanges")); !ok {
+			t.Fatalf("%s has no selected item editor", category)
+		}
+		state := a.table("quantity")
+		if state.Selected < 0 || state.Rows[state.Selected].ID == "" {
+			t.Fatalf("%s lost its selection", category)
+		}
+	}
+	state := a.table("quantity")
+	state.Query = "no matching item"
+	tt.Frame()
+	if state.Selected != -1 {
+		t.Fatal("empty search results kept an invalid selection")
+	}
+	state.Query = ""
+	tt.Frame()
+	if _, ok := tt.AccessByRole(ui.RoleButton, a.T("ApplyChanges")); !ok {
+		t.Fatal("clearing the search did not restore the editor")
+	}
+}
