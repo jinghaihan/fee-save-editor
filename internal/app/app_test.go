@@ -400,3 +400,20 @@ func TestEmblemChoiceSurvivesEditing(t *testing.T) {
 		t.Fatal("editing reset the selected Emblem")
 	}
 }
+
+func TestCurrentClassChoiceIsApplicable(t *testing.T) {
+	a := fixture(t)
+	a.Page = 2
+	before, e := a.Save.Roster()
+	if e != nil {
+		t.Fatal(e)
+	}
+	tt := ui.NewTester(a.View, 1120, 780)
+	if e := tt.Click(a.T("ChangeClass")); e != nil {
+		t.Fatal(e)
+	}
+	after, e := a.Save.Roster()
+	if e != nil || a.Status != "" || after[0].ClassHash != before[0].ClassHash {
+		t.Fatalf("displayed class choice cannot be applied: %v %s", e, a.Status)
+	}
+}

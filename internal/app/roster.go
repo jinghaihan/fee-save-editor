@@ -160,7 +160,13 @@ func (a *App) rosterGeneral(c *ui.Context, key string, r save.RosterCharacter) {
 			}
 		}
 		weapons := draft(a, key+"/weapons-choice", func() string { return fmt.Sprint(r.Progress.SelectedWeapons) })
-		if changed && len(variants) > 0 {
+		validVariant := false
+		for _, variant := range variants {
+			if variant.ID == *weapons {
+				validVariant = true
+			}
+		}
+		if (changed || !validVariant) && len(variants) > 0 {
 			*weapons = variants[0].ID
 		}
 		a.combo(c, "Weapons", key+"/weapons", weapons, variants)
