@@ -170,7 +170,10 @@ func (a *App) mainPage(c *ui.Context) {
 					}
 				})
 			})
-		}, func() { a.donationsCard(c) })
+		}, func() {
+			a.donationsCard(c)
+			a.amiiboCards(c)
+		})
 	})
 }
 func (a *App) resourceField(c *ui.Context, key string, value, maximum int) {

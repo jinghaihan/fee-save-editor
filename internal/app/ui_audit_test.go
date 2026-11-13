@@ -204,6 +204,15 @@ func TestUnloadedFormsStayVisible(t *testing.T) {
 					for _, d := range catalog.DonationCountries {
 						labels = append(labels, replaceFormat(a.T("CountryLevel"), d.Names.Name(a.Language)))
 					}
+					count := 0
+					for _, n := range tt.AccessAll() {
+						if n.Role == ui.RoleCheckBox {
+							count++
+						}
+					}
+					if count != len(catalog.AmiiboRewards) {
+						t.Errorf("unloaded amiibo has %d checkboxes, want %d", count, len(catalog.AmiiboRewards))
+					}
 				case "Items":
 					if v.tab == 0 {
 						labels = []string{"Item", "RemainingUses", "RefineLevel", "Engraving"}
@@ -241,16 +250,6 @@ func TestUnloadedFormsStayVisible(t *testing.T) {
 					labels = []string{"Category", "Status", "BondFragments", "UnlockAchievement"}
 				case "Animals":
 					labels = []string{"Amount", "MaxAmount"}
-				case "Amiibo":
-					count := 0
-					for _, n := range tt.AccessAll() {
-						if n.Role == ui.RoleCheckBox {
-							count++
-						}
-					}
-					if count != len(catalog.AmiiboRewards) {
-						t.Errorf("unloaded amiibo has %d checkboxes, want %d", count, len(catalog.AmiiboRewards))
-					}
 				case "Minigames":
 					labels = []string{"BestScore", "Caught", "BestSize", "BestRank"}
 				case "Inspector":

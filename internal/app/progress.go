@@ -45,7 +45,7 @@ func (a *App) animalsPage(c *ui.Context) {
 		})
 	})
 }
-func (a *App) amiiboPage(c *ui.Context) {
+func (a *App) amiiboCards(c *ui.Context) {
 	rewards, ok := data(c, a, "amiibo", a.Save.Amiibo)
 	if !ok {
 		return
@@ -55,12 +55,9 @@ func (a *App) amiiboPage(c *ui.Context) {
 			rewards = append(rewards, save.AmiiboReward{Definition: d})
 		}
 	}
-	ui.Scroll(c).Grow(1).Children(func() {
-		a.card(c, "amiibo").Gap(editorAppearance.CardPadding).Children(func() {
-			a.amiiboGroup(c, "Outfits", rewards)
-			a.amiiboGroup(c, "Music", rewards)
-		})
-	})
+	for _, group := range []string{"Outfits", "Music"} {
+		a.card(c, "Amiibo"+group).Children(func() { a.amiiboGroup(c, group, rewards) })
+	}
 }
 func (a *App) amiiboGroup(c *ui.Context, group string, rewards []save.AmiiboReward) {
 	unlocked := 0

@@ -21,7 +21,7 @@ import (
 //go:embed locales/*.json
 var localeFiles embed.FS
 var Version = "0.4.0"
-var pages = []string{"Main", "Items", "Roster", "Emblems", "Support", "Minigames", "Achievements", "Animals", "Amiibo", "Inspector"}
+var pages = []string{"Main", "Items", "Roster", "Emblems", "Support", "Minigames", "Achievements", "Animals", "Inspector"}
 
 type edit func(*save.Save) (*save.Save, error)
 type tableState struct {

@@ -388,7 +388,7 @@ func TestUnlockedAmiiboIsChecked(t *testing.T) {
 	if !a.apply(func(s *save.Save) (*save.Save, error) { return s.UnlockAmiibo([]string{reward.Definition.Key}) }) {
 		t.Fatal(a.Status)
 	}
-	a.Page = 8
+	a.Page = 0
 	tt := ui.NewTester(a.View, 1120, 780)
 	node, ok := tt.AccessByRole(ui.RoleCheckBox, reward.Definition.Names.Name(a.Language))
 	if !ok || !node.Checked || !node.Disabled {
@@ -600,14 +600,14 @@ func TestControlGroupSpacing(t *testing.T) {
 }
 
 func TestListSummaryPlacement(t *testing.T) {
-	for _, page := range []int{1, 4, 8} {
+	for _, page := range []int{1, 4, 0} {
 		a := fixture(t)
 		a.Page = page
 		tt := ui.NewTester(a.View, 1120, 780)
 		titles := []string{"Convoy"}
 		if page == 4 {
 			titles = []string{"SupportList"}
-		} else if page == 8 {
+		} else if page == 0 {
 			titles = []string{"AmiiboOutfits", "AmiiboMusic"}
 		}
 		for _, key := range titles {
