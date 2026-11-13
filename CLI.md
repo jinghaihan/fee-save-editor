@@ -1,12 +1,12 @@
 # CLI guide
 
-Run commands with the .NET 10 SDK:
+Use the CLI included in the download:
 
 ```sh
-dotnet run --project cli/Cli.csproj -c Release -- --help
+FeeEditor.Cli --help
 ```
 
-In the examples below, replace `FeeEditor.Cli` with that command or the CLI
+In the examples below, replace `FeeEditor.Cli` with the path to your CLI
 executable. Every editing command writes a new file and rejects an existing
 destination, including the input file. Reading and editing never overwrite it.
 Use `--json` for structured output. Catalog and relationship commands also
@@ -331,9 +331,9 @@ an existing file.
 ## Development and release
 
 ```sh
-dotnet build FeeEditor.slnx -c Release
-dotnet run --project test/Gui.Smoke.csproj -c Release --no-build
-python3 scripts/test_cli.py --cli cli/bin/Release/net10.0/FeeEditor.Cli.dll
+go build -o build/FeeEditor.Cli ./cmd/fee-cli
+go test ./internal/save -run TestContainerLossless
+python3 scripts/build_go.py osx-arm64
 python3 scripts/release.py minor --check
 python3 scripts/release.py minor
 ```

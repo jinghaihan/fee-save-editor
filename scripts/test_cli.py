@@ -14,7 +14,7 @@ from pathlib import Path
 
 def cli_command(cli: Path) -> list[str]:
     command = [str(cli.resolve())]
-    return ["dotnet", *command] if cli.suffix == ".dll" else command
+    return command
 
 
 def fixture(global_save: bool = False) -> bytes:

@@ -21,7 +21,7 @@ def main() -> None:
         return {language: values[label] for language, values in texts.items()}
 
     def interface_names(key: str) -> dict[str, str]:
-        root = Path(__file__).resolve().parents[1] / "gui/Localization"
+        root = Path(__file__).resolve().parents[1] / "internal/app/locales"
         return {language: json.loads((root / f"{language}.json").read_text(encoding="utf-8"))[key]
                 for language in LANGUAGES}
 

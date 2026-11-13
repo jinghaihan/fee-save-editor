@@ -6,6 +6,7 @@ import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from catalog_data import load_catalog
 from import_roster_catalog import fetch
 from import_support_catalog import DATA_REVISION
 
@@ -14,7 +15,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    emblems = json.loads((Path(__file__).resolve().parents[1] / "core/Data/emblems.json").read_text(encoding="utf-8"))["Emblems"]
+    emblems = load_catalog("emblems")["Emblems"]
     gods = ET.fromstring(fetch("Xzonn/FireEmblemEngageData", DATA_REVISION, "data/xml/God.xml"))
     rows = {row.get("Gid"): row for row in gods.findall("./Sheet[@Name='神将']/Data/Param")}
     engravings = []

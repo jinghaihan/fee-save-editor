@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Package GUI and CLI builds with one shared, self-contained .NET runtime."""
+"""Package the standalone GUI and CLI builds."""
 
 import argparse
 import filecmp
@@ -18,7 +18,7 @@ WINDOWS_GUI_NAME = "FEE Save Editor.exe"
 
 
 def merge_publishes(gui: Path, cli: Path, destination: Path, rid: str) -> None:
-    """Co-locate both apphosts and retain just one copy of identical runtime files."""
+    """Collect the GUI and CLI binaries and preserve executable permissions."""
     for published in (gui, cli):
         for source in published.rglob("*"):
             if not source.is_file():
@@ -47,7 +47,7 @@ def make_macos_app(destination: Path, version: str) -> None:
     resources = contents / "Resources"
     resources.mkdir()
 
-    portrait = ROOT / "gui/Assets/app-icon.png"
+    portrait = ROOT / "assets/app-icon.png"
     if portrait.is_file():
         make_macos_icon(contents, resources, portrait)
 
@@ -146,10 +146,11 @@ def main() -> None:
                 gui_binary = staging / "FeeEditor.Gui"
             cli_binary = staging / f"FeeEditor.Cli{suffix}"
 
+        shutil.copy2(ROOT / "LICENSE", staging / "LICENSE")
+        shutil.copytree(ROOT / "licenses", staging / "licenses")
         output.parent.mkdir(parents=True, exist_ok=True)
         if args.rid.startswith("osx-"):
-            # Finder's Archive Utility restores the signatures on managed DLLs
-            # from the AppleDouble entries written by ditto.
+            # Preserve bundle signatures and executable permissions.
             subprocess.run(
                 ["ditto", "-c", "-k", "--sequesterRsrc", str(staging), str(output)],
                 check=True,
