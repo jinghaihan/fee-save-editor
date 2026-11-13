@@ -88,7 +88,6 @@ func (a *App) supportPage(c *ui.Context) {
 				stage()
 			}
 			a.button(c, "MaxSupport", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeSupports(key) }) })
-			a.applyButton(c, "supports")
 		})
 	})
 }

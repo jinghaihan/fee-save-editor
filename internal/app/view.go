@@ -6,6 +6,8 @@ import (
 )
 
 func (a *App) View(c *ui.Context) {
+	previousInput := a.focusedInput
+	a.focusedInput = ""
 	c.SetTheme(a.currentTheme())
 	c = c.Key(a.revision)
 	root := ui.Column(c).Fill().Background(c.Theme().Background)
@@ -50,6 +52,9 @@ func (a *App) View(c *ui.Context) {
 			ui.Text(c, a.Status).Padding(0, 24, 16)
 		}
 	})
+	if a.Save != nil && len(a.pending) > 0 && (a.focusedInput == "" || previousInput != "" && previousInput != a.focusedInput) {
+		a.ApplyPending("")
+	}
 	if files := root.DroppedFiles(); len(files) > 0 {
 		a.openPath(files[0])
 	}

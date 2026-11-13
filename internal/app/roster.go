@@ -128,76 +128,115 @@ func (a *App) addCharacterButton(c *ui.Context) {
 		})
 	})
 }
+
+type rosterGeneralDraft struct {
+	Class, Weapons, Force           string
+	Level, Experience, SP, Internal float64
+	ClassChanged                    bool
+}
+
 func (a *App) rosterGeneral(c *ui.Context, key string, r save.RosterCharacter) {
+	d := draft(a, key+"/values", func() rosterGeneralDraft {
+		class := ""
+		if job := catalog.Class(r.ClassHash); job != nil {
+			class = job.Id
+		}
+		return rosterGeneralDraft{
+			Class: class, Weapons: fmt.Sprint(r.Progress.SelectedWeapons), Force: fmt.Sprint(r.Force),
+			Level: float64(r.Values.Level), Experience: float64(r.Values.Experience),
+			SP: float64(r.Values.SkillPoints), Internal: float64(r.Progress.InternalLevel),
+		}
+	})
+	stage := func() {
+		v := *d
+		a.stage(key+"/values", func(s *save.Save) (*save.Save, error) {
+			mask, _ := strconv.ParseUint(v.Weapons, 10, 32)
+			edited := s
+			var err error
+			if v.ClassChanged {
+				edited, err = edited.WithRosterClass(r.Index, v.Class, uint32(mask))
+				if err != nil {
+					return nil, err
+				}
+			}
+			edited, err = edited.WithRosterValues(r.Index, save.RosterValue{Level: int(v.Level), Experience: int(v.Experience), SkillPoints: int(v.SP)})
+			if err != nil {
+				return nil, err
+			}
+			rows, err := edited.Roster()
+			if err != nil {
+				return nil, err
+			}
+			hp, force := rows[r.Index].Progress.CurrentHP, rows[r.Index].Force
+			edited, err = edited.WithRosterCondition(r.Index, int(v.Internal), hp)
+			if err != nil {
+				return nil, err
+			}
+			target, _ := strconv.Atoi(v.Force)
+			if save.UnitForce(target) != force {
+				return edited.WithRosterForce(r.Index, save.UnitForce(target))
+			}
+			return edited, nil
+		})
+	}
+	job := catalog.Class(catalog.Hash(d.Class))
 	a.columns(c, func() {
 		a.staticField(c, "Status", a.T("Roster"+r.Availability()))
 		if ui.Button(c, a.T("RestoreCharacter")).Disabled(a.Save == nil || !a.Save.CanRestoreRosterCharacter(r.Index)).Clicked() {
-			a.apply(func(s *save.Save) (*save.Save, error) { return s.RestoreRosterCharacter(r.Index) })
+			a.perform(key, func(s *save.Save) (*save.Save, error) { return s.RestoreRosterCharacter(r.Index) })
 		}
 		forces := []option{{"3", a.T("ForceAbsent")}, {"4", a.T("ForceDead")}, {"5", a.T("ForceLost")}}
-		force := draft(a, key+"/force-choice", func() string { return fmt.Sprint(r.Force) })
-		a.combo(c, "Force", key+"/force", force, forces)
-		if ui.Button(c, a.T("MoveCharacter")).Disabled(a.Save == nil || !a.Save.CanMoveRosterCharacter(r.Index)).Clicked() {
-			n, _ := strconv.Atoi(*force)
-			a.apply(func(s *save.Save) (*save.Save, error) { return s.WithRosterForce(r.Index, save.UnitForce(n)) })
-		}
+		ui.Column(c).Disabled(a.Save == nil || !a.Save.CanMoveRosterCharacter(r.Index)).Children(func() {
+			if a.combo(c, "Force", key+"/force", &d.Force, forces) {
+				stage()
+			}
+		})
 		classes, _ := read(a, fmt.Sprintf("classes-%d", r.Index), func() ([]catalog.ClassDefinition, error) { return a.Save.RosterClasses(r.Index) })
 		options := []option{}
-		for _, d := range classes {
-			options = append(options, option{d.Id, d.Name(a.Language)})
+		for _, v := range classes {
+			options = append(options, option{v.Id, v.Name(a.Language)})
 		}
 		sort.SliceStable(options, func(i, j int) bool { return options[i].Name < options[j].Name })
-		selected := draft(a, key+"/class-choice", func() string {
-			if d := catalog.Class(r.ClassHash); d != nil {
-				return d.Id
-			}
-			return ""
-		})
-		changed := a.combo(c, "Class", key+"/class", selected, options)
-		job := catalog.Class(catalog.Hash(*selected))
+		changed := a.combo(c, "Class", key+"/class", &d.Class, options)
+		job = catalog.Class(catalog.Hash(d.Class))
 		variants := []option{}
 		if job != nil {
 			for _, mask := range job.WeaponVariants() {
 				variants = append(variants, option{fmt.Sprint(mask), a.weaponNames(mask)})
 			}
 		}
-		weapons := draft(a, key+"/weapons-choice", func() string { return fmt.Sprint(r.Progress.SelectedWeapons) })
-		validVariant := false
-		for _, variant := range variants {
-			if variant.ID == *weapons {
-				validVariant = true
+		valid := false
+		for _, v := range variants {
+			valid = valid || v.ID == d.Weapons
+		}
+		if (changed || !valid) && len(variants) > 0 {
+			d.Weapons = variants[0].ID
+		}
+		weaponsChanged := a.combo(c, "Weapons", key+"/weapons", &d.Weapons, variants)
+		if changed || weaponsChanged {
+			d.ClassChanged = true
+			preview, err := a.snapshot(key)
+			if err == nil {
+				mask, _ := strconv.ParseUint(d.Weapons, 10, 32)
+				preview, err = preview.WithRosterClass(r.Index, d.Class, uint32(mask))
 			}
+			if err == nil {
+				rows, e := preview.Roster()
+				err = e
+				if err == nil {
+					v := rows[r.Index]
+					d.Level, d.Experience, d.SP, d.Internal = float64(v.Values.Level), float64(v.Values.Experience), float64(v.Values.SkillPoints), float64(v.Progress.InternalLevel)
+				}
+			}
+			if err != nil {
+				a.Status = err.Error()
+			}
+			stage()
 		}
-		if (changed || !validVariant) && len(variants) > 0 {
-			*weapons = variants[0].ID
-		}
-		a.combo(c, "Weapons", key+"/weapons", weapons, variants)
-		a.button(c, "ChangeClass", func() {
-			mask, _ := strconv.ParseUint(*weapons, 10, 32)
-			class := *selected
-			a.perform(key, func(s *save.Save) (*save.Save, error) { return s.WithRosterClass(r.Index, class, uint32(mask)) })
-		})
 	}, func() {
-		type values struct{ Level, Experience, SP, Internal float64 }
-		d := draft(a, key+"/values", func() values {
-			return values{float64(r.Values.Level), float64(r.Values.Experience), float64(r.Values.SkillPoints), float64(r.Progress.InternalLevel)}
-		})
 		cap := 255
-		if job := catalog.Class(r.ClassHash); job != nil {
+		if job != nil {
 			cap = job.MaxLevel
-		}
-		stage := func() {
-			a.stage(key+"/values", func(s *save.Save) (*save.Save, error) {
-				edited, err := s.WithRosterValues(r.Index, save.RosterValue{Level: int(d.Level), Experience: int(d.Experience), SkillPoints: int(d.SP)})
-				if err != nil {
-					return nil, err
-				}
-				rows, err := edited.Roster()
-				if err != nil {
-					return nil, err
-				}
-				return edited.WithRosterCondition(r.Index, int(d.Internal), rows[r.Index].Progress.CurrentHP)
-			})
 		}
 		if a.formNumber(c, "Level", key+"/level", &d.Level, 1, float64(cap)) {
 			if int(d.Level) == cap {
@@ -214,7 +253,6 @@ func (a *App) rosterGeneral(c *ui.Context, key string, r save.RosterCharacter) {
 		if a.formNumber(c, "InternalLevel", key+"/internal", &d.Internal, -100, 100) {
 			stage()
 		}
-		a.applyButton(c, key+"/values")
 	})
 }
 
@@ -301,14 +339,15 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 						ui.Text(c, replaceFormat(a.T("CurrentClassStat"), fmt.Sprint(preview), fmt.Sprint(*stat.Maximum)))
 					}
 				})
-				if ui.NumberInput(c, value, float64(min(low, stat.PersonalValue)), float64(max(high, stat.PersonalValue)), 1).Label(a.T(label)).Changed() {
+				input := ui.NumberInput(c, value, float64(min(low, stat.PersonalValue)), float64(max(high, stat.PersonalValue)), 1).Label(a.T(label))
+				a.trackInput(fieldKey, input)
+				if input.Changed() {
 					n := int(*value)
 					a.stage(fieldKey, func(s *save.Save) (*save.Save, error) { return s.WithRosterStat(r.Index, stat.Stat, n, true) })
 				}
 			})
 		}
 	})
-	a.applyButton(c, key)
 }
 func (a *App) rosterItems(c *ui.Context, key string, r save.RosterCharacter) {
 	ui.Row(c).Gap(editorAppearance.SectionGap).AlignItems(ui.Start).Children(func() {
@@ -380,7 +419,6 @@ func (a *App) rosterSkills(c *ui.Context, key string, r save.RosterCharacter) {
 		if a.combo(c, "2", key+"/equipped-2", &d.Second, options) {
 			stage()
 		}
-		a.applyButton(c, key+"/skills")
 		ui.Text(c, a.T("ClassSkill")).Bold()
 		if job := catalog.Class(r.ClassHash); job != nil && job.LearningSkill != "" {
 			ui.Text(c, a.skillName(catalog.Hash(job.LearningSkill)))
@@ -397,7 +435,6 @@ func (a *App) rosterSkills(c *ui.Context, key string, r save.RosterCharacter) {
 			on := d.Class
 			a.stage(key+"/class-skill", func(s *save.Save) (*save.Save, error) { return s.WithRosterClassSkill(r.Index, on) })
 		}
-		a.applyButton(c, key+"/class-skill")
 	}, func() {
 		ui.Text(c, a.T("InheritedSkills")).Bold()
 		var selected string
@@ -457,14 +494,13 @@ func (a *App) rosterProficiencies(c *ui.Context, key string, r save.RosterCharac
 		a.button(c, "UnlockAll", func() {
 			a.apply(func(s *save.Save) (*save.Save, error) { return s.WithRosterProficiencies(r.Index, 510) })
 		})
-		a.applyButton(c, key+"/proficiencies")
 	})
 }
 func (a *App) rosterEquipment(c *ui.Context, key string, r save.RosterCharacter) {
 	current, _ := read(a, key+"/equipment-current", func() (save.EquipmentSelection, error) { return a.Save.RosterEquipment(r.Index) })
 	options, _ := read(a, key+"/equipment-options", func() ([]save.EquipmentOption, error) { return a.Save.RosterEquipmentOptions(r.Index) })
 	ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
-		kind := draft(a, key+"/equipment-kind", func() string { return fmt.Sprint(current.Kind) })
+		kind := draft(a, key+"/equipment/kind", func() string { return fmt.Sprint(current.Kind) })
 		kindChanged := a.combo(c, "Kind", key+"/equipment-kind", kind, []option{{"0", a.T("None")}, {"1", a.T("Emblem")}, {"2", a.T("BondRings")}})
 		choices := []option{}
 		for _, o := range options {
@@ -486,30 +522,29 @@ func (a *App) rosterEquipment(c *ui.Context, key string, r save.RosterCharacter)
 			}
 			choices = append(choices, option{fmt.Sprint(o.Selection.InstanceId), name})
 		}
-		selected := draft(a, key+"/equipment-choice", func() string {
-			if !a.hasGameSave() {
+		selected := draft(a, key+"/equipment/choice", func() string {
+			if !a.hasGameSave() || current.Kind == save.EquipmentNone {
 				return ""
 			}
 			return fmt.Sprint(current.InstanceId)
 		})
-		if kindChanged && len(choices) > 0 {
-			*selected = choices[0].ID
+		if kindChanged {
+			*selected = ""
+			if len(choices) > 0 {
+				*selected = choices[0].ID
+			}
 		}
-		if *kind != "0" || !a.hasGameSave() {
-			a.combo(c, "Equipment", key+"/equipment", selected, choices)
-		}
-		a.button(c, "ApplyChanges", func() {
+		equipmentChanged := false
+		ui.Column(c).Disabled(*kind == "0").Children(func() { equipmentChanged = a.combo(c, "Equipment", key+"/equipment", selected, choices) })
+		if kindChanged || equipmentChanged {
 			k, _ := strconv.Atoi(*kind)
 			instance, _ := strconv.ParseUint(*selected, 10, 32)
-			a.apply(func(s *save.Save) (*save.Save, error) {
-				return s.WithRosterEquipment(r.Index, save.EquipmentSelection{Kind: save.EquipmentKind(k), InstanceId: uint32(instance)})
-			})
-		})
-		a.button(c, "Unequip", func() {
-			a.apply(func(s *save.Save) (*save.Save, error) {
-				return s.WithRosterEquipment(r.Index, save.EquipmentSelection{})
-			})
-		})
+			if k == 0 {
+				instance = 0
+			}
+			selection := save.EquipmentSelection{Kind: save.EquipmentKind(k), InstanceId: uint32(instance)}
+			a.stage(key+"/equipment", func(s *save.Save) (*save.Save, error) { return s.WithRosterEquipment(r.Index, selection) })
+		}
 	})
 }
 func (a *App) transferCharacter(index int, export bool) {

@@ -46,6 +46,7 @@ type App struct {
 	flags                  map[string]*bool
 	pending                map[string]edit
 	pendingOrder           []string
+	focusedInput           string
 	cache                  map[string]any
 	revision               int
 	confirm                bool
@@ -125,6 +126,7 @@ func (a *App) install(path string, s *save.Save) error {
 	a.drafts = map[string]any{}
 	a.pending = map[string]edit{}
 	a.pendingOrder = nil
+	a.focusedInput = ""
 	a.numbers = map[string]*float64{}
 	a.texts = map[string]*string{}
 	a.choices = map[string]*string{}
@@ -242,19 +244,7 @@ func (a *App) perform(prefix string, fn edit) bool {
 	return true
 }
 func (a *App) apply(fn edit) bool {
-	if a.Save == nil {
-		return false
-	}
-	s, e := fn(a.Save)
-	if e != nil {
-		a.Status = e.Error()
-		return false
-	}
-	a.Save = s
-	a.cache = map[string]any{}
-	a.pruneDrafts()
-	a.Status = ""
-	return true
+	return a.perform("", fn)
 }
 func (a *App) SaveCopy(path string) error {
 	if e := a.ApplyPending(""); e != nil {

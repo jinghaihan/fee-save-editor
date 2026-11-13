@@ -113,7 +113,6 @@ func (a *App) emblemsPage(c *ui.Context) {
 			a.button(c, "MaxBond", func() {
 				a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeEmblemBonds(emblem.InstanceId, person) })
 			})
-			a.applyButton(c, key)
 		}, func() {
 			var condition *save.EmblemCondition
 			for _, r := range conditions {
@@ -138,7 +137,6 @@ func (a *App) emblemsPage(c *ui.Context) {
 						a.apply(func(s *save.Save) (*save.Save, error) { return s.WithEmblemDirtiness(&id, 0) })
 					}
 				})
-				a.applyButton(c, "bonds/condition")
 			})
 		})
 	})
@@ -216,7 +214,6 @@ func (a *App) bondRingsPage(c *ui.Context) {
 				}
 			}
 			a.staticField(c, "EquippedBy", owner)
-			a.applyButton(c, "rings")
 			def := catalog.BondRing(ring.RingHash)
 			if def == nil {
 				return

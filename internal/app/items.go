@@ -99,7 +99,6 @@ func (a *App) quantityPage(c *ui.Context, category string) {
 				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
 			}
 			a.numberEdit(c, "Amount", "quantity/"+id, r.Amount, 0, r.Definition.Maximum, func(s *save.Save, n int) (*save.Save, error) { return s.WithQuantity(id, n) })
-			a.applyButton(c, "quantity")
 		})
 	})
 }
@@ -201,7 +200,9 @@ func (a *App) itemEditor(c *ui.Context, scope string, index *int, slot int, item
 			maximum, refine = def.MaxUses, def.MaxRefine
 		}
 		a.field(c, "RemainingUses", func() {
-			if ui.NumberInput(c.Key("uses"), &d.Uses, 1, float64(maximum), 1).Label(a.T("RemainingUses")).Changed() && slot >= 0 {
+			input := ui.NumberInput(c.Key("uses"), &d.Uses, 1, float64(maximum), 1).Label(a.T("RemainingUses"))
+			a.trackInput(key+"/uses", input)
+			if input.Changed() && slot >= 0 {
 				stage()
 			}
 			if def != nil && def.MaxUses == 255 {
@@ -234,10 +235,6 @@ func (a *App) itemEditor(c *ui.Context, scope string, index *int, slot int, item
 		}
 		if e := catalog.Engraving(catalog.Hash(d.EngravingID)); e != nil {
 			a.engravingEffects(c, e)
-		}
-		if ui.Button(c, a.T("ApplyChanges")).Disabled(slot < 0).Clicked() {
-			stage()
-			a.ApplyPending(scope)
 		}
 		if index == nil {
 			a.controlColumns(c, func() {

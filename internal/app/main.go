@@ -102,7 +102,9 @@ func (a *App) mainPage(c *ui.Context) {
 									format = "%d"
 								}
 								text := a.text("main/time/"+key, fmt.Sprintf(format, int(*n)))
-								if ui.DecimalInput(c.Key(key), text, "0", strconv.Itoa(maximum), "1").Grow(1).Basis(0).MinWidth(0).Label(a.T(key)).Changed() {
+								input := ui.DecimalInput(c.Key(key), text, "0", strconv.Itoa(maximum), "1").Grow(1).Basis(0).MinWidth(0).Label(a.T(key))
+								a.trackInput("main/time/"+key, input)
+								if input.Changed() {
 									parsed, err := strconv.Atoi(*text)
 									if err != nil {
 										continue
@@ -266,7 +268,6 @@ func (a *App) ticketsPage(c *ui.Context) {
 					continue
 				}
 				a.numberEdit(c, "Amount", "tickets/"+r.IdentifierHex, r.Amount, 0, 999, func(s *save.Save, n int) (*save.Save, error) { return s.WithTickets(r.Identifier, n) })
-				a.applyButton(c, "tickets")
 				a.button(c, "MaxAmount", func() {
 					if a.ApplyPending("tickets") == nil {
 						a.apply(func(s *save.Save) (*save.Save, error) { return s.WithTickets(r.Identifier, 999) })

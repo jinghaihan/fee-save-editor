@@ -120,8 +120,9 @@ func TestMinigameTableEditing(t *testing.T) {
 				tt.Type(edit.text)
 				tt.Key(0, ui.KeyTab)
 			}
-			if !bytes.Equal(source, a.Save.Bytes()) {
-				t.Fatal("input applied before saving")
+			original, err := os.ReadFile(a.Path)
+			if err != nil || !bytes.Equal(source, original) {
+				t.Fatal("input changed the source file")
 			}
 			output := filepath.Join(t.TempDir(), "copy")
 			if err := a.SaveCopy(output); err != nil {
@@ -207,7 +208,7 @@ func TestUnloadedFormsStayVisible(t *testing.T) {
 					if v.tab == 0 {
 						labels = []string{"Item", "RemainingUses", "RefineLevel", "Engraving"}
 					} else {
-						labels = []string{"Amount", "ApplyChanges"}
+						labels = []string{"Amount"}
 					}
 				case "Roster":
 					switch v.tab {
@@ -226,7 +227,7 @@ func TestUnloadedFormsStayVisible(t *testing.T) {
 					case 4:
 						labels = []string{"Sword", "Lance", "Arts"}
 					case 5:
-						labels = []string{"Kind", "Equipment", "Unequip"}
+						labels = []string{"Kind", "Equipment"}
 					}
 				case "Emblems":
 					if v.tab == 0 {
@@ -256,7 +257,7 @@ func TestUnloadedFormsStayVisible(t *testing.T) {
 					if v.tab == 0 {
 						labels = []string{"FormatVersion", "GameVersion", "Checksum", "PayloadSize"}
 					} else {
-						labels = []string{"Value", "ApplyChanges"}
+						labels = []string{"Value"}
 					}
 				}
 				for _, label := range labels {

@@ -37,7 +37,6 @@ func (a *App) animalsPage(c *ui.Context) {
 				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
 			}
 			a.numberEdit(c, "Amount", "animals/"+id, r.Amount, 0, 99, func(s *save.Save, n int) (*save.Save, error) { return s.WithAnimal(id, n, false) })
-			a.applyButton(c, "animals")
 			a.button(c, "MaxAmount", func() {
 				if a.ApplyPending("animals") == nil {
 					a.apply(func(s *save.Save) (*save.Save, error) { return s.WithAnimal(id, 99, false) })
@@ -332,7 +331,6 @@ func (a *App) inspectorPage(c *ui.Context) {
 			ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
 				ui.Text(c, key)
 				a.numberEdit(c, "Value", "variables/"+key, v.Value, -2147483648, 2147483647, func(s *save.Save, n int) (*save.Save, error) { return s.WithVariable(key, n) })
-				a.applyButton(c, "variables")
 			})
 		})
 		return

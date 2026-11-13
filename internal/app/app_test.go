@@ -14,6 +14,7 @@ import (
 	"testing"
 
 	"github.com/egoist/mygo/ui"
+	"github.com/jinghaihan/fee-save-editor/internal/catalog"
 	"github.com/jinghaihan/fee-save-editor/internal/save"
 )
 
@@ -208,7 +209,7 @@ func modifier() ui.Modifiers {
 	}
 	return ui.Ctrl
 }
-func TestStagedResourceCopy(t *testing.T) {
+func TestResourceBlurAndCopy(t *testing.T) {
 	a := fixture(t)
 	before := a.Save.Bytes()
 	tt := ui.NewTester(a.View, 1120, 780)
@@ -217,10 +218,12 @@ func TestStagedResourceCopy(t *testing.T) {
 	}
 	tt.Key(modifier(), ui.KeyA)
 	tt.Type("12345")
-	tt.Key(0, ui.KeyTab)
+	if err := tt.Click(a.T("BondFragments")); err != nil {
+		t.Fatal(err)
+	}
 	v, _ := a.Save.Main()
-	if v.Money == 12345 {
-		t.Fatal("resource applied before save")
+	if v.Money != 12345 {
+		t.Fatal("resource was not applied on blur")
 	}
 	output := filepath.Join(t.TempDir(), "edited")
 	if err := a.SaveCopy(output); err != nil {
@@ -305,7 +308,11 @@ func TestGUIEditorsSaveAndReload(t *testing.T) {
 			}
 			tt.Key(modifier(), ui.KeyA)
 			tt.Type(test.value)
-			tt.Key(0, ui.KeyTab)
+			next := map[string]string{"roster SP": "InternalLevel", "quantity": "Search", "support": "Rank", "bond EXP": "Dirtiness"}[test.name]
+			if err := tt.Click(a.T(next)); err != nil {
+				t.Fatal(err)
+			}
+			test.check(t, a.Save)
 			output := filepath.Join(t.TempDir(), "copy")
 			if e := a.SaveCopy(output); e != nil {
 				t.Fatal(e)
@@ -405,20 +412,77 @@ func TestEmblemChoiceSurvivesEditing(t *testing.T) {
 	}
 }
 
-func TestCurrentClassChoiceIsApplicable(t *testing.T) {
-	a := fixture(t)
-	a.Page = 2
-	before, e := a.Save.Roster()
-	if e != nil {
-		t.Fatal(e)
-	}
-	tt := ui.NewTester(a.View, 1120, 780)
-	if e := tt.Click(a.T("ChangeClass")); e != nil {
-		t.Fatal(e)
-	}
-	after, e := a.Save.Roster()
-	if e != nil || a.Status != "" || after[0].ClassHash != before[0].ClassHash {
-		t.Fatalf("displayed class choice cannot be applied: %v %s", e, a.Status)
+func TestClassChoiceSavesWithoutConfirmation(t *testing.T) {
+	for _, setLevel := range []bool{false, true} {
+		a := fixture(t)
+		a.Page = 2
+		original := a.Save.Bytes()
+		before, err := a.Save.Roster()
+		if err != nil {
+			t.Fatal(err)
+		}
+		classes, err := a.Save.RosterClasses(0)
+		if err != nil {
+			t.Fatal(err)
+		}
+		var selected catalog.ClassDefinition
+		for _, job := range classes {
+			if job.Hash() != before[0].ClassHash {
+				selected = job
+				break
+			}
+		}
+		name := selected.Name(a.Language)
+		duplicates := 0
+		for _, job := range classes {
+			if job.Name(a.Language) == name {
+				duplicates++
+			}
+		}
+		if duplicates > 1 {
+			name += " [" + selected.Id + "]"
+		}
+		tt := ui.NewTester(a.View, 1120, 780)
+		if err := tt.Click(a.T("Class")); err != nil {
+			t.Fatal(err)
+		}
+		tt.Key(modifier(), ui.KeyA)
+		tt.Type(name)
+		tt.Key(0, ui.KeyEnter)
+		if setLevel {
+			if err := tt.Click(a.T("Level")); err != nil {
+				t.Fatal(err)
+			}
+			tt.Key(modifier(), ui.KeyA)
+			tt.Type("3")
+			tt.Key(0, ui.KeyTab)
+		}
+		memory, err := a.Save.Roster()
+		if err != nil || memory[0].ClassHash != selected.Hash() {
+			t.Fatal("class selection was not applied to editor memory")
+		}
+		source, err := os.ReadFile(a.Path)
+		if err != nil || !bytes.Equal(original, source) {
+			t.Fatal("class selection wrote to the source file")
+		}
+		path := filepath.Join(t.TempDir(), "class-change")
+		if err := a.SaveCopy(path); err != nil {
+			t.Fatal(err)
+		}
+		saved, err := save.Load(path)
+		if err != nil {
+			t.Fatal(err)
+		}
+		after, err := saved.Roster()
+		if err != nil {
+			t.Fatal(err)
+		}
+		if after[0].ClassHash != selected.Hash() || after[0].Values.SkillPoints != before[0].Values.SkillPoints {
+			t.Fatalf("class selection not saved correctly: %+v", after[0].Values)
+		}
+		if setLevel && after[0].Values.Level != 3 {
+			t.Fatalf("level after class change = %d, want 3", after[0].Values.Level)
+		}
 	}
 }
 
@@ -496,7 +560,6 @@ func TestControlGroupSpacing(t *testing.T) {
 				occurrences int
 			}{
 				{"convoy-actions", 1, []string{"AddItem", "DeleteItem"}, true, 1},
-				{"convoy-apply", 1, []string{"ApplyChanges", "AddItem"}, false, 1},
 				{"emblem-actions", 3, []string{"MaxAllBonds", "CleanAll", "RemoveEmblem", "AddEmblem"}, false, 1},
 				{"achievement-filters", 6, []string{"Category", "Status"}, true, 1},
 				{"amiibo-actions", 8, []string{"UnlockSelected", "UnlockAll"}, true, 2},
@@ -574,7 +637,7 @@ func TestQuantityCategorySelection(t *testing.T) {
 		if err := tt.Click(a.T(category)); err != nil {
 			t.Fatal(err)
 		}
-		if _, ok := tt.AccessByRole(ui.RoleButton, a.T("ApplyChanges")); !ok {
+		if _, ok := tt.AccessByRole(ui.RoleTextField, a.T("Amount")); !ok {
 			t.Fatalf("%s has no selected item editor", category)
 		}
 		state := a.table("quantity")
@@ -590,7 +653,7 @@ func TestQuantityCategorySelection(t *testing.T) {
 	}
 	state.Query = ""
 	tt.Frame()
-	if _, ok := tt.AccessByRole(ui.RoleButton, a.T("ApplyChanges")); !ok {
+	if _, ok := tt.AccessByRole(ui.RoleTextField, a.T("Amount")); !ok {
 		t.Fatal("clearing the search did not restore the editor")
 	}
 }

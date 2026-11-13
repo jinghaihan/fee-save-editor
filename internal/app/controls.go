@@ -113,15 +113,25 @@ func (a *App) numberField(c *ui.Context, label, key string, value float64, lo, h
 }
 func (a *App) numberControl(c *ui.Context, label, key string, value, lo, hi float64, update func(int)) *float64 {
 	v := a.number(key, value)
-	if ui.NumberInput(c.Key(key), v, lo, hi, 1).Role(ui.RoleGroup).Label(a.T(label)).Changed() {
+	input := ui.NumberInput(c.Key(key), v, lo, hi, 1).Role(ui.RoleGroup).Label(a.T(label))
+	a.trackInput(key, input)
+	if input.Changed() {
 		update(int(*v))
 	}
 	return v
 }
+func (a *App) trackInput(key string, input ui.Element) {
+	if input.FocusWithin() && !input.Submitted() {
+		a.focusedInput = key
+	}
+}
+
 func (a *App) textField(c *ui.Context, label, key, current string, update func(string)) *string {
 	v := a.text(key, current)
 	a.field(c, label, func() {
-		if ui.TextInput(c.Key(key), v).Label(a.T(label)).Changed() {
+		input := ui.TextInput(c.Key(key), v).Label(a.T(label))
+		a.trackInput(key, input)
+		if input.Changed() {
 			update(*v)
 		}
 	})
@@ -142,11 +152,6 @@ func (a *App) selectControl(c *ui.Context, label, key, current string, options [
 func (a *App) button(c *ui.Context, key string, fn func()) {
 	if ui.Button(c.Key(key), a.T(key)).Clicked() {
 		fn()
-	}
-}
-func (a *App) applyButton(c *ui.Context, prefix string) {
-	if ui.Button(c.Key(prefix+"/apply"), a.T("ApplyChanges")).Clicked() {
-		a.ApplyPending(prefix)
 	}
 }
 func (a *App) numberEdit(c *ui.Context, label, key string, value, lo, hi int, fn func(*save.Save, int) (*save.Save, error)) {
@@ -337,7 +342,11 @@ func (a *App) comboControl(c *ui.Context, label, key string, selected *string, o
 }
 func (a *App) formNumber(c *ui.Context, label, key string, value *float64, lo, hi float64) bool {
 	changed := false
-	a.field(c, label, func() { changed = ui.NumberInput(c.Key(key), value, lo, hi, 1).Label(a.T(label)).Changed() })
+	a.field(c, label, func() {
+		input := ui.NumberInput(c.Key(key), value, lo, hi, 1).Label(a.T(label))
+		a.trackInput(key, input)
+		changed = input.Changed()
+	})
 	return changed
 }
 func (a *App) query(c *ui.Context, key string) *string {
