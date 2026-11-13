@@ -181,10 +181,14 @@ func (a *App) rosterGeneral(c *ui.Context, key string, r save.RosterCharacter) {
 	}
 	job := catalog.Class(catalog.Hash(d.Class))
 	a.columns(c, func() {
-		a.staticField(c, "Status", a.T("Roster"+r.Availability()))
-		if ui.Button(c, a.T("RestoreCharacter")).Disabled(a.Save == nil || !a.Save.CanRestoreRosterCharacter(r.Index)).Clicked() {
-			a.perform(key, func(s *save.Save) (*save.Save, error) { return s.RestoreRosterCharacter(r.Index) })
-		}
+		a.field(c, "Status", func() {
+			ui.Row(c).Gap(editorAppearance.ControlGap).AlignItems(ui.Center).Children(func() {
+				ui.Text(c, a.T("Roster"+r.Availability())).Grow(1)
+				if ui.Button(c, a.T("RestoreCharacter")).Disabled(a.Save == nil || !a.Save.CanRestoreRosterCharacter(r.Index)).Clicked() {
+					a.perform(key, func(s *save.Save) (*save.Save, error) { return s.RestoreRosterCharacter(r.Index) })
+				}
+			})
+		})
 		forces := []option{{"3", a.T("ForceAbsent")}, {"4", a.T("ForceDead")}, {"5", a.T("ForceLost")}}
 		ui.Column(c).Disabled(a.Save == nil || !a.Save.CanMoveRosterCharacter(r.Index)).Children(func() {
 			if a.combo(c, "Force", key+"/force", &d.Force, forces) {
@@ -274,8 +278,8 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 			hpmax = n
 		}
 	}
-	ui.Row(c).Gap(editorAppearance.ControlGap).AlignItems(ui.End).Children(func() {
-		ui.Column(c).Grow(1).Basis(0).Children(func() {
+	ui.Row(c).Gap(editorAppearance.SectionGap).AlignItems(ui.End).Children(func() {
+		ui.Column(c).Grow(1).Basis(0).MinWidth(0).Children(func() {
 			a.numberEdit(c, "CurrentHP", key+"/hp", r.Progress.CurrentHP, 0, hpmax, func(s *save.Save, n int) (*save.Save, error) {
 				rows, e := s.Roster()
 				if e != nil {
@@ -284,15 +288,17 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 				return s.WithRosterCondition(r.Index, rows[r.Index].Progress.InternalLevel, n)
 			})
 		})
-		if ui.Button(c, a.T("RestoreHP")).Grow(1).Basis(0).Clicked() {
-			a.perform(key, func(s *save.Save) (*save.Save, error) {
-				n, e := s.RosterMaximumHP(r.Index)
-				if e != nil {
-					return nil, e
-				}
-				return s.WithRosterCondition(r.Index, r.Progress.InternalLevel, n)
-			})
-		}
+		ui.Column(c).Grow(1).Basis(0).MinWidth(0).Children(func() {
+			if ui.Button(c, a.T("RestoreHP")).Clicked() {
+				a.perform(key, func(s *save.Save) (*save.Save, error) {
+					n, e := s.RosterMaximumHP(r.Index)
+					if e != nil {
+						return nil, e
+					}
+					return s.WithRosterCondition(r.Index, r.Progress.InternalLevel, n)
+				})
+			}
+		})
 	})
 	ui.Row(c).AlignItems(ui.Center).Children(func() {
 		ui.Text(c, a.T("PersonalStats")).Bold().Grow(1)
