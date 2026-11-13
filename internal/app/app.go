@@ -201,25 +201,33 @@ func (a *App) ApplyPending(prefix string) error {
 	return nil
 }
 
+func (a *App) snapshot(prefix string) (*save.Save, error) {
+	candidate := a.Save
+	for _, key := range a.pendingOrder {
+		if key != prefix && !strings.HasPrefix(key, prefix+"/") {
+			continue
+		}
+		if fn := a.pending[key]; fn != nil {
+			var err error
+			candidate, err = fn(candidate)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+	return candidate, nil
+}
+
 // perform commits the editor and its action together, so an action error
 // retains the original save and all pending edits.
 func (a *App) perform(prefix string, fn edit) bool {
 	if a.Save == nil {
 		return false
 	}
-	candidate := a.Save
-	for _, key := range a.pendingOrder {
-		if key != prefix && !strings.HasPrefix(key, prefix+"/") {
-			continue
-		}
-		if edit := a.pending[key]; edit != nil {
-			var err error
-			candidate, err = edit(candidate)
-			if err != nil {
-				a.Status = err.Error()
-				return false
-			}
-		}
+	candidate, err := a.snapshot(prefix)
+	if err != nil {
+		a.Status = err.Error()
+		return false
 	}
 	next, err := fn(candidate)
 	if err != nil {

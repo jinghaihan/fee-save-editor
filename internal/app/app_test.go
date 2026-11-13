@@ -314,3 +314,55 @@ func TestGUIEditorsSaveAndReload(t *testing.T) {
 		})
 	}
 }
+
+func TestExportSnapshotIncludesPendingEdits(t *testing.T) {
+	a := fixture(t)
+	before := a.Save.Bytes()
+	a.stage("roster/0/values", func(s *save.Save) (*save.Save, error) {
+		rows, e := s.Roster()
+		if e != nil {
+			return nil, e
+		}
+		v := rows[0].Values
+		v.SkillPoints = 1234
+		return s.WithRosterValues(0, v)
+	})
+	snapshot, e := a.snapshot("roster/0")
+	if e != nil {
+		t.Fatal(e)
+	}
+	b, e := snapshot.ExportRosterCharacter(0)
+	if e != nil {
+		t.Fatal(e)
+	}
+	transfer, e := save.ReadRosterTransfer(b)
+	if e != nil || transfer.Values.SkillPoints != 1234 {
+		t.Fatalf("pending edits missing from export: %v", e)
+	}
+	if !bytes.Equal(before, a.Save.Bytes()) || a.pending["roster/0/values"] == nil {
+		t.Fatal("export snapshot modified the loaded editor")
+	}
+}
+func TestLanguagesAndFilters(t *testing.T) {
+	a := fixture(t)
+	*a.tab("achievement-category") = 2
+	*a.tab("achievement-status") = 1
+	for _, language := range []string{"en", "zh-Hans", "zh-Hant", "ja", "ko", "de", "fr", "es", "it"} {
+		if e := a.SetLanguage(language); e != nil {
+			t.Fatal(e)
+		}
+		tt := ui.NewTester(a.View, 860, 600)
+		for _, v := range testViews() {
+			a.Page = v.page
+			if v.key != "" {
+				*a.tab(v.key) = v.tab
+			}
+			a.revision++
+			tt.Frame()
+			checkBounds(t, tt, 860, 600)
+		}
+		if *a.tab("achievement-category") != 2 || *a.tab("achievement-status") != 1 {
+			t.Fatal("language change reset the filter")
+		}
+	}
+}

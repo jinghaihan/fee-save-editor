@@ -493,6 +493,15 @@ func (a *App) rosterEquipment(c *ui.Context, key string, r save.RosterCharacter)
 }
 func (a *App) transferCharacter(index int, export bool) {
 	source := a.Save
+	scope := fmt.Sprintf("roster/%d", index)
+	if export {
+		var err error
+		source, err = a.snapshot(scope)
+		if err != nil {
+			a.Status = err.Error()
+			return
+		}
+	}
 	path := a.Path
 	exportTitle, importTitle := a.T("ExportCharacter"), a.T("ImportCharacter")
 	go func() {
@@ -529,7 +538,10 @@ func (a *App) transferCharacter(index int, export bool) {
 					return
 				}
 				if a.Save == source {
-					a.apply(func(s *save.Save) (*save.Save, error) { return s.ImportRosterCharacter(index, b) })
+					if a.apply(func(s *save.Save) (*save.Save, error) { return s.ImportRosterCharacter(index, b) }) {
+						a.discard(scope)
+						a.pruneDrafts()
+					}
 				}
 			})
 		}
