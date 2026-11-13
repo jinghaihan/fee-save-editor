@@ -366,3 +366,37 @@ func TestLanguagesAndFilters(t *testing.T) {
 		}
 	}
 }
+
+func TestUnlockedAmiiboIsChecked(t *testing.T) {
+	a := fixture(t)
+	rewards, e := a.Save.Amiibo()
+	if e != nil {
+		t.Fatal(e)
+	}
+	reward := rewards[0]
+	if !a.apply(func(s *save.Save) (*save.Save, error) { return s.UnlockAmiibo([]string{reward.Definition.Key}) }) {
+		t.Fatal(a.Status)
+	}
+	a.Page = 8
+	tt := ui.NewTester(a.View, 1120, 780)
+	node, ok := tt.AccessByRole(ui.RoleCheckBox, reward.Definition.Names.Name(a.Language))
+	if !ok || !node.Checked || !node.Disabled {
+		t.Fatalf("unlocked reward is not checked and disabled: %+v", node)
+	}
+}
+func TestEmblemChoiceSurvivesEditing(t *testing.T) {
+	a := fixture(t)
+	emblems, e := a.Save.Emblems()
+	if e != nil || len(emblems) < 2 {
+		t.Fatal(e)
+	}
+	a.Page = 3
+	selected := fmt.Sprint(emblems[1].InstanceId)
+	a.choices["emblem-choice"] = &selected
+	tt := ui.NewTester(a.View, 1120, 780)
+	a.apply(func(s *save.Save) (*save.Save, error) { return s.WithEmblemDirtiness(nil, 0) })
+	tt.Frame()
+	if *a.choices["emblem-choice"] != fmt.Sprint(emblems[1].InstanceId) {
+		t.Fatal("editing reset the selected Emblem")
+	}
+}

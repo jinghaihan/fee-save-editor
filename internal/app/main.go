@@ -5,6 +5,7 @@ import (
 	"github.com/egoist/mygo/ui"
 	"github.com/jinghaihan/fee-save-editor/internal/catalog"
 	"github.com/jinghaihan/fee-save-editor/internal/save"
+	"strconv"
 )
 
 func (a *App) mainEdit(key string, patch func(*save.MainValues)) {
@@ -81,7 +82,7 @@ func (a *App) mainPage(c *ui.Context) {
 				a.textField(c, "SommieName", "main/sommie", v.SommieName, func(n string) { a.mainEdit("main/sommie", func(v *save.MainValues) { v.SommieName = n }) })
 				if seconds, e := read(a, "playtime", a.Save.PlayTime); e == nil {
 					a.field(c, "PlayTime", func() {
-						ui.Row(c).Gap(8).Children(func() {
+						ui.Row(c).Gap(8).AlignItems(ui.Center).Children(func() {
 							for i, key := range []string{"Hours", "Minutes", "Seconds"} {
 								value, maximum := int(seconds)/3600, 999
 								switch i {
@@ -93,7 +94,20 @@ func (a *App) mainPage(c *ui.Context) {
 									maximum = 59
 								}
 								n := a.number("main/time/"+key, float64(value))
-								if ui.NumberInput(c.Key(key), n, 0, float64(maximum), 1).Grow(1).Basis(0).Label(a.T(key)).Changed() {
+								if i > 0 {
+									ui.Text(c, ":")
+								}
+								format := "%02d"
+								if i == 0 {
+									format = "%d"
+								}
+								text := a.text("main/time/"+key, fmt.Sprintf(format, int(*n)))
+								if ui.DecimalInput(c.Key(key), text, "0", strconv.Itoa(maximum), "1").Grow(1).Basis(0).MinWidth(0).Height(42).Label(a.T(key)).Changed() {
+									parsed, err := strconv.Atoi(*text)
+									if err != nil {
+										continue
+									}
+									*n = float64(parsed)
 									a.stage("main/time", func(s *save.Save) (*save.Save, error) {
 										old, e := s.PlayTime()
 										if e != nil {

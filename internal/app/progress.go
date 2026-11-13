@@ -70,6 +70,9 @@ func (a *App) amiiboGroup(c *ui.Context, group string, rewards []save.AmiiboRewa
 				selected = new(bool)
 				a.flags[key] = selected
 			}
+			if r.Unlocked {
+				*selected = true
+			}
 			ui.Checkbox(c.Key(key), selected, r.Definition.Names.Name(a.Language)).Disabled(r.Unlocked)
 		}
 		a.columns(c, func() {

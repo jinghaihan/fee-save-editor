@@ -25,12 +25,20 @@ func (a *App) emblemsPage(c *ui.Context) {
 		return
 	}
 	conditions, _ := read(a, "emblem-conditions", a.Save.EmblemConditions)
-	selected := draft(a, "emblem-choice", func() string {
-		if len(emblems) > 0 {
-			return fmt.Sprint(emblems[0].InstanceId)
+	selected := a.choices["emblem-choice"]
+	if selected == nil {
+		selected = new(string)
+		a.choices["emblem-choice"] = selected
+	}
+	found := false
+	for _, e := range emblems {
+		if *selected == fmt.Sprint(e.InstanceId) {
+			found = true
 		}
-		return ""
-	})
+	}
+	if !found && len(emblems) > 0 {
+		*selected = fmt.Sprint(emblems[0].InstanceId)
+	}
 	choices := []option{}
 	var emblem save.SavedEmblem
 	for _, e := range emblems {
