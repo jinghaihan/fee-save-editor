@@ -145,8 +145,6 @@
   "CharacterList": "캐릭터 목록",
   "General": "기본 정보",
   "Stats": "능력치",
-  "PersonalStats": "개인 능력치",
-  "CurrentClassStat": "병종: {0} / {1}",
   "MaximizeStats": "능력치 최대화",
   "MaximizeAllStats": "모든 능력치 최대화",
   "Name": "이름",
@@ -249,5 +247,6 @@
   "RingCare": "반지 / 팔찌 관리",
   "Dirtiness": "오염도",
   "Clean": "닦기",
-  "CleanAll": "모두 닦기"
+  "CleanAll": "모두 닦기",
+  "StatLimit": "상한 {0}"
 }

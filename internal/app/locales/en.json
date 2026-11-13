@@ -145,8 +145,6 @@
   "CharacterList": "Character List",
   "General": "General",
   "Stats": "Stats",
-  "PersonalStats": "Personal Stats",
-  "CurrentClassStat": "Class: {0} / {1}",
   "MaximizeStats": "Max Stats",
   "MaximizeAllStats": "Max All Stats",
   "Name": "Name",
@@ -249,5 +247,6 @@
   "RingCare": "Ring / Bracelet Care",
   "Dirtiness": "Dirtiness",
   "Clean": "Clean",
-  "CleanAll": "Clean All"
+  "CleanAll": "Clean All",
+  "StatLimit": "Max {0}"
 }

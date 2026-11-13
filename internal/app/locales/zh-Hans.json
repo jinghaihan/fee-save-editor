@@ -145,8 +145,6 @@
   "CharacterList": "角色列表",
   "General": "基本信息",
   "Stats": "属性",
-  "PersonalStats": "个人属性值",
-  "CurrentClassStat": "职业：{0} / {1}",
   "MaximizeStats": "属性全满",
   "MaximizeAllStats": "全员属性全满",
   "Name": "名称",
@@ -249,5 +247,6 @@
   "RingCare": "戒指／手镯清洁",
   "Dirtiness": "脏污程度",
   "Clean": "清洁",
-  "CleanAll": "全部清洁"
+  "CleanAll": "全部清洁",
+  "StatLimit": "上限 {0}"
 }

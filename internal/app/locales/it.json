@@ -145,8 +145,6 @@
   "CharacterList": "Lista personaggi",
   "General": "Generale",
   "Stats": "Statistiche",
-  "PersonalStats": "Statistiche personali",
-  "CurrentClassStat": "Classe: {0} / {1}",
   "MaximizeStats": "Massimizza statistiche",
   "MaximizeAllStats": "Massimizza tutte le statistiche",
   "Name": "Nome",
@@ -249,5 +247,6 @@
   "RingCare": "Cura di anelli / bracciali",
   "Dirtiness": "Sporco",
   "Clean": "Pulisci",
-  "CleanAll": "Pulisci tutto"
+  "CleanAll": "Pulisci tutto",
+  "StatLimit": "Max {0}"
 }

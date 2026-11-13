@@ -301,7 +301,7 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 		})
 	})
 	ui.Row(c).AlignItems(ui.Center).Children(func() {
-		ui.Text(c, a.T("PersonalStats")).Bold().Grow(1)
+		ui.Text(c, a.T("Stats")).Bold().Grow(1)
 		a.button(c, "MaximizeStats", func() {
 			index := r.Index
 			a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeRosterStats(&index) })
@@ -319,37 +319,30 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 			}
 			stat := stat
 			label := save.StatNames[stat.Stat]
-			low, high := -128, 127
+			low, high := 0, 255
+			if stat.Stat == save.HP {
+				low = 1
+			}
 			job := catalog.Class(r.ClassHash)
-			if job != nil {
-				base := 0
-				if stat.Stat == save.HP {
-					base = 1
-				}
-				low = max(-128, base-job.BaseStats[stat.Stat])
-				if stat.Stat == save.Movement {
-					high = 2
-				}
+			verified := job != nil && stat.Maximum != nil
+			if verified {
+				low = max(low, job.BaseStats[stat.Stat]-120)
+				high = min(*stat.Maximum, job.BaseStats[stat.Stat]+120)
 			}
 			fieldKey := fmt.Sprintf("%s/stats/%d", key, stat.Stat)
-			value := a.number(fieldKey, float64(stat.PersonalValue))
+			value := a.number(fieldKey, float64(stat.Value))
 			ui.Column(c.Key(label)).Gap(editorAppearance.ControlGap).Children(func() {
 				ui.Row(c).Children(func() {
 					ui.Text(c, a.T(label)).Grow(1)
-					if job != nil && stat.Maximum != nil {
-						preview := int(*value) + job.BaseStats[stat.Stat]
-						preview = max(0, min(*stat.Maximum, preview))
-						if stat.Stat == save.HP {
-							preview = max(1, preview)
-						}
-						ui.Text(c, replaceFormat(a.T("CurrentClassStat"), fmt.Sprint(preview), fmt.Sprint(*stat.Maximum)))
+					if verified {
+						ui.Text(c, replaceFormat(a.T("StatLimit"), fmt.Sprint(*stat.Maximum)))
 					}
 				})
-				input := ui.NumberInput(c, value, float64(min(low, stat.PersonalValue)), float64(max(high, stat.PersonalValue)), 1).Label(a.T(label))
+				input := ui.NumberInput(c, value, float64(low), float64(high), 1).Role(ui.RoleGroup).Label(a.T(label)).Disabled(!verified)
 				a.trackInput(fieldKey, input)
 				if input.Changed() {
 					n := int(*value)
-					a.stage(fieldKey, func(s *save.Save) (*save.Save, error) { return s.WithRosterStat(r.Index, stat.Stat, n, true) })
+					a.stage(fieldKey, func(s *save.Save) (*save.Save, error) { return s.WithRosterStat(r.Index, stat.Stat, n, false) })
 				}
 			})
 		}

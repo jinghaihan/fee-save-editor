@@ -145,8 +145,6 @@
   "CharacterList": "Charakterliste",
   "General": "Allgemein",
   "Stats": "Werte",
-  "PersonalStats": "Persönliche Werte",
-  "CurrentClassStat": "Klasse: {0} / {1}",
   "MaximizeStats": "Werte maximieren",
   "MaximizeAllStats": "Alle Werte maximieren",
   "Name": "Name",
@@ -249,5 +247,6 @@
   "RingCare": "Ring- / Armreifpflege",
   "Dirtiness": "Verschmutzung",
   "Clean": "Reinigen",
-  "CleanAll": "Alle reinigen"
+  "CleanAll": "Alle reinigen",
+  "StatLimit": "Max. {0}"
 }

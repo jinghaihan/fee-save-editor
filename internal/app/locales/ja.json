@@ -145,8 +145,6 @@
   "CharacterList": "ユニット一覧",
   "General": "基本情報",
   "Stats": "能力",
-  "PersonalStats": "個人の能力",
-  "CurrentClassStat": "兵種：{0} / {1}",
   "MaximizeStats": "能力を最大にする",
   "MaximizeAllStats": "全員の能力を最大にする",
   "Name": "名前",
@@ -249,5 +247,6 @@
   "RingCare": "指輪・腕輪の手入れ",
   "Dirtiness": "汚れ",
   "Clean": "きれいにする",
-  "CleanAll": "すべてきれいにする"
+  "CleanAll": "すべてきれいにする",
+  "StatLimit": "上限 {0}"
 }
