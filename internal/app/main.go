@@ -237,37 +237,38 @@ func (a *App) ticketsPage(c *ui.Context) {
 	if !ok {
 		return
 	}
-	a.card(c, "RelayTickets").Width(420).Children(func() {
-		ui.Text(c, a.T("RelayTickets")).Bold()
-		names := []string{}
-		for _, r := range rows {
-			names = append(names, r.IdentifierHex)
-		}
-		if len(names) == 0 {
-			return
-		}
-		selected := a.choices["ticket-campaign"]
-		if selected == nil {
-			v := names[0]
-			selected = &v
-			a.choices["ticket-campaign"] = selected
-		}
-		a.field(c, "Campaign", func() {
-			if ui.Select(c, selected, names).Changed() {
-				a.ApplyPending("tickets")
+	ui.Column(c).Width(420).Children(func() {
+		a.section(c, "RelayTickets", func() {
+			names := []string{}
+			for _, r := range rows {
+				names = append(names, r.IdentifierHex)
 			}
-		})
-		for _, r := range rows {
-			if r.IdentifierHex != *selected {
-				continue
+			if len(names) == 0 {
+				return
 			}
-			a.numberEdit(c, "Amount", "tickets/"+r.IdentifierHex, r.Amount, 0, 999, func(s *save.Save, n int) (*save.Save, error) { return s.WithTickets(r.Identifier, n) })
-			a.applyButton(c, "tickets")
-			a.button(c, "MaxAmount", func() {
-				if a.ApplyPending("tickets") == nil {
-					a.apply(func(s *save.Save) (*save.Save, error) { return s.WithTickets(r.Identifier, 999) })
+			selected := a.choices["ticket-campaign"]
+			if selected == nil {
+				v := names[0]
+				selected = &v
+				a.choices["ticket-campaign"] = selected
+			}
+			a.field(c, "Campaign", func() {
+				if ui.Select(c, selected, names).Changed() {
+					a.ApplyPending("tickets")
 				}
 			})
-		}
+			for _, r := range rows {
+				if r.IdentifierHex != *selected {
+					continue
+				}
+				a.numberEdit(c, "Amount", "tickets/"+r.IdentifierHex, r.Amount, 0, 999, func(s *save.Save, n int) (*save.Save, error) { return s.WithTickets(r.Identifier, n) })
+				a.applyButton(c, "tickets")
+				a.button(c, "MaxAmount", func() {
+					if a.ApplyPending("tickets") == nil {
+						a.apply(func(s *save.Save) (*save.Save, error) { return s.WithTickets(r.Identifier, 999) })
+					}
+				})
+			}
+		})
 	})
 }
