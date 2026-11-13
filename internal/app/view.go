@@ -16,7 +16,7 @@ func (a *App) View(c *ui.Context) {
 		for i, page := range pages {
 			labels[i] = a.T(page)
 		}
-		ui.ScrollHorizontal(c).Children(func() {
+		ui.ScrollHorizontal(c).PaddingX(16).Children(func() {
 			old := a.Page
 			if ui.Tabs(c, &a.Page, labels...).Changed() {
 				if a.Save != nil && a.ApplyPending("") != nil {
