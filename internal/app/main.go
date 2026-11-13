@@ -28,7 +28,7 @@ func (a *App) mainPage(c *ui.Context) {
 		return
 	}
 	ui.Scroll(c).Grow(1).MinHeight(0).Children(func() {
-		a.columns(c, func() {
+		a.sectionColumns(c, func() {
 			a.section(c, "GameSettings", func() {
 				name, e := read(a, "protagonist-name", a.Save.ProtagonistName)
 				if a.Save == nil {
@@ -102,7 +102,7 @@ func (a *App) mainPage(c *ui.Context) {
 									format = "%d"
 								}
 								text := a.text("main/time/"+key, fmt.Sprintf(format, int(*n)))
-								if ui.DecimalInput(c.Key(key), text, "0", strconv.Itoa(maximum), "1").Grow(1).Basis(0).MinWidth(0).Height(42).Label(a.T(key)).Changed() {
+								if ui.DecimalInput(c.Key(key), text, "0", strconv.Itoa(maximum), "1").Grow(1).Basis(0).MinWidth(0).Label(a.T(key)).Changed() {
 									parsed, err := strconv.Atoi(*text)
 									if err != nil {
 										continue
@@ -198,7 +198,7 @@ func (a *App) donationsCard(c *ui.Context) {
 		}
 		for _, r := range rows {
 			d := r.Country
-			ui.Column(c.Key(d.Id)).Gap(8).Children(func() {
+			ui.Column(c.Key(d.Id)).Gap(editorAppearance.ControlGap).Children(func() {
 				ui.Text(c, d.Names.Name(a.Language)).Bold()
 				a.columns(c, func() {
 					amount := int(*a.number("main/donations/"+d.Id, float64(r.Amount)))

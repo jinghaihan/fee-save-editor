@@ -22,7 +22,7 @@ func (a *App) View(c *ui.Context) {
 				}
 			}
 		})
-		ui.Column(c.Key(pages[a.Page])).Grow(1).Basis(0).MinHeight(0).Padding(24).Gap(12).Disabled(a.Save == nil || a.Save.Kind == save.Global && pages[a.Page] != "Main" && pages[a.Page] != "Inspector").Children(func() {
+		ui.Column(c.Key(pages[a.Page])).Grow(1).Basis(0).MinHeight(0).Padding(16).Gap(editorAppearance.SectionGap).Disabled(a.Save == nil || a.Save.Kind == save.Global && pages[a.Page] != "Main" && pages[a.Page] != "Inspector").Children(func() {
 			switch pages[a.Page] {
 			case "Main":
 				a.mainPage(c)

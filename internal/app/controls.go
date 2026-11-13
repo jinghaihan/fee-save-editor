@@ -68,25 +68,34 @@ func (a *App) flag(key string, current bool) *bool {
 	return v
 }
 func (a *App) card(c *ui.Context, title string) ui.Element {
-	return ui.Column(c).Padding(20).Gap(16).Radius(editorAppearance.CardRadius).Background(cardColor(c)).Border(1, c.Theme().Border).MinWidth(0).Role(ui.RoleGroup).Label(a.T(title))
+	return ui.Column(c).Padding(editorAppearance.CardPadding).Gap(editorAppearance.SectionGap).Radius(editorAppearance.CardRadius).Background(cardColor(c)).Border(1, c.Theme().Border).MinWidth(0).Role(ui.RoleGroup).Label(a.T(title))
 }
 func (a *App) section(c *ui.Context, title string, fn func()) {
-	a.card(c, title).Children(func() { ui.Text(c, a.T(title)).Bold(); fn() })
+	a.card(c, title).Children(func() {
+		ui.Text(c, a.T(title)).Bold()
+		ui.Column(c).Gap(editorAppearance.ControlGap).Children(fn)
+	})
 }
 func (a *App) columns(c *ui.Context, fn ...func()) {
-	ui.Row(c).Gap(24).AlignItems(ui.Start).Children(func() {
+	a.columnsWithGap(c, editorAppearance.ControlGap, fn...)
+}
+func (a *App) sectionColumns(c *ui.Context, fn ...func()) {
+	a.columnsWithGap(c, editorAppearance.SectionGap, fn...)
+}
+func (a *App) columnsWithGap(c *ui.Context, verticalGap float32, fn ...func()) {
+	ui.Row(c).Gap(editorAppearance.SectionGap).AlignItems(ui.Start).Children(func() {
 		for _, f := range fn {
-			ui.Column(c).Grow(1).Basis(0).MinWidth(0).Gap(24).Children(f)
+			ui.Column(c).Grow(1).Basis(0).MinWidth(0).Gap(verticalGap).Children(f)
 		}
 	})
 }
 func (a *App) field(c *ui.Context, label string, fn func()) {
-	ui.Field(c.Key(label), a.T(label), fn).Gap(8).MinWidth(0)
+	ui.Field(c.Key(label), a.T(label), fn).Gap(editorAppearance.ControlGap).MinWidth(0)
 }
 func (a *App) numberField(c *ui.Context, label, key string, value float64, lo, hi float64, update func(int)) *float64 {
 	v := a.number(key, value)
 	a.field(c, label, func() {
-		if ui.NumberInput(c.Key(key), v, lo, hi, 1).Height(42).Label(a.T(label)).Changed() {
+		if ui.NumberInput(c.Key(key), v, lo, hi, 1).Label(a.T(label)).Changed() {
 			update(int(*v))
 		}
 	})
@@ -95,7 +104,7 @@ func (a *App) numberField(c *ui.Context, label, key string, value float64, lo, h
 func (a *App) textField(c *ui.Context, label, key, current string, update func(string)) *string {
 	v := a.text(key, current)
 	a.field(c, label, func() {
-		if ui.TextInput(c.Key(key), v).Height(42).Label(a.T(label)).Changed() {
+		if ui.TextInput(c.Key(key), v).Label(a.T(label)).Changed() {
 			update(*v)
 		}
 	})
@@ -104,19 +113,19 @@ func (a *App) textField(c *ui.Context, label, key, current string, update func(s
 func (a *App) selectField(c *ui.Context, label, key, current string, options []string, update func(string)) *string {
 	v := a.choice(key, current)
 	a.field(c, label, func() {
-		if ui.Select(c.Key(key), v, options).Height(42).Label(a.T(label)).Changed() {
+		if ui.Select(c.Key(key), v, options).Label(a.T(label)).Changed() {
 			update(*v)
 		}
 	})
 	return v
 }
 func (a *App) button(c *ui.Context, key string, fn func()) {
-	if ui.Button(c.Key(key), a.T(key)).Height(42).Clicked() {
+	if ui.Button(c.Key(key), a.T(key)).Clicked() {
 		fn()
 	}
 }
 func (a *App) applyButton(c *ui.Context, prefix string) {
-	if ui.Button(c.Key(prefix+"/apply"), a.T("ApplyChanges")).Height(42).Clicked() {
+	if ui.Button(c.Key(prefix+"/apply"), a.T("ApplyChanges")).Clicked() {
 		a.ApplyPending(prefix)
 	}
 }
@@ -129,7 +138,7 @@ func (a *App) list(c *ui.Context, key, title string, rows []row, header, footer 
 	if s.Selected >= 0 && s.Selected < len(s.Rows) {
 		selectedID = s.Rows[s.Selected].ID
 	}
-	ui.Column(c.Key(key)).Fill().Gap(16).Children(func() {
+	ui.Column(c.Key(key)).Fill().Gap(editorAppearance.ControlGap).Children(func() {
 		if title != "" {
 			ui.Text(c, a.T(title)).Bold()
 		}
@@ -185,7 +194,7 @@ func clampIndex(index, length int) int {
 	return max(0, min(index, length-1))
 }
 func (a *App) split(c *ui.Context, key, title string, rows []row, header, footer func(), detail func(string)) {
-	ui.Row(c).Grow(1).Basis(0).MinHeight(0).Gap(24).AlignItems(ui.Stretch).Children(func() {
+	ui.Row(c).Grow(1).Basis(0).MinHeight(0).Gap(editorAppearance.SectionGap).AlignItems(ui.Stretch).Children(func() {
 		id := ""
 		width := float32(320)
 		windowWidth, _ := c.Size()
@@ -195,7 +204,7 @@ func (a *App) split(c *ui.Context, key, title string, rows []row, header, footer
 		a.card(c, title).Width(width).MinHeight(0).Children(func() { id = a.list(c, key, title, rows, header, footer) })
 		a.card(c, key+"Editor").Grow(1).MinHeight(0).Children(func() {
 			ui.Scroll(c).Grow(1).MinHeight(0).Children(func() {
-				ui.Column(c).Gap(16).MinWidth(0).Children(func() {
+				ui.Column(c).Gap(editorAppearance.ControlGap).MinWidth(0).Children(func() {
 					if id != "" || key == "convoy" || a.Save == nil || a.Save.Kind == save.Global {
 						detail(id)
 					}
@@ -205,7 +214,7 @@ func (a *App) split(c *ui.Context, key, title string, rows []row, header, footer
 	})
 }
 func (a *App) staticField(c *ui.Context, label string, value any) {
-	a.field(c, label, func() { ui.Text(c, fmt.Sprint(value)).MinHeight(24) })
+	a.field(c, label, func() { ui.Text(c, fmt.Sprint(value)) })
 }
 func (a *App) tabsView(c *ui.Context, key string, labels ...string) int {
 	tab := a.tab(key)
@@ -232,7 +241,7 @@ func (a *App) pick(c *ui.Context, label, key string, options []string) string {
 		}
 		a.choices[key] = v
 	}
-	a.field(c, label, func() { ui.Select(c.Key(key), v, options).Height(42).Label(a.T(label)) })
+	a.field(c, label, func() { ui.Select(c.Key(key), v, options).Label(a.T(label)) })
 	return *v
 }
 func draft[T any](a *App, key string, init func() T) *T {
@@ -280,7 +289,7 @@ func (a *App) combo(c *ui.Context, label, key string, selected *string, options 
 			state.Text = current
 		}
 		box.Children(func() {
-			if ui.Combobox(c, &state.Text, labels).Height(42).Label(a.T(label)).Changed() {
+			if ui.Combobox(c, &state.Text, labels).Label(a.T(label)).Changed() {
 				for i, text := range labels {
 					if state.Text == text {
 						*selected = options[i].ID
@@ -296,7 +305,7 @@ func (a *App) combo(c *ui.Context, label, key string, selected *string, options 
 }
 func (a *App) formNumber(c *ui.Context, label, key string, value *float64, lo, hi float64) bool {
 	changed := false
-	a.field(c, label, func() { changed = ui.NumberInput(c.Key(key), value, lo, hi, 1).Height(42).Label(a.T(label)).Changed() })
+	a.field(c, label, func() { changed = ui.NumberInput(c.Key(key), value, lo, hi, 1).Label(a.T(label)).Changed() })
 	return changed
 }
 func (a *App) query(c *ui.Context, key string) *string {

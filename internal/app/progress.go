@@ -29,7 +29,7 @@ func (a *App) animalsPage(c *ui.Context) {
 			if r.Definition.Id != id {
 				continue
 			}
-			ui.Column(c).Width(340).Gap(16).Children(func() {
+			ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
 				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
 				a.numberEdit(c, "Amount", "animals/"+id, r.Amount, 0, 99, func(s *save.Save, n int) (*save.Save, error) { return s.WithAnimal(id, n, false) })
 				a.applyButton(c, "animals")
@@ -48,7 +48,7 @@ func (a *App) amiiboPage(c *ui.Context) {
 		return
 	}
 	ui.Scroll(c).Grow(1).Children(func() {
-		a.columns(c, func() { a.amiiboGroup(c, "Outfits", rewards) }, func() { a.amiiboGroup(c, "Music", rewards) })
+		a.sectionColumns(c, func() { a.amiiboGroup(c, "Outfits", rewards) }, func() { a.amiiboGroup(c, "Music", rewards) })
 	})
 }
 func (a *App) amiiboGroup(c *ui.Context, group string, rewards []save.AmiiboReward) {
@@ -130,7 +130,7 @@ func (a *App) achievementsPage(c *ui.Context) {
 		rows = append(rows, row{r.Definition.Id, r.Definition.Names.Name(a.Language), ""})
 	}
 	a.split(c, "achievements", "Achievements", rows, func() {
-		ui.Row(c).Gap(12).Children(func() {
+		ui.Row(c).Gap(editorAppearance.SectionGap).Children(func() {
 			categoryLabel, statusLabel := cats[*category], statuses[*statusFilter]
 			if ui.Select(c.Key("category"), &categoryLabel, cats).Grow(1).Basis(0).Label(a.T("Category")).Changed() {
 				for i, label := range cats {
@@ -154,7 +154,7 @@ func (a *App) achievementsPage(c *ui.Context) {
 			if r.Definition.Id != id {
 				continue
 			}
-			ui.Column(c).Width(340).Gap(24).Children(func() {
+			ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
 				ui.Text(c, r.Definition.Names.Name(a.Language)).Bold()
 				a.staticField(c, "Category", a.T("AchievementCategory"+[]string{"Unit", "Battle", "Somniel", "Shop", "System"}[r.Definition.Category]))
 				status := "NotAchieved"
@@ -183,8 +183,8 @@ func (a *App) minigamesPage(c *ui.Context) {
 		byKey[r.Definition.Key] = r
 	}
 	ui.Scroll(c).Grow(1).MinHeight(0).Children(func() {
-		ui.Column(c).Gap(24).Children(func() {
-			a.columns(c, func() {
+		ui.Column(c).Gap(editorAppearance.SectionGap).Children(func() {
+			a.sectionColumns(c, func() {
 				for _, group := range catalog.Minigames {
 					if group.Id == "PushUps" || group.Id == "Squats" {
 						a.minigameCard(c, group, byKey)
@@ -209,7 +209,7 @@ func (a *App) minigameCard(c *ui.Context, group catalog.MinigameGroup, records m
 	a.section(c, group.Names.Name(a.Language), func() {
 		for _, d := range group.Records {
 			r := records[d.Key]
-			ui.Row(c.Key(d.Key)).Gap(24).AlignItems(ui.Center).Children(func() {
+			ui.Row(c.Key(d.Key)).Gap(editorAppearance.SectionGap).AlignItems(ui.Center).Children(func() {
 				ui.Text(c, d.Names.Name(a.Language)).Grow(1).Basis(0)
 				ui.Column(c).Grow(1).Basis(0).MinWidth(0).Children(func() {
 					label := "BestScore"
@@ -282,7 +282,7 @@ func (a *App) inspectorPage(c *ui.Context) {
 		a.split(c, "variables", "Variables", rows, nil, nil, func(key string) {
 			for _, v := range variables {
 				if v.Key == key {
-					ui.Column(c).Width(340).Gap(16).Children(func() {
+					ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
 						ui.Text(c, key)
 						a.numberEdit(c, "Value", "variables/"+key, v.Value, -2147483648, 2147483647, func(s *save.Save, n int) (*save.Save, error) { return s.WithVariable(key, n) })
 						a.applyButton(c, "variables")
@@ -302,7 +302,7 @@ func (a *App) inspectorPage(c *ui.Context) {
 	}
 	a.split(c, "sections", "Sections", sections, nil, nil, func(id string) {
 		i, _ := strconv.Atoi(id)
-		ui.Column(c).Gap(24).Children(func() {
+		ui.Column(c).Gap(editorAppearance.SectionGap).Children(func() {
 			a.section(c, "Overview", func() {
 				a.staticField(c, "FileName", filepath.Base(a.Path))
 				kind := "GameSave"

@@ -2,11 +2,11 @@ package app
 
 import "github.com/egoist/mygo/ui"
 
-// Keep the original container geometry; widgets use MyGo's standard themes.
+// Use FETH's container spacing and standard MyGo widget sizes.
 var editorAppearance = struct {
 	CardRadius, CardPadding float32
 	ControlGap, SectionGap  float32
-}{20, 20, 8, 24}
+}{20, 20, 8, 12}
 
 func makeEditorTheme(dark bool) *ui.Theme {
 	t := ui.LightTheme()

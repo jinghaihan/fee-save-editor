@@ -62,7 +62,7 @@ func (a *App) emblemsPage(c *ui.Context) {
 		a.button(c, "CleanAll", func() {
 			a.perform("bonds", func(s *save.Save) (*save.Save, error) { return s.WithEmblemDirtiness(nil, 0) })
 		})
-		if ui.Button(c, a.T("RemoveEmblem")).Height(42).Disabled(a.Save == nil || !a.Save.CanRemoveEmblem(emblem.InstanceId)).Clicked() {
+		if ui.Button(c, a.T("RemoveEmblem")).Disabled(a.Save == nil || !a.Save.CanRemoveEmblem(emblem.InstanceId)).Clicked() {
 			a.ask("ConfirmRemoveEmblem", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.WithoutEmblem(emblem.InstanceId) }) })
 		}
 		a.addEmblemButton(c)
@@ -125,7 +125,7 @@ func (a *App) emblemsPage(c *ui.Context) {
 					break
 				}
 			}
-			ui.Column(c).Gap(16).Disabled(condition == nil).Children(func() {
+			ui.Column(c).Gap(editorAppearance.ControlGap).Disabled(condition == nil).Children(func() {
 				dirt := 0
 				if condition != nil {
 					dirt = condition.Dirtiness
@@ -147,13 +147,13 @@ func (a *App) emblemsPage(c *ui.Context) {
 }
 func (a *App) addEmblemButton(c *ui.Context) {
 	missing, _ := read(a, "missing-emblems", a.Save.MissingEmblems)
-	anchor := ui.Button(c, a.T("AddEmblem")).Height(42).Disabled(len(missing) == 0)
+	anchor := ui.Button(c, a.T("AddEmblem")).Disabled(len(missing) == 0)
 	open := ui.Local(anchor, "open", func() bool { return false })
 	if anchor.Clicked() {
 		*open = !*open
 	}
 	ui.Popover(c, anchor, open, func() {
-		ui.Column(c).Width(280).Gap(16).Children(func() {
+		ui.Column(c).Width(280).Gap(editorAppearance.ControlGap).Children(func() {
 			ui.Text(c, a.T("AddEmblem")).Bold()
 			options := []option{}
 			for _, d := range missing {
@@ -199,7 +199,7 @@ func (a *App) bondRingsPage(c *ui.Context) {
 				ring = r
 			}
 		}
-		ui.Column(c).Width(340).Gap(16).Children(func() {
+		ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
 			ui.Text(c, a.T("BondRings")).Bold()
 			maximum := 99
 			if a.Save != nil {
@@ -230,14 +230,14 @@ func (a *App) bondRingsPage(c *ui.Context) {
 						text := a.T("BondRingMeldCost")
 						text = replaceFormat(text, def.Name(a.Language)+" "+def.RankName(), fmt.Sprint(rule.RequiredRings), fmt.Sprint(rule.BondFragments))
 						ui.Text(c, text)
-						if ui.Button(c, replaceFormat(a.T("MeldBondRing"), result.RankName())).Height(42).Disabled(ring.StockCount < rule.RequiredRings).Clicked() {
+						if ui.Button(c, replaceFormat(a.T("MeldBondRing"), result.RankName())).Disabled(ring.StockCount < rule.RequiredRings).Clicked() {
 							a.perform("rings", func(s *save.Save) (*save.Save, error) { return s.WithMeldedBondRing(ring.InstanceId) })
 						}
 					}
 				}
 			}
 			ui.Text(c, a.T("Stats")).Bold()
-			ui.Grid(c).Columns(3).Gap(12).Children(func() {
+			ui.Grid(c).Columns(3).GapX(editorAppearance.SectionGap).GapY(editorAppearance.ControlGap).Children(func() {
 				for i, n := range def.StatBonuses {
 					if n != 0 {
 						ui.Textf(c, "%s %s", a.T(save.StatNames[i]), signed(n))

@@ -42,7 +42,7 @@ func (a *App) supportPage(c *ui.Context) {
 			}
 		}
 		pair := catalog.SupportPair(key)
-		ui.Column(c).Width(340).Gap(16).Disabled(pair == nil).Children(func() {
+		ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Disabled(pair == nil).Children(func() {
 			ui.Text(c, a.T("SupportEditor")).Bold()
 			cap := 3
 			if a.Save != nil {

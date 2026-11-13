@@ -91,7 +91,7 @@ func (a *App) quantityPage(c *ui.Context, category string) {
 			if r.Definition.Id != id {
 				continue
 			}
-			ui.Column(c).Width(340).Gap(16).Children(func() {
+			ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
 				ui.Text(c, a.T("ItemEditor")).Bold()
 				ui.Text(c, r.Definition.Names.Name(a.Language))
 				a.numberEdit(c, "Amount", "quantity/"+id, r.Amount, 0, r.Definition.Maximum, func(s *save.Save, n int) (*save.Save, error) { return s.WithQuantity(id, n) })
@@ -168,7 +168,7 @@ func (a *App) itemEditor(c *ui.Context, scope string, index *int, slot int, item
 			editable = false
 		}
 	}
-	ui.Column(c.Key(key)).MaxWidth(340).Gap(16).Disabled(!editable).Children(func() {
+	ui.Column(c.Key(key)).MaxWidth(340).Gap(editorAppearance.ControlGap).Disabled(!editable).Children(func() {
 		ui.Text(c, a.T("ItemEditor")).Bold()
 		search := a.query(c, key+"/search")
 		options := []option{}
@@ -228,7 +228,7 @@ func (a *App) itemEditor(c *ui.Context, scope string, index *int, slot int, item
 		if e := catalog.Engraving(catalog.Hash(d.EngravingID)); e != nil {
 			a.engravingEffects(c, e)
 		}
-		if ui.Button(c, a.T("ApplyChanges")).Height(42).Disabled(slot < 0).Clicked() {
+		if ui.Button(c, a.T("ApplyChanges")).Disabled(slot < 0).Clicked() {
 			stage()
 			a.ApplyPending(scope)
 		}
@@ -264,13 +264,13 @@ func (a *App) itemEditor(c *ui.Context, scope string, index *int, slot int, item
 					})
 				})
 			}, func() {
-				if ui.Button(c, a.T("DeleteItem")).Height(42).Disabled(item == nil).Clicked() {
+				if ui.Button(c, a.T("DeleteItem")).Disabled(item == nil).Clicked() {
 					if a.ApplyPending(scope) == nil {
 						a.apply(func(s *save.Save) (*save.Save, error) { return s.DeleteInventoryItem(slot) })
 					}
 				}
 			})
-		} else if ui.Button(c, a.T("DeleteItem")).Height(42).Disabled(item == nil).Clicked() {
+		} else if ui.Button(c, a.T("DeleteItem")).Disabled(item == nil).Clicked() {
 			if a.ApplyPending(scope) == nil {
 				a.apply(func(s *save.Save) (*save.Save, error) { return s.DeleteRosterItem(*index, slot) })
 			}
@@ -283,7 +283,7 @@ func (a *App) engravingEffects(c *ui.Context, e *catalog.EngravingDefinition) {
 		value int
 	}{{"Might", e.Power}, {"Weight", e.Weight}, {"Hit", e.Hit}, {"Critical", e.Critical}, {"Avoid", e.Avoid}, {"Dodge", e.Secure}}
 	for start := 0; start < len(values); start += 3 {
-		ui.Row(c).Gap(12).Children(func() {
+		ui.Row(c).Gap(editorAppearance.SectionGap).Children(func() {
 			for _, v := range values[start : start+3] {
 				ui.Text(c, fmt.Sprintf("%s %s", a.T(v.label), signed(v.value))).Grow(1).Basis(0)
 			}

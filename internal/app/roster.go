@@ -44,20 +44,20 @@ func (a *App) rosterPage(c *ui.Context) {
 		a.button(c, "MaximizeAllStats", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeRosterStats(nil) }) })
 		id := a.selectedID("roster")
 		index, _ := strconv.Atoi(id)
-		ui.Row(c).Gap(12).Children(func() {
+		ui.Row(c).Gap(editorAppearance.SectionGap).Children(func() {
 			for _, export := range []bool{true, false} {
 				key := "Import"
 				if export {
 					key = "Export"
 				}
-				if ui.Button(c, a.T(key)).Height(42).Grow(1).Basis(0).Disabled(id == "").Clicked() {
+				if ui.Button(c, a.T(key)).Grow(1).Basis(0).Disabled(id == "").Clicked() {
 					a.transferCharacter(index, export)
 				}
 			}
 		})
-		ui.Row(c).Gap(12).Children(func() {
+		ui.Row(c).Gap(editorAppearance.SectionGap).Children(func() {
 			a.addCharacterButton(c)
-			if ui.Button(c, a.T("Delete")).Height(42).Grow(1).Basis(0).Disabled(id == "" || a.Save == nil || !a.Save.CanDeleteRosterCharacter(index)).Clicked() {
+			if ui.Button(c, a.T("Delete")).Grow(1).Basis(0).Disabled(id == "" || a.Save == nil || !a.Save.CanDeleteRosterCharacter(index)).Clicked() {
 				a.ask("ConfirmDeleteCharacter", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.WithoutRosterCharacter(index) }) })
 			}
 		})
@@ -70,7 +70,7 @@ func (a *App) rosterPage(c *ui.Context) {
 			}
 		}
 		scope := "roster/" + id
-		ui.Column(c.Key(id)).Gap(24).Children(func() {
+		ui.Column(c.Key(id)).Gap(editorAppearance.SectionGap).Children(func() {
 			tab := a.tabsView(c, "roster-tabs", "General", "Stats", "Items", "Skills", "Proficiencies", "Equipment")
 			switch tab {
 			case 0:
@@ -98,13 +98,13 @@ func (a *App) selectedID(key string) string {
 }
 func (a *App) addCharacterButton(c *ui.Context) {
 	missing, _ := read(a, "missing-characters", a.Save.MissingRosterCharacters)
-	anchor := ui.Button(c, a.T("Add")).Height(42).Grow(1).Basis(0).Disabled(len(missing) == 0)
+	anchor := ui.Button(c, a.T("Add")).Grow(1).Basis(0).Disabled(len(missing) == 0)
 	open := ui.Local(anchor, "open", func() bool { return false })
 	if anchor.Clicked() {
 		*open = !*open
 	}
 	ui.Popover(c, anchor, open, func() {
-		ui.Column(c).Width(280).Gap(16).Children(func() {
+		ui.Column(c).Width(280).Gap(editorAppearance.ControlGap).Children(func() {
 			ui.Text(c, a.T("AddCharacter")).Bold()
 			options := []option{}
 			for _, p := range missing {
@@ -129,13 +129,13 @@ func (a *App) addCharacterButton(c *ui.Context) {
 func (a *App) rosterGeneral(c *ui.Context, key string, r save.RosterCharacter) {
 	a.columns(c, func() {
 		a.staticField(c, "Status", a.T("Roster"+r.Availability()))
-		if ui.Button(c, a.T("RestoreCharacter")).Height(42).Disabled(a.Save == nil || !a.Save.CanRestoreRosterCharacter(r.Index)).Clicked() {
+		if ui.Button(c, a.T("RestoreCharacter")).Disabled(a.Save == nil || !a.Save.CanRestoreRosterCharacter(r.Index)).Clicked() {
 			a.apply(func(s *save.Save) (*save.Save, error) { return s.RestoreRosterCharacter(r.Index) })
 		}
 		forces := []option{{"3", a.T("ForceAbsent")}, {"4", a.T("ForceDead")}, {"5", a.T("ForceLost")}}
 		force := draft(a, key+"/force-choice", func() string { return fmt.Sprint(r.Force) })
 		a.combo(c, "Force", key+"/force", force, forces)
-		if ui.Button(c, a.T("MoveCharacter")).Height(42).Disabled(a.Save == nil || !a.Save.CanMoveRosterCharacter(r.Index)).Clicked() {
+		if ui.Button(c, a.T("MoveCharacter")).Disabled(a.Save == nil || !a.Save.CanMoveRosterCharacter(r.Index)).Clicked() {
 			n, _ := strconv.Atoi(*force)
 			a.apply(func(s *save.Save) (*save.Save, error) { return s.WithRosterForce(r.Index, save.UnitForce(n)) })
 		}
@@ -234,7 +234,7 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 			hpmax = n
 		}
 	}
-	ui.Row(c).Gap(32).AlignItems(ui.End).Children(func() {
+	ui.Row(c).Gap(editorAppearance.SectionGap).AlignItems(ui.End).Children(func() {
 		ui.Column(c).Grow(1).Basis(0).Children(func() {
 			a.numberEdit(c, "CurrentHP", key+"/hp", r.Progress.CurrentHP, 0, hpmax, func(s *save.Save, n int) (*save.Save, error) {
 				rows, e := s.Roster()
@@ -244,7 +244,7 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 				return s.WithRosterCondition(r.Index, rows[r.Index].Progress.InternalLevel, n)
 			})
 		})
-		if ui.Button(c, a.T("RestoreHP")).Height(42).Grow(1).Basis(0).Clicked() {
+		if ui.Button(c, a.T("RestoreHP")).Grow(1).Basis(0).Clicked() {
 			a.perform(key, func(s *save.Save) (*save.Save, error) {
 				n, e := s.RosterMaximumHP(r.Index)
 				if e != nil {
@@ -261,7 +261,7 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 			a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeRosterStats(&index) })
 		})
 	})
-	ui.Grid(c).Columns(2).Gap(16).Children(func() {
+	ui.Grid(c).Columns(2).GapX(editorAppearance.SectionGap).GapY(editorAppearance.ControlGap).Children(func() {
 		for _, stat := range r.Stats {
 			if stat.Stat == save.Sight {
 				continue
@@ -282,7 +282,7 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 			}
 			fieldKey := fmt.Sprintf("%s/stats/%d", key, stat.Stat)
 			value := a.number(fieldKey, float64(stat.PersonalValue))
-			ui.Column(c.Key(label)).Gap(8).Children(func() {
+			ui.Column(c.Key(label)).Gap(editorAppearance.ControlGap).Children(func() {
 				ui.Row(c).Children(func() {
 					ui.Text(c, a.T(label)).Grow(1)
 					if job != nil && stat.Maximum != nil {
@@ -294,7 +294,7 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 						ui.Text(c, replaceFormat(a.T("CurrentClassStat"), fmt.Sprint(preview), fmt.Sprint(*stat.Maximum)))
 					}
 				})
-				if ui.NumberInput(c, value, float64(min(low, stat.PersonalValue)), float64(max(high, stat.PersonalValue)), 1).Height(42).Label(a.T(label)).Changed() {
+				if ui.NumberInput(c, value, float64(min(low, stat.PersonalValue)), float64(max(high, stat.PersonalValue)), 1).Label(a.T(label)).Changed() {
 					n := int(*value)
 					a.stage(fieldKey, func(s *save.Save) (*save.Save, error) { return s.WithRosterStat(r.Index, stat.Stat, n, true) })
 				}
@@ -304,9 +304,9 @@ func (a *App) rosterStats(c *ui.Context, key string, r save.RosterCharacter) {
 	a.applyButton(c, key)
 }
 func (a *App) rosterItems(c *ui.Context, key string, r save.RosterCharacter) {
-	ui.Row(c).Gap(32).AlignItems(ui.Start).Children(func() {
+	ui.Row(c).Gap(editorAppearance.SectionGap).AlignItems(ui.Start).Children(func() {
 		selected := -1
-		ui.Column(c).Grow(1).Basis(0).MinWidth(0).Gap(16).Children(func() {
+		ui.Column(c).Grow(1).Basis(0).MinWidth(0).Gap(editorAppearance.ControlGap).Children(func() {
 			a.button(c, "RestoreAllUses", func() { a.perform(key, func(s *save.Save) (*save.Save, error) { return s.RestoreRosterUses(r.Index) }) })
 			ui.Column(c).Height(260).Children(func() {
 				rows := []row{}
@@ -416,7 +416,7 @@ func (a *App) rosterSkills(c *ui.Context, key string, r save.RosterCharacter) {
 			id := *choice
 			a.apply(func(s *save.Save) (*save.Save, error) { return s.WithRosterSkill(r.Index, id, true) })
 		})
-		if ui.Button(c, a.T("RemoveSkill")).Height(42).Disabled(selected == "").Clicked() {
+		if ui.Button(c, a.T("RemoveSkill")).Disabled(selected == "").Clicked() {
 			hash, _ := strconv.ParseUint(selected, 10, 32)
 			if def := catalog.Skill(uint32(hash)); def != nil {
 				a.apply(func(s *save.Save) (*save.Save, error) { return s.WithRosterSkill(r.Index, def.Id, false) })
@@ -426,7 +426,7 @@ func (a *App) rosterSkills(c *ui.Context, key string, r save.RosterCharacter) {
 	})
 }
 func (a *App) rosterProficiencies(c *ui.Context, key string, r save.RosterCharacter) {
-	ui.Column(c).Width(340).Gap(16).Children(func() {
+	ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
 		mask := draft(a, key+"/proficiencies", func() uint32 { return r.Progress.Proficiencies & 510 })
 		for i, k := range weaponKeys {
 			if i == 0 {
@@ -453,7 +453,7 @@ func (a *App) rosterProficiencies(c *ui.Context, key string, r save.RosterCharac
 func (a *App) rosterEquipment(c *ui.Context, key string, r save.RosterCharacter) {
 	current, _ := read(a, key+"/equipment-current", func() (save.EquipmentSelection, error) { return a.Save.RosterEquipment(r.Index) })
 	options, _ := read(a, key+"/equipment-options", func() ([]save.EquipmentOption, error) { return a.Save.RosterEquipmentOptions(r.Index) })
-	ui.Column(c).Width(340).Gap(16).Children(func() {
+	ui.Column(c).Width(340).Gap(editorAppearance.ControlGap).Children(func() {
 		kind := draft(a, key+"/equipment-kind", func() string { return fmt.Sprint(current.Kind) })
 		kindChanged := a.combo(c, "Kind", key+"/equipment-kind", kind, []option{{"0", a.T("None")}, {"1", a.T("Emblem")}, {"2", a.T("BondRings")}})
 		choices := []option{}
