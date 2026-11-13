@@ -199,11 +199,10 @@ func (a *App) donationsCard(c *ui.Context) {
 		for _, r := range rows {
 			d := r.Country
 			ui.Column(c.Key(d.Id)).Gap(editorAppearance.ControlGap).Children(func() {
-				ui.Text(c, d.Names.Name(a.Language)).Bold()
 				a.columns(c, func() {
 					amount := int(*a.number("main/donations/"+d.Id, float64(r.Amount)))
 					levels := []string{"1", "2", "3", "4", "5"}
-					a.selectField(c, "Level", "donation-level/"+d.Id, fmt.Sprint(d.Level(amount)), levels, func(text string) {
+					a.selectField(c, replaceFormat(a.T("CountryLevel"), d.Names.Name(a.Language)), "donation-level/"+d.Id, fmt.Sprint(d.Level(amount)), levels, func(text string) {
 						n := 1
 						fmt.Sscan(text, &n)
 						amount := d.Thresholds[n-1]

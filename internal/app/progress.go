@@ -302,7 +302,8 @@ func (a *App) inspectorPage(c *ui.Context) {
 	a.split(c, "sections", "Sections", sections, listHeader{}, nil, func(id string) {
 		i, _ := strconv.Atoi(id)
 		ui.Column(c).Gap(editorAppearance.SectionGap).Children(func() {
-			a.section(c, "Overview", func() {
+			ui.Column(c).Gap(editorAppearance.ControlGap).Children(func() {
+				ui.Text(c, a.T("Overview")).Bold()
 				a.staticField(c, "FileName", filepath.Base(a.Path))
 				kind := "GameSave"
 				if a.Save != nil && a.Save.Kind == save.Global {
@@ -327,7 +328,8 @@ func (a *App) inspectorPage(c *ui.Context) {
 				}())
 				a.staticField(c, "SectionCount", len(sectionsData))
 			})
-			a.section(c, "SelectedSection", func() {
+			ui.Column(c).Gap(editorAppearance.ControlGap).Children(func() {
+				ui.Text(c, a.T("SelectedSection")).Bold()
 				sec := save.Section{}
 				if i >= 0 && i < len(sectionsData) {
 					sec = sectionsData[i]

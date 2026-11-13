@@ -98,6 +98,7 @@
   "Caught": "Caught",
   "MinigamesUnavailable": "Could not read minigame records:",
   "Country": "Country",
+  "CountryLevel": "{0} Level",
   "DonatedGold": "Donated Gold",
   "MaxLevel": "Max Level",
   "MaxAllLevels": "Max All Levels",

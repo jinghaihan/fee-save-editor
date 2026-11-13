@@ -98,6 +98,7 @@
   "Caught": "Gefangen",
   "MinigamesUnavailable": "Minispielrekorde konnten nicht gelesen werden:",
   "Country": "Land",
+  "CountryLevel": "{0}-Level",
   "DonatedGold": "Gespendetes Gold",
   "MaxLevel": "Max. Level",
   "MaxAllLevels": "Alle Level maximieren",

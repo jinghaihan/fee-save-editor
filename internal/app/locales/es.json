@@ -98,6 +98,7 @@
   "Caught": "Capturados",
   "MinigamesUnavailable": "No se pudieron leer los récords de minijuegos:",
   "Country": "País",
+  "CountryLevel": "Nivel de {0}",
   "DonatedGold": "Oro donado",
   "MaxLevel": "Nivel máximo",
   "MaxAllLevels": "Maximizar todos los niveles",
