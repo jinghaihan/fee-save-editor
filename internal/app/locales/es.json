@@ -248,5 +248,18 @@
   "Dirtiness": "Suciedad",
   "Clean": "Limpiar",
   "CleanAll": "Limpiar todos",
-  "StatLimit": "Límite de clase"
+  "StatLimit": "Límite de clase",
+  "ChapterRecords": "Historial de batallas",
+  "BattleResult": "Resultado de batalla",
+  "MVP": "MVP",
+  "RecordedClass": "Clase registrada",
+  "RecordedEmblem": "Emblema",
+  "NotRecorded": "Sin registrar",
+  "ClearTurns": "Turnos",
+  "ClearTime": "Tiempo",
+  "MoveUp": "Subir",
+  "MoveDown": "Bajar",
+  "Position": "Posición",
+  "MoveToPosition": "Mover a esta posición",
+  "InvalidClearTime": "Introduce el tiempo con el formato HH:MM:SS."
 }

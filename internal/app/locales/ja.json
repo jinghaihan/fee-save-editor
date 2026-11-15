@@ -248,5 +248,18 @@
   "Dirtiness": "汚れ",
   "Clean": "きれいにする",
   "CleanAll": "すべてきれいにする",
-  "StatLimit": "兵種上限"
+  "StatLimit": "兵種上限",
+  "ChapterRecords": "戦績",
+  "BattleResult": "戦闘記録",
+  "MVP": "MVP",
+  "RecordedClass": "記録時の兵種",
+  "RecordedEmblem": "紋章士",
+  "NotRecorded": "記録なし",
+  "ClearTurns": "ターン数",
+  "ClearTime": "クリア時間",
+  "MoveUp": "上へ",
+  "MoveDown": "下へ",
+  "Position": "位置",
+  "MoveToPosition": "指定位置に移動",
+  "InvalidClearTime": "クリア時間を HH:MM:SS で入力してください。"
 }

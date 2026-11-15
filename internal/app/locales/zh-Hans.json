@@ -248,5 +248,18 @@
   "Dirtiness": "脏污程度",
   "Clean": "清洁",
   "CleanAll": "全部清洁",
-  "StatLimit": "兵种上限"
+  "StatLimit": "兵种上限",
+  "ChapterRecords": "章节战绩",
+  "BattleResult": "战斗记录",
+  "MVP": "MVP",
+  "RecordedClass": "当时职业",
+  "RecordedEmblem": "纹章士",
+  "NotRecorded": "未记录",
+  "ClearTurns": "回合数",
+  "ClearTime": "通关用时",
+  "MoveUp": "上移",
+  "MoveDown": "下移",
+  "Position": "位置",
+  "MoveToPosition": "移动到指定位置",
+  "InvalidClearTime": "请使用 HH:MM:SS 格式填写通关用时。"
 }

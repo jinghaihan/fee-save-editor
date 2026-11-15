@@ -248,5 +248,18 @@
   "Dirtiness": "Dirtiness",
   "Clean": "Clean",
   "CleanAll": "Clean All",
-  "StatLimit": "Class Limit"
+  "StatLimit": "Class Limit",
+  "ChapterRecords": "Battle Records",
+  "BattleResult": "Battle Result",
+  "MVP": "MVP",
+  "RecordedClass": "Recorded Class",
+  "RecordedEmblem": "Emblem",
+  "NotRecorded": "Not recorded",
+  "ClearTurns": "Turns",
+  "ClearTime": "Clear Time",
+  "MoveUp": "Move Up",
+  "MoveDown": "Move Down",
+  "Position": "Position",
+  "MoveToPosition": "Move to Position",
+  "InvalidClearTime": "Enter clear time as HH:MM:SS."
 }

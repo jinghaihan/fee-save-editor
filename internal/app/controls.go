@@ -159,8 +159,9 @@ func (a *App) numberEdit(c *ui.Context, label, key string, value, lo, hi int, fn
 }
 
 type listHeader struct {
-	summary  string
-	controls func()
+	summary         string
+	controls        func()
+	followSelection bool
 }
 
 func (a *App) list(c *ui.Context, key, title string, rows []row, header listHeader, footer func()) string {
@@ -199,6 +200,13 @@ func (a *App) list(c *ui.Context, key, title string, rows []row, header listHead
 			s.List.Choose(s.Selected)
 		}
 		s.List.Key = func(i int) any { return filtered[i].ID }
+		if header.followSelection && s.Selected >= 0 {
+			id := filtered[s.Selected].ID
+			if id != s.FollowedID || s.Selected != s.FollowedIndex {
+				s.List.ScrollIntoView(s.Selected)
+				s.FollowedID, s.FollowedIndex = id, s.Selected
+			}
+		}
 		old := s.Selected
 		if themedList(c, &s.List, len(filtered), func(i int) {
 			r := filtered[i]

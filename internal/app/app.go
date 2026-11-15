@@ -21,14 +21,16 @@ import (
 //go:embed locales/*.json
 var localeFiles embed.FS
 var Version = "0.4.0"
-var pages = []string{"Main", "Items", "Roster", "Emblems", "Support", "Minigames", "Achievements", "Animals", "Inspector"}
+var pages = []string{"Main", "Items", "Roster", "Emblems", "Support", "Minigames", "Achievements", "Animals", "ChapterRecords", "Inspector"}
 
 type edit func(*save.Save) (*save.Save, error)
 type tableState struct {
-	List     ui.ListState
-	Query    string
-	Selected int
-	Rows     []row
+	List          ui.ListState
+	Query         string
+	Selected      int
+	Rows          []row
+	FollowedID    string
+	FollowedIndex int
 }
 type row struct{ ID, Name, Value string }
 type App struct {

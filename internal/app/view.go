@@ -43,6 +43,8 @@ func (a *App) View(c *ui.Context) {
 				a.achievementsPage(c)
 			case "Animals":
 				a.animalsPage(c)
+			case "ChapterRecords":
+				a.chapterRecordPage(c)
 			case "Inspector":
 				a.inspectorPage(c)
 			}

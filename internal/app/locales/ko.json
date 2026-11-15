@@ -248,5 +248,18 @@
   "Dirtiness": "오염도",
   "Clean": "닦기",
   "CleanAll": "모두 닦기",
-  "StatLimit": "병종 상한"
+  "StatLimit": "병종 상한",
+  "ChapterRecords": "전투 기록",
+  "BattleResult": "전투 결과",
+  "MVP": "MVP",
+  "RecordedClass": "기록 당시 병종",
+  "RecordedEmblem": "문장사",
+  "NotRecorded": "기록 없음",
+  "ClearTurns": "턴 수",
+  "ClearTime": "클리어 시간",
+  "MoveUp": "위로",
+  "MoveDown": "아래로",
+  "Position": "위치",
+  "MoveToPosition": "지정 위치로 이동",
+  "InvalidClearTime": "클리어 시간을 HH:MM:SS 형식으로 입력하세요."
 }
