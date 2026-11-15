@@ -78,13 +78,15 @@ func TestChapterRecordEditingAndMoves(t *testing.T) {
 	if chapterRows(t, a)[1].ClearTurn != 9 {
 		t.Fatal("stale detail reset turn count")
 	}
-	enterChapterValue(t, tt, a.T("Position"), "4")
-	if err := tt.Click(a.T("MoveToPosition")); err != nil {
-		t.Fatal(err)
+	for range 2 {
+		if err := tt.Click(a.T("MoveDown")); err != nil {
+			t.Fatal(err)
+		}
 	}
 	if chapterRows(t, a)[3].ChapterID != original[0].ChapterID {
-		t.Fatal("destination input did not retain its value")
+		t.Fatal("repeated downward move failed")
 	}
+
 	if err := tt.Click(a.T("MoveUp")); err != nil {
 		t.Fatal(err)
 	}
@@ -164,7 +166,12 @@ func TestChapterRecordLayouts(t *testing.T) {
 					a.dark = dark
 					tt := ui.NewTesterWith(a.View, size[0], size[1], ui.TesterOptions{Dark: dark})
 					checkBounds(t, tt, size[0], size[1])
-					for _, label := range []string{"MVP", "RecordedClass", "RecordedEmblem", "ClearTime", "MoveUp", "MoveDown", "MoveToPosition"} {
+					for _, label := range []string{"Position", "Move to Position"} {
+						if _, ok := tt.Access(label); ok {
+							t.Fatalf("removed destination control is visible: %s", label)
+						}
+					}
+					for _, label := range []string{"MVP", "RecordedClass", "RecordedEmblem", "ClearTime", "MoveUp", "MoveDown"} {
 						n, ok := tt.Access(a.T(label))
 						if !ok {
 							t.Fatalf("missing %s", label)

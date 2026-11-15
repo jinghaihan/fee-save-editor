@@ -259,7 +259,5 @@
   "ClearTime": "通關用時",
   "MoveUp": "上移",
   "MoveDown": "下移",
-  "Position": "位置",
-  "MoveToPosition": "移動到指定位置",
   "InvalidClearTime": "請使用 HH:MM:SS 格式填寫通關用時。"
 }

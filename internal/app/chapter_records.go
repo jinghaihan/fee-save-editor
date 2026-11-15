@@ -106,23 +106,6 @@ func (a *App) chapterRecordOrder(c *ui.Context, records []save.ChapterRecord) {
 			a.moveChapterRecord(id, index+1)
 		}
 	})
-	// This is a destination for an explicit list operation, not an Apply button.
-	destination := ui.Column(c.Key("chapter-destination")).Gap(editorAppearance.ControlGap)
-	type destinationState struct {
-		ID    string
-		Index int
-		Value float64
-	}
-	position := ui.Local(destination, "value", func() destinationState { return destinationState{id, index, float64(index + 1)} })
-	if position.ID != id || position.Index != index {
-		*position = destinationState{id, index, float64(index + 1)}
-	}
-	destination.Children(func() {
-		a.field(c, "Position", func() { ui.NumberInput(c, &position.Value, 1, float64(max(1, len(records))), 1).Label(a.T("Position")) })
-		if ui.Button(c, a.T("MoveToPosition")).Disabled(index < 0).Clicked() {
-			a.moveChapterRecord(id, int(position.Value)-1)
-		}
-	})
 }
 
 func (a *App) chapterRecordEditor(c *ui.Context, id string) {

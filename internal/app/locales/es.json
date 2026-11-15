@@ -259,7 +259,5 @@
   "ClearTime": "Tiempo",
   "MoveUp": "Subir",
   "MoveDown": "Bajar",
-  "Position": "Posición",
-  "MoveToPosition": "Mover a esta posición",
   "InvalidClearTime": "Introduce el tiempo con el formato HH:MM:SS."
 }

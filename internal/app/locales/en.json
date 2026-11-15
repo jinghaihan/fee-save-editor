@@ -259,7 +259,5 @@
   "ClearTime": "Clear Time",
   "MoveUp": "Move Up",
   "MoveDown": "Move Down",
-  "Position": "Position",
-  "MoveToPosition": "Move to Position",
   "InvalidClearTime": "Enter clear time as HH:MM:SS."
 }

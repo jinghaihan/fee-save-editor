@@ -259,7 +259,5 @@
   "ClearTime": "Abschlusszeit",
   "MoveUp": "Nach oben",
   "MoveDown": "Nach unten",
-  "Position": "Position",
-  "MoveToPosition": "An Position verschieben",
   "InvalidClearTime": "Abschlusszeit im Format HH:MM:SS eingeben."
 }

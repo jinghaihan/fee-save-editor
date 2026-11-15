@@ -259,7 +259,5 @@
   "ClearTime": "クリア時間",
   "MoveUp": "上へ",
   "MoveDown": "下へ",
-  "Position": "位置",
-  "MoveToPosition": "指定位置に移動",
   "InvalidClearTime": "クリア時間を HH:MM:SS で入力してください。"
 }
