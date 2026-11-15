@@ -10,6 +10,7 @@ import (
 	_ "github.com/egoist/mygo/locales/zh-Hans"
 	_ "github.com/egoist/mygo/locales/zh-Hant"
 	"github.com/egoist/mygo/ui"
+	editor "github.com/jinghaihan/fee-save-editor"
 	"github.com/jinghaihan/fee-save-editor/assets"
 	"github.com/jinghaihan/fee-save-editor/internal/catalog"
 	"github.com/jinghaihan/fee-save-editor/internal/save"
@@ -20,7 +21,16 @@ import (
 
 //go:embed locales/*.json
 var localeFiles embed.FS
-var Version = "0.4.0"
+
+// Version can be overridden by the release build's linker flags.
+var Version string
+
+func init() {
+	if Version == "" {
+		Version = editor.Version()
+	}
+}
+
 var pages = []string{"Main", "Items", "Roster", "Emblems", "Support", "Minigames", "Achievements", "Animals", "ChapterRecords", "Inspector"}
 
 type edit func(*save.Save) (*save.Save, error)

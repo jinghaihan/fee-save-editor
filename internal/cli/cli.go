@@ -4,6 +4,7 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
+	editor "github.com/jinghaihan/fee-save-editor"
 	"github.com/jinghaihan/fee-save-editor/internal/catalog"
 	"github.com/jinghaihan/fee-save-editor/internal/save"
 	"io"
@@ -16,7 +17,15 @@ import (
 
 //go:embed help.txt
 var help string
-var Version = "0.4.0"
+
+// Version can be overridden by the release build's linker flags.
+var Version string
+
+func init() {
+	if Version == "" {
+		Version = editor.Version()
+	}
+}
 
 type commandError struct{ error }
 
