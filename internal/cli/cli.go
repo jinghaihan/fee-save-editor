@@ -112,6 +112,15 @@ func Run(args []string, out, errout io.Writer) (code int) {
 		return 0
 	}
 	switch args[0] {
+	case "chapter-records":
+		check(len(args) >= 2, "Provide a save file.")
+		lang := language(args[2:])
+		rows := take(load(args[1]).ChapterRecords())
+		results := make([]object, 0, len(rows))
+		for i, r := range rows {
+			results = append(results, object{"Position": i + 1, "ChapterID": r.ChapterID, "Chapter": catalog.ChapterName(r.ChapterID, lang), "PersonID": r.Person, "MVP": catalog.RecordPersonName(r.Person, lang), "ClassID": r.Class, "Class": catalog.RecordClassName(r.Class, lang), "EmblemID": r.Emblem, "Emblem": catalog.RecordEmblemName(r.Emblem, lang), "ClearTurn": r.ClearTurn, "ClearTimeSeconds": r.ClearTime, "ClearTime": formatTime(r.ClearTime)})
+		}
+		outputJSON(out, results)
 	case "inspect":
 		check(len(args) >= 2, "Provide a save file.")
 		parse(args[2:], "--json")

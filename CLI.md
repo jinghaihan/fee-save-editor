@@ -284,6 +284,18 @@ rewards in-game; the editor does not award fragments, reset claimed rewards,
 change activity counters or advance the story. `--all` includes all named
 achievements, including chapter-gated ones, not just a GUI search/category filter.
 
+## Battle records
+
+```sh
+FeeEditor.Cli chapter-records Manual1 --json --language en
+```
+
+Lists chapter results in their saved order, with 1-based positions, chapter titles,
+MVPs, recorded classes, Emblems, turns and clear times. Raw saved identifiers and
+precise seconds are included. An empty Emblem field means it was not recorded.
+This command is read-only; edit fields and reorder results in the GUI's
+**Battle Records** tab.
+
 ## Inspect and copy
 
 The Inspector's Variables tab and these commands edit existing numeric game variables:
