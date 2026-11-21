@@ -127,6 +127,9 @@ Transfers include class/progression, personal stats, inherited skills, proficien
 ```sh
 FeeEditor.Cli roster list Manual0 --json --language en
 FeeEditor.Cli roster catalog --json
+FeeEditor.Cli roster recruitment-order --json --language en
+FeeEditor.Cli roster reorder Manual0 Manual0-edited --character 12 --to 1
+FeeEditor.Cli roster sort Manual0 Manual0-edited --by recruitment
 FeeEditor.Cli roster set Manual0 Manual0-edited --character 0 --level 10 --experience 50 --sp 9999
 FeeEditor.Cli roster personal-stat Manual0 Manual0-edited --character 0 --stat Strength --value 41
 FeeEditor.Cli roster stats-max Manual0 Manual0-edited --all
@@ -143,6 +146,15 @@ FeeEditor.Cli roster classes-repair Manual0 Manual0-edited --all
 ```
 
 Use character indices from `roster list` and IDs from `roster catalog`.
+`reorder` moves a character to the destination character's current zero-based
+index. `sort --by recruitment` restores the default recruitment sequence,
+including optional recruits and DLC characters; `recruitment-order` lists that
+sequence. This preset does not reconstruct the actual recruitment dates in a
+particular campaign. Both commands reorder available bench characters in an
+out-of-battle save, preserving each complete character record, equipment and all
+other data. Dead, lost, unknown and temporary units retain their positions.
+The game's other menus that share this roster also follow its saved order.
+Re-read `roster list` after reordering before using another character index.
 `restore` refills carried-item uses. `restore-character` returns an existing dead
 or lost playable character to the available bench and restores HP. Use a chapter,
 Somniel or world-map save outside battle; unknown, guest, summoned, relay and

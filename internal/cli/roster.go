@@ -27,6 +27,15 @@ func equipmentObject(s save.EquipmentSelection) object {
 func runRoster(args []string, out io.Writer) {
 	check(len(args) > 0, "Provide a roster command.")
 	verb := args[0]
+	if verb == "recruitment-order" {
+		lang := language(args[1:])
+		rows := []object{}
+		for i, id := range catalog.RecruitmentOrder {
+			rows = append(rows, object{"Position": i + 1, "PersonId": id, "Name": catalog.Person(catalog.Hash(id)).Name(lang)})
+		}
+		outputJSON(out, rows)
+		return
+	}
 	if verb == "catalog" {
 		lang := language(args[1:])
 		classes, skills := []object{}, []object{}
@@ -162,6 +171,15 @@ func selectedSkill(id string) *uint32 {
 	return &hash
 }
 func editRoster(s *save.Save, verb string, args []string) *save.Save {
+	if verb == "reorder" {
+		o := parse(args, "--character", "--to")
+		return take(s.MoveRosterCharacter(o.number("--character"), o.number("--to")))
+	}
+	if verb == "sort" {
+		o := parse(args, "--by")
+		check(o.required("--by") == "recruitment", "Choose --by recruitment.")
+		return take(s.SortRosterByRecruitment())
+	}
 	if verb == "stats-max" && len(args) == 1 && args[0] == "--all" {
 		return take(s.MaximizeRosterStats(nil))
 	}

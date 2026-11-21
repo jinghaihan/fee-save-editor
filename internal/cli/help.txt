@@ -42,6 +42,9 @@ Usage:
   FeeEditor.Cli items restore <save> <new-file> --all|--slot <index>
   FeeEditor.Cli roster list <save> [--json] [--language <code>]
   FeeEditor.Cli roster catalog [--json] [--language <code>]
+  FeeEditor.Cli roster recruitment-order [--json] [--language <code>]
+  FeeEditor.Cli roster reorder <save> <new-file> --character <index> --to <index>
+  FeeEditor.Cli roster sort <save> <new-file> --by recruitment
   FeeEditor.Cli roster missing <save> [--json] [--language <code>]
   FeeEditor.Cli roster add <save> <new-file> --person <PID>
   FeeEditor.Cli roster delete <save> <new-file> --character <index>
