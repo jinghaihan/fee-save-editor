@@ -259,5 +259,6 @@
   "ClearTime": "클리어 시간",
   "MoveUp": "위로",
   "MoveDown": "아래로",
-  "InvalidClearTime": "클리어 시간을 HH:MM:SS 형식으로 입력하세요."
+  "InvalidClearTime": "클리어 시간을 HH:MM:SS 형식으로 입력하세요.",
+  "SortByRecruitment": "합류 순서로 정렬"
 }

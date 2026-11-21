@@ -259,5 +259,6 @@
   "ClearTime": "クリア時間",
   "MoveUp": "上へ",
   "MoveDown": "下へ",
-  "InvalidClearTime": "クリア時間を HH:MM:SS で入力してください。"
+  "InvalidClearTime": "クリア時間を HH:MM:SS で入力してください。",
+  "SortByRecruitment": "加入順に並べ替え"
 }

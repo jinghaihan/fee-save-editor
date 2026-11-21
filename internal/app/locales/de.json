@@ -259,5 +259,6 @@
   "ClearTime": "Abschlusszeit",
   "MoveUp": "Nach oben",
   "MoveDown": "Nach unten",
-  "InvalidClearTime": "Abschlusszeit im Format HH:MM:SS eingeben."
+  "InvalidClearTime": "Abschlusszeit im Format HH:MM:SS eingeben.",
+  "SortByRecruitment": "Nach Beitritt sortieren"
 }

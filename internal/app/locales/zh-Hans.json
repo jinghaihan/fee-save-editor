@@ -259,5 +259,6 @@
   "ClearTime": "通关用时",
   "MoveUp": "上移",
   "MoveDown": "下移",
-  "InvalidClearTime": "请使用 HH:MM:SS 格式填写通关用时。"
+  "InvalidClearTime": "请使用 HH:MM:SS 格式填写通关用时。",
+  "SortByRecruitment": "按入队顺序排列"
 }

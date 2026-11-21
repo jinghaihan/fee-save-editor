@@ -259,5 +259,6 @@
   "ClearTime": "Durée",
   "MoveUp": "Monter",
   "MoveDown": "Descendre",
-  "InvalidClearTime": "Saisissez la durée au format HH:MM:SS."
+  "InvalidClearTime": "Saisissez la durée au format HH:MM:SS.",
+  "SortByRecruitment": "Trier par recrutement"
 }

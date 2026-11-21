@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -37,40 +38,35 @@ func (a *App) rosterPage(c *ui.Context) {
 	rows := []row{}
 	for _, r := range roster {
 		if r.Force != save.Enemy && r.Force != save.Temporary {
-			rows = append(rows, row{strconv.Itoa(r.Index), a.characterName(r), fmt.Sprintf("Lv. %d", r.Values.Level)})
+			rows = append(rows, row{rosterRowID(r), a.characterName(r), fmt.Sprintf("Lv. %d", r.Values.Level)})
 		}
 	}
-	a.split(c, "roster", "CharacterList", rows, listHeader{}, func() {
+	a.split(c, "roster", "CharacterList", rows, listHeader{followSelection: true}, func() {
 		ui.Column(c.Key("roster-actions")).Gap(editorAppearance.ControlGap).Children(func() {
+			a.rosterOrderControls(c)
 			a.button(c, "MaximizeAllStats", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.MaximizeRosterStats(nil) }) })
-			id := a.selectedID("roster")
-			index, _ := strconv.Atoi(id)
+			current, selected := a.selectedRosterCharacter()
+			index := current.Index
 			ui.Row(c).Gap(editorAppearance.ControlGap).Children(func() {
 				for _, export := range []bool{true, false} {
 					key := "Import"
 					if export {
 						key = "Export"
 					}
-					if ui.Button(c, a.T(key)).Grow(1).Basis(0).Disabled(id == "").Clicked() {
+					if ui.Button(c, a.T(key)).Grow(1).Basis(0).Disabled(!selected).Clicked() {
 						a.transferCharacter(index, export)
 					}
 				}
 			})
 			ui.Row(c).Gap(editorAppearance.ControlGap).Children(func() {
 				a.addCharacterButton(c)
-				if ui.Button(c, a.T("Delete")).Grow(1).Basis(0).Disabled(id == "" || a.Save == nil || !a.Save.CanDeleteRosterCharacter(index)).Clicked() {
+				if ui.Button(c, a.T("Delete")).Grow(1).Basis(0).Disabled(!selected || a.Save == nil || !a.Save.CanDeleteRosterCharacter(index)).Clicked() {
 					a.ask("ConfirmDeleteCharacter", func() { a.apply(func(s *save.Save) (*save.Save, error) { return s.WithoutRosterCharacter(index) }) })
 				}
 			})
 		})
 	}, func(id string) {
-		var current save.RosterCharacter
-		index, _ := strconv.Atoi(id)
-		for _, r := range roster {
-			if r.Index == index {
-				current = r
-			}
-		}
+		current, _ := a.rosterCharacter(id)
 		scope := "roster/" + id
 		ui.Column(c.Key(id)).Gap(editorAppearance.SectionGap).Children(func() {
 			tab := a.tabsView(c, "roster-tabs", "General", "Stats", "Items", "Skills", "Proficiencies", "Equipment")
@@ -90,6 +86,48 @@ func (a *App) rosterPage(c *ui.Context) {
 			}
 		})
 	})
+}
+
+func rosterRowID(r save.RosterCharacter) string {
+	return fmt.Sprintf("%d:%08X", r.Force, r.PersonHash)
+}
+
+func (a *App) rosterCharacter(id string) (save.RosterCharacter, bool) {
+	rows, _ := read(a, "roster", a.Save.Roster)
+	for _, r := range rows {
+		if rosterRowID(r) == id {
+			return r, true
+		}
+	}
+	return save.RosterCharacter{}, false
+}
+
+func (a *App) selectedRosterCharacter() (save.RosterCharacter, bool) {
+	return a.rosterCharacter(a.selectedID("roster"))
+}
+
+func (a *App) rosterOrderControls(c *ui.Context) {
+	order, err := read(a, "roster-order", a.Save.RosterOrder)
+	current, selected := a.selectedRosterCharacter()
+	position := -1
+	if selected && err == nil {
+		position = slices.Index(order, current.Index)
+	}
+	ui.Row(c).Gap(editorAppearance.ControlGap).Children(func() {
+		if ui.Button(c, a.T("MoveUp")).Grow(1).Basis(0).Disabled(position <= 0).Clicked() {
+			a.moveRosterCharacter(current.Index, order[position-1])
+		}
+		if ui.Button(c, a.T("MoveDown")).Grow(1).Basis(0).Disabled(position < 0 || position >= len(order)-1).Clicked() {
+			a.moveRosterCharacter(current.Index, order[position+1])
+		}
+	})
+	if ui.Button(c, a.T("SortByRecruitment")).FillWidth().Disabled(err != nil || len(order) < 2).Clicked() {
+		a.perform("roster", func(s *save.Save) (*save.Save, error) { return s.SortRosterByRecruitment() })
+	}
+}
+
+func (a *App) moveRosterCharacter(index, to int) bool {
+	return a.perform("roster", func(s *save.Save) (*save.Save, error) { return s.MoveRosterCharacter(index, to) })
 }
 func (a *App) selectedID(key string) string {
 	s := a.table(key)
@@ -550,7 +588,11 @@ func (a *App) rosterEquipment(c *ui.Context, key string, r save.RosterCharacter)
 }
 func (a *App) transferCharacter(index int, export bool) {
 	source := a.Save
-	scope := fmt.Sprintf("roster/%d", index)
+	rows, err := source.Roster()
+	if err != nil || index < 0 || index >= len(rows) {
+		return
+	}
+	scope := "roster/" + rosterRowID(rows[index])
 	if export {
 		var err error
 		source, err = a.snapshot(scope)

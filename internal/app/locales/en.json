@@ -259,5 +259,6 @@
   "ClearTime": "Clear Time",
   "MoveUp": "Move Up",
   "MoveDown": "Move Down",
-  "InvalidClearTime": "Enter clear time as HH:MM:SS."
+  "InvalidClearTime": "Enter clear time as HH:MM:SS.",
+  "SortByRecruitment": "Sort by Recruitment"
 }

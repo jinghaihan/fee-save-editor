@@ -259,5 +259,6 @@
   "ClearTime": "Tempo",
   "MoveUp": "Sposta su",
   "MoveDown": "Sposta giù",
-  "InvalidClearTime": "Inserisci il tempo nel formato HH:MM:SS."
+  "InvalidClearTime": "Inserisci il tempo nel formato HH:MM:SS.",
+  "SortByRecruitment": "Ordina per reclutamento"
 }
